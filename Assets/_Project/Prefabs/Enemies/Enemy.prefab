@@ -179,3 +179,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 3
   currentHealth: 0
+  hitColor: {r: 1, g: 1, b: 1, a: 1}
+  hitFlashDuration: 0.08
+  deathColor: {r: 0.9245283, g: 0.8592979, b: 0.14827326, a: 1}
+  deathDelay: 0.15

@@ -10,6 +10,9 @@ public class Bullet : MonoBehaviour
     [Header("Damage Settings")]
     [SerializeField] private int damage = 1; // 子弹伤害值
 
+    [Header("Hit Effect")]
+    [SerializeField] private GameObject hitEffectPrefab; // 子弹命中特效
+
     // 只负责子弹生成出来之后应该往哪边飞，不负责生成子弹和检测鼠标点击
     private Rigidbody2D rb;
     private Vector2 moveDirection = Vector2.right; // 子弹移动的默认值为向右
@@ -50,7 +53,7 @@ public class Bullet : MonoBehaviour
             return;
         }
 
-        EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
+        EnemyHealth enemyHealth = other.GetComponentInParent<EnemyHealth>();
 
         if (enemyHealth != null)
         {
@@ -61,6 +64,18 @@ public class Bullet : MonoBehaviour
             Debug.LogWarning($"{other.gameObject.name} 的 Tag 是 Enemy，但是没有 EnemyHealth 组件。");
         }
 
+        SpawnHitEffect();
+
         Destroy(gameObject);
+    }
+
+    private void SpawnHitEffect()
+    {
+        if (hitEffectPrefab == null)
+        {
+            return;
+        }
+
+        Instantiate(hitEffectPrefab, transform.position, Quaternion.identity);
     }
 }

@@ -163,3 +163,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 12
   lifeTime: 2
+  damage: 1
+  hitEffectPrefab: {fileID: 6257204860547183596, guid: 355805871cb685846bc212a9535fa94b, type: 3}
