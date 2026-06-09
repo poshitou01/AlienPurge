@@ -216,7 +216,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3125485742643281989, guid: ee4c9669def6d2149857876b48124061, type: 3}
   m_PrefabInstance: {fileID: 2570634732728353007}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &239907003
+--- !u!114 &239907005
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -225,12 +225,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 239906997}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3785bcccfad6f24c80301ba74b03d2a, type: 3}
+  m_Script: {fileID: 11500000, guid: dfd3274f8cacc1c4189640b69849667b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 6277733984967717320, guid: 8a349c1e5f9e7944495d14508f4e02dd, type: 3}
-  spawnOffset: 0.45
-  fireCooldown: 0.15
+  currentExperience: 0
+  currentLevel: 1
+  experienceToNextLevel: 5
+  experienceIncreasePerLevel: 5
 --- !u!1 &253084422
 GameObject:
   m_ObjectHideFlags: 0
@@ -562,10 +563,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 316811388181832284, guid: ee4c9669def6d2149857876b48124061, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
     - target: {fileID: 3125485742643281989, guid: ee4c9669def6d2149857876b48124061, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -612,7 +609,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 316811388181832284, guid: ee4c9669def6d2149857876b48124061, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 239907003}
+      addedObject: {fileID: 239907005}
   m_SourcePrefab: {fileID: 100100000, guid: ee4c9669def6d2149857876b48124061, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

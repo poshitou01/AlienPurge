@@ -22,7 +22,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("Enemy start position: " + transform.position);
+        //Debug.Log("Enemy start position: " + transform.position);
 
         if (target == null)
         {
@@ -31,11 +31,11 @@ public class EnemyMovement : MonoBehaviour
             if (playerObject != null)
             {
                 target = playerObject.transform;
-                Debug.Log("Enemy target found: " + target.name + ", target position: " + target.position);
+               // Debug.Log("Enemy target found: " + target.name + ", target position: " + target.position);
             }
             else
             {
-                Debug.LogWarning("EnemyMovement: Could not find an object with the Player tag.");
+               // Debug.LogWarning("EnemyMovement: Could not find an object with the Player tag.");
             }
         }
     }

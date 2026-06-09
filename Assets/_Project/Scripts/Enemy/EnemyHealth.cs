@@ -16,6 +16,11 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private Color deathColor = Color.red;
     [SerializeField] private float deathDelay = 0.15f;
 
+    [Header("Experience Drop")]
+    [SerializeField] private GameObject experienceOrbPrefab;
+    [SerializeField] private int experienceAmount = 1;
+    [SerializeField] private float dropRandomOffset = 0.15f;
+
     private bool isDead;
 
     private SpriteRenderer spriteRenderer;
@@ -139,8 +144,36 @@ public class EnemyHealth : MonoBehaviour
             transform.localScale *= 1.2f;
         }
 
+        DropExperienceOrb();
+
         yield return new WaitForSeconds(deathDelay);
 
         Destroy(gameObject);
+    }
+
+    private void DropExperienceOrb()
+    {
+        if (experienceOrbPrefab == null)
+        {
+            Debug.LogWarning($"{gameObject.name} 没有绑定 ExperienceOrb Prefab，无法掉落经验球。");
+            return;
+        }
+
+        Vector2 randomOffset = Random.insideUnitCircle * dropRandomOffset;
+
+        Vector3 spawnPosition = transform.position + new Vector3(randomOffset.x, randomOffset.y, 0f);
+
+        GameObject orb = Instantiate(experienceOrbPrefab, spawnPosition, Quaternion.identity);
+
+        ExperienceOrb experienceOrb = orb.GetComponent<ExperienceOrb>();
+
+        if (experienceOrb != null)
+        {
+            experienceOrb.SetExperienceAmount(experienceAmount);
+        }
+        else
+        {
+            Debug.LogWarning("生成的经验球上没有找到 ExperienceOrb 脚本。");
+        }
     }
 }
