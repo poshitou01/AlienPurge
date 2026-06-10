@@ -156,6 +156,10 @@ public class PlayerHealth : MonoBehaviour
                 col.enabled = false;
             }
         }
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.OnPlayerDied();
+        }
     }
 
     private void RefreshHealthUI()

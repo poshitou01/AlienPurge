@@ -146,7 +146,10 @@ public class UpgradeManager : MonoBehaviour
         }
 
         IsChoosingUpgrade = false;
-        Time.timeScale = 1f;
+        if (GameManager.Instance == null || GameManager.Instance.CurrentState == GameState.Playing)
+        {
+            Time.timeScale = 1f;
+        }
 
         Debug.Log("升级选择完成，游戏恢复。");
     }
