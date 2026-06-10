@@ -51,6 +51,11 @@ public class PlayerHealth : MonoBehaviour
         Debug.Log($"Player Health Initialized: {currentHealth}/{maxHealth}");
     }
 
+    private void Start()
+    {
+        RefreshHealthUI();
+    }
+
     public void TakeDamage(int damage)
     {
         if (isDead)
@@ -67,6 +72,8 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
 
         Debug.Log($"Player took {damage} damage. Current HP: {currentHealth}/{maxHealth}");
+
+        RefreshHealthUI();
 
         PlayDamageFeedback();
 
@@ -116,6 +123,8 @@ public class PlayerHealth : MonoBehaviour
 
         Debug.Log("Player died.");
 
+        RefreshHealthUI();
+
         if (flashCoroutine != null)
         {
             StopCoroutine(flashCoroutine);
@@ -146,6 +155,14 @@ public class PlayerHealth : MonoBehaviour
             {
                 col.enabled = false;
             }
+        }
+    }
+
+    private void RefreshHealthUI()
+    {
+        if (HUDManager.Instance != null)
+        {
+            HUDManager.Instance.UpdateHealthUI(currentHealth, maxHealth);
         }
     }
 

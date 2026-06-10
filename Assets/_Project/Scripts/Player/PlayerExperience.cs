@@ -14,6 +14,11 @@ public class PlayerExperience : MonoBehaviour
     public int CurrentLevel => currentLevel;
     public int ExperienceToNextLevel => experienceToNextLevel;
 
+    private void Start()
+    {
+        RefreshAllExperienceUI();
+    }
+
     public void AddExperience(int amount)
     {
         if (amount <= 0)
@@ -30,6 +35,8 @@ public class PlayerExperience : MonoBehaviour
         {
             LevelUp();
         }
+
+        RefreshAllExperienceUI();
     }
 
     private void LevelUp()
@@ -44,6 +51,8 @@ public class PlayerExperience : MonoBehaviour
         Debug.Log("Next Level Requires EXP: " + experienceToNextLevel);
         Debug.Log("Remaining EXP: " + currentExperience + " / " + experienceToNextLevel);
 
+        RefreshAllExperienceUI();
+
         if (UpgradeManager.Instance != null)
         {
             UpgradeManager.Instance.ShowUpgradePanel();
@@ -52,5 +61,27 @@ public class PlayerExperience : MonoBehaviour
         {
             Debug.LogWarning("UpgradeManager not found. Cannot show upgrade panel.");
         }
+    }
+
+    private void RefreshExperienceUI()
+    {
+        if (HUDManager.Instance != null)
+        {
+            HUDManager.Instance.UpdateExperienceUI(currentExperience, experienceToNextLevel);
+        }
+    }
+
+    private void RefreshLevelUI()
+    {
+        if (HUDManager.Instance != null)
+        {
+            HUDManager.Instance.UpdateLevelUI(currentLevel);
+        }
+    }
+
+    private void RefreshAllExperienceUI()
+    {
+        RefreshExperienceUI();
+        RefreshLevelUI();
     }
 }
