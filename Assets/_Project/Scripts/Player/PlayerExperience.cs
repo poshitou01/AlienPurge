@@ -43,5 +43,14 @@ public class PlayerExperience : MonoBehaviour
         Debug.Log("New Level: " + currentLevel);
         Debug.Log("Next Level Requires EXP: " + experienceToNextLevel);
         Debug.Log("Remaining EXP: " + currentExperience + " / " + experienceToNextLevel);
+
+        if (UpgradeManager.Instance != null)
+        {
+            UpgradeManager.Instance.ShowUpgradePanel();
+        }
+        else
+        {
+            Debug.LogWarning("UpgradeManager not found. Cannot show upgrade panel.");
+        }
     }
 }

@@ -7,8 +7,16 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] private float spawnOffset = 0.45f;
     [SerializeField] private float fireCooldown = 0.15f;
 
+    [Header("Bullet Damage Settings")]
+    [SerializeField] private int bulletDamage = 1;
+
+    [Header("Upgrade Limits")]
+    [SerializeField] private float minimumFireCooldown = 0.05f;
+
     private Camera mainCamera;
     private float nextFireTime;
+
+    private bool canShoot = true;
 
     private void Awake()
     {
@@ -17,7 +25,12 @@ public class PlayerShooting : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (!canShoot || UpgradeManager.IsChoosingUpgrade)
+        {
+            return;
+        }
+
+        if (Input.GetMouseButton(0))
         {
             TryShoot();
         }
@@ -52,7 +65,7 @@ public class PlayerShooting : MonoBehaviour
         mouseWorldPosition.z = 0f;
 
         Vector2 playerPosition = transform.position;
-        Vector2 shootDirection = ((Vector2)mouseWorldPosition - playerPosition);
+        Vector2 shootDirection = (Vector2)mouseWorldPosition - playerPosition;
 
         if (shootDirection.sqrMagnitude <= 0.0001f)
         {
@@ -74,8 +87,33 @@ public class PlayerShooting : MonoBehaviour
         if (bullet != null)
         {
             bullet.Initialize(shootDirection);
+            bullet.SetDamage(bulletDamage);
         }
 
         nextFireTime = Time.time + fireCooldown;
+    }
+
+    public void SetCanShoot(bool value)
+    {
+        canShoot = value;
+    }
+
+    public void ReduceFireCooldown(float amount)
+    {
+        fireCooldown -= amount;
+
+        if (fireCooldown < minimumFireCooldown)
+        {
+            fireCooldown = minimumFireCooldown;
+        }
+
+        Debug.Log("Fire cooldown upgraded. Current fire cooldown: " + fireCooldown);
+    }
+
+    public void AddBulletDamage(int amount)
+    {
+        bulletDamage += amount;
+
+        Debug.Log("Bullet damage upgraded. Current bullet damage: " + bulletDamage);
     }
 }

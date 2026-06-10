@@ -5,39 +5,43 @@ public class Bullet : MonoBehaviour
 {
     [Header("Bullet Settings")]
     [SerializeField] private float speed = 12f;
-    [SerializeField] private float lifeTime = 2f; // 子弹存在时间
+    [SerializeField] private float lifeTime = 2f;
 
     [Header("Damage Settings")]
-    [SerializeField] private int damage = 1; // 子弹伤害值
+    [SerializeField] private int damage = 1;
 
     [Header("Hit Effect")]
-    [SerializeField] private GameObject hitEffectPrefab; // 子弹命中特效
+    [SerializeField] private GameObject hitEffectPrefab;
 
-    // 只负责子弹生成出来之后应该往哪边飞，不负责生成子弹和检测鼠标点击
     private Rigidbody2D rb;
-    private Vector2 moveDirection = Vector2.right; // 子弹移动的默认值为向右
+    private Vector2 moveDirection = Vector2.right;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    private void OnEnable() // 子弹启用时开始计时销毁
+    private void OnEnable()
     {
         Destroy(gameObject, lifeTime);
     }
 
-    public void Initialize(Vector2 direction) // 让外部脚本告诉子弹应该往哪个方向飞
+    public void Initialize(Vector2 direction)
     {
-        if (direction.sqrMagnitude <= 0.0001f) // 防止方向几乎为 0，比如鼠标位置和角色位置重叠
+        if (direction.sqrMagnitude <= 0.0001f)
         {
             direction = Vector2.right;
         }
 
-        moveDirection = direction.normalized; // 保留方向，但是长度变为 1
+        moveDirection = direction.normalized;
 
         float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0f, 0f, angle); // 绕 Z 轴旋转，让子弹朝向移动方向
+        transform.rotation = Quaternion.Euler(0f, 0f, angle);
+    }
+
+    public void SetDamage(int newDamage)
+    {
+        damage = newDamage;
     }
 
     private void FixedUpdate()
@@ -61,7 +65,7 @@ public class Bullet : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning($"{other.gameObject.name} 的 Tag 是 Enemy，但是没有 EnemyHealth 组件。");
+            Debug.LogWarning(other.gameObject.name + " has Enemy Tag, but no EnemyHealth component was found.");
         }
 
         SpawnHitEffect();
