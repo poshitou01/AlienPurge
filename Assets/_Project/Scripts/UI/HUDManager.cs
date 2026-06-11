@@ -20,6 +20,9 @@ public class HUDManager : MonoBehaviour
     [Header("Time UI")]
     [SerializeField] private TMP_Text timeText;
 
+    [Header("Kill Count UI")]
+    [SerializeField] private TMP_Text killCountText;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -82,6 +85,14 @@ public class HUDManager : MonoBehaviour
         else
         {
             timeText.text = "Time: " + FormatTime(survivalTime);
+        }
+    }
+
+    public void UpdateKillCountUI(int killCount)
+    {
+        if (killCountText != null)
+        {
+            killCountText.text = "Kills: " + killCount;
         }
     }
 

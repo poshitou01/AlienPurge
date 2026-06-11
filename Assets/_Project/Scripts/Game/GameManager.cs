@@ -31,12 +31,16 @@ public class GameManager : MonoBehaviour
     [Header("Player Reference")]
     [SerializeField] private PlayerExperience playerExperience;
 
+    [Header("Game Data")]
+    [SerializeField] private int killCount = 0;
+
     private float survivalTime;
 
     public GameState CurrentState => currentState;
     public float SurvivalTime => survivalTime;
     public float TargetSurvivalTime => targetSurvivalTime;
     public float RemainingTime => Mathf.Max(0f, targetSurvivalTime - survivalTime);
+    public int KillCount => killCount;
 
     public bool IsPlaying => currentState == GameState.Playing;
     public bool IsGameOver => currentState == GameState.GameOver;
@@ -60,6 +64,7 @@ public class GameManager : MonoBehaviour
     {
         currentState = GameState.Playing;
         survivalTime = 0f;
+        killCount = 0;
 
         if (playerExperience == null)
         {
@@ -69,6 +74,9 @@ public class GameManager : MonoBehaviour
         HideResultPanels();
 
         RefreshTimeUI();
+        RefreshKillCountUI();
+
+        Debug.Log("Game started. Kill Count = 0");
     }
 
     private void Update()
@@ -102,6 +110,25 @@ public class GameManager : MonoBehaviour
         }
 
         EnterGameOver();
+    }
+
+    public void RegisterEnemyKilled()
+    {
+        if (currentState != GameState.Playing)
+        {
+            return;
+        }
+
+        killCount++;
+
+        RefreshKillCountUI();
+
+        Debug.Log("Enemy killed. Current Kill Count: " + killCount);
+    }
+
+    public void AddKillCount()
+    {
+        RegisterEnemyKilled();
     }
 
     private void EnterGameOver()
@@ -174,6 +201,16 @@ public class GameManager : MonoBehaviour
         HUDManager.Instance.UpdateTimeUI(survivalTime, targetSurvivalTime, showRemainingTime);
     }
 
+    private void RefreshKillCountUI()
+    {
+        if (HUDManager.Instance == null)
+        {
+            return;
+        }
+
+        HUDManager.Instance.UpdateKillCountUI(killCount);
+    }
+
     private void UpdateResultInfo(TextMeshProUGUI resultInfoText)
     {
         if (resultInfoText == null)
@@ -190,7 +227,8 @@ public class GameManager : MonoBehaviour
 
         resultInfoText.text =
             "Survival Time: " + FormatTime(survivalTime) + "\n" +
-            "Level: " + currentLevel;
+            "Level: " + currentLevel + "\n" +
+            "Kill Count: " + killCount;
     }
 
     public void RestartGame()

@@ -113,9 +113,23 @@ public class EnemyHealth : MonoBehaviour
 
         isDead = true;
 
+        RegisterKillCount();
+
         Debug.Log($"{gameObject.name} 死亡");
 
         StartCoroutine(DeathRoutine());
+    }
+
+    private void RegisterKillCount()
+    {
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.RegisterEnemyKilled();
+        }
+        else
+        {
+            Debug.LogWarning("场景中没有找到 GameManager，无法增加击杀数。");
+        }
     }
 
     private IEnumerator DeathRoutine()
@@ -124,6 +138,12 @@ public class EnemyHealth : MonoBehaviour
         if (enemyMovement != null)
         {
             enemyMovement.enabled = false;
+        }
+
+        EnemyContactDamage enemyContactDamage = GetComponent<EnemyContactDamage>();
+        if (enemyContactDamage != null)
+        {
+            enemyContactDamage.enabled = false;
         }
 
         Collider2D enemyCollider = GetComponent<Collider2D>();
