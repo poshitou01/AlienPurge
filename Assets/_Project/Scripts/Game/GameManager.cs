@@ -1,4 +1,6 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum GameState
 {
@@ -22,12 +24,23 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private GameObject victoryPanel;
 
+    [Header("Result Info Text")]
+    [SerializeField] private TextMeshProUGUI gameOverInfoText;
+    [SerializeField] private TextMeshProUGUI victoryInfoText;
+
+    [Header("Player Reference")]
+    [SerializeField] private PlayerExperience playerExperience;
+
     private float survivalTime;
 
     public GameState CurrentState => currentState;
     public float SurvivalTime => survivalTime;
     public float TargetSurvivalTime => targetSurvivalTime;
     public float RemainingTime => Mathf.Max(0f, targetSurvivalTime - survivalTime);
+
+    public bool IsPlaying => currentState == GameState.Playing;
+    public bool IsGameOver => currentState == GameState.GameOver;
+    public bool IsVictory => currentState == GameState.Victory;
 
     private void Awake()
     {
@@ -48,15 +61,12 @@ public class GameManager : MonoBehaviour
         currentState = GameState.Playing;
         survivalTime = 0f;
 
-        if (gameOverPanel != null)
+        if (playerExperience == null)
         {
-            gameOverPanel.SetActive(false);
+            playerExperience = FindFirstObjectByType<PlayerExperience>();
         }
 
-        if (victoryPanel != null)
-        {
-            victoryPanel.SetActive(false);
-        }
+        HideResultPanels();
 
         RefreshTimeUI();
     }
@@ -108,6 +118,8 @@ public class GameManager : MonoBehaviour
             victoryPanel.SetActive(false);
         }
 
+        UpdateResultInfo(gameOverInfoText);
+
         Time.timeScale = 0f;
 
         Debug.Log("Game Over");
@@ -115,6 +127,11 @@ public class GameManager : MonoBehaviour
 
     private void EnterVictory()
     {
+        if (currentState != GameState.Playing)
+        {
+            return;
+        }
+
         currentState = GameState.Victory;
 
         if (victoryPanel != null)
@@ -127,9 +144,24 @@ public class GameManager : MonoBehaviour
             gameOverPanel.SetActive(false);
         }
 
+        UpdateResultInfo(victoryInfoText);
+
         Time.timeScale = 0f;
 
         Debug.Log("Victory");
+    }
+
+    private void HideResultPanels()
+    {
+        if (gameOverPanel != null)
+        {
+            gameOverPanel.SetActive(false);
+        }
+
+        if (victoryPanel != null)
+        {
+            victoryPanel.SetActive(false);
+        }
     }
 
     private void RefreshTimeUI()
@@ -140,5 +172,42 @@ public class GameManager : MonoBehaviour
         }
 
         HUDManager.Instance.UpdateTimeUI(survivalTime, targetSurvivalTime, showRemainingTime);
+    }
+
+    private void UpdateResultInfo(TextMeshProUGUI resultInfoText)
+    {
+        if (resultInfoText == null)
+        {
+            return;
+        }
+
+        int currentLevel = 1;
+
+        if (playerExperience != null)
+        {
+            currentLevel = playerExperience.CurrentLevel;
+        }
+
+        resultInfoText.text =
+            "Survival Time: " + FormatTime(survivalTime) + "\n" +
+            "Level: " + currentLevel;
+    }
+
+    public void RestartGame()
+    {
+        // 重新加载场景前，必须恢复时间
+        Time.timeScale = 1f;
+
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentScene.name);
+    }
+
+    public static string FormatTime(float time)
+    {
+        int totalSeconds = Mathf.FloorToInt(time);
+        int minutes = totalSeconds / 60;
+        int seconds = totalSeconds % 60;
+
+        return minutes.ToString("00") + ":" + seconds.ToString("00");
     }
 }
