@@ -656,12 +656,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 3319235536976819082, guid: 81d34d7811ad9bd49b299613aebe9be6, type: 3}
   spawnInterval: 2
-  maxEnemies: 5
+  maxEnemies: 10
+  minSpawnInterval: 0.7
+  spawnIntervalDecreasePerSecond: 0.02
+  maxEnemiesLimit: 16
+  maxEnemiesIncreaseInterval: 10
+  maxEnemiesIncreaseAmount: 1
   minSpawnDistance: 5
   maxSpawnDistance: 8
   playerTag: Player
   enemyTag: Enemy
   spawnOnStart: 1
+  currentSpawnInterval: 0
+  currentMaxEnemies: 0
+  currentEnemyCount: 0
 --- !u!4 &253084424
 Transform:
   m_ObjectHideFlags: 0
@@ -4091,7 +4099,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1692675280
 RectTransform:
   m_ObjectHideFlags: 0
