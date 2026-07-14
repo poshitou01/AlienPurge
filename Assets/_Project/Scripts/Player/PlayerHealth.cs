@@ -56,6 +56,13 @@ public class PlayerHealth : MonoBehaviour
         RefreshHealthUI();
     }
 
+    private void OnValidate()
+    {
+        maxHealth = Mathf.Max(1, maxHealth);
+        flashDuration = Mathf.Max(0f, flashDuration);
+        deathScaleMultiplier = Mathf.Max(0.01f, deathScaleMultiplier);
+    }
+
     public void TakeDamage(int damage)
     {
         if (isDead)
@@ -71,16 +78,75 @@ public class PlayerHealth : MonoBehaviour
         currentHealth -= damage;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
 
-        Debug.Log($"Player took {damage} damage. Current HP: {currentHealth}/{maxHealth}");
+        Debug.Log(
+            $"Player took {damage} damage. Current HP: {currentHealth}/{maxHealth}"
+        );
 
         RefreshHealthUI();
-
         PlayDamageFeedback();
 
         if (currentHealth <= 0)
         {
             Die();
         }
+    }
+
+    /// <summary>
+    /// 增加玩家最大生命值。
+    /// 增加最大生命值时，同时恢复同等数量的生命值。
+    /// </summary>
+    public void IncreaseMaxHealth(int amount)
+    {
+        if (isDead)
+        {
+            return;
+        }
+
+        if (amount <= 0)
+        {
+            return;
+        }
+
+        maxHealth += amount;
+        currentHealth += amount;
+
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+
+        Debug.Log(
+            $"Max health upgraded by {amount}. Current HP: {currentHealth}/{maxHealth}"
+        );
+
+        RefreshHealthUI();
+    }
+
+    /// <summary>
+    /// 恢复玩家生命值，但不会超过最大生命值。
+    /// </summary>
+    public void RestoreHealth(int amount)
+    {
+        if (isDead)
+        {
+            return;
+        }
+
+        if (amount <= 0)
+        {
+            return;
+        }
+
+        int healthBeforeRestore = currentHealth;
+
+        currentHealth += amount;
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+
+        int actualRestoreAmount = currentHealth - healthBeforeRestore;
+
+        Debug.Log(
+            $"Player restored {actualRestoreAmount} health. "
+            + $"Current HP: {currentHealth}/{maxHealth}"
+        );
+
+        RefreshHealthUI();
     }
 
     private void PlayDamageFeedback()
@@ -156,6 +222,7 @@ public class PlayerHealth : MonoBehaviour
                 col.enabled = false;
             }
         }
+
         if (GameManager.Instance != null)
         {
             GameManager.Instance.OnPlayerDied();
@@ -174,5 +241,17 @@ public class PlayerHealth : MonoBehaviour
     private void TestTakeOneDamage()
     {
         TakeDamage(1);
+    }
+
+    [ContextMenu("Test Increase Max Health By 1")]
+    private void TestIncreaseMaxHealth()
+    {
+        IncreaseMaxHealth(1);
+    }
+
+    [ContextMenu("Test Restore 2 Health")]
+    private void TestRestoreHealth()
+    {
+        RestoreHealth(2);
     }
 }

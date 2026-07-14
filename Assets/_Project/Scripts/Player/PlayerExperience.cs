@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[DisallowMultipleComponent]
 public class PlayerExperience : MonoBehaviour
 {
     [Header("Experience Settings")]
@@ -14,9 +15,34 @@ public class PlayerExperience : MonoBehaviour
     public int CurrentLevel => currentLevel;
     public int ExperienceToNextLevel => experienceToNextLevel;
 
+    private void Awake()
+    {
+        ValidateValues();
+    }
+
     private void Start()
     {
         RefreshAllExperienceUI();
+
+        Debug.Log(
+            $"Player Experience Initialized. " +
+            $"Level: {currentLevel}, " +
+            $"EXP: {currentExperience}/{experienceToNextLevel}"
+        );
+    }
+
+    private void OnValidate()
+    {
+        ValidateValues();
+    }
+
+    private void ValidateValues()
+    {
+        currentExperience = Mathf.Max(0, currentExperience);
+        currentLevel = Mathf.Max(1, currentLevel);
+        experienceToNextLevel = Mathf.Max(1, experienceToNextLevel);
+        experienceIncreasePerLevel =
+            Mathf.Max(0, experienceIncreasePerLevel);
     }
 
     public void AddExperience(int amount)
@@ -29,7 +55,11 @@ public class PlayerExperience : MonoBehaviour
         currentExperience += amount;
 
         Debug.Log("Player gained EXP: " + amount);
-        Debug.Log("Current Level: " + currentLevel + " | EXP: " + currentExperience + " / " + experienceToNextLevel);
+        Debug.Log(
+            "Current Level: " + currentLevel +
+            " | EXP: " + currentExperience +
+            " / " + experienceToNextLevel
+        );
 
         while (currentExperience >= experienceToNextLevel)
         {
@@ -48,8 +78,16 @@ public class PlayerExperience : MonoBehaviour
 
         Debug.Log("LEVEL UP!");
         Debug.Log("New Level: " + currentLevel);
-        Debug.Log("Next Level Requires EXP: " + experienceToNextLevel);
-        Debug.Log("Remaining EXP: " + currentExperience + " / " + experienceToNextLevel);
+        Debug.Log(
+            "Next Level Requires EXP: " +
+            experienceToNextLevel
+        );
+        Debug.Log(
+            "Remaining EXP: " +
+            currentExperience +
+            " / " +
+            experienceToNextLevel
+        );
 
         RefreshAllExperienceUI();
 
@@ -59,7 +97,10 @@ public class PlayerExperience : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("UpgradeManager not found. Cannot show upgrade panel.");
+            Debug.LogWarning(
+                "UpgradeManager not found. " +
+                "Cannot show upgrade panel."
+            );
         }
     }
 
@@ -67,7 +108,10 @@ public class PlayerExperience : MonoBehaviour
     {
         if (HUDManager.Instance != null)
         {
-            HUDManager.Instance.UpdateExperienceUI(currentExperience, experienceToNextLevel);
+            HUDManager.Instance.UpdateExperienceUI(
+                currentExperience,
+                experienceToNextLevel
+            );
         }
     }
 
@@ -83,5 +127,20 @@ public class PlayerExperience : MonoBehaviour
     {
         RefreshExperienceUI();
         RefreshLevelUI();
+    }
+
+    [ContextMenu("Test Add 1 Experience")]
+    private void TestAddOneExperience()
+    {
+        if (!Application.isPlaying)
+        {
+            Debug.LogWarning(
+                "经验测试只能在 Play 模式中执行。"
+            );
+
+            return;
+        }
+
+        AddExperience(1);
     }
 }
