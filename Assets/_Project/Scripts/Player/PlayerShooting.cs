@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class PlayerShooting : MonoBehaviour
 {
+    private const float FloatComparisonTolerance = 0.0001f;
+
     [Header("Shooting Settings")]
     [SerializeField] private GameObject bulletPrefab;
 
@@ -44,12 +46,45 @@ public class PlayerShooting : MonoBehaviour
     private float nextFireTime;
     private bool canShoot = true;
 
+    // 当前攻击属性只读接口
     public int CurrentBulletDamage => bulletDamage;
     public float CurrentFireCooldown => fireCooldown;
     public float CurrentBulletSpeed => bulletSpeed;
+
     public float CurrentBulletScaleMultiplier =>
         bulletScaleMultiplier;
+
     public int CurrentProjectileCount => projectileCount;
+
+    // 攻击属性限制只读接口
+    public float MinimumFireCooldown =>
+        minimumFireCooldown;
+
+    public float MaximumBulletSpeed =>
+        maximumBulletSpeed;
+
+    public float MaximumBulletScaleMultiplier =>
+        maximumBulletScaleMultiplier;
+
+    public int MaximumProjectileCount =>
+        maximumProjectileCount;
+
+    // 升级有效性判断接口
+    public bool CanReduceFireCooldown =>
+        fireCooldown >
+        minimumFireCooldown + FloatComparisonTolerance;
+
+    public bool CanIncreaseBulletSpeed =>
+        bulletSpeed <
+        maximumBulletSpeed - FloatComparisonTolerance;
+
+    public bool CanIncreaseBulletScale =>
+        bulletScaleMultiplier <
+        maximumBulletScaleMultiplier
+        - FloatComparisonTolerance;
+
+    public bool CanIncreaseProjectileCount =>
+        projectileCount < maximumProjectileCount;
 
     private void Awake()
     {
@@ -325,6 +360,80 @@ public class PlayerShooting : MonoBehaviour
             "Projectile count upgraded. Current projectile count: "
             + projectileCount
         );
+    }
+
+    /// <summary>
+    /// 在 Console 中输出当前全部攻击属性和升级有效性。
+    /// </summary>
+    [ContextMenu("Debug/Print Current Attack Attributes")]
+    private void PrintCurrentAttackAttributes()
+    {
+        Debug.Log(
+            "===== Current Attack Attributes =====\n"
+            + "Bullet Damage: "
+            + bulletDamage
+            + "\nFire Cooldown: "
+            + fireCooldown
+            + " / Minimum: "
+            + minimumFireCooldown
+            + "\nCan Reduce Fire Cooldown: "
+            + CanReduceFireCooldown
+            + "\nBullet Speed: "
+            + bulletSpeed
+            + " / Maximum: "
+            + maximumBulletSpeed
+            + "\nCan Increase Bullet Speed: "
+            + CanIncreaseBulletSpeed
+            + "\nBullet Scale Multiplier: "
+            + bulletScaleMultiplier
+            + " / Maximum: "
+            + maximumBulletScaleMultiplier
+            + "\nCan Increase Bullet Scale: "
+            + CanIncreaseBulletScale
+            + "\nProjectile Count: "
+            + projectileCount
+            + " / Maximum: "
+            + maximumProjectileCount
+            + "\nCan Increase Projectile Count: "
+            + CanIncreaseProjectileCount,
+            this
+        );
+    }
+
+    /// <summary>
+    /// 仅在运行模式下，将所有有限制的攻击属性设为上限，
+    /// 用于快速测试满级升级过滤。
+    /// </summary>
+    [ContextMenu("Debug/Set Attack Attributes To Limits")]
+    private void SetAttackAttributesToLimits()
+    {
+        if (!Application.isPlaying)
+        {
+            Debug.LogWarning(
+                "请先进入 Play Mode，"
+                + "再使用 Set Attack Attributes To Limits。",
+                this
+            );
+
+            return;
+        }
+
+        fireCooldown = minimumFireCooldown;
+        bulletSpeed = maximumBulletSpeed;
+
+        bulletScaleMultiplier =
+            maximumBulletScaleMultiplier;
+
+        projectileCount = maximumProjectileCount;
+
+        Debug.Log(
+            "PlayerShooting: "
+            + "All limited attack attributes "
+            + "have been set to their limits.",
+            this
+        );
+
+        PrintCurrentAttackAttributes();
     }
 
     private void OnValidate()

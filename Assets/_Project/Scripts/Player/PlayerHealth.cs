@@ -29,9 +29,14 @@ public class PlayerHealth : MonoBehaviour
 
     private Vector3 originalScale;
 
+    // 当前生命状态只读接口
     public int CurrentHealth => currentHealth;
     public int MaxHealth => maxHealth;
     public bool IsDead => isDead;
+
+    // 当前是否可以有效恢复生命值
+    public bool CanRestoreHealth =>
+        !isDead && currentHealth < maxHealth;
 
     private void Awake()
     {
@@ -48,7 +53,9 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = maxHealth;
         isDead = false;
 
-        Debug.Log($"Player Health Initialized: {currentHealth}/{maxHealth}");
+        Debug.Log(
+            $"Player Health Initialized: {currentHealth}/{maxHealth}"
+        );
     }
 
     private void Start()
@@ -60,7 +67,9 @@ public class PlayerHealth : MonoBehaviour
     {
         maxHealth = Mathf.Max(1, maxHealth);
         flashDuration = Mathf.Max(0f, flashDuration);
-        deathScaleMultiplier = Mathf.Max(0.01f, deathScaleMultiplier);
+
+        deathScaleMultiplier =
+            Mathf.Max(0.01f, deathScaleMultiplier);
     }
 
     public void TakeDamage(int damage)
@@ -76,10 +85,16 @@ public class PlayerHealth : MonoBehaviour
         }
 
         currentHealth -= damage;
-        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+
+        currentHealth = Mathf.Clamp(
+            currentHealth,
+            0,
+            maxHealth
+        );
 
         Debug.Log(
-            $"Player took {damage} damage. Current HP: {currentHealth}/{maxHealth}"
+            $"Player took {damage} damage. "
+            + $"Current HP: {currentHealth}/{maxHealth}"
         );
 
         RefreshHealthUI();
@@ -110,10 +125,15 @@ public class PlayerHealth : MonoBehaviour
         maxHealth += amount;
         currentHealth += amount;
 
-        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        currentHealth = Mathf.Clamp(
+            currentHealth,
+            0,
+            maxHealth
+        );
 
         Debug.Log(
-            $"Max health upgraded by {amount}. Current HP: {currentHealth}/{maxHealth}"
+            $"Max health upgraded by {amount}. "
+            + $"Current HP: {currentHealth}/{maxHealth}"
         );
 
         RefreshHealthUI();
@@ -137,9 +157,15 @@ public class PlayerHealth : MonoBehaviour
         int healthBeforeRestore = currentHealth;
 
         currentHealth += amount;
-        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
 
-        int actualRestoreAmount = currentHealth - healthBeforeRestore;
+        currentHealth = Mathf.Clamp(
+            currentHealth,
+            0,
+            maxHealth
+        );
+
+        int actualRestoreAmount =
+            currentHealth - healthBeforeRestore;
 
         Debug.Log(
             $"Player restored {actualRestoreAmount} health. "
@@ -161,7 +187,8 @@ public class PlayerHealth : MonoBehaviour
             StopCoroutine(flashCoroutine);
         }
 
-        flashCoroutine = StartCoroutine(DamageFlashRoutine());
+        flashCoroutine =
+            StartCoroutine(DamageFlashRoutine());
     }
 
     private IEnumerator DamageFlashRoutine()
@@ -197,7 +224,9 @@ public class PlayerHealth : MonoBehaviour
         }
 
         spriteRenderer.color = deathColor;
-        transform.localScale = originalScale * deathScaleMultiplier;
+
+        transform.localScale =
+            originalScale * deathScaleMultiplier;
 
         if (rb != null)
         {
@@ -233,8 +262,43 @@ public class PlayerHealth : MonoBehaviour
     {
         if (HUDManager.Instance != null)
         {
-            HUDManager.Instance.UpdateHealthUI(currentHealth, maxHealth);
+            HUDManager.Instance.UpdateHealthUI(
+                currentHealth,
+                maxHealth
+            );
         }
+    }
+
+    /// <summary>
+    /// 输出当前生命值和生命恢复有效性。
+    /// 仅用于本阶段调试。
+    /// </summary>
+    [ContextMenu("Debug/Print Current Health State")]
+    private void PrintCurrentHealthState()
+    {
+        if (!Application.isPlaying)
+        {
+            Debug.LogWarning(
+                "请先进入 Play Mode，"
+                + "再检查运行时生命状态。",
+                this
+            );
+
+            return;
+        }
+
+        Debug.Log(
+            "===== Current Health State =====\n"
+            + "Current Health: "
+            + currentHealth
+            + "\nMax Health: "
+            + maxHealth
+            + "\nIs Dead: "
+            + isDead
+            + "\nCan Restore Health: "
+            + CanRestoreHealth,
+            this
+        );
     }
 
     [ContextMenu("Test Take 1 Damage")]
