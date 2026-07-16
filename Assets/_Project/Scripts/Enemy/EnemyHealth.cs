@@ -1,11 +1,11 @@
 using System.Collections;
 using UnityEngine;
 
+[DisallowMultipleComponent]
 public class EnemyHealth : MonoBehaviour
 {
     [Header("Health Settings")]
     [SerializeField] private int maxHealth = 3;
-
     [SerializeField] private int currentHealth;
 
     [Header("Hit Feedback")]
@@ -27,13 +27,13 @@ public class EnemyHealth : MonoBehaviour
     private Color originalColor;
     private Coroutine hitFlashCoroutine;
 
+    public int MaxHealth => maxHealth;
+    public int CurrentHealth => currentHealth;
+    public bool IsDead => isDead;
+
     private void Awake()
     {
-        if (maxHealth <= 0)
-        {
-            Debug.LogWarning($"{gameObject.name} 的 maxHealth 小于等于 0，已自动修正为 1。");
-            maxHealth = 1;
-        }
+        ValidateHealthSettings();
 
         currentHealth = maxHealth;
         isDead = false;
@@ -46,8 +46,34 @@ public class EnemyHealth : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning($"{gameObject.name} 没有找到 SpriteRenderer，受击变色效果不会显示。");
+            Debug.LogWarning(
+                $"{gameObject.name} 没有找到 SpriteRenderer，受击变色效果不会显示。"
+            );
         }
+    }
+
+    /// <summary>
+    /// 在敌人生成后初始化本次敌人的最大生命值。
+    /// 当前生命值会同时恢复为新的最大生命值。
+    /// </summary>
+    public void InitializeHealth(int newMaxHealth)
+    {
+        if (newMaxHealth <= 0)
+        {
+            Debug.LogWarning(
+                $"{gameObject.name} 收到了无效的最大生命值：{newMaxHealth}，已自动修正为 1。"
+            );
+
+            newMaxHealth = 1;
+        }
+
+        maxHealth = newMaxHealth;
+        currentHealth = maxHealth;
+        isDead = false;
+
+        Debug.Log(
+            $"{gameObject.name} 生命值初始化完成：{currentHealth}/{maxHealth}"
+        );
     }
 
     public void TakeDamage(int damage)
@@ -59,13 +85,19 @@ public class EnemyHealth : MonoBehaviour
 
         if (damage <= 0)
         {
-            Debug.LogWarning($"{gameObject.name} 收到了无效伤害：{damage}");
+            Debug.LogWarning(
+                $"{gameObject.name} 收到了无效伤害：{damage}"
+            );
+
             return;
         }
 
         currentHealth -= damage;
+        currentHealth = Mathf.Max(0, currentHealth);
 
-        Debug.Log($"{gameObject.name} 受到 {damage} 点伤害，当前血量：{currentHealth}/{maxHealth}");
+        Debug.Log(
+            $"{gameObject.name} 受到 {damage} 点伤害，当前血量：{currentHealth}/{maxHealth}"
+        );
 
         PlayHitFeedback();
 
@@ -128,31 +160,38 @@ public class EnemyHealth : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("场景中没有找到 GameManager，无法增加击杀数。");
+            Debug.LogWarning(
+                "场景中没有找到 GameManager，无法增加击杀数。"
+            );
         }
     }
 
     private IEnumerator DeathRoutine()
     {
         EnemyMovement enemyMovement = GetComponent<EnemyMovement>();
+
         if (enemyMovement != null)
         {
             enemyMovement.enabled = false;
         }
 
-        EnemyContactDamage enemyContactDamage = GetComponent<EnemyContactDamage>();
+        EnemyContactDamage enemyContactDamage =
+            GetComponent<EnemyContactDamage>();
+
         if (enemyContactDamage != null)
         {
             enemyContactDamage.enabled = false;
         }
 
         Collider2D enemyCollider = GetComponent<Collider2D>();
+
         if (enemyCollider != null)
         {
             enemyCollider.enabled = false;
         }
 
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
+
         if (rb != null)
         {
             rb.velocity = Vector2.zero;
@@ -175,17 +214,28 @@ public class EnemyHealth : MonoBehaviour
     {
         if (experienceOrbPrefab == null)
         {
-            Debug.LogWarning($"{gameObject.name} 没有绑定 ExperienceOrb Prefab，无法掉落经验球。");
+            Debug.LogWarning(
+                $"{gameObject.name} 没有绑定 ExperienceOrb Prefab，无法掉落经验球。"
+            );
+
             return;
         }
 
-        Vector2 randomOffset = Random.insideUnitCircle * dropRandomOffset;
+        Vector2 randomOffset =
+            Random.insideUnitCircle * dropRandomOffset;
 
-        Vector3 spawnPosition = transform.position + new Vector3(randomOffset.x, randomOffset.y, 0f);
+        Vector3 spawnPosition =
+            transform.position +
+            new Vector3(randomOffset.x, randomOffset.y, 0f);
 
-        GameObject orb = Instantiate(experienceOrbPrefab, spawnPosition, Quaternion.identity);
+        GameObject orb = Instantiate(
+            experienceOrbPrefab,
+            spawnPosition,
+            Quaternion.identity
+        );
 
-        ExperienceOrb experienceOrb = orb.GetComponent<ExperienceOrb>();
+        ExperienceOrb experienceOrb =
+            orb.GetComponent<ExperienceOrb>();
 
         if (experienceOrb != null)
         {
@@ -193,7 +243,45 @@ public class EnemyHealth : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("生成的经验球上没有找到 ExperienceOrb 脚本。");
+            Debug.LogWarning(
+                "生成的经验球上没有找到 ExperienceOrb 脚本。"
+            );
         }
+    }
+
+    private void ValidateHealthSettings()
+    {
+        if (maxHealth <= 0)
+        {
+            Debug.LogWarning(
+                $"{gameObject.name} 的 maxHealth 小于等于 0，已自动修正为 1。"
+            );
+
+            maxHealth = 1;
+        }
+    }
+
+    private void OnValidate()
+    {
+        maxHealth = Mathf.Max(1, maxHealth);
+        hitFlashDuration = Mathf.Max(0f, hitFlashDuration);
+        deathDelay = Mathf.Max(0f, deathDelay);
+        experienceAmount = Mathf.Max(0, experienceAmount);
+        dropRandomOffset = Mathf.Max(0f, dropRandomOffset);
+    }
+
+    [ContextMenu("Test Initialize Health To 6")]
+    private void TestInitializeHealthTo6()
+    {
+        if (!Application.isPlaying)
+        {
+            Debug.LogWarning(
+                "请进入 Play 模式后再测试敌人生命值初始化。"
+            );
+
+            return;
+        }
+
+        InitializeHealth(6);
     }
 }

@@ -641,6 +641,18 @@ MonoBehaviour:
   maxEnemiesLimit: 16
   maxEnemiesIncreaseInterval: 10
   maxEnemiesIncreaseAmount: 1
+  enemyInitialMaxHealth: 3
+  enemyHealthIncreaseInterval: 20
+  enemyHealthIncreaseAmount: 1
+  enemyMaxHealthLimit: 6
+  enemyInitialMoveSpeed: 1.5
+  enemyMoveSpeedIncreaseInterval: 20
+  enemyMoveSpeedIncreaseAmount: 0.25
+  enemyMoveSpeedLimit: 2.25
+  enemyInitialContactDamage: 1
+  enemyContactDamageIncreaseInterval: 30
+  enemyContactDamageIncreaseAmount: 1
+  enemyContactDamageLimit: 3
   minSpawnDistance: 5
   maxSpawnDistance: 8
   playerTag: Player
@@ -649,6 +661,9 @@ MonoBehaviour:
   currentSpawnInterval: 0
   currentMaxEnemies: 0
   currentEnemyCount: 0
+  currentEnemyMaxHealth: 0
+  currentEnemyMoveSpeed: 0
+  currentEnemyContactDamage: 0
 --- !u!4 &253084424
 Transform:
   m_ObjectHideFlags: 0
