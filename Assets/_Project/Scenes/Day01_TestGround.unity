@@ -3602,6 +3602,18 @@ MonoBehaviour:
     upgradeName: "\u5E94\u6025\u4FEE\u590D"
     description: "\u7ACB\u5373\u6062\u590D2\u70B9\u751F\u547D\u503C"
     value: 2
+  - upgradeType: 5
+    upgradeName: "\u9AD8\u901F\u5F39\u4E38"
+    description: "\u5B50\u5F39\u901F\u5EA6\u63D0\u9AD82"
+    value: 2
+  - upgradeType: 6
+    upgradeName: "\u5B50\u5F39\u5C3A\u5BF8\u5F3A\u5316"
+    description: "\u5B50\u5F39\u5C3A\u5BF8\u63D0\u9AD820%"
+    value: 0.2
+  - upgradeType: 7
+    upgradeName: "\u989D\u5916\u5F39\u4E38\u5F3A\u5316"
+    description: "\u6BCF\u6B21\u5C04\u51FB\u589E\u52A01\u53D1\u5F39\u4E38"
+    value: 1
 --- !u!4 &1467334107
 Transform:
   m_ObjectHideFlags: 0

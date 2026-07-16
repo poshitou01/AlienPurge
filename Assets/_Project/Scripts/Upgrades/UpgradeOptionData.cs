@@ -3,7 +3,7 @@ using UnityEngine;
 
 /// <summary>
 /// 当前游戏支持的基础升级类型。
-/// 后续 UpgradeManager 会根据这个类型判断应该强化哪一项属性。
+/// UpgradeManager 会根据这个类型判断应该强化哪一项属性。
 /// </summary>
 public enum UpgradeType
 {
@@ -11,7 +11,11 @@ public enum UpgradeType
     FireCooldownDecrease,
     BulletDamageIncrease,
     MaxHealthIncrease,
-    HealthRestore
+    HealthRestore,
+
+    BulletSpeedIncrease,
+    BulletScaleIncrease,
+    ProjectileCountIncrease
 }
 
 /// <summary>

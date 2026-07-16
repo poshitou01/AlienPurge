@@ -348,8 +348,7 @@ public class UpgradeManager : MonoBehaviour
 
     private void SetButtonText(
         Button button,
-        string displayText
-    )
+        string displayText)
     {
         TMP_Text tmpText =
             button.GetComponentInChildren<TMP_Text>(true);
@@ -413,8 +412,7 @@ public class UpgradeManager : MonoBehaviour
     }
 
     private void ApplyUpgrade(
-        UpgradeOptionData option
-    )
+        UpgradeOptionData option)
     {
         switch (option.Type)
         {
@@ -436,6 +434,18 @@ public class UpgradeManager : MonoBehaviour
 
             case UpgradeType.HealthRestore:
                 ApplyHealthRestoreUpgrade(option.Value);
+                break;
+
+            case UpgradeType.BulletSpeedIncrease:
+                ApplyBulletSpeedUpgrade(option.Value);
+                break;
+
+            case UpgradeType.BulletScaleIncrease:
+                ApplyBulletScaleUpgrade(option.Value);
+                break;
+
+            case UpgradeType.ProjectileCountIncrease:
+                ApplyProjectileCountUpgrade(option.Value);
                 break;
 
             default:
@@ -495,6 +505,61 @@ public class UpgradeManager : MonoBehaviour
             );
 
         playerShooting.AddBulletDamage(
+            integerAmount
+        );
+    }
+
+    private void ApplyBulletSpeedUpgrade(float amount)
+    {
+        if (playerShooting == null)
+        {
+            Debug.LogWarning(
+                "无法应用子弹速度强化："
+                + "PlayerShooting 为空。"
+            );
+
+            return;
+        }
+
+        playerShooting.AddBulletSpeed(amount);
+    }
+
+    private void ApplyBulletScaleUpgrade(float amount)
+    {
+        if (playerShooting == null)
+        {
+            Debug.LogWarning(
+                "无法应用子弹尺寸强化："
+                + "PlayerShooting 为空。"
+            );
+
+            return;
+        }
+
+        playerShooting.AddBulletScaleMultiplier(
+            amount
+        );
+    }
+
+    private void ApplyProjectileCountUpgrade(float amount)
+    {
+        if (playerShooting == null)
+        {
+            Debug.LogWarning(
+                "无法应用额外弹丸强化："
+                + "PlayerShooting 为空。"
+            );
+
+            return;
+        }
+
+        int integerAmount =
+            Mathf.Max(
+                1,
+                Mathf.RoundToInt(amount)
+            );
+
+        playerShooting.AddProjectileCount(
             integerAmount
         );
     }
