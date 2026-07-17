@@ -5,10 +5,14 @@ public class PlayerShooting : MonoBehaviour
     private const float FloatComparisonTolerance = 0.0001f;
 
     [Header("Shooting Settings")]
-    [SerializeField] private GameObject bulletPrefab;
+    [Tooltip("负责提供和回收 Bullet 的对象池")]
+    [SerializeField] private BulletPool bulletPool;
 
     [Tooltip("子弹生成位置与玩家中心的距离")]
     [SerializeField] private float spawnOffset = 0.45f;
+
+    [Tooltip("每颗子弹存在的时间")]
+    [SerializeField] private float bulletLifeTime = 2f;
 
     [Tooltip("当前两次射击之间的冷却时间")]
     [SerializeField] private float fireCooldown = 0.15f;
@@ -50,6 +54,7 @@ public class PlayerShooting : MonoBehaviour
     public int CurrentBulletDamage => bulletDamage;
     public float CurrentFireCooldown => fireCooldown;
     public float CurrentBulletSpeed => bulletSpeed;
+    public float CurrentBulletLifeTime => bulletLifeTime;
 
     public float CurrentBulletScaleMultiplier =>
         bulletScaleMultiplier;
@@ -111,10 +116,11 @@ public class PlayerShooting : MonoBehaviour
             return;
         }
 
-        if (bulletPrefab == null)
+        if (bulletPool == null)
         {
             Debug.LogWarning(
-                "PlayerShooting: Bullet Prefab has not been assigned."
+                "PlayerShooting: Bullet Pool has not been assigned.",
+                this
             );
 
             return;
@@ -127,7 +133,8 @@ public class PlayerShooting : MonoBehaviour
             if (mainCamera == null)
             {
                 Debug.LogWarning(
-                    "PlayerShooting: Main Camera not found."
+                    "PlayerShooting: Main Camera not found.",
+                    this
                 );
 
                 return;
@@ -137,7 +144,9 @@ public class PlayerShooting : MonoBehaviour
         Vector3 mouseScreenPosition = Input.mousePosition;
 
         Vector3 mouseWorldPosition =
-            mainCamera.ScreenToWorldPoint(mouseScreenPosition);
+            mainCamera.ScreenToWorldPoint(
+                mouseScreenPosition
+            );
 
         mouseWorldPosition.z = 0f;
 
@@ -162,7 +171,8 @@ public class PlayerShooting : MonoBehaviour
     }
 
     /// <summary>
-    /// 根据当前弹丸数量，以瞄准方向为中心生成对称散射。
+    /// 根据当前弹丸数量，
+    /// 以瞄准方向为中心生成对称散射。
     /// </summary>
     private void FireProjectiles(
         Vector2 playerPosition,
@@ -197,29 +207,26 @@ public class PlayerShooting : MonoBehaviour
     }
 
     /// <summary>
-    /// 创建一颗子弹，并传入玩家当前的全部攻击属性。
+    /// 从 BulletPool 取得一颗子弹，
+    /// 并传入玩家当前的全部攻击属性。
     /// </summary>
     private void CreateProjectile(
         Vector2 spawnPosition,
         Vector2 projectileDirection)
     {
-        GameObject bulletObject = Instantiate(
-            bulletPrefab,
+        Bullet bullet = bulletPool.GetBullet(
             spawnPosition,
             Quaternion.identity
         );
 
-        Bullet bullet =
-            bulletObject.GetComponent<Bullet>();
-
         if (bullet == null)
         {
             Debug.LogWarning(
-                "PlayerShooting: The spawned Bullet Prefab "
-                + "does not contain a Bullet component."
+                "PlayerShooting: Bullet Pool could not "
+                + "provide an available Bullet.",
+                this
             );
 
-            Destroy(bulletObject);
             return;
         }
 
@@ -227,7 +234,8 @@ public class PlayerShooting : MonoBehaviour
             projectileDirection,
             bulletSpeed,
             bulletDamage,
-            bulletScaleMultiplier
+            bulletScaleMultiplier,
+            bulletLifeTime
         );
     }
 
@@ -261,7 +269,8 @@ public class PlayerShooting : MonoBehaviour
     }
 
     /// <summary>
-    /// 减少射击冷却时间，但不会低于最低限制。
+    /// 减少射击冷却时间，
+    /// 但不会低于最低限制。
     /// </summary>
     public void ReduceFireCooldown(float amount)
     {
@@ -276,7 +285,8 @@ public class PlayerShooting : MonoBehaviour
         );
 
         Debug.Log(
-            "Fire cooldown upgraded. Current fire cooldown: "
+            "Fire cooldown upgraded. "
+            + "Current fire cooldown: "
             + fireCooldown
         );
     }
@@ -294,13 +304,15 @@ public class PlayerShooting : MonoBehaviour
         bulletDamage += amount;
 
         Debug.Log(
-            "Bullet damage upgraded. Current bullet damage: "
+            "Bullet damage upgraded. "
+            + "Current bullet damage: "
             + bulletDamage
         );
     }
 
     /// <summary>
-    /// 增加子弹速度，但不会超过最终上限。
+    /// 增加子弹速度，
+    /// 但不会超过最终上限。
     /// </summary>
     public void AddBulletSpeed(float amount)
     {
@@ -315,13 +327,15 @@ public class PlayerShooting : MonoBehaviour
         );
 
         Debug.Log(
-            "Bullet speed upgraded. Current bullet speed: "
+            "Bullet speed upgraded. "
+            + "Current bullet speed: "
             + bulletSpeed
         );
     }
 
     /// <summary>
-    /// 增加子弹尺寸倍率，但不会超过最终上限。
+    /// 增加子弹尺寸倍率，
+    /// 但不会超过最终上限。
     /// </summary>
     public void AddBulletScaleMultiplier(float amount)
     {
@@ -336,13 +350,15 @@ public class PlayerShooting : MonoBehaviour
         );
 
         Debug.Log(
-            "Bullet scale upgraded. Current bullet scale: "
+            "Bullet scale upgraded. "
+            + "Current bullet scale: "
             + bulletScaleMultiplier
         );
     }
 
     /// <summary>
-    /// 增加每次射击的弹丸数量，但不会超过最终上限。
+    /// 增加每次射击的弹丸数量，
+    /// 但不会超过最终上限。
     /// </summary>
     public void AddProjectileCount(int amount)
     {
@@ -357,13 +373,15 @@ public class PlayerShooting : MonoBehaviour
         );
 
         Debug.Log(
-            "Projectile count upgraded. Current projectile count: "
+            "Projectile count upgraded. "
+            + "Current projectile count: "
             + projectileCount
         );
     }
 
     /// <summary>
-    /// 在 Console 中输出当前全部攻击属性和升级有效性。
+    /// 在 Console 中输出当前全部攻击属性
+    /// 和升级有效性。
     /// </summary>
     [ContextMenu("Debug/Print Current Attack Attributes")]
     private void PrintCurrentAttackAttributes()
@@ -384,6 +402,8 @@ public class PlayerShooting : MonoBehaviour
             + maximumBulletSpeed
             + "\nCan Increase Bullet Speed: "
             + CanIncreaseBulletSpeed
+            + "\nBullet Life Time: "
+            + bulletLifeTime
             + "\nBullet Scale Multiplier: "
             + bulletScaleMultiplier
             + " / Maximum: "
@@ -401,8 +421,9 @@ public class PlayerShooting : MonoBehaviour
     }
 
     /// <summary>
-    /// 仅在运行模式下，将所有有限制的攻击属性设为上限，
-    /// 用于快速测试满级升级过滤。
+    /// 仅在运行模式下，
+    /// 将所有有限制的攻击属性设为上限，
+    /// 用于快速测试满级升级过滤和对象池压力。
     /// </summary>
     [ContextMenu("Debug/Set Attack Attributes To Limits")]
     private void SetAttackAttributesToLimits()
@@ -439,6 +460,9 @@ public class PlayerShooting : MonoBehaviour
     private void OnValidate()
     {
         spawnOffset = Mathf.Max(0f, spawnOffset);
+
+        bulletLifeTime =
+            Mathf.Max(0.01f, bulletLifeTime);
 
         minimumFireCooldown =
             Mathf.Max(0.01f, minimumFireCooldown);

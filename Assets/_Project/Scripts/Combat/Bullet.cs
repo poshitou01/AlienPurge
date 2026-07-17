@@ -17,36 +17,67 @@ public class Bullet : MonoBehaviour
     [Header("Hit Effect")]
     [SerializeField] private GameObject hitEffectPrefab;
 
+    [Header("Runtime Debug")]
+    [Tooltip("当前生命周期已经经过的时间")]
+    [SerializeField] private float elapsedLifeTime;
+
+    [Tooltip("当前 Bullet 是否已经被回收")]
+    [SerializeField] private bool isReturned;
+
+    [Tooltip("当前 Bullet 是否由 BulletPool 管理")]
+    [SerializeField] private bool hasPool;
+
     private Rigidbody2D rb;
+    private Collider2D bulletCollider;
+
+    private BulletPool ownerPool;
+
     private Vector2 moveDirection = Vector2.right;
     private Vector3 originalScale;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        bulletCollider = GetComponent<Collider2D>();
 
-        // 保存 Bullet Prefab 原本的尺寸。
-        // 后续所有尺寸倍率都在这个基础上进行计算。
+        // 保存 Bullet Prefab 原始尺寸。
+        // 后续尺寸倍率都基于这个尺寸计算。
         originalScale = transform.localScale;
     }
 
     private void OnEnable()
     {
-        Destroy(gameObject, lifeTime);
+        ResetRuntimeState();
+    }
+
+    private void OnDisable()
+    {
+        StopRigidbodyMovement();
     }
 
     /// <summary>
-    /// 只设置子弹的移动方向。
-    /// 保留这个方法是为了兼容当前 PlayerShooting 的调用方式。
+    /// 设置负责管理当前 Bullet 的对象池。
+    /// BulletPool 创建 Bullet 后会调用这个方法。
+    /// </summary>
+    public void SetPool(BulletPool pool)
+    {
+        ownerPool = pool;
+        hasPool = ownerPool != null;
+    }
+
+    /// <summary>
+    /// 只设置子弹移动方向。
+    /// 保留该方法以兼容现有调用。
     /// </summary>
     public void Initialize(Vector2 direction)
     {
+        ResetRuntimeState();
         SetMoveDirection(direction);
     }
 
     /// <summary>
-    /// 一次性设置新生成子弹的全部攻击属性。
-    /// 后续 PlayerShooting 会调用这个重载方法。
+    /// 设置子弹的攻击属性。
+    /// 保留四参数版本以兼容现有 PlayerShooting。
     /// </summary>
     public void Initialize(
         Vector2 direction,
@@ -54,12 +85,85 @@ public class Bullet : MonoBehaviour
         int newDamage,
         float newScaleMultiplier)
     {
+        Initialize(
+            direction,
+            newSpeed,
+            newDamage,
+            newScaleMultiplier,
+            lifeTime
+        );
+    }
+
+    /// <summary>
+    /// 完整设置一颗刚被取出的 Bullet。
+    /// 后续对象池版本的 PlayerShooting 会调用这个方法。
+    /// </summary>
+    public void Initialize(
+        Vector2 direction,
+        float newSpeed,
+        int newDamage,
+        float newScaleMultiplier,
+        float newLifeTime)
+    {
+        ResetRuntimeState();
+
         SetMoveDirection(direction);
         SetSpeed(newSpeed);
         SetDamage(newDamage);
         SetScaleMultiplier(newScaleMultiplier);
+        SetLifeTime(newLifeTime);
     }
 
+    /// <summary>
+    /// 重置 Bullet 再次使用前的运行状态。
+    /// </summary>
+    private void ResetRuntimeState()
+    {
+        elapsedLifeTime = 0f;
+        isReturned = false;
+
+        StopRigidbodyMovement();
+
+        if (bulletCollider != null)
+        {
+            bulletCollider.enabled = true;
+        }
+    }
+
+    private void Update()
+    {
+        if (isReturned)
+        {
+            return;
+        }
+
+        elapsedLifeTime += Time.deltaTime;
+
+        if (elapsedLifeTime >= lifeTime)
+        {
+            ReturnToPool();
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (isReturned || rb == null)
+        {
+            return;
+        }
+
+        Vector2 nextPosition =
+            rb.position
+            + moveDirection
+            * speed
+            * Time.fixedDeltaTime;
+
+        rb.MovePosition(nextPosition);
+    }
+
+    /// <summary>
+    /// 设置子弹移动方向，并同步设置子弹旋转角度。
+    /// </summary>
     private void SetMoveDirection(Vector2 direction)
     {
         if (direction.sqrMagnitude <= 0.0001f)
@@ -70,7 +174,10 @@ public class Bullet : MonoBehaviour
         moveDirection = direction.normalized;
 
         float angle =
-            Mathf.Atan2(moveDirection.y, moveDirection.x)
+            Mathf.Atan2(
+                moveDirection.y,
+                moveDirection.x
+            )
             * Mathf.Rad2Deg;
 
         transform.rotation =
@@ -78,7 +185,7 @@ public class Bullet : MonoBehaviour
     }
 
     /// <summary>
-    /// 设置当前子弹的移动速度。
+    /// 设置当前子弹移动速度。
     /// </summary>
     public void SetSpeed(float newSpeed)
     {
@@ -86,7 +193,7 @@ public class Bullet : MonoBehaviour
     }
 
     /// <summary>
-    /// 设置当前子弹的伤害。
+    /// 设置当前子弹伤害。
     /// </summary>
     public void SetDamage(int newDamage)
     {
@@ -94,10 +201,18 @@ public class Bullet : MonoBehaviour
     }
 
     /// <summary>
-    /// 设置当前子弹相对于 Prefab 原始尺寸的倍率。
-    /// 例如 1.2 表示宽度和高度都变为原来的 1.2 倍。
+    /// 设置当前子弹生命周期。
     /// </summary>
-    public void SetScaleMultiplier(float newScaleMultiplier)
+    public void SetLifeTime(float newLifeTime)
+    {
+        lifeTime = Mathf.Max(0.01f, newLifeTime);
+    }
+
+    /// <summary>
+    /// 设置当前子弹相对于 Prefab 原始尺寸的倍率。
+    /// </summary>
+    public void SetScaleMultiplier(
+        float newScaleMultiplier)
     {
         scaleMultiplier =
             Mathf.Max(0.01f, newScaleMultiplier);
@@ -106,19 +221,15 @@ public class Bullet : MonoBehaviour
             originalScale * scaleMultiplier;
     }
 
-    private void FixedUpdate()
-    {
-        Vector2 nextPosition =
-            rb.position
-            + moveDirection
-            * speed
-            * Time.fixedDeltaTime;
-
-        rb.MovePosition(nextPosition);
-    }
-
     private void OnTriggerEnter2D(Collider2D other)
     {
+        // 同一颗子弹已经开始回收时，
+        // 不再处理新的碰撞。
+        if (isReturned)
+        {
+            return;
+        }
+
         if (!other.CompareTag("Enemy"))
         {
             return;
@@ -141,8 +252,55 @@ public class Bullet : MonoBehaviour
         }
 
         SpawnHitEffect();
+        ReturnToPool();
+    }
 
-        Destroy(gameObject);
+    /// <summary>
+    /// 将当前 Bullet 回收到对象池。
+    /// 如果当前 Bullet 不是对象池创建的，
+    /// 则使用 Destroy 保持旧系统兼容。
+    /// </summary>
+    public void ReturnToPool()
+    {
+        // 命中与生命周期结束可能在相近时间发生。
+        // 先检查并设置标志，防止重复回收。
+        if (isReturned)
+        {
+            return;
+        }
+
+        isReturned = true;
+
+        StopRigidbodyMovement();
+
+        if (bulletCollider != null)
+        {
+            bulletCollider.enabled = false;
+        }
+
+        if (ownerPool != null)
+        {
+            ownerPool.ReturnBullet(this);
+        }
+        else
+        {
+            // 兼容尚未接入对象池的旧版 PlayerShooting。
+            Destroy(gameObject);
+        }
+    }
+
+    /// <summary>
+    /// 清除 Rigidbody2D 可能残留的运动状态。
+    /// </summary>
+    private void StopRigidbodyMovement()
+    {
+        if (rb == null)
+        {
+            return;
+        }
+
+        rb.velocity = Vector2.zero;
+        rb.angularVelocity = 0f;
     }
 
     private void SpawnHitEffect()
@@ -152,6 +310,7 @@ public class Bullet : MonoBehaviour
             return;
         }
 
+        // HitEffect 本阶段继续使用原来的生成方式。
         Instantiate(
             hitEffectPrefab,
             transform.position,
@@ -164,6 +323,7 @@ public class Bullet : MonoBehaviour
         speed = Mathf.Max(0.01f, speed);
         lifeTime = Mathf.Max(0.01f, lifeTime);
         damage = Mathf.Max(1, damage);
+
         scaleMultiplier =
             Mathf.Max(0.01f, scaleMultiplier);
     }
