@@ -14,9 +14,6 @@ public class Bullet : MonoBehaviour
     [Tooltip("当前子弹使用的尺寸倍率，仅用于运行时调试")]
     [SerializeField] private float scaleMultiplier = 1f;
 
-    [Header("Hit Effect")]
-    [SerializeField] private GameObject hitEffectPrefab;
-
     [Header("Runtime Debug")]
     [Tooltip("当前生命周期已经经过的时间")]
     [SerializeField] private float elapsedLifeTime;
@@ -96,7 +93,6 @@ public class Bullet : MonoBehaviour
 
     /// <summary>
     /// 完整设置一颗刚被取出的 Bullet。
-    /// 后续对象池版本的 PlayerShooting 会调用这个方法。
     /// </summary>
     public void Initialize(
         Vector2 direction,
@@ -162,7 +158,7 @@ public class Bullet : MonoBehaviour
     }
 
     /// <summary>
-    /// 设置子弹移动方向，并同步设置子弹旋转角度。
+    /// 设置子弹移动方向，并同步设置旋转角度。
     /// </summary>
     private void SetMoveDirection(Vector2 direction)
     {
@@ -184,33 +180,21 @@ public class Bullet : MonoBehaviour
             Quaternion.Euler(0f, 0f, angle);
     }
 
-    /// <summary>
-    /// 设置当前子弹移动速度。
-    /// </summary>
     public void SetSpeed(float newSpeed)
     {
         speed = Mathf.Max(0.01f, newSpeed);
     }
 
-    /// <summary>
-    /// 设置当前子弹伤害。
-    /// </summary>
     public void SetDamage(int newDamage)
     {
         damage = Mathf.Max(1, newDamage);
     }
 
-    /// <summary>
-    /// 设置当前子弹生命周期。
-    /// </summary>
     public void SetLifeTime(float newLifeTime)
     {
         lifeTime = Mathf.Max(0.01f, newLifeTime);
     }
 
-    /// <summary>
-    /// 设置当前子弹相对于 Prefab 原始尺寸的倍率。
-    /// </summary>
     public void SetScaleMultiplier(
         float newScaleMultiplier)
     {
@@ -247,7 +231,8 @@ public class Bullet : MonoBehaviour
             Debug.LogWarning(
                 other.gameObject.name
                 + " has Enemy Tag, but no EnemyHealth "
-                + "component was found."
+                + "component was found.",
+                other
             );
         }
 
@@ -256,14 +241,12 @@ public class Bullet : MonoBehaviour
     }
 
     /// <summary>
-    /// 将当前 Bullet 回收到对象池。
-    /// 如果当前 Bullet 不是对象池创建的，
-    /// 则使用 Destroy 保持旧系统兼容。
+    /// 将当前 Bullet 回收到 BulletPool。
     /// </summary>
     public void ReturnToPool()
     {
         // 命中与生命周期结束可能在相近时间发生。
-        // 先检查并设置标志，防止重复回收。
+        // 先设置标志，防止重复回收。
         if (isReturned)
         {
             return;
@@ -284,13 +267,20 @@ public class Bullet : MonoBehaviour
         }
         else
         {
-            // 兼容尚未接入对象池的旧版 PlayerShooting。
+            // 保留旧版兼容处理。
+            // 正常游戏流程中的 Bullet 应当全部由 BulletPool 创建。
+            Debug.LogWarning(
+                "Bullet: No owner BulletPool was assigned. "
+                + "The Bullet will be destroyed.",
+                this
+            );
+
             Destroy(gameObject);
         }
     }
 
     /// <summary>
-    /// 清除 Rigidbody2D 可能残留的运动状态。
+    /// 清除 Rigidbody2D 中可能残留的运动状态。
     /// </summary>
     private void StopRigidbodyMovement()
     {
@@ -303,19 +293,37 @@ public class Bullet : MonoBehaviour
         rb.angularVelocity = 0f;
     }
 
+    /// <summary>
+    /// 从 HitEffectPool 获取并播放命中特效。
+    /// 不再执行 Instantiate。
+    /// </summary>
     private void SpawnHitEffect()
     {
-        if (hitEffectPrefab == null)
+        if (HitEffectPool.Instance == null)
+        {
+            Debug.LogWarning(
+                "Bullet: HitEffectPool was not found "
+                + "in the current scene.",
+                this
+            );
+
+            return;
+        }
+
+        HitEffect hitEffect =
+            HitEffectPool.Instance.GetHitEffect(
+                transform.position,
+                Quaternion.identity
+            );
+
+        if (hitEffect == null)
         {
             return;
         }
 
-        // HitEffect 本阶段继续使用原来的生成方式。
-        Instantiate(
-            hitEffectPrefab,
-            transform.position,
-            Quaternion.identity
-        );
+        // GetHitEffect 会负责位置、旋转和启用对象。
+        // Initialize 负责重置尺寸、颜色、Alpha 和生命周期。
+        hitEffect.Initialize();
     }
 
     private void OnValidate()

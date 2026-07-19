@@ -17,8 +17,10 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private float deathDelay = 0.15f;
 
     [Header("Experience Drop")]
-    [SerializeField] private GameObject experienceOrbPrefab;
+    [Tooltip("敌人死亡后掉落的经验值")]
     [SerializeField] private int experienceAmount = 1;
+
+    [Tooltip("经验球相对于敌人死亡位置的随机偏移")]
     [SerializeField] private float dropRandomOffset = 0.15f;
 
     private bool isDead;
@@ -38,7 +40,8 @@ public class EnemyHealth : MonoBehaviour
         currentHealth = maxHealth;
         isDead = false;
 
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        spriteRenderer =
+            GetComponentInChildren<SpriteRenderer>();
 
         if (spriteRenderer != null)
         {
@@ -47,7 +50,10 @@ public class EnemyHealth : MonoBehaviour
         else
         {
             Debug.LogWarning(
-                $"{gameObject.name} 没有找到 SpriteRenderer，受击变色效果不会显示。"
+                gameObject.name
+                + " 没有找到 SpriteRenderer，"
+                + "受击变色效果不会显示。",
+                this
             );
         }
     }
@@ -61,7 +67,11 @@ public class EnemyHealth : MonoBehaviour
         if (newMaxHealth <= 0)
         {
             Debug.LogWarning(
-                $"{gameObject.name} 收到了无效的最大生命值：{newMaxHealth}，已自动修正为 1。"
+                gameObject.name
+                + " 收到了无效的最大生命值："
+                + newMaxHealth
+                + "，已自动修正为 1。",
+                this
             );
 
             newMaxHealth = 1;
@@ -72,7 +82,12 @@ public class EnemyHealth : MonoBehaviour
         isDead = false;
 
         Debug.Log(
-            $"{gameObject.name} 生命值初始化完成：{currentHealth}/{maxHealth}"
+            gameObject.name
+            + " 生命值初始化完成："
+            + currentHealth
+            + "/"
+            + maxHealth,
+            this
         );
     }
 
@@ -86,7 +101,10 @@ public class EnemyHealth : MonoBehaviour
         if (damage <= 0)
         {
             Debug.LogWarning(
-                $"{gameObject.name} 收到了无效伤害：{damage}"
+                gameObject.name
+                + " 收到了无效伤害："
+                + damage,
+                this
             );
 
             return;
@@ -96,7 +114,14 @@ public class EnemyHealth : MonoBehaviour
         currentHealth = Mathf.Max(0, currentHealth);
 
         Debug.Log(
-            $"{gameObject.name} 受到 {damage} 点伤害，当前血量：{currentHealth}/{maxHealth}"
+            gameObject.name
+            + " 受到 "
+            + damage
+            + " 点伤害，当前血量："
+            + currentHealth
+            + "/"
+            + maxHealth,
+            this
         );
 
         PlayHitFeedback();
@@ -119,14 +144,17 @@ public class EnemyHealth : MonoBehaviour
             StopCoroutine(hitFlashCoroutine);
         }
 
-        hitFlashCoroutine = StartCoroutine(HitFlashRoutine());
+        hitFlashCoroutine =
+            StartCoroutine(HitFlashRoutine());
     }
 
     private IEnumerator HitFlashRoutine()
     {
         spriteRenderer.color = hitColor;
 
-        yield return new WaitForSeconds(hitFlashDuration);
+        yield return new WaitForSeconds(
+            hitFlashDuration
+        );
 
         if (!isDead)
         {
@@ -145,13 +173,20 @@ public class EnemyHealth : MonoBehaviour
 
         isDead = true;
 
+        // 保持原有击杀统计顺序不变。
         RegisterKillCount();
 
-        Debug.Log($"{gameObject.name} 死亡");
+        Debug.Log(
+            gameObject.name + " 死亡",
+            this
+        );
 
         StartCoroutine(DeathRoutine());
     }
 
+    /// <summary>
+    /// 向 GameManager 登记击杀数量。
+    /// </summary>
     private void RegisterKillCount()
     {
         if (GameManager.Instance != null)
@@ -161,14 +196,17 @@ public class EnemyHealth : MonoBehaviour
         else
         {
             Debug.LogWarning(
-                "场景中没有找到 GameManager，无法增加击杀数。"
+                "场景中没有找到 GameManager，"
+                + "无法增加击杀数。",
+                this
             );
         }
     }
 
     private IEnumerator DeathRoutine()
     {
-        EnemyMovement enemyMovement = GetComponent<EnemyMovement>();
+        EnemyMovement enemyMovement =
+            GetComponent<EnemyMovement>();
 
         if (enemyMovement != null)
         {
@@ -183,18 +221,21 @@ public class EnemyHealth : MonoBehaviour
             enemyContactDamage.enabled = false;
         }
 
-        Collider2D enemyCollider = GetComponent<Collider2D>();
+        Collider2D enemyCollider =
+            GetComponent<Collider2D>();
 
         if (enemyCollider != null)
         {
             enemyCollider.enabled = false;
         }
 
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        Rigidbody2D rb =
+            GetComponent<Rigidbody2D>();
 
         if (rb != null)
         {
             rb.velocity = Vector2.zero;
+            rb.angularVelocity = 0f;
         }
 
         if (spriteRenderer != null)
@@ -203,48 +244,61 @@ public class EnemyHealth : MonoBehaviour
             transform.localScale *= 1.2f;
         }
 
+        // Enemy 仍然不是对象池对象。
+        // 这里只把经验球生成改成对象池。
         DropExperienceOrb();
 
-        yield return new WaitForSeconds(deathDelay);
+        yield return new WaitForSeconds(
+            deathDelay
+        );
 
         Destroy(gameObject);
     }
 
+    /// <summary>
+    /// 从 ExperienceOrbPool 获取经验球。
+    /// 不再直接 Instantiate ExperienceOrb Prefab。
+    /// </summary>
     private void DropExperienceOrb()
     {
-        if (experienceOrbPrefab == null)
+        if (ExperienceOrbPool.Instance == null)
         {
             Debug.LogWarning(
-                $"{gameObject.name} 没有绑定 ExperienceOrb Prefab，无法掉落经验球。"
+                gameObject.name
+                + " 死亡时没有找到 ExperienceOrbPool，"
+                + "无法掉落经验球。",
+                this
             );
 
             return;
         }
 
         Vector2 randomOffset =
-            Random.insideUnitCircle * dropRandomOffset;
+            Random.insideUnitCircle
+            * dropRandomOffset;
 
         Vector3 spawnPosition =
-            transform.position +
-            new Vector3(randomOffset.x, randomOffset.y, 0f);
-
-        GameObject orb = Instantiate(
-            experienceOrbPrefab,
-            spawnPosition,
-            Quaternion.identity
-        );
+            transform.position
+            + new Vector3(
+                randomOffset.x,
+                randomOffset.y,
+                0f
+            );
 
         ExperienceOrb experienceOrb =
-            orb.GetComponent<ExperienceOrb>();
+            ExperienceOrbPool.Instance.GetExperienceOrb(
+                spawnPosition,
+                Quaternion.identity,
+                experienceAmount
+            );
 
-        if (experienceOrb != null)
-        {
-            experienceOrb.SetExperienceAmount(experienceAmount);
-        }
-        else
+        if (experienceOrb == null)
         {
             Debug.LogWarning(
-                "生成的经验球上没有找到 ExperienceOrb 脚本。"
+                gameObject.name
+                + " 未能从 ExperienceOrbPool "
+                + "取得经验球。",
+                this
             );
         }
     }
@@ -254,20 +308,35 @@ public class EnemyHealth : MonoBehaviour
         if (maxHealth <= 0)
         {
             Debug.LogWarning(
-                $"{gameObject.name} 的 maxHealth 小于等于 0，已自动修正为 1。"
+                gameObject.name
+                + " 的 maxHealth 小于等于 0，"
+                + "已自动修正为 1。",
+                this
             );
 
             maxHealth = 1;
         }
+
+        experienceAmount =
+            Mathf.Max(1, experienceAmount);
     }
 
     private void OnValidate()
     {
-        maxHealth = Mathf.Max(1, maxHealth);
-        hitFlashDuration = Mathf.Max(0f, hitFlashDuration);
-        deathDelay = Mathf.Max(0f, deathDelay);
-        experienceAmount = Mathf.Max(0, experienceAmount);
-        dropRandomOffset = Mathf.Max(0f, dropRandomOffset);
+        maxHealth =
+            Mathf.Max(1, maxHealth);
+
+        hitFlashDuration =
+            Mathf.Max(0f, hitFlashDuration);
+
+        deathDelay =
+            Mathf.Max(0f, deathDelay);
+
+        experienceAmount =
+            Mathf.Max(1, experienceAmount);
+
+        dropRandomOffset =
+            Mathf.Max(0f, dropRandomOffset);
     }
 
     [ContextMenu("Test Initialize Health To 6")]
@@ -276,7 +345,8 @@ public class EnemyHealth : MonoBehaviour
         if (!Application.isPlaying)
         {
             Debug.LogWarning(
-                "请进入 Play 模式后再测试敌人生命值初始化。"
+                "请进入 Play 模式后再测试敌人生命值初始化。",
+                this
             );
 
             return;
