@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Profiling;
 using UnityEngine;
+using UnityEngine.Profiling;
 
 public class PoolingStressTester : MonoBehaviour
 {
@@ -16,29 +16,17 @@ public class PoolingStressTester : MonoBehaviour
      * 3. ExperienceOrb 第一次扩容；
      * 4. ExperienceOrb 稳定复用。
      */
-    private static readonly ProfilerMarker
-        HitEffectColdExpansionMarker =
-            new ProfilerMarker(
-                "Stage22.HitEffect.ColdExpansion"
-            );
+    private const string HitEffectColdExpansionSample =
+        "Stage22.HitEffect.ColdExpansion";
 
-    private static readonly ProfilerMarker
-        HitEffectWarmReuseMarker =
-            new ProfilerMarker(
-                "Stage22.HitEffect.WarmReuse"
-            );
+    private const string HitEffectWarmReuseSample =
+        "Stage22.HitEffect.WarmReuse";
 
-    private static readonly ProfilerMarker
-        ExperienceOrbColdExpansionMarker =
-            new ProfilerMarker(
-                "Stage22.ExperienceOrb.ColdExpansion"
-            );
+    private const string ExperienceOrbColdExpansionSample =
+        "Stage22.ExperienceOrb.ColdExpansion";
 
-    private static readonly ProfilerMarker
-        ExperienceOrbWarmReuseMarker =
-            new ProfilerMarker(
-                "Stage22.ExperienceOrb.WarmReuse"
-            );
+    private const string ExperienceOrbWarmReuseSample =
+        "Stage22.ExperienceOrb.WarmReuse";
 
     [Header("Pool References")]
     [Tooltip("场景中的 HitEffectPool")]
@@ -258,18 +246,27 @@ public class PoolingStressTester : MonoBehaviour
         bool requiresExpansion =
             availableBefore < hitEffectRequestCount;
 
-        ProfilerMarker selectedMarker =
+        string testType =
             requiresExpansion
-                ? HitEffectColdExpansionMarker
-                : HitEffectWarmReuseMarker;
+                ? "Cold Expansion"
+                : "Warm Reuse";
+
+        string selectedSampleName =
+            requiresExpansion
+                ? HitEffectColdExpansionSample
+                : HitEffectWarmReuseSample;
+
+        int testFrameCount = Time.frameCount;
 
         /*
-         * ProfilerMarker 只包围真正的批量取出过程。
+         * Profiler Sample 只包围真正的批量取出过程。
          *
          * Debug.Log 和等待回收不会包含在 Marker 中，
          * 可以降低日志字符串分配对测试结果的干扰。
          */
-        using (selectedMarker.Auto())
+        Profiler.BeginSample(selectedSampleName);
+
+        try
         {
             for (int i = 0;
                  i < hitEffectRequestCount;
@@ -293,15 +290,19 @@ public class PoolingStressTester : MonoBehaviour
                 successfulRequestCount++;
             }
         }
+        finally
+        {
+            Profiler.EndSample();
+        }
 
         Debug.Log(
             "===== HitEffect Burst Test: After Checkout =====\n"
             + "Test Type: "
-            + (
-                requiresExpansion
-                    ? "Cold Expansion"
-                    : "Warm Reuse"
-            )
+            + testType
+            + "\nProfiler Sample: "
+            + selectedSampleName
+            + "\nFrame Count: "
+            + testFrameCount
             + "\nRequested: "
             + hitEffectRequestCount
             + "\nSuccessful: "
@@ -417,12 +418,21 @@ public class PoolingStressTester : MonoBehaviour
         bool requiresExpansion =
             availableBefore < experienceOrbRequestCount;
 
-        ProfilerMarker selectedMarker =
+        string testType =
             requiresExpansion
-                ? ExperienceOrbColdExpansionMarker
-                : ExperienceOrbWarmReuseMarker;
+                ? "Cold Expansion"
+                : "Warm Reuse";
 
-        using (selectedMarker.Auto())
+        string selectedSampleName =
+            requiresExpansion
+                ? ExperienceOrbColdExpansionSample
+                : ExperienceOrbWarmReuseSample;
+
+        int testFrameCount = Time.frameCount;
+
+        Profiler.BeginSample(selectedSampleName);
+
+        try
         {
             for (int i = 0;
                  i < experienceOrbRequestCount;
@@ -447,6 +457,10 @@ public class PoolingStressTester : MonoBehaviour
                 successfulRequestCount++;
             }
         }
+        finally
+        {
+            Profiler.EndSample();
+        }
 
         trackedExperienceOrbCount =
             trackedExperienceOrbs.Count;
@@ -454,11 +468,11 @@ public class PoolingStressTester : MonoBehaviour
         Debug.Log(
             "===== ExperienceOrb Burst Test: After Checkout =====\n"
             + "Test Type: "
-            + (
-                requiresExpansion
-                    ? "Cold Expansion"
-                    : "Warm Reuse"
-            )
+            + testType
+            + "\nProfiler Sample: "
+            + selectedSampleName
+            + "\nFrame Count: "
+            + testFrameCount
             + "\nRequested: "
             + experienceOrbRequestCount
             + "\nSuccessful: "

@@ -3340,12 +3340,12 @@ GameObject:
   - component: {fileID: 1346040440}
   - component: {fileID: 1346040439}
   m_Layer: 0
-  m_Name: PoolingStressTester
+  m_Name: DEBUG_PoolingStressTester
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1346040439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3353,7 +3353,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1346040438}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 17020c07c9bca6e46b794114a60942aa, type: 3}
   m_Name: 
@@ -3366,6 +3366,9 @@ MonoBehaviour:
   hitEffectTestLifeTime: 0.5
   experienceOrbRequestCount: 50
   testExperienceAmount: 1
+  hitEffectBurstKey: 287
+  experienceOrbBurstKey: 288
+  returnExperienceOrbsKey: 289
   trackedExperienceOrbCount: 0
   hitEffectTestRunning: 0
 --- !u!4 &1346040440
