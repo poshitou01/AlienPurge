@@ -633,6 +633,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e66bfc332cd32843bdf800919a0b8c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemySpawnEntries:
+  - enemyType: 0
+    enemyPrefab: {fileID: 3319235536976819082, guid: 95d05adb622f64347900c60cec3711b0, type: 3}
+    unlockTime: 0
+    spawnWeight: 70
+  - enemyType: 1
+    enemyPrefab: {fileID: 3319235536976819082, guid: 7ecc946538a7f604eb5bc7f1b535569e, type: 3}
+    unlockTime: 15
+    spawnWeight: 20
+  - enemyType: 2
+    enemyPrefab: {fileID: 3319235536976819082, guid: 5da49d37e7931534cb71e50bbba34859, type: 3}
+    unlockTime: 30
+    spawnWeight: 10
   normalEnemyPrefab: {fileID: 3319235536976819082, guid: 95d05adb622f64347900c60cec3711b0, type: 3}
   fastEnemyPrefab: {fileID: 3319235536976819082, guid: 7ecc946538a7f604eb5bc7f1b535569e, type: 3}
   heavyEnemyPrefab: {fileID: 3319235536976819082, guid: 5da49d37e7931534cb71e50bbba34859, type: 3}

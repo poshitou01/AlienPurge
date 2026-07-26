@@ -1,91 +1,99 @@
+using System.Collections.Generic;
 using UnityEngine;
-
 [DisallowMultipleComponent]
 public class EnemySpawner : MonoBehaviour
 {
-    [Header("Enemy Prefabs")]
-    [Tooltip("��ͨ���� Prefab����ǰ�Զ�ˢ����ʱֻʹ����ͨ����")]
-    [SerializeField] private GameObject normalEnemyPrefab;
+    [Header("Enemy Spawn Configuration")]
+    [Tooltip(
+    "所有可参与自动刷怪的敌人配置。"
+    + "敌人是否可用将由解锁时间、权重和 Prefab 共同决定"
+)]
+    [SerializeField]
+    private List<EnemySpawnEntry> enemySpawnEntries =
+    new List<EnemySpawnEntry>();
 
-    [Tooltip("���ٵ��� Prefab��Ŀǰ�����ڶ�����������")]
-    [SerializeField] private GameObject fastEnemyPrefab;
 
-    [Tooltip("�ؼ׵��� Prefab��Ŀǰ�����ڶ�����������")]
-    [SerializeField] private GameObject heavyEnemyPrefab;
+    [Header("Fallback Enemy Prefab")]
+    [Tooltip(
+        "当生成配置列表中没有任何有效候选时，"
+        + "用于安全回退的普通敌人 Prefab"
+    )]
+    [SerializeField]
+    private GameObject normalEnemyPrefab;
 
     [Header("Spawner Settings")]
-    [Tooltip("��Ϸ�տ�ʼʱ��ˢ�ּ��")]
+    [Tooltip("游戏刚开始时的刷怪间隔")]
     [SerializeField] private float spawnInterval = 2f;
 
-    [Tooltip("��Ϸ�տ�ʼʱ������ڵ���������")]
+    [Tooltip("游戏刚开始时允许存在的最大敌人数")]
     [SerializeField] private int maxEnemies = 5;
 
     [Header("Spawn Interval Difficulty")]
-    [Tooltip("ˢ�ּ��������͵�����Сֵ")]
+    [Tooltip("刷怪间隔允许降低到的最小值")]
     [SerializeField] private float minSpawnInterval = 0.7f;
 
-    [Tooltip("ÿ���� 1 �룬ˢ�ּ����ٶ�����")]
+    [Tooltip("每生存 1 秒，刷怪间隔减少多少秒")]
     [SerializeField]
     private float spawnIntervalDecreasePerSecond = 0.02f;
 
     [Header("Enemy Count Difficulty")]
-    [Tooltip("���ϵ�������������ߵ�����������")]
+    [Tooltip("场上敌人数量允许提高到的最终上限")]
     [SerializeField] private int maxEnemiesLimit = 12;
 
-    [Tooltip("ÿ����������һ�ε�����������")]
+    [Tooltip("每隔多少秒提高一次敌人数量上限")]
     [SerializeField]
     private float maxEnemiesIncreaseInterval = 10f;
 
-    [Tooltip("ÿ����߶��ٸ�������������")]
+    [Tooltip("每次提高多少个敌人数量上限")]
     [SerializeField]
     private int maxEnemiesIncreaseAmount = 1;
 
     [Header("Enemy Health Difficulty")]
-    [Tooltip("��Ϸ��ʼʱ��ͨ���˵�ȫ�ֻ�������ֵ")]
+    [Tooltip("游戏开始时普通敌人的全局基础生命值")]
     [SerializeField] private int enemyInitialMaxHealth = 3;
 
-    [Tooltip("ÿ����������һ��ȫ�ֻ�������ֵ")]
+    [Tooltip("每隔多少秒提高一次全局基础生命值")]
     [SerializeField]
     private float enemyHealthIncreaseInterval = 20f;
 
-    [Tooltip("ÿ����߶��ٵ�ȫ�ֻ�������ֵ")]
+    [Tooltip("每次提高多少点全局基础生命值")]
     [SerializeField]
     private int enemyHealthIncreaseAmount = 1;
 
-    [Tooltip("ȫ�ֻ�������ֵ����ɳ�������������")]
+    [Tooltip("全局基础生命值允许成长到的最终上限")]
     [SerializeField] private int enemyMaxHealthLimit = 6;
 
     [Header("Enemy Move Speed Difficulty")]
-    [Tooltip("��Ϸ��ʼʱ��ͨ���˵�ȫ�ֻ����ƶ��ٶ�")]
+    [Tooltip("游戏开始时普通敌人的全局基础移动速度")]
     [SerializeField]
     private float enemyInitialMoveSpeed = 1.5f;
 
-    [Tooltip("ÿ����������һ��ȫ�ֻ����ƶ��ٶ�")]
+    [Tooltip("每隔多少秒提高一次全局基础移动速度")]
     [SerializeField]
     private float enemyMoveSpeedIncreaseInterval = 20f;
 
-    [Tooltip("ÿ����߶���ȫ�ֻ����ƶ��ٶ�")]
+    [Tooltip("每次提高多少全局基础移动速度")]
     [SerializeField]
     private float enemyMoveSpeedIncreaseAmount = 0.25f;
 
-    [Tooltip("ȫ�ֻ����ƶ��ٶ�����ɳ�������������")]
+    [Tooltip("全局基础移动速度允许成长到的最终上限")]
     [SerializeField]
     private float enemyMoveSpeedLimit = 2.25f;
 
     [Header("Enemy Contact Damage Difficulty")]
-    [Tooltip("��Ϸ��ʼʱ��ͨ���˵�ȫ�ֻ����Ӵ��˺�")]
+    [Tooltip("游戏开始时普通敌人的全局基础接触伤害")]
     [SerializeField]
     private int enemyInitialContactDamage = 1;
 
-    [Tooltip("ÿ����������һ��ȫ�ֻ����Ӵ��˺�")]
+    [Tooltip("每隔多少秒提高一次全局基础接触伤害")]
     [SerializeField]
     private float enemyContactDamageIncreaseInterval = 30f;
 
-    [Tooltip("ÿ����߶��ٵ�ȫ�ֻ����Ӵ��˺�")]
+    [Tooltip("每次提高多少点全局基础接触伤害")]
     [SerializeField]
     private int enemyContactDamageIncreaseAmount = 1;
 
-    [Tooltip("ȫ�ֻ����Ӵ��˺�����ɳ�������������")]
+    [Tooltip("全局基础接触伤害允许成长到的最终上限")]
     [SerializeField]
     private int enemyContactDamageLimit = 3;
 
@@ -98,34 +106,67 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private string enemyTag = "Enemy";
 
     [Header("Debug Settings")]
-    [Tooltip("�Ƿ����������ļ�ʱ�Զ�ˢ��")]
+    [Tooltip("是否允许正常的计时自动刷怪")]
     [SerializeField] private bool enableAutomaticSpawning = true;
 
-    [Tooltip("������Ϸ���Ƿ���������һ����ͨ����")]
+    [Tooltip("进入游戏后是否立即生成一个普通敌人")]
     [SerializeField] private bool spawnOnStart = true;
 
     [Header("Runtime Spawn Debug")]
-    [Tooltip("��ǰʵ��ʹ�õ�ˢ�ּ��")]
+    [Tooltip("当前实际使用的刷怪间隔")]
     [SerializeField] private float currentSpawnInterval;
 
-    [Tooltip("��ǰʵ��������ڵ���������")]
+    [Tooltip("当前实际允许存在的最大敌人数")]
     [SerializeField] private int currentMaxEnemies;
 
-    [Tooltip("���һ�μ�⵽�ĳ��ϵ�����")]
+    [Tooltip("最近一次检测到的场上敌人数")]
     [SerializeField] private int currentEnemyCount;
 
+    [Tooltip("当前通过全部检查的有效刷怪候选数量")]
+    [SerializeField]
+    private int currentSpawnCandidateCount;
+
+    [Tooltip(
+    "当前同时满足解锁时间、"
+    + "Prefab 和权重检查的敌人类型"
+)]
+    [SerializeField]
+    private string currentUnlockedEnemyTypes =
+    "None";
+
+    [Tooltip("当前所有有效刷怪候选的权重总和")]
+    [SerializeField]
+    private float currentSpawnWeightTotal;
+
+    [Tooltip("最近一次加权随机选择是否成功")]
+    [SerializeField]
+    private bool lastSpawnSelectionSucceeded;
+
+    [Tooltip("最近一次加权随机选中的敌人类型")]
+    [SerializeField]
+    private EnemyType lastSelectedEnemyType =
+        EnemyType.Normal;
+
     [Header("Runtime Enemy Attribute Debug")]
-    [Tooltip("��ǰʱ����ȫ�ֻ����������ֵ")]
+    [Tooltip("当前时间点的全局基础最大生命值")]
     [SerializeField] private int currentEnemyMaxHealth;
 
-    [Tooltip("��ǰʱ����ȫ�ֻ����ƶ��ٶ�")]
+    [Tooltip("当前时间点的全局基础移动速度")]
     [SerializeField] private float currentEnemyMoveSpeed;
 
-    [Tooltip("��ǰʱ����ȫ�ֻ����Ӵ��˺�")]
+    [Tooltip("当前时间点的全局基础接触伤害")]
     [SerializeField] private int currentEnemyContactDamage;
+
+    private readonly List<EnemySpawnEntry>
+    currentSpawnCandidates =
+        new List<EnemySpawnEntry>();
 
     private Transform player;
     private float spawnTimer;
+
+    // 避免配置全部无效时，
+    // 每个刷怪间隔都重复输出相同警告。
+    private bool hasWarnedAboutSpawnFallback;
 
     public int CurrentEnemyMaxHealth =>
         currentEnemyMaxHealth;
@@ -205,6 +246,243 @@ public class EnemySpawner : MonoBehaviour
         return true;
     }
 
+    /// <summary>
+    /// 根据指定生存时间刷新当前有效的刷怪候选，
+    /// 同时计算全部有效候选的权重总和。
+    /// </summary>
+    private void RefreshSpawnCandidates(
+        float survivalTime
+    )
+    {
+        currentSpawnCandidates.Clear();
+
+        currentSpawnCandidateCount = 0;
+        currentUnlockedEnemyTypes =
+            "None";
+        currentSpawnWeightTotal = 0f;
+
+        survivalTime = Mathf.Max(
+            0f,
+            survivalTime
+        );
+
+        if (enemySpawnEntries == null)
+        {
+            return;
+        }
+
+        for (int i = 0;
+            i < enemySpawnEntries.Count;
+            i++)
+        {
+            EnemySpawnEntry entry =
+                enemySpawnEntries[i];
+
+            if (!IsSpawnEntryValid(
+                    entry,
+                    survivalTime
+                ))
+            {
+                continue;
+            }
+
+            currentSpawnCandidates.Add(entry);
+
+            currentSpawnWeightTotal +=
+                entry.SpawnWeight;
+        }
+
+        currentSpawnCandidateCount =
+            currentSpawnCandidates.Count;
+
+        if (currentSpawnCandidates.Count > 0)
+        {
+            currentUnlockedEnemyTypes =
+                string.Empty;
+
+            for (int i = 0;
+                i < currentSpawnCandidates.Count;
+                i++)
+            {
+                if (i > 0)
+                {
+                    currentUnlockedEnemyTypes +=
+                        ", ";
+                }
+
+                currentUnlockedEnemyTypes +=
+                    currentSpawnCandidates[i]
+                        .Type
+                        .ToString();
+            }
+        }
+
+        if (float.IsNaN(currentSpawnWeightTotal)
+     || float.IsInfinity(
+         currentSpawnWeightTotal
+     )
+     || currentSpawnWeightTotal < 0f)
+        {
+            currentSpawnCandidates.Clear();
+
+            currentSpawnCandidateCount = 0;
+
+            currentUnlockedEnemyTypes =
+                "None";
+
+            currentSpawnWeightTotal = 0f;
+        }
+    }
+
+    /// <summary>
+    /// 判断单个生成配置在指定时间是否可以进入候选。
+    /// </summary>
+    /// <summary>
+    /// 判断单个生成配置在指定时间是否可以进入候选。
+    /// </summary>
+    private bool IsSpawnEntryValid(
+        EnemySpawnEntry entry,
+        float survivalTime
+    )
+    {
+        if (entry == null)
+        {
+            return false;
+        }
+
+        if (entry.Prefab == null)
+        {
+            return false;
+        }
+
+        float spawnWeight =
+            entry.SpawnWeight;
+
+        if (float.IsNaN(spawnWeight)
+            || float.IsInfinity(spawnWeight)
+            || spawnWeight <= 0f)
+        {
+            return false;
+        }
+
+        float unlockTime =
+            entry.UnlockTime;
+
+        if (float.IsNaN(unlockTime)
+            || float.IsInfinity(unlockTime))
+        {
+            return false;
+        }
+
+        float safeUnlockTime =
+            Mathf.Max(0f, unlockTime);
+
+        if (survivalTime < safeUnlockTime)
+        {
+            return false;
+        }
+
+        return true;
+    }
+    /// <summary>
+    /// 根据指定生存时间筛选候选，
+    /// 然后按相对权重随机选择一个敌人配置。
+    ///
+    /// 没有有效候选时返回 null，
+    /// 不执行随机范围计算。
+    /// </summary>
+    private EnemySpawnEntry
+        SelectWeightedSpawnEntry(
+            float survivalTime
+        )
+    {
+        lastSpawnSelectionSucceeded = false;
+
+        RefreshSpawnCandidates(
+            survivalTime
+        );
+
+        if (currentSpawnCandidates.Count == 0)
+        {
+            return null;
+        }
+
+        if (currentSpawnWeightTotal <= 0f
+            || float.IsNaN(
+                currentSpawnWeightTotal
+            )
+            || float.IsInfinity(
+                currentSpawnWeightTotal
+            ))
+        {
+            return null;
+        }
+
+        float randomWeight =
+            Random.Range(
+                0f,
+                currentSpawnWeightTotal
+            );
+
+        float accumulatedWeight = 0f;
+
+        for (int i = 0;
+            i < currentSpawnCandidates.Count;
+            i++)
+        {
+            EnemySpawnEntry entry =
+                currentSpawnCandidates[i];
+
+            accumulatedWeight +=
+                entry.SpawnWeight;
+
+            if (randomWeight
+                < accumulatedWeight)
+            {
+                RecordSelectedSpawnEntry(
+                    entry
+                );
+
+                return entry;
+            }
+        }
+
+        // 浮点数计算可能出现极小的边界误差。
+        // 此时安全返回最后一个有效候选。
+        EnemySpawnEntry fallbackCandidate =
+            currentSpawnCandidates[
+                currentSpawnCandidates.Count - 1
+            ];
+
+        RecordSelectedSpawnEntry(
+            fallbackCandidate
+        );
+
+        return fallbackCandidate;
+    }
+
+    /// <summary>
+    /// 保存最近一次成功的随机选择结果。
+    /// </summary>
+    private void RecordSelectedSpawnEntry(
+        EnemySpawnEntry selectedEntry
+    )
+    {
+        if (selectedEntry == null)
+        {
+            lastSpawnSelectionSucceeded =
+                false;
+
+            return;
+        }
+
+        lastSelectedEnemyType =
+            selectedEntry.Type;
+
+        lastSpawnSelectionSucceeded =
+            true;
+    }
+
     private void UpdateDifficulty()
     {
         float survivalTime = 0f;
@@ -222,6 +500,7 @@ public class EnemySpawner : MonoBehaviour
 
         UpdateSpawnDifficulty(survivalTime);
         UpdateEnemyAttributeDifficulty(survivalTime);
+        RefreshSpawnCandidates(survivalTime);
     }
 
     private void UpdateSpawnDifficulty(
@@ -367,30 +646,162 @@ public class EnemySpawner : MonoBehaviour
         else
         {
             Debug.LogWarning(
-                "EnemySpawner: û���ҵ� Tag Ϊ "
+                "EnemySpawner: 没有找到 Tag 为 "
                 + playerTag
-                + " �Ķ���",
+                + " 的对象。",
                 this
             );
         }
     }
 
     /// <summary>
-    /// ��ǰ��ʽ�Զ�ˢ����ʱֻ������ͨ���ˡ�
-    /// ���׶β�ʵ���������Ȩ�ء�
+    /// 根据当前生存时间筛选有效候选，
+    /// 使用加权随机选择敌人并进行生成。
+    ///
+    /// 没有有效候选时，
+    /// 安全回退到普通敌人 Prefab。
     /// </summary>
     private void TrySpawnEnemy()
     {
+        float survivalTime = 0f;
+
+        if (GameManager.Instance != null)
+        {
+            survivalTime =
+                GameManager.Instance
+                    .SurvivalTime;
+        }
+
+        survivalTime =
+            Mathf.Max(0f, survivalTime);
+
+        EnemySpawnEntry selectedEntry =
+            SelectWeightedSpawnEntry(
+                survivalTime
+            );
+
+        if (selectedEntry != null)
+        {
+            hasWarnedAboutSpawnFallback =
+                false;
+
+            SpawnEnemyFromPrefab(
+                selectedEntry.Prefab,
+                true,
+                selectedEntry.Type.ToString()
+            );
+
+            return;
+        }
+
+        GameObject fallbackPrefab =
+            FindNormalFallbackPrefab();
+
+        if (!hasWarnedAboutSpawnFallback)
+        {
+            if (fallbackPrefab != null)
+            {
+                Debug.LogWarning(
+                    "EnemySpawner: 当前没有有效的"
+                    + "刷怪候选，已安全回退到"
+                    + "普通敌人。",
+                    this
+                );
+            }
+            else
+            {
+                Debug.LogError(
+                    "EnemySpawner: 当前没有有效的"
+                    + "刷怪候选，并且找不到可用的"
+                    + "普通敌人回退 Prefab。",
+                    this
+                );
+            }
+
+            hasWarnedAboutSpawnFallback =
+                true;
+        }
+
+        if (fallbackPrefab == null)
+        {
+            return;
+        }
+
         SpawnEnemyFromPrefab(
-            normalEnemyPrefab,
+            fallbackPrefab,
             true,
-            "Normal"
+            "Normal Fallback"
         );
     }
 
     /// <summary>
-    /// ����ָ�����ˣ���ͨ�� EnemyDefinition
-    /// Ӧ�õ�ǰȫ���Ѷ����������ͱ��ʡ�
+    /// 从生成配置列表中查找指定敌人类型的 Prefab。
+    ///
+    /// 该方法不检查权重和解锁时间，
+    /// 主要用于测试、属性预览和安全回退。
+    /// </summary>
+    private GameObject
+        FindConfiguredEnemyPrefab(
+            EnemyType enemyType
+        )
+    {
+        if (enemySpawnEntries == null)
+        {
+            return null;
+        }
+
+        for (int i = 0;
+            i < enemySpawnEntries.Count;
+            i++)
+        {
+            EnemySpawnEntry entry =
+                enemySpawnEntries[i];
+
+            if (entry == null)
+            {
+                continue;
+            }
+
+            if (entry.Type != enemyType)
+            {
+                continue;
+            }
+
+            if (entry.Prefab == null)
+            {
+                continue;
+            }
+
+            return entry.Prefab;
+        }
+
+        return null;
+    }
+
+    /// <summary>
+    /// 查找普通敌人回退 Prefab。
+    ///
+    /// 优先读取生成配置列表中的 Normal Prefab；
+    /// 如果列表中找不到，再使用独立回退 Prefab。
+    /// </summary>
+    private GameObject
+        FindNormalFallbackPrefab()
+    {
+        GameObject configuredNormalPrefab =
+            FindConfiguredEnemyPrefab(
+                EnemyType.Normal
+            );
+
+        if (configuredNormalPrefab != null)
+        {
+            return configuredNormalPrefab;
+        }
+
+        return normalEnemyPrefab;
+    }
+    /// <summary>
+    /// 生成指定敌人，并通过 EnemyDefinition
+    /// 应用当前全局难度属性与类型倍率。
     /// </summary>
     private bool SpawnEnemyFromPrefab(
         GameObject enemyPrefab,
@@ -403,7 +814,7 @@ public class EnemySpawner : MonoBehaviour
             Debug.LogWarning(
                 "EnemySpawner: "
                 + enemyLabel
-                + " Enemy Prefab û�а󶨡�",
+                + " Enemy Prefab 没有绑定。",
                 this
             );
 
@@ -417,10 +828,10 @@ public class EnemySpawner : MonoBehaviour
             if (player == null)
             {
                 Debug.LogWarning(
-                    "EnemySpawner: Player Ϊ�գ�"
-                    + "�޷����� "
+                    "EnemySpawner: Player 为空，"
+                    + "无法生成 "
                     + enemyLabel
-                    + " Enemy��",
+                    + " Enemy。",
                     this
                 );
 
@@ -460,10 +871,10 @@ public class EnemySpawner : MonoBehaviour
     }
 
     /// <summary>
-    /// ����ǰȫ���ѶȻ������Դ��ݸ� EnemyDefinition��
+    /// 将当前全局难度基础属性传递给 EnemyDefinition。
     ///
-    /// EnemyDefinition �ٸ��ݰ󶨵� EnemyData
-    /// �����Ӧ�������͵��������ԡ�
+    /// EnemyDefinition 再根据绑定的 EnemyData
+    /// 计算对应敌人类型的最终属性。
     /// </summary>
     private bool InitializeEnemyAttributes(
         GameObject spawnedEnemy
@@ -472,8 +883,8 @@ public class EnemySpawner : MonoBehaviour
         if (spawnedEnemy == null)
         {
             Debug.LogError(
-                "EnemySpawner: ���ɵĵ���Ϊ�գ�"
-                + "�޷���ʼ�����ԡ�",
+                "EnemySpawner: 生成的敌人为空，"
+                + "无法初始化属性。",
                 this
             );
 
@@ -489,8 +900,8 @@ public class EnemySpawner : MonoBehaviour
         {
             Debug.LogError(
                 spawnedEnemy.name
-                + " û�� EnemyDefinition��"
-                + "�޷�Ӧ�õ����������ݡ�",
+                + " 没有 EnemyDefinition，"
+                + "无法应用敌人类型数据。",
                 spawnedEnemy
             );
 
@@ -508,8 +919,8 @@ public class EnemySpawner : MonoBehaviour
         {
             Debug.LogError(
                 spawnedEnemy.name
-                + " �� EnemyDefinition "
-                + "��ʼ��ʧ�ܡ�",
+                + " 的 EnemyDefinition "
+                + "初始化失败。",
                 spawnedEnemy
             );
 
@@ -564,9 +975,9 @@ public class EnemySpawner : MonoBehaviour
     }
 
     /// <summary>
-    /// ��������������ڡ�
-    /// �������ɺ��������������ƣ�
-    /// ����Ҫ���� Playing ״̬��
+    /// 独立测试生成入口。
+    /// 测试生成忽略最大敌人数限制，
+    /// 但仍要求处于 Playing 状态。
     /// </summary>
     private void SpawnEnemyForTesting(
         GameObject enemyPrefab,
@@ -576,9 +987,9 @@ public class EnemySpawner : MonoBehaviour
         if (!Application.isPlaying)
         {
             Debug.LogWarning(
-                "����� Play ģʽ���ٲ������� "
+                "请进入 Play 模式后再测试生成 "
                 + enemyLabel
-                + " Enemy��",
+                + " Enemy。",
                 this
             );
 
@@ -588,7 +999,7 @@ public class EnemySpawner : MonoBehaviour
         if (!CanSpawnEnemies())
         {
             Debug.LogWarning(
-                "��ǰ��Ϸ״̬���������ɵ��ˡ�",
+                "当前游戏状态不允许生成敌人。",
                 this
             );
 
@@ -608,7 +1019,7 @@ public class EnemySpawner : MonoBehaviour
     private void TestSpawnNormalEnemy()
     {
         SpawnEnemyForTesting(
-            normalEnemyPrefab,
+            FindNormalFallbackPrefab(),
             "Normal"
         );
     }
@@ -617,7 +1028,9 @@ public class EnemySpawner : MonoBehaviour
     private void TestSpawnFastEnemy()
     {
         SpawnEnemyForTesting(
-            fastEnemyPrefab,
+            FindConfiguredEnemyPrefab(
+                EnemyType.Fast
+            ),
             "Fast"
         );
     }
@@ -626,7 +1039,9 @@ public class EnemySpawner : MonoBehaviour
     private void TestSpawnHeavyEnemy()
     {
         SpawnEnemyForTesting(
-            heavyEnemyPrefab,
+            FindConfiguredEnemyPrefab(
+                EnemyType.Heavy
+            ),
             "Heavy"
         );
     }
@@ -716,11 +1131,12 @@ public class EnemySpawner : MonoBehaviour
     {
         LogDifficultyAtTime(60f);
     }
+
     /// <summary>
-    /// ���ָ������ʱ�������ֵ��˵��������ԡ�
+    /// 输出指定生存时间下三种敌人的最终属性。
     ///
-    /// �˷���ֻ������ֵԤ�����������ɵ��ˣ�
-    /// Ҳ�����޸ĵ�ǰ��Ϸ״̬��
+    /// 此方法只进行数值预览，不会生成敌人，
+    /// 也不会修改当前游戏状态。
     /// </summary>
     private void LogEnemyTypeStatsAtTime(
         float testSurvivalTime
@@ -758,7 +1174,9 @@ public class EnemySpawner : MonoBehaviour
         );
 
         LogSingleEnemyTypeStats(
-            normalEnemyPrefab,
+            FindConfiguredEnemyPrefab(
+                EnemyType.Normal
+            ),
             "Normal",
             globalMaxHealth,
             globalMoveSpeed,
@@ -766,7 +1184,9 @@ public class EnemySpawner : MonoBehaviour
         );
 
         LogSingleEnemyTypeStats(
-            fastEnemyPrefab,
+            FindConfiguredEnemyPrefab(
+                EnemyType.Fast
+            ),
             "Fast",
             globalMaxHealth,
             globalMoveSpeed,
@@ -774,7 +1194,9 @@ public class EnemySpawner : MonoBehaviour
         );
 
         LogSingleEnemyTypeStats(
-            heavyEnemyPrefab,
+            FindConfiguredEnemyPrefab(
+                EnemyType.Heavy
+            ),
             "Heavy",
             globalMaxHealth,
             globalMoveSpeed,
@@ -783,8 +1205,8 @@ public class EnemySpawner : MonoBehaviour
     }
 
     /// <summary>
-    /// ��ȡָ������ Prefab �󶨵� EnemyData��
-    /// �����Ӧ�����ͱ��ʺ���������ԡ�
+    /// 读取指定敌人 Prefab 绑定的 EnemyData，
+    /// 并输出应用类型倍率后的最终属性。
     /// </summary>
     private void LogSingleEnemyTypeStats(
         GameObject enemyPrefab,
@@ -798,8 +1220,8 @@ public class EnemySpawner : MonoBehaviour
         {
             Debug.LogWarning(
                 enemyLabel
-                + " Enemy Prefab û�а󶨣�"
-                + "�޷�Ԥ�����ԡ�",
+                + " Enemy Prefab 没有绑定，"
+                + "无法预览属性。",
                 this
             );
 
@@ -815,8 +1237,8 @@ public class EnemySpawner : MonoBehaviour
         {
             Debug.LogWarning(
                 enemyPrefab.name
-                + " û�� EnemyDefinition��"
-                + "�޷�Ԥ�����ԡ�",
+                + " 没有 EnemyDefinition，"
+                + "无法预览属性。",
                 enemyPrefab
             );
 
@@ -830,8 +1252,8 @@ public class EnemySpawner : MonoBehaviour
         {
             Debug.LogWarning(
                 enemyPrefab.name
-                + " û�а� EnemyData��"
-                + "�޷�Ԥ�����ԡ�",
+                + " 没有绑定 EnemyData，"
+                + "无法预览属性。",
                 enemyPrefab
             );
 
@@ -887,7 +1309,7 @@ public class EnemySpawner : MonoBehaviour
     }
 
     /// <summary>
-    /// �� EnemyDefinition ʹ����ͬ�������������������
+    /// 与 EnemyDefinition 使用相同的正整数四舍五入规则。
     /// </summary>
     private int RoundEnemyAttributeToPositiveInt(
         float value
@@ -920,6 +1342,493 @@ public class EnemySpawner : MonoBehaviour
         LogEnemyTypeStatsAtTime(60f);
     }
 
+    private void OnValidate()
+    {
+        spawnInterval = Mathf.Max(
+            0.01f,
+            spawnInterval
+        );
+
+        minSpawnInterval = Mathf.Clamp(
+            minSpawnInterval,
+            0.01f,
+            spawnInterval
+        );
+
+        spawnIntervalDecreasePerSecond =
+            Mathf.Max(
+                0f,
+                spawnIntervalDecreasePerSecond
+            );
+
+        maxEnemies = Mathf.Max(
+            1,
+            maxEnemies
+        );
+
+        maxEnemiesLimit = Mathf.Max(
+            maxEnemies,
+            maxEnemiesLimit
+        );
+
+        maxEnemiesIncreaseInterval =
+            Mathf.Max(
+                0.1f,
+                maxEnemiesIncreaseInterval
+            );
+
+        maxEnemiesIncreaseAmount =
+            Mathf.Max(
+                1,
+                maxEnemiesIncreaseAmount
+            );
+
+        enemyInitialMaxHealth =
+            Mathf.Max(
+                1,
+                enemyInitialMaxHealth
+            );
+
+        enemyHealthIncreaseInterval =
+            Mathf.Max(
+                0.1f,
+                enemyHealthIncreaseInterval
+            );
+
+        enemyHealthIncreaseAmount =
+            Mathf.Max(
+                1,
+                enemyHealthIncreaseAmount
+            );
+
+        enemyMaxHealthLimit =
+            Mathf.Max(
+                enemyInitialMaxHealth,
+                enemyMaxHealthLimit
+            );
+
+        enemyInitialMoveSpeed =
+            Mathf.Max(
+                0.01f,
+                enemyInitialMoveSpeed
+            );
+
+        enemyMoveSpeedIncreaseInterval =
+            Mathf.Max(
+                0.1f,
+                enemyMoveSpeedIncreaseInterval
+            );
+
+        enemyMoveSpeedIncreaseAmount =
+            Mathf.Max(
+                0f,
+                enemyMoveSpeedIncreaseAmount
+            );
+
+        enemyMoveSpeedLimit =
+            Mathf.Max(
+                enemyInitialMoveSpeed,
+                enemyMoveSpeedLimit
+            );
+
+        enemyInitialContactDamage =
+            Mathf.Max(
+                1,
+                enemyInitialContactDamage
+            );
+
+        enemyContactDamageIncreaseInterval =
+            Mathf.Max(
+                0.1f,
+                enemyContactDamageIncreaseInterval
+            );
+
+        enemyContactDamageIncreaseAmount =
+            Mathf.Max(
+                1,
+                enemyContactDamageIncreaseAmount
+            );
+
+        enemyContactDamageLimit =
+            Mathf.Max(
+                enemyInitialContactDamage,
+                enemyContactDamageLimit
+            );
+
+        minSpawnDistance =
+            Mathf.Max(
+                0f,
+                minSpawnDistance
+            );
+
+        maxSpawnDistance =
+            Mathf.Max(
+                minSpawnDistance,
+                maxSpawnDistance
+            );
+    }
+
+    /// <summary>
+    /// 输出指定生存时间下的有效刷怪候选。
+    /// 只进行数据预览，不会实际生成敌人。
+    /// </summary>
+    private void LogSpawnCandidatesAtTime(
+        float testSurvivalTime
+    )
+    {
+        testSurvivalTime =
+            Mathf.Max(0f, testSurvivalTime);
+
+        RefreshSpawnCandidates(
+            testSurvivalTime
+        );
+
+        Debug.Log(
+     "===== Spawn Candidates At "
+     + testSurvivalTime.ToString("F0")
+     + " Seconds =====\n"
+            + "Valid Candidate Count: "
+            + currentSpawnCandidates.Count
+            + "\nUnlocked Enemy Types: "
+            + currentUnlockedEnemyTypes
+            + "\nTotal Spawn Weight: "
+     + currentSpawnWeightTotal
+         .ToString("F1"),
+     this
+ );
+
+        if (currentSpawnCandidates.Count == 0)
+        {
+            Debug.LogWarning(
+                "当前没有有效的敌人生成候选。",
+                this
+            );
+
+            return;
+        }
+
+        for (int i = 0;
+            i < currentSpawnCandidates.Count;
+            i++)
+        {
+            EnemySpawnEntry entry =
+                currentSpawnCandidates[i];
+
+            Debug.Log(
+                "Candidate "
+                + i
+                + ": Type="
+                + entry.Type
+                + ", Prefab="
+                + entry.Prefab.name
+                + ", Unlock Time="
+                + entry.UnlockTime.ToString("F1")
+                + ", Spawn Weight="
+                + entry.SpawnWeight.ToString("F1"),
+                entry.Prefab
+            );
+        }
+    }
+    /// <summary>
+    /// 测试指定时间下的一次加权随机选择。
+    /// 不会实际生成敌人。
+    /// </summary>
+    private void TestWeightedSelectionAtTime(
+        float testSurvivalTime
+    )
+    {
+        EnemySpawnEntry selectedEntry =
+            SelectWeightedSpawnEntry(
+                testSurvivalTime
+            );
+
+        if (selectedEntry == null)
+        {
+            Debug.LogWarning(
+                "===== Weighted Selection At "
+                + testSurvivalTime
+                    .ToString("F0")
+                + " Seconds =====\n"
+                + "没有有效候选，"
+                + "本次随机选择已安全取消。",
+                this
+            );
+
+            return;
+        }
+
+        Debug.Log(
+            "===== Weighted Selection At "
+            + testSurvivalTime
+                .ToString("F0")
+            + " Seconds =====\n"
+                       + "\nTotal Spawn Weight: "
+            + currentSpawnWeightTotal
+                .ToString("F1")
+            + "\nSelection Succeeded: "
+            + lastSpawnSelectionSucceeded
+            + "\nSelected Type: "
+            + selectedEntry.Type
+            + "\nSelected Prefab: "
+            + selectedEntry.Prefab.name
+            + "\nSelected Weight: "
+            + selectedEntry.SpawnWeight
+                .ToString("F1"),
+            selectedEntry.Prefab
+        );
+    }
+
+    [ContextMenu(
+        "Test Weighted Selection At 0 Seconds"
+    )]
+    private void TestWeightedSelectionAt0Seconds()
+    {
+        TestWeightedSelectionAtTime(0f);
+    }
+
+    [ContextMenu(
+        "Test Weighted Selection At 15 Seconds"
+    )]
+    private void TestWeightedSelectionAt15Seconds()
+    {
+        TestWeightedSelectionAtTime(15f);
+    }
+
+    [ContextMenu(
+        "Test Weighted Selection At 30 Seconds"
+    )]
+    private void TestWeightedSelectionAt30Seconds()
+    {
+        TestWeightedSelectionAtTime(30f);
+    }
+
+    [ContextMenu(
+        "Test Weighted Selection At 60 Seconds"
+    )]
+    private void TestWeightedSelectionAt60Seconds()
+    {
+        TestWeightedSelectionAtTime(60f);
+    }
+    [ContextMenu(
+        "Debug Spawn Candidates At 0 Seconds"
+    )]
+    private void DebugSpawnCandidatesAt0Seconds()
+    {
+        LogSpawnCandidatesAtTime(0f);
+    }
+
+    [ContextMenu(
+        "Debug Spawn Candidates At 15 Seconds"
+    )]
+    private void DebugSpawnCandidatesAt15Seconds()
+    {
+        LogSpawnCandidatesAtTime(15f);
+    }
+
+    [ContextMenu(
+        "Debug Spawn Candidates At 30 Seconds"
+    )]
+    private void DebugSpawnCandidatesAt30Seconds()
+    {
+        LogSpawnCandidatesAtTime(30f);
+    }
+
+    [ContextMenu(
+        "Debug Spawn Candidates At 60 Seconds"
+    )]
+    private void DebugSpawnCandidatesAt60Seconds()
+    {
+        LogSpawnCandidatesAtTime(60f);
+    }
+
+    /// <summary>
+    /// 在指定生存时间下进行多次加权随机抽取，
+    /// 并统计每种敌人类型的抽取次数和比例。
+    ///
+    /// 该测试不会实际生成敌人。
+    /// </summary>
+    private void RunWeightedSelectionBatchTest(
+        float testSurvivalTime,
+        int sampleCount
+    )
+    {
+        testSurvivalTime =
+            Mathf.Max(0f, testSurvivalTime);
+
+        sampleCount =
+            Mathf.Max(1, sampleCount);
+
+        RefreshSpawnCandidates(
+            testSurvivalTime
+        );
+
+        if (currentSpawnCandidates.Count == 0
+            || currentSpawnWeightTotal <= 0f)
+        {
+            Debug.LogWarning(
+                "===== Weighted Batch Test At "
+                + testSurvivalTime
+                    .ToString("F0")
+                + " Seconds =====\n"
+                + "没有有效候选，"
+                + "批量随机测试已安全取消。",
+                this
+            );
+
+            return;
+        }
+
+        Dictionary<EnemyType, int>
+            selectionCounts =
+                new Dictionary<
+                    EnemyType,
+                    int
+                >();
+
+        // 先登记所有有效候选类型。
+        // 即使某种类型本次抽取为 0，
+        // 最终报告中也会显示出来。
+        for (int i = 0;
+            i < currentSpawnCandidates.Count;
+            i++)
+        {
+            EnemyType candidateType =
+                currentSpawnCandidates[i].Type;
+
+            if (!selectionCounts.ContainsKey(
+                    candidateType
+                ))
+            {
+                selectionCounts.Add(
+                    candidateType,
+                    0
+                );
+            }
+        }
+
+        int successfulSelectionCount = 0;
+        int failedSelectionCount = 0;
+
+        for (int i = 0;
+            i < sampleCount;
+            i++)
+        {
+            EnemySpawnEntry selectedEntry =
+                SelectWeightedSpawnEntry(
+                    testSurvivalTime
+                );
+
+            if (selectedEntry == null)
+            {
+                failedSelectionCount++;
+                continue;
+            }
+
+            EnemyType selectedType =
+                selectedEntry.Type;
+
+            if (!selectionCounts.ContainsKey(
+                    selectedType
+                ))
+            {
+                selectionCounts.Add(
+                    selectedType,
+                    0
+                );
+            }
+
+            selectionCounts[selectedType]++;
+
+            successfulSelectionCount++;
+        }
+
+        string resultMessage =
+            "===== Weighted Batch Test At "
+            + testSurvivalTime.ToString("F0")
+            + " Seconds =====\n"
+            + "Requested Samples: "
+            + sampleCount
+            + "\nSuccessful Selections: "
+            + successfulSelectionCount
+            + "\nFailed Selections: "
+            + failedSelectionCount
+            + "\nTotal Spawn Weight: "
+            + currentSpawnWeightTotal
+                .ToString("F1");
+
+        foreach (
+            KeyValuePair<EnemyType, int>
+                result in selectionCounts
+        )
+        {
+            float percentage = 0f;
+
+            if (successfulSelectionCount > 0)
+            {
+                percentage =
+                    result.Value
+                    * 100f
+                    / successfulSelectionCount;
+            }
+
+            resultMessage +=
+                "\n"
+                + result.Key
+                + ": "
+                + result.Value
+                + " ("
+                + percentage.ToString("F2")
+                + "%)";
+        }
+
+        Debug.Log(
+            resultMessage,
+            this
+        );
+    }
+    [ContextMenu(
+    "Batch Test 1000 Selections At 0 Seconds"
+)]
+    private void BatchTestAt0Seconds()
+    {
+        RunWeightedSelectionBatchTest(
+            0f,
+            1000
+        );
+    }
+
+    [ContextMenu(
+        "Batch Test 1000 Selections At 15 Seconds"
+    )]
+    private void BatchTestAt15Seconds()
+    {
+        RunWeightedSelectionBatchTest(
+            15f,
+            1000
+        );
+    }
+
+    [ContextMenu(
+        "Batch Test 1000 Selections At 30 Seconds"
+    )]
+    private void BatchTestAt30Seconds()
+    {
+        RunWeightedSelectionBatchTest(
+            30f,
+            1000
+        );
+    }
+
+    [ContextMenu(
+        "Batch Test 1000 Selections At 60 Seconds"
+    )]
+    private void BatchTestAt60Seconds()
+    {
+        RunWeightedSelectionBatchTest(
+            60f,
+            1000
+        );
+    }
     private void OnDrawGizmosSelected()
     {
         Transform center = player;
@@ -938,7 +1847,7 @@ public class EnemySpawner : MonoBehaviour
             }
             catch (UnityException)
             {
-                // �༭���� Tag ��δ����ʱ��ִ�в��ҡ�
+                // 编辑器中 Tag 尚未创建时不执行查找。
             }
 
             if (playerObject != null)
