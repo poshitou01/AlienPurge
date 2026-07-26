@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -1399807384786995150}
   - component: {fileID: 2454779613504796038}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Enemy_Fast
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -213,7 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6366a18b1fb0ddb41b202257eef6dded, type: 3}
   m_Name:
   m_EditorClassIdentifier:
-  enemyData: {fileID: 11400000, guid: 9aea23d446580e243a31bd8d51aabe7a, type: 2}
+  enemyData: {fileID: 11400000, guid: 416a22c069700a64b9106f205c06c036, type: 2}
   hasBeenInitialized: 0
   finalMaxHealth: 0
   finalMoveSpeed: 0

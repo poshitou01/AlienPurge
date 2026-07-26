@@ -31,6 +31,7 @@ public class EnemyHealth : MonoBehaviour
 
     public int MaxHealth => maxHealth;
     public int CurrentHealth => currentHealth;
+    public int ExperienceAmount => experienceAmount;
     public bool IsDead => isDead;
 
     private void Awake()
@@ -87,6 +88,69 @@ public class EnemyHealth : MonoBehaviour
             + currentHealth
             + "/"
             + maxHealth,
+            this
+        );
+    }
+
+    /// <summary>
+    /// 在敌人生成后初始化该敌人死亡时提供的经验值。
+    /// </summary>
+    public void InitializeExperienceAmount(
+        int newExperienceAmount
+    )
+    {
+        if (newExperienceAmount <= 0)
+        {
+            Debug.LogWarning(
+                gameObject.name
+                + " 收到了无效经验值："
+                + newExperienceAmount
+                + "，已自动修正为 1。",
+                this
+            );
+
+            newExperienceAmount = 1;
+        }
+
+        experienceAmount = newExperienceAmount;
+
+        Debug.Log(
+            gameObject.name
+            + " 经验掉落初始化完成："
+            + experienceAmount,
+            this
+        );
+    }
+
+    /// <summary>
+    /// 初始化敌人的常态显示颜色。
+    ///
+    /// 同时更新 originalColor，确保敌人受击闪白结束后，
+    /// 能恢复到当前敌人类型对应的颜色，
+    /// 而不是恢复到 Prefab 原来的颜色。
+    /// </summary>
+    public void InitializeVisualColor(
+        Color newVisualColor
+    )
+    {
+        if (spriteRenderer == null)
+        {
+            Debug.LogWarning(
+                gameObject.name
+                + " 没有找到 SpriteRenderer，"
+                + "无法初始化敌人颜色。",
+                this
+            );
+
+            return;
+        }
+
+        originalColor = newVisualColor;
+        spriteRenderer.color = originalColor;
+
+        Debug.Log(
+            gameObject.name
+            + " 视觉颜色初始化完成。",
             this
         );
     }
@@ -353,5 +417,37 @@ public class EnemyHealth : MonoBehaviour
         }
 
         InitializeHealth(6);
+    }
+
+    [ContextMenu("Test Initialize Experience To 2")]
+    private void TestInitializeExperienceTo2()
+    {
+        if (!Application.isPlaying)
+        {
+            Debug.LogWarning(
+                "请进入 Play 模式后再测试敌人经验值初始化。",
+                this
+            );
+
+            return;
+        }
+
+        InitializeExperienceAmount(2);
+    }
+
+    [ContextMenu("Test Initialize Visual Color To Cyan")]
+    private void TestInitializeVisualColorToCyan()
+    {
+        if (!Application.isPlaying)
+        {
+            Debug.LogWarning(
+                "请进入 Play 模式后再测试敌人颜色初始化。",
+                this
+            );
+
+            return;
+        }
+
+        InitializeVisualColor(Color.cyan);
     }
 }

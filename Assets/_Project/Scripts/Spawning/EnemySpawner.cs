@@ -3,71 +3,91 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class EnemySpawner : MonoBehaviour
 {
-    [Header("Spawner Settings")]
-    [Tooltip("ÐèÒªÉú³ÉµÄµÐÈË Prefab")]
-    [SerializeField] private GameObject enemyPrefab;
+    [Header("Enemy Prefabs")]
+    [Tooltip("ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ Prefabï¿½ï¿½ï¿½ï¿½Ç°ï¿½Ô¶ï¿½Ë¢ï¿½ï¿½ï¿½ï¿½Ê±Ö»Ê¹ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½")]
+    [SerializeField] private GameObject normalEnemyPrefab;
 
-    [Tooltip("ÓÎÏ·¸Õ¿ªÊ¼Ê±µÄË¢¹Ö¼ä¸ô")]
+    [Tooltip("ï¿½ï¿½ï¿½Ùµï¿½ï¿½ï¿½ Prefabï¿½ï¿½Ä¿Ç°ï¿½ï¿½ï¿½ï¿½ï¿½Ú¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
+    [SerializeField] private GameObject fastEnemyPrefab;
+
+    [Tooltip("ï¿½Ø¼×µï¿½ï¿½ï¿½ Prefabï¿½ï¿½Ä¿Ç°ï¿½ï¿½ï¿½ï¿½ï¿½Ú¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
+    [SerializeField] private GameObject heavyEnemyPrefab;
+
+    [Header("Spawner Settings")]
+    [Tooltip("ï¿½ï¿½Ï·ï¿½Õ¿ï¿½Ê¼Ê±ï¿½ï¿½Ë¢ï¿½Ö¼ï¿½ï¿½")]
     [SerializeField] private float spawnInterval = 2f;
 
-    [Tooltip("ÓÎÏ·¸Õ¿ªÊ¼Ê±ÔÊÐí´æÔÚµÄ×î´óµÐÈËÊý")]
+    [Tooltip("ï¿½ï¿½Ï·ï¿½Õ¿ï¿½Ê¼Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
     [SerializeField] private int maxEnemies = 5;
 
     [Header("Spawn Interval Difficulty")]
-    [Tooltip("Ë¢¹Ö¼ä¸ôÔÊÐí½µµÍµ½µÄ×îÐ¡Öµ")]
+    [Tooltip("Ë¢ï¿½Ö¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Íµï¿½ï¿½ï¿½ï¿½ï¿½Ð¡Öµ")]
     [SerializeField] private float minSpawnInterval = 0.7f;
 
-    [Tooltip("Ã¿Éú´æ 1 Ãë£¬Ë¢¹Ö¼ä¸ô¼õÉÙ¶àÉÙÃë")]
-    [SerializeField] private float spawnIntervalDecreasePerSecond = 0.02f;
+    [Tooltip("Ã¿ï¿½ï¿½ï¿½ï¿½ 1 ï¿½ë£¬Ë¢ï¿½Ö¼ï¿½ï¿½ï¿½ï¿½Ù¶ï¿½ï¿½ï¿½ï¿½ï¿½")]
+    [SerializeField]
+    private float spawnIntervalDecreasePerSecond = 0.02f;
 
     [Header("Enemy Count Difficulty")]
-    [Tooltip("³¡ÉÏµÐÈËÊýÁ¿ÔÊÐíÌá¸ßµ½µÄ×îÖÕÉÏÏÞ")]
+    [Tooltip("ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ßµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
     [SerializeField] private int maxEnemiesLimit = 12;
 
-    [Tooltip("Ã¿¸ô¶àÉÙÃëÌá¸ßÒ»´ÎµÐÈËÊýÁ¿ÉÏÏÞ")]
-    [SerializeField] private float maxEnemiesIncreaseInterval = 10f;
+    [Tooltip("Ã¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
+    [SerializeField]
+    private float maxEnemiesIncreaseInterval = 10f;
 
-    [Tooltip("Ã¿´ÎÌá¸ß¶àÉÙ¸öµÐÈËÊýÁ¿ÉÏÏÞ")]
-    [SerializeField] private int maxEnemiesIncreaseAmount = 1;
+    [Tooltip("Ã¿ï¿½ï¿½ï¿½ï¿½ß¶ï¿½ï¿½Ù¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
+    [SerializeField]
+    private int maxEnemiesIncreaseAmount = 1;
 
     [Header("Enemy Health Difficulty")]
-    [Tooltip("ÓÎÏ·¿ªÊ¼Ê±ÐÂÉú³ÉµÐÈËµÄ×î´óÉúÃüÖµ")]
+    [Tooltip("ï¿½ï¿½Ï·ï¿½ï¿½Ê¼Ê±ï¿½ï¿½Í¨ï¿½ï¿½ï¿½Ëµï¿½È«ï¿½Ö»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ")]
     [SerializeField] private int enemyInitialMaxHealth = 3;
 
-    [Tooltip("Ã¿¸ô¶àÉÙÃëÌá¸ßÒ»´ÎµÐÈËµÄ×î´óÉúÃüÖµ")]
-    [SerializeField] private float enemyHealthIncreaseInterval = 20f;
+    [Tooltip("Ã¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½È«ï¿½Ö»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ")]
+    [SerializeField]
+    private float enemyHealthIncreaseInterval = 20f;
 
-    [Tooltip("Ã¿´ÎÌá¸ß¶àÉÙµãµÐÈË×î´óÉúÃüÖµ")]
-    [SerializeField] private int enemyHealthIncreaseAmount = 1;
+    [Tooltip("Ã¿ï¿½ï¿½ï¿½ï¿½ß¶ï¿½ï¿½Ùµï¿½È«ï¿½Ö»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ")]
+    [SerializeField]
+    private int enemyHealthIncreaseAmount = 1;
 
-    [Tooltip("µÐÈË×î´óÉúÃüÖµÔÊÐí³É³¤µ½µÄ×îÖÕÉÏÏÞ")]
+    [Tooltip("È«ï¿½Ö»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½É³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
     [SerializeField] private int enemyMaxHealthLimit = 6;
 
     [Header("Enemy Move Speed Difficulty")]
-    [Tooltip("ÓÎÏ·¿ªÊ¼Ê±ÐÂÉú³ÉµÐÈËµÄÒÆ¶¯ËÙ¶È")]
-    [SerializeField] private float enemyInitialMoveSpeed = 1.5f;
+    [Tooltip("ï¿½ï¿½Ï·ï¿½ï¿½Ê¼Ê±ï¿½ï¿½Í¨ï¿½ï¿½ï¿½Ëµï¿½È«ï¿½Ö»ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½Ù¶ï¿½")]
+    [SerializeField]
+    private float enemyInitialMoveSpeed = 1.5f;
 
-    [Tooltip("Ã¿¸ô¶àÉÙÃëÌá¸ßÒ»´ÎµÐÈËµÄÒÆ¶¯ËÙ¶È")]
-    [SerializeField] private float enemyMoveSpeedIncreaseInterval = 20f;
+    [Tooltip("Ã¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½È«ï¿½Ö»ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½Ù¶ï¿½")]
+    [SerializeField]
+    private float enemyMoveSpeedIncreaseInterval = 20f;
 
-    [Tooltip("Ã¿´ÎÌá¸ß¶àÉÙµÐÈËÒÆ¶¯ËÙ¶È")]
-    [SerializeField] private float enemyMoveSpeedIncreaseAmount = 0.25f;
+    [Tooltip("Ã¿ï¿½ï¿½ï¿½ï¿½ß¶ï¿½ï¿½ï¿½È«ï¿½Ö»ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½Ù¶ï¿½")]
+    [SerializeField]
+    private float enemyMoveSpeedIncreaseAmount = 0.25f;
 
-    [Tooltip("µÐÈËÒÆ¶¯ËÙ¶ÈÔÊÐí³É³¤µ½µÄ×îÖÕÉÏÏÞ")]
-    [SerializeField] private float enemyMoveSpeedLimit = 2.25f;
+    [Tooltip("È«ï¿½Ö»ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½Ù¶ï¿½ï¿½ï¿½ï¿½ï¿½É³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
+    [SerializeField]
+    private float enemyMoveSpeedLimit = 2.25f;
 
     [Header("Enemy Contact Damage Difficulty")]
-    [Tooltip("ÓÎÏ·¿ªÊ¼Ê±ÐÂÉú³ÉµÐÈËµÄ½Ó´¥ÉËº¦")]
-    [SerializeField] private int enemyInitialContactDamage = 1;
+    [Tooltip("ï¿½ï¿½Ï·ï¿½ï¿½Ê¼Ê±ï¿½ï¿½Í¨ï¿½ï¿½ï¿½Ëµï¿½È«ï¿½Ö»ï¿½ï¿½ï¿½ï¿½Ó´ï¿½ï¿½Ëºï¿½")]
+    [SerializeField]
+    private int enemyInitialContactDamage = 1;
 
-    [Tooltip("Ã¿¸ô¶àÉÙÃëÌá¸ßÒ»´ÎµÐÈËµÄ½Ó´¥ÉËº¦")]
-    [SerializeField] private float enemyContactDamageIncreaseInterval = 30f;
+    [Tooltip("Ã¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½È«ï¿½Ö»ï¿½ï¿½ï¿½ï¿½Ó´ï¿½ï¿½Ëºï¿½")]
+    [SerializeField]
+    private float enemyContactDamageIncreaseInterval = 30f;
 
-    [Tooltip("Ã¿´ÎÌá¸ß¶àÉÙµãµÐÈË½Ó´¥ÉËº¦")]
-    [SerializeField] private int enemyContactDamageIncreaseAmount = 1;
+    [Tooltip("Ã¿ï¿½ï¿½ï¿½ï¿½ß¶ï¿½ï¿½Ùµï¿½È«ï¿½Ö»ï¿½ï¿½ï¿½ï¿½Ó´ï¿½ï¿½Ëºï¿½")]
+    [SerializeField]
+    private int enemyContactDamageIncreaseAmount = 1;
 
-    [Tooltip("µÐÈË½Ó´¥ÉËº¦ÔÊÐí³É³¤µ½µÄ×îÖÕÉÏÏÞ")]
-    [SerializeField] private int enemyContactDamageLimit = 3;
+    [Tooltip("È«ï¿½Ö»ï¿½ï¿½ï¿½ï¿½Ó´ï¿½ï¿½Ëºï¿½ï¿½ï¿½ï¿½ï¿½É³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
+    [SerializeField]
+    private int enemyContactDamageLimit = 3;
 
     [Header("Spawn Distance")]
     [SerializeField] private float minSpawnDistance = 5f;
@@ -78,44 +98,54 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private string enemyTag = "Enemy";
 
     [Header("Debug Settings")]
+    [Tooltip("ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½Ê±ï¿½Ô¶ï¿½Ë¢ï¿½ï¿½")]
+    [SerializeField] private bool enableAutomaticSpawning = true;
+
+    [Tooltip("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½")]
     [SerializeField] private bool spawnOnStart = true;
 
     [Header("Runtime Spawn Debug")]
-    [Tooltip("µ±Ç°Êµ¼ÊÊ¹ÓÃµÄË¢¹Ö¼ä¸ô")]
+    [Tooltip("ï¿½ï¿½Ç°Êµï¿½ï¿½Ê¹ï¿½Ãµï¿½Ë¢ï¿½Ö¼ï¿½ï¿½")]
     [SerializeField] private float currentSpawnInterval;
 
-    [Tooltip("µ±Ç°Êµ¼ÊÔÊÐí´æÔÚµÄ×î´óµÐÈËÊý")]
+    [Tooltip("ï¿½ï¿½Ç°Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
     [SerializeField] private int currentMaxEnemies;
 
-    [Tooltip("×î½üÒ»´Î¼ì²âµ½µÄ³¡ÉÏµÐÈËÊý")]
+    [Tooltip("ï¿½ï¿½ï¿½Ò»ï¿½Î¼ï¿½âµ½ï¿½Ä³ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½ï¿½")]
     [SerializeField] private int currentEnemyCount;
 
     [Header("Runtime Enemy Attribute Debug")]
-    [Tooltip("µ±Ç°Ê±¼äµãÐÂÉú³ÉµÐÈËÓ¦¾ßÓÐµÄ×î´óÉúÃüÖµ")]
+    [Tooltip("ï¿½ï¿½Ç°Ê±ï¿½ï¿½ï¿½ï¿½È«ï¿½Ö»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ")]
     [SerializeField] private int currentEnemyMaxHealth;
 
-    [Tooltip("µ±Ç°Ê±¼äµãÐÂÉú³ÉµÐÈËÓ¦¾ßÓÐµÄÒÆ¶¯ËÙ¶È")]
+    [Tooltip("ï¿½ï¿½Ç°Ê±ï¿½ï¿½ï¿½ï¿½È«ï¿½Ö»ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½Ù¶ï¿½")]
     [SerializeField] private float currentEnemyMoveSpeed;
 
-    [Tooltip("µ±Ç°Ê±¼äµãÐÂÉú³ÉµÐÈËÓ¦¾ßÓÐµÄ½Ó´¥ÉËº¦")]
+    [Tooltip("ï¿½ï¿½Ç°Ê±ï¿½ï¿½ï¿½ï¿½È«ï¿½Ö»ï¿½ï¿½ï¿½ï¿½Ó´ï¿½ï¿½Ëºï¿½")]
     [SerializeField] private int currentEnemyContactDamage;
 
     private Transform player;
     private float spawnTimer;
 
-    public int CurrentEnemyMaxHealth => currentEnemyMaxHealth;
-    public float CurrentEnemyMoveSpeed => currentEnemyMoveSpeed;
-    public int CurrentEnemyContactDamage => currentEnemyContactDamage;
+    public int CurrentEnemyMaxHealth =>
+        currentEnemyMaxHealth;
+
+    public float CurrentEnemyMoveSpeed =>
+        currentEnemyMoveSpeed;
+
+    public int CurrentEnemyContactDamage =>
+        currentEnemyContactDamage;
 
     private void Start()
     {
         FindPlayer();
-
         UpdateDifficulty();
 
         spawnTimer = 0f;
 
-        if (spawnOnStart && CanSpawnEnemies())
+        if (enableAutomaticSpawning
+            && spawnOnStart
+            && CanSpawnEnemies())
         {
             TrySpawnEnemy();
         }
@@ -123,6 +153,11 @@ public class EnemySpawner : MonoBehaviour
 
     private void Update()
     {
+        if (!enableAutomaticSpawning)
+        {
+            return;
+        }
+
         if (!CanSpawnEnemies())
         {
             return;
@@ -156,7 +191,8 @@ public class EnemySpawner : MonoBehaviour
             return false;
         }
 
-        if (GameManager.Instance.CurrentState != GameState.Playing)
+        if (GameManager.Instance.CurrentState
+            != GameState.Playing)
         {
             return false;
         }
@@ -175,33 +211,43 @@ public class EnemySpawner : MonoBehaviour
 
         if (GameManager.Instance != null)
         {
-            survivalTime = GameManager.Instance.SurvivalTime;
+            survivalTime =
+                GameManager.Instance.SurvivalTime;
         }
 
-        survivalTime = Mathf.Max(0f, survivalTime);
+        survivalTime = Mathf.Max(
+            0f,
+            survivalTime
+        );
 
         UpdateSpawnDifficulty(survivalTime);
         UpdateEnemyAttributeDifficulty(survivalTime);
     }
 
-    private void UpdateSpawnDifficulty(float survivalTime)
+    private void UpdateSpawnDifficulty(
+        float survivalTime
+    )
     {
         currentSpawnInterval =
-            spawnInterval -
-            survivalTime * spawnIntervalDecreasePerSecond;
+            spawnInterval
+            - survivalTime
+            * spawnIntervalDecreasePerSecond;
 
         currentSpawnInterval = Mathf.Max(
             minSpawnInterval,
             currentSpawnInterval
         );
 
-        int enemyCountIncreaseCount = Mathf.FloorToInt(
-            survivalTime / maxEnemiesIncreaseInterval
-        );
+        int enemyCountIncreaseCount =
+            Mathf.FloorToInt(
+                survivalTime
+                / maxEnemiesIncreaseInterval
+            );
 
         currentMaxEnemies =
-            maxEnemies +
-            enemyCountIncreaseCount * maxEnemiesIncreaseAmount;
+            maxEnemies
+            + enemyCountIncreaseCount
+            * maxEnemiesIncreaseAmount;
 
         currentMaxEnemies = Mathf.Min(
             currentMaxEnemies,
@@ -209,29 +255,45 @@ public class EnemySpawner : MonoBehaviour
         );
     }
 
-    private void UpdateEnemyAttributeDifficulty(float survivalTime)
+    private void UpdateEnemyAttributeDifficulty(
+        float survivalTime
+    )
     {
         currentEnemyMaxHealth =
-            CalculateEnemyMaxHealth(survivalTime);
+            CalculateEnemyMaxHealth(
+                survivalTime
+            );
 
         currentEnemyMoveSpeed =
-            CalculateEnemyMoveSpeed(survivalTime);
+            CalculateEnemyMoveSpeed(
+                survivalTime
+            );
 
         currentEnemyContactDamage =
-            CalculateEnemyContactDamage(survivalTime);
+            CalculateEnemyContactDamage(
+                survivalTime
+            );
     }
 
-    private int CalculateEnemyMaxHealth(float survivalTime)
+    private int CalculateEnemyMaxHealth(
+        float survivalTime
+    )
     {
-        survivalTime = Mathf.Max(0f, survivalTime);
-
-        int increaseCount = Mathf.FloorToInt(
-            survivalTime / enemyHealthIncreaseInterval
+        survivalTime = Mathf.Max(
+            0f,
+            survivalTime
         );
 
+        int increaseCount =
+            Mathf.FloorToInt(
+                survivalTime
+                / enemyHealthIncreaseInterval
+            );
+
         int calculatedMaxHealth =
-            enemyInitialMaxHealth +
-            increaseCount * enemyHealthIncreaseAmount;
+            enemyInitialMaxHealth
+            + increaseCount
+            * enemyHealthIncreaseAmount;
 
         return Mathf.Min(
             calculatedMaxHealth,
@@ -239,17 +301,25 @@ public class EnemySpawner : MonoBehaviour
         );
     }
 
-    private float CalculateEnemyMoveSpeed(float survivalTime)
+    private float CalculateEnemyMoveSpeed(
+        float survivalTime
+    )
     {
-        survivalTime = Mathf.Max(0f, survivalTime);
-
-        int increaseCount = Mathf.FloorToInt(
-            survivalTime / enemyMoveSpeedIncreaseInterval
+        survivalTime = Mathf.Max(
+            0f,
+            survivalTime
         );
 
+        int increaseCount =
+            Mathf.FloorToInt(
+                survivalTime
+                / enemyMoveSpeedIncreaseInterval
+            );
+
         float calculatedMoveSpeed =
-            enemyInitialMoveSpeed +
-            increaseCount * enemyMoveSpeedIncreaseAmount;
+            enemyInitialMoveSpeed
+            + increaseCount
+            * enemyMoveSpeedIncreaseAmount;
 
         return Mathf.Min(
             calculatedMoveSpeed,
@@ -257,17 +327,25 @@ public class EnemySpawner : MonoBehaviour
         );
     }
 
-    private int CalculateEnemyContactDamage(float survivalTime)
+    private int CalculateEnemyContactDamage(
+        float survivalTime
+    )
     {
-        survivalTime = Mathf.Max(0f, survivalTime);
-
-        int increaseCount = Mathf.FloorToInt(
-            survivalTime / enemyContactDamageIncreaseInterval
+        survivalTime = Mathf.Max(
+            0f,
+            survivalTime
         );
 
+        int increaseCount =
+            Mathf.FloorToInt(
+                survivalTime
+                / enemyContactDamageIncreaseInterval
+            );
+
         int calculatedDamage =
-            enemyInitialContactDamage +
-            increaseCount * enemyContactDamageIncreaseAmount;
+            enemyInitialContactDamage
+            + increaseCount
+            * enemyContactDamageIncreaseAmount;
 
         return Mathf.Min(
             calculatedDamage,
@@ -278,7 +356,9 @@ public class EnemySpawner : MonoBehaviour
     private void FindPlayer()
     {
         GameObject playerObject =
-            GameObject.FindGameObjectWithTag(playerTag);
+            GameObject.FindGameObjectWithTag(
+                playerTag
+            );
 
         if (playerObject != null)
         {
@@ -287,167 +367,299 @@ public class EnemySpawner : MonoBehaviour
         else
         {
             Debug.LogWarning(
-                "EnemySpawner: Ã»ÓÐÕÒµ½ Tag Îª Player µÄ¶ÔÏó£¬Çë¼ì²é Player µÄ Tag ÉèÖÃ¡£"
+                "EnemySpawner: Ã»ï¿½ï¿½ï¿½Òµï¿½ Tag Îª "
+                + playerTag
+                + " ï¿½Ä¶ï¿½ï¿½ï¿½",
+                this
             );
         }
     }
 
+    /// <summary>
+    /// ï¿½ï¿½Ç°ï¿½ï¿½Ê½ï¿½Ô¶ï¿½Ë¢ï¿½ï¿½ï¿½ï¿½Ê±Ö»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½Ë¡ï¿½
+    /// ï¿½ï¿½ï¿½×¶Î²ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¨ï¿½Ø¡ï¿½
+    /// </summary>
     private void TrySpawnEnemy()
+    {
+        SpawnEnemyFromPrefab(
+            normalEnemyPrefab,
+            true,
+            "Normal"
+        );
+    }
+
+    /// <summary>
+    /// ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½Ë£ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ EnemyDefinition
+    /// Ó¦ï¿½Ãµï¿½Ç°È«ï¿½ï¿½ï¿½Ñ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í±ï¿½ï¿½Ê¡ï¿½
+    /// </summary>
+    private bool SpawnEnemyFromPrefab(
+        GameObject enemyPrefab,
+        bool respectEnemyLimit,
+        string enemyLabel
+    )
     {
         if (enemyPrefab == null)
         {
             Debug.LogWarning(
-                "EnemySpawner: enemyPrefab Ã»ÓÐ°ó¶¨£¬ÇëÔÚ Inspector ÖÐÍÏÈë Enemy.prefab¡£"
+                "EnemySpawner: "
+                + enemyLabel
+                + " Enemy Prefab Ã»ï¿½Ð°ó¶¨¡ï¿½",
+                this
             );
 
-            return;
+            return false;
         }
 
         if (player == null)
         {
-            Debug.LogWarning(
-                "EnemySpawner: player Îª¿Õ£¬ÎÞ·¨Éú³É Enemy¡£"
-            );
+            FindPlayer();
 
-            return;
+            if (player == null)
+            {
+                Debug.LogWarning(
+                    "EnemySpawner: Player Îªï¿½Õ£ï¿½"
+                    + "ï¿½Þ·ï¿½ï¿½ï¿½ï¿½ï¿½ "
+                    + enemyLabel
+                    + " Enemyï¿½ï¿½",
+                    this
+                );
+
+                return false;
+            }
         }
 
-        currentEnemyCount =
-            GameObject.FindGameObjectsWithTag(enemyTag).Length;
+        RefreshCurrentEnemyCount();
 
-        if (currentEnemyCount >= currentMaxEnemies)
+        if (respectEnemyLimit
+            && currentEnemyCount >= currentMaxEnemies)
         {
-            return;
+            return false;
         }
 
         Vector3 spawnPosition =
             GetRandomSpawnPositionAroundPlayer();
 
-        GameObject spawnedEnemy = Instantiate(
-            enemyPrefab,
-            spawnPosition,
-            Quaternion.identity
-        );
+        GameObject spawnedEnemy =
+            Instantiate(
+                enemyPrefab,
+                spawnPosition,
+                Quaternion.identity
+            );
 
-        InitializeEnemyAttributes(spawnedEnemy);
+        if (!InitializeEnemyAttributes(
+                spawnedEnemy
+            ))
+        {
+            Destroy(spawnedEnemy);
+            return false;
+        }
 
-        currentEnemyCount++;
+        RefreshCurrentEnemyCount();
+
+        return true;
     }
 
     /// <summary>
-    /// ½«µ±Ç°ÄÑ¶ÈÊôÐÔÓ¦ÓÃµ½±¾´ÎÐÂÉú³ÉµÄµÐÈË¡£
-    /// ÒÑ¾­´æÔÚµÄµÐÈË²»»áÊÜµ½Ó°Ïì¡£
+    /// ï¿½ï¿½ï¿½ï¿½Ç°È«ï¿½ï¿½ï¿½Ñ¶È»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½Ý¸ï¿½ EnemyDefinitionï¿½ï¿½
+    ///
+    /// EnemyDefinition ï¿½Ù¸ï¿½ï¿½Ý°ó¶¨µï¿½ EnemyData
+    /// ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Íµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¡ï¿½
     /// </summary>
-    private void InitializeEnemyAttributes(GameObject spawnedEnemy)
+    private bool InitializeEnemyAttributes(
+        GameObject spawnedEnemy
+    )
     {
         if (spawnedEnemy == null)
         {
-            Debug.LogWarning(
-                "EnemySpawner: Éú³ÉµÄ Enemy ¶ÔÏóÎª¿Õ£¬ÎÞ·¨³õÊ¼»¯ÊôÐÔ¡£"
+            Debug.LogError(
+                "EnemySpawner: ï¿½ï¿½ï¿½ÉµÄµï¿½ï¿½ï¿½Îªï¿½Õ£ï¿½"
+                + "ï¿½Þ·ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½Ô¡ï¿½",
+                this
             );
 
-            return;
+            return false;
         }
 
-        EnemyHealth enemyHealth =
-            spawnedEnemy.GetComponent<EnemyHealth>();
+        EnemyDefinition enemyDefinition =
+            spawnedEnemy.GetComponent<
+                EnemyDefinition
+            >();
 
-        if (enemyHealth != null)
+        if (enemyDefinition == null)
         {
-            enemyHealth.InitializeHealth(
-                currentEnemyMaxHealth
+            Debug.LogError(
+                spawnedEnemy.name
+                + " Ã»ï¿½ï¿½ EnemyDefinitionï¿½ï¿½"
+                + "ï¿½Þ·ï¿½Ó¦ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¡ï¿½",
+                spawnedEnemy
             );
-        }
-        else
-        {
-            Debug.LogWarning(
-                $"{spawnedEnemy.name} Ã»ÓÐÕÒµ½ EnemyHealth£¬ÎÞ·¨³õÊ¼»¯ÉúÃüÖµ¡£"
-            );
+
+            return false;
         }
 
-        EnemyMovement enemyMovement =
-            spawnedEnemy.GetComponent<EnemyMovement>();
-
-        if (enemyMovement != null)
-        {
-            enemyMovement.InitializeMoveSpeed(
-                currentEnemyMoveSpeed
-            );
-        }
-        else
-        {
-            Debug.LogWarning(
-                $"{spawnedEnemy.name} Ã»ÓÐÕÒµ½ EnemyMovement£¬ÎÞ·¨³õÊ¼»¯ÒÆ¶¯ËÙ¶È¡£"
-            );
-        }
-
-        EnemyContactDamage enemyContactDamage =
-            spawnedEnemy.GetComponent<EnemyContactDamage>();
-
-        if (enemyContactDamage != null)
-        {
-            enemyContactDamage.InitializeDamage(
+        enemyDefinition
+            .InitializeFromGlobalDifficulty(
+                currentEnemyMaxHealth,
+                currentEnemyMoveSpeed,
                 currentEnemyContactDamage
             );
-        }
-        else
+
+        if (!enemyDefinition.HasBeenInitialized)
         {
-            Debug.LogWarning(
-                $"{spawnedEnemy.name} Ã»ÓÐÕÒµ½ EnemyContactDamage£¬ÎÞ·¨³õÊ¼»¯½Ó´¥ÉËº¦¡£"
+            Debug.LogError(
+                spawnedEnemy.name
+                + " ï¿½ï¿½ EnemyDefinition "
+                + "ï¿½ï¿½Ê¼ï¿½ï¿½Ê§ï¿½Ü¡ï¿½",
+                spawnedEnemy
             );
+
+            return false;
         }
 
-        Debug.Log(
-            $"{spawnedEnemy.name} ÊôÐÔ³õÊ¼»¯Íê³É£º" +
-            $" HP={currentEnemyMaxHealth}," +
-            $" Speed={currentEnemyMoveSpeed:F2}," +
-            $" Damage={currentEnemyContactDamage}"
-        );
+        return true;
     }
 
-    private Vector3 GetRandomSpawnPositionAroundPlayer()
+    private void RefreshCurrentEnemyCount()
     {
-        float randomAngle = Random.Range(0f, 360f);
+        currentEnemyCount =
+            GameObject.FindGameObjectsWithTag(
+                enemyTag
+            ).Length;
+    }
 
-        float randomDistance = Random.Range(
-            minSpawnDistance,
-            maxSpawnDistance
-        );
+    private Vector3
+        GetRandomSpawnPositionAroundPlayer()
+    {
+        float randomAngle =
+            Random.Range(0f, 360f);
 
-        Vector2 direction = new Vector2(
-            Mathf.Cos(randomAngle * Mathf.Deg2Rad),
-            Mathf.Sin(randomAngle * Mathf.Deg2Rad)
-        );
+        float randomDistance =
+            Random.Range(
+                minSpawnDistance,
+                maxSpawnDistance
+            );
+
+        Vector2 direction =
+            new Vector2(
+                Mathf.Cos(
+                    randomAngle
+                    * Mathf.Deg2Rad
+                ),
+                Mathf.Sin(
+                    randomAngle
+                    * Mathf.Deg2Rad
+                )
+            );
 
         Vector3 spawnPosition =
-            player.position +
-            (Vector3)(direction * randomDistance);
+            player.position
+            + (Vector3)(
+                direction
+                * randomDistance
+            );
 
         spawnPosition.z = 0f;
 
         return spawnPosition;
     }
 
-    private void LogDifficultyAtTime(float testSurvivalTime)
+    /// <summary>
+    /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¡ï¿½
+    /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Éºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ£ï¿½
+    /// ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ Playing ×´Ì¬ï¿½ï¿½
+    /// </summary>
+    private void SpawnEnemyForTesting(
+        GameObject enemyPrefab,
+        string enemyLabel
+    )
     {
-        testSurvivalTime = Mathf.Max(0f, testSurvivalTime);
+        if (!Application.isPlaying)
+        {
+            Debug.LogWarning(
+                "ï¿½ï¿½ï¿½ï¿½ï¿½ Play Ä£Ê½ï¿½ï¿½ï¿½Ù²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ "
+                + enemyLabel
+                + " Enemyï¿½ï¿½",
+                this
+            );
+
+            return;
+        }
+
+        if (!CanSpawnEnemies())
+        {
+            Debug.LogWarning(
+                "ï¿½ï¿½Ç°ï¿½ï¿½Ï·×´Ì¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Éµï¿½ï¿½Ë¡ï¿½",
+                this
+            );
+
+            return;
+        }
+
+        UpdateDifficulty();
+
+        SpawnEnemyFromPrefab(
+            enemyPrefab,
+            false,
+            enemyLabel
+        );
+    }
+
+    [ContextMenu("Test Spawn Normal Enemy")]
+    private void TestSpawnNormalEnemy()
+    {
+        SpawnEnemyForTesting(
+            normalEnemyPrefab,
+            "Normal"
+        );
+    }
+
+    [ContextMenu("Test Spawn Fast Enemy")]
+    private void TestSpawnFastEnemy()
+    {
+        SpawnEnemyForTesting(
+            fastEnemyPrefab,
+            "Fast"
+        );
+    }
+
+    [ContextMenu("Test Spawn Heavy Enemy")]
+    private void TestSpawnHeavyEnemy()
+    {
+        SpawnEnemyForTesting(
+            heavyEnemyPrefab,
+            "Heavy"
+        );
+    }
+
+    private void LogDifficultyAtTime(
+        float testSurvivalTime
+    )
+    {
+        testSurvivalTime = Mathf.Max(
+            0f,
+            testSurvivalTime
+        );
 
         float testSpawnInterval =
-            spawnInterval -
-            testSurvivalTime * spawnIntervalDecreasePerSecond;
+            spawnInterval
+            - testSurvivalTime
+            * spawnIntervalDecreasePerSecond;
 
         testSpawnInterval = Mathf.Max(
             minSpawnInterval,
             testSpawnInterval
         );
 
-        int enemyCountIncreaseCount = Mathf.FloorToInt(
-            testSurvivalTime / maxEnemiesIncreaseInterval
-        );
+        int enemyCountIncreaseCount =
+            Mathf.FloorToInt(
+                testSurvivalTime
+                / maxEnemiesIncreaseInterval
+            );
 
         int testMaxEnemies =
-            maxEnemies +
-            enemyCountIncreaseCount * maxEnemiesIncreaseAmount;
+            maxEnemies
+            + enemyCountIncreaseCount
+            * maxEnemiesIncreaseAmount;
 
         testMaxEnemies = Mathf.Min(
             testMaxEnemies,
@@ -455,21 +667,35 @@ public class EnemySpawner : MonoBehaviour
         );
 
         int testEnemyMaxHealth =
-            CalculateEnemyMaxHealth(testSurvivalTime);
+            CalculateEnemyMaxHealth(
+                testSurvivalTime
+            );
 
         float testEnemyMoveSpeed =
-            CalculateEnemyMoveSpeed(testSurvivalTime);
+            CalculateEnemyMoveSpeed(
+                testSurvivalTime
+            );
 
         int testEnemyContactDamage =
-            CalculateEnemyContactDamage(testSurvivalTime);
+            CalculateEnemyContactDamage(
+                testSurvivalTime
+            );
 
         Debug.Log(
-            $"===== Difficulty At {testSurvivalTime:F0} Seconds =====\n" +
-            $"Spawn Interval: {testSpawnInterval:F2}\n" +
-            $"Max Enemies: {testMaxEnemies}\n" +
-            $"Enemy Max Health: {testEnemyMaxHealth}\n" +
-            $"Enemy Move Speed: {testEnemyMoveSpeed:F2}\n" +
-            $"Enemy Contact Damage: {testEnemyContactDamage}"
+            "===== Difficulty At "
+            + testSurvivalTime.ToString("F0")
+            + " Seconds =====\n"
+            + "Spawn Interval: "
+            + testSpawnInterval.ToString("F2")
+            + "\nMax Enemies: "
+            + testMaxEnemies
+            + "\nGlobal Enemy Max Health: "
+            + testEnemyMaxHealth
+            + "\nGlobal Enemy Move Speed: "
+            + testEnemyMoveSpeed.ToString("F2")
+            + "\nGlobal Enemy Contact Damage: "
+            + testEnemyContactDamage,
+            this
         );
     }
 
@@ -490,114 +716,208 @@ public class EnemySpawner : MonoBehaviour
     {
         LogDifficultyAtTime(60f);
     }
-
-    private void OnValidate()
+    /// <summary>
+    /// ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¡ï¿½
+    ///
+    /// ï¿½Ë·ï¿½ï¿½ï¿½Ö»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÖµÔ¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Éµï¿½ï¿½Ë£ï¿½
+    /// Ò²ï¿½ï¿½ï¿½ï¿½ï¿½Þ¸Äµï¿½Ç°ï¿½ï¿½Ï·×´Ì¬ï¿½ï¿½
+    /// </summary>
+    private void LogEnemyTypeStatsAtTime(
+        float testSurvivalTime
+    )
     {
-        spawnInterval = Mathf.Max(
-            0.01f,
-            spawnInterval
+        testSurvivalTime =
+            Mathf.Max(0f, testSurvivalTime);
+
+        int globalMaxHealth =
+            CalculateEnemyMaxHealth(
+                testSurvivalTime
+            );
+
+        float globalMoveSpeed =
+            CalculateEnemyMoveSpeed(
+                testSurvivalTime
+            );
+
+        int globalContactDamage =
+            CalculateEnemyContactDamage(
+                testSurvivalTime
+            );
+
+        Debug.Log(
+            "===== Enemy Type Stats At "
+            + testSurvivalTime.ToString("F0")
+            + " Seconds =====\n"
+            + "Global HP="
+            + globalMaxHealth
+            + ", Global Speed="
+            + globalMoveSpeed.ToString("F2")
+            + ", Global Damage="
+            + globalContactDamage,
+            this
         );
 
-        minSpawnInterval = Mathf.Clamp(
-            minSpawnInterval,
-            0.01f,
-            spawnInterval
+        LogSingleEnemyTypeStats(
+            normalEnemyPrefab,
+            "Normal",
+            globalMaxHealth,
+            globalMoveSpeed,
+            globalContactDamage
         );
 
-        spawnIntervalDecreasePerSecond = Mathf.Max(
-            0f,
-            spawnIntervalDecreasePerSecond
+        LogSingleEnemyTypeStats(
+            fastEnemyPrefab,
+            "Fast",
+            globalMaxHealth,
+            globalMoveSpeed,
+            globalContactDamage
         );
 
-        maxEnemies = Mathf.Max(
+        LogSingleEnemyTypeStats(
+            heavyEnemyPrefab,
+            "Heavy",
+            globalMaxHealth,
+            globalMoveSpeed,
+            globalContactDamage
+        );
+    }
+
+    /// <summary>
+    /// ï¿½ï¿½È¡Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Prefab ï¿½ó¶¨µï¿½ EnemyDataï¿½ï¿½
+    /// ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½Í±ï¿½ï¿½Êºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¡ï¿½
+    /// </summary>
+    private void LogSingleEnemyTypeStats(
+        GameObject enemyPrefab,
+        string enemyLabel,
+        int globalMaxHealth,
+        float globalMoveSpeed,
+        int globalContactDamage
+    )
+    {
+        if (enemyPrefab == null)
+        {
+            Debug.LogWarning(
+                enemyLabel
+                + " Enemy Prefab Ã»ï¿½Ð°ó¶¨£ï¿½"
+                + "ï¿½Þ·ï¿½Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½Ô¡ï¿½",
+                this
+            );
+
+            return;
+        }
+
+        EnemyDefinition enemyDefinition =
+            enemyPrefab.GetComponent<
+                EnemyDefinition
+            >();
+
+        if (enemyDefinition == null)
+        {
+            Debug.LogWarning(
+                enemyPrefab.name
+                + " Ã»ï¿½ï¿½ EnemyDefinitionï¿½ï¿½"
+                + "ï¿½Þ·ï¿½Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½Ô¡ï¿½",
+                enemyPrefab
+            );
+
+            return;
+        }
+
+        EnemyData enemyData =
+            enemyDefinition.Data;
+
+        if (enemyData == null)
+        {
+            Debug.LogWarning(
+                enemyPrefab.name
+                + " Ã»ï¿½Ð°ï¿½ EnemyDataï¿½ï¿½"
+                + "ï¿½Þ·ï¿½Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½Ô¡ï¿½",
+                enemyPrefab
+            );
+
+            return;
+        }
+
+        int finalMaxHealth =
+            RoundEnemyAttributeToPositiveInt(
+                globalMaxHealth
+                * enemyData.HealthMultiplier
+            );
+
+        float finalMoveSpeed =
+            Mathf.Max(
+                0.01f,
+                globalMoveSpeed
+                * enemyData.MoveSpeedMultiplier
+            );
+
+        int finalContactDamage =
+            RoundEnemyAttributeToPositiveInt(
+                globalContactDamage
+                * enemyData.DamageMultiplier
+            );
+
+        int finalExperienceAmount =
+            Mathf.Max(
+                1,
+                enemyData.ExperienceAmount
+            );
+
+        float finalVisualScale =
+            Mathf.Max(
+                0.1f,
+                enemyData.VisualScale
+            );
+
+        Debug.Log(
+            enemyLabel
+            + " Enemy"
+            + ": HP="
+            + finalMaxHealth
+            + ", Speed="
+            + finalMoveSpeed.ToString("F3")
+            + ", Damage="
+            + finalContactDamage
+            + ", EXP="
+            + finalExperienceAmount
+            + ", Scale="
+            + finalVisualScale.ToString("F2"),
+            enemyPrefab
+        );
+    }
+
+    /// <summary>
+    /// ï¿½ï¿½ EnemyDefinition Ê¹ï¿½ï¿½ï¿½ï¿½Í¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    /// </summary>
+    private int RoundEnemyAttributeToPositiveInt(
+        float value
+    )
+    {
+        int roundedValue =
+            Mathf.FloorToInt(value + 0.5f);
+
+        return Mathf.Max(
             1,
-            maxEnemies
+            roundedValue
         );
+    }
 
-        maxEnemiesLimit = Mathf.Max(
-            maxEnemies,
-            maxEnemiesLimit
-        );
+    [ContextMenu("Debug Enemy Types At 0 Seconds")]
+    private void DebugEnemyTypesAt0Seconds()
+    {
+        LogEnemyTypeStatsAtTime(0f);
+    }
 
-        maxEnemiesIncreaseInterval = Mathf.Max(
-            0.1f,
-            maxEnemiesIncreaseInterval
-        );
+    [ContextMenu("Debug Enemy Types At 30 Seconds")]
+    private void DebugEnemyTypesAt30Seconds()
+    {
+        LogEnemyTypeStatsAtTime(30f);
+    }
 
-        maxEnemiesIncreaseAmount = Mathf.Max(
-            1,
-            maxEnemiesIncreaseAmount
-        );
-
-        enemyInitialMaxHealth = Mathf.Max(
-            1,
-            enemyInitialMaxHealth
-        );
-
-        enemyHealthIncreaseInterval = Mathf.Max(
-            0.1f,
-            enemyHealthIncreaseInterval
-        );
-
-        enemyHealthIncreaseAmount = Mathf.Max(
-            1,
-            enemyHealthIncreaseAmount
-        );
-
-        enemyMaxHealthLimit = Mathf.Max(
-            enemyInitialMaxHealth,
-            enemyMaxHealthLimit
-        );
-
-        enemyInitialMoveSpeed = Mathf.Max(
-            0f,
-            enemyInitialMoveSpeed
-        );
-
-        enemyMoveSpeedIncreaseInterval = Mathf.Max(
-            0.1f,
-            enemyMoveSpeedIncreaseInterval
-        );
-
-        enemyMoveSpeedIncreaseAmount = Mathf.Max(
-            0f,
-            enemyMoveSpeedIncreaseAmount
-        );
-
-        enemyMoveSpeedLimit = Mathf.Max(
-            enemyInitialMoveSpeed,
-            enemyMoveSpeedLimit
-        );
-
-        enemyInitialContactDamage = Mathf.Max(
-            1,
-            enemyInitialContactDamage
-        );
-
-        enemyContactDamageIncreaseInterval = Mathf.Max(
-            0.1f,
-            enemyContactDamageIncreaseInterval
-        );
-
-        enemyContactDamageIncreaseAmount = Mathf.Max(
-            1,
-            enemyContactDamageIncreaseAmount
-        );
-
-        enemyContactDamageLimit = Mathf.Max(
-            enemyInitialContactDamage,
-            enemyContactDamageLimit
-        );
-
-        minSpawnDistance = Mathf.Max(
-            0f,
-            minSpawnDistance
-        );
-
-        maxSpawnDistance = Mathf.Max(
-            minSpawnDistance,
-            maxSpawnDistance
-        );
+    [ContextMenu("Debug Enemy Types At 60 Seconds")]
+    private void DebugEnemyTypesAt60Seconds()
+    {
+        LogEnemyTypeStatsAtTime(60f);
     }
 
     private void OnDrawGizmosSelected()
@@ -611,16 +931,20 @@ public class EnemySpawner : MonoBehaviour
             try
             {
                 playerObject =
-                    GameObject.FindGameObjectWithTag(playerTag);
+                    GameObject
+                        .FindGameObjectWithTag(
+                            playerTag
+                        );
             }
             catch (UnityException)
             {
-                // ±à¼­Æ÷ÖÐ Tag ÉÐÎ´´´½¨Ê±£¬²»Ö´ÐÐ²éÕÒ¡£
+                // ï¿½à¼­ï¿½ï¿½ï¿½ï¿½ Tag ï¿½ï¿½Î´ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½Ö´ï¿½Ð²ï¿½ï¿½Ò¡ï¿½
             }
 
             if (playerObject != null)
             {
-                center = playerObject.transform;
+                center =
+                    playerObject.transform;
             }
             else
             {
