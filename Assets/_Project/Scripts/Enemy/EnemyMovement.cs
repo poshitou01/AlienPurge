@@ -85,6 +85,28 @@ public class EnemyMovement : MonoBehaviour
         );
     }
 
+    /// <summary>
+    /// 每次从 EnemyPool 取出时重置移动状态。
+    /// </summary>
+    public void PrepareForSpawn()
+    {
+        if (rb == null)
+        {
+            rb = GetComponent<Rigidbody2D>();
+        }
+
+        enabled = true;
+
+        target = null;
+
+        if (rb != null)
+        {
+            rb.velocity = Vector2.zero;
+            rb.angularVelocity = 0f;
+        }
+
+        FindPlayer();
+    }
     private void FindPlayer()
     {
         if (target != null)

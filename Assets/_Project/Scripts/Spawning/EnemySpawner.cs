@@ -13,13 +13,7 @@ public class EnemySpawner : MonoBehaviour
     new List<EnemySpawnEntry>();
 
 
-    [Header("Fallback Enemy Prefab")]
-    [Tooltip(
-        "当生成配置列表中没有任何有效候选时，"
-        + "用于安全回退的普通敌人 Prefab"
-    )]
-    [SerializeField]
-    private GameObject normalEnemyPrefab;
+
 
     [Header("Spawner Settings")]
     [Tooltip("游戏刚开始时的刷怪间隔")]
@@ -166,7 +160,7 @@ public class EnemySpawner : MonoBehaviour
 
     // 避免配置全部无效时，
     // 每个刷怪间隔都重复输出相同警告。
-    private bool hasWarnedAboutSpawnFallback;
+    private bool hasWarnedAboutMissingSpawnCandidate;
 
     public int CurrentEnemyMaxHealth =>
         currentEnemyMaxHealth;
@@ -653,13 +647,9 @@ public class EnemySpawner : MonoBehaviour
             );
         }
     }
-
     /// <summary>
-    /// 根据当前生存时间筛选有效候选，
-    /// 使用加权随机选择敌人并进行生成。
-    ///
-    /// 没有有效候选时，
-    /// 安全回退到普通敌人 Prefab。
+    /// 根据当前生存时间完成加权选择，
+    /// 然后从 EnemyPool 取得对应类型的敌人。
     /// </summary>
     private void TrySpawnEnemy()
     {
@@ -680,141 +670,66 @@ public class EnemySpawner : MonoBehaviour
                 survivalTime
             );
 
-        if (selectedEntry != null)
+        if (selectedEntry == null)
         {
-            hasWarnedAboutSpawnFallback =
-                false;
-
-            SpawnEnemyFromPrefab(
-                selectedEntry.Prefab,
-                true,
-                selectedEntry.Type.ToString()
-            );
-
-            return;
-        }
-
-        GameObject fallbackPrefab =
-            FindNormalFallbackPrefab();
-
-        if (!hasWarnedAboutSpawnFallback)
-        {
-            if (fallbackPrefab != null)
-            {
-                Debug.LogWarning(
-                    "EnemySpawner: 当前没有有效的"
-                    + "刷怪候选，已安全回退到"
-                    + "普通敌人。",
-                    this
-                );
-            }
-            else
+            if (!hasWarnedAboutMissingSpawnCandidate)
             {
                 Debug.LogError(
                     "EnemySpawner: 当前没有有效的"
-                    + "刷怪候选，并且找不到可用的"
-                    + "普通敌人回退 Prefab。",
+                    + "敌人生成候选，"
+                    + "本次对象池生成已安全取消。",
                     this
                 );
+
+                hasWarnedAboutMissingSpawnCandidate =
+                    true;
             }
 
-            hasWarnedAboutSpawnFallback =
-                true;
-        }
-
-        if (fallbackPrefab == null)
-        {
             return;
         }
 
-        SpawnEnemyFromPrefab(
-            fallbackPrefab,
+        hasWarnedAboutMissingSpawnCandidate =
+            false;
+
+        SpawnEnemyFromPool(
+            selectedEntry.Type,
             true,
-            "Normal Fallback"
+            selectedEntry.Type.ToString()
         );
     }
 
-    /// <summary>
-    /// 从生成配置列表中查找指定敌人类型的 Prefab。
-    ///
-    /// 该方法不检查权重和解锁时间，
-    /// 主要用于测试、属性预览和安全回退。
-    /// </summary>
-    private GameObject
-        FindConfiguredEnemyPrefab(
-            EnemyType enemyType
-        )
-    {
-        if (enemySpawnEntries == null)
-        {
-            return null;
-        }
-
-        for (int i = 0;
-            i < enemySpawnEntries.Count;
-            i++)
-        {
-            EnemySpawnEntry entry =
-                enemySpawnEntries[i];
-
-            if (entry == null)
-            {
-                continue;
-            }
-
-            if (entry.Type != enemyType)
-            {
-                continue;
-            }
-
-            if (entry.Prefab == null)
-            {
-                continue;
-            }
-
-            return entry.Prefab;
-        }
-
-        return null;
-    }
 
     /// <summary>
-    /// 查找普通敌人回退 Prefab。
-    ///
-    /// 优先读取生成配置列表中的 Normal Prefab；
-    /// 如果列表中找不到，再使用独立回退 Prefab。
+    /// 从 EnemyPool 取得指定类型的敌人，
+    /// 并应用当前时间点的最新难度属性。
     /// </summary>
-    private GameObject
-        FindNormalFallbackPrefab()
-    {
-        GameObject configuredNormalPrefab =
-            FindConfiguredEnemyPrefab(
-                EnemyType.Normal
-            );
-
-        if (configuredNormalPrefab != null)
-        {
-            return configuredNormalPrefab;
-        }
-
-        return normalEnemyPrefab;
-    }
-    /// <summary>
-    /// 生成指定敌人，并通过 EnemyDefinition
-    /// 应用当前全局难度属性与类型倍率。
-    /// </summary>
-    private bool SpawnEnemyFromPrefab(
-        GameObject enemyPrefab,
+    private bool SpawnEnemyFromPool(
+        EnemyType enemyType,
         bool respectEnemyLimit,
         string enemyLabel
     )
     {
-        if (enemyPrefab == null)
+        if (EnemyPool.Instance == null)
         {
-            Debug.LogWarning(
-                "EnemySpawner: "
+            Debug.LogError(
+                "EnemySpawner: 场景中没有 EnemyPool，"
+                + "无法生成 "
                 + enemyLabel
-                + " Enemy Prefab 没有绑定。",
+                + " Enemy。",
+                this
+            );
+
+            return false;
+        }
+
+        if (!EnemyPool.Instance.IsInitialized)
+        {
+            Debug.LogError(
+                "EnemySpawner: EnemyPool "
+                + "尚未完成有效初始化，"
+                + "无法生成 "
+                + enemyLabel
+                + " Enemy。",
                 this
             );
 
@@ -842,7 +757,8 @@ public class EnemySpawner : MonoBehaviour
         RefreshCurrentEnemyCount();
 
         if (respectEnemyLimit
-            && currentEnemyCount >= currentMaxEnemies)
+            && currentEnemyCount
+            >= currentMaxEnemies)
         {
             return false;
         }
@@ -850,18 +766,44 @@ public class EnemySpawner : MonoBehaviour
         Vector3 spawnPosition =
             GetRandomSpawnPositionAroundPlayer();
 
-        GameObject spawnedEnemy =
-            Instantiate(
-                enemyPrefab,
+        PooledEnemy pooledEnemy =
+            EnemyPool.Instance.GetEnemy(
+                enemyType,
                 spawnPosition,
                 Quaternion.identity
             );
+
+        if (pooledEnemy == null)
+        {
+            Debug.LogWarning(
+                "EnemySpawner: 未能从 EnemyPool "
+                + "取得 "
+                + enemyLabel
+                + " Enemy。",
+                this
+            );
+
+            RefreshCurrentEnemyCount();
+            return false;
+        }
+
+        GameObject spawnedEnemy =
+            pooledEnemy.gameObject;
 
         if (!InitializeEnemyAttributes(
                 spawnedEnemy
             ))
         {
-            Destroy(spawnedEnemy);
+            Debug.LogError(
+                spawnedEnemy.name
+                + " 属性初始化失败，"
+                + "将立即返回对象池。",
+                spawnedEnemy
+            );
+
+            pooledEnemy.ReturnToPool();
+
+            RefreshCurrentEnemyCount();
             return false;
         }
 
@@ -932,6 +874,18 @@ public class EnemySpawner : MonoBehaviour
 
     private void RefreshCurrentEnemyCount()
     {
+        if (EnemyPool.Instance != null
+            && EnemyPool.Instance.IsInitialized)
+        {
+            currentEnemyCount =
+                EnemyPool.Instance
+                    .GetTotalActiveCount();
+
+            return;
+        }
+
+        // EnemyPool 缺失时保留旧 Tag 统计，
+        // 仅作为安全调试回退。
         currentEnemyCount =
             GameObject.FindGameObjectsWithTag(
                 enemyTag
@@ -980,7 +934,7 @@ public class EnemySpawner : MonoBehaviour
     /// 但仍要求处于 Playing 状态。
     /// </summary>
     private void SpawnEnemyForTesting(
-        GameObject enemyPrefab,
+        EnemyType enemyType,
         string enemyLabel
     )
     {
@@ -1008,8 +962,8 @@ public class EnemySpawner : MonoBehaviour
 
         UpdateDifficulty();
 
-        SpawnEnemyFromPrefab(
-            enemyPrefab,
+        SpawnEnemyFromPool(
+            enemyType,
             false,
             enemyLabel
         );
@@ -1019,7 +973,7 @@ public class EnemySpawner : MonoBehaviour
     private void TestSpawnNormalEnemy()
     {
         SpawnEnemyForTesting(
-            FindNormalFallbackPrefab(),
+            EnemyType.Normal,
             "Normal"
         );
     }
@@ -1028,9 +982,7 @@ public class EnemySpawner : MonoBehaviour
     private void TestSpawnFastEnemy()
     {
         SpawnEnemyForTesting(
-            FindConfiguredEnemyPrefab(
-                EnemyType.Fast
-            ),
+            EnemyType.Fast,
             "Fast"
         );
     }
@@ -1039,13 +991,10 @@ public class EnemySpawner : MonoBehaviour
     private void TestSpawnHeavyEnemy()
     {
         SpawnEnemyForTesting(
-            FindConfiguredEnemyPrefab(
-                EnemyType.Heavy
-            ),
+            EnemyType.Heavy,
             "Heavy"
         );
     }
-
     private void LogDifficultyAtTime(
         float testSurvivalTime
     )
@@ -1130,6 +1079,48 @@ public class EnemySpawner : MonoBehaviour
     private void DebugDifficultyAt60Seconds()
     {
         LogDifficultyAtTime(60f);
+    }
+    /// <summary>
+    /// 从生成配置列表中读取指定类型的 Prefab。
+    ///
+    /// 仅用于属性预览和调试，不负责生成敌人。
+    /// 正式生成仍然只能通过 EnemyPool。
+    /// </summary>
+    private GameObject FindConfiguredEnemyPrefab(
+        EnemyType enemyType
+    )
+    {
+        if (enemySpawnEntries == null)
+        {
+            return null;
+        }
+
+        for (int i = 0;
+            i < enemySpawnEntries.Count;
+            i++)
+        {
+            EnemySpawnEntry entry =
+                enemySpawnEntries[i];
+
+            if (entry == null)
+            {
+                continue;
+            }
+
+            if (entry.Type != enemyType)
+            {
+                continue;
+            }
+
+            if (entry.Prefab == null)
+            {
+                continue;
+            }
+
+            return entry.Prefab;
+        }
+
+        return null;
     }
 
     /// <summary>

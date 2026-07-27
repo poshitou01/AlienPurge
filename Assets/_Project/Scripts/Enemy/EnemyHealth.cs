@@ -24,10 +24,19 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private float dropRandomOffset = 0.15f;
 
     private bool isDead;
+    private bool hasRegisteredKill;
+    private bool hasDroppedExperience;
 
     private SpriteRenderer spriteRenderer;
     private Color originalColor;
+
     private Coroutine hitFlashCoroutine;
+    private Coroutine deathCoroutine;
+
+    private PooledEnemy pooledEnemy;
+
+    private Collider2D[] enemyColliders;
+    private Vector3 scaleBeforeDeath;
 
     public int MaxHealth => maxHealth;
     public int CurrentHealth => currentHealth;
@@ -39,7 +48,21 @@ public class EnemyHealth : MonoBehaviour
         ValidateHealthSettings();
 
         currentHealth = maxHealth;
+
         isDead = false;
+        hasRegisteredKill = false;
+        hasDroppedExperience = false;
+
+        deathCoroutine = null;
+
+        pooledEnemy =
+            GetComponent<PooledEnemy>();
+
+        enemyColliders =
+    GetComponents<Collider2D>();
+
+        scaleBeforeDeath =
+            transform.localScale;
 
         spriteRenderer =
             GetComponentInChildren<SpriteRenderer>();
@@ -155,6 +178,58 @@ public class EnemyHealth : MonoBehaviour
         );
     }
 
+    /// <summary>
+    /// 每次从 EnemyPool 取出时重置生命组件状态。
+    ///
+    /// 最新最大生命值和类型颜色随后仍会由
+    /// EnemyDefinition 重新初始化。
+    /// </summary>
+    public void PrepareForSpawn()
+    {
+        if (hitFlashCoroutine != null)
+        {
+            StopCoroutine(hitFlashCoroutine);
+            hitFlashCoroutine = null;
+        }
+
+        if (deathCoroutine != null)
+        {
+            StopCoroutine(deathCoroutine);
+            deathCoroutine = null;
+        }
+
+        isDead = false;
+        hasRegisteredKill = false;
+        hasDroppedExperience = false;
+
+        currentHealth = maxHealth;
+
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.color =
+                originalColor;
+        }
+
+        transform.localScale =
+            scaleBeforeDeath;
+
+        if (enemyColliders == null
+            || enemyColliders.Length == 0)
+        {
+            enemyColliders =
+                GetComponents<Collider2D>();
+        }
+
+        for (int i = 0;
+            i < enemyColliders.Length;
+            i++)
+        {
+            if (enemyColliders[i] != null)
+            {
+                enemyColliders[i].enabled = true;
+            }
+        }
+    }
     public void TakeDamage(int damage)
     {
         if (isDead)
@@ -237,17 +312,23 @@ public class EnemyHealth : MonoBehaviour
 
         isDead = true;
 
-        // 保持原有击杀统计顺序不变。
-        RegisterKillCount();
+        if (!hasRegisteredKill)
+        {
+            hasRegisteredKill = true;
+            RegisterKillCount();
+        }
 
         Debug.Log(
             gameObject.name + " 死亡",
             this
         );
 
-        StartCoroutine(DeathRoutine());
+        if (deathCoroutine == null)
+        {
+            deathCoroutine =
+                StartCoroutine(DeathRoutine());
+        }
     }
-
     /// <summary>
     /// 向 GameManager 登记击杀数量。
     /// </summary>
@@ -285,12 +366,21 @@ public class EnemyHealth : MonoBehaviour
             enemyContactDamage.enabled = false;
         }
 
-        Collider2D enemyCollider =
-            GetComponent<Collider2D>();
-
-        if (enemyCollider != null)
+        if (enemyColliders == null
+            || enemyColliders.Length == 0)
         {
-            enemyCollider.enabled = false;
+            enemyColliders =
+                GetComponents<Collider2D>();
+        }
+
+        for (int i = 0;
+            i < enemyColliders.Length;
+            i++)
+        {
+            if (enemyColliders[i] != null)
+            {
+                enemyColliders[i].enabled = false;
+            }
         }
 
         Rigidbody2D rb =
@@ -302,18 +392,42 @@ public class EnemyHealth : MonoBehaviour
             rb.angularVelocity = 0f;
         }
 
+        scaleBeforeDeath =
+            transform.localScale;
+
         if (spriteRenderer != null)
         {
-            spriteRenderer.color = deathColor;
-            transform.localScale *= 1.2f;
+            spriteRenderer.color =
+                deathColor;
         }
 
-        // Enemy 仍然不是对象池对象。
-        // 这里只把经验球生成改成对象池。
-        DropExperienceOrb();
+        transform.localScale =
+            scaleBeforeDeath * 1.2f;
+
+        if (!hasDroppedExperience)
+        {
+            hasDroppedExperience = true;
+            DropExperienceOrb();
+        }
 
         yield return new WaitForSeconds(
             deathDelay
+        );
+
+        deathCoroutine = null;
+
+        if (pooledEnemy != null
+            && pooledEnemy.HasOwningPool)
+        {
+            pooledEnemy.ReturnToPool();
+            yield break;
+        }
+
+        Debug.LogWarning(
+            gameObject.name
+            + " 死亡时没有可用的 EnemyPool，"
+            + "将使用 Destroy 兼容处理。",
+            this
         );
 
         Destroy(gameObject);

@@ -87,6 +87,14 @@ public class EnemyContactDamage : MonoBehaviour
     {
         nextDamageTime = 0f;
     }
+    /// <summary>
+     /// 每次从 EnemyPool 取出时重置接触伤害状态。
+     /// </summary>
+    public void PrepareForSpawn()
+    {
+        enabled = true;
+        ResetDamageCooldown();
+    }
 
     private void TryDamagePlayer(GameObject target)
     {
