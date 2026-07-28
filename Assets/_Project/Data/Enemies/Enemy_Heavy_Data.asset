@@ -11,7 +11,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cbf60259712f4e249b3e9989982e8ff2, type: 3}
   m_Name: Enemy_Heavy_Data
-  m_EditorClassIdentifier:
+  m_EditorClassIdentifier: 
   enemyType: 2
   displayName: Heavy Enemy
   healthMultiplier: 2
@@ -19,4 +19,4 @@ MonoBehaviour:
   damageMultiplier: 1.5
   experienceAmount: 2
   visualScale: 1.4
-  visualColor: {r: 0.99371064, g: 0.028123716, b: 0.99371064, a: 1}
+  visualColor: {r: 1, g: 1, b: 1, a: 1}

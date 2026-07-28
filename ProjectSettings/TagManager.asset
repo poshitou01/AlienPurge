@@ -42,3 +42,30 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Ground
+    uniqueID: 4099661833
+    locked: 0
+  - name: DecorationBelow
+    uniqueID: 3361869659
+    locked: 0
+  - name: Pickups
+    uniqueID: 2538650499
+    locked: 0
+  - name: Enemies
+    uniqueID: 3222035219
+    locked: 0
+  - name: Player
+    uniqueID: 2587622945
+    locked: 0
+  - name: Projectiles
+    uniqueID: 1087467843
+    locked: 0
+  - name: Effects
+    uniqueID: 513875123
+    locked: 0
+  - name: DecorationAbove
+    uniqueID: 3616275075
+    locked: 0
+  - name: UI
+    uniqueID: 3977446391
+    locked: 0
