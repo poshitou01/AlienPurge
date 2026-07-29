@@ -95,6 +95,30 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float minSpawnDistance = 5f;
     [SerializeField] private float maxSpawnDistance = 8f;
 
+    [Header("Map Spawn Bounds")]
+    [Tooltip("是否把敌人的生成位置限制在正式地图范围内")]
+    [SerializeField] private bool limitSpawnToMapBounds = true;
+
+    [Tooltip("正式地图的左下角世界坐标")]
+    [SerializeField]
+    private Vector2 spawnMapMin =
+        new Vector2(-25f, -25f);
+
+    [Tooltip("正式地图的右上角世界坐标")]
+    [SerializeField]
+    private Vector2 spawnMapMax =
+        new Vector2(25f, 25f);
+
+    [Tooltip("生成点与地图边界之间保留的安全距离")]
+    [Min(0f)]
+    [SerializeField]
+    private float spawnBoundsPadding = 1f;
+
+    [Tooltip("寻找地图内部有效生成位置的最大尝试次数")]
+    [Min(1)]
+    [SerializeField]
+    private int maxSpawnPositionAttempts = 24;
+
     [Header("Target Settings")]
     [SerializeField] private string playerTag = "Player";
     [SerializeField] private string enemyTag = "Enemy";
@@ -893,7 +917,103 @@ public class EnemySpawner : MonoBehaviour
     }
 
     private Vector3
-        GetRandomSpawnPositionAroundPlayer()
+    GetRandomSpawnPositionAroundPlayer()
+    {
+        if (!limitSpawnToMapBounds)
+        {
+            return CreateRandomSpawnPositionAroundPlayer();
+        }
+
+        float safePadding =
+            Mathf.Max(0f, spawnBoundsPadding);
+
+        Vector2 safeMin =
+            spawnMapMin
+            + Vector2.one * safePadding;
+
+        Vector2 safeMax =
+            spawnMapMax
+            - Vector2.one * safePadding;
+
+        if (safeMin.x > safeMax.x
+            || safeMin.y > safeMax.y)
+        {
+            Debug.LogWarning(
+                "EnemySpawner: 地图生成范围无效，"
+                + "将暂时使用未限制的随机生成位置。",
+                this
+            );
+
+            return CreateRandomSpawnPositionAroundPlayer();
+        }
+
+        int attemptCount =
+            Mathf.Max(1, maxSpawnPositionAttempts);
+
+        for (int i = 0; i < attemptCount; i++)
+        {
+            Vector3 candidatePosition =
+                CreateRandomSpawnPositionAroundPlayer();
+
+            if (IsSpawnPositionInsideBounds(
+                    candidatePosition,
+                    safeMin,
+                    safeMax
+                ))
+            {
+                return candidatePosition;
+            }
+        }
+
+        // 极端情况下仍未随机到有效位置时，
+        // 改为朝地图中心生成，避免敌人出现在墙外。
+        Vector2 mapCenter =
+            (safeMin + safeMax) * 0.5f;
+
+        Vector2 directionToCenter =
+            mapCenter
+            - (Vector2)player.position;
+
+        if (directionToCenter.sqrMagnitude
+            <= Mathf.Epsilon)
+        {
+            directionToCenter = Vector2.right;
+        }
+
+        float fallbackDistance =
+            Random.Range(
+                minSpawnDistance,
+                maxSpawnDistance
+            );
+
+        Vector2 fallbackPosition =
+            (Vector2)player.position
+            + directionToCenter.normalized
+            * fallbackDistance;
+
+        fallbackPosition.x =
+            Mathf.Clamp(
+                fallbackPosition.x,
+                safeMin.x,
+                safeMax.x
+            );
+
+        fallbackPosition.y =
+            Mathf.Clamp(
+                fallbackPosition.y,
+                safeMin.y,
+                safeMax.y
+            );
+
+        return new Vector3(
+            fallbackPosition.x,
+            fallbackPosition.y,
+            0f
+        );
+    }
+
+    private Vector3
+        CreateRandomSpawnPositionAroundPlayer()
     {
         float randomAngle =
             Random.Range(0f, 360f);
@@ -928,6 +1048,17 @@ public class EnemySpawner : MonoBehaviour
         return spawnPosition;
     }
 
+    private bool IsSpawnPositionInsideBounds(
+        Vector3 spawnPosition,
+        Vector2 safeMin,
+        Vector2 safeMax
+    )
+    {
+        return spawnPosition.x >= safeMin.x
+            && spawnPosition.x <= safeMax.x
+            && spawnPosition.y >= safeMin.y
+            && spawnPosition.y <= safeMax.y;
+    }
     /// <summary>
     /// 独立测试生成入口。
     /// 测试生成忽略最大敌人数限制，
