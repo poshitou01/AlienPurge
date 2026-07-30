@@ -147,6 +147,11 @@ public class GameManager : MonoBehaviour
 
         UpdateResultInfo(gameOverInfoText);
 
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlayGameOver();
+        }
+
         Time.timeScale = 0f;
 
         Debug.Log("Game Over");
@@ -172,6 +177,11 @@ public class GameManager : MonoBehaviour
         }
 
         UpdateResultInfo(victoryInfoText);
+
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlayVictory();
+        }
 
         Time.timeScale = 0f;
 

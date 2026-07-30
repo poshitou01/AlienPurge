@@ -98,11 +98,23 @@ public class PlayerHealth : MonoBehaviour
         );
 
         RefreshHealthUI();
-        PlayDamageFeedback();
 
         if (currentHealth <= 0)
         {
             Die();
+            return;
+        }
+
+        PlayDamageFeedback();
+
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlayPlayerHurt();
+        }
+
+        if (CameraFollow.Instance != null)
+        {
+            CameraFollow.Instance.PlayLightShake();
         }
     }
 
@@ -213,6 +225,16 @@ public class PlayerHealth : MonoBehaviour
         }
 
         isDead = true;
+
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlayPlayerDeath();
+        }
+
+        if (CameraFollow.Instance != null)
+        {
+            CameraFollow.Instance.PlayHeavyShake();
+        }
 
         Debug.Log("Player died.");
 

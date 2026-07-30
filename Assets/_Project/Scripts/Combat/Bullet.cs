@@ -224,7 +224,15 @@ public class Bullet : MonoBehaviour
 
         if (enemyHealth != null)
         {
-            enemyHealth.TakeDamage(damage);
+            if (!enemyHealth.IsDead)
+            {
+                enemyHealth.TakeDamage(damage);
+
+                if (AudioManager.Instance != null)
+                {
+                    AudioManager.Instance.PlayEnemyHit();
+                }
+            }
         }
         else
         {

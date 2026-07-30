@@ -93,6 +93,11 @@ public class PlayerExperience : MonoBehaviour
 
         if (UpgradeManager.Instance != null)
         {
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.PlayLevelUp();
+            }
+
             UpgradeManager.Instance.ShowUpgradePanel();
         }
         else

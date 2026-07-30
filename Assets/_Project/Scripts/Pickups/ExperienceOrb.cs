@@ -135,6 +135,11 @@ public class ExperienceOrb : MonoBehaviour
 
         playerExperience.AddExperience(experienceAmount);
 
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlayExperiencePickup();
+        }
+
         if (logPickup)
         {
             Debug.Log(

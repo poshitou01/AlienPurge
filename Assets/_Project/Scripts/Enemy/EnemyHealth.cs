@@ -34,6 +34,7 @@ public class EnemyHealth : MonoBehaviour
     private Coroutine deathCoroutine;
 
     private PooledEnemy pooledEnemy;
+    private EnemyDefinition enemyDefinition;
 
     private Collider2D[] enemyColliders;
     private Vector3 scaleBeforeDeath;
@@ -58,8 +59,11 @@ public class EnemyHealth : MonoBehaviour
         pooledEnemy =
             GetComponent<PooledEnemy>();
 
+        enemyDefinition =
+            GetComponent<EnemyDefinition>();
+
         enemyColliders =
-    GetComponents<Collider2D>();
+            GetComponents<Collider2D>();
 
         scaleBeforeDeath =
             transform.localScale;
@@ -312,6 +316,12 @@ public class EnemyHealth : MonoBehaviour
 
         isDead = true;
 
+        EnemyType enemyType =
+            GetCurrentEnemyType();
+
+        PlayDeathAudioFeedback(enemyType);
+        PlayDeathCameraShake(enemyType);
+
         if (!hasRegisteredKill)
         {
             hasRegisteredKill = true;
@@ -328,6 +338,70 @@ public class EnemyHealth : MonoBehaviour
             deathCoroutine =
                 StartCoroutine(DeathRoutine());
         }
+    }
+
+    /// <summary>
+    /// 播放当前敌人本轮生命唯一一次死亡音效。
+    /// Die 已经通过 isDead 防止重复进入。
+    /// </summary>
+    private void PlayDeathAudioFeedback(
+        EnemyType enemyType)
+    {
+        if (AudioManager.Instance == null)
+        {
+            return;
+        }
+
+        AudioManager.Instance.PlayEnemyDeath(
+            enemyType
+        );
+    }
+
+    /// <summary>
+    /// 只有 Heavy Enemy 死亡时播放中等镜头震动。
+    /// Normal 和 Fast Enemy 不触发镜头震动。
+    /// </summary>
+    private void PlayDeathCameraShake(
+        EnemyType enemyType)
+    {
+        if (enemyType != EnemyType.Heavy)
+        {
+            return;
+        }
+
+        if (CameraFollow.Instance == null)
+        {
+            return;
+        }
+
+        CameraFollow.Instance.PlayMediumShake();
+    }
+
+    /// <summary>
+    /// 优先读取对象池记录的敌人类型。
+    /// 非对象池测试对象则回退读取 EnemyDefinition。
+    /// </summary>
+    private EnemyType GetCurrentEnemyType()
+    {
+        if (pooledEnemy != null)
+        {
+            return pooledEnemy.Type;
+        }
+
+        if (enemyDefinition != null
+            && enemyDefinition.Data != null)
+        {
+            return enemyDefinition.Data.Type;
+        }
+
+        Debug.LogWarning(
+            gameObject.name
+            + " 无法确定 EnemyType，"
+            + "死亡音效将使用 Normal 类型。",
+            this
+        );
+
+        return EnemyType.Normal;
     }
     /// <summary>
     /// 向 GameManager 登记击杀数量。

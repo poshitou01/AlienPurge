@@ -162,21 +162,27 @@ public class PlayerShooting : MonoBehaviour
 
         shootDirection.Normalize();
 
-        FireProjectiles(
+        bool firedAnyProjectile = FireProjectiles(
             playerPosition,
             shootDirection
         );
 
+        if (!firedAnyProjectile)
+        {
+            return;
+        }
+
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlayShoot();
+        }
+
         nextFireTime = Time.time + fireCooldown;
     }
 
-    /// <summary>
-    /// 根据当前弹丸数量，
-    /// 以瞄准方向为中心生成对称散射。
-    /// </summary>
-    private void FireProjectiles(
-        Vector2 playerPosition,
-        Vector2 aimDirection)
+    private bool FireProjectiles(
+    Vector2 playerPosition,
+    Vector2 aimDirection)
     {
         float startAngle =
             -projectileSpreadAngle
@@ -186,6 +192,8 @@ public class PlayerShooting : MonoBehaviour
         Vector2 spawnPosition =
             playerPosition
             + aimDirection * spawnOffset;
+
+        bool firedAnyProjectile = false;
 
         for (int i = 0; i < projectileCount; i++)
         {
@@ -199,18 +207,21 @@ public class PlayerShooting : MonoBehaviour
                     angleOffset
                 );
 
-            CreateProjectile(
-                spawnPosition,
-                projectileDirection
-            );
-        }
-    }
+            bool projectileCreated =
+                CreateProjectile(
+                    spawnPosition,
+                    projectileDirection
+                );
 
-    /// <summary>
-    /// 从 BulletPool 取得一颗子弹，
-    /// 并传入玩家当前的全部攻击属性。
-    /// </summary>
-    private void CreateProjectile(
+            if (projectileCreated)
+            {
+                firedAnyProjectile = true;
+            }
+        }
+
+        return firedAnyProjectile;
+    }
+    private bool CreateProjectile(
         Vector2 spawnPosition,
         Vector2 projectileDirection)
     {
@@ -227,7 +238,7 @@ public class PlayerShooting : MonoBehaviour
                 this
             );
 
-            return;
+            return false;
         }
 
         bullet.Initialize(
@@ -237,6 +248,8 @@ public class PlayerShooting : MonoBehaviour
             bulletScaleMultiplier,
             bulletLifeTime
         );
+
+        return true;
     }
 
     /// <summary>
