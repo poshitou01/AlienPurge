@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerShooting : MonoBehaviour
 {
@@ -98,7 +99,7 @@ public class PlayerShooting : MonoBehaviour
 
     private void Update()
     {
-        if (!canShoot || UpgradeManager.IsChoosingUpgrade)
+        if (!CanProcessShootingInput())
         {
             return;
         }
@@ -107,6 +108,38 @@ public class PlayerShooting : MonoBehaviour
         {
             TryShoot();
         }
+    }
+
+    private bool CanProcessShootingInput()
+    {
+        if (!canShoot)
+        {
+            return false;
+        }
+
+        if (UpgradeManager.IsChoosingUpgrade)
+        {
+            return false;
+        }
+
+        if (PauseMenuController.IsPaused)
+        {
+            return false;
+        }
+
+        if (GameManager.Instance != null
+            && !GameManager.Instance.IsPlaying)
+        {
+            return false;
+        }
+
+        if (EventSystem.current != null
+            && EventSystem.current.IsPointerOverGameObject())
+        {
+            return false;
+        }
+
+        return true;
     }
 
     private void TryShoot()

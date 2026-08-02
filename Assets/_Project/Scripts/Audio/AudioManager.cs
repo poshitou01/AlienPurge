@@ -6,6 +6,28 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance { get; private set; }
 
+    private const string MasterVolumeKey =
+    "AlienPurge.Audio.Master";
+
+    private const string MusicVolumeKey =
+        "AlienPurge.Audio.Music";
+
+    private const string SfxVolumeKey =
+        "AlienPurge.Audio.SFX";
+
+    private const string UiVolumeKey =
+        "AlienPurge.Audio.UI";
+
+    private const float DefaultMasterVolume = 1f;
+    private const float DefaultMusicVolume = 0.32f;
+    private const float DefaultSfxVolume = 1f;
+    private const float DefaultUiVolume = 1f;
+
+    public float MasterVolume => masterVolume;
+    public float MusicVolume => musicVolume;
+    public float SfxVolume => sfxVolume;
+    public float UiVolume => uiVolume;
+
     [Header("Audio Sources")]
     [Tooltip("负责播放和循环背景音乐")]
     [SerializeField] private AudioSource musicSource;
@@ -167,6 +189,7 @@ public class AudioManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         ConfigureAudioSources();
+        LoadVolumeSettings();
         ApplyVolumeSettings();
         ResetRuntimeAudioState();
     }
@@ -525,6 +548,85 @@ public class AudioManager : MonoBehaviour
     {
         uiVolume = Mathf.Clamp01(value);
         ApplyVolumeSettings();
+    }
+
+    /// <summary>
+    /// 从 PlayerPrefs 读取四类音量。
+    /// 没有保存值时使用第二十八阶段确定的默认音量。
+    /// </summary>
+    private void LoadVolumeSettings()
+    {
+        masterVolume = Mathf.Clamp01(
+            PlayerPrefs.GetFloat(
+                MasterVolumeKey,
+                DefaultMasterVolume
+            )
+        );
+
+        musicVolume = Mathf.Clamp01(
+            PlayerPrefs.GetFloat(
+                MusicVolumeKey,
+                DefaultMusicVolume
+            )
+        );
+
+        sfxVolume = Mathf.Clamp01(
+            PlayerPrefs.GetFloat(
+                SfxVolumeKey,
+                DefaultSfxVolume
+            )
+        );
+
+        uiVolume = Mathf.Clamp01(
+            PlayerPrefs.GetFloat(
+                UiVolumeKey,
+                DefaultUiVolume
+            )
+        );
+    }
+
+    /// <summary>
+    /// 保存当前四类音量。
+    /// 由设置面板在关闭或确认重置时调用。
+    /// </summary>
+    public void SaveVolumeSettings()
+    {
+        PlayerPrefs.SetFloat(
+            MasterVolumeKey,
+            masterVolume
+        );
+
+        PlayerPrefs.SetFloat(
+            MusicVolumeKey,
+            musicVolume
+        );
+
+        PlayerPrefs.SetFloat(
+            SfxVolumeKey,
+            sfxVolume
+        );
+
+        PlayerPrefs.SetFloat(
+            UiVolumeKey,
+            uiVolume
+        );
+
+        PlayerPrefs.Save();
+    }
+
+    /// <summary>
+    /// 只重置 AlienPurge 的四项音量设置。
+    /// 不删除其他 PlayerPrefs 数据。
+    /// </summary>
+    public void ResetVolumeSettings()
+    {
+        masterVolume = DefaultMasterVolume;
+        musicVolume = DefaultMusicVolume;
+        sfxVolume = DefaultSfxVolume;
+        uiVolume = DefaultUiVolume;
+
+        ApplyVolumeSettings();
+        SaveVolumeSettings();
     }
 
     private void ApplyVolumeSettings()
