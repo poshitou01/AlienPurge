@@ -40329,6 +40329,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3035687224913282210, guid: 271ff4ae25fcf5b42805d3262db0fbfd, type: 3}
+      propertyPath: playerDashClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 54be53de20060184489421efce1a3b85, type: 3}
+    - target: {fileID: 3035687224913282210, guid: 271ff4ae25fcf5b42805d3262db0fbfd, type: 3}
+      propertyPath: playerPulseClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 923a96bb0eac20b489abba148eae407c, type: 3}
+    - target: {fileID: 3035687224913282210, guid: 271ff4ae25fcf5b42805d3262db0fbfd, type: 3}
+      propertyPath: playerJetJumpClip
+      value: 
+      objectReference: {fileID: 8300000, guid: a8989eb3fe71bf84ba60ec993686ed30, type: 3}
     - target: {fileID: 3156490392898731332, guid: 271ff4ae25fcf5b42805d3262db0fbfd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
