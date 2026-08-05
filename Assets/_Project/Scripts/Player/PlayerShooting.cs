@@ -48,6 +48,8 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] private int maximumProjectileCount = 5;
 
     private Camera mainCamera;
+    private PlayerAbilityState abilityState;
+
     private float nextFireTime;
     private bool canShoot = true;
 
@@ -95,6 +97,9 @@ public class PlayerShooting : MonoBehaviour
     private void Awake()
     {
         mainCamera = Camera.main;
+
+        abilityState =
+            GetComponent<PlayerAbilityState>();
     }
 
     private void Update()
@@ -112,7 +117,9 @@ public class PlayerShooting : MonoBehaviour
 
     private bool CanProcessShootingInput()
     {
-        if (!canShoot)
+        if (abilityState != null
+      && (abilityState.IsDashing
+          || abilityState.IsCasting))
         {
             return false;
         }

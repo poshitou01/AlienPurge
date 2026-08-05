@@ -68,6 +68,9 @@ public class AudioManager : MonoBehaviour
     [Header("Player SFX")]
     [SerializeField] private AudioClip playerHurtClip;
     [SerializeField] private AudioClip playerDeathClip;
+    [SerializeField] private AudioClip playerDashClip;
+    [SerializeField] private AudioClip playerJetJumpClip;
+    [SerializeField] private AudioClip playerPulseClip;
 
     [Header("Pickup And Progression SFX")]
     [SerializeField]
@@ -119,6 +122,17 @@ public class AudioManager : MonoBehaviour
 
     [Range(0f, 1f)]
     [SerializeField] private float playerDeathVolume = 0.55f;
+
+    [Range(0f, 1f)]
+    [SerializeField] private float playerDashVolume = 0.38f;
+
+    [Range(0f, 1f)]
+    [SerializeField]
+    private float playerJetJumpVolume = 0.42f;
+
+    [Range(0f, 1f)]
+    [SerializeField]
+    private float playerPulseVolume = 0.5f;
 
     [Range(0f, 1f)]
     [SerializeField]
@@ -411,6 +425,33 @@ public class AudioManager : MonoBehaviour
         );
     }
 
+    public void PlayPlayerDash()
+    {
+        PlayOneShot(
+            sfxSource,
+            playerDashClip,
+            playerDashVolume
+        );
+    }
+
+    public void PlayPlayerJetJump()
+    {
+        PlayOneShot(
+            sfxSource,
+            playerJetJumpClip,
+            playerJetJumpVolume
+        );
+    }
+
+    public void PlayPlayerPulse()
+    {
+        PlayOneShot(
+            sfxSource,
+            playerPulseClip,
+            playerPulseVolume
+        );
+    }
+
     public void PlayExperiencePickup()
     {
         TryPlayThrottled(
@@ -677,6 +718,15 @@ public class AudioManager : MonoBehaviour
 
         playerDeathVolume =
             Mathf.Clamp01(playerDeathVolume);
+
+        playerDashVolume =
+            Mathf.Clamp01(playerDashVolume);
+
+        playerJetJumpVolume =
+            Mathf.Clamp01(playerJetJumpVolume );
+
+        playerPulseVolume =
+            Mathf.Clamp01(playerPulseVolume );
 
         experiencePickupVolume =
             Mathf.Clamp01(experiencePickupVolume);

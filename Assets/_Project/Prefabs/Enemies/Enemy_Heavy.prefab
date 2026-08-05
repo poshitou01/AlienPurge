@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1.5
-  stoppingDistance: 0.77
+  stoppingDistance: 0.72
   target: {fileID: 0}
 --- !u!114 &-5133067771616714043
 MonoBehaviour:

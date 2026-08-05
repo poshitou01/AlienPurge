@@ -162,10 +162,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b69e366c2efbfc04badd3e998d630b1d, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   moveSpeed: 1.5
-  stoppingDistance: 0.77
+  stoppingDistance: 0.72
   target: {fileID: 0}
 --- !u!114 &-5133067771616714043
 MonoBehaviour:
@@ -177,8 +177,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eb9d5fa72a721354b9d666c1c4872a3b, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   maxHealth: 3
   currentHealth: 0
   hitColor: {r: 1, g: 1, b: 1, a: 1}
@@ -197,8 +197,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8dfa998a1c54524197ab99288e447df, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   damage: 1
   damageInterval: 1
 --- !u!114 &2454779613504796038
@@ -211,8 +211,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6366a18b1fb0ddb41b202257eef6dded, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: 9aea23d446580e243a31bd8d51aabe7a, type: 2}
   hasBeenInitialized: 0
   finalMaxHealth: 0

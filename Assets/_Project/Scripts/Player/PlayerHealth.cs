@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(SpriteRenderer))]
+[DisallowMultipleComponent]
 public class PlayerHealth : MonoBehaviour
 {
     [Header("Health Settings")]
@@ -18,7 +18,21 @@ public class PlayerHealth : MonoBehaviour
     private int currentHealth;
     private bool isDead;
 
-    private SpriteRenderer spriteRenderer;
+    private bool isTemporarilyInvulnerable;
+    private Coroutine invulnerabilityCoroutine;
+
+    public bool IsTemporarilyInvulnerable =>
+        isTemporarilyInvulnerable;
+
+    [Header("Visual References")]
+    [Tooltip("负责显示玩家身体并接收受伤、死亡颜色反馈")]
+    [SerializeField]
+    private SpriteRenderer bodySpriteRenderer;
+
+    [Tooltip("负责玩家视觉位移和缩放，不包含物理组件与 Shadow")]
+    [SerializeField]
+    private Transform visualRoot;
+
     private Color originalColor;
     private Coroutine flashCoroutine;
 
@@ -27,7 +41,7 @@ public class PlayerHealth : MonoBehaviour
     private Rigidbody2D rb;
     private Collider2D[] colliders;
 
-    private Vector3 originalScale;
+    private Vector3 originalVisualScale;
 
     // 当前生命状态只读接口
     public int CurrentHealth => currentHealth;
@@ -40,18 +54,48 @@ public class PlayerHealth : MonoBehaviour
 
     private void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        originalColor = spriteRenderer.color;
+        if (bodySpriteRenderer == null)
+        {
+            bodySpriteRenderer =
+                GetComponent<SpriteRenderer>();
+        }
+
+        if (bodySpriteRenderer == null)
+        {
+            bodySpriteRenderer =
+                GetComponentInChildren<SpriteRenderer>(true);
+        }
+
+        if (visualRoot == null)
+        {
+            visualRoot = transform;
+        }
+
+        if (bodySpriteRenderer == null)
+        {
+            Debug.LogError(
+                "PlayerHealth 找不到负责玩家身体显示的 SpriteRenderer。",
+                this
+            );
+
+            enabled = false;
+            return;
+        }
+
+        originalColor = bodySpriteRenderer.color;
 
         playerMovement = GetComponent<PlayerMovement>();
         playerShooting = GetComponent<PlayerShooting>();
         rb = GetComponent<Rigidbody2D>();
         colliders = GetComponents<Collider2D>();
 
-        originalScale = transform.localScale;
+        originalVisualScale = visualRoot.localScale;
 
         currentHealth = maxHealth;
         isDead = false;
+
+        isTemporarilyInvulnerable = false;
+        invulnerabilityCoroutine = null;
 
         Debug.Log(
             $"Player Health Initialized: {currentHealth}/{maxHealth}"
@@ -75,6 +119,11 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(int damage)
     {
         if (isDead)
+        {
+            return;
+        }
+
+        if (isTemporarilyInvulnerable)
         {
             return;
         }
@@ -205,13 +254,13 @@ public class PlayerHealth : MonoBehaviour
 
     private IEnumerator DamageFlashRoutine()
     {
-        spriteRenderer.color = damageColor;
+        bodySpriteRenderer.color = damageColor;
 
         yield return new WaitForSeconds(flashDuration);
 
         if (!isDead)
         {
-            spriteRenderer.color = originalColor;
+            bodySpriteRenderer.color = originalColor;
         }
 
         flashCoroutine = null;
@@ -225,6 +274,8 @@ public class PlayerHealth : MonoBehaviour
         }
 
         isDead = true;
+
+        CancelTemporaryInvulnerability();
 
         if (AudioManager.Instance != null)
         {
@@ -245,10 +296,10 @@ public class PlayerHealth : MonoBehaviour
             StopCoroutine(flashCoroutine);
         }
 
-        spriteRenderer.color = deathColor;
+        bodySpriteRenderer.color = deathColor;
 
-        transform.localScale =
-            originalScale * deathScaleMultiplier;
+        visualRoot.localScale =
+    originalVisualScale * deathScaleMultiplier;
 
         if (rb != null)
         {
@@ -280,6 +331,60 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+
+    /// <summary>
+    /// 让玩家在指定游戏时间内暂时免疫伤害。
+    /// 使用缩放时间，所以暂停和升级期间计时停止。
+    /// </summary>
+    public void BeginTemporaryInvulnerability(
+        float duration
+    )
+    {
+        if (isDead || duration <= 0f)
+        {
+            return;
+        }
+
+        if (invulnerabilityCoroutine != null)
+        {
+            StopCoroutine(invulnerabilityCoroutine);
+        }
+
+        invulnerabilityCoroutine =
+            StartCoroutine(
+                TemporaryInvulnerabilityRoutine(
+                    duration
+                )
+            );
+    }
+
+    private IEnumerator
+        TemporaryInvulnerabilityRoutine(
+            float duration
+        )
+    {
+        isTemporarilyInvulnerable = true;
+
+        yield return new WaitForSeconds(duration);
+
+        isTemporarilyInvulnerable = false;
+        invulnerabilityCoroutine = null;
+    }
+
+    /// <summary>
+    /// 立即结束临时无敌。
+    /// 用于冲刺中断、死亡或组件禁用。
+    /// </summary>
+    public void CancelTemporaryInvulnerability()
+    {
+        if (invulnerabilityCoroutine != null)
+        {
+            StopCoroutine(invulnerabilityCoroutine);
+            invulnerabilityCoroutine = null;
+        }
+
+        isTemporarilyInvulnerable = false;
+    }
     private void RefreshHealthUI()
     {
         if (HUDManager.Instance != null)
@@ -339,5 +444,10 @@ public class PlayerHealth : MonoBehaviour
     private void TestRestoreHealth()
     {
         RestoreHealth(2);
+    }
+
+    private void OnDisable()
+    {
+        CancelTemporaryInvulnerability();
     }
 }
