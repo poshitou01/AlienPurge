@@ -1,11 +1,11 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Í³Ò»¹ÜÀí Normal¡¢Fast¡¢Heavy ÈıÖÖµĞÈËµÄ¶ÔÏó³Ø¡£
+/// ç»Ÿä¸€ç®¡ç† Normalã€Fastã€Heavy ä¸‰ç§æ•Œäººçš„å¯¹è±¡æ± ã€‚
 ///
-/// Ã¿ÖÖµĞÈËÓµÓĞ¶ÀÁ¢µÄ¿ÉÓÃ¶ÓÁĞ¡¢¼¤»î¼¯ºÏºÍ¶ÔÏó×Ü¼¯ºÏ¡£
-/// ±¾ÀàÖ»¹ÜÀíÉúÃüÖÜÆÚ£¬²»¼ÆËãµĞÈËÊôĞÔºÍË¢¹ÖÈ¨ÖØ¡£
+/// æ¯ç§æ•Œäººæ‹¥æœ‰ç‹¬ç«‹çš„å¯ç”¨é˜Ÿåˆ—ã€æ¿€æ´»é›†åˆå’Œå¯¹è±¡æ€»é›†åˆã€‚
+/// æœ¬ç±»åªç®¡ç†ç”Ÿå‘½å‘¨æœŸï¼Œä¸è®¡ç®—æ•Œäººå±æ€§å’Œåˆ·æ€ªæƒé‡ã€‚
 /// </summary>
 [DisallowMultipleComponent]
 public class EnemyPool :
@@ -20,32 +20,32 @@ public class EnemyPool :
 
     [Header("Pool Configuration")]
 
-    [Tooltip("²»Í¬µĞÈËÀàĞÍµÄ¶ÔÏó³ØÅäÖÃ")]
+    [Tooltip("ä¸åŒæ•Œäººç±»å‹çš„å¯¹è±¡æ± é…ç½®")]
     [SerializeField]
     private List<EnemyPoolEntry> poolEntries =
         new List<EnemyPoolEntry>();
 
     [Header("Debug Settings")]
 
-    [Tooltip("¶ÔÏó³Ø×Ô¶¯À©ÈİÊ±ÊÇ·ñÊä³öµ÷ÊÔĞÅÏ¢")]
+    [Tooltip("å¯¹è±¡æ± è‡ªåŠ¨æ‰©å®¹æ—¶æ˜¯å¦è¾“å‡ºè°ƒè¯•ä¿¡æ¯")]
     [SerializeField]
     private bool logPoolExpansion = true;
 
     [Header("Runtime Pool Debug")]
 
-    [Tooltip("¶ÔÏó³ØÊÇ·ñÒÑÍê³É³õÊ¼»¯")]
+    [Tooltip("å¯¹è±¡æ± æ˜¯å¦å·²å®Œæˆåˆå§‹åŒ–")]
     [SerializeField]
     private bool isInitialized;
 
-    [Tooltip("È«²¿µĞÈË¶ÔÏóÊıÁ¿")]
+    [Tooltip("å…¨éƒ¨æ•Œäººå¯¹è±¡æ•°é‡")]
     [SerializeField]
     private int totalEnemyCount;
 
-    [Tooltip("µ±Ç°¼¤»îµĞÈËÊıÁ¿")]
+    [Tooltip("å½“å‰æ¿€æ´»æ•Œäººæ•°é‡")]
     [SerializeField]
     private int activeEnemyCount;
 
-    [Tooltip("µ±Ç°¿ÉÓÃµĞÈËÊıÁ¿")]
+    [Tooltip("å½“å‰å¯ç”¨æ•Œäººæ•°é‡")]
     [SerializeField]
     private int availableEnemyCount;
 
@@ -62,7 +62,7 @@ public class EnemyPool :
         >();
 
     /// <summary>
-    /// µ¥¸öµĞÈËÀàĞÍÔÚÔËĞĞÊ±µÄÊı¾İ¡£
+    /// å•ä¸ªæ•Œäººç±»å‹åœ¨è¿è¡Œæ—¶çš„æ•°æ®ã€‚
     /// </summary>
     private sealed class RuntimeEnemyPool
     {
@@ -106,8 +106,8 @@ public class EnemyPool :
             && Instance != this)
         {
             Debug.LogError(
-                "³¡¾°ÖĞ´æÔÚÖØ¸´µÄ EnemyPool£¬"
-                + "ºó´´½¨µÄ¶ÔÏó½«±»Ïú»Ù¡£",
+                "åœºæ™¯ä¸­å­˜åœ¨é‡å¤çš„ EnemyPoolï¼Œ"
+                + "ååˆ›å»ºçš„å¯¹è±¡å°†è¢«é”€æ¯ã€‚",
                 this
             );
 
@@ -121,7 +121,7 @@ public class EnemyPool :
     }
 
     /// <summary>
-    /// ¶ÁÈ¡ÅäÖÃ¡¢´´½¨ÀàĞÍÈİÆ÷²¢Íê³ÉÔ¤ÈÈ¡£
+    /// è¯»å–é…ç½®ã€åˆ›å»ºç±»å‹å®¹å™¨å¹¶å®Œæˆé¢„çƒ­ã€‚
     /// </summary>
     private void InitializePool()
     {
@@ -145,8 +145,8 @@ public class EnemyPool :
             || poolEntries.Count == 0)
         {
             Debug.LogError(
-                "EnemyPool Ã»ÓĞÅäÖÃÈÎºÎ "
-                + "EnemyPoolEntry¡£",
+                "EnemyPool æ²¡æœ‰é…ç½®ä»»ä½• "
+                + "EnemyPoolEntryã€‚",
                 this
             );
 
@@ -167,9 +167,9 @@ public class EnemyPool :
             if (entry == null)
             {
                 Debug.LogError(
-                    "EnemyPool µÄµÚ "
+                    "EnemyPool çš„ç¬¬ "
                     + i
-                    + " ÌõÅäÖÃÎª¿Õ¡£",
+                    + " æ¡é…ç½®ä¸ºç©ºã€‚",
                     this
                 );
 
@@ -181,7 +181,7 @@ public class EnemyPool :
                 ))
             {
                 Debug.LogError(
-                    "EnemyPool ÅäÖÃÎŞĞ§£º"
+                    "EnemyPool é…ç½®æ— æ•ˆï¼š"
                     + validationMessage,
                     this
                 );
@@ -194,7 +194,7 @@ public class EnemyPool :
                 ))
             {
                 Debug.LogError(
-                    "EnemyPool ´æÔÚÖØ¸´ÀàĞÍÅäÖÃ£º"
+                    "EnemyPool å­˜åœ¨é‡å¤ç±»å‹é…ç½®ï¼š"
                     + entry.Type,
                     this
                 );
@@ -211,8 +211,8 @@ public class EnemyPool :
             {
                 Debug.LogError(
                     entry.Prefab.name
-                    + " µÄ¸ù¶ÔÏóÃ»ÓĞ¹ÒÔØ "
-                    + "PooledEnemy¡£",
+                    + " çš„æ ¹å¯¹è±¡æ²¡æœ‰æŒ‚è½½ "
+                    + "PooledEnemyã€‚",
                     entry.Prefab
                 );
 
@@ -224,11 +224,11 @@ public class EnemyPool :
             {
                 Debug.LogError(
                     entry.Prefab.name
-                    + " µÄ PooledEnemy Type Îª "
+                    + " çš„ PooledEnemy Type ä¸º "
                     + prefabPooledEnemy.Type
-                    + "£¬µ«¶ÔÏó³ØÅäÖÃÀàĞÍÎª "
+                    + "ï¼Œä½†å¯¹è±¡æ± é…ç½®ç±»å‹ä¸º "
                     + entry.Type
-                    + "¡£",
+                    + "ã€‚",
                     entry.Prefab
                 );
 
@@ -266,6 +266,7 @@ public class EnemyPool :
         WarnIfTypeIsMissing(EnemyType.Normal);
         WarnIfTypeIsMissing(EnemyType.Fast);
         WarnIfTypeIsMissing(EnemyType.Heavy);
+        WarnIfTypeIsMissing(EnemyType.Ranged);
 
         isInitialized =
             runtimePools.Count > 0;
@@ -275,7 +276,7 @@ public class EnemyPool :
         if (isInitialized)
         {
             Debug.Log(
-                "EnemyPool ³õÊ¼»¯Íê³É¡£"
+                "EnemyPool åˆå§‹åŒ–å®Œæˆã€‚"
                 + " Total="
                 + totalEnemyCount
                 + ", Active="
@@ -288,8 +289,8 @@ public class EnemyPool :
         else
         {
             Debug.LogError(
-                "EnemyPool Ã»ÓĞÈÎºÎÓĞĞ§ÅäÖÃ£¬"
-                + "³õÊ¼»¯Ê§°Ü¡£",
+                "EnemyPool æ²¡æœ‰ä»»ä½•æœ‰æ•ˆé…ç½®ï¼Œ"
+                + "åˆå§‹åŒ–å¤±è´¥ã€‚",
                 this
             );
         }
@@ -307,9 +308,9 @@ public class EnemyPool :
         }
 
         Debug.LogWarning(
-            "EnemyPool È±ÉÙ "
+            "EnemyPool ç¼ºå°‘ "
             + enemyType
-            + " ÀàĞÍÅäÖÃ¡£",
+            + " ç±»å‹é…ç½®ã€‚",
             this
         );
     }
@@ -342,8 +343,8 @@ public class EnemyPool :
     }
 
     /// <summary>
-    /// ÎªÖ¸¶¨ÀàĞÍ´´½¨Ò»¶¨ÊıÁ¿µÄµĞÈË¶ÔÏó£¬
-    /// ²¢È«²¿·ÅÈë¿ÉÓÃ¶ÓÁĞ¡£
+    /// ä¸ºæŒ‡å®šç±»å‹åˆ›å»ºä¸€å®šæ•°é‡çš„æ•Œäººå¯¹è±¡ï¼Œ
+    /// å¹¶å…¨éƒ¨æ”¾å…¥å¯ç”¨é˜Ÿåˆ—ã€‚
     /// </summary>
     private int CreateEnemyInstances(
         RuntimeEnemyPool runtimePool,
@@ -370,7 +371,7 @@ public class EnemyPool :
                     runtimePool.AvailableParent
                 );
 
-            // ·ÀÖ¹Ô¤ÈÈ¶ÔÏóÔÚµ±Ç°Ö¡²ÎÓëÓÎÏ·Âß¼­¡£
+            // é˜²æ­¢é¢„çƒ­å¯¹è±¡åœ¨å½“å‰å¸§å‚ä¸æ¸¸æˆé€»è¾‘ã€‚
             enemyObject.SetActive(false);
 
             enemyObject.name =
@@ -390,8 +391,8 @@ public class EnemyPool :
             {
                 Debug.LogError(
                     enemyObject.name
-                    + " Ã»ÓĞ PooledEnemy£¬"
-                    + "¸Ã¶ÔÏó½«±»Ïú»Ù¡£",
+                    + " æ²¡æœ‰ PooledEnemyï¼Œ"
+                    + "è¯¥å¯¹è±¡å°†è¢«é”€æ¯ã€‚",
                     enemyObject
                 );
 
@@ -429,8 +430,8 @@ public class EnemyPool :
     }
 
     /// <summary>
-    /// ´ÓÖ¸¶¨ÀàĞÍµÄ³ØÖĞÈ¡µÃÒ»¸öµĞÈË¡£
-    /// ³Ø²»×ãÊ±¸ù¾İÅäÖÃ×Ô¶¯À©Èİ¡£
+    /// ä»æŒ‡å®šç±»å‹çš„æ± ä¸­å–å¾—ä¸€ä¸ªæ•Œäººã€‚
+    /// æ± ä¸è¶³æ—¶æ ¹æ®é…ç½®è‡ªåŠ¨æ‰©å®¹ã€‚
     /// </summary>
     public PooledEnemy GetEnemy(
         EnemyType enemyType,
@@ -441,8 +442,8 @@ public class EnemyPool :
         if (!isInitialized)
         {
             Debug.LogError(
-                "EnemyPool ÉĞÎ´Íê³É³õÊ¼»¯£¬"
-                + "ÎŞ·¨È¡µÃµĞÈË¡£",
+                "EnemyPool å°šæœªå®Œæˆåˆå§‹åŒ–ï¼Œ"
+                + "æ— æ³•å–å¾—æ•Œäººã€‚",
                 this
             );
 
@@ -455,10 +456,10 @@ public class EnemyPool :
             ))
         {
             Debug.LogError(
-                "EnemyPool Ã»ÓĞ "
+                "EnemyPool æ²¡æœ‰ "
                 + enemyType
-                + " ÀàĞÍÅäÖÃ£¬"
-                + "±¾´ÎÉú³ÉÒÑÈ¡Ïû¡£",
+                + " ç±»å‹é…ç½®ï¼Œ"
+                + "æœ¬æ¬¡ç”Ÿæˆå·²å–æ¶ˆã€‚",
                 this
             );
 
@@ -474,8 +475,8 @@ public class EnemyPool :
             {
                 Debug.LogWarning(
                     enemyType
-                    + " ¶ÔÏó³ØÒÑÓÃ¾¡£¬"
-                    + "²¢ÇÒ²»ÔÊĞíÀ©Èİ¡£",
+                    + " å¯¹è±¡æ± å·²ç”¨å°½ï¼Œ"
+                    + "å¹¶ä¸”ä¸å…è®¸æ‰©å®¹ã€‚",
                     this
                 );
 
@@ -494,7 +495,7 @@ public class EnemyPool :
             {
                 Debug.LogError(
                     enemyType
-                    + " ¶ÔÏó³ØÀ©ÈİÊ§°Ü¡£",
+                    + " å¯¹è±¡æ± æ‰©å®¹å¤±è´¥ã€‚",
                     this
                 );
 
@@ -506,7 +507,7 @@ public class EnemyPool :
             {
                 Debug.Log(
                     enemyType
-                    + " ¶ÔÏó³Ø×Ô¶¯À©Èİ£º+"
+                    + " å¯¹è±¡æ± è‡ªåŠ¨æ‰©å®¹ï¼š+"
                     + createdCount,
                     this
                 );
@@ -522,8 +523,8 @@ public class EnemyPool :
         {
             Debug.LogError(
                 enemyType
-                + " ¶ÔÏó³ØÃ»ÓĞ¿ÉÓÃ¶ÔÏó£¬"
-                + "±¾´ÎÉú³ÉÒÑÈ¡Ïû¡£",
+                + " å¯¹è±¡æ± æ²¡æœ‰å¯ç”¨å¯¹è±¡ï¼Œ"
+                + "æœ¬æ¬¡ç”Ÿæˆå·²å–æ¶ˆã€‚",
                 this
             );
 
@@ -537,8 +538,8 @@ public class EnemyPool :
         {
             Debug.LogError(
                 pooledEnemy.name
-                + " ÒÑ´æÔÚÓÚ Active ¼¯ºÏÖĞ£¬"
-                + "±¾´ÎÈ¡³öÒÑÈ¡Ïû¡£",
+                + " å·²å­˜åœ¨äº Active é›†åˆä¸­ï¼Œ"
+                + "æœ¬æ¬¡å–å‡ºå·²å–æ¶ˆã€‚",
                 pooledEnemy
             );
 
@@ -573,8 +574,8 @@ public class EnemyPool :
     }
 
     /// <summary>
-    /// ´Ó¿ÉÓÃ¶ÓÁĞ°²È«È¡µÃÒ»¸ö¶ÔÏó¡£
-    /// »áÌø¹ıÒâÍâ±»Ïú»ÙµÄÎŞĞ§ÒıÓÃ¡£
+    /// ä»å¯ç”¨é˜Ÿåˆ—å®‰å…¨å–å¾—ä¸€ä¸ªå¯¹è±¡ã€‚
+    /// ä¼šè·³è¿‡æ„å¤–è¢«é”€æ¯çš„æ— æ•ˆå¼•ç”¨ã€‚
     /// </summary>
     private PooledEnemy TakeAvailableEnemy(
         RuntimeEnemyPool runtimePool
@@ -607,8 +608,8 @@ public class EnemyPool :
     }
 
     /// <summary>
-    /// »ØÊÕµĞÈË¡£
-    /// Í¬Ò»¸ö¶ÔÏó²»ÄÜÖØ¸´¼ÓÈë¿ÉÓÃ¶ÓÁĞ¡£
+    /// å›æ”¶æ•Œäººã€‚
+    /// åŒä¸€ä¸ªå¯¹è±¡ä¸èƒ½é‡å¤åŠ å…¥å¯ç”¨é˜Ÿåˆ—ã€‚
     /// </summary>
     public void ReturnEnemy(
         PooledEnemy enemy
@@ -617,7 +618,7 @@ public class EnemyPool :
         if (enemy == null)
         {
             Debug.LogWarning(
-                "EnemyPool ÊÕµ½ÁË¿ÕµÄ»ØÊÕÇëÇó¡£",
+                "EnemyPool æ”¶åˆ°äº†ç©ºçš„å›æ”¶è¯·æ±‚ã€‚",
                 this
             );
 
@@ -631,9 +632,9 @@ public class EnemyPool :
         {
             Debug.LogError(
                 enemy.name
-                + " µÄÀàĞÍ "
+                + " çš„ç±»å‹ "
                 + enemy.Type
-                + " Ã»ÓĞ¶ÔÓ¦¶ÔÏó³Ø¡£",
+                + " æ²¡æœ‰å¯¹åº”å¯¹è±¡æ± ã€‚",
                 enemy
             );
 
@@ -646,10 +647,10 @@ public class EnemyPool :
         {
             Debug.LogError(
                 enemy.name
-                + " ²»ÊôÓÚµ±Ç° "
+                + " ä¸å±äºå½“å‰ "
                 + enemy.Type
-                + " ¶ÔÏó³Ø£¬"
-                + "»ØÊÕÇëÇóÒÑ¾Ü¾ø¡£",
+                + " å¯¹è±¡æ± ï¼Œ"
+                + "å›æ”¶è¯·æ±‚å·²æ‹’ç»ã€‚",
                 enemy
             );
 
@@ -662,8 +663,8 @@ public class EnemyPool :
         {
             Debug.LogWarning(
                 enemy.name
-                + " ÒÑÔÚ Available ¼¯ºÏÖĞ£¬"
-                + "ÖØ¸´»ØÊÕÇëÇóÒÑºöÂÔ¡£",
+                + " å·²åœ¨ Available é›†åˆä¸­ï¼Œ"
+                + "é‡å¤å›æ”¶è¯·æ±‚å·²å¿½ç•¥ã€‚",
                 enemy
             );
 
@@ -676,8 +677,8 @@ public class EnemyPool :
         {
             Debug.LogWarning(
                 enemy.name
-                + " ²»ÔÚ Active ¼¯ºÏÖĞ£¬"
-                + "»ØÊÕÇëÇóÒÑºöÂÔ¡£",
+                + " ä¸åœ¨ Active é›†åˆä¸­ï¼Œ"
+                + "å›æ”¶è¯·æ±‚å·²å¿½ç•¥ã€‚",
                 enemy
             );
 
@@ -743,8 +744,8 @@ public class EnemyPool :
             return;
         }
 
-        // µ±Ç°ÏîÄ¿Ê¹ÓÃ Unity 2022.3£¬
-        // Òò´ËÊ¹ÓÃ velocity¡£
+        // å½“å‰é¡¹ç›®ä½¿ç”¨ Unity 2022.3ï¼Œ
+        // å› æ­¤ä½¿ç”¨ velocityã€‚
         rb.velocity = Vector2.zero;
         rb.angularVelocity = 0f;
     }
@@ -930,8 +931,8 @@ public class EnemyPool :
 
                 Debug.LogError(
                     enemyType
-                    + ": Queue Count Óë "
-                    + "Available Set Count ²»Ò»ÖÂ¡£",
+                    + ": Queue Count ä¸ "
+                    + "Available Set Count ä¸ä¸€è‡´ã€‚",
                     this
                 );
             }
@@ -951,7 +952,7 @@ public class EnemyPool :
                     Debug.LogError(
                         enemyType
                         + ": Available Queue "
-                        + "°üº¬¿ÕÒıÓÃ¡£",
+                        + "åŒ…å«ç©ºå¼•ç”¨ã€‚",
                         this
                     );
 
@@ -965,9 +966,9 @@ public class EnemyPool :
                     Debug.LogError(
                         enemyType
                         + ": Available Queue "
-                        + "°üº¬ÖØ¸´¶ÔÏó "
+                        + "åŒ…å«é‡å¤å¯¹è±¡ "
                         + enemy.name
-                        + "¡£",
+                        + "ã€‚",
                         enemy
                     );
                 }
@@ -980,9 +981,9 @@ public class EnemyPool :
 
                     Debug.LogError(
                         enemyType
-                        + ": Queue ÖĞµÄ "
+                        + ": Queue ä¸­çš„ "
                         + enemy.name
-                        + " ²»ÔÚ Available Set¡£",
+                        + " ä¸åœ¨ Available Setã€‚",
                         enemy
                     );
                 }
@@ -1009,8 +1010,8 @@ public class EnemyPool :
                         enemyType
                         + ": "
                         + enemy.name
-                        + " Í¬Ê±´æÔÚÓÚ Active "
-                        + "ºÍ Available ¼¯ºÏ¡£",
+                        + " åŒæ—¶å­˜åœ¨äº Active "
+                        + "å’Œ Available é›†åˆã€‚",
                         enemy
                     );
                 }
@@ -1023,9 +1024,9 @@ public class EnemyPool :
 
                     Debug.LogError(
                         enemyType
-                        + ": Active ¶ÔÏó "
+                        + ": Active å¯¹è±¡ "
                         + enemy.name
-                        + " ²»ÔÚ All Set¡£",
+                        + " ä¸åœ¨ All Setã€‚",
                         enemy
                     );
                 }
@@ -1042,7 +1043,7 @@ public class EnemyPool :
 
                     Debug.LogError(
                         enemyType
-                        + ": All Set °üº¬¿ÕÒıÓÃ¡£",
+                        + ": All Set åŒ…å«ç©ºå¼•ç”¨ã€‚",
                         this
                     );
 
@@ -1065,9 +1066,9 @@ public class EnemyPool :
                         enemyType
                         + ": "
                         + enemy.name
-                        + " ±ØĞëÇÒÖ»ÄÜÊôÓÚ "
-                        + "Active »ò Available "
-                        + "ÆäÖĞÒ»¸ö¼¯ºÏ¡£",
+                        + " å¿…é¡»ä¸”åªèƒ½å±äº "
+                        + "Active æˆ– Available "
+                        + "å…¶ä¸­ä¸€ä¸ªé›†åˆã€‚",
                         enemy
                     );
                 }
@@ -1116,6 +1117,13 @@ public class EnemyPool :
         DebugSpawnOne(EnemyType.Heavy);
     }
 
+    [ContextMenu("Debug/Spawn One Ranged")]
+    private void DebugSpawnOneRanged()
+    {
+        DebugSpawnOne(EnemyType.Ranged);
+    }
+
+
     private void DebugSpawnOne(
         EnemyType enemyType
     )
@@ -1123,7 +1131,7 @@ public class EnemyPool :
         if (!Application.isPlaying)
         {
             Debug.LogWarning(
-                "Çë½øÈë Play Mode ºóÔÙ²âÊÔ¶ÔÏó³ØÉú³É¡£",
+                "è¯·è¿›å…¥ Play Mode åå†æµ‹è¯•å¯¹è±¡æ± ç”Ÿæˆã€‚",
                 this
             );
 
@@ -1140,9 +1148,9 @@ public class EnemyPool :
         if (enemy == null)
         {
             Debug.LogWarning(
-                "Î´ÄÜ´Ó¶ÔÏó³ØÈ¡µÃ "
+                "æœªèƒ½ä»å¯¹è±¡æ± å–å¾— "
                 + enemyType
-                + "¡£",
+                + "ã€‚",
                 this
             );
         }
@@ -1156,7 +1164,7 @@ public class EnemyPool :
         if (!Application.isPlaying)
         {
             Debug.LogWarning(
-                "Çë½øÈë Play Mode ºóÔÙ²âÊÔÖØ¸´»ØÊÕ¡£",
+                "è¯·è¿›å…¥ Play Mode åå†æµ‹è¯•é‡å¤å›æ”¶ã€‚",
                 this
             );
 
@@ -1173,8 +1181,8 @@ public class EnemyPool :
         if (enemy == null)
         {
             Debug.LogWarning(
-                "ÎŞ·¨È¡µÃ Normal£¬"
-                + "ÖØ¸´»ØÊÕ²âÊÔÒÑÈ¡Ïû¡£",
+                "æ— æ³•å–å¾— Normalï¼Œ"
+                + "é‡å¤å›æ”¶æµ‹è¯•å·²å–æ¶ˆã€‚",
                 this
             );
 
@@ -1188,7 +1196,7 @@ public class EnemyPool :
                 EnemyType.Normal
             );
 
-        // ¹ÊÒâÔÙ´ÎÖ±½ÓÇëÇó³Ø»ØÊÕ¡£
+        // æ•…æ„å†æ¬¡ç›´æ¥è¯·æ±‚æ± å›æ”¶ã€‚
         ReturnEnemy(enemy);
 
         int availableAfterDuplicate =

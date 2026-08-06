@@ -1126,6 +1126,15 @@ public class EnemySpawner : MonoBehaviour
             "Heavy"
         );
     }
+
+    [ContextMenu("Test Spawn Ranged Enemy")]
+    private void TestSpawnRangedEnemy()
+    {
+        SpawnEnemyForTesting(
+            EnemyType.Ranged,
+            "Ranged"
+        );
+    }
     private void LogDifficultyAtTime(
         float testSurvivalTime
     )
@@ -1324,6 +1333,16 @@ public class EnemySpawner : MonoBehaviour
             globalMoveSpeed,
             globalContactDamage
         );
+
+        LogSingleEnemyTypeStats(
+    FindConfiguredEnemyPrefab(
+        EnemyType.Ranged
+    ),
+    "Ranged",
+    globalMaxHealth,
+    globalMoveSpeed,
+    globalContactDamage
+);
     }
 
     /// <summary>
@@ -1725,6 +1744,14 @@ public class EnemySpawner : MonoBehaviour
     }
 
     [ContextMenu(
+    "Test Weighted Selection At 45 Seconds"
+)]
+    private void TestWeightedSelectionAt45Seconds()
+    {
+        TestWeightedSelectionAtTime(45f);
+    }
+
+    [ContextMenu(
         "Test Weighted Selection At 60 Seconds"
     )]
     private void TestWeightedSelectionAt60Seconds()
@@ -1755,6 +1782,14 @@ public class EnemySpawner : MonoBehaviour
         LogSpawnCandidatesAtTime(30f);
     }
 
+
+    [ContextMenu(
+    "Debug Spawn Candidates At 45 Seconds"
+)]
+    private void DebugSpawnCandidatesAt45Seconds()
+    {
+        LogSpawnCandidatesAtTime(45f);
+    }
     [ContextMenu(
         "Debug Spawn Candidates At 60 Seconds"
     )]
@@ -1937,6 +1972,17 @@ public class EnemySpawner : MonoBehaviour
     {
         RunWeightedSelectionBatchTest(
             30f,
+            1000
+        );
+    }
+
+    [ContextMenu(
+    "Batch Test 1000 Selections At 45 Seconds"
+)]
+    private void BatchTestAt45Seconds()
+    {
+        RunWeightedSelectionBatchTest(
+            45f,
             1000
         );
     }

@@ -1,5 +1,89 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2953261115807598326
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8257122253571669121}
+  - component: {fileID: 5697719365786335921}
+  m_Layer: 0
+  m_Name: HeavyShockwaveWarning
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8257122253571669121
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2953261115807598326}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8891348889322874304}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &5697719365786335921
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2953261115807598326}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: -1072932077
+  m_SortingLayer: 4
+  m_SortingOrder: -2
+  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &3319235536976819082
 GameObject:
   m_ObjectHideFlags: 0
@@ -17,6 +101,7 @@ GameObject:
   - component: {fileID: -1399807384786995150}
   - component: {fileID: 2454779613504796038}
   - component: {fileID: 3404927021564951171}
+  - component: {fileID: 3116509259470848189}
   m_Layer: 0
   m_Name: Enemy_Heavy
   m_TagString: Enemy
@@ -38,6 +123,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5716816610516368386}
+  - {fileID: 8257122253571669121}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8521493281721276124
@@ -169,6 +255,8 @@ MonoBehaviour:
   moveSpeed: 1.5
   stoppingDistance: 0.72
   target: {fileID: 0}
+  isMovementLocked: 0
+  isKnockedBack: 0
 --- !u!114 &-5133067771616714043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,6 +325,31 @@ MonoBehaviour:
   enemyType: 2
   isReturned: 1
   owningPool: {fileID: 0}
+--- !u!114 &3116509259470848189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3319235536976819082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 137d08da4ff50794caeaa8d36774eddf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerDistance: 3.5
+  shockwaveRadius: 2.6
+  windupDuration: 1.1
+  recoveryDuration: 0.8
+  attackCooldown: 5.5
+  interruptedCooldown: 1.25
+  warningVisual: {fileID: 8257122253571669121}
+  warningRenderer: {fileID: 5697719365786335921}
+  warningStartColor: {r: 1, g: 0.55, b: 0.05, a: 0.078431375}
+  warningEndColor: {r: 1, g: 0.1, b: 0.02, a: 0.2784314}
+  currentState: 0
+  stateTimeRemaining: 0
+  hasReleasedCurrentShockwave: 0
 --- !u!1 &8240409957123177307
 GameObject:
   m_ObjectHideFlags: 0

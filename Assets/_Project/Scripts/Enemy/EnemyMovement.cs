@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 [DisallowMultipleComponent]
 [RequireComponent(typeof(Rigidbody2D))]
@@ -15,6 +15,10 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField]
     private Transform target;
 
+    [Header("Runtime Movement Control")]
+    [SerializeField]
+    private bool isMovementLocked;
+
     [Header("Runtime Knockback State")]
     [SerializeField]
     private bool isKnockedBack;
@@ -27,6 +31,9 @@ public class EnemyMovement : MonoBehaviour
 
     public float MoveSpeed => moveSpeed;
 
+    public bool IsMovementLocked =>
+        isMovementLocked;
+
     public bool IsKnockedBack =>
         isKnockedBack;
 
@@ -38,6 +45,7 @@ public class EnemyMovement : MonoBehaviour
         rb.freezeRotation = true;
 
         ValidateMovementSettings();
+        SetMovementLocked(false);
         ResetKnockbackState();
     }
 
@@ -51,6 +59,11 @@ public class EnemyMovement : MonoBehaviour
         if (isKnockedBack)
         {
             UpdateKnockbackMovement();
+            return;
+        }
+
+        if (isMovementLocked)
+        {
             return;
         }
 
@@ -125,9 +138,9 @@ public class EnemyMovement : MonoBehaviour
     }
 
     /// <summary>
-    /// ¶ÔµĞÈËÊ©¼ÓÒ»¶Î¿É¿ØÎ»ÒÆµÄ»÷ÍË¡£
-    /// distance ±íÊ¾×Ü»÷ÍË¾àÀë£¬
-    /// duration ±íÊ¾»÷ÍË³ÖĞøÊ±¼ä¡£
+    /// å¯¹æ•Œäººæ–½åŠ ä¸€æ®µå¯æ§ä½ç§»çš„å‡»é€€ã€‚
+    /// distance è¡¨ç¤ºæ€»å‡»é€€è·ç¦»ï¼Œ
+    /// duration è¡¨ç¤ºå‡»é€€æŒç»­æ—¶é—´ã€‚
     /// </summary>
     public void ApplyKnockback(
         Vector2 direction,
@@ -170,6 +183,23 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
+
+    /// <summary>
+    /// è®¾ç½®æ˜¯å¦ç¦æ­¢ EnemyMovement æ‰§è¡Œæ™®é€šè¿½è¸ªã€‚
+    ///
+    /// æ­¤é”å®šä¸é˜»æ­¢ Knockbackã€‚
+    /// Fast ç­‰æ”»å‡»è„šæœ¬å–å¾—ç§»åŠ¨æ§åˆ¶æ—¶ä½¿ç”¨ã€‚
+    /// </summary>
+    public void SetMovementLocked(bool locked)
+    {
+        isMovementLocked = locked;
+
+        if (locked && rb != null)
+        {
+            rb.velocity = Vector2.zero;
+            rb.angularVelocity = 0f;
+        }
+    }
     private void ResetKnockbackState()
     {
         isKnockedBack = false;
@@ -188,7 +218,7 @@ public class EnemyMovement : MonoBehaviour
     }
 
     /// <summary>
-    /// ÔÚµĞÈËÉú³Éºó³õÊ¼»¯±¾´ÎµĞÈËµÄÒÆ¶¯ËÙ¶È¡£
+    /// åœ¨æ•Œäººç”Ÿæˆååˆå§‹åŒ–æœ¬æ¬¡æ•Œäººçš„ç§»åŠ¨é€Ÿåº¦ã€‚
     /// </summary>
     public void InitializeMoveSpeed(
         float newMoveSpeed
@@ -197,8 +227,8 @@ public class EnemyMovement : MonoBehaviour
         if (newMoveSpeed < 0f)
         {
             Debug.LogWarning(
-                $"{gameObject.name} ÊÕµ½ÁËÎŞĞ§ÒÆ¶¯ËÙ¶È£º"
-                + $"{newMoveSpeed}£¬ÒÑ×Ô¶¯ĞŞÕıÎª 0¡£",
+                $"{gameObject.name} æ”¶åˆ°äº†æ— æ•ˆç§»åŠ¨é€Ÿåº¦ï¼š"
+                + $"{newMoveSpeed}ï¼Œå·²è‡ªåŠ¨ä¿®æ­£ä¸º 0ã€‚",
                 this
             );
 
@@ -208,14 +238,14 @@ public class EnemyMovement : MonoBehaviour
         moveSpeed = newMoveSpeed;
 
         Debug.Log(
-            $"{gameObject.name} ÒÆ¶¯ËÙ¶È³õÊ¼»¯Íê³É£º"
+            $"{gameObject.name} ç§»åŠ¨é€Ÿåº¦åˆå§‹åŒ–å®Œæˆï¼š"
             + $"{moveSpeed:F2}",
             this
         );
     }
 
     /// <summary>
-    /// Ã¿´Î´Ó EnemyPool È¡³öÊ±ÖØÖÃÒÆ¶¯ºÍ»÷ÍË×´Ì¬¡£
+    /// æ¯æ¬¡ä» EnemyPool å–å‡ºæ—¶é‡ç½®ç§»åŠ¨å’Œå‡»é€€çŠ¶æ€ã€‚
     /// </summary>
     public void PrepareForSpawn()
     {
@@ -227,6 +257,7 @@ public class EnemyMovement : MonoBehaviour
         enabled = true;
         target = null;
 
+        SetMovementLocked(false);
         ResetKnockbackState();
         FindPlayer();
     }
@@ -251,8 +282,8 @@ public class EnemyMovement : MonoBehaviour
         else
         {
             Debug.LogWarning(
-                $"{gameObject.name} Ã»ÓĞÕÒµ½ "
-                + "Tag Îª Player µÄ¶ÔÏó¡£",
+                $"{gameObject.name} æ²¡æœ‰æ‰¾åˆ° "
+                + "Tag ä¸º Player çš„å¯¹è±¡ã€‚",
                 this
             );
         }
@@ -269,6 +300,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void OnDisable()
     {
+        SetMovementLocked(false);
         ResetKnockbackState();
     }
 
@@ -285,8 +317,8 @@ public class EnemyMovement : MonoBehaviour
         if (!Application.isPlaying)
         {
             Debug.LogWarning(
-                "Çë½øÈë Play Ä£Ê½ºóÔÙ²âÊÔ"
-                + "µĞÈËÒÆ¶¯ËÙ¶È³õÊ¼»¯¡£",
+                "è¯·è¿›å…¥ Play æ¨¡å¼åå†æµ‹è¯•"
+                + "æ•Œäººç§»åŠ¨é€Ÿåº¦åˆå§‹åŒ–ã€‚",
                 this
             );
 

@@ -2125,15 +2125,19 @@ MonoBehaviour:
   - enemyType: 0
     enemyPrefab: {fileID: 3319235536976819082, guid: 95d05adb622f64347900c60cec3711b0, type: 3}
     unlockTime: 0
-    spawnWeight: 70
+    spawnWeight: 50
   - enemyType: 1
     enemyPrefab: {fileID: 3319235536976819082, guid: 7ecc946538a7f604eb5bc7f1b535569e, type: 3}
     unlockTime: 15
     spawnWeight: 20
+  - enemyType: 3
+    enemyPrefab: {fileID: 3319235536976819082, guid: 2475c72a13e2691459a8d853525e7fff, type: 3}
+    unlockTime: 30
+    spawnWeight: 20
   - enemyType: 2
     enemyPrefab: {fileID: 3319235536976819082, guid: 5da49d37e7931534cb71e50bbba34859, type: 3}
     unlockTime: 30
-    spawnWeight: 10
+    spawnWeight: 15
   spawnInterval: 2
   maxEnemies: 10
   minSpawnInterval: 0.7
@@ -7358,6 +7362,11 @@ MonoBehaviour:
     expansionAmount: 3
   - enemyType: 2
     enemyPrefab: {fileID: 3319235536976819082, guid: 5da49d37e7931534cb71e50bbba34859, type: 3}
+    initialPoolSize: 4
+    allowExpansion: 1
+    expansionAmount: 2
+  - enemyType: 3
+    enemyPrefab: {fileID: 3319235536976819082, guid: 2475c72a13e2691459a8d853525e7fff, type: 3}
     initialPoolSize: 4
     allowExpansion: 1
     expansionAmount: 2
@@ -40121,6 +40130,57 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2068857115}
   m_CullTransparentMesh: 1
+--- !u!1 &2108490431
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2108490433}
+  - component: {fileID: 2108490432}
+  m_Layer: 0
+  m_Name: EnemyProjectilePool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2108490432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2108490431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 947449d3bce4d0c4db20370c481ea081, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: -3327286041329742347, guid: 8151514036ec108478529bf34964ae5b, type: 3}
+  initialPoolSize: 16
+  allowExpansion: 1
+  expansionAmount: 8
+  totalCount: 0
+  activeCount: 0
+  availableCount: 0
+--- !u!4 &2108490433
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2108490431}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.648923, y: 11.929529, z: -0.02469563}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2161520159622884040
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40411,3 +40471,4 @@ SceneRoots:
   - {fileID: 48393920}
   - {fileID: 8826522502449713686}
   - {fileID: 1330946959}
+  - {fileID: 2108490433}
