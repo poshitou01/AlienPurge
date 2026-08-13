@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 8227894176637333325}
   - component: {fileID: 4449472130475427628}
   - component: {fileID: 1130772633997096167}
+  - component: {fileID: 8516474647307377796}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -277,6 +278,36 @@ MonoBehaviour:
   pulseVisual: {fileID: 735966738889216858}
   pulseStartAlpha: 0.45
   pulseColor: {r: 0.25, g: 0.9, b: 1, a: 1}
+  visualRoot: {fileID: 0}
+  pulseScaleMultiplier: 1.1
+--- !u!114 &8516474647307377796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 316811388181832284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 769fc38a0a67d3f409d967025f433274, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  piercingLevel: 0
+  explosiveLevel: 0
+  chainLightningLevel: 0
+  splitShotLevel: 0
+  explosionRadiusLevel1: 1.4
+  explosionRadiusLevel2: 1.7
+  explosionRadiusLevel3: 2
+  explosionDamageMultiplierLevel1: 0.4
+  explosionDamageMultiplierLevel2: 0.55
+  explosionDamageMultiplierLevel3: 0.7
+  chainRange: 3.5
+  chainDamageMultiplier: 0.6
+  childDamageMultiplier: 0.5
+  childSpeedMultiplier: 0.85
+  childScaleMultiplier: 0.7
+  childLifeTimeMultiplier: 0.65
 --- !u!1 &3606381915730823860
 GameObject:
   m_ObjectHideFlags: 0

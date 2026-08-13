@@ -26,6 +26,70 @@ public class EnemySpawner : MonoBehaviour
     [Tooltip("刷怪间隔允许降低到的最小值")]
     [SerializeField] private float minSpawnInterval = 0.7f;
 
+    [Header("360s Spawn Pressure Curve")]
+
+    [Tooltip("第一阶段结束时间：第一次 Weapon Module 出现")]
+    [SerializeField]
+    private float spawnStage1Time = 45f;
+
+    [Tooltip("第二阶段结束时间：第二次 Weapon Module 出现")]
+    [SerializeField]
+    private float spawnStage2Time = 150f;
+
+    [Tooltip("第三阶段结束时间：Build 基本成型")]
+    [SerializeField]
+    private float spawnStage3Time = 240f;
+
+    [Tooltip("第四阶段结束时间：Final Rush 开始")]
+    [SerializeField]
+    private float spawnStage4Time = 330f;
+
+    [Tooltip("正式一局结束时间")]
+    [SerializeField]
+    private float spawnFinalTime = 360f;
+
+
+    [Header("360s Spawn Interval Targets")]
+
+    [SerializeField]
+    private float spawnIntervalAtStart = 2.20f;
+
+    [SerializeField]
+    private float spawnIntervalAtStage1 = 1.80f;
+
+    [SerializeField]
+    private float spawnIntervalAtStage2 = 1.20f;
+
+    [SerializeField]
+    private float spawnIntervalAtStage3 = 0.75f;
+
+    [SerializeField]
+    private float spawnIntervalAtStage4 = 0.45f;
+
+    [SerializeField]
+    private float spawnIntervalAtFinal = 0.35f;
+
+
+    [Header("360s Enemy Count Targets")]
+
+    [SerializeField]
+    private int maxEnemiesAtStart = 5;
+
+    [SerializeField]
+    private int maxEnemiesAtStage1 = 8;
+
+    [SerializeField]
+    private int maxEnemiesAtStage2 = 18;
+
+    [SerializeField]
+    private int maxEnemiesAtStage3 = 30;
+
+    [SerializeField]
+    private int maxEnemiesAtStage4 = 45;
+
+    [SerializeField]
+    private int maxEnemiesAtFinal = 55;
+
     [Tooltip("每生存 1 秒，刷怪间隔减少多少秒")]
     [SerializeField]
     private float spawnIntervalDecreasePerSecond = 0.02f;
@@ -256,7 +320,8 @@ public class EnemySpawner : MonoBehaviour
             return false;
         }
 
-        if (UpgradeManager.IsChoosingUpgrade)
+        if (UpgradeManager.IsChoosingUpgrade
+            || WeaponModuleSelectionManager.IsChoosingModule)
         {
             return false;
         }
@@ -522,33 +587,220 @@ public class EnemySpawner : MonoBehaviour
     }
 
     private void UpdateSpawnDifficulty(
-        float survivalTime
-    )
+        float survivalTime)
     {
-        currentSpawnInterval =
-            spawnInterval
-            - survivalTime
-            * spawnIntervalDecreasePerSecond;
-
-        currentSpawnInterval = Mathf.Max(
-            minSpawnInterval,
-            currentSpawnInterval
-        );
-
-        int enemyCountIncreaseCount =
-            Mathf.FloorToInt(
+        survivalTime =
+            Mathf.Max(
+                0f,
                 survivalTime
-                / maxEnemiesIncreaseInterval
+            );
+
+        currentSpawnInterval =
+            Calculate360SpawnInterval(
+                survivalTime
             );
 
         currentMaxEnemies =
-            maxEnemies
-            + enemyCountIncreaseCount
-            * maxEnemiesIncreaseAmount;
+            Calculate360MaxEnemies(
+                survivalTime
+            );
+    }
 
-        currentMaxEnemies = Mathf.Min(
-            currentMaxEnemies,
-            maxEnemiesLimit
+    private float Calculate360SpawnInterval(
+    float survivalTime)
+    {
+        survivalTime =
+            Mathf.Max(
+                0f,
+                survivalTime
+            );
+
+        if (survivalTime <= spawnStage1Time)
+        {
+            float t =
+                Mathf.InverseLerp(
+                    0f,
+                    spawnStage1Time,
+                    survivalTime
+                );
+
+            return Mathf.Lerp(
+                spawnIntervalAtStart,
+                spawnIntervalAtStage1,
+                t
+            );
+        }
+
+        if (survivalTime <= spawnStage2Time)
+        {
+            float t =
+                Mathf.InverseLerp(
+                    spawnStage1Time,
+                    spawnStage2Time,
+                    survivalTime
+                );
+
+            return Mathf.Lerp(
+                spawnIntervalAtStage1,
+                spawnIntervalAtStage2,
+                t
+            );
+        }
+
+        if (survivalTime <= spawnStage3Time)
+        {
+            float t =
+                Mathf.InverseLerp(
+                    spawnStage2Time,
+                    spawnStage3Time,
+                    survivalTime
+                );
+
+            return Mathf.Lerp(
+                spawnIntervalAtStage2,
+                spawnIntervalAtStage3,
+                t
+            );
+        }
+
+        if (survivalTime <= spawnStage4Time)
+        {
+            float t =
+                Mathf.InverseLerp(
+                    spawnStage3Time,
+                    spawnStage4Time,
+                    survivalTime
+                );
+
+            return Mathf.Lerp(
+                spawnIntervalAtStage3,
+                spawnIntervalAtStage4,
+                t
+            );
+        }
+
+        if (survivalTime <= spawnFinalTime)
+        {
+            float t =
+                Mathf.InverseLerp(
+                    spawnStage4Time,
+                    spawnFinalTime,
+                    survivalTime
+                );
+
+            return Mathf.Lerp(
+                spawnIntervalAtStage4,
+                spawnIntervalAtFinal,
+                t
+            );
+        }
+
+        return spawnIntervalAtFinal;
+    }
+
+
+    private int Calculate360MaxEnemies(
+        float survivalTime)
+    {
+        survivalTime =
+            Mathf.Max(
+                0f,
+                survivalTime
+            );
+
+        float calculatedMaxEnemies;
+
+        if (survivalTime <= spawnStage1Time)
+        {
+            float t =
+                Mathf.InverseLerp(
+                    0f,
+                    spawnStage1Time,
+                    survivalTime
+                );
+
+            calculatedMaxEnemies =
+                Mathf.Lerp(
+                    maxEnemiesAtStart,
+                    maxEnemiesAtStage1,
+                    t
+                );
+        }
+        else if (survivalTime <= spawnStage2Time)
+        {
+            float t =
+                Mathf.InverseLerp(
+                    spawnStage1Time,
+                    spawnStage2Time,
+                    survivalTime
+                );
+
+            calculatedMaxEnemies =
+                Mathf.Lerp(
+                    maxEnemiesAtStage1,
+                    maxEnemiesAtStage2,
+                    t
+                );
+        }
+        else if (survivalTime <= spawnStage3Time)
+        {
+            float t =
+                Mathf.InverseLerp(
+                    spawnStage2Time,
+                    spawnStage3Time,
+                    survivalTime
+                );
+
+            calculatedMaxEnemies =
+                Mathf.Lerp(
+                    maxEnemiesAtStage2,
+                    maxEnemiesAtStage3,
+                    t
+                );
+        }
+        else if (survivalTime <= spawnStage4Time)
+        {
+            float t =
+                Mathf.InverseLerp(
+                    spawnStage3Time,
+                    spawnStage4Time,
+                    survivalTime
+                );
+
+            calculatedMaxEnemies =
+                Mathf.Lerp(
+                    maxEnemiesAtStage3,
+                    maxEnemiesAtStage4,
+                    t
+                );
+        }
+        else if (survivalTime <= spawnFinalTime)
+        {
+            float t =
+                Mathf.InverseLerp(
+                    spawnStage4Time,
+                    spawnFinalTime,
+                    survivalTime
+                );
+
+            calculatedMaxEnemies =
+                Mathf.Lerp(
+                    maxEnemiesAtStage4,
+                    maxEnemiesAtFinal,
+                    t
+                );
+        }
+        else
+        {
+            calculatedMaxEnemies =
+                maxEnemiesAtFinal;
+        }
+
+        return Mathf.Max(
+            1,
+            Mathf.RoundToInt(
+                calculatedMaxEnemies
+            )
         );
     }
 

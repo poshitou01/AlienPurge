@@ -337,8 +337,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 137d08da4ff50794caeaa8d36774eddf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggerDistance: 3.5
-  shockwaveRadius: 2.6
+  triggerDistance: 2.4
+  shockwaveRadius: 3.2
   windupDuration: 1.1
   recoveryDuration: 0.8
   attackCooldown: 5.5

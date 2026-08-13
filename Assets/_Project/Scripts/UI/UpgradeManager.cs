@@ -28,9 +28,32 @@ public class UpgradeManager : MonoBehaviour
     private readonly UpgradeOptionData[] displayedOptions =
         new UpgradeOptionData[UpgradeChoiceCount];
 
+    [Header("Weapon Module Upgrade Pity")]
+
+    [Tooltip(
+    "连续多少次普通升级没有出现模块强化后，"
+    + "下一次强制出现至少一个模块强化"
+)]
+    [Min(1)]
+    [SerializeField]
+    private int modulePityMissThreshold = 2;
+
+
+    [Header("Runtime Module Pity Debug")]
+
+    [SerializeField]
+    private int consecutiveModuleMissCount;
+
+    [SerializeField]
+    private bool lastUpgradePanelHadModuleOption;
+
+    [SerializeField]
+    private bool modulePityForcedThisRoll;
+
     private PlayerMovement playerMovement;
     private PlayerShooting playerShooting;
     private PlayerHealth playerHealth;
+    private PlayerWeaponModifiers playerWeaponModifiers;
 
     private void Awake()
     {
@@ -81,6 +104,9 @@ public class UpgradeManager : MonoBehaviour
         playerHealth =
             player.GetComponent<PlayerHealth>();
 
+        playerWeaponModifiers =
+    player.GetComponent<PlayerWeaponModifiers>();
+
         if (playerMovement == null)
         {
             Debug.LogWarning(
@@ -99,6 +125,13 @@ public class UpgradeManager : MonoBehaviour
         {
             Debug.LogWarning(
                 "UpgradeManager 找不到 PlayerHealth。"
+            );
+        }
+
+        if (playerWeaponModifiers == null)
+        {
+            Debug.LogWarning(
+                "UpgradeManager 找不到 PlayerWeaponModifiers。"
             );
         }
     }
@@ -168,7 +201,8 @@ public class UpgradeManager : MonoBehaviour
 
         if (playerMovement == null ||
             playerShooting == null ||
-            playerHealth == null)
+            playerHealth == null ||
+            playerWeaponModifiers == null)
         {
             FindPlayerComponents();
         }
@@ -237,8 +271,10 @@ public class UpgradeManager : MonoBehaviour
         // 防止上一次显示的数据残留。
         ClearDisplayedOptions();
 
+
         List<UpgradeOptionData> candidates =
             BuildUniqueUpgradeCandidates();
+
 
         if (candidates.Count == 0)
         {
@@ -251,54 +287,300 @@ public class UpgradeManager : MonoBehaviour
             return false;
         }
 
-        int selectedCount = Mathf.Min(
-            UpgradeChoiceCount,
-            candidates.Count
-        );
 
-        // 使用部分 Fisher-Yates 洗牌。
-        // 实际有几个候选，就随机选择几个。
-        for (int i = 0; i < selectedCount; i++)
+        int originalCandidateCount =
+            candidates.Count;
+
+
+        // ---------------------------------------------------------
+        // 找出当前“已经解锁且还能升级”的核心模块。
+        //
+        // BuildUniqueUpgradeCandidates() 已经执行过
+        // IsUpgradeAvailable()，
+        // 因此未解锁模块和满级模块都不会进入这里。
+        // ---------------------------------------------------------
+
+        List<UpgradeOptionData>
+            moduleCandidates =
+                BuildAvailableModuleUpgradeCandidates(
+                    candidates
+                );
+
+
+        bool hasAvailableModuleUpgrade =
+            moduleCandidates.Count > 0;
+
+
+        bool shouldForceModule =
+            hasAvailableModuleUpgrade
+            && consecutiveModuleMissCount
+                >= modulePityMissThreshold;
+
+
+        modulePityForcedThisRoll =
+            false;
+
+
+        int selectedCount =
+            Mathf.Min(
+                UpgradeChoiceCount,
+                candidates.Count
+            );
+
+
+        int displayedCount = 0;
+
+
+        // ---------------------------------------------------------
+        // 保底触发：
+        // 先随机塞入一个当前可升级的核心模块。
+        // ---------------------------------------------------------
+
+        if (shouldForceModule &&
+            displayedCount < selectedCount)
         {
-            int randomIndex =
-                Random.Range(i, candidates.Count);
+            int forcedIndex =
+                Random.Range(
+                    0,
+                    moduleCandidates.Count
+                );
 
-            UpgradeOptionData temporaryOption =
-                candidates[i];
 
-            candidates[i] =
-                candidates[randomIndex];
+            UpgradeOptionData forcedModule =
+                moduleCandidates[
+                    forcedIndex
+                ];
 
-            candidates[randomIndex] =
-                temporaryOption;
 
-            displayedOptions[i] =
-                candidates[i];
+            displayedOptions[
+                displayedCount
+            ] =
+                forcedModule;
+
+
+            displayedCount++;
+
+
+            // 从普通候选中移除，
+            // 防止后面再次抽到同一个 UpgradeType。
+            candidates.Remove(
+                forcedModule
+            );
+
+
+            modulePityForcedThisRoll =
+                true;
         }
 
-        string selectedUpgradeNames = "";
 
-        for (int i = 0; i < selectedCount; i++)
+        // ---------------------------------------------------------
+        // 填满剩余位置。
+        // 使用随机 RemoveAt，
+        // 可以避免重复选择同一个候选。
+        // ---------------------------------------------------------
+
+        while (displayedCount
+                   < selectedCount
+               && candidates.Count > 0)
+        {
+            int randomIndex =
+                Random.Range(
+                    0,
+                    candidates.Count
+                );
+
+
+            displayedOptions[
+                displayedCount
+            ] =
+                candidates[
+                    randomIndex
+                ];
+
+
+            displayedCount++;
+
+
+            candidates.RemoveAt(
+                randomIndex
+            );
+        }
+
+
+        // ---------------------------------------------------------
+        // 检查本次三选一里有没有真正出现模块强化。
+        // ---------------------------------------------------------
+
+        lastUpgradePanelHadModuleOption =
+            DoesDisplayedSelectionContainModule(
+                displayedCount
+            );
+
+
+        // ---------------------------------------------------------
+        // 更新保底计数。
+        // ---------------------------------------------------------
+
+        if (!hasAvailableModuleUpgrade)
+        {
+            // 当前没有任何还能升级的模块时，
+            // 保底没有意义。
+            consecutiveModuleMissCount = 0;
+        }
+        else if (lastUpgradePanelHadModuleOption)
+        {
+            // 只要本次已经给玩家看到了模块强化，
+            // 不管玩家最后选不选，都重置。
+            consecutiveModuleMissCount = 0;
+        }
+        else
+        {
+            consecutiveModuleMissCount++;
+        }
+
+
+        // ---------------------------------------------------------
+        // Debug 输出
+        // ---------------------------------------------------------
+
+        string selectedUpgradeNames =
+            string.Empty;
+
+
+        for (int i = 0;
+             i < displayedCount;
+             i++)
         {
             if (i > 0)
             {
-                selectedUpgradeNames += "、";
+                selectedUpgradeNames +=
+                    "、";
             }
 
-            selectedUpgradeNames +=
-                displayedOptions[i].UpgradeName;
+
+            if (displayedOptions[i]
+                != null)
+            {
+                selectedUpgradeNames +=
+                    displayedOptions[i]
+                        .UpgradeName;
+            }
         }
 
+
         Debug.Log(
-            $"本次可用候选数量：{candidates.Count}，"
-            + $"实际显示数量：{selectedCount}。\n"
-            + $"本次随机升级：{selectedUpgradeNames}",
+            "===== Normal Upgrade Roll =====\n"
+            + "Available Candidates: "
+            + originalCandidateCount
+            + "\nDisplayed Count: "
+            + displayedCount
+            + "\nDisplayed: "
+            + selectedUpgradeNames
+            + "\nHas Available Module Upgrade: "
+            + hasAvailableModuleUpgrade
+            + "\nPanel Contains Module: "
+            + lastUpgradePanelHadModuleOption
+            + "\nPity Forced: "
+            + modulePityForcedThisRoll
+            + "\nCurrent Miss Count: "
+            + consecutiveModuleMissCount
+            + " / "
+            + modulePityMissThreshold,
             this
         );
+
 
         return true;
     }
 
+    private List<UpgradeOptionData>
+    BuildAvailableModuleUpgradeCandidates(
+        List<UpgradeOptionData> candidates)
+    {
+        List<UpgradeOptionData>
+            moduleCandidates =
+                new List<UpgradeOptionData>();
+
+
+        if (candidates == null)
+        {
+            return moduleCandidates;
+        }
+
+
+        for (int i = 0;
+             i < candidates.Count;
+             i++)
+        {
+            UpgradeOptionData option =
+                candidates[i];
+
+
+            if (!IsWeaponModuleUpgradeOption(
+                    option))
+            {
+                continue;
+            }
+
+
+            moduleCandidates.Add(
+                option
+            );
+        }
+
+
+        return moduleCandidates;
+    }
+
+
+    private bool DoesDisplayedSelectionContainModule(
+        int displayedCount)
+    {
+        int safeCount =
+            Mathf.Min(
+                displayedCount,
+                displayedOptions.Length
+            );
+
+
+        for (int i = 0;
+             i < safeCount;
+             i++)
+        {
+            if (IsWeaponModuleUpgradeOption(
+                    displayedOptions[i]))
+            {
+                return true;
+            }
+        }
+
+
+        return false;
+    }
+
+
+    private bool IsWeaponModuleUpgradeOption(
+        UpgradeOptionData option)
+    {
+        if (option == null)
+        {
+            return false;
+        }
+
+
+        if (WeaponModuleSelectionManager
+            .Instance == null)
+        {
+            return false;
+        }
+
+
+        return WeaponModuleSelectionManager
+            .Instance
+            .IsModuleType(
+                option.Type
+            );
+    }
     /// <summary>
     /// 根据玩家当前状态建立有效升级候选列表。
     /// 空选项和当前无法生效的升级会被忽略。
@@ -390,6 +672,50 @@ public class UpgradeManager : MonoBehaviour
             case UpgradeType.ProjectileCountIncrease:
                 return playerShooting != null
                     && playerShooting.CanIncreaseProjectileCount;
+
+            case UpgradeType.Piercing:
+                return playerWeaponModifiers != null
+                    && playerWeaponModifiers.CanUpgradePiercing
+                    && WeaponModuleSelectionManager.Instance
+                        != null
+                    && WeaponModuleSelectionManager.Instance
+                        .CanOfferAsNormalUpgrade(
+                            UpgradeType.Piercing
+                        );
+
+
+            case UpgradeType.Explosive:
+                return playerWeaponModifiers != null
+                    && playerWeaponModifiers.CanUpgradeExplosive
+                    && WeaponModuleSelectionManager.Instance
+                        != null
+                    && WeaponModuleSelectionManager.Instance
+                        .CanOfferAsNormalUpgrade(
+                            UpgradeType.Explosive
+                        );
+
+
+            case UpgradeType.ChainLightning:
+                return playerWeaponModifiers != null
+                    && playerWeaponModifiers
+                        .CanUpgradeChainLightning
+                    && WeaponModuleSelectionManager.Instance
+                        != null
+                    && WeaponModuleSelectionManager.Instance
+                        .CanOfferAsNormalUpgrade(
+                            UpgradeType.ChainLightning
+                        );
+
+
+            case UpgradeType.SplitShot:
+                return playerWeaponModifiers != null
+                    && playerWeaponModifiers.CanUpgradeSplitShot
+                    && WeaponModuleSelectionManager.Instance
+                        != null
+                    && WeaponModuleSelectionManager.Instance
+                        .CanOfferAsNormalUpgrade(
+                            UpgradeType.SplitShot
+                        );
 
             default:
                 Debug.LogWarning(
@@ -587,6 +913,22 @@ public class UpgradeManager : MonoBehaviour
                 ApplyProjectileCountUpgrade(option.Value);
                 break;
 
+            case UpgradeType.Piercing:
+                ApplyPiercingUpgrade();
+                break;
+
+            case UpgradeType.Explosive:
+                ApplyExplosiveUpgrade();
+                break;
+
+            case UpgradeType.ChainLightning:
+                ApplyChainLightningUpgrade();
+                break;
+
+            case UpgradeType.SplitShot:
+                ApplySplitShotUpgrade();
+                break;
+
             default:
                 Debug.LogWarning(
                     $"未处理的升级类型：{option.Type}"
@@ -781,6 +1123,73 @@ public class UpgradeManager : MonoBehaviour
             displayedOptions[i] = null;
         }
     }
+
+    private void ApplyPiercingUpgrade()
+    {
+        if (playerWeaponModifiers == null)
+        {
+            Debug.LogWarning(
+                "无法应用穿透强化："
+                + "PlayerWeaponModifiers 为空。",
+                this
+            );
+
+            return;
+        }
+
+        playerWeaponModifiers.ApplyPiercingUpgrade();
+    }
+
+
+    private void ApplyExplosiveUpgrade()
+    {
+        if (playerWeaponModifiers == null)
+        {
+            Debug.LogWarning(
+                "无法应用爆裂强化："
+                + "PlayerWeaponModifiers 为空。",
+                this
+            );
+
+            return;
+        }
+
+        playerWeaponModifiers.ApplyExplosiveUpgrade();
+    }
+
+
+    private void ApplyChainLightningUpgrade()
+    {
+        if (playerWeaponModifiers == null)
+        {
+            Debug.LogWarning(
+                "无法应用连锁电弧强化："
+                + "PlayerWeaponModifiers 为空。",
+                this
+            );
+
+            return;
+        }
+
+        playerWeaponModifiers.ApplyChainLightningUpgrade();
+    }
+
+
+    private void ApplySplitShotUpgrade()
+    {
+        if (playerWeaponModifiers == null)
+        {
+            Debug.LogWarning(
+                "无法应用分裂弹强化："
+                + "PlayerWeaponModifiers 为空。",
+                this
+            );
+
+            return;
+        }
+
+        playerWeaponModifiers.ApplySplitShotUpgrade();
+    }
     /// <summary>
     /// 在 Console 中输出升级池内所有选项当前是否有效。
     /// 只用于第二十阶段调试。
@@ -801,7 +1210,8 @@ public class UpgradeManager : MonoBehaviour
 
         if (playerMovement == null ||
             playerShooting == null ||
-            playerHealth == null)
+            playerHealth == null ||
+            playerWeaponModifiers == null)
         {
             FindPlayerComponents();
         }
@@ -855,5 +1265,61 @@ public class UpgradeManager : MonoBehaviour
         }
 
         ShowUpgradePanel();
+    }
+
+    [ContextMenu(
+    "Debug/Prime Weapon Module Pity")]
+    private void DebugPrimeWeaponModulePity()
+    {
+        consecutiveModuleMissCount =
+            Mathf.Max(
+                1,
+                modulePityMissThreshold
+            );
+
+
+        Debug.Log(
+            "Weapon Module Pity 已准备完成。"
+            + "\n下一次普通升级如果存在"
+            + "可升级核心模块，"
+            + "将强制出现至少一个。",
+            this
+        );
+    }
+
+
+    [ContextMenu(
+        "Debug/Reset Weapon Module Pity")]
+    private void DebugResetWeaponModulePity()
+    {
+        consecutiveModuleMissCount = 0;
+
+        lastUpgradePanelHadModuleOption =
+            false;
+
+        modulePityForcedThisRoll =
+            false;
+
+
+        Debug.Log(
+            "Weapon Module Pity 已重置。",
+            this
+        );
+    }
+
+    public void NotifyGuaranteedModuleProgression()
+    {
+        consecutiveModuleMissCount = 0;
+
+        lastUpgradePanelHadModuleOption =
+            false;
+
+        modulePityForcedThisRoll =
+            false;
+
+        Debug.Log(
+            "Weapon Module Pity 已因保证型模块成长重置。",
+            this
+        );
     }
 }

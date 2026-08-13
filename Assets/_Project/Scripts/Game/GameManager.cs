@@ -87,7 +87,8 @@ public class GameManager : MonoBehaviour
         }
 
         // 如果正在升级三选一，不计算生存时间
-        if (UpgradeManager.IsChoosingUpgrade)
+        if (UpgradeManager.IsChoosingUpgrade
+            || WeaponModuleSelectionManager.IsChoosingModule)
         {
             return;
         }

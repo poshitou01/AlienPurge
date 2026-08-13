@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyType: 2
   displayName: Heavy Enemy
-  healthMultiplier: 2
+  healthMultiplier: 3.5
   moveSpeedMultiplier: 0.65
   damageMultiplier: 1.5
   experienceAmount: 2

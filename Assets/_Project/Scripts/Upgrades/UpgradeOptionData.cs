@@ -15,7 +15,12 @@ public enum UpgradeType
 
     BulletSpeedIncrease,
     BulletScaleIncrease,
-    ProjectileCountIncrease
+    ProjectileCountIncrease,
+
+    Piercing,
+    Explosive,
+    ChainLightning,
+    SplitShot
 }
 
 /// <summary>

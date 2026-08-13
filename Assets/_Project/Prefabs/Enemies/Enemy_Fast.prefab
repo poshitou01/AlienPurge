@@ -423,7 +423,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triggerDistance: 6
   windupDuration: 0.65
-  chargeDuration: 0.45
+  chargeDuration: 0.6
   recoveryDuration: 0.65
   attackCooldown: 4
   interruptedCooldown: 1
