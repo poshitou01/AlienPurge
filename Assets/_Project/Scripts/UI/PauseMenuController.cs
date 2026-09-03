@@ -74,9 +74,13 @@ public class PauseMenuController : MonoBehaviour
             return false;
         }
 
+        if (WeaponModuleSelectionManager.IsChoosingModule)
+        {
+            return false;
+        }
+
         return true;
     }
-
     public void PauseGame()
     {
         if (IsPaused || !CanPause())

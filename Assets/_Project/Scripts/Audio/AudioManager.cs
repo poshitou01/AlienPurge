@@ -82,6 +82,14 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip gameOverClip;
     [SerializeField] private AudioClip victoryClip;
 
+    [Header("Environment SFX")]
+
+    [SerializeField]
+    private AudioClip stormWarningClip;
+
+    [SerializeField]
+    private AudioClip stormStartClip;
+
     [Header("UI SFX")]
     [SerializeField] private AudioClip buttonClickClip;
 
@@ -146,6 +154,14 @@ public class AudioManager : MonoBehaviour
 
     [Range(0f, 1f)]
     [SerializeField] private float victoryVolume = 0.58f;
+
+    [Range(0f, 1f)]
+    [SerializeField]
+    private float stormWarningVolume = 0.55f;
+
+    [Range(0f, 1f)]
+    [SerializeField]
+    private float stormStartVolume = 0.68f;
 
     [Range(0f, 1f)]
     [SerializeField] private float buttonClickVolume = 0.22f;
@@ -504,6 +520,24 @@ public class AudioManager : MonoBehaviour
         );
     }
 
+    public void PlayStormWarning()
+    {
+        PlayOneShot(
+            sfxSource,
+            stormWarningClip,
+            stormWarningVolume
+        );
+    }
+
+
+    public void PlayStormStart()
+    {
+        PlayOneShot(
+            sfxSource,
+            stormStartClip,
+            stormStartVolume
+        );
+    }
     public void PlayButtonClick()
     {
         TryPlayThrottled(
@@ -739,6 +773,16 @@ public class AudioManager : MonoBehaviour
 
         victoryVolume =
             Mathf.Clamp01(victoryVolume);
+
+        stormWarningVolume =
+    Mathf.Clamp01(
+        stormWarningVolume
+    );
+
+        stormStartVolume =
+            Mathf.Clamp01(
+                stormStartVolume
+            );
 
         buttonClickVolume =
             Mathf.Clamp01(buttonClickVolume);

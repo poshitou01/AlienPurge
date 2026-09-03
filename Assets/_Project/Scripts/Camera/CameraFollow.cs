@@ -27,6 +27,10 @@ public class CameraFollow : MonoBehaviour
     private Vector2 mapMax =
         new Vector2(25f, 25f);
 
+    public Vector2 MapMin => mapMin;
+
+    public Vector2 MapMax => mapMax;
+
     [Header("Camera Shake")]
     [Tooltip("是否允许播放镜头震动")]
     [SerializeField] private bool enableShake = true;
