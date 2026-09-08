@@ -82,6 +82,27 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip gameOverClip;
     [SerializeField] private AudioClip victoryClip;
 
+    // =========================================================
+    // Mission SFX
+    // =========================================================
+
+    [Header("Mission SFX")]
+
+    [SerializeField]
+    private AudioClip missionStartedClip;
+
+    [SerializeField]
+    private AudioClip beaconActivatedClip;
+
+    [SerializeField]
+    private AudioClip alienCoreRecoveredClip;
+
+    [SerializeField]
+    private AudioClip missionCompletedClip;
+
+    [SerializeField]
+    private AudioClip missionFailedClip;
+
     [Header("Environment SFX")]
 
     [SerializeField]
@@ -165,6 +186,28 @@ public class AudioManager : MonoBehaviour
 
     [Range(0f, 1f)]
     [SerializeField] private float buttonClickVolume = 0.22f;
+
+    [Header("Mission SFX Volumes")]
+
+    [Range(0f, 1f)]
+    [SerializeField]
+    private float missionStartedVolume = 0.45f;
+
+    [Range(0f, 1f)]
+    [SerializeField]
+    private float beaconActivatedVolume = 0.50f;
+
+    [Range(0f, 1f)]
+    [SerializeField]
+    private float alienCoreRecoveredVolume = 0.55f;
+
+    [Range(0f, 1f)]
+    [SerializeField]
+    private float missionCompletedVolume = 0.55f;
+
+    [Range(0f, 1f)]
+    [SerializeField]
+    private float missionFailedVolume = 0.45f;
 
     [Header("High Frequency SFX Throttling")]
     [Tooltip("两次射击音效之间允许的最短真实时间")]
@@ -529,6 +572,54 @@ public class AudioManager : MonoBehaviour
         );
     }
 
+    public void PlayMissionStarted()
+    {
+        PlayOneShot(
+            sfxSource,
+            missionStartedClip,
+            missionStartedVolume
+        );
+    }
+
+
+    public void PlayBeaconActivated()
+    {
+        PlayOneShot(
+            sfxSource,
+            beaconActivatedClip,
+            beaconActivatedVolume
+        );
+    }
+
+
+    public void PlayAlienCoreRecovered()
+    {
+        PlayOneShot(
+            sfxSource,
+            alienCoreRecoveredClip,
+            alienCoreRecoveredVolume
+        );
+    }
+
+
+    public void PlayMissionCompleted()
+    {
+        PlayOneShot(
+            sfxSource,
+            missionCompletedClip,
+            missionCompletedVolume
+        );
+    }
+
+
+    public void PlayMissionFailed()
+    {
+        PlayOneShot(
+            sfxSource,
+            missionFailedClip,
+            missionFailedVolume
+        );
+    }
 
     public void PlayStormStart()
     {
