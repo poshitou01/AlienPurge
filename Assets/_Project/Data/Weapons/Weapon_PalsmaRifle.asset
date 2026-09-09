@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cc2e9fbe22066740a375b75dd75f39d, type: 3}
+  m_Name: Weapon_PalsmaRifle
+  m_EditorClassIdentifier: 
+  weaponId: plasma_rifle
+  displayName: Plasma Rifle
+  weaponIcon: {fileID: 0}
+  weaponPrefab: {fileID: 0}
+  baseDamage: 1
+  baseFireCooldown: 0.15
+  baseProjectileSpeed: 12
+  baseProjectileLifeTime: 2
+  baseProjectileScale: 1
+  baseProjectileCount: 1
+  baseProjectileSpreadAngle: 10
+  minimumFireCooldown: 0.05
+  maximumProjectileSpeed: 24
+  maximumProjectileScale: 2
+  maximumProjectileCount: 5

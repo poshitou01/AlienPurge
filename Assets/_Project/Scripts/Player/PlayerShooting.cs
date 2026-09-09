@@ -54,6 +54,8 @@ public class PlayerShooting : MonoBehaviour
     // 保存玩家当前机制型升级状态的组件引用。
     private PlayerWeaponModifiers weaponModifiers;
 
+    private WeaponManager weaponManager;
+
     private float nextFireTime;
     private bool canShoot = true;
 
@@ -109,6 +111,19 @@ public class PlayerShooting : MonoBehaviour
         weaponModifiers =
             GetComponent<PlayerWeaponModifiers>();
 
+        weaponManager =
+    GetComponent<WeaponManager>();
+
+        if (weaponManager == null)
+        {
+            Debug.LogWarning(
+                "PlayerShooting: "
+                + "WeaponManager was not found. "
+                + "Weapon aiming will be unavailable.",
+                this
+            );
+        }
+
         if (weaponModifiers == null)
         {
             Debug.LogWarning(
@@ -124,6 +139,8 @@ public class PlayerShooting : MonoBehaviour
 
     private void Update()
     {
+        UpdateWeaponAim();
+
         if (!CanProcessShootingInput())
         {
             return;
@@ -136,11 +153,110 @@ public class PlayerShooting : MonoBehaviour
     }
 
 
+    private void UpdateWeaponAim()
+    {
+        if (!CanProcessAimInput())
+        {
+            return;
+        }
+
+        if (weaponManager == null)
+        {
+            return;
+        }
+
+        if (!TryGetMouseWorldPosition(
+            out Vector2 mouseWorldPosition))
+        {
+            return;
+        }
+
+        weaponManager.AimAt(
+            mouseWorldPosition
+        );
+    }
+
+    private bool CanProcessAimInput()
+    {
+        if (UpgradeManager.IsChoosingUpgrade)
+        {
+            return false;
+        }
+
+        if (WeaponModuleSelectionManager.IsChoosingModule)
+        {
+            return false;
+        }
+
+        if (PauseMenuController.IsPaused)
+        {
+            return false;
+        }
+
+        if (GameManager.Instance != null
+            && !GameManager.Instance.IsPlaying)
+        {
+            return false;
+        }
+
+        if (EventSystem.current != null
+            && EventSystem.current.IsPointerOverGameObject())
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    private bool TryGetMouseWorldPosition(
+    out Vector2 mouseWorldPosition)
+    {
+        mouseWorldPosition =
+            Vector2.zero;
+
+        if (mainCamera == null)
+        {
+            mainCamera =
+                Camera.main;
+
+            if (mainCamera == null)
+            {
+                return false;
+            }
+        }
+
+        Vector3 mouseScreenPosition =
+            Input.mousePosition;
+
+        Vector3 worldPosition =
+            mainCamera.ScreenToWorldPoint(
+                mouseScreenPosition
+            );
+
+        worldPosition.z =
+            0f;
+
+        mouseWorldPosition =
+            worldPosition;
+
+        return true;
+    }
+
     private bool CanProcessShootingInput()
     {
+
+        if (!canShoot)
+        {
+            return false;
+        }
         if (abilityState != null
             && (abilityState.IsDashing
                 || abilityState.IsCasting))
+        {
+            return false;
+        }
+
+        if (WeaponModuleSelectionManager.IsChoosingModule)
         {
             return false;
         }
