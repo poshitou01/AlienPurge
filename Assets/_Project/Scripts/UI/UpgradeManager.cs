@@ -51,10 +51,9 @@ public class UpgradeManager : MonoBehaviour
     private bool modulePityForcedThisRoll;
 
     private PlayerMovement playerMovement;
-    private PlayerShooting playerShooting;
+    private WeaponManager weaponManager;
     private PlayerHealth playerHealth;
     private PlayerWeaponModifiers playerWeaponModifiers;
-
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -98,8 +97,8 @@ public class UpgradeManager : MonoBehaviour
         playerMovement =
             player.GetComponent<PlayerMovement>();
 
-        playerShooting =
-            player.GetComponent<PlayerShooting>();
+        weaponManager =
+            player.GetComponent<WeaponManager>();
 
         playerHealth =
             player.GetComponent<PlayerHealth>();
@@ -114,10 +113,10 @@ public class UpgradeManager : MonoBehaviour
             );
         }
 
-        if (playerShooting == null)
+        if (weaponManager == null)
         {
             Debug.LogWarning(
-                "UpgradeManager 找不到 PlayerShooting。"
+                "UpgradeManager 找不到 WeaponManager。"
             );
         }
 
@@ -200,7 +199,7 @@ public class UpgradeManager : MonoBehaviour
         }
 
         if (playerMovement == null ||
-            playerShooting == null ||
+            weaponManager == null ||
             playerHealth == null ||
             playerWeaponModifiers == null)
         {
@@ -641,12 +640,13 @@ public class UpgradeManager : MonoBehaviour
 
             // 射击冷却达到最低值后不可继续强化。
             case UpgradeType.FireCooldownDecrease:
-                return playerShooting != null
-                    && playerShooting.CanReduceFireCooldown;
+                return weaponManager != null
+                    && weaponManager.CanReduceFireCooldown;
 
             // 当前没有设置子弹伤害上限，可以重复获得。
             case UpgradeType.BulletDamageIncrease:
-                return playerShooting != null;
+                return weaponManager != null
+                    && weaponManager.CurrentWeapon != null;
 
             // 当前没有设置最大生命值上限，可以重复获得。
             case UpgradeType.MaxHealthIncrease:
@@ -660,18 +660,20 @@ public class UpgradeManager : MonoBehaviour
 
             // 子弹速度达到上限后不可继续强化。
             case UpgradeType.BulletSpeedIncrease:
-                return playerShooting != null
-                    && playerShooting.CanIncreaseBulletSpeed;
+                return weaponManager != null
+                    && weaponManager.CanIncreaseBulletSpeed;
 
             // 子弹尺寸达到上限后不可继续强化。
             case UpgradeType.BulletScaleIncrease:
-                return playerShooting != null
-                    && playerShooting.CanIncreaseBulletScale;
+                return weaponManager != null
+                    && weaponManager.CanIncreaseBulletScale;
 
             // 弹丸数量达到上限后不可继续强化。
             case UpgradeType.ProjectileCountIncrease:
-                return playerShooting != null
-                    && playerShooting.CanIncreaseProjectileCount;
+                return weaponManager != null
+                    && weaponManager.CanIncreaseProjectileCount;
+
+
 
             case UpgradeType.Piercing:
                 return playerWeaponModifiers != null
@@ -726,6 +728,8 @@ public class UpgradeManager : MonoBehaviour
                 return false;
         }
     }
+
+
     /// <summary>
     /// 根据实际选中的升级数量刷新按钮。
     /// 没有对应升级数据的按钮会被隐藏。
@@ -868,6 +872,8 @@ public class UpgradeManager : MonoBehaviour
 
         ApplyUpgrade(selectedOption);
 
+ 
+
         Debug.Log(
             $"选择升级：{selectedOption.UpgradeName}",
             this
@@ -876,6 +882,42 @@ public class UpgradeManager : MonoBehaviour
         CloseUpgradePanel();
     }
 
+
+    private bool IsWeaponRelatedUpgrade(
+    UpgradeOptionData option)
+    {
+        if (option == null)
+        {
+            return false;
+        }
+
+
+        switch (option.Type)
+        {
+            case UpgradeType.FireCooldownDecrease:
+
+            case UpgradeType.BulletDamageIncrease:
+
+            case UpgradeType.BulletSpeedIncrease:
+
+            case UpgradeType.BulletScaleIncrease:
+
+            case UpgradeType.ProjectileCountIncrease:
+
+            case UpgradeType.Piercing:
+
+            case UpgradeType.Explosive:
+
+            case UpgradeType.ChainLightning:
+
+            case UpgradeType.SplitShot:
+
+                return true;
+        }
+
+
+        return false;
+    }
     private void ApplyUpgrade(
         UpgradeOptionData option)
     {
@@ -952,83 +994,32 @@ public class UpgradeManager : MonoBehaviour
         playerMovement.AddMoveSpeed(amount);
     }
 
-    private void ApplyFireCooldownUpgrade(float amount)
+    private void ApplyFireCooldownUpgrade(
+        float amount)
     {
-        if (playerShooting == null)
+        if (weaponManager == null)
         {
             Debug.LogWarning(
                 "无法应用射击冷却强化："
-                + "PlayerShooting 为空。"
+                + "WeaponManager 为空。"
             );
 
             return;
         }
 
-        playerShooting.ReduceFireCooldown(amount);
-    }
-
-    private void ApplyBulletDamageUpgrade(float amount)
-    {
-        if (playerShooting == null)
-        {
-            Debug.LogWarning(
-                "无法应用子弹伤害强化："
-                + "PlayerShooting 为空。"
-            );
-
-            return;
-        }
-
-        int integerAmount =
-            Mathf.Max(
-                1,
-                Mathf.RoundToInt(amount)
-            );
-
-        playerShooting.AddBulletDamage(
-            integerAmount
-        );
-    }
-
-    private void ApplyBulletSpeedUpgrade(float amount)
-    {
-        if (playerShooting == null)
-        {
-            Debug.LogWarning(
-                "无法应用子弹速度强化："
-                + "PlayerShooting 为空。"
-            );
-
-            return;
-        }
-
-        playerShooting.AddBulletSpeed(amount);
-    }
-
-    private void ApplyBulletScaleUpgrade(float amount)
-    {
-        if (playerShooting == null)
-        {
-            Debug.LogWarning(
-                "无法应用子弹尺寸强化："
-                + "PlayerShooting 为空。"
-            );
-
-            return;
-        }
-
-        playerShooting.AddBulletScaleMultiplier(
+        weaponManager.ReduceFireCooldown(
             amount
         );
     }
 
-    private void ApplyProjectileCountUpgrade(float amount)
+    private void ApplyBulletDamageUpgrade(
+        float amount)
     {
-        if (playerShooting == null)
+        if (weaponManager == null)
         {
             Debug.LogWarning(
-                "无法应用额外弹丸强化："
-                + "PlayerShooting 为空。"
+                "无法应用子弹伤害强化："
+                + "WeaponManager 为空。"
             );
 
             return;
@@ -1040,7 +1031,67 @@ public class UpgradeManager : MonoBehaviour
                 Mathf.RoundToInt(amount)
             );
 
-        playerShooting.AddProjectileCount(
+        weaponManager.AddBulletDamage(
+            integerAmount
+        );
+    }
+
+    private void ApplyBulletSpeedUpgrade(
+        float amount)
+    {
+        if (weaponManager == null)
+        {
+            Debug.LogWarning(
+                "无法应用子弹速度强化："
+                + "WeaponManager 为空。"
+            );
+
+            return;
+        }
+
+        weaponManager.AddBulletSpeed(
+            amount
+        );
+    }
+
+    private void ApplyBulletScaleUpgrade(
+        float amount)
+    {
+        if (weaponManager == null)
+        {
+            Debug.LogWarning(
+                "无法应用子弹尺寸强化："
+                + "WeaponManager 为空。"
+            );
+
+            return;
+        }
+
+        weaponManager.AddBulletScaleMultiplier(
+            amount
+        );
+    }
+
+    private void ApplyProjectileCountUpgrade(
+        float amount)
+    {
+        if (weaponManager == null)
+        {
+            Debug.LogWarning(
+                "无法应用额外弹丸强化："
+                + "WeaponManager 为空。"
+            );
+
+            return;
+        }
+
+        int integerAmount =
+            Mathf.Max(
+                1,
+                Mathf.RoundToInt(amount)
+            );
+
+        weaponManager.AddProjectileCount(
             integerAmount
         );
     }
@@ -1209,7 +1260,7 @@ public class UpgradeManager : MonoBehaviour
         }
 
         if (playerMovement == null ||
-            playerShooting == null ||
+            weaponManager == null ||
             playerHealth == null ||
             playerWeaponModifiers == null)
         {
