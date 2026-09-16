@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3eec0987d428eea48af9de031d61e356, type: 3}
+  m_Name: Evolution_ThunderPiercer
+  m_EditorClassIdentifier: 
+  evolutionId: thunder_piercer
+  evolutionType: 1
+  displayName: "\u96F7\u9706\u8D2F\u7A7F\u70AE"
+  description: 'Piercing + Chain Lightning signature evolution.
+
+    High-speed piercing
+    shots can initiate multiple chain sequences.'
+  requiredModuleA: 8
+  requiredModuleB: 10
+  weaponSprite: {fileID: 21300000, guid: 27842087abacc6d4db1daff5813707fb, type: 3}
+  weaponVisualLocalOffset: {x: 0, y: 0}
+  weaponVisualScaleMultiplier: 1.3
+  muzzleFlashSprite: {fileID: 21300000, guid: 1895cc41a9436f74e96d43ac1f1d250a, type: 3}
+  muzzlePointLocalOffset: {x: 0.3, y: 0}
+  muzzleFlashLocalOffset: {x: 0.05, y: 0}
+  muzzleFlashScaleMultiplier: 2.4
+  projectileSprite: {fileID: 21300000, guid: 42ea78e4596d5a34e82318105c811d85, type: 3}
+  useProjectileTrail: 1
+  projectileTrailTime: 0.08
+  projectileTrailStartWidth: 0.045
+  projectileTrailEndWidth: 0.008
+  projectileTrailStartColor: {r: 1, g: 1, b: 1, a: 1}
+  projectileTrailEndColor: {r: 1, g: 1, b: 1, a: 0}
+  evolutionSfx: {fileID: 0}
+  shootSfx: {fileID: 0}
+  extraPierceCount: 1
+  projectileSpeedMultiplier: 1.15
+  chainRangeMultiplier: 1.2
+  maxChainTriggersPerBullet: 2
+  explosionRadiusMultiplier: 1
+  explosionDamageMultiplier: 1
+  splitCountBonus: 0
+  childExplosionRadiusMultiplier: 0.75
+  childExplosionDamageMultiplier: 0.75
+  projectileScaleMultiplier: 1
+  fireCooldownMultiplier: 1

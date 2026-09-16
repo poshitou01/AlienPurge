@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
-
 [DisallowMultipleComponent]
 public class WeaponModuleSelectionManager : MonoBehaviour
 {
@@ -53,6 +53,100 @@ public class WeaponModuleSelectionManager : MonoBehaviour
     [SerializeField]
     private float secondModuleSelectionTime = 150f;
 
+    private void ResolvePowerSpike(
+    float survivalTime)
+    {
+        if (powerSpikeTriggered)
+        {
+            return;
+        }
+
+
+        // 240秒这一节点只能消费一次。
+        //
+        // 无论最终结果是：
+        // Evolution
+        // Overclock
+        // Maxed Overclock Fallback
+        //
+        // 都不能再次进入。
+        powerSpikeTriggered =
+            true;
+
+        lastTriggeredSurvivalTime =
+            survivalTime;
+
+
+        EnsurePlayerReference();
+
+
+        // =========================================================
+        // Signature Evolution
+        // =========================================================
+
+        if (weaponEvolutionController != null
+            && weaponEvolutionController
+                .TryApplyEligibleEvolution())
+        {
+            currentSelectionMode =
+                ModuleSelectionMode.None;
+
+            currentSelectionIndex =
+                0;
+
+            ClearDisplayedModules();
+
+
+            WeaponEvolutionData evolutionData =
+                weaponEvolutionController
+                    .CurrentEvolutionData;
+
+
+            lastPowerSpikeResult =
+                "Evolution: "
+                + weaponEvolutionController
+                    .CurrentEvolution;
+
+
+            Debug.Log(
+                "===== 240s Power Spike =====\n"
+                + "Result: Weapon Evolution\n"
+                + "Evolution: "
+                + weaponEvolutionController
+                    .CurrentEvolution
+                + "\nDisplay Name: "
+                + (evolutionData != null
+                    ? evolutionData.DisplayName
+                    : "Unknown")
+                + "\nTriggered At: "
+                + survivalTime.ToString("F2")
+                + "s",
+                this
+            );
+
+
+            // 这里绝对不继续调用
+            // BeginOverclockSelection()。
+            //
+            // Signature Evolution 和普通 Overclock
+            // 在同一个240秒节点互斥。
+            return;
+        }
+
+
+        // =========================================================
+        // Existing Overclock
+        // =========================================================
+
+        lastPowerSpikeResult =
+            "Overclock";
+
+
+        BeginOverclockSelection(
+            survivalTime
+        );
+    }
+
 
     // =========================================================
     // UI
@@ -78,22 +172,50 @@ public class WeaponModuleSelectionManager : MonoBehaviour
     [SerializeField]
     private PlayerWeaponModifiers playerWeaponModifiers;
 
+    [SerializeField]
+    private WeaponEvolutionController
+        weaponEvolutionController;
+
+    [SerializeField]
+    private WeaponManager weaponManager;
 
     // =========================================================
     // Runtime Debug
     // =========================================================
 
-    [Header("Overclock Settings")]
+    [Header("Power Spike Settings")]
 
-    [Tooltip("核心模块超频强化出现的生存时间")]
+    [Tooltip(
+        "Evolution / Overclock Power Spike "
+        + "出现的生存时间"
+    )]
+    [FormerlySerializedAs(
+        "overclockSelectionTime"
+    )]
     [SerializeField]
-    private float overclockSelectionTime = 240f;
+    private float powerSpikeSelectionTime = 240f;
 
 
-    [Header("Overclock Runtime Debug")]
+    [Tooltip(
+        "当非Signature Pair的两个模块都已满级时，"
+        + "为了保证240秒仍然有Power Spike，"
+        + "自动增加的Weapon Damage。"
+    )]
+    [Min(1)]
+    [SerializeField]
+    private int maxedOverclockFallbackDamageBonus = 1;
+
+
+    [Header("Power Spike Runtime Debug")]
+
+    [FormerlySerializedAs(
+        "overclockSelectionTriggered"
+    )]
+    [SerializeField]
+    private bool powerSpikeTriggered;
 
     [SerializeField]
-    private bool overclockSelectionTriggered;
+    private string lastPowerSpikeResult = "None";
 
     [SerializeField]
     private ModuleSelectionMode currentSelectionMode =
@@ -167,7 +289,10 @@ public class WeaponModuleSelectionManager : MonoBehaviour
         firstSelectionTriggered = false;
         secondSelectionTriggered = false;
 
-        overclockSelectionTriggered = false;
+        powerSpikeTriggered = false;
+
+        lastPowerSpikeResult =
+            "None";
 
         currentSelectionMode =
             ModuleSelectionMode.None;
@@ -186,7 +311,7 @@ public class WeaponModuleSelectionManager : MonoBehaviour
 
     private void Start()
     {
-        FindPlayerWeaponModifiers();
+        FindPlayerRuntimeSystems();
 
         SetupButtons();
 
@@ -245,14 +370,14 @@ public class WeaponModuleSelectionManager : MonoBehaviour
 
 
         // ==========================================
-        // 240s Overclock
+        // 240s Evolution / Overclock Power Spike
         // ==========================================
 
-        if (!overclockSelectionTriggered
+        if (!powerSpikeTriggered
             && survivalTime
-            >= overclockSelectionTime)
+            >= powerSpikeSelectionTime)
         {
-            BeginOverclockSelection(
+            ResolvePowerSpike(
                 survivalTime
             );
 
@@ -389,23 +514,12 @@ public class WeaponModuleSelectionManager : MonoBehaviour
     }
 
     private void BeginOverclockSelection(
-    float survivalTime)
+        float survivalTime)
     {
-        if (overclockSelectionTriggered)
-        {
-            return;
-        }
-
-        overclockSelectionTriggered = true;
-
-
         if (!SelectOverclockOptions())
         {
-            Debug.Log(
-                "240s Overclock 已到达，"
-                + "但当前所有核心模块都已经满级，"
-                + "本次节点自动跳过。",
-                this
+            ApplyMaxedOverclockFallback(
+                survivalTime
             );
 
             return;
@@ -451,7 +565,62 @@ public class WeaponModuleSelectionManager : MonoBehaviour
         );
     }
 
+    private void ApplyMaxedOverclockFallback(
+    float survivalTime)
+    {
+        EnsurePlayerReference();
 
+
+        currentSelectionMode =
+            ModuleSelectionMode.None;
+
+        currentSelectionIndex =
+            0;
+
+        ClearDisplayedModules();
+
+
+        if (weaponManager == null
+            || weaponManager.CurrentWeapon == null)
+        {
+            lastPowerSpikeResult =
+                "Fallback Failed";
+
+
+            Debug.LogError(
+                "WeaponModuleSelectionManager: "
+                + "240s Power Spike reached, "
+                + "but no Evolution was eligible, "
+                + "all owned Modules were maxed, "
+                + "and WeaponManager was unavailable.",
+                this
+            );
+
+            return;
+        }
+
+
+        weaponManager.AddBulletDamage(
+            maxedOverclockFallbackDamageBonus
+        );
+
+
+        lastPowerSpikeResult =
+            "Maxed Overclock Fallback";
+
+
+        Debug.Log(
+            "===== 240s Maxed Overclock Fallback =====\n"
+            + "No Signature Evolution was eligible.\n"
+            + "All owned Core Modules were already maxed.\n"
+            + "Weapon Damage Bonus: +"
+            + maxedOverclockFallbackDamageBonus
+            + "\nTriggered At: "
+            + survivalTime.ToString("F2")
+            + "s",
+            this
+        );
+    }
     private bool SelectOverclockOptions()
     {
         ClearDisplayedModules();
@@ -1161,13 +1330,8 @@ public class WeaponModuleSelectionManager : MonoBehaviour
     // Player Reference
     // =========================================================
 
-    private void FindPlayerWeaponModifiers()
+    private void FindPlayerRuntimeSystems()
     {
-        if (playerWeaponModifiers != null)
-        {
-            return;
-        }
-
         GameObject player =
             GameObject.FindGameObjectWithTag(
                 "Player"
@@ -1185,10 +1349,28 @@ public class WeaponModuleSelectionManager : MonoBehaviour
         }
 
 
-        playerWeaponModifiers =
-            player.GetComponent<
-                PlayerWeaponModifiers
-            >();
+        if (playerWeaponModifiers == null)
+        {
+            playerWeaponModifiers =
+                player.GetComponent<
+                    PlayerWeaponModifiers>();
+        }
+
+
+        if (weaponEvolutionController == null)
+        {
+            weaponEvolutionController =
+                player.GetComponent<
+                    WeaponEvolutionController>();
+        }
+
+
+        if (weaponManager == null)
+        {
+            weaponManager =
+                player.GetComponent<
+                    WeaponManager>();
+        }
 
 
         if (playerWeaponModifiers == null)
@@ -1200,14 +1382,37 @@ public class WeaponModuleSelectionManager : MonoBehaviour
                 this
             );
         }
+
+
+        if (weaponEvolutionController == null)
+        {
+            Debug.LogWarning(
+                "WeaponModuleSelectionManager: "
+                + "Player 上没有 "
+                + "WeaponEvolutionController。",
+                this
+            );
+        }
+
+
+        if (weaponManager == null)
+        {
+            Debug.LogWarning(
+                "WeaponModuleSelectionManager: "
+                + "Player 上没有 WeaponManager。",
+                this
+            );
+        }
     }
 
 
     private void EnsurePlayerReference()
     {
-        if (playerWeaponModifiers == null)
+        if (playerWeaponModifiers == null
+            || weaponEvolutionController == null
+            || weaponManager == null)
         {
-            FindPlayerWeaponModifiers();
+            FindPlayerRuntimeSystems();
         }
     }
 
@@ -1572,6 +1777,111 @@ public class WeaponModuleSelectionManager : MonoBehaviour
     }
 
 
+    [ContextMenu(
+    "Debug/Trigger 240s Power Spike Now")]
+    private void DebugTriggerPowerSpikeNow()
+    {
+        if (!Application.isPlaying)
+        {
+            Debug.LogWarning(
+                "WeaponModuleSelectionManager: "
+                + "Please enter Play Mode first.",
+                this
+            );
+
+            return;
+        }
+
+
+        if (powerSpikeTriggered)
+        {
+            Debug.LogWarning(
+                "WeaponModuleSelectionManager: "
+                + "240s Power Spike has already "
+                + "been consumed. "
+                + "Use Reset 240s Power Spike Trigger "
+                + "before testing again.",
+                this
+            );
+
+            return;
+        }
+
+
+        float debugSurvivalTime =
+            GameManager.Instance != null
+                ? GameManager.Instance.SurvivalTime
+                : powerSpikeSelectionTime;
+
+
+        ResolvePowerSpike(
+            debugSurvivalTime
+        );
+    }
+
+
+    [ContextMenu(
+        "Debug/Reset 240s Power Spike Trigger")]
+    private void DebugResetPowerSpikeTrigger()
+    {
+        if (!Application.isPlaying)
+        {
+            Debug.LogWarning(
+                "WeaponModuleSelectionManager: "
+                + "Please enter Play Mode first.",
+                this
+            );
+
+            return;
+        }
+
+
+        if (IsChoosingModule)
+        {
+            Debug.LogWarning(
+                "WeaponModuleSelectionManager: "
+                + "Close the current Module Panel "
+                + "before resetting the Power Spike.",
+                this
+            );
+
+            return;
+        }
+
+
+        powerSpikeTriggered =
+            false;
+
+        lastPowerSpikeResult =
+            "None";
+
+
+        Debug.Log(
+            "WeaponModuleSelectionManager: "
+            + "240s Power Spike trigger reset.",
+            this
+        );
+    }
+
+
+    [ContextMenu(
+        "Debug/Print 240s Power Spike State")]
+    private void DebugPrintPowerSpikeState()
+    {
+        Debug.Log(
+            "===== 240s Power Spike State =====\n"
+            + "Triggered: "
+            + powerSpikeTriggered
+            + "\nResult: "
+            + lastPowerSpikeResult
+            + "\nCurrent Selection Mode: "
+            + currentSelectionMode
+            + "\nLast Triggered Survival Time: "
+            + lastTriggeredSurvivalTime,
+            this
+        );
+    }
+
     private void OnValidate()
     {
         maxModuleSlots =
@@ -1593,10 +1903,16 @@ public class WeaponModuleSelectionManager : MonoBehaviour
                 secondModuleSelectionTime
             );
 
-        overclockSelectionTime =
-    Mathf.Max(
-        secondModuleSelectionTime,
-        overclockSelectionTime
-    );
+        powerSpikeSelectionTime =
+            Mathf.Max(
+                secondModuleSelectionTime,
+                powerSpikeSelectionTime
+            );
+
+        maxedOverclockFallbackDamageBonus =
+            Mathf.Max(
+                1,
+                maxedOverclockFallbackDamageBonus
+            );
     }
 }

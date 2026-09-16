@@ -4,7 +4,8 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class WeaponController : MonoBehaviour
 {
-    private const float FloatComparisonTolerance = 0.0001f;
+    private const float FloatComparisonTolerance =
+        0.0001f;
 
 
     // =========================================================
@@ -23,15 +24,12 @@ public class WeaponController : MonoBehaviour
 
     [Header("Visual References")]
 
-    [Tooltip("负责围绕玩家旋转的武器瞄准 Pivot。")]
     [SerializeField]
     private Transform weaponHolder;
 
-    [Tooltip("真实枪口位置。")]
     [SerializeField]
     private Transform muzzlePoint;
 
-    [Tooltip("枪口瞬时闪光对象。")]
     [SerializeField]
     private GameObject muzzleFlash;
 
@@ -42,20 +40,20 @@ public class WeaponController : MonoBehaviour
 
     [Header("Shot Feedback")]
 
-    [Tooltip("枪口闪光单次显示时间。")]
     [Min(0.01f)]
     [SerializeField]
-    private float muzzleFlashDuration = 0.05f;
+    private float muzzleFlashDuration =
+        0.05f;
 
-    [Tooltip("每次射击时武器沿局部 X 轴向后移动的距离。")]
     [Min(0f)]
     [SerializeField]
-    private float recoilDistance = 0.04f;
+    private float recoilDistance =
+        0.04f;
 
-    [Tooltip("武器从后坐位置恢复到正常位置所需时间。")]
     [Min(0.01f)]
     [SerializeField]
-    private float recoilRecoveryDuration = 0.08f;
+    private float recoilRecoveryDuration =
+        0.08f;
 
 
     // =========================================================
@@ -68,21 +66,16 @@ public class WeaponController : MonoBehaviour
     private WeaponUpgradeVisualController
         upgradeVisualController;
 
+
     // =========================================================
     // Weapon Growth
     // =========================================================
 
     [Header("Weapon Growth")]
 
-    [Tooltip("当前这一局中武器的成长等级。")]
     [Min(1)]
     [SerializeField]
     private int weaponLevel = 1;
-
-    [Tooltip("每提升一级，枪口闪光尺寸额外增加多少比例。")]
-    [Min(0f)]
-    [SerializeField]
-    private float muzzleFlashScalePerLevel = 0.15f;
 
 
     // =========================================================
@@ -92,6 +85,9 @@ public class WeaponController : MonoBehaviour
     private BulletPool bulletPool;
 
     private PlayerWeaponModifiers weaponModifiers;
+
+    private WeaponEvolutionController
+        evolutionController;
 
 
     // =========================================================
@@ -116,7 +112,7 @@ public class WeaponController : MonoBehaviour
 
 
     // =========================================================
-    // Runtime Aim State
+    // Runtime Aim
     // =========================================================
 
     private Vector2 aimDirection =
@@ -128,15 +124,14 @@ public class WeaponController : MonoBehaviour
 
 
     // =========================================================
-    // Runtime Visual State
+    // Runtime Visual
     // =========================================================
 
     private Vector3 baseLocalPosition;
 
     private Vector3 baseLocalScale;
 
-    private Vector3 muzzleFlashBaseLocalScale =
-        Vector3.one;
+    private Vector3 baseMuzzlePointLocalPosition;
 
     private bool recoilActive;
 
@@ -145,8 +140,16 @@ public class WeaponController : MonoBehaviour
     private float muzzleFlashHideTime;
 
 
+    private WeaponEvolutionType
+        appliedVisualEvolution =
+            WeaponEvolutionType.None;
+
+    private WeaponEvolutionData
+        appliedVisualEvolutionData;
+
+
     // =========================================================
-    // Public Read Only Access
+    // Public Access
     // =========================================================
 
     public WeaponData Data =>
@@ -187,10 +190,16 @@ public class WeaponController : MonoBehaviour
         currentProjectileSpreadAngle;
 
 
-    /// <summary>
-    /// 为以后音效、震动等系统预留的武器强度倍率。
-    /// 当前暂时只作为只读接口使用。
-    /// </summary>
+    public float EffectiveFireCooldown =>
+        GetEffectiveFireCooldown();
+
+    public float EffectiveProjectileSpeed =>
+        GetEffectiveProjectileSpeed();
+
+    public float EffectiveProjectileScale =>
+        GetEffectiveProjectileScale();
+
+
     public float ShotPowerMultiplier =>
         1f
         + (weaponLevel - 1)
@@ -237,28 +246,39 @@ public class WeaponController : MonoBehaviour
         baseLocalScale =
             transform.localScale;
 
+
         if (weaponHolder == null)
         {
             weaponHolder =
                 transform.parent;
         }
 
+
         if (upgradeVisualController == null)
         {
             upgradeVisualController =
                 GetComponent<
-                WeaponUpgradeVisualController>();
+                    WeaponUpgradeVisualController>();
         }
 
-        if (muzzleFlash != null)
+
+        ResolveEvolutionController();
+
+
+        if (muzzlePoint != null)
         {
-            muzzleFlashBaseLocalScale =
-                muzzleFlash.transform.localScale;
+            baseMuzzlePointLocalPosition =
+                muzzlePoint.localPosition;
         }
+
 
         InitializeRuntimeStats();
 
         ResetShotFeedback();
+
+        RefreshEvolutionVisual(
+            true
+        );
     }
 
 
@@ -267,6 +287,10 @@ public class WeaponController : MonoBehaviour
         UpdateMuzzleFlash();
 
         UpdateRecoil();
+
+        RefreshEvolutionVisual(
+            false
+        );
     }
 
 
@@ -293,6 +317,7 @@ public class WeaponController : MonoBehaviour
             return;
         }
 
+
         currentDamage =
             weaponData.BaseDamage;
 
@@ -317,10 +342,9 @@ public class WeaponController : MonoBehaviour
         nextFireTime =
             0f;
 
-        // 每一局开始时，
-        // 当前武器从 Lv1 开始。
         weaponLevel =
             1;
+
 
         if (upgradeVisualController != null)
         {
@@ -332,10 +356,6 @@ public class WeaponController : MonoBehaviour
     }
 
 
-    /// <summary>
-    /// WeaponManager 在运行时向当前武器注入
-    /// BulletPool 和玩家机制升级状态。
-    /// </summary>
     public void SetRuntimeDependencies(
         BulletPool newBulletPool,
         PlayerWeaponModifiers newWeaponModifiers)
@@ -346,6 +366,14 @@ public class WeaponController : MonoBehaviour
         weaponModifiers =
             newWeaponModifiers;
 
+
+        ResolveEvolutionController();
+
+        RefreshEvolutionVisual(
+            true
+        );
+
+
         if (bulletPool == null)
         {
             Debug.LogWarning(
@@ -355,15 +383,166 @@ public class WeaponController : MonoBehaviour
             );
         }
 
+
         if (weaponModifiers == null)
         {
             Debug.LogWarning(
                 "WeaponController: "
-                + "PlayerWeaponModifiers dependency is null. "
-                + "Projectiles will use the default "
-                + "modifier snapshot.",
+                + "PlayerWeaponModifiers dependency is null.",
                 this
             );
+        }
+    }
+
+
+    // =========================================================
+    // Evolution
+    // =========================================================
+
+    private void ResolveEvolutionController()
+    {
+        if (evolutionController != null)
+        {
+            return;
+        }
+
+
+        evolutionController =
+            GetComponentInParent<
+                WeaponEvolutionController>();
+    }
+
+
+    private WeaponEvolutionData
+        GetCurrentEvolutionData()
+    {
+        ResolveEvolutionController();
+
+
+        if (evolutionController == null)
+        {
+            return null;
+        }
+
+
+        if (evolutionController.CurrentEvolution
+            == WeaponEvolutionType.None)
+        {
+            return null;
+        }
+
+
+        return
+            evolutionController
+                .CurrentEvolutionData;
+    }
+
+
+    private WeaponEvolutionData
+        GetThunderPiercerEvolutionData()
+    {
+        WeaponEvolutionData data =
+            GetCurrentEvolutionData();
+
+
+        if (data == null
+            || data.EvolutionType
+            != WeaponEvolutionType.ThunderPiercer)
+        {
+            return null;
+        }
+
+
+        return data;
+    }
+
+
+    private WeaponEvolutionData
+        GetClusterBurstEvolutionData()
+    {
+        WeaponEvolutionData data =
+            GetCurrentEvolutionData();
+
+
+        if (data == null
+            || data.EvolutionType
+            != WeaponEvolutionType.ClusterBurst)
+        {
+            return null;
+        }
+
+
+        return data;
+    }
+
+
+    private void RefreshEvolutionVisual(
+        bool force)
+    {
+        WeaponEvolutionData data =
+            GetCurrentEvolutionData();
+
+
+        WeaponEvolutionType type =
+            data != null
+                ? data.EvolutionType
+                : WeaponEvolutionType.None;
+
+
+        if (!force
+            && type == appliedVisualEvolution
+            && data == appliedVisualEvolutionData)
+        {
+            return;
+        }
+
+
+        appliedVisualEvolution =
+            type;
+
+        appliedVisualEvolutionData =
+            data;
+
+
+        if (upgradeVisualController != null)
+        {
+            if (data != null)
+            {
+                upgradeVisualController
+                    .ApplyEvolutionVisual(
+                        data
+                    );
+            }
+            else
+            {
+                upgradeVisualController
+                    .ResetEvolutionVisual();
+            }
+        }
+
+
+        if (muzzlePoint != null)
+        {
+            Vector3 targetPosition =
+                baseMuzzlePointLocalPosition;
+
+
+            if (data != null)
+            {
+                Vector2 offset =
+                    data.MuzzlePointLocalOffset;
+
+
+                targetPosition.x +=
+                    offset.x;
+
+                targetPosition.y +=
+                    offset.y;
+            }
+
+
+            muzzlePoint.localPosition =
+                targetPosition;
         }
     }
 
@@ -381,9 +560,11 @@ public class WeaponController : MonoBehaviour
             return;
         }
 
+
         Vector2 direction =
             worldPosition
             - (Vector2)weaponHolder.position;
+
 
         if (direction.sqrMagnitude
             <= 0.0001f)
@@ -391,8 +572,10 @@ public class WeaponController : MonoBehaviour
             return;
         }
 
+
         aimDirection =
             direction.normalized;
+
 
         float angle =
             Mathf.Atan2(
@@ -401,6 +584,7 @@ public class WeaponController : MonoBehaviour
             )
             * Mathf.Rad2Deg;
 
+
         weaponHolder.rotation =
             Quaternion.Euler(
                 0f,
@@ -408,15 +592,13 @@ public class WeaponController : MonoBehaviour
                 angle
             );
 
+
         UpdateWeaponFlip();
     }
 
 
     private void UpdateWeaponFlip()
     {
-        // 接近纯竖直方向时保持上一帧状态，
-        // 避免鼠标经过正上方或正下方时
-        // 左右翻转状态频繁抖动。
         if (aimDirection.x > 0.001f)
         {
             SetAimingLeft(false);
@@ -436,21 +618,23 @@ public class WeaponController : MonoBehaviour
             return;
         }
 
+
         isAimingLeft =
             value;
+
 
         Vector3 scale =
             baseLocalScale;
 
-        // 武器本身默认沿 +X 朝右。
-        // WeaponHolder 已经负责旋转方向。
-        // 左侧瞄准时只翻转局部 Y，
-        // 防止武器上下倒置。
+
         scale.y =
             Mathf.Abs(
                 baseLocalScale.y
             )
-            * (isAimingLeft ? -1f : 1f);
+            * (isAimingLeft
+                ? -1f
+                : 1f);
+
 
         transform.localScale =
             scale;
@@ -468,58 +652,45 @@ public class WeaponController : MonoBehaviour
             return false;
         }
 
+
         if (Time.time < nextFireTime)
         {
             return false;
         }
 
-        if (weaponData == null)
+
+        if (weaponData == null
+            || bulletPool == null
+            || muzzlePoint == null)
         {
             return false;
         }
 
-        if (bulletPool == null)
-        {
-            Debug.LogWarning(
-                "WeaponController: "
-                + "Cannot fire because BulletPool "
-                + "has not been assigned.",
-                this
-            );
-
-            return false;
-        }
-
-        if (muzzlePoint == null)
-        {
-            Debug.LogWarning(
-                "WeaponController: "
-                + "Cannot fire because MuzzlePoint "
-                + "has not been assigned.",
-                this
-            );
-
-            return false;
-        }
 
         bool firedAnyProjectile =
             FireProjectiles();
+
 
         if (!firedAnyProjectile)
         {
             return false;
         }
 
+
         nextFireTime =
             Time.time
-            + currentFireCooldown;
+            + GetEffectiveFireCooldown();
+
 
         PlayShotFeedback();
 
+
         if (AudioManager.Instance != null)
         {
-            AudioManager.Instance.PlayShoot();
+            AudioManager.Instance
+                .PlayShoot();
         }
+
 
         return true;
     }
@@ -532,19 +703,24 @@ public class WeaponController : MonoBehaviour
             * (currentProjectileCount - 1)
             * 0.5f;
 
-        // Phase35：
-        // 不再使用 Player 中心 + spawnOffset。
-        // 所有玩家子弹真正从枪口生成。
+
         Vector2 spawnPosition =
             muzzlePoint.position;
 
-        // 每轮射击只生成一份机制快照。
+
         ProjectileModifierSnapshot
             modifierSnapshot =
                 BuildProjectileModifierSnapshot();
 
+
+        WeaponEvolutionData
+            projectileEvolutionData =
+                GetCurrentEvolutionData();
+
+
         bool firedAnyProjectile =
             false;
+
 
         for (int i = 0;
              i < currentProjectileCount;
@@ -555,18 +731,22 @@ public class WeaponController : MonoBehaviour
                 + currentProjectileSpreadAngle
                 * i;
 
+
             Vector2 projectileDirection =
                 RotateDirection(
                     aimDirection,
                     angleOffset
                 );
 
+
             bool projectileCreated =
                 CreateProjectile(
                     spawnPosition,
                     projectileDirection,
-                    modifierSnapshot
+                    modifierSnapshot,
+                    projectileEvolutionData
                 );
+
 
             if (projectileCreated)
             {
@@ -575,6 +755,7 @@ public class WeaponController : MonoBehaviour
             }
         }
 
+
         return firedAnyProjectile;
     }
 
@@ -582,7 +763,8 @@ public class WeaponController : MonoBehaviour
     private bool CreateProjectile(
         Vector2 spawnPosition,
         Vector2 projectileDirection,
-        ProjectileModifierSnapshot modifierSnapshot)
+        ProjectileModifierSnapshot modifierSnapshot,
+        WeaponEvolutionData evolutionData)
     {
         Bullet bullet =
             bulletPool.GetBullet(
@@ -590,42 +772,111 @@ public class WeaponController : MonoBehaviour
                 Quaternion.identity
             );
 
+
         if (bullet == null)
         {
-            Debug.LogWarning(
-                "WeaponController: "
-                + "BulletPool could not provide "
-                + "an available Bullet.",
-                this
-            );
-
             return false;
         }
 
+
         bullet.Initialize(
             projectileDirection,
-            currentProjectileSpeed,
+            GetEffectiveProjectileSpeed(),
             currentDamage,
-            currentProjectileScale,
+            GetEffectiveProjectileScale(),
             currentProjectileLifeTime,
-            modifierSnapshot
+            modifierSnapshot,
+            evolutionData
         );
+
 
         return true;
     }
 
 
     // =========================================================
-    // Projectile Modifier Snapshot
+    // Effective Runtime Stats
     // =========================================================
 
-    /// <summary>
-    /// 在射击瞬间读取玩家当前机制型升级，
-    /// 并转换为独立 ProjectileModifierSnapshot。
-    ///
-    /// Bullet 发射之后只读取自己的 Snapshot，
-    /// 不会继续读取 PlayerWeaponModifiers。
-    /// </summary>
+    private float GetEffectiveProjectileSpeed()
+    {
+        float value =
+            currentProjectileSpeed;
+
+
+        WeaponEvolutionData thunderData =
+            GetThunderPiercerEvolutionData();
+
+
+        if (thunderData != null)
+        {
+            value *=
+                thunderData
+                    .ProjectileSpeedMultiplier;
+        }
+
+
+        return Mathf.Max(
+            0.01f,
+            value
+        );
+    }
+
+
+    private float GetEffectiveProjectileScale()
+    {
+        float value =
+            currentProjectileScale;
+
+
+        WeaponEvolutionData clusterData =
+            GetClusterBurstEvolutionData();
+
+
+        if (clusterData != null)
+        {
+            value *=
+                clusterData
+                    .ProjectileScaleMultiplier;
+        }
+
+
+        return Mathf.Max(
+            0.01f,
+            value
+        );
+    }
+
+
+    private float GetEffectiveFireCooldown()
+    {
+        float value =
+            currentFireCooldown;
+
+
+        WeaponEvolutionData clusterData =
+            GetClusterBurstEvolutionData();
+
+
+        if (clusterData != null)
+        {
+            value *=
+                clusterData
+                    .FireCooldownMultiplier;
+        }
+
+
+        return Mathf.Max(
+            0.01f,
+            value
+        );
+    }
+
+
+    // =========================================================
+    // Snapshot
+    // =========================================================
+
     private ProjectileModifierSnapshot
         BuildProjectileModifierSnapshot()
     {
@@ -635,53 +886,170 @@ public class WeaponController : MonoBehaviour
                 ProjectileModifierSnapshot.Default;
         }
 
-        return new ProjectileModifierSnapshot(
-            weaponModifiers.PierceCount,
 
-            weaponModifiers.HasExplosive,
-            weaponModifiers.ExplosionRadius,
-            weaponModifiers.ExplosionDamageMultiplier,
+        int finalPierceCount =
+            weaponModifiers.PierceCount;
 
-            weaponModifiers.HasChainLightning,
-            weaponModifiers.ChainCount,
-            weaponModifiers.ChainRange,
-            weaponModifiers.ChainDamageMultiplier,
 
-            weaponModifiers.HasSplitShot,
-            weaponModifiers.SplitCount,
-            weaponModifiers.ChildDamageMultiplier,
-            weaponModifiers.ChildSpeedMultiplier,
-            weaponModifiers.ChildScaleMultiplier,
-            weaponModifiers.ChildLifeTimeMultiplier,
+        bool finalExplosive =
+            weaponModifiers.HasExplosive;
 
-            0
-        );
+        float finalExplosionRadius =
+            weaponModifiers.ExplosionRadius;
+
+        float finalExplosionDamageMultiplier =
+            weaponModifiers
+                .ExplosionDamageMultiplier;
+
+
+        bool finalChainLightning =
+            weaponModifiers.HasChainLightning;
+
+        int finalChainCount =
+            weaponModifiers.ChainCount;
+
+        float finalChainRange =
+            weaponModifiers.ChainRange;
+
+        float finalChainDamageMultiplier =
+            weaponModifiers
+                .ChainDamageMultiplier;
+
+        int finalMaxChainTriggerCount =
+            1;
+
+
+        bool finalSplitShot =
+            weaponModifiers.HasSplitShot;
+
+        int finalSplitCount =
+            weaponModifiers.SplitCount;
+
+        float finalChildDamageMultiplier =
+            weaponModifiers.ChildDamageMultiplier;
+
+        float finalChildSpeedMultiplier =
+            weaponModifiers.ChildSpeedMultiplier;
+
+        float finalChildScaleMultiplier =
+            weaponModifiers.ChildScaleMultiplier;
+
+        float finalChildLifeTimeMultiplier =
+            weaponModifiers.ChildLifeTimeMultiplier;
+
+
+        float finalChildExplosionRadiusMultiplier =
+            0.75f;
+
+        float finalChildExplosionDamageMultiplier =
+            0.75f;
+
+
+        WeaponEvolutionData thunderData =
+            GetThunderPiercerEvolutionData();
+
+
+        if (thunderData != null)
+        {
+            finalPierceCount +=
+                thunderData.ExtraPierceCount;
+
+
+            finalChainRange *=
+                thunderData.ChainRangeMultiplier;
+
+
+            finalMaxChainTriggerCount =
+                Mathf.Max(
+                    1,
+                    thunderData
+                        .MaxChainTriggersPerBullet
+                );
+        }
+
+
+        WeaponEvolutionData clusterData =
+            GetClusterBurstEvolutionData();
+
+
+        if (clusterData != null)
+        {
+            finalExplosionRadius *=
+                clusterData
+                    .ExplosionRadiusMultiplier;
+
+
+            finalExplosionDamageMultiplier *=
+                clusterData
+                    .ExplosionDamageMultiplier;
+
+
+            finalSplitCount +=
+                clusterData
+                    .SplitCountBonus;
+
+
+            finalChildExplosionRadiusMultiplier =
+                clusterData
+                    .ChildExplosionRadiusMultiplier;
+
+
+            finalChildExplosionDamageMultiplier =
+                clusterData
+                    .ChildExplosionDamageMultiplier;
+        }
+
+
+        return
+            new ProjectileModifierSnapshot(
+                finalPierceCount,
+
+                finalExplosive,
+                finalExplosionRadius,
+                finalExplosionDamageMultiplier,
+
+                finalChainLightning,
+                finalChainCount,
+                finalChainRange,
+                finalChainDamageMultiplier,
+                finalMaxChainTriggerCount,
+
+                finalSplitShot,
+                finalSplitCount,
+                finalChildDamageMultiplier,
+                finalChildSpeedMultiplier,
+                finalChildScaleMultiplier,
+                finalChildLifeTimeMultiplier,
+
+                finalChildExplosionRadiusMultiplier,
+                finalChildExplosionDamageMultiplier,
+
+                0
+            );
     }
 
 
     // =========================================================
-    // Direction Utility
+    // Direction
     // =========================================================
 
     private Vector2 RotateDirection(
         Vector2 direction,
         float angleDegrees)
     {
-        float angleRadians =
+        float radians =
             angleDegrees
             * Mathf.Deg2Rad;
 
+
         float cosine =
-            Mathf.Cos(
-                angleRadians
-            );
+            Mathf.Cos(radians);
 
         float sine =
-            Mathf.Sin(
-                angleRadians
-            );
+            Mathf.Sin(radians);
 
-        Vector2 rotatedDirection =
+
+        Vector2 result =
             new Vector2(
                 direction.x * cosine
                 - direction.y * sine,
@@ -690,8 +1058,8 @@ public class WeaponController : MonoBehaviour
                 + direction.y * cosine
             );
 
-        return
-            rotatedDirection.normalized;
+
+        return result.normalized;
     }
 
 
@@ -714,21 +1082,11 @@ public class WeaponController : MonoBehaviour
             return;
         }
 
-        float levelScaleMultiplier =
-            1f
-            + (weaponLevel - 1)
-            * muzzleFlashScalePerLevel;
-
-        // 保留你在 Inspector 中已经调好的
-        // MuzzleFlash 原始比例，
-        // 而不是强制改成 Vector3.one。
-        muzzleFlash.transform.localScale =
-            muzzleFlashBaseLocalScale
-            * levelScaleMultiplier;
 
         muzzleFlash.SetActive(
             true
         );
+
 
         muzzleFlashHideTime =
             Time.unscaledTime
@@ -743,15 +1101,14 @@ public class WeaponController : MonoBehaviour
             return;
         }
 
+
         recoilActive =
             true;
 
         recoilElapsed =
             0f;
 
-        // CurrentWeapon 沿自己的局部 -X 后坐。
-        // WeaponHolder 负责旋转，因此无论枪朝哪个方向，
-        // 后坐永远都是枪口方向的反方向。
+
         transform.localPosition =
             baseLocalPosition
             + Vector3.left
@@ -767,11 +1124,13 @@ public class WeaponController : MonoBehaviour
             return;
         }
 
+
         if (Time.unscaledTime
             < muzzleFlashHideTime)
         {
             return;
         }
+
 
         muzzleFlash.SetActive(
             false
@@ -786,8 +1145,10 @@ public class WeaponController : MonoBehaviour
             return;
         }
 
+
         recoilElapsed +=
             Time.unscaledDeltaTime;
+
 
         float t =
             Mathf.Clamp01(
@@ -795,22 +1156,26 @@ public class WeaponController : MonoBehaviour
                 / recoilRecoveryDuration
             );
 
-        Vector3 recoilStartPosition =
+
+        Vector3 recoilStart =
             baseLocalPosition
             + Vector3.left
             * recoilDistance;
 
+
         transform.localPosition =
             Vector3.Lerp(
-                recoilStartPosition,
+                recoilStart,
                 baseLocalPosition,
                 t
             );
+
 
         if (t >= 1f)
         {
             recoilActive =
                 false;
+
 
             transform.localPosition =
                 baseLocalPosition;
@@ -826,23 +1191,23 @@ public class WeaponController : MonoBehaviour
         recoilElapsed =
             0f;
 
+
         transform.localPosition =
             baseLocalPosition;
 
         transform.localScale =
             baseLocalScale;
 
+
         isAimingLeft =
             false;
+
 
         if (muzzleFlash != null)
         {
             muzzleFlash.SetActive(
                 false
             );
-
-            muzzleFlash.transform.localScale =
-                muzzleFlashBaseLocalScale;
         }
     }
 
@@ -851,14 +1216,6 @@ public class WeaponController : MonoBehaviour
     // Weapon Growth
     // =========================================================
 
-    /// <summary>
-    /// 当前武器成长等级提高一级。
-    ///
-    /// 注意：
-    /// Level 本身目前主要用于视觉反馈和后续系统。
-    /// 实际 Damage / Cooldown 等数值
-    /// 仍由对应升级接口独立修改。
-    /// </summary>
     public void IncreaseWeaponLevel()
     {
         weaponLevel++;
@@ -882,7 +1239,7 @@ public class WeaponController : MonoBehaviour
 
 
     // =========================================================
-    // Runtime Weapon Upgrades
+    // Runtime Upgrades
     // =========================================================
 
     public void ReduceFireCooldown(
@@ -894,19 +1251,12 @@ public class WeaponController : MonoBehaviour
             return;
         }
 
+
         currentFireCooldown =
             Mathf.Max(
                 weaponData.MinimumFireCooldown,
                 currentFireCooldown - amount
             );
-
-        Debug.Log(
-            "WeaponController: "
-            + "Fire cooldown upgraded. "
-            + "Current: "
-            + currentFireCooldown,
-            this
-        );
     }
 
 
@@ -918,16 +1268,9 @@ public class WeaponController : MonoBehaviour
             return;
         }
 
+
         currentDamage +=
             amount;
-
-        Debug.Log(
-            "WeaponController: "
-            + "Damage upgraded. "
-            + "Current: "
-            + currentDamage,
-            this
-        );
     }
 
 
@@ -940,19 +1283,12 @@ public class WeaponController : MonoBehaviour
             return;
         }
 
+
         currentProjectileSpeed =
             Mathf.Min(
                 weaponData.MaximumProjectileSpeed,
                 currentProjectileSpeed + amount
             );
-
-        Debug.Log(
-            "WeaponController: "
-            + "Projectile speed upgraded. "
-            + "Current: "
-            + currentProjectileSpeed,
-            this
-        );
     }
 
 
@@ -965,19 +1301,12 @@ public class WeaponController : MonoBehaviour
             return;
         }
 
+
         currentProjectileScale =
             Mathf.Min(
                 weaponData.MaximumProjectileScale,
                 currentProjectileScale + amount
             );
-
-        Debug.Log(
-            "WeaponController: "
-            + "Projectile scale upgraded. "
-            + "Current: "
-            + currentProjectileScale,
-            this
-        );
     }
 
 
@@ -990,35 +1319,25 @@ public class WeaponController : MonoBehaviour
             return;
         }
 
+
         currentProjectileCount =
             Mathf.Min(
                 weaponData.MaximumProjectileCount,
                 currentProjectileCount + amount
             );
-
-        Debug.Log(
-            "WeaponController: "
-            + "Projectile count upgraded. "
-            + "Current: "
-            + currentProjectileCount,
-            this
-        );
     }
 
 
     // =========================================================
-    // Operational State
+    // Operational
     // =========================================================
 
-    /// <summary>
-    /// 控制当前武器是否允许继续瞄准和射击。
-    /// 主要用于死亡、卸下武器等状态。
-    /// </summary>
     public void SetOperational(
         bool value)
     {
         isOperational =
             value;
+
 
         if (!isOperational)
         {
@@ -1031,20 +1350,15 @@ public class WeaponController : MonoBehaviour
     // Debug
     // =========================================================
 
-    [ContextMenu("Debug/Increase Weapon Level")]
+    [ContextMenu(
+        "Debug/Increase Weapon Level")]
     private void DebugIncreaseWeaponLevel()
     {
         if (!Application.isPlaying)
         {
-            Debug.LogWarning(
-                "WeaponController: "
-                + "Please enter Play Mode before "
-                + "increasing weapon level.",
-                this
-            );
-
             return;
         }
+
 
         IncreaseWeaponLevel();
 
@@ -1052,33 +1366,52 @@ public class WeaponController : MonoBehaviour
     }
 
 
-    [ContextMenu("Debug/Print Runtime Weapon Stats")]
+    [ContextMenu(
+        "Debug/Print Runtime Weapon Stats")]
     private void PrintRuntimeWeaponStats()
     {
+        WeaponEvolutionData data =
+            GetCurrentEvolutionData();
+
+
         Debug.Log(
             "===== Runtime Weapon Stats =====\n"
             + "Weapon: "
             + (weaponData != null
                 ? weaponData.DisplayName
                 : "None")
+
             + "\nWeapon Level: "
             + weaponLevel
+
+            + "\nEvolution: "
+            + (data != null
+                ? data.EvolutionType.ToString()
+                : "None")
+
             + "\nDamage: "
             + currentDamage
-            + "\nFire Cooldown: "
+
+            + "\nBase Fire Cooldown: "
             + currentFireCooldown
-            + "\nProjectile Speed: "
+
+            + "\nEffective Fire Cooldown: "
+            + GetEffectiveFireCooldown()
+
+            + "\nBase Projectile Speed: "
             + currentProjectileSpeed
-            + "\nProjectile Life Time: "
-            + currentProjectileLifeTime
-            + "\nProjectile Scale: "
+
+            + "\nEffective Projectile Speed: "
+            + GetEffectiveProjectileSpeed()
+
+            + "\nBase Projectile Scale: "
             + currentProjectileScale
+
+            + "\nEffective Projectile Scale: "
+            + GetEffectiveProjectileScale()
+
             + "\nProjectile Count: "
-            + currentProjectileCount
-            + "\nSpread Angle: "
-            + currentProjectileSpreadAngle
-            + "\nShot Power Multiplier: "
-            + ShotPowerMultiplier,
+            + currentProjectileCount,
             this
         );
     }
@@ -1114,11 +1447,6 @@ public class WeaponController : MonoBehaviour
                 weaponLevel
             );
 
-        muzzleFlashScalePerLevel =
-            Mathf.Max(
-                0f,
-                muzzleFlashScalePerLevel
-            );
 
         if (weaponHolder == null
             && transform.parent != null)

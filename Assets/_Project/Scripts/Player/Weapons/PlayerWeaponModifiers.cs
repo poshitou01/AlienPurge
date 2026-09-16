@@ -752,4 +752,57 @@ public class PlayerWeaponModifiers : MonoBehaviour
             this
         );
     }
+
+    [ContextMenu(
+    "Debug/Set Thunder Signature Modules")]
+    private void DebugSetThunderSignatureModules()
+    {
+        if (!CanUseRuntimeDebug())
+        {
+            return;
+        }
+
+        ResetMechanicUpgradesInternal();
+
+        piercingLevel = 1;
+        chainLightningLevel = 1;
+
+        Debug.Log(
+            "===== DEBUG: Thunder Signature Modules =====\n"
+            + "Piercing Lv"
+            + piercingLevel
+            + "\nChain Lightning Lv"
+            + chainLightningLevel,
+            this
+        );
+
+        PrintWeaponModifierStatus();
+    }
+
+
+    [ContextMenu(
+        "Debug/Set Cluster Signature Modules")]
+    private void DebugSetClusterSignatureModules()
+    {
+        if (!CanUseRuntimeDebug())
+        {
+            return;
+        }
+
+        ResetMechanicUpgradesInternal();
+
+        explosiveLevel = 1;
+        splitShotLevel = 1;
+
+        Debug.Log(
+            "===== DEBUG: Cluster Signature Modules =====\n"
+            + "Explosive Lv"
+            + explosiveLevel
+            + "\nSplit Shot Lv"
+            + splitShotLevel,
+            this
+        );
+
+        PrintWeaponModifierStatus();
+    }
 }
