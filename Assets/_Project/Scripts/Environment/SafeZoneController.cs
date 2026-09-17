@@ -78,7 +78,7 @@ public class SafeZoneController : MonoBehaviour
     [SerializeField]
     private float lastPlayerToZoneDistance;
 
-
+    
     // =========================================================
     // Public Read Only State
     // =========================================================

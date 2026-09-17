@@ -131,6 +131,16 @@ public class AudioManager : MonoBehaviour
     [Range(0f, 1f)]
     [SerializeField] private float playerShootVolume = 0.22f;
 
+    [Header("Signature Weapon SFX Volumes")]
+
+    [Range(0f, 1f)]
+    [SerializeField]
+    private float weaponEvolutionVolume = 0.70f;
+
+    [Range(0f, 1f)]
+    [SerializeField]
+    private float signatureShootVolume = 0.30f;
+
     [Range(0f, 1f)]
     [SerializeField] private float enemyHitVolume = 0.14f;
 
@@ -419,6 +429,41 @@ public class AudioManager : MonoBehaviour
             sfxSource,
             playerShootClip,
             playerShootVolume,
+            minimumShootInterval,
+            ref lastShootTime
+        );
+    }
+
+    /// <summary>
+    /// 播放 Signature Weapon 进化瞬间的专属音效。
+    ///
+    /// Clip 由 WeaponEvolutionData 提供，
+    /// AudioManager 仍负责统一的 SFX Bus 和音量。
+    /// </summary>
+    public void PlayWeaponEvolution(
+        AudioClip evolutionClip)
+    {
+        PlayOneShot(
+            sfxSource,
+            evolutionClip,
+            weaponEvolutionVolume
+        );
+    }
+
+
+    /// <summary>
+    /// 播放进化武器的专属射击音效。
+    ///
+    /// 与普通 PlayShoot 共用 lastShootTime，
+    /// 避免高射速下重复音效过密。
+    /// </summary>
+    public void PlaySignatureShoot(
+        AudioClip shootClip)
+    {
+        TryPlayThrottled(
+            sfxSource,
+            shootClip,
+            signatureShootVolume,
             minimumShootInterval,
             ref lastShootTime
         );

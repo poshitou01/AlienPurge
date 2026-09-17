@@ -685,11 +685,7 @@ public class WeaponController : MonoBehaviour
         PlayShotFeedback();
 
 
-        if (AudioManager.Instance != null)
-        {
-            AudioManager.Instance
-                .PlayShoot();
-        }
+        PlayWeaponShootAudio();
 
 
         return true;
@@ -1062,6 +1058,43 @@ public class WeaponController : MonoBehaviour
         return result.normalized;
     }
 
+
+    // =========================================================
+    // Weapon Audio
+    // =========================================================
+
+    private void PlayWeaponShootAudio()
+    {
+        if (AudioManager.Instance == null)
+        {
+            return;
+        }
+
+
+        WeaponEvolutionData evolutionData =
+            GetCurrentEvolutionData();
+
+
+        // Signature Evolution存在，
+        // 并且Data中配置了专属Shoot SFX。
+        if (evolutionData != null
+            && evolutionData.ShootSfx != null)
+        {
+            AudioManager.Instance
+                .PlaySignatureShoot(
+                    evolutionData.ShootSfx
+                );
+
+            return;
+        }
+
+
+        // Starter Weapon
+        // 或Evolution没有提供专属Shoot SFX时，
+        // 自动回退到原有射击音。
+        AudioManager.Instance
+            .PlayShoot();
+    }
 
     // =========================================================
     // Shot Feedback

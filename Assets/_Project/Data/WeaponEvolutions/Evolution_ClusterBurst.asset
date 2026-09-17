@@ -37,8 +37,8 @@ MonoBehaviour:
   projectileTrailEndWidth: 0.02
   projectileTrailStartColor: {r: 1, g: 1, b: 1, a: 1}
   projectileTrailEndColor: {r: 1, g: 1, b: 1, a: 0}
-  evolutionSfx: {fileID: 0}
-  shootSfx: {fileID: 0}
+  evolutionSfx: {fileID: 8300000, guid: 95cb602802e00c142a1755ee186d2db4, type: 3}
+  shootSfx: {fileID: 8300000, guid: ffa4e3c0e0fd0e5428813bab6e55274c, type: 3}
   extraPierceCount: 0
   projectileSpeedMultiplier: 1
   chainRangeMultiplier: 1
