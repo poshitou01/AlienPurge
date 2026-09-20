@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6729490489a24ca45a53e3ee7e490b0f, type: 3}
+  m_Name: LootTable_HighRiskCase
+  m_EditorClassIdentifier: 
+  minRolls: 3
+  maxRolls: 4
+  entries:
+  - item: {fileID: 11400000, guid: 72e1fb12907afc14db23333473c49dd4, type: 2}
+    weight: 0.5
+    minQuantity: 1
+    maxQuantity: 4
+  - item: {fileID: 11400000, guid: 970b6c8cda39e3943bb70a6d64bcc72f, type: 2}
+    weight: 1
+    minQuantity: 1
+    maxQuantity: 3
+  - item: {fileID: 11400000, guid: 46d93221b567a424785a6bc6983b536f, type: 2}
+    weight: 0.5
+    minQuantity: 1
+    maxQuantity: 3
+  - item: {fileID: 11400000, guid: 0f3e2bef4c36b2c47b028690ad24224e, type: 2}
+    weight: 1
+    minQuantity: 1
+    maxQuantity: 1
+  - item: {fileID: 11400000, guid: f40c183896cd46c47a78d285566b11d3, type: 2}
+    weight: 2
+    minQuantity: 1
+    maxQuantity: 2
+  - item: {fileID: 11400000, guid: 76e9da03638a24043a46d2c1c50329f8, type: 2}
+    weight: 2
+    minQuantity: 1
+    maxQuantity: 1
+  - item: {fileID: 11400000, guid: 3e8cad9f8ce0f7742956c91bd8079393, type: 2}
+    weight: 28
+    minQuantity: 1
+    maxQuantity: 2
+  - item: {fileID: 11400000, guid: 1023f656e740b724096cff9819cbee13, type: 2}
+    weight: 28
+    minQuantity: 1
+    maxQuantity: 2
+  - item: {fileID: 11400000, guid: 83245d44f561a3b44a0dd31fb8440534, type: 2}
+    weight: 4
+    minQuantity: 1
+    maxQuantity: 1
+  - item: {fileID: 11400000, guid: 481e0beded5244546a96ebd2252a6a64, type: 2}
+    weight: 15
+    minQuantity: 1
+    maxQuantity: 1
+  - item: {fileID: 11400000, guid: 7ab16c51b18b35e4f9690114e9e7ea93, type: 2}
+    weight: 15
+    minQuantity: 1
+    maxQuantity: 1
+  - item: {fileID: 11400000, guid: fc138859518e3b34e998243937bf98dc, type: 2}
+    weight: 3
+    minQuantity: 1
+    maxQuantity: 1

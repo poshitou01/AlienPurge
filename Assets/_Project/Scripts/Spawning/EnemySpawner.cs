@@ -1,30 +1,51 @@
 using System.Collections.Generic;
 using UnityEngine;
+
+
 [DisallowMultipleComponent]
 public class EnemySpawner : MonoBehaviour
 {
+    // =========================================================
+    // Enemy Spawn Configuration
+    // =========================================================
+
     [Header("Enemy Spawn Configuration")]
+
     [Tooltip(
-    "所有可参与自动刷怪的敌人配置。"
-    + "敌人是否可用将由解锁时间、权重和 Prefab 共同决定"
-)]
+        "所有可参与自动刷怪的敌人配置。"
+        + "敌人是否可用将由解锁时间、权重和 Prefab 共同决定"
+    )]
     [SerializeField]
     private List<EnemySpawnEntry> enemySpawnEntries =
-    new List<EnemySpawnEntry>();
+        new List<EnemySpawnEntry>();
 
 
-
+    // =========================================================
+    // Legacy Spawner Settings
+    // =========================================================
 
     [Header("Spawner Settings")]
+
     [Tooltip("游戏刚开始时的刷怪间隔")]
-    [SerializeField] private float spawnInterval = 2f;
+    [SerializeField]
+    private float spawnInterval = 2f;
+
 
     [Tooltip("游戏刚开始时允许存在的最大敌人数")]
-    [SerializeField] private int maxEnemies = 5;
+    [SerializeField]
+    private int maxEnemies = 5;
+
 
     [Header("Spawn Interval Difficulty")]
+
     [Tooltip("刷怪间隔允许降低到的最小值")]
-    [SerializeField] private float minSpawnInterval = 0.7f;
+    [SerializeField]
+    private float minSpawnInterval = 0.7f;
+
+
+    // =========================================================
+    // 360s Base Spawn Difficulty
+    // =========================================================
 
     [Header("360s Spawn Pressure Curve")]
 
@@ -32,247 +53,577 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private float spawnStage1Time = 45f;
 
+
     [Tooltip("第二阶段结束时间：第二次 Weapon Module 出现")]
     [SerializeField]
     private float spawnStage2Time = 150f;
+
 
     [Tooltip("第三阶段结束时间：Build 基本成型")]
     [SerializeField]
     private float spawnStage3Time = 240f;
 
+
     [Tooltip("第四阶段结束时间：Final Rush 开始")]
     [SerializeField]
     private float spawnStage4Time = 330f;
+
 
     [Tooltip("正式一局结束时间")]
     [SerializeField]
     private float spawnFinalTime = 360f;
 
 
+    // =========================================================
+    // 360s Spawn Interval
+    // =========================================================
+
     [Header("360s Spawn Interval Targets")]
 
     [SerializeField]
     private float spawnIntervalAtStart = 2.20f;
 
+
     [SerializeField]
     private float spawnIntervalAtStage1 = 1.80f;
+
 
     [SerializeField]
     private float spawnIntervalAtStage2 = 1.20f;
 
+
     [SerializeField]
     private float spawnIntervalAtStage3 = 0.75f;
+
 
     [SerializeField]
     private float spawnIntervalAtStage4 = 0.45f;
 
+
     [SerializeField]
     private float spawnIntervalAtFinal = 0.35f;
 
+
+    // =========================================================
+    // 360s Max Enemy
+    // =========================================================
 
     [Header("360s Enemy Count Targets")]
 
     [SerializeField]
     private int maxEnemiesAtStart = 5;
 
+
     [SerializeField]
     private int maxEnemiesAtStage1 = 8;
+
 
     [SerializeField]
     private int maxEnemiesAtStage2 = 18;
 
+
     [SerializeField]
     private int maxEnemiesAtStage3 = 30;
+
 
     [SerializeField]
     private int maxEnemiesAtStage4 = 45;
 
+
     [SerializeField]
     private int maxEnemiesAtFinal = 55;
+
+
+    // =========================================================
+    // Phase38 Enemy Pressure
+    // =========================================================
+
+    [Header("Phase38 Enemy Pressure")]
+
+    [Tooltip(
+        "Normal：不增加额外撤离压力。"
+    )]
+    [SerializeField]
+    private EnemyPressureProfile normalPressureProfile =
+        new EnemyPressureProfile(
+            1.00f,
+            0
+        );
+
+
+    [Tooltip(
+        "315 秒 Extraction Available 后，"
+        + "玩家仍选择继续停留时使用。"
+    )]
+    [SerializeField]
+    private EnemyPressureProfile overstayLevel1Profile =
+        new EnemyPressureProfile(
+            0.85f,
+            2
+        );
+
+
+    [Tooltip(
+        "315~330 之间开始 Extraction Defense 时使用。"
+    )]
+    [SerializeField]
+    private EnemyPressureProfile extractionDefenseEarlyProfile =
+        new EnemyPressureProfile(
+            0.70f,
+            3
+        );
+
+
+    [Tooltip(
+        "330 秒后仍未开始撤离时使用。"
+    )]
+    [SerializeField]
+    private EnemyPressureProfile overstayLevel2Profile =
+        new EnemyPressureProfile(
+            0.70f,
+            4
+        );
+
+
+    [Tooltip(
+        "330~360 之间开始 Extraction Defense 时使用。"
+    )]
+    [SerializeField]
+    private EnemyPressureProfile extractionDefenseLateProfile =
+        new EnemyPressureProfile(
+            0.62f,
+            5
+        );
+
+
+    [Tooltip(
+        "360 秒后仍未开始撤离时使用。"
+    )]
+    [SerializeField]
+    private EnemyPressureProfile emergencyPressureProfile =
+        new EnemyPressureProfile(
+            0.55f,
+            6
+        );
+
+
+    // =========================================================
+    // Phase38 Pressure Safety
+    // =========================================================
+
+    [Header("Phase38 Pressure Safety")]
+
+    [Tooltip(
+        "所有 Pressure 计算完成后，"
+        + "最终 Spawn Interval 不得低于这个值。"
+        + "这是安全下限，不是额外难度倍率。"
+    )]
+    [Min(0.05f)]
+    [SerializeField]
+    private float minimumEffectiveSpawnInterval =
+        0.25f;
+
+
+    [Tooltip(
+        "所有 Pressure 计算完成后，"
+        + "允许存在的敌人数硬上限。"
+        + "这是工程保护，不是额外难度系统。"
+    )]
+    [Min(1)]
+    [SerializeField]
+    private int maximumEffectiveEnemies =
+        64;
+
+
+    // =========================================================
+    // Legacy Difficulty
+    // =========================================================
 
     [Tooltip("每生存 1 秒，刷怪间隔减少多少秒")]
     [SerializeField]
     private float spawnIntervalDecreasePerSecond = 0.02f;
 
+
     [Header("Enemy Count Difficulty")]
+
     [Tooltip("场上敌人数量允许提高到的最终上限")]
-    [SerializeField] private int maxEnemiesLimit = 12;
+    [SerializeField]
+    private int maxEnemiesLimit = 12;
+
 
     [Tooltip("每隔多少秒提高一次敌人数量上限")]
     [SerializeField]
     private float maxEnemiesIncreaseInterval = 10f;
 
+
     [Tooltip("每次提高多少个敌人数量上限")]
     [SerializeField]
     private int maxEnemiesIncreaseAmount = 1;
 
+
+    // =========================================================
+    // Enemy Health Difficulty
+    // =========================================================
+
     [Header("Enemy Health Difficulty")]
+
     [Tooltip("游戏开始时普通敌人的全局基础生命值")]
-    [SerializeField] private int enemyInitialMaxHealth = 3;
+    [SerializeField]
+    private int enemyInitialMaxHealth = 3;
+
 
     [Tooltip("每隔多少秒提高一次全局基础生命值")]
     [SerializeField]
     private float enemyHealthIncreaseInterval = 20f;
 
+
     [Tooltip("每次提高多少点全局基础生命值")]
     [SerializeField]
     private int enemyHealthIncreaseAmount = 1;
 
+
     [Tooltip("全局基础生命值允许成长到的最终上限")]
-    [SerializeField] private int enemyMaxHealthLimit = 6;
+    [SerializeField]
+    private int enemyMaxHealthLimit = 6;
+
+
+    // =========================================================
+    // Enemy Move Speed Difficulty
+    // =========================================================
 
     [Header("Enemy Move Speed Difficulty")]
+
     [Tooltip("游戏开始时普通敌人的全局基础移动速度")]
     [SerializeField]
     private float enemyInitialMoveSpeed = 1.5f;
+
 
     [Tooltip("每隔多少秒提高一次全局基础移动速度")]
     [SerializeField]
     private float enemyMoveSpeedIncreaseInterval = 20f;
 
+
     [Tooltip("每次提高多少全局基础移动速度")]
     [SerializeField]
     private float enemyMoveSpeedIncreaseAmount = 0.25f;
+
 
     [Tooltip("全局基础移动速度允许成长到的最终上限")]
     [SerializeField]
     private float enemyMoveSpeedLimit = 2.25f;
 
+
+    // =========================================================
+    // Enemy Contact Damage Difficulty
+    // =========================================================
+
     [Header("Enemy Contact Damage Difficulty")]
+
     [Tooltip("游戏开始时普通敌人的全局基础接触伤害")]
     [SerializeField]
     private int enemyInitialContactDamage = 1;
+
 
     [Tooltip("每隔多少秒提高一次全局基础接触伤害")]
     [SerializeField]
     private float enemyContactDamageIncreaseInterval = 30f;
 
+
     [Tooltip("每次提高多少点全局基础接触伤害")]
     [SerializeField]
     private int enemyContactDamageIncreaseAmount = 1;
+
 
     [Tooltip("全局基础接触伤害允许成长到的最终上限")]
     [SerializeField]
     private int enemyContactDamageLimit = 3;
 
+
+    // =========================================================
+    // Spawn Distance
+    // =========================================================
+
     [Header("Spawn Distance")]
-    [SerializeField] private float minSpawnDistance = 5f;
-    [SerializeField] private float maxSpawnDistance = 8f;
+
+    [SerializeField]
+    private float minSpawnDistance = 5f;
+
+
+    [SerializeField]
+    private float maxSpawnDistance = 8f;
+
+
+    // =========================================================
+    // Map Spawn Bounds
+    // =========================================================
 
     [Header("Map Spawn Bounds")]
+
     [Tooltip("是否把敌人的生成位置限制在正式地图范围内")]
-    [SerializeField] private bool limitSpawnToMapBounds = true;
+    [SerializeField]
+    private bool limitSpawnToMapBounds = true;
+
 
     [Tooltip("正式地图的左下角世界坐标")]
     [SerializeField]
     private Vector2 spawnMapMin =
-        new Vector2(-25f, -25f);
+        new Vector2(
+            -25f,
+            -25f
+        );
+
 
     [Tooltip("正式地图的右上角世界坐标")]
     [SerializeField]
     private Vector2 spawnMapMax =
-        new Vector2(25f, 25f);
+        new Vector2(
+            25f,
+            25f
+        );
+
 
     [Tooltip("生成点与地图边界之间保留的安全距离")]
     [Min(0f)]
     [SerializeField]
     private float spawnBoundsPadding = 1f;
 
+
     [Tooltip("寻找地图内部有效生成位置的最大尝试次数")]
     [Min(1)]
     [SerializeField]
     private int maxSpawnPositionAttempts = 24;
 
+
+    // =========================================================
+    // Target Settings
+    // =========================================================
+
     [Header("Target Settings")]
-    [SerializeField] private string playerTag = "Player";
-    [SerializeField] private string enemyTag = "Enemy";
+
+    [SerializeField]
+    private string playerTag = "Player";
+
+
+    [SerializeField]
+    private string enemyTag = "Enemy";
+
+
+    // =========================================================
+    // Debug Settings
+    // =========================================================
 
     [Header("Debug Settings")]
+
     [Tooltip("是否允许正常的计时自动刷怪")]
-    [SerializeField] private bool enableAutomaticSpawning = true;
+    [SerializeField]
+    private bool enableAutomaticSpawning = true;
+
 
     [Tooltip("进入游戏后是否立即生成一个普通敌人")]
-    [SerializeField] private bool spawnOnStart = true;
+    [SerializeField]
+    private bool spawnOnStart = true;
+
+
+    // =========================================================
+    // Runtime Spawn Debug
+    // =========================================================
 
     [Header("Runtime Spawn Debug")]
-    [Tooltip("当前实际使用的刷怪间隔")]
-    [SerializeField] private float currentSpawnInterval;
 
-    [Tooltip("当前实际允许存在的最大敌人数")]
-    [SerializeField] private int currentMaxEnemies;
+    [Tooltip("当前最终实际使用的刷怪间隔")]
+    [SerializeField]
+    private float currentSpawnInterval;
+
+
+    [Tooltip("当前最终实际允许存在的最大敌人数")]
+    [SerializeField]
+    private int currentMaxEnemies;
+
 
     [Tooltip("最近一次检测到的场上敌人数")]
-    [SerializeField] private int currentEnemyCount;
+    [SerializeField]
+    private int currentEnemyCount;
+
 
     [Tooltip("当前通过全部检查的有效刷怪候选数量")]
     [SerializeField]
     private int currentSpawnCandidateCount;
 
+
     [Tooltip(
-    "当前同时满足解锁时间、"
-    + "Prefab 和权重检查的敌人类型"
-)]
+        "当前同时满足解锁时间、"
+        + "Prefab 和权重检查的敌人类型"
+    )]
     [SerializeField]
     private string currentUnlockedEnemyTypes =
-    "None";
+        "None";
+
 
     [Tooltip("当前所有有效刷怪候选的权重总和")]
     [SerializeField]
     private float currentSpawnWeightTotal;
 
+
     [Tooltip("最近一次加权随机选择是否成功")]
     [SerializeField]
     private bool lastSpawnSelectionSucceeded;
+
 
     [Tooltip("最近一次加权随机选中的敌人类型")]
     [SerializeField]
     private EnemyType lastSelectedEnemyType =
         EnemyType.Normal;
 
+
+    // =========================================================
+    // Runtime Pressure Debug
+    // =========================================================
+
+    [Header("Runtime Pressure Debug")]
+
+    [Tooltip("Phase38 当前唯一有效的 Pressure State")]
+    [SerializeField]
+    private EnemyPressureState currentPressureState =
+        EnemyPressureState.Normal;
+
+
+    [Tooltip("尚未应用 Pressure 的 Base Spawn Interval")]
+    [SerializeField]
+    private float currentBaseSpawnInterval;
+
+
+    [Tooltip("尚未应用 Pressure 的 Base Max Enemy")]
+    [SerializeField]
+    private int currentBaseMaxEnemies;
+
+
+    [Tooltip("当前唯一 Pressure Profile 的 Spawn Interval 倍率")]
+    [SerializeField]
+    private float currentPressureMultiplier =
+        1f;
+
+
+    [Tooltip("当前唯一 Pressure Profile 的 Max Enemy Bonus")]
+    [SerializeField]
+    private int currentPressureMaxEnemyBonus;
+
+
+    // =========================================================
+    // Runtime Enemy Attribute Debug
+    // =========================================================
+
     [Header("Runtime Enemy Attribute Debug")]
+
     [Tooltip("当前时间点的全局基础最大生命值")]
-    [SerializeField] private int currentEnemyMaxHealth;
+    [SerializeField]
+    private int currentEnemyMaxHealth;
+
 
     [Tooltip("当前时间点的全局基础移动速度")]
-    [SerializeField] private float currentEnemyMoveSpeed;
+    [SerializeField]
+    private float currentEnemyMoveSpeed;
+
 
     [Tooltip("当前时间点的全局基础接触伤害")]
-    [SerializeField] private int currentEnemyContactDamage;
+    [SerializeField]
+    private int currentEnemyContactDamage;
+
+
+    // =========================================================
+    // Runtime
+    // =========================================================
 
     private readonly List<EnemySpawnEntry>
-    currentSpawnCandidates =
-        new List<EnemySpawnEntry>();
+        currentSpawnCandidates =
+            new List<EnemySpawnEntry>();
+
 
     private Transform player;
+
     private float spawnTimer;
+
 
     // 避免配置全部无效时，
     // 每个刷怪间隔都重复输出相同警告。
-    private bool hasWarnedAboutMissingSpawnCandidate;
+    private bool
+        hasWarnedAboutMissingSpawnCandidate;
+
+
+    // =========================================================
+    // Public Read Only
+    // =========================================================
 
     public int CurrentEnemyMaxHealth =>
         currentEnemyMaxHealth;
 
+
     public float CurrentEnemyMoveSpeed =>
         currentEnemyMoveSpeed;
+
 
     public int CurrentEnemyContactDamage =>
         currentEnemyContactDamage;
 
+
+    public EnemyPressureState CurrentPressureState =>
+        currentPressureState;
+
+
+    public float CurrentBaseSpawnInterval =>
+        currentBaseSpawnInterval;
+
+
+    public int CurrentBaseMaxEnemies =>
+        currentBaseMaxEnemies;
+
+
+    public float CurrentEffectiveSpawnInterval =>
+        currentSpawnInterval;
+
+
+    public int CurrentEffectiveMaxEnemies =>
+        currentMaxEnemies;
+
+
+    // =========================================================
+    // Unity Lifecycle
+    // =========================================================
+
+    private void Awake()
+    {
+        currentPressureState =
+            EnemyPressureState.Normal;
+
+
+        currentPressureMultiplier =
+            1f;
+
+
+        currentPressureMaxEnemyBonus =
+            0;
+    }
+
+
     private void Start()
     {
         FindPlayer();
+
         UpdateDifficulty();
+
 
         spawnTimer = 0f;
 
+
         if (enableAutomaticSpawning
-            && spawnOnStart
-            && CanSpawnEnemies())
+            &&
+            spawnOnStart
+            &&
+            CanSpawnEnemies())
         {
             TrySpawnEnemy();
         }
     }
+
 
     private void Update()
     {
@@ -281,14 +632,17 @@ public class EnemySpawner : MonoBehaviour
             return;
         }
 
+
         if (!CanSpawnEnemies())
         {
             return;
         }
 
+
         if (player == null)
         {
             FindPlayer();
+
 
             if (player == null)
             {
@@ -296,16 +650,27 @@ public class EnemySpawner : MonoBehaviour
             }
         }
 
+
         UpdateDifficulty();
 
-        spawnTimer += Time.deltaTime;
 
-        if (spawnTimer >= currentSpawnInterval)
+        spawnTimer +=
+            Time.deltaTime;
+
+
+        if (spawnTimer >=
+            currentSpawnInterval)
         {
             spawnTimer = 0f;
+
             TrySpawnEnemy();
         }
     }
+
+
+    // =========================================================
+    // Spawn Gate
+    // =========================================================
 
     private bool CanSpawnEnemies()
     {
@@ -314,280 +679,74 @@ public class EnemySpawner : MonoBehaviour
             return false;
         }
 
+
         if (GameManager.Instance.CurrentState
             != GameState.Playing)
         {
             return false;
         }
 
+
         if (UpgradeManager.IsChoosingUpgrade
-            || WeaponModuleSelectionManager.IsChoosingModule)
+            ||
+            WeaponModuleSelectionManager
+                .IsChoosingModule)
         {
             return false;
         }
+
 
         return true;
     }
 
-    /// <summary>
-    /// 根据指定生存时间刷新当前有效的刷怪候选，
-    /// 同时计算全部有效候选的权重总和。
-    /// </summary>
-    private void RefreshSpawnCandidates(
-        float survivalTime
-    )
-    {
-        currentSpawnCandidates.Clear();
 
-        currentSpawnCandidateCount = 0;
-        currentUnlockedEnemyTypes =
-            "None";
-        currentSpawnWeightTotal = 0f;
-
-        survivalTime = Mathf.Max(
-            0f,
-            survivalTime
-        );
-
-        if (enemySpawnEntries == null)
-        {
-            return;
-        }
-
-        for (int i = 0;
-            i < enemySpawnEntries.Count;
-            i++)
-        {
-            EnemySpawnEntry entry =
-                enemySpawnEntries[i];
-
-            if (!IsSpawnEntryValid(
-                    entry,
-                    survivalTime
-                ))
-            {
-                continue;
-            }
-
-            currentSpawnCandidates.Add(entry);
-
-            currentSpawnWeightTotal +=
-                entry.SpawnWeight;
-        }
-
-        currentSpawnCandidateCount =
-            currentSpawnCandidates.Count;
-
-        if (currentSpawnCandidates.Count > 0)
-        {
-            currentUnlockedEnemyTypes =
-                string.Empty;
-
-            for (int i = 0;
-                i < currentSpawnCandidates.Count;
-                i++)
-            {
-                if (i > 0)
-                {
-                    currentUnlockedEnemyTypes +=
-                        ", ";
-                }
-
-                currentUnlockedEnemyTypes +=
-                    currentSpawnCandidates[i]
-                        .Type
-                        .ToString();
-            }
-        }
-
-        if (float.IsNaN(currentSpawnWeightTotal)
-     || float.IsInfinity(
-         currentSpawnWeightTotal
-     )
-     || currentSpawnWeightTotal < 0f)
-        {
-            currentSpawnCandidates.Clear();
-
-            currentSpawnCandidateCount = 0;
-
-            currentUnlockedEnemyTypes =
-                "None";
-
-            currentSpawnWeightTotal = 0f;
-        }
-    }
-
-    /// <summary>
-    /// 判断单个生成配置在指定时间是否可以进入候选。
-    /// </summary>
-    /// <summary>
-    /// 判断单个生成配置在指定时间是否可以进入候选。
-    /// </summary>
-    private bool IsSpawnEntryValid(
-        EnemySpawnEntry entry,
-        float survivalTime
-    )
-    {
-        if (entry == null)
-        {
-            return false;
-        }
-
-        if (entry.Prefab == null)
-        {
-            return false;
-        }
-
-        float spawnWeight =
-            entry.SpawnWeight;
-
-        if (float.IsNaN(spawnWeight)
-            || float.IsInfinity(spawnWeight)
-            || spawnWeight <= 0f)
-        {
-            return false;
-        }
-
-        float unlockTime =
-            entry.UnlockTime;
-
-        if (float.IsNaN(unlockTime)
-            || float.IsInfinity(unlockTime))
-        {
-            return false;
-        }
-
-        float safeUnlockTime =
-            Mathf.Max(0f, unlockTime);
-
-        if (survivalTime < safeUnlockTime)
-        {
-            return false;
-        }
-
-        return true;
-    }
-    /// <summary>
-    /// 根据指定生存时间筛选候选，
-    /// 然后按相对权重随机选择一个敌人配置。
-    ///
-    /// 没有有效候选时返回 null，
-    /// 不执行随机范围计算。
-    /// </summary>
-    private EnemySpawnEntry
-        SelectWeightedSpawnEntry(
-            float survivalTime
-        )
-    {
-        lastSpawnSelectionSucceeded = false;
-
-        RefreshSpawnCandidates(
-            survivalTime
-        );
-
-        if (currentSpawnCandidates.Count == 0)
-        {
-            return null;
-        }
-
-        if (currentSpawnWeightTotal <= 0f
-            || float.IsNaN(
-                currentSpawnWeightTotal
-            )
-            || float.IsInfinity(
-                currentSpawnWeightTotal
-            ))
-        {
-            return null;
-        }
-
-        float randomWeight =
-            Random.Range(
-                0f,
-                currentSpawnWeightTotal
-            );
-
-        float accumulatedWeight = 0f;
-
-        for (int i = 0;
-            i < currentSpawnCandidates.Count;
-            i++)
-        {
-            EnemySpawnEntry entry =
-                currentSpawnCandidates[i];
-
-            accumulatedWeight +=
-                entry.SpawnWeight;
-
-            if (randomWeight
-                < accumulatedWeight)
-            {
-                RecordSelectedSpawnEntry(
-                    entry
-                );
-
-                return entry;
-            }
-        }
-
-        // 浮点数计算可能出现极小的边界误差。
-        // 此时安全返回最后一个有效候选。
-        EnemySpawnEntry fallbackCandidate =
-            currentSpawnCandidates[
-                currentSpawnCandidates.Count - 1
-            ];
-
-        RecordSelectedSpawnEntry(
-            fallbackCandidate
-        );
-
-        return fallbackCandidate;
-    }
-
-    /// <summary>
-    /// 保存最近一次成功的随机选择结果。
-    /// </summary>
-    private void RecordSelectedSpawnEntry(
-        EnemySpawnEntry selectedEntry
-    )
-    {
-        if (selectedEntry == null)
-        {
-            lastSpawnSelectionSucceeded =
-                false;
-
-            return;
-        }
-
-        lastSelectedEnemyType =
-            selectedEntry.Type;
-
-        lastSpawnSelectionSucceeded =
-            true;
-    }
+    // =========================================================
+    // Difficulty
+    // =========================================================
 
     private void UpdateDifficulty()
     {
         float survivalTime = 0f;
 
+
         if (GameManager.Instance != null)
         {
             survivalTime =
-                GameManager.Instance.SurvivalTime;
+                GameManager.Instance
+                    .SurvivalTime;
         }
 
-        survivalTime = Mathf.Max(
-            0f,
+
+        survivalTime =
+            Mathf.Max(
+                0f,
+                survivalTime
+            );
+
+
+        UpdateSpawnDifficulty(
             survivalTime
         );
 
-        UpdateSpawnDifficulty(survivalTime);
-        UpdateEnemyAttributeDifficulty(survivalTime);
-        RefreshSpawnCandidates(survivalTime);
+
+        UpdateEnemyAttributeDifficulty(
+            survivalTime
+        );
+
+
+        RefreshSpawnCandidates(
+            survivalTime
+        );
     }
 
+
+    // =========================================================
+    // Phase38 Spawn Difficulty
+    // =========================================================
+
     private void UpdateSpawnDifficulty(
-        float survivalTime)
+        float survivalTime
+    )
     {
         survivalTime =
             Mathf.Max(
@@ -595,19 +754,277 @@ public class EnemySpawner : MonoBehaviour
                 survivalTime
             );
 
-        currentSpawnInterval =
+
+        // -----------------------------------------------------
+        // 1. Base Difficulty
+        //
+        // 这是原 Phase37 / 360s 时间曲线。
+        // Pressure 永远不能直接修改这些 Base 值。
+        // -----------------------------------------------------
+
+        currentBaseSpawnInterval =
             Calculate360SpawnInterval(
                 survivalTime
             );
 
-        currentMaxEnemies =
+
+        currentBaseMaxEnemies =
             Calculate360MaxEnemies(
                 survivalTime
             );
+
+
+        // -----------------------------------------------------
+        // 2. Resolve ONE Pressure Profile
+        // -----------------------------------------------------
+
+        EnemyPressureProfile profile =
+            ResolvePressureProfile(
+                currentPressureState
+            );
+
+
+        currentPressureMultiplier =
+            profile
+                .SpawnIntervalMultiplier;
+
+
+        currentPressureMaxEnemyBonus =
+            profile
+                .MaxEnemyBonus;
+
+
+        // -----------------------------------------------------
+        // 3. Effective Spawn Interval
+        // -----------------------------------------------------
+
+        float calculatedSpawnInterval =
+            currentBaseSpawnInterval
+            *
+            currentPressureMultiplier;
+
+
+        currentSpawnInterval =
+            Mathf.Max(
+                minimumEffectiveSpawnInterval,
+                calculatedSpawnInterval
+            );
+
+
+        // -----------------------------------------------------
+        // 4. Effective Max Enemy
+        // -----------------------------------------------------
+
+        int calculatedMaxEnemies =
+            currentBaseMaxEnemies
+            +
+            currentPressureMaxEnemyBonus;
+
+
+        currentMaxEnemies =
+            Mathf.Clamp(
+                calculatedMaxEnemies,
+                1,
+                maximumEffectiveEnemies
+            );
     }
 
+
+    // =========================================================
+    // Phase38 Pressure Resolver
+    // =========================================================
+
+    private EnemyPressureProfile
+        ResolvePressureProfile(
+            EnemyPressureState pressureState
+        )
+    {
+        switch (pressureState)
+        {
+            case EnemyPressureState
+                    .OverstayLevel1:
+
+                return GetConfiguredPressureProfile(
+                    overstayLevel1Profile,
+                    0.85f,
+                    2
+                );
+
+
+            case EnemyPressureState
+                    .ExtractionDefenseEarly:
+
+                return GetConfiguredPressureProfile(
+                    extractionDefenseEarlyProfile,
+                    0.70f,
+                    3
+                );
+
+
+            case EnemyPressureState
+                    .OverstayLevel2:
+
+                return GetConfiguredPressureProfile(
+                    overstayLevel2Profile,
+                    0.70f,
+                    4
+                );
+
+
+            case EnemyPressureState
+                    .ExtractionDefenseLate:
+
+                return GetConfiguredPressureProfile(
+                    extractionDefenseLateProfile,
+                    0.62f,
+                    5
+                );
+
+
+            case EnemyPressureState
+                    .Emergency:
+
+                return GetConfiguredPressureProfile(
+                    emergencyPressureProfile,
+                    0.55f,
+                    6
+                );
+
+
+            case EnemyPressureState.Normal:
+
+            default:
+
+                return GetConfiguredPressureProfile(
+                    normalPressureProfile,
+                    1.00f,
+                    0
+                );
+        }
+    }
+
+
+    private EnemyPressureProfile
+        GetConfiguredPressureProfile(
+            EnemyPressureProfile configuredProfile,
+            float fallbackMultiplier,
+            int fallbackEnemyBonus
+        )
+    {
+        if (configuredProfile.IsConfigured)
+        {
+            return configuredProfile;
+        }
+
+
+        return new EnemyPressureProfile(
+            fallbackMultiplier,
+            fallbackEnemyBonus
+        );
+    }
+
+
+    // =========================================================
+    // Phase38 Pressure State API
+    // =========================================================
+
+    public void SetPressureState(
+        EnemyPressureState newState
+    )
+    {
+        if (currentPressureState ==
+            newState)
+        {
+            return;
+        }
+
+
+        EnemyPressureState previousState =
+            currentPressureState;
+
+
+        currentPressureState =
+            newState;
+
+
+        float survivalTime = 0f;
+
+
+        if (GameManager.Instance != null)
+        {
+            survivalTime =
+                GameManager.Instance
+                    .SurvivalTime;
+        }
+
+
+        UpdateSpawnDifficulty(
+            survivalTime
+        );
+
+
+        Debug.Log(
+            "[Enemy Pressure] "
+            + previousState
+            + " -> "
+            + currentPressureState
+            + "\nBase Interval: "
+            + currentBaseSpawnInterval
+                .ToString("F3")
+            + "\nEffective Interval: "
+            + currentSpawnInterval
+                .ToString("F3")
+            + "\nBase Max Enemy: "
+            + currentBaseMaxEnemies
+            + "\nEffective Max Enemy: "
+            + currentMaxEnemies,
+            this
+        );
+    }
+
+
+    public void ResetPressureState()
+    {
+        if (currentPressureState ==
+            EnemyPressureState.Normal)
+        {
+            currentPressureState =
+                EnemyPressureState.Normal;
+
+
+            float survivalTime = 0f;
+
+
+            if (GameManager.Instance != null)
+            {
+                survivalTime =
+                    GameManager.Instance
+                        .SurvivalTime;
+            }
+
+
+            UpdateSpawnDifficulty(
+                survivalTime
+            );
+
+
+            return;
+        }
+
+
+        SetPressureState(
+            EnemyPressureState.Normal
+        );
+    }
+
+
+    // =========================================================
+    // 360s Base Spawn Interval Curve
+    // =========================================================
+
     private float Calculate360SpawnInterval(
-    float survivalTime)
+        float survivalTime
+    )
     {
         survivalTime =
             Mathf.Max(
@@ -615,7 +1032,9 @@ public class EnemySpawner : MonoBehaviour
                 survivalTime
             );
 
-        if (survivalTime <= spawnStage1Time)
+
+        if (survivalTime <=
+            spawnStage1Time)
         {
             float t =
                 Mathf.InverseLerp(
@@ -623,6 +1042,7 @@ public class EnemySpawner : MonoBehaviour
                     spawnStage1Time,
                     survivalTime
                 );
+
 
             return Mathf.Lerp(
                 spawnIntervalAtStart,
@@ -631,7 +1051,9 @@ public class EnemySpawner : MonoBehaviour
             );
         }
 
-        if (survivalTime <= spawnStage2Time)
+
+        if (survivalTime <=
+            spawnStage2Time)
         {
             float t =
                 Mathf.InverseLerp(
@@ -639,6 +1061,7 @@ public class EnemySpawner : MonoBehaviour
                     spawnStage2Time,
                     survivalTime
                 );
+
 
             return Mathf.Lerp(
                 spawnIntervalAtStage1,
@@ -647,7 +1070,9 @@ public class EnemySpawner : MonoBehaviour
             );
         }
 
-        if (survivalTime <= spawnStage3Time)
+
+        if (survivalTime <=
+            spawnStage3Time)
         {
             float t =
                 Mathf.InverseLerp(
@@ -655,6 +1080,7 @@ public class EnemySpawner : MonoBehaviour
                     spawnStage3Time,
                     survivalTime
                 );
+
 
             return Mathf.Lerp(
                 spawnIntervalAtStage2,
@@ -663,7 +1089,9 @@ public class EnemySpawner : MonoBehaviour
             );
         }
 
-        if (survivalTime <= spawnStage4Time)
+
+        if (survivalTime <=
+            spawnStage4Time)
         {
             float t =
                 Mathf.InverseLerp(
@@ -671,6 +1099,7 @@ public class EnemySpawner : MonoBehaviour
                     spawnStage4Time,
                     survivalTime
                 );
+
 
             return Mathf.Lerp(
                 spawnIntervalAtStage3,
@@ -679,7 +1108,9 @@ public class EnemySpawner : MonoBehaviour
             );
         }
 
-        if (survivalTime <= spawnFinalTime)
+
+        if (survivalTime <=
+            spawnFinalTime)
         {
             float t =
                 Mathf.InverseLerp(
@@ -687,6 +1118,7 @@ public class EnemySpawner : MonoBehaviour
                     spawnFinalTime,
                     survivalTime
                 );
+
 
             return Mathf.Lerp(
                 spawnIntervalAtStage4,
@@ -695,12 +1127,18 @@ public class EnemySpawner : MonoBehaviour
             );
         }
 
+
         return spawnIntervalAtFinal;
     }
 
 
+    // =========================================================
+    // 360s Base Max Enemy Curve
+    // =========================================================
+
     private int Calculate360MaxEnemies(
-        float survivalTime)
+        float survivalTime
+    )
     {
         survivalTime =
             Mathf.Max(
@@ -708,9 +1146,12 @@ public class EnemySpawner : MonoBehaviour
                 survivalTime
             );
 
+
         float calculatedMaxEnemies;
 
-        if (survivalTime <= spawnStage1Time)
+
+        if (survivalTime <=
+            spawnStage1Time)
         {
             float t =
                 Mathf.InverseLerp(
@@ -719,6 +1160,7 @@ public class EnemySpawner : MonoBehaviour
                     survivalTime
                 );
 
+
             calculatedMaxEnemies =
                 Mathf.Lerp(
                     maxEnemiesAtStart,
@@ -726,7 +1168,8 @@ public class EnemySpawner : MonoBehaviour
                     t
                 );
         }
-        else if (survivalTime <= spawnStage2Time)
+        else if (survivalTime <=
+            spawnStage2Time)
         {
             float t =
                 Mathf.InverseLerp(
@@ -735,6 +1178,7 @@ public class EnemySpawner : MonoBehaviour
                     survivalTime
                 );
 
+
             calculatedMaxEnemies =
                 Mathf.Lerp(
                     maxEnemiesAtStage1,
@@ -742,7 +1186,8 @@ public class EnemySpawner : MonoBehaviour
                     t
                 );
         }
-        else if (survivalTime <= spawnStage3Time)
+        else if (survivalTime <=
+            spawnStage3Time)
         {
             float t =
                 Mathf.InverseLerp(
@@ -751,6 +1196,7 @@ public class EnemySpawner : MonoBehaviour
                     survivalTime
                 );
 
+
             calculatedMaxEnemies =
                 Mathf.Lerp(
                     maxEnemiesAtStage2,
@@ -758,7 +1204,8 @@ public class EnemySpawner : MonoBehaviour
                     t
                 );
         }
-        else if (survivalTime <= spawnStage4Time)
+        else if (survivalTime <=
+            spawnStage4Time)
         {
             float t =
                 Mathf.InverseLerp(
@@ -767,6 +1214,7 @@ public class EnemySpawner : MonoBehaviour
                     survivalTime
                 );
 
+
             calculatedMaxEnemies =
                 Mathf.Lerp(
                     maxEnemiesAtStage3,
@@ -774,7 +1222,8 @@ public class EnemySpawner : MonoBehaviour
                     t
                 );
         }
-        else if (survivalTime <= spawnFinalTime)
+        else if (survivalTime <=
+            spawnFinalTime)
         {
             float t =
                 Mathf.InverseLerp(
@@ -782,6 +1231,7 @@ public class EnemySpawner : MonoBehaviour
                     spawnFinalTime,
                     survivalTime
                 );
+
 
             calculatedMaxEnemies =
                 Mathf.Lerp(
@@ -796,6 +1246,7 @@ public class EnemySpawner : MonoBehaviour
                 maxEnemiesAtFinal;
         }
 
+
         return Mathf.Max(
             1,
             Mathf.RoundToInt(
@@ -803,6 +1254,11 @@ public class EnemySpawner : MonoBehaviour
             )
         );
     }
+
+
+    // =========================================================
+    // Enemy Attribute Difficulty
+    // =========================================================
 
     private void UpdateEnemyAttributeDifficulty(
         float survivalTime
@@ -813,10 +1269,12 @@ public class EnemySpawner : MonoBehaviour
                 survivalTime
             );
 
+
         currentEnemyMoveSpeed =
             CalculateEnemyMoveSpeed(
                 survivalTime
             );
+
 
         currentEnemyContactDamage =
             CalculateEnemyContactDamage(
@@ -824,25 +1282,33 @@ public class EnemySpawner : MonoBehaviour
             );
     }
 
+
     private int CalculateEnemyMaxHealth(
         float survivalTime
     )
     {
-        survivalTime = Mathf.Max(
-            0f,
-            survivalTime
-        );
+        survivalTime =
+            Mathf.Max(
+                0f,
+                survivalTime
+            );
+
 
         int increaseCount =
             Mathf.FloorToInt(
                 survivalTime
-                / enemyHealthIncreaseInterval
+                /
+                enemyHealthIncreaseInterval
             );
+
 
         int calculatedMaxHealth =
             enemyInitialMaxHealth
-            + increaseCount
-            * enemyHealthIncreaseAmount;
+            +
+            increaseCount
+            *
+            enemyHealthIncreaseAmount;
+
 
         return Mathf.Min(
             calculatedMaxHealth,
@@ -850,25 +1316,33 @@ public class EnemySpawner : MonoBehaviour
         );
     }
 
+
     private float CalculateEnemyMoveSpeed(
         float survivalTime
     )
     {
-        survivalTime = Mathf.Max(
-            0f,
-            survivalTime
-        );
+        survivalTime =
+            Mathf.Max(
+                0f,
+                survivalTime
+            );
+
 
         int increaseCount =
             Mathf.FloorToInt(
                 survivalTime
-                / enemyMoveSpeedIncreaseInterval
+                /
+                enemyMoveSpeedIncreaseInterval
             );
+
 
         float calculatedMoveSpeed =
             enemyInitialMoveSpeed
-            + increaseCount
-            * enemyMoveSpeedIncreaseAmount;
+            +
+            increaseCount
+            *
+            enemyMoveSpeedIncreaseAmount;
+
 
         return Mathf.Min(
             calculatedMoveSpeed,
@@ -876,31 +1350,343 @@ public class EnemySpawner : MonoBehaviour
         );
     }
 
+
     private int CalculateEnemyContactDamage(
         float survivalTime
     )
     {
-        survivalTime = Mathf.Max(
-            0f,
-            survivalTime
-        );
+        survivalTime =
+            Mathf.Max(
+                0f,
+                survivalTime
+            );
+
 
         int increaseCount =
             Mathf.FloorToInt(
                 survivalTime
-                / enemyContactDamageIncreaseInterval
+                /
+                enemyContactDamageIncreaseInterval
             );
+
 
         int calculatedDamage =
             enemyInitialContactDamage
-            + increaseCount
-            * enemyContactDamageIncreaseAmount;
+            +
+            increaseCount
+            *
+            enemyContactDamageIncreaseAmount;
+
 
         return Mathf.Min(
             calculatedDamage,
             enemyContactDamageLimit
         );
     }
+
+
+    // =========================================================
+    // Spawn Candidates
+    // =========================================================
+
+    private void RefreshSpawnCandidates(
+        float survivalTime
+    )
+    {
+        currentSpawnCandidates.Clear();
+
+
+        currentSpawnCandidateCount =
+            0;
+
+
+        currentUnlockedEnemyTypes =
+            "None";
+
+
+        currentSpawnWeightTotal =
+            0f;
+
+
+        survivalTime =
+            Mathf.Max(
+                0f,
+                survivalTime
+            );
+
+
+        if (enemySpawnEntries == null)
+        {
+            return;
+        }
+
+
+        for (int i = 0;
+             i < enemySpawnEntries.Count;
+             i++)
+        {
+            EnemySpawnEntry entry =
+                enemySpawnEntries[i];
+
+
+            if (!IsSpawnEntryValid(
+                    entry,
+                    survivalTime
+                ))
+            {
+                continue;
+            }
+
+
+            currentSpawnCandidates.Add(
+                entry
+            );
+
+
+            currentSpawnWeightTotal +=
+                entry.SpawnWeight;
+        }
+
+
+        currentSpawnCandidateCount =
+            currentSpawnCandidates.Count;
+
+
+        if (currentSpawnCandidates.Count > 0)
+        {
+            currentUnlockedEnemyTypes =
+                string.Empty;
+
+
+            for (int i = 0;
+                 i < currentSpawnCandidates.Count;
+                 i++)
+            {
+                if (i > 0)
+                {
+                    currentUnlockedEnemyTypes +=
+                        ", ";
+                }
+
+
+                currentUnlockedEnemyTypes +=
+                    currentSpawnCandidates[i]
+                        .Type
+                        .ToString();
+            }
+        }
+
+
+        if (float.IsNaN(
+                currentSpawnWeightTotal
+            )
+            ||
+            float.IsInfinity(
+                currentSpawnWeightTotal
+            )
+            ||
+            currentSpawnWeightTotal < 0f)
+        {
+            currentSpawnCandidates.Clear();
+
+
+            currentSpawnCandidateCount =
+                0;
+
+
+            currentUnlockedEnemyTypes =
+                "None";
+
+
+            currentSpawnWeightTotal =
+                0f;
+        }
+    }
+
+
+    private bool IsSpawnEntryValid(
+        EnemySpawnEntry entry,
+        float survivalTime
+    )
+    {
+        if (entry == null)
+        {
+            return false;
+        }
+
+
+        if (entry.Prefab == null)
+        {
+            return false;
+        }
+
+
+        float spawnWeight =
+            entry.SpawnWeight;
+
+
+        if (float.IsNaN(
+                spawnWeight
+            )
+            ||
+            float.IsInfinity(
+                spawnWeight
+            )
+            ||
+            spawnWeight <= 0f)
+        {
+            return false;
+        }
+
+
+        float unlockTime =
+            entry.UnlockTime;
+
+
+        if (float.IsNaN(
+                unlockTime
+            )
+            ||
+            float.IsInfinity(
+                unlockTime
+            ))
+        {
+            return false;
+        }
+
+
+        float safeUnlockTime =
+            Mathf.Max(
+                0f,
+                unlockTime
+            );
+
+
+        if (survivalTime <
+            safeUnlockTime)
+        {
+            return false;
+        }
+
+
+        return true;
+    }
+
+
+    private EnemySpawnEntry
+        SelectWeightedSpawnEntry(
+            float survivalTime
+        )
+    {
+        lastSpawnSelectionSucceeded =
+            false;
+
+
+        RefreshSpawnCandidates(
+            survivalTime
+        );
+
+
+        if (currentSpawnCandidates.Count ==
+            0)
+        {
+            return null;
+        }
+
+
+        if (currentSpawnWeightTotal <= 0f
+            ||
+            float.IsNaN(
+                currentSpawnWeightTotal
+            )
+            ||
+            float.IsInfinity(
+                currentSpawnWeightTotal
+            ))
+        {
+            return null;
+        }
+
+
+        float randomWeight =
+            Random.Range(
+                0f,
+                currentSpawnWeightTotal
+            );
+
+
+        float accumulatedWeight =
+            0f;
+
+
+        for (int i = 0;
+             i < currentSpawnCandidates.Count;
+             i++)
+        {
+            EnemySpawnEntry entry =
+                currentSpawnCandidates[i];
+
+
+            accumulatedWeight +=
+                entry.SpawnWeight;
+
+
+            if (randomWeight <
+                accumulatedWeight)
+            {
+                RecordSelectedSpawnEntry(
+                    entry
+                );
+
+
+                return entry;
+            }
+        }
+
+
+        // 浮点误差安全回退。
+        EnemySpawnEntry fallbackCandidate =
+            currentSpawnCandidates[
+                currentSpawnCandidates.Count
+                - 1
+            ];
+
+
+        RecordSelectedSpawnEntry(
+            fallbackCandidate
+        );
+
+
+        return fallbackCandidate;
+    }
+
+
+    private void RecordSelectedSpawnEntry(
+        EnemySpawnEntry selectedEntry
+    )
+    {
+        if (selectedEntry == null)
+        {
+            lastSpawnSelectionSucceeded =
+                false;
+
+
+            return;
+        }
+
+
+        lastSelectedEnemyType =
+            selectedEntry.Type;
+
+
+        lastSpawnSelectionSucceeded =
+            true;
+    }
+
+
+    // =========================================================
+    // Player
+    // =========================================================
 
     private void FindPlayer()
     {
@@ -909,9 +1695,11 @@ public class EnemySpawner : MonoBehaviour
                 playerTag
             );
 
+
         if (playerObject != null)
         {
-            player = playerObject.transform;
+            player =
+                playerObject.transform;
         }
         else
         {
@@ -923,13 +1711,17 @@ public class EnemySpawner : MonoBehaviour
             );
         }
     }
-    /// <summary>
-    /// 根据当前生存时间完成加权选择，
-    /// 然后从 EnemyPool 取得对应类型的敌人。
-    /// </summary>
+
+
+    // =========================================================
+    // Normal Automatic Spawn
+    // =========================================================
+
     private void TrySpawnEnemy()
     {
-        float survivalTime = 0f;
+        float survivalTime =
+            0f;
+
 
         if (GameManager.Instance != null)
         {
@@ -938,13 +1730,19 @@ public class EnemySpawner : MonoBehaviour
                     .SurvivalTime;
         }
 
+
         survivalTime =
-            Mathf.Max(0f, survivalTime);
+            Mathf.Max(
+                0f,
+                survivalTime
+            );
+
 
         EnemySpawnEntry selectedEntry =
             SelectWeightedSpawnEntry(
                 survivalTime
             );
+
 
         if (selectedEntry == null)
         {
@@ -957,28 +1755,33 @@ public class EnemySpawner : MonoBehaviour
                     this
                 );
 
+
                 hasWarnedAboutMissingSpawnCandidate =
                     true;
             }
 
+
             return;
         }
+
 
         hasWarnedAboutMissingSpawnCandidate =
             false;
 
+
         SpawnEnemyFromPool(
             selectedEntry.Type,
             true,
-            selectedEntry.Type.ToString()
+            selectedEntry.Type
+                .ToString()
         );
     }
 
 
-    /// <summary>
-    /// 从 EnemyPool 取得指定类型的敌人，
-    /// 并应用当前时间点的最新难度属性。
-    /// </summary>
+    // =========================================================
+    // Enemy Pool Spawn
+    // =========================================================
+
     private bool SpawnEnemyFromPool(
         EnemyType enemyType,
         bool respectEnemyLimit,
@@ -995,8 +1798,10 @@ public class EnemySpawner : MonoBehaviour
                 this
             );
 
+
             return false;
         }
+
 
         if (!EnemyPool.Instance.IsInitialized)
         {
@@ -1009,12 +1814,15 @@ public class EnemySpawner : MonoBehaviour
                 this
             );
 
+
             return false;
         }
+
 
         if (player == null)
         {
             FindPlayer();
+
 
             if (player == null)
             {
@@ -1026,21 +1834,27 @@ public class EnemySpawner : MonoBehaviour
                     this
                 );
 
+
                 return false;
             }
         }
 
+
         RefreshCurrentEnemyCount();
 
+
         if (respectEnemyLimit
-            && currentEnemyCount
-            >= currentMaxEnemies)
+            &&
+            currentEnemyCount >=
+            currentMaxEnemies)
         {
             return false;
         }
 
+
         Vector3 spawnPosition =
             GetRandomSpawnPositionAroundPlayer();
+
 
         PooledEnemy pooledEnemy =
             EnemyPool.Instance.GetEnemy(
@@ -1048,6 +1862,7 @@ public class EnemySpawner : MonoBehaviour
                 spawnPosition,
                 Quaternion.identity
             );
+
 
         if (pooledEnemy == null)
         {
@@ -1059,12 +1874,16 @@ public class EnemySpawner : MonoBehaviour
                 this
             );
 
+
             RefreshCurrentEnemyCount();
+
             return false;
         }
 
+
         GameObject spawnedEnemy =
             pooledEnemy.gameObject;
+
 
         if (!InitializeEnemyAttributes(
                 spawnedEnemy
@@ -1077,23 +1896,27 @@ public class EnemySpawner : MonoBehaviour
                 spawnedEnemy
             );
 
+
             pooledEnemy.ReturnToPool();
 
+
             RefreshCurrentEnemyCount();
+
             return false;
         }
 
+
         RefreshCurrentEnemyCount();
+
 
         return true;
     }
 
-    /// <summary>
-    /// 将当前全局难度基础属性传递给 EnemyDefinition。
-    ///
-    /// EnemyDefinition 再根据绑定的 EnemyData
-    /// 计算对应敌人类型的最终属性。
-    /// </summary>
+
+    // =========================================================
+    // Enemy Attribute Initialization
+    // =========================================================
+
     private bool InitializeEnemyAttributes(
         GameObject spawnedEnemy
     )
@@ -1106,13 +1929,16 @@ public class EnemySpawner : MonoBehaviour
                 this
             );
 
+
             return false;
         }
+
 
         EnemyDefinition enemyDefinition =
             spawnedEnemy.GetComponent<
                 EnemyDefinition
             >();
+
 
         if (enemyDefinition == null)
         {
@@ -1123,8 +1949,10 @@ public class EnemySpawner : MonoBehaviour
                 spawnedEnemy
             );
 
+
             return false;
         }
+
 
         enemyDefinition
             .InitializeFromGlobalDifficulty(
@@ -1132,6 +1960,7 @@ public class EnemySpawner : MonoBehaviour
                 currentEnemyMoveSpeed,
                 currentEnemyContactDamage
             );
+
 
         if (!enemyDefinition.HasBeenInitialized)
         {
@@ -1142,23 +1971,33 @@ public class EnemySpawner : MonoBehaviour
                 spawnedEnemy
             );
 
+
             return false;
         }
+
 
         return true;
     }
 
+
+    // =========================================================
+    // Enemy Count
+    // =========================================================
+
     private void RefreshCurrentEnemyCount()
     {
         if (EnemyPool.Instance != null
-            && EnemyPool.Instance.IsInitialized)
+            &&
+            EnemyPool.Instance.IsInitialized)
         {
             currentEnemyCount =
                 EnemyPool.Instance
                     .GetTotalActiveCount();
 
+
             return;
         }
+
 
         // EnemyPool 缺失时保留旧 Tag 统计，
         // 仅作为安全调试回退。
@@ -1168,27 +2007,47 @@ public class EnemySpawner : MonoBehaviour
             ).Length;
     }
 
+
+    // =========================================================
+    // Spawn Position
+    // =========================================================
+
     private Vector3
-    GetRandomSpawnPositionAroundPlayer()
+        GetRandomSpawnPositionAroundPlayer()
     {
         if (!limitSpawnToMapBounds)
         {
-            return CreateRandomSpawnPositionAroundPlayer();
+            return
+                CreateRandomSpawnPositionAroundPlayer();
         }
 
+
         float safePadding =
-            Mathf.Max(0f, spawnBoundsPadding);
+            Mathf.Max(
+                0f,
+                spawnBoundsPadding
+            );
+
 
         Vector2 safeMin =
             spawnMapMin
-            + Vector2.one * safePadding;
+            +
+            Vector2.one
+            *
+            safePadding;
+
 
         Vector2 safeMax =
             spawnMapMax
-            - Vector2.one * safePadding;
+            -
+            Vector2.one
+            *
+            safePadding;
+
 
         if (safeMin.x > safeMax.x
-            || safeMin.y > safeMax.y)
+            ||
+            safeMin.y > safeMax.y)
         {
             Debug.LogWarning(
                 "EnemySpawner: 地图生成范围无效，"
@@ -1196,16 +2055,26 @@ public class EnemySpawner : MonoBehaviour
                 this
             );
 
-            return CreateRandomSpawnPositionAroundPlayer();
+
+            return
+                CreateRandomSpawnPositionAroundPlayer();
         }
 
-        int attemptCount =
-            Mathf.Max(1, maxSpawnPositionAttempts);
 
-        for (int i = 0; i < attemptCount; i++)
+        int attemptCount =
+            Mathf.Max(
+                1,
+                maxSpawnPositionAttempts
+            );
+
+
+        for (int i = 0;
+             i < attemptCount;
+             i++)
         {
             Vector3 candidatePosition =
                 CreateRandomSpawnPositionAroundPlayer();
+
 
             if (IsSpawnPositionInsideBounds(
                     candidatePosition,
@@ -1217,20 +2086,36 @@ public class EnemySpawner : MonoBehaviour
             }
         }
 
-        // 极端情况下仍未随机到有效位置时，
-        // 改为朝地图中心生成，避免敌人出现在墙外。
+
+        // -----------------------------------------------------
+        // Fallback：
+        // 如果多次随机仍没有进入地图范围，
+        // 朝地图中心寻找一个合法位置。
+        // -----------------------------------------------------
+
         Vector2 mapCenter =
-            (safeMin + safeMax) * 0.5f;
+            (
+                safeMin
+                +
+                safeMax
+            )
+            *
+            0.5f;
+
 
         Vector2 directionToCenter =
             mapCenter
-            - (Vector2)player.position;
+            -
+            (Vector2)player.position;
+
 
         if (directionToCenter.sqrMagnitude
             <= Mathf.Epsilon)
         {
-            directionToCenter = Vector2.right;
+            directionToCenter =
+                Vector2.right;
         }
+
 
         float fallbackDistance =
             Random.Range(
@@ -1238,10 +2123,14 @@ public class EnemySpawner : MonoBehaviour
                 maxSpawnDistance
             );
 
+
         Vector2 fallbackPosition =
             (Vector2)player.position
-            + directionToCenter.normalized
-            * fallbackDistance;
+            +
+            directionToCenter.normalized
+            *
+            fallbackDistance;
+
 
         fallbackPosition.x =
             Mathf.Clamp(
@@ -1250,12 +2139,14 @@ public class EnemySpawner : MonoBehaviour
                 safeMax.x
             );
 
+
         fallbackPosition.y =
             Mathf.Clamp(
                 fallbackPosition.y,
                 safeMin.y,
                 safeMax.y
             );
+
 
         return new Vector3(
             fallbackPosition.x,
@@ -1264,11 +2155,16 @@ public class EnemySpawner : MonoBehaviour
         );
     }
 
+
     private Vector3
         CreateRandomSpawnPositionAroundPlayer()
     {
         float randomAngle =
-            Random.Range(0f, 360f);
+            Random.Range(
+                0f,
+                360f
+            );
+
 
         float randomDistance =
             Random.Range(
@@ -1276,29 +2172,39 @@ public class EnemySpawner : MonoBehaviour
                 maxSpawnDistance
             );
 
+
         Vector2 direction =
             new Vector2(
                 Mathf.Cos(
                     randomAngle
-                    * Mathf.Deg2Rad
+                    *
+                    Mathf.Deg2Rad
                 ),
                 Mathf.Sin(
                     randomAngle
-                    * Mathf.Deg2Rad
+                    *
+                    Mathf.Deg2Rad
                 )
             );
 
+
         Vector3 spawnPosition =
             player.position
-            + (Vector3)(
+            +
+            (Vector3)(
                 direction
-                * randomDistance
+                *
+                randomDistance
             );
 
-        spawnPosition.z = 0f;
+
+        spawnPosition.z =
+            0f;
+
 
         return spawnPosition;
     }
+
 
     private bool IsSpawnPositionInsideBounds(
         Vector3 spawnPosition,
@@ -1306,16 +2212,25 @@ public class EnemySpawner : MonoBehaviour
         Vector2 safeMax
     )
     {
-        return spawnPosition.x >= safeMin.x
-            && spawnPosition.x <= safeMax.x
-            && spawnPosition.y >= safeMin.y
-            && spawnPosition.y <= safeMax.y;
+        return
+            spawnPosition.x >=
+            safeMin.x
+            &&
+            spawnPosition.x <=
+            safeMax.x
+            &&
+            spawnPosition.y >=
+            safeMin.y
+            &&
+            spawnPosition.y <=
+            safeMax.y;
     }
-    /// <summary>
-    /// 独立测试生成入口。
-    /// 测试生成忽略最大敌人数限制，
-    /// 但仍要求处于 Playing 状态。
-    /// </summary>
+
+
+    // =========================================================
+    // Spawn Testing
+    // =========================================================
+
     private void SpawnEnemyForTesting(
         EnemyType enemyType,
         string enemyLabel
@@ -1330,8 +2245,10 @@ public class EnemySpawner : MonoBehaviour
                 this
             );
 
+
             return;
         }
+
 
         if (!CanSpawnEnemies())
         {
@@ -1340,10 +2257,13 @@ public class EnemySpawner : MonoBehaviour
                 this
             );
 
+
             return;
         }
 
+
         UpdateDifficulty();
+
 
         SpawnEnemyFromPool(
             enemyType,
@@ -1352,7 +2272,10 @@ public class EnemySpawner : MonoBehaviour
         );
     }
 
-    [ContextMenu("Test Spawn Normal Enemy")]
+
+    [ContextMenu(
+        "Test Spawn Normal Enemy"
+    )]
     private void TestSpawnNormalEnemy()
     {
         SpawnEnemyForTesting(
@@ -1361,7 +2284,10 @@ public class EnemySpawner : MonoBehaviour
         );
     }
 
-    [ContextMenu("Test Spawn Fast Enemy")]
+
+    [ContextMenu(
+        "Test Spawn Fast Enemy"
+    )]
     private void TestSpawnFastEnemy()
     {
         SpawnEnemyForTesting(
@@ -1370,7 +2296,10 @@ public class EnemySpawner : MonoBehaviour
         );
     }
 
-    [ContextMenu("Test Spawn Heavy Enemy")]
+
+    [ContextMenu(
+        "Test Spawn Heavy Enemy"
+    )]
     private void TestSpawnHeavyEnemy()
     {
         SpawnEnemyForTesting(
@@ -1379,7 +2308,10 @@ public class EnemySpawner : MonoBehaviour
         );
     }
 
-    [ContextMenu("Test Spawn Ranged Enemy")]
+
+    [ContextMenu(
+        "Test Spawn Ranged Enemy"
+    )]
     private void TestSpawnRangedEnemy()
     {
         SpawnEnemyForTesting(
@@ -1387,97 +2319,380 @@ public class EnemySpawner : MonoBehaviour
             "Ranged"
         );
     }
+
+
+    // =========================================================
+    // Phase38 Pressure Debug
+    // =========================================================
+
+    [ContextMenu(
+        "Debug/Pressure/Print Current State"
+    )]
+    private void
+        DebugPrintCurrentPressureState()
+    {
+        float survivalTime =
+            0f;
+
+
+        if (GameManager.Instance != null)
+        {
+            survivalTime =
+                GameManager.Instance
+                    .SurvivalTime;
+        }
+
+
+        UpdateSpawnDifficulty(
+            survivalTime
+        );
+
+
+        Debug.Log(
+            "===== Enemy Pressure ====="
+            + "\nState: "
+            + currentPressureState
+            + "\nSurvival Time: "
+            + survivalTime
+                .ToString("F2")
+            + "\nBase Spawn Interval: "
+            + currentBaseSpawnInterval
+                .ToString("F3")
+            + "\nPressure Multiplier: "
+            + currentPressureMultiplier
+                .ToString("F2")
+            + "\nEffective Spawn Interval: "
+            + currentSpawnInterval
+                .ToString("F3")
+            + "\nBase Max Enemy: "
+            + currentBaseMaxEnemies
+            + "\nPressure Max Bonus: +"
+            + currentPressureMaxEnemyBonus
+            + "\nEffective Max Enemy: "
+            + currentMaxEnemies,
+            this
+        );
+    }
+
+
+    [ContextMenu(
+        "Debug/Pressure/Set Normal"
+    )]
+    private void DebugPressureNormal()
+    {
+        SetPressureState(
+            EnemyPressureState.Normal
+        );
+    }
+
+
+    [ContextMenu(
+        "Debug/Pressure/Set Overstay Level 1"
+    )]
+    private void DebugPressureOverstay1()
+    {
+        SetPressureState(
+            EnemyPressureState
+                .OverstayLevel1
+        );
+    }
+
+
+    [ContextMenu(
+        "Debug/Pressure/Set Early Defense"
+    )]
+    private void DebugPressureEarlyDefense()
+    {
+        SetPressureState(
+            EnemyPressureState
+                .ExtractionDefenseEarly
+        );
+    }
+
+
+    [ContextMenu(
+        "Debug/Pressure/Set Overstay Level 2"
+    )]
+    private void DebugPressureOverstay2()
+    {
+        SetPressureState(
+            EnemyPressureState
+                .OverstayLevel2
+        );
+    }
+
+
+    [ContextMenu(
+        "Debug/Pressure/Set Late Defense"
+    )]
+    private void DebugPressureLateDefense()
+    {
+        SetPressureState(
+            EnemyPressureState
+                .ExtractionDefenseLate
+        );
+    }
+
+
+    [ContextMenu(
+        "Debug/Pressure/Set Emergency"
+    )]
+    private void DebugPressureEmergency()
+    {
+        SetPressureState(
+            EnemyPressureState
+                .Emergency
+        );
+    }
+
+
+    [ContextMenu(
+        "Debug/Pressure/Preview 315 Seconds"
+    )]
+    private void
+        DebugPreviewPressureAt315Seconds()
+    {
+        LogPressurePreviewAtTime(
+            315f
+        );
+    }
+
+
+    [ContextMenu(
+        "Debug/Pressure/Preview 330 Seconds"
+    )]
+    private void
+        DebugPreviewPressureAt330Seconds()
+    {
+        LogPressurePreviewAtTime(
+            330f
+        );
+    }
+
+
+    [ContextMenu(
+        "Debug/Pressure/Preview 360 Seconds"
+    )]
+    private void
+        DebugPreviewPressureAt360Seconds()
+    {
+        LogPressurePreviewAtTime(
+            360f
+        );
+    }
+
+
+    private void LogPressurePreviewAtTime(
+        float testTime
+    )
+    {
+        testTime =
+            Mathf.Max(
+                0f,
+                testTime
+            );
+
+
+        float baseInterval =
+            Calculate360SpawnInterval(
+                testTime
+            );
+
+
+        int baseMaxEnemies =
+            Calculate360MaxEnemies(
+                testTime
+            );
+
+
+        EnemyPressureProfile profile =
+            ResolvePressureProfile(
+                currentPressureState
+            );
+
+
+        float effectiveInterval =
+            Mathf.Max(
+                minimumEffectiveSpawnInterval,
+                baseInterval
+                *
+                profile
+                    .SpawnIntervalMultiplier
+            );
+
+
+        int effectiveMaxEnemies =
+            Mathf.Clamp(
+                baseMaxEnemies
+                +
+                profile.MaxEnemyBonus,
+                1,
+                maximumEffectiveEnemies
+            );
+
+
+        Debug.Log(
+            "===== Pressure Preview ====="
+            + "\nTime: "
+            + testTime
+                .ToString("F0")
+            + "s"
+            + "\nState: "
+            + currentPressureState
+            + "\nBase Interval: "
+            + baseInterval
+                .ToString("F3")
+            + "\nPressure Multiplier: "
+            + profile
+                .SpawnIntervalMultiplier
+                .ToString("F2")
+            + "\nEffective Interval: "
+            + effectiveInterval
+                .ToString("F3")
+            + "\nBase Max Enemy: "
+            + baseMaxEnemies
+            + "\nPressure Bonus: +"
+            + profile.MaxEnemyBonus
+            + "\nEffective Max Enemy: "
+            + effectiveMaxEnemies,
+            this
+        );
+    }
+
+
+    // =========================================================
+    // Legacy Difficulty Debug
+    // =========================================================
+
     private void LogDifficultyAtTime(
         float testSurvivalTime
     )
     {
-        testSurvivalTime = Mathf.Max(
-            0f,
-            testSurvivalTime
-        );
+        testSurvivalTime =
+            Mathf.Max(
+                0f,
+                testSurvivalTime
+            );
+
 
         float testSpawnInterval =
             spawnInterval
-            - testSurvivalTime
-            * spawnIntervalDecreasePerSecond;
+            -
+            testSurvivalTime
+            *
+            spawnIntervalDecreasePerSecond;
 
-        testSpawnInterval = Mathf.Max(
-            minSpawnInterval,
-            testSpawnInterval
-        );
+
+        testSpawnInterval =
+            Mathf.Max(
+                minSpawnInterval,
+                testSpawnInterval
+            );
+
 
         int enemyCountIncreaseCount =
             Mathf.FloorToInt(
                 testSurvivalTime
-                / maxEnemiesIncreaseInterval
+                /
+                maxEnemiesIncreaseInterval
             );
+
 
         int testMaxEnemies =
             maxEnemies
-            + enemyCountIncreaseCount
-            * maxEnemiesIncreaseAmount;
+            +
+            enemyCountIncreaseCount
+            *
+            maxEnemiesIncreaseAmount;
 
-        testMaxEnemies = Mathf.Min(
-            testMaxEnemies,
-            maxEnemiesLimit
-        );
+
+        testMaxEnemies =
+            Mathf.Min(
+                testMaxEnemies,
+                maxEnemiesLimit
+            );
+
 
         int testEnemyMaxHealth =
             CalculateEnemyMaxHealth(
                 testSurvivalTime
             );
 
+
         float testEnemyMoveSpeed =
             CalculateEnemyMoveSpeed(
                 testSurvivalTime
             );
+
 
         int testEnemyContactDamage =
             CalculateEnemyContactDamage(
                 testSurvivalTime
             );
 
+
         Debug.Log(
-            "===== Difficulty At "
-            + testSurvivalTime.ToString("F0")
-            + " Seconds =====\n"
-            + "Spawn Interval: "
-            + testSpawnInterval.ToString("F2")
+            "===== Legacy Difficulty At "
+            + testSurvivalTime
+                .ToString("F0")
+            + " Seconds ====="
+            + "\nSpawn Interval: "
+            + testSpawnInterval
+                .ToString("F2")
             + "\nMax Enemies: "
             + testMaxEnemies
             + "\nGlobal Enemy Max Health: "
             + testEnemyMaxHealth
             + "\nGlobal Enemy Move Speed: "
-            + testEnemyMoveSpeed.ToString("F2")
+            + testEnemyMoveSpeed
+                .ToString("F2")
             + "\nGlobal Enemy Contact Damage: "
-            + testEnemyContactDamage,
+            + testEnemyContactDamage
+            + "\nNOTE: Spawn Interval / Max Enemy "
+            + "这里是 Legacy Debug Formula，"
+            + "不是当前 Runtime 360s Curve。",
             this
         );
     }
 
-    [ContextMenu("Debug Difficulty At 0 Seconds")]
+
+    [ContextMenu(
+        "Debug Difficulty At 0 Seconds"
+    )]
     private void DebugDifficultyAt0Seconds()
     {
-        LogDifficultyAtTime(0f);
+        LogDifficultyAtTime(
+            0f
+        );
     }
 
-    [ContextMenu("Debug Difficulty At 30 Seconds")]
+
+    [ContextMenu(
+        "Debug Difficulty At 30 Seconds"
+    )]
     private void DebugDifficultyAt30Seconds()
     {
-        LogDifficultyAtTime(30f);
+        LogDifficultyAtTime(
+            30f
+        );
     }
 
-    [ContextMenu("Debug Difficulty At 60 Seconds")]
+
+    [ContextMenu(
+        "Debug Difficulty At 60 Seconds"
+    )]
     private void DebugDifficultyAt60Seconds()
     {
-        LogDifficultyAtTime(60f);
+        LogDifficultyAtTime(
+            60f
+        );
     }
-    /// <summary>
-    /// 从生成配置列表中读取指定类型的 Prefab。
-    ///
-    /// 仅用于属性预览和调试，不负责生成敌人。
-    /// 正式生成仍然只能通过 EnemyPool。
-    /// </summary>
+
+
+    // =========================================================
+    // Enemy Type Debug
+    // =========================================================
+
     private GameObject FindConfiguredEnemyPrefab(
         EnemyType enemyType
     )
@@ -1487,74 +2702,86 @@ public class EnemySpawner : MonoBehaviour
             return null;
         }
 
+
         for (int i = 0;
-            i < enemySpawnEntries.Count;
-            i++)
+             i < enemySpawnEntries.Count;
+             i++)
         {
             EnemySpawnEntry entry =
                 enemySpawnEntries[i];
+
 
             if (entry == null)
             {
                 continue;
             }
 
-            if (entry.Type != enemyType)
+
+            if (entry.Type !=
+                enemyType)
             {
                 continue;
             }
+
 
             if (entry.Prefab == null)
             {
                 continue;
             }
 
+
             return entry.Prefab;
         }
+
 
         return null;
     }
 
-    /// <summary>
-    /// 输出指定生存时间下三种敌人的最终属性。
-    ///
-    /// 此方法只进行数值预览，不会生成敌人，
-    /// 也不会修改当前游戏状态。
-    /// </summary>
+
     private void LogEnemyTypeStatsAtTime(
         float testSurvivalTime
     )
     {
         testSurvivalTime =
-            Mathf.Max(0f, testSurvivalTime);
+            Mathf.Max(
+                0f,
+                testSurvivalTime
+            );
+
 
         int globalMaxHealth =
             CalculateEnemyMaxHealth(
                 testSurvivalTime
             );
 
+
         float globalMoveSpeed =
             CalculateEnemyMoveSpeed(
                 testSurvivalTime
             );
+
 
         int globalContactDamage =
             CalculateEnemyContactDamage(
                 testSurvivalTime
             );
 
+
         Debug.Log(
             "===== Enemy Type Stats At "
-            + testSurvivalTime.ToString("F0")
-            + " Seconds =====\n"
-            + "Global HP="
+            + testSurvivalTime
+                .ToString("F0")
+            + " Seconds ====="
+            + "\nGlobal HP="
             + globalMaxHealth
             + ", Global Speed="
-            + globalMoveSpeed.ToString("F2")
+            + globalMoveSpeed
+                .ToString("F2")
             + ", Global Damage="
             + globalContactDamage,
             this
         );
+
 
         LogSingleEnemyTypeStats(
             FindConfiguredEnemyPrefab(
@@ -1566,6 +2793,7 @@ public class EnemySpawner : MonoBehaviour
             globalContactDamage
         );
 
+
         LogSingleEnemyTypeStats(
             FindConfiguredEnemyPrefab(
                 EnemyType.Fast
@@ -1575,6 +2803,7 @@ public class EnemySpawner : MonoBehaviour
             globalMoveSpeed,
             globalContactDamage
         );
+
 
         LogSingleEnemyTypeStats(
             FindConfiguredEnemyPrefab(
@@ -1586,21 +2815,19 @@ public class EnemySpawner : MonoBehaviour
             globalContactDamage
         );
 
+
         LogSingleEnemyTypeStats(
-    FindConfiguredEnemyPrefab(
-        EnemyType.Ranged
-    ),
-    "Ranged",
-    globalMaxHealth,
-    globalMoveSpeed,
-    globalContactDamage
-);
+            FindConfiguredEnemyPrefab(
+                EnemyType.Ranged
+            ),
+            "Ranged",
+            globalMaxHealth,
+            globalMoveSpeed,
+            globalContactDamage
+        );
     }
 
-    /// <summary>
-    /// 读取指定敌人 Prefab 绑定的 EnemyData，
-    /// 并输出应用类型倍率后的最终属性。
-    /// </summary>
+
     private void LogSingleEnemyTypeStats(
         GameObject enemyPrefab,
         string enemyLabel,
@@ -1618,13 +2845,16 @@ public class EnemySpawner : MonoBehaviour
                 this
             );
 
+
             return;
         }
+
 
         EnemyDefinition enemyDefinition =
             enemyPrefab.GetComponent<
                 EnemyDefinition
             >();
+
 
         if (enemyDefinition == null)
         {
@@ -1635,11 +2865,14 @@ public class EnemySpawner : MonoBehaviour
                 enemyPrefab
             );
 
+
             return;
         }
 
+
         EnemyData enemyData =
             enemyDefinition.Data;
+
 
         if (enemyData == null)
         {
@@ -1650,39 +2883,51 @@ public class EnemySpawner : MonoBehaviour
                 enemyPrefab
             );
 
+
             return;
         }
+
 
         int finalMaxHealth =
             RoundEnemyAttributeToPositiveInt(
                 globalMaxHealth
-                * enemyData.HealthMultiplier
+                *
+                enemyData.HealthMultiplier
             );
+
 
         float finalMoveSpeed =
             Mathf.Max(
                 0.01f,
                 globalMoveSpeed
-                * enemyData.MoveSpeedMultiplier
+                *
+                enemyData.MoveSpeedMultiplier
             );
+
 
         int finalContactDamage =
             RoundEnemyAttributeToPositiveInt(
                 globalContactDamage
-                * enemyData.DamageMultiplier
+                *
+                enemyData.DamageMultiplier
             );
+
 
         int finalExperienceAmount =
             Mathf.Max(
                 1,
-                enemyData.ExperienceAmount
+                enemyData
+                    .ExperienceAmount
             );
+
 
         float finalVisualScale =
             Mathf.Max(
                 0.1f,
-                enemyData.VisualScale
+                enemyData
+                    .VisualScale
             );
+
 
         Debug.Log(
             enemyLabel
@@ -1690,26 +2935,32 @@ public class EnemySpawner : MonoBehaviour
             + ": HP="
             + finalMaxHealth
             + ", Speed="
-            + finalMoveSpeed.ToString("F3")
+            + finalMoveSpeed
+                .ToString("F3")
             + ", Damage="
             + finalContactDamage
             + ", EXP="
             + finalExperienceAmount
             + ", Scale="
-            + finalVisualScale.ToString("F2"),
+            + finalVisualScale
+                .ToString("F2"),
             enemyPrefab
         );
     }
 
-    /// <summary>
-    /// 与 EnemyDefinition 使用相同的正整数四舍五入规则。
-    /// </summary>
-    private int RoundEnemyAttributeToPositiveInt(
-        float value
-    )
+
+    private int
+        RoundEnemyAttributeToPositiveInt(
+            float value
+        )
     {
         int roundedValue =
-            Mathf.FloorToInt(value + 0.5f);
+            Mathf.FloorToInt(
+                value
+                +
+                0.5f
+            );
+
 
         return Mathf.Max(
             1,
@@ -1717,195 +2968,96 @@ public class EnemySpawner : MonoBehaviour
         );
     }
 
-    [ContextMenu("Debug Enemy Types At 0 Seconds")]
+
+    [ContextMenu(
+        "Debug Enemy Types At 0 Seconds"
+    )]
     private void DebugEnemyTypesAt0Seconds()
     {
-        LogEnemyTypeStatsAtTime(0f);
+        LogEnemyTypeStatsAtTime(
+            0f
+        );
     }
 
-    [ContextMenu("Debug Enemy Types At 30 Seconds")]
+
+    [ContextMenu(
+        "Debug Enemy Types At 30 Seconds"
+    )]
     private void DebugEnemyTypesAt30Seconds()
     {
-        LogEnemyTypeStatsAtTime(30f);
+        LogEnemyTypeStatsAtTime(
+            30f
+        );
     }
 
-    [ContextMenu("Debug Enemy Types At 60 Seconds")]
+
+    [ContextMenu(
+        "Debug Enemy Types At 60 Seconds"
+    )]
     private void DebugEnemyTypesAt60Seconds()
     {
-        LogEnemyTypeStatsAtTime(60f);
+        LogEnemyTypeStatsAtTime(
+            60f
+        );
     }
 
-    private void OnValidate()
-    {
-        spawnInterval = Mathf.Max(
-            0.01f,
-            spawnInterval
-        );
 
-        minSpawnInterval = Mathf.Clamp(
-            minSpawnInterval,
-            0.01f,
-            spawnInterval
-        );
+    // =========================================================
+    // Spawn Candidate Debug
+    // =========================================================
 
-        spawnIntervalDecreasePerSecond =
-            Mathf.Max(
-                0f,
-                spawnIntervalDecreasePerSecond
-            );
-
-        maxEnemies = Mathf.Max(
-            1,
-            maxEnemies
-        );
-
-        maxEnemiesLimit = Mathf.Max(
-            maxEnemies,
-            maxEnemiesLimit
-        );
-
-        maxEnemiesIncreaseInterval =
-            Mathf.Max(
-                0.1f,
-                maxEnemiesIncreaseInterval
-            );
-
-        maxEnemiesIncreaseAmount =
-            Mathf.Max(
-                1,
-                maxEnemiesIncreaseAmount
-            );
-
-        enemyInitialMaxHealth =
-            Mathf.Max(
-                1,
-                enemyInitialMaxHealth
-            );
-
-        enemyHealthIncreaseInterval =
-            Mathf.Max(
-                0.1f,
-                enemyHealthIncreaseInterval
-            );
-
-        enemyHealthIncreaseAmount =
-            Mathf.Max(
-                1,
-                enemyHealthIncreaseAmount
-            );
-
-        enemyMaxHealthLimit =
-            Mathf.Max(
-                enemyInitialMaxHealth,
-                enemyMaxHealthLimit
-            );
-
-        enemyInitialMoveSpeed =
-            Mathf.Max(
-                0.01f,
-                enemyInitialMoveSpeed
-            );
-
-        enemyMoveSpeedIncreaseInterval =
-            Mathf.Max(
-                0.1f,
-                enemyMoveSpeedIncreaseInterval
-            );
-
-        enemyMoveSpeedIncreaseAmount =
-            Mathf.Max(
-                0f,
-                enemyMoveSpeedIncreaseAmount
-            );
-
-        enemyMoveSpeedLimit =
-            Mathf.Max(
-                enemyInitialMoveSpeed,
-                enemyMoveSpeedLimit
-            );
-
-        enemyInitialContactDamage =
-            Mathf.Max(
-                1,
-                enemyInitialContactDamage
-            );
-
-        enemyContactDamageIncreaseInterval =
-            Mathf.Max(
-                0.1f,
-                enemyContactDamageIncreaseInterval
-            );
-
-        enemyContactDamageIncreaseAmount =
-            Mathf.Max(
-                1,
-                enemyContactDamageIncreaseAmount
-            );
-
-        enemyContactDamageLimit =
-            Mathf.Max(
-                enemyInitialContactDamage,
-                enemyContactDamageLimit
-            );
-
-        minSpawnDistance =
-            Mathf.Max(
-                0f,
-                minSpawnDistance
-            );
-
-        maxSpawnDistance =
-            Mathf.Max(
-                minSpawnDistance,
-                maxSpawnDistance
-            );
-    }
-
-    /// <summary>
-    /// 输出指定生存时间下的有效刷怪候选。
-    /// 只进行数据预览，不会实际生成敌人。
-    /// </summary>
     private void LogSpawnCandidatesAtTime(
         float testSurvivalTime
     )
     {
         testSurvivalTime =
-            Mathf.Max(0f, testSurvivalTime);
+            Mathf.Max(
+                0f,
+                testSurvivalTime
+            );
+
 
         RefreshSpawnCandidates(
             testSurvivalTime
         );
 
+
         Debug.Log(
-     "===== Spawn Candidates At "
-     + testSurvivalTime.ToString("F0")
-     + " Seconds =====\n"
-            + "Valid Candidate Count: "
+            "===== Spawn Candidates At "
+            + testSurvivalTime
+                .ToString("F0")
+            + " Seconds ====="
+            + "\nValid Candidate Count: "
             + currentSpawnCandidates.Count
             + "\nUnlocked Enemy Types: "
             + currentUnlockedEnemyTypes
             + "\nTotal Spawn Weight: "
-     + currentSpawnWeightTotal
-         .ToString("F1"),
-     this
- );
+            + currentSpawnWeightTotal
+                .ToString("F1"),
+            this
+        );
 
-        if (currentSpawnCandidates.Count == 0)
+
+        if (currentSpawnCandidates.Count ==
+            0)
         {
             Debug.LogWarning(
                 "当前没有有效的敌人生成候选。",
                 this
             );
 
+
             return;
         }
 
+
         for (int i = 0;
-            i < currentSpawnCandidates.Count;
-            i++)
+             i < currentSpawnCandidates.Count;
+             i++)
         {
             EnemySpawnEntry entry =
                 currentSpawnCandidates[i];
+
 
             Debug.Log(
                 "Candidate "
@@ -1915,17 +3067,17 @@ public class EnemySpawner : MonoBehaviour
                 + ", Prefab="
                 + entry.Prefab.name
                 + ", Unlock Time="
-                + entry.UnlockTime.ToString("F1")
+                + entry.UnlockTime
+                    .ToString("F1")
                 + ", Spawn Weight="
-                + entry.SpawnWeight.ToString("F1"),
+                + entry.SpawnWeight
+                    .ToString("F1"),
                 entry.Prefab
             );
         }
     }
-    /// <summary>
-    /// 测试指定时间下的一次加权随机选择。
-    /// 不会实际生成敌人。
-    /// </summary>
+
+
     private void TestWeightedSelectionAtTime(
         float testSurvivalTime
     )
@@ -1935,27 +3087,30 @@ public class EnemySpawner : MonoBehaviour
                 testSurvivalTime
             );
 
+
         if (selectedEntry == null)
         {
             Debug.LogWarning(
                 "===== Weighted Selection At "
                 + testSurvivalTime
                     .ToString("F0")
-                + " Seconds =====\n"
-                + "没有有效候选，"
+                + " Seconds ====="
+                + "\n没有有效候选，"
                 + "本次随机选择已安全取消。",
                 this
             );
 
+
             return;
         }
+
 
         Debug.Log(
             "===== Weighted Selection At "
             + testSurvivalTime
                 .ToString("F0")
-            + " Seconds =====\n"
-                       + "\nTotal Spawn Weight: "
+            + " Seconds ====="
+            + "\nTotal Spawn Weight: "
             + currentSpawnWeightTotal
                 .ToString("F1")
             + "\nSelection Succeeded: "
@@ -1971,121 +3126,164 @@ public class EnemySpawner : MonoBehaviour
         );
     }
 
+
     [ContextMenu(
         "Test Weighted Selection At 0 Seconds"
     )]
     private void TestWeightedSelectionAt0Seconds()
     {
-        TestWeightedSelectionAtTime(0f);
+        TestWeightedSelectionAtTime(
+            0f
+        );
     }
+
 
     [ContextMenu(
         "Test Weighted Selection At 15 Seconds"
     )]
     private void TestWeightedSelectionAt15Seconds()
     {
-        TestWeightedSelectionAtTime(15f);
+        TestWeightedSelectionAtTime(
+            15f
+        );
     }
+
 
     [ContextMenu(
         "Test Weighted Selection At 30 Seconds"
     )]
     private void TestWeightedSelectionAt30Seconds()
     {
-        TestWeightedSelectionAtTime(30f);
+        TestWeightedSelectionAtTime(
+            30f
+        );
     }
 
+
     [ContextMenu(
-    "Test Weighted Selection At 45 Seconds"
-)]
+        "Test Weighted Selection At 45 Seconds"
+    )]
     private void TestWeightedSelectionAt45Seconds()
     {
-        TestWeightedSelectionAtTime(45f);
+        TestWeightedSelectionAtTime(
+            45f
+        );
     }
+
 
     [ContextMenu(
         "Test Weighted Selection At 60 Seconds"
     )]
     private void TestWeightedSelectionAt60Seconds()
     {
-        TestWeightedSelectionAtTime(60f);
+        TestWeightedSelectionAtTime(
+            60f
+        );
     }
+
+
     [ContextMenu(
         "Debug Spawn Candidates At 0 Seconds"
     )]
     private void DebugSpawnCandidatesAt0Seconds()
     {
-        LogSpawnCandidatesAtTime(0f);
+        LogSpawnCandidatesAtTime(
+            0f
+        );
     }
+
 
     [ContextMenu(
         "Debug Spawn Candidates At 15 Seconds"
     )]
     private void DebugSpawnCandidatesAt15Seconds()
     {
-        LogSpawnCandidatesAtTime(15f);
+        LogSpawnCandidatesAtTime(
+            15f
+        );
     }
+
 
     [ContextMenu(
         "Debug Spawn Candidates At 30 Seconds"
     )]
     private void DebugSpawnCandidatesAt30Seconds()
     {
-        LogSpawnCandidatesAtTime(30f);
+        LogSpawnCandidatesAtTime(
+            30f
+        );
     }
 
 
     [ContextMenu(
-    "Debug Spawn Candidates At 45 Seconds"
-)]
+        "Debug Spawn Candidates At 45 Seconds"
+    )]
     private void DebugSpawnCandidatesAt45Seconds()
     {
-        LogSpawnCandidatesAtTime(45f);
+        LogSpawnCandidatesAtTime(
+            45f
+        );
     }
+
+
     [ContextMenu(
         "Debug Spawn Candidates At 60 Seconds"
     )]
     private void DebugSpawnCandidatesAt60Seconds()
     {
-        LogSpawnCandidatesAtTime(60f);
+        LogSpawnCandidatesAtTime(
+            60f
+        );
     }
 
-    /// <summary>
-    /// 在指定生存时间下进行多次加权随机抽取，
-    /// 并统计每种敌人类型的抽取次数和比例。
-    ///
-    /// 该测试不会实际生成敌人。
-    /// </summary>
+
+    // =========================================================
+    // Weighted Batch Debug
+    // =========================================================
+
     private void RunWeightedSelectionBatchTest(
         float testSurvivalTime,
         int sampleCount
     )
     {
         testSurvivalTime =
-            Mathf.Max(0f, testSurvivalTime);
+            Mathf.Max(
+                0f,
+                testSurvivalTime
+            );
+
 
         sampleCount =
-            Mathf.Max(1, sampleCount);
+            Mathf.Max(
+                1,
+                sampleCount
+            );
+
 
         RefreshSpawnCandidates(
             testSurvivalTime
         );
 
-        if (currentSpawnCandidates.Count == 0
-            || currentSpawnWeightTotal <= 0f)
+
+        if (currentSpawnCandidates.Count ==
+            0
+            ||
+            currentSpawnWeightTotal <= 0f)
         {
             Debug.LogWarning(
                 "===== Weighted Batch Test At "
                 + testSurvivalTime
                     .ToString("F0")
-                + " Seconds =====\n"
-                + "没有有效候选，"
+                + " Seconds ====="
+                + "\n没有有效候选，"
                 + "批量随机测试已安全取消。",
                 this
             );
 
+
             return;
         }
+
 
         Dictionary<EnemyType, int>
             selectionCounts =
@@ -2094,19 +3292,20 @@ public class EnemySpawner : MonoBehaviour
                     int
                 >();
 
-        // 先登记所有有效候选类型。
-        // 即使某种类型本次抽取为 0，
-        // 最终报告中也会显示出来。
+
         for (int i = 0;
-            i < currentSpawnCandidates.Count;
-            i++)
+             i < currentSpawnCandidates.Count;
+             i++)
         {
             EnemyType candidateType =
-                currentSpawnCandidates[i].Type;
+                currentSpawnCandidates[i]
+                    .Type;
 
-            if (!selectionCounts.ContainsKey(
-                    candidateType
-                ))
+
+            if (!selectionCounts
+                    .ContainsKey(
+                        candidateType
+                    ))
             {
                 selectionCounts.Add(
                     candidateType,
@@ -2115,30 +3314,41 @@ public class EnemySpawner : MonoBehaviour
             }
         }
 
-        int successfulSelectionCount = 0;
-        int failedSelectionCount = 0;
+
+        int successfulSelectionCount =
+            0;
+
+
+        int failedSelectionCount =
+            0;
+
 
         for (int i = 0;
-            i < sampleCount;
-            i++)
+             i < sampleCount;
+             i++)
         {
             EnemySpawnEntry selectedEntry =
                 SelectWeightedSpawnEntry(
                     testSurvivalTime
                 );
 
+
             if (selectedEntry == null)
             {
                 failedSelectionCount++;
+
                 continue;
             }
+
 
             EnemyType selectedType =
                 selectedEntry.Type;
 
-            if (!selectionCounts.ContainsKey(
-                    selectedType
-                ))
+
+            if (!selectionCounts
+                    .ContainsKey(
+                        selectedType
+                    ))
             {
                 selectionCounts.Add(
                     selectedType,
@@ -2146,16 +3356,22 @@ public class EnemySpawner : MonoBehaviour
                 );
             }
 
-            selectionCounts[selectedType]++;
+
+            selectionCounts[
+                selectedType
+            ]++;
+
 
             successfulSelectionCount++;
         }
 
+
         string resultMessage =
             "===== Weighted Batch Test At "
-            + testSurvivalTime.ToString("F0")
-            + " Seconds =====\n"
-            + "Requested Samples: "
+            + testSurvivalTime
+                .ToString("F0")
+            + " Seconds ====="
+            + "\nRequested Samples: "
             + sampleCount
             + "\nSuccessful Selections: "
             + successfulSelectionCount
@@ -2165,20 +3381,29 @@ public class EnemySpawner : MonoBehaviour
             + currentSpawnWeightTotal
                 .ToString("F1");
 
+
         foreach (
             KeyValuePair<EnemyType, int>
-                result in selectionCounts
+                result
+            in
+            selectionCounts
         )
         {
-            float percentage = 0f;
+            float percentage =
+                0f;
 
-            if (successfulSelectionCount > 0)
+
+            if (successfulSelectionCount >
+                0)
             {
                 percentage =
                     result.Value
-                    * 100f
-                    / successfulSelectionCount;
+                    *
+                    100f
+                    /
+                    successfulSelectionCount;
             }
+
 
             resultMessage +=
                 "\n"
@@ -2186,18 +3411,22 @@ public class EnemySpawner : MonoBehaviour
                 + ": "
                 + result.Value
                 + " ("
-                + percentage.ToString("F2")
+                + percentage
+                    .ToString("F2")
                 + "%)";
         }
+
 
         Debug.Log(
             resultMessage,
             this
         );
     }
+
+
     [ContextMenu(
-    "Batch Test 1000 Selections At 0 Seconds"
-)]
+        "Batch Test 1000 Selections At 0 Seconds"
+    )]
     private void BatchTestAt0Seconds()
     {
         RunWeightedSelectionBatchTest(
@@ -2205,6 +3434,7 @@ public class EnemySpawner : MonoBehaviour
             1000
         );
     }
+
 
     [ContextMenu(
         "Batch Test 1000 Selections At 15 Seconds"
@@ -2217,6 +3447,7 @@ public class EnemySpawner : MonoBehaviour
         );
     }
 
+
     [ContextMenu(
         "Batch Test 1000 Selections At 30 Seconds"
     )]
@@ -2228,9 +3459,10 @@ public class EnemySpawner : MonoBehaviour
         );
     }
 
+
     [ContextMenu(
-    "Batch Test 1000 Selections At 45 Seconds"
-)]
+        "Batch Test 1000 Selections At 45 Seconds"
+    )]
     private void BatchTestAt45Seconds()
     {
         RunWeightedSelectionBatchTest(
@@ -2238,6 +3470,7 @@ public class EnemySpawner : MonoBehaviour
             1000
         );
     }
+
 
     [ContextMenu(
         "Batch Test 1000 Selections At 60 Seconds"
@@ -2249,13 +3482,214 @@ public class EnemySpawner : MonoBehaviour
             1000
         );
     }
+
+
+    // =========================================================
+    // Validation
+    // =========================================================
+
+    private void OnValidate()
+    {
+        spawnInterval =
+            Mathf.Max(
+                0.01f,
+                spawnInterval
+            );
+
+
+        minSpawnInterval =
+            Mathf.Clamp(
+                minSpawnInterval,
+                0.01f,
+                spawnInterval
+            );
+
+
+        spawnIntervalDecreasePerSecond =
+            Mathf.Max(
+                0f,
+                spawnIntervalDecreasePerSecond
+            );
+
+
+        maxEnemies =
+            Mathf.Max(
+                1,
+                maxEnemies
+            );
+
+
+        maxEnemiesLimit =
+            Mathf.Max(
+                maxEnemies,
+                maxEnemiesLimit
+            );
+
+
+        maxEnemiesIncreaseInterval =
+            Mathf.Max(
+                0.1f,
+                maxEnemiesIncreaseInterval
+            );
+
+
+        maxEnemiesIncreaseAmount =
+            Mathf.Max(
+                1,
+                maxEnemiesIncreaseAmount
+            );
+
+
+        enemyInitialMaxHealth =
+            Mathf.Max(
+                1,
+                enemyInitialMaxHealth
+            );
+
+
+        enemyHealthIncreaseInterval =
+            Mathf.Max(
+                0.1f,
+                enemyHealthIncreaseInterval
+            );
+
+
+        enemyHealthIncreaseAmount =
+            Mathf.Max(
+                1,
+                enemyHealthIncreaseAmount
+            );
+
+
+        enemyMaxHealthLimit =
+            Mathf.Max(
+                enemyInitialMaxHealth,
+                enemyMaxHealthLimit
+            );
+
+
+        enemyInitialMoveSpeed =
+            Mathf.Max(
+                0.01f,
+                enemyInitialMoveSpeed
+            );
+
+
+        enemyMoveSpeedIncreaseInterval =
+            Mathf.Max(
+                0.1f,
+                enemyMoveSpeedIncreaseInterval
+            );
+
+
+        enemyMoveSpeedIncreaseAmount =
+            Mathf.Max(
+                0f,
+                enemyMoveSpeedIncreaseAmount
+            );
+
+
+        enemyMoveSpeedLimit =
+            Mathf.Max(
+                enemyInitialMoveSpeed,
+                enemyMoveSpeedLimit
+            );
+
+
+        enemyInitialContactDamage =
+            Mathf.Max(
+                1,
+                enemyInitialContactDamage
+            );
+
+
+        enemyContactDamageIncreaseInterval =
+            Mathf.Max(
+                0.1f,
+                enemyContactDamageIncreaseInterval
+            );
+
+
+        enemyContactDamageIncreaseAmount =
+            Mathf.Max(
+                1,
+                enemyContactDamageIncreaseAmount
+            );
+
+
+        enemyContactDamageLimit =
+            Mathf.Max(
+                enemyInitialContactDamage,
+                enemyContactDamageLimit
+            );
+
+
+        minSpawnDistance =
+            Mathf.Max(
+                0f,
+                minSpawnDistance
+            );
+
+
+        maxSpawnDistance =
+            Mathf.Max(
+                minSpawnDistance,
+                maxSpawnDistance
+            );
+
+
+        spawnBoundsPadding =
+            Mathf.Max(
+                0f,
+                spawnBoundsPadding
+            );
+
+
+        maxSpawnPositionAttempts =
+            Mathf.Max(
+                1,
+                maxSpawnPositionAttempts
+            );
+
+
+        // -----------------------------------------------------
+        // Phase38 Pressure Safety
+        // -----------------------------------------------------
+
+        minimumEffectiveSpawnInterval =
+            Mathf.Clamp(
+                minimumEffectiveSpawnInterval,
+                0.05f,
+                Mathf.Max(
+                    0.05f,
+                    spawnIntervalAtFinal
+                )
+            );
+
+
+        maximumEffectiveEnemies =
+            Mathf.Max(
+                maxEnemiesAtFinal,
+                maximumEffectiveEnemies
+            );
+    }
+
+
+    // =========================================================
+    // Gizmos
+    // =========================================================
+
     private void OnDrawGizmosSelected()
     {
-        Transform center = player;
+        Transform center =
+            player;
+
 
         if (center == null)
         {
-            GameObject playerObject = null;
+            GameObject playerObject =
+                null;
+
 
             try
             {
@@ -2267,8 +3701,9 @@ public class EnemySpawner : MonoBehaviour
             }
             catch (UnityException)
             {
-                // 编辑器中 Tag 尚未创建时不执行查找。
+                // Editor 中 Player Tag 尚不存在时安全忽略。
             }
+
 
             if (playerObject != null)
             {
@@ -2277,18 +3712,25 @@ public class EnemySpawner : MonoBehaviour
             }
             else
             {
-                center = transform;
+                center =
+                    transform;
             }
         }
 
-        Gizmos.color = Color.yellow;
+
+        Gizmos.color =
+            Color.yellow;
+
 
         Gizmos.DrawWireSphere(
             center.position,
             minSpawnDistance
         );
 
-        Gizmos.color = Color.red;
+
+        Gizmos.color =
+            Color.red;
+
 
         Gizmos.DrawWireSphere(
             center.position,

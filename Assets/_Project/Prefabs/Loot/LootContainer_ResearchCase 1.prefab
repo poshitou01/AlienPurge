@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 753738379025161658}
   - component: {fileID: 6415376244770713370}
   m_Layer: 6
-  m_Name: LootContainer_ResearchCase
+  m_Name: LootContainer_ResearchCase 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionPrompt: SEARCH
-  displayName: RESEARCH CASE
+  displayName: HIGH-RISK CACHE
   lootTable: {fileID: 11400000, guid: 8b3c4a06379dbe144b664ef812d7afdd, type: 2}
   gridWidth: 4
   gridHeight: 3

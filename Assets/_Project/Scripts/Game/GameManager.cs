@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Text;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -44,7 +46,8 @@ public class GameManager :
 
     [SerializeField]
     private float targetSurvivalTime =
-        60f;
+        360f;
+
 
     [SerializeField]
     private bool showRemainingTime =
@@ -60,12 +63,13 @@ public class GameManager :
     [SerializeField]
     private GameObject gameOverPanel;
 
+
     [SerializeField]
     private GameObject victoryPanel;
 
 
     // =========================================================
-    // Result Info
+    // Result Text
     // =========================================================
 
     [Header("Result Info Text")]
@@ -74,20 +78,33 @@ public class GameManager :
     private TextMeshProUGUI
         gameOverInfoText;
 
+
     [SerializeField]
     private TextMeshProUGUI
         victoryInfoText;
 
 
+    [Tooltip(
+        "结果界面最多显示多少种不同 Loot。"
+        + "Snapshot 本身仍保存完整列表。"
+    )]
+    [Min(1)]
+
+
     // =========================================================
-    // Player
+    // Gameplay References
     // =========================================================
 
-    [Header("Player Reference")]
+    [Header("Gameplay References")]
 
     [SerializeField]
     private PlayerExperience
         playerExperience;
+
+
+    [SerializeField]
+    private MissionManager
+        missionManager;
 
 
     // =========================================================
@@ -104,24 +121,40 @@ public class GameManager :
 
 
     // =========================================================
+    // Run Result Snapshot
+    // =========================================================
+
+    [Header("Run Result Snapshot")]
+
+    [SerializeField]
+    private RunResultSnapshot
+        currentRunResultSnapshot;
+
+
+    // =========================================================
     // Read Only
     // =========================================================
 
     public GameState CurrentState =>
         currentState;
 
+
     public float SurvivalTime =>
         survivalTime;
+
 
     public float TargetSurvivalTime =>
         targetSurvivalTime;
 
+
     public float RemainingTime =>
         Mathf.Max(
             0f,
-            targetSurvivalTime -
+            targetSurvivalTime
+            -
             survivalTime
         );
+
 
     public int KillCount =>
         killCount;
@@ -131,13 +164,20 @@ public class GameManager :
         currentState ==
         GameState.Playing;
 
+
     public bool IsGameOver =>
         currentState ==
         GameState.GameOver;
 
+
     public bool IsVictory =>
         currentState ==
         GameState.Victory;
+
+
+    public RunResultSnapshot
+        CurrentRunResultSnapshot =>
+            currentRunResultSnapshot;
 
 
     // =========================================================
@@ -146,22 +186,25 @@ public class GameManager :
 
     private void Awake()
     {
-        if (Instance != null &&
+        if (Instance != null
+            &&
             Instance != this)
         {
             Destroy(
                 gameObject
             );
 
+
             return;
         }
 
 
-        Instance = this;
+        Instance =
+            this;
 
 
-        // 每次进入测试场景时恢复游戏时间。
-        Time.timeScale = 1f;
+        Time.timeScale =
+            1f;
     }
 
 
@@ -170,21 +213,24 @@ public class GameManager :
         currentState =
             GameState.Playing;
 
-        survivalTime = 0f;
 
-        killCount = 0;
+        survivalTime =
+            0f;
 
 
-        if (playerExperience == null)
-        {
-            playerExperience =
-                FindFirstObjectByType<
-                    PlayerExperience
-                >();
-        }
+        killCount =
+            0;
+
+
+        currentRunResultSnapshot =
+            null;
+
+
+        ResolveReferences();
 
 
         HideResultPanels();
+
 
         RefreshTimeUI();
 
@@ -207,8 +253,10 @@ public class GameManager :
 
 
         // Upgrade / Module Selection
-        // 不推进生存时间。
-        if (UpgradeManager.IsChoosingUpgrade ||
+        // 不推进正式生存时间。
+        if (UpgradeManager
+                .IsChoosingUpgrade
+            ||
             WeaponModuleSelectionManager
                 .IsChoosingModule)
         {
@@ -223,10 +271,59 @@ public class GameManager :
         RefreshTimeUI();
 
 
-        if (survivalTime >=
-            targetSurvivalTime)
+        // =====================================================
+        // Phase38
+        // =====================================================
+        //
+        // 不再：
+        //
+        // survivalTime >= 360
+        // -> EnterVictory()
+        //
+        // 315 / 330 / 360+
+        // 全部由 ExtractionController 负责。
+        //
+        // Run 成功只能通过：
+        //
+        // CompleteExtraction()
+        // =====================================================
+    }
+
+
+    private void OnDestroy()
+    {
+        if (Instance ==
+            this)
         {
-            EnterVictory();
+            Instance =
+                null;
+        }
+    }
+
+
+    // =========================================================
+    // References
+    // =========================================================
+
+    private void ResolveReferences()
+    {
+        if (playerExperience ==
+            null)
+        {
+            playerExperience =
+                FindFirstObjectByType<
+                    PlayerExperience
+                >();
+        }
+
+
+        if (missionManager ==
+            null)
+        {
+            missionManager =
+                FindFirstObjectByType<
+                    MissionManager
+                >();
         }
     }
 
@@ -281,16 +378,54 @@ public class GameManager :
 
 
     // =========================================================
+    // Extraction Success
+    // =========================================================
+
+    public void CompleteExtraction()
+    {
+        if (currentState !=
+            GameState.Playing)
+        {
+            return;
+        }
+
+
+        EnterVictory();
+    }
+
+
+    // =========================================================
     // Game Over
     // =========================================================
 
     private void EnterGameOver()
     {
+        if (currentState !=
+            GameState.Playing)
+        {
+            return;
+        }
+
+
+        // -----------------------------------------------------
+        // Snapshot MUST happen before runtime data
+        // is allowed to change.
+        // -----------------------------------------------------
+
+        CaptureRunResult(
+            RunOutcome.PlayerDeath
+        );
+
+
         currentState =
             GameState.GameOver;
 
 
-        if (gameOverPanel != null)
+        CloseGameplayPanelsBeforeResult();
+
+
+        if (gameOverPanel !=
+            null)
         {
             gameOverPanel.SetActive(
                 true
@@ -298,7 +433,8 @@ public class GameManager :
         }
 
 
-        if (victoryPanel != null)
+        if (victoryPanel !=
+            null)
         {
             victoryPanel.SetActive(
                 false
@@ -308,28 +444,39 @@ public class GameManager :
 
         UpdateResultInfo(
             gameOverInfoText,
-            false
+            currentRunResultSnapshot
         );
 
 
-        if (AudioManager.Instance != null)
+        if (AudioManager.Instance !=
+            null)
         {
             AudioManager.Instance
                 .PlayGameOver();
         }
 
 
-        Time.timeScale = 0f;
+        Time.timeScale =
+            0f;
 
 
         Debug.Log(
-            "Game Over"
+            "===== MISSION FAILED ====="
+            + "\nLoot Lost: "
+            + (
+                currentRunResultSnapshot != null
+                    ?
+                    currentRunResultSnapshot
+                        .LootTotalValue
+                    :
+                    0
+            )
         );
     }
 
 
     // =========================================================
-    // Victory
+    // Victory / Extraction Success
     // =========================================================
 
     private void EnterVictory()
@@ -341,11 +488,25 @@ public class GameManager :
         }
 
 
+        // -----------------------------------------------------
+        // Capture first.
+        // -----------------------------------------------------
+
+        CaptureRunResult(
+            RunOutcome
+                .ExtractionSuccess
+        );
+
+
         currentState =
             GameState.Victory;
 
 
-        if (victoryPanel != null)
+        CloseGameplayPanelsBeforeResult();
+
+
+        if (victoryPanel !=
+            null)
         {
             victoryPanel.SetActive(
                 true
@@ -353,7 +514,8 @@ public class GameManager :
         }
 
 
-        if (gameOverPanel != null)
+        if (gameOverPanel !=
+            null)
         {
             gameOverPanel.SetActive(
                 false
@@ -363,23 +525,144 @@ public class GameManager :
 
         UpdateResultInfo(
             victoryInfoText,
-            true
+            currentRunResultSnapshot
         );
 
 
-        if (AudioManager.Instance != null)
+        if (AudioManager.Instance !=
+            null)
         {
             AudioManager.Instance
                 .PlayVictory();
         }
 
 
-        Time.timeScale = 0f;
+        Time.timeScale =
+            0f;
 
 
         Debug.Log(
-            "Victory"
+            "===== EXTRACTION SUCCESS ====="
+            + "\nLoot Secured: "
+            + (
+                currentRunResultSnapshot != null
+                    ?
+                    currentRunResultSnapshot
+                        .LootTotalValue
+                    :
+                    0
+            )
         );
+    }
+
+
+    // =========================================================
+    // Snapshot
+    // =========================================================
+
+    private void CaptureRunResult(
+        RunOutcome outcome
+    )
+    {
+        // -----------------------------------------------------
+        // Terminal state should only capture once.
+        // -----------------------------------------------------
+
+        if (currentRunResultSnapshot !=
+            null)
+        {
+            Debug.LogWarning(
+                "GameManager: "
+                + "RunResultSnapshot already exists. "
+                + "Duplicate capture ignored.",
+                this
+            );
+
+
+            return;
+        }
+
+
+        ResolveReferences();
+
+
+        currentRunResultSnapshot =
+            RunResultSnapshot.Capture(
+                outcome,
+                survivalTime,
+                killCount,
+                playerExperience,
+                missionManager,
+                RunInventory.Instance
+            );
+
+
+        Debug.Log(
+            "===== RUN RESULT SNAPSHOT CAPTURED ====="
+            + "\nOutcome: "
+            + currentRunResultSnapshot
+                .Outcome
+            + "\nSurvival Time: "
+            + currentRunResultSnapshot
+                .SurvivalTime
+                .ToString("F2")
+            + "\nLevel: "
+            + currentRunResultSnapshot
+                .PlayerLevel
+            + "\nKills: "
+            + currentRunResultSnapshot
+                .KillCount
+            + "\nMissions Completed: "
+            + currentRunResultSnapshot
+                .CompletedMissionCount
+            + "\nItems: "
+            + currentRunResultSnapshot
+                .LootItemCount
+            + "\nLoot Value: "
+            + currentRunResultSnapshot
+                .LootTotalValue,
+            this
+        );
+    }
+
+
+    // =========================================================
+    // Gameplay UI Cleanup
+    // =========================================================
+
+    private void
+        CloseGameplayPanelsBeforeResult()
+    {
+        // -----------------------------------------------------
+        // Backpack
+        // -----------------------------------------------------
+
+        if (BackpackPanelController
+                .IsOpen
+            &&
+            BackpackPanelController
+                .Instance != null)
+        {
+            BackpackPanelController
+                .Instance
+                .ClosePanel();
+        }
+
+
+        // -----------------------------------------------------
+        // Loot Search
+        // -----------------------------------------------------
+
+        if (LootSearchPanelController
+                .IsOpen
+            &&
+            LootSearchPanelController
+                .Instance != null)
+        {
+            LootSearchPanelController
+                .Instance
+                .CloseActiveSearch();
+        }
     }
 
 
@@ -389,7 +672,8 @@ public class GameManager :
 
     private void HideResultPanels()
     {
-        if (gameOverPanel != null)
+        if (gameOverPanel !=
+            null)
         {
             gameOverPanel.SetActive(
                 false
@@ -397,7 +681,8 @@ public class GameManager :
         }
 
 
-        if (victoryPanel != null)
+        if (victoryPanel !=
+            null)
         {
             victoryPanel.SetActive(
                 false
@@ -407,12 +692,164 @@ public class GameManager :
 
 
     // =========================================================
+    // Result Info
+    // =========================================================
+
+    private void UpdateResultInfo(
+        TextMeshProUGUI resultInfoText,
+        RunResultSnapshot snapshot
+    )
+    {
+        if (resultInfoText ==
+            null)
+        {
+            return;
+        }
+
+
+        if (snapshot ==
+            null)
+        {
+            resultInfoText.text =
+                "RUN RESULT UNAVAILABLE";
+
+
+            return;
+        }
+
+
+        StringBuilder builder =
+            new StringBuilder(
+                512
+            );
+
+
+        bool success =
+            snapshot
+                .IsExtractionSuccess;
+
+
+
+
+
+        // -----------------------------------------------------
+        // Run Stats
+        // -----------------------------------------------------
+
+        builder.Append(
+            "Survival Time: "
+        );
+
+
+        builder.AppendLine(
+            FormatTime(
+                snapshot
+                    .SurvivalTime
+            )
+        );
+
+
+        builder.Append(
+            "Level: "
+        );
+
+
+        builder.AppendLine(
+            snapshot
+                .PlayerLevel
+                .ToString()
+        );
+
+
+        builder.Append(
+            "Kill Count: "
+        );
+
+
+        builder.AppendLine(
+            snapshot
+                .KillCount
+                .ToString()
+        );
+
+
+        builder.Append(
+            "Missions Completed: "
+        );
+
+
+        builder.AppendLine(
+            snapshot
+                .CompletedMissionCount
+                .ToString()
+        );
+
+
+        // -----------------------------------------------------
+        // Loot Outcome
+        // -----------------------------------------------------
+
+        builder.AppendLine();
+
+
+        builder.AppendLine(
+            success
+                ?
+                "LOOT SECURED"
+                :
+                "LOOT LOST"
+        );
+
+
+        builder.Append(
+            success
+                ?
+                "Items Secured: "
+                :
+                "Items Lost: "
+        );
+
+
+        builder.AppendLine(
+            snapshot
+                .LootItemCount
+                .ToString()
+        );
+
+
+        builder.Append(
+            success
+                ?
+                "Secured Value: "
+                :
+                "Lost Value: "
+        );
+
+
+        builder.AppendLine(
+            snapshot
+                .LootTotalValue
+                .ToString()
+        );
+
+
+
+
+        resultInfoText.text =
+            builder.ToString();
+    }
+
+
+
+
+    // =========================================================
     // HUD
     // =========================================================
 
     private void RefreshTimeUI()
     {
-        if (HUDManager.Instance == null)
+        if (HUDManager.Instance ==
+            null)
         {
             return;
         }
@@ -429,7 +866,8 @@ public class GameManager :
 
     private void RefreshKillCountUI()
     {
-        if (HUDManager.Instance == null)
+        if (HUDManager.Instance ==
+            null)
         {
             return;
         }
@@ -443,73 +881,131 @@ public class GameManager :
 
 
     // =========================================================
-    // Result Info
+    // Debug
     // =========================================================
 
-    private void UpdateResultInfo(
-        TextMeshProUGUI resultInfoText,
-        bool victory
-    )
+    [ContextMenu(
+        "Debug/Print Run Result Snapshot"
+    )]
+    private void
+        DebugPrintRunResultSnapshot()
     {
-        if (resultInfoText == null)
+        if (!Application.isPlaying)
         {
             return;
         }
 
 
-        int currentLevel = 1;
-
-
-        if (playerExperience != null)
+        if (currentRunResultSnapshot ==
+            null)
         {
-            currentLevel =
-                playerExperience
-                    .CurrentLevel;
+            Debug.Log(
+                "RunResultSnapshot: None",
+                this
+            );
+
+
+            return;
         }
 
 
-        int carriedItemCount = 0;
-
-        int lootValue = 0;
-
-
-        if (RunInventory.Instance != null)
-        {
-            carriedItemCount =
-                RunInventory.Instance
-                    .TotalItemCount;
-
-            lootValue =
-                RunInventory.Instance
-                    .TotalLootValue;
-        }
+        StringBuilder builder =
+            new StringBuilder();
 
 
-        string lootResultTitle =
-            victory
-                ? "RUN LOOT"
-                : "LOOT LOST";
+        builder.AppendLine(
+            "===== CURRENT RUN RESULT SNAPSHOT ====="
+        );
 
 
-        resultInfoText.text =
+        builder.Append(
+            "Outcome: "
+        );
+
+
+        builder.AppendLine(
+            currentRunResultSnapshot
+                .Outcome
+                .ToString()
+        );
+
+
+        builder.Append(
             "Survival Time: "
-            + FormatTime(
-                survivalTime
-            )
-            + "\n"
-            + "Level: "
-            + currentLevel
-            + "\n"
-            + "Kill Count: "
-            + killCount
-            + "\n\n"
-            + lootResultTitle
-            + "\n"
-            + "Items Carried: "
-            + carriedItemCount
-            + "\n"
-            + "Loot Value: "
-            + lootValue;
+        );
+
+
+        builder.AppendLine(
+            currentRunResultSnapshot
+                .SurvivalTime
+                .ToString("F2")
+        );
+
+
+        builder.Append(
+            "Kills: "
+        );
+
+
+        builder.AppendLine(
+            currentRunResultSnapshot
+                .KillCount
+                .ToString()
+        );
+
+
+        builder.Append(
+            "Level: "
+        );
+
+
+        builder.AppendLine(
+            currentRunResultSnapshot
+                .PlayerLevel
+                .ToString()
+        );
+
+
+        builder.Append(
+            "Missions Completed: "
+        );
+
+
+        builder.AppendLine(
+            currentRunResultSnapshot
+                .CompletedMissionCount
+                .ToString()
+        );
+
+
+        builder.Append(
+            "Loot Items: "
+        );
+
+
+        builder.AppendLine(
+            currentRunResultSnapshot
+                .LootItemCount
+                .ToString()
+        );
+
+
+        builder.Append(
+            "Loot Value: "
+        );
+
+
+        builder.AppendLine(
+            currentRunResultSnapshot
+                .LootTotalValue
+                .ToString()
+        );
+
+
+        Debug.Log(
+            builder.ToString(),
+            this
+        );
     }
 
 
@@ -519,7 +1015,8 @@ public class GameManager :
 
     public void RestartGame()
     {
-        Time.timeScale = 1f;
+        Time.timeScale =
+            1f;
 
 
         Scene currentScene =
@@ -543,12 +1040,16 @@ public class GameManager :
     {
         int totalSeconds =
             Mathf.FloorToInt(
-                time
+                Mathf.Max(
+                    0f,
+                    time
+                )
             );
 
 
         int minutes =
             totalSeconds / 60;
+
 
         int seconds =
             totalSeconds % 60;
@@ -556,7 +1057,26 @@ public class GameManager :
 
         return
             minutes.ToString("00")
-            + ":"
-            + seconds.ToString("00");
+            +
+            ":"
+            +
+            seconds.ToString("00");
+    }
+
+
+    // =========================================================
+    // Validation
+    // =========================================================
+
+    private void OnValidate()
+    {
+        targetSurvivalTime =
+            Mathf.Max(
+                1f,
+                targetSurvivalTime
+            );
+
+
+
     }
 }
