@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc6d71aa2f33fff49935f5d6f666fb49, type: 3}
   m_Name: Item_ReinforcedFiber
   m_EditorClassIdentifier: 
-  itemId: ' reinforced_fiber'
+  itemId: reinforced_fiber
   displayName: Reinforced Fiber
   description: Lightweight composite fiber used in reinforced equipment.
   category: 0

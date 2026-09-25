@@ -62,6 +62,14 @@ public class InventoryGridView :
 
 
     // =========================================================
+    // Events
+    // =========================================================
+
+    public event Action<ItemStack>
+        StackMoved;
+
+
+    // =========================================================
     // Read Only Access
     // =========================================================
 
@@ -93,27 +101,32 @@ public class InventoryGridView :
                 HandleInventoryChanged;
         }
 
+
         inventory =
             targetInventory;
+
 
         itemClickCallback =
             onItemClicked;
 
+
         if (inventory == null)
         {
             initialized = false;
-
             return;
         }
 
+
         inventory.Changed +=
             HandleInventoryChanged;
+
 
         ConfigureLayers();
 
         BuildCells();
 
         Refresh();
+
 
         initialized = true;
     }
@@ -134,6 +147,7 @@ public class InventoryGridView :
                 inventory.Width - 1
             )
             * spacing;
+
 
         float height =
             inventory.Height *
@@ -321,12 +335,11 @@ public class InventoryGridView :
         }
 
 
-        return
-            inventory.CanMoveStack(
-                stack,
-                targetX,
-                targetY
-            );
+        return inventory.CanMoveStack(
+            stack,
+            targetX,
+            targetY
+        );
     }
 
 
@@ -347,12 +360,23 @@ public class InventoryGridView :
         }
 
 
-        return
+        bool success =
             inventory.TryMoveStack(
                 stack,
                 targetX,
                 targetY
             );
+
+
+        if (success)
+        {
+            StackMoved?.Invoke(
+                stack
+            );
+        }
+
+
+        return success;
     }
 
 
