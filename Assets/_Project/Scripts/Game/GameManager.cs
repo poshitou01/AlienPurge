@@ -28,6 +28,16 @@ public class GameManager :
 
 
     // =========================================================
+    // Scene Flow
+    // =========================================================
+
+    [Header("Scene Flow")]
+
+    [SerializeField]
+    private string mainMenuSceneName =
+        "MainMenu";
+
+    // =========================================================
     // Game State
     // =========================================================
 
@@ -130,6 +140,17 @@ public class GameManager :
     private RunResultSnapshot
         currentRunResultSnapshot;
 
+    // =========================================================
+    // Run Settlement
+    // =========================================================
+
+    [SerializeField]
+    private RunSettlementResult
+        currentRunSettlementResult;
+
+
+    private RunSettlementService
+        runSettlementService;
 
     // =========================================================
     // Read Only
@@ -179,6 +200,16 @@ public class GameManager :
         CurrentRunResultSnapshot =>
             currentRunResultSnapshot;
 
+    public RunSettlementResult
+    CurrentRunSettlementResult =>
+        currentRunSettlementResult;
+
+
+    public bool IsSettlementCommitted =>
+        currentRunSettlementResult != null
+        &&
+        currentRunSettlementResult.Committed;
+
 
     // =========================================================
     // Unity
@@ -225,6 +256,8 @@ public class GameManager :
         currentRunResultSnapshot =
             null;
 
+        currentRunResultSnapshot =
+    null;
 
         ResolveReferences();
 
@@ -381,6 +414,10 @@ public class GameManager :
     // Extraction Success
     // =========================================================
 
+
+    [ContextMenu(
+    "Debug/Complete Extraction Now"
+)]
     public void CompleteExtraction()
     {
         if (currentState !=
@@ -489,7 +526,7 @@ public class GameManager :
 
 
         // -----------------------------------------------------
-        // Capture first.
+        // Capture Result BEFORE Settlement clears RunInventory.
         // -----------------------------------------------------
 
         CaptureRunResult(
@@ -497,6 +534,24 @@ public class GameManager :
                 .ExtractionSuccess
         );
 
+
+        // -----------------------------------------------------
+        // Persistent Settlement
+        // -----------------------------------------------------
+
+        bool settlementCommitted =
+            TryCommitRunSettlement();
+
+
+        // -----------------------------------------------------
+        // Extraction itself already succeeded.
+        //
+        // 即使Persistence保存失败，
+        // Run结果仍然是Victory。
+        //
+        // 但RunInventory不会被清空，
+        // 可以进行Retry。
+        // -----------------------------------------------------
 
         currentState =
             GameState.Victory;
@@ -543,7 +598,7 @@ public class GameManager :
 
         Debug.Log(
             "===== EXTRACTION SUCCESS ====="
-            + "\nLoot Secured: "
+            + "\nLoot Secured Value: "
             + (
                 currentRunResultSnapshot != null
                     ?
@@ -552,9 +607,86 @@ public class GameManager :
                     :
                     0
             )
+            + "\nSettlement Committed: "
+            + settlementCommitted
         );
     }
 
+
+    // =========================================================
+    // Run Settlement
+    // =========================================================
+
+    private bool TryCommitRunSettlement()
+    {
+        if (runSettlementService ==
+            null)
+        {
+            runSettlementService =
+                new RunSettlementService();
+        }
+
+
+        bool success =
+            runSettlementService.TryCommit(
+                RunInventory.Instance,
+                PersistentProfile.Instance,
+                SaveManager.Instance,
+                out RunSettlementResult result
+            );
+
+
+        currentRunSettlementResult =
+            result;
+
+
+        return success;
+    }
+
+
+    [ContextMenu(
+        "Debug/Retry Run Settlement"
+    )]
+    public void RetryRunSettlement()
+    {
+        if (!IsVictory)
+        {
+            Debug.LogWarning(
+                "[GameManager] "
+                + "Settlement retry is only valid "
+                + "after Extraction Success.",
+                this
+            );
+
+
+            return;
+        }
+
+
+        if (runSettlementService ==
+            null)
+        {
+            runSettlementService =
+                new RunSettlementService();
+        }
+
+
+        bool success =
+            TryCommitRunSettlement();
+
+
+        UpdateResultInfo(
+            victoryInfoText,
+            currentRunResultSnapshot
+        );
+
+
+        Debug.Log(
+            "[GameManager] Settlement retry result: "
+            + success,
+            this
+        );
+    }
 
     // =========================================================
     // Snapshot
@@ -816,6 +948,93 @@ public class GameManager :
                 .ToString()
         );
 
+        // -----------------------------------------------------
+        // Persistent Settlement
+        // -----------------------------------------------------
+
+        if (success)
+        {
+            builder.AppendLine();
+
+
+            if (currentRunSettlementResult != null
+                &&
+                currentRunSettlementResult.Committed)
+            {
+                builder.Append(
+                    "Stored In Stash: "
+                );
+
+
+                builder.AppendLine(
+                    currentRunSettlementResult
+                        .StoredItemCount
+                        .ToString()
+                );
+
+
+                builder.Append(
+                    "Pending Recovery: "
+                );
+
+
+                builder.AppendLine(
+                    currentRunSettlementResult
+                        .PendingItemCount
+                        .ToString()
+                );
+
+
+                builder.Append(
+                    "Stored Value: "
+                );
+
+
+                builder.AppendLine(
+                    currentRunSettlementResult
+                        .StoredValue
+                        .ToString()
+                );
+
+
+                builder.Append(
+                    "Pending Value: "
+                );
+
+
+                builder.AppendLine(
+                    currentRunSettlementResult
+                        .PendingValue
+                        .ToString()
+                );
+            }
+            else
+            {
+                builder.AppendLine(
+                    "SETTLEMENT SAVE FAILED"
+                );
+
+
+                builder.AppendLine(
+                    "Run loot remains in memory."
+                );
+
+
+                if (currentRunSettlementResult != null
+                    &&
+                    !string.IsNullOrWhiteSpace(
+                        currentRunSettlementResult
+                            .FailureReason
+                    ))
+                {
+                    builder.AppendLine(
+                        currentRunSettlementResult
+                            .FailureReason
+                    );
+                }
+            }
+        }
+
 
         builder.Append(
             success
@@ -1008,6 +1227,41 @@ public class GameManager :
         );
     }
 
+    // =========================================================
+    // Return To Base
+    // =========================================================
+
+    public void ReturnToBase()
+    {
+        // -----------------------------------------------------
+        // Successful Extraction:
+        //
+        // 不允许在Settlement尚未真正写入磁盘时离开Scene。
+        // -----------------------------------------------------
+
+        if (IsVictory &&
+            !IsSettlementCommitted)
+        {
+            Debug.LogError(
+                "[GameManager] "
+                + "Return To Base blocked because "
+                + "Run Settlement has not been committed.",
+                this
+            );
+
+
+            return;
+        }
+
+
+        Time.timeScale =
+            1f;
+
+
+        SceneManager.LoadScene(
+            mainMenuSceneName
+        );
+    }
 
     // =========================================================
     // Restart
@@ -1015,6 +1269,21 @@ public class GameManager :
 
     public void RestartGame()
     {
+
+        if (IsVictory &&
+    currentRunSettlementResult != null &&
+    !currentRunSettlementResult.Committed)
+        {
+            Debug.LogError(
+                "[GameManager] "
+                + "Restart blocked because "
+                + "Extraction Settlement has not been committed.",
+                this
+            );
+
+
+            return;
+        }
         Time.timeScale =
             1f;
 

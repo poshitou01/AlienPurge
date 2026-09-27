@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
+[Serializable]
 public sealed class PendingRecoveryItem
 {
-    private readonly ItemData item;
+    [SerializeField]
+    private ItemData item;
 
+
+    [SerializeField]
     private int quantity;
 
 
@@ -32,6 +36,47 @@ public sealed class PendingRecoveryItem
                 0,
                 quantity
             );
+    }
+
+
+    public void Add(
+        int amount
+    )
+    {
+        if (amount <= 0)
+        {
+            return;
+        }
+
+
+        quantity +=
+            amount;
+    }
+
+
+    public int Remove(
+        int amount
+    )
+    {
+        if (amount <= 0 ||
+            quantity <= 0)
+        {
+            return 0;
+        }
+
+
+        int removed =
+            Mathf.Min(
+                amount,
+                quantity
+            );
+
+
+        quantity -=
+            removed;
+
+
+        return removed;
     }
 }
 
@@ -108,6 +153,76 @@ public sealed class PersistentProfile :
         pendingRecovery;
 
 
+    public int PendingRecoveryItemCount
+    {
+        get
+        {
+            int total =
+                0;
+
+
+            for (int i = 0;
+                 i < pendingRecovery.Count;
+                 i++)
+            {
+                PendingRecoveryItem entry =
+                    pendingRecovery[i];
+
+
+                if (entry == null)
+                {
+                    continue;
+                }
+
+
+                total +=
+                    Mathf.Max(
+                        0,
+                        entry.Quantity
+                    );
+            }
+
+
+            return total;
+        }
+    }
+
+
+    public int PendingRecoveryTotalValue
+    {
+        get
+        {
+            int total =
+                0;
+
+
+            for (int i = 0;
+                 i < pendingRecovery.Count;
+                 i++)
+            {
+                PendingRecoveryItem entry =
+                    pendingRecovery[i];
+
+
+                if (entry == null ||
+                    entry.Item == null)
+                {
+                    continue;
+                }
+
+
+                total +=
+                    entry.Item.BaseValue
+                    *
+                    entry.Quantity;
+            }
+
+
+            return total;
+        }
+    }
+
+
     // =========================================================
     // Unity
     // =========================================================
@@ -161,8 +276,10 @@ public sealed class PersistentProfile :
             0;
 
 
-        stash =
-            new PersistentStash();
+        EnsureStash();
+
+
+        stash.Clear();
 
 
         pendingRecovery.Clear();
@@ -201,6 +318,9 @@ public sealed class PersistentProfile :
         }
 
 
+        data.EnsureCollections();
+
+
         itemCatalog =
             catalog;
 
@@ -212,8 +332,7 @@ public sealed class PersistentProfile :
             );
 
 
-        stash =
-            new PersistentStash();
+        EnsureStash();
 
 
         stash.LoadFromSave(
@@ -245,11 +364,28 @@ public sealed class PersistentProfile :
             + loadedStashItems
             + "\nStash Stacks Skipped: "
             + skippedStashItems
-            + "\nPending Recovery Entries: "
-            + pendingRecovery.Count
+            + "\nPending Recovery Items: "
+            + PendingRecoveryItemCount
         );
     }
 
+
+    private void EnsureStash()
+    {
+        if (stash != null)
+        {
+            return;
+        }
+
+
+        stash =
+            new PersistentStash();
+    }
+
+
+    // =========================================================
+    // Pending Recovery Load
+    // =========================================================
 
     private void LoadPendingRecovery(
         IReadOnlyList<
@@ -271,9 +407,8 @@ public sealed class PersistentProfile :
              i < savedItems.Count;
              i++)
         {
-            SavedPendingRecoveryItem
-                saved =
-                    savedItems[i];
+            SavedPendingRecoveryItem saved =
+                savedItems[i];
 
 
             if (saved == null ||
@@ -303,13 +438,269 @@ public sealed class PersistentProfile :
             }
 
 
-            pendingRecovery.Add(
-                new PendingRecoveryItem(
-                    item,
-                    saved.quantity
-                )
+            AddPendingRecoveryInternal(
+                item,
+                saved.quantity,
+                false
             );
         }
+    }
+
+
+    // =========================================================
+    // Pending Recovery Query
+    // =========================================================
+
+    public int GetPendingRecoveryQuantity(
+        ItemData item
+    )
+    {
+        if (item == null)
+        {
+            return 0;
+        }
+
+
+        for (int i = 0;
+             i < pendingRecovery.Count;
+             i++)
+        {
+            PendingRecoveryItem entry =
+                pendingRecovery[i];
+
+
+            if (entry == null ||
+                entry.Item == null)
+            {
+                continue;
+            }
+
+
+            if (IsSameItem(
+                    entry.Item,
+                    item
+                ))
+            {
+                return entry.Quantity;
+            }
+        }
+
+
+        return 0;
+    }
+
+
+    // =========================================================
+    // Pending Recovery Add
+    // =========================================================
+
+    public void AddPendingRecovery(
+        ItemData item,
+        int quantity
+    )
+    {
+        AddPendingRecoveryInternal(
+            item,
+            quantity,
+            true
+        );
+    }
+
+
+    private void AddPendingRecoveryInternal(
+        ItemData item,
+        int quantity,
+        bool notify
+    )
+    {
+        if (item == null ||
+            quantity <= 0)
+        {
+            return;
+        }
+
+
+        for (int i = 0;
+             i < pendingRecovery.Count;
+             i++)
+        {
+            PendingRecoveryItem existing =
+                pendingRecovery[i];
+
+
+            if (existing == null ||
+                existing.Item == null)
+            {
+                continue;
+            }
+
+
+            if (!IsSameItem(
+                    existing.Item,
+                    item
+                ))
+            {
+                continue;
+            }
+
+
+            existing.Add(
+                quantity
+            );
+
+
+            if (notify)
+            {
+                Changed?.Invoke();
+            }
+
+
+            return;
+        }
+
+
+        pendingRecovery.Add(
+            new PendingRecoveryItem(
+                item,
+                quantity
+            )
+        );
+
+
+        if (notify)
+        {
+            Changed?.Invoke();
+        }
+    }
+
+
+    // =========================================================
+    // Pending Recovery Remove
+    // =========================================================
+
+    public bool TryRemovePendingRecovery(
+        ItemData item,
+        int quantity,
+        out int removedQuantity
+    )
+    {
+        removedQuantity =
+            0;
+
+
+        if (item == null ||
+            quantity <= 0)
+        {
+            return false;
+        }
+
+
+        for (int i = 0;
+             i < pendingRecovery.Count;
+             i++)
+        {
+            PendingRecoveryItem entry =
+                pendingRecovery[i];
+
+
+            if (entry == null ||
+                entry.Item == null)
+            {
+                continue;
+            }
+
+
+            if (!IsSameItem(
+                    entry.Item,
+                    item
+                ))
+            {
+                continue;
+            }
+
+
+            removedQuantity =
+                entry.Remove(
+                    quantity
+                );
+
+
+            if (entry.Quantity <= 0)
+            {
+                pendingRecovery.RemoveAt(
+                    i
+                );
+            }
+
+
+            if (removedQuantity > 0)
+            {
+                Changed?.Invoke();
+            }
+
+
+            return removedQuantity ==
+                   quantity;
+        }
+
+
+        return false;
+    }
+
+
+    public void ClearPendingRecovery()
+    {
+        if (pendingRecovery.Count == 0)
+        {
+            return;
+        }
+
+
+        pendingRecovery.Clear();
+
+
+        Changed?.Invoke();
+    }
+
+
+    // =========================================================
+    // Item Identity
+    // =========================================================
+
+    private bool IsSameItem(
+        ItemData first,
+        ItemData second
+    )
+    {
+        if (first == null ||
+            second == null)
+        {
+            return false;
+        }
+
+
+        if (first == second)
+        {
+            return true;
+        }
+
+
+        if (string.IsNullOrWhiteSpace(
+                first.ItemId
+            ) ||
+            string.IsNullOrWhiteSpace(
+                second.ItemId
+            ))
+        {
+            return false;
+        }
+
+
+        return string.Equals(
+            first.ItemId,
+            second.ItemId,
+            StringComparison.Ordinal
+        );
     }
 
 
@@ -365,6 +756,14 @@ public sealed class PersistentProfile :
                     itemId
                 ))
             {
+                Debug.LogError(
+                    "[PersistentProfile] "
+                    + "Pending Recovery item "
+                    + "has invalid ItemId: "
+                    + pending.Item.name
+                );
+
+
                 continue;
             }
 
@@ -451,15 +850,28 @@ public sealed class PersistentProfile :
             + initialized
             + "\nCredits: "
             + credits
-            + "\nStash: "
+            + "\nStash Stacks: "
             + (
                 stash != null
                     ? stash.Grid.Items.Count
                     : 0
             )
-            + " stacks"
-            + "\nPending Recovery: "
-            + pendingRecovery.Count,
+            + "\nStash Items: "
+            + (
+                stash != null
+                    ? stash.TotalItemCount
+                    : 0
+            )
+            + "\nStash Value: "
+            + (
+                stash != null
+                    ? stash.TotalValue
+                    : 0
+            )
+            + "\nPending Recovery Items: "
+            + PendingRecoveryItemCount
+            + "\nPending Recovery Value: "
+            + PendingRecoveryTotalValue,
             this
         );
     }
