@@ -53,10 +53,18 @@ public sealed class PendingRecoveryPanelController :
     private PersistentProfile profile;
 
 
-    private PendingRecoveryService service;
+    private PendingRecoveryService
+        recoveryService;
+
+
+    private TraderService
+        traderService;
 
 
     private bool initialized;
+
+
+    private bool traderMode;
 
 
     // =========================================================
@@ -65,8 +73,12 @@ public sealed class PendingRecoveryPanelController :
 
     private void Awake()
     {
-        service =
+        recoveryService =
             new PendingRecoveryService();
+
+
+        traderService =
+            new TraderService();
 
 
         if (moveAllButton != null)
@@ -97,6 +109,22 @@ public sealed class PendingRecoveryPanelController :
     private void Start()
     {
         TryInitialize();
+
+        Refresh();
+    }
+
+
+    // =========================================================
+    // Mode
+    // =========================================================
+
+    public void SetTraderMode(
+        bool enabled
+    )
+    {
+        traderMode =
+            enabled;
+
 
         Refresh();
     }
@@ -196,7 +224,9 @@ public sealed class PendingRecoveryPanelController :
 
             view.Initialize(
                 entry,
-                MoveItem
+                MoveItem,
+                SellItem,
+                traderMode
             );
         }
 
@@ -250,15 +280,15 @@ public sealed class PendingRecoveryPanelController :
         ItemData item
     )
     {
-        if (service == null)
+        if (recoveryService == null)
         {
-            service =
+            recoveryService =
                 new PendingRecoveryService();
         }
 
 
         bool success =
-            service.TryMoveToStash(
+            recoveryService.TryMoveToStash(
                 profile,
                 SaveManager.Instance,
                 item,
@@ -290,15 +320,15 @@ public sealed class PendingRecoveryPanelController :
 
     private void MoveAll()
     {
-        if (service == null)
+        if (recoveryService == null)
         {
-            service =
+            recoveryService =
                 new PendingRecoveryService();
         }
 
 
         bool success =
-            service.TryMoveAllToStash(
+            recoveryService.TryMoveAllToStash(
                 profile,
                 SaveManager.Instance,
                 out int moved,
@@ -314,6 +344,73 @@ public sealed class PendingRecoveryPanelController :
             + moved
             + ", Remaining: "
             + remaining,
+            this
+        );
+
+
+        Refresh();
+    }
+
+
+    // =========================================================
+    // Sell Pending
+    // =========================================================
+
+    private void SellItem(
+        ItemData item
+    )
+    {
+        if (!traderMode ||
+            item == null)
+        {
+            return;
+        }
+
+
+        if (traderService == null)
+        {
+            traderService =
+                new TraderService();
+        }
+
+
+        bool success =
+            traderService.TrySellPendingItem(
+                profile,
+                SaveManager.Instance,
+                item,
+                out TraderSaleResult result
+            );
+
+
+        if (!success)
+        {
+            Debug.LogError(
+                "[Trader UI] "
+                + "Pending sale failed: "
+                + (
+                    result != null
+                        ?
+                        result.FailureReason
+                        :
+                        "Unknown failure"
+                ),
+                this
+            );
+
+
+            return;
+        }
+
+
+        Debug.Log(
+            "[Trader UI] Sold Pending "
+            + result.DisplayName
+            + " x"
+            + result.Quantity
+            + " for "
+            + result.TotalValue
+            + " Credits.",
             this
         );
 

@@ -40,6 +40,14 @@ public sealed class PendingRecoveryItemView :
     private TMP_Text moveButtonText;
 
 
+    [SerializeField]
+    private Button sellButton;
+
+
+    [SerializeField]
+    private TMP_Text sellButtonText;
+
+
     // =========================================================
     // Runtime
     // =========================================================
@@ -51,17 +59,27 @@ public sealed class PendingRecoveryItemView :
         moveCallback;
 
 
+    private Action<ItemData>
+        sellCallback;
+
+
     // =========================================================
     // Setup
     // =========================================================
 
     public void Initialize(
         PendingRecoveryItem entry,
-        Action<ItemData> onMove
+        Action<ItemData> onMove,
+        Action<ItemData> onSell,
+        bool allowSelling
     )
     {
         moveCallback =
             onMove;
+
+
+        sellCallback =
+            onSell;
 
 
         if (entry == null ||
@@ -71,6 +89,7 @@ public sealed class PendingRecoveryItemView :
             gameObject.SetActive(
                 false
             );
+
 
             return;
         }
@@ -155,6 +174,31 @@ public sealed class PendingRecoveryItemView :
                     HandleMove
                 );
         }
+
+
+        if (sellButtonText != null)
+        {
+            sellButtonText.text =
+                "SELL";
+        }
+
+
+        if (sellButton != null)
+        {
+            sellButton.gameObject.SetActive(
+                allowSelling
+            );
+
+
+            sellButton.onClick
+                .RemoveAllListeners();
+
+
+            sellButton.onClick
+                .AddListener(
+                    HandleSell
+                );
+        }
     }
 
 
@@ -171,6 +215,24 @@ public sealed class PendingRecoveryItemView :
 
 
         moveCallback?.Invoke(
+            item
+        );
+    }
+
+
+    // =========================================================
+    // Sell
+    // =========================================================
+
+    private void HandleSell()
+    {
+        if (item == null)
+        {
+            return;
+        }
+
+
+        sellCallback?.Invoke(
             item
         );
     }

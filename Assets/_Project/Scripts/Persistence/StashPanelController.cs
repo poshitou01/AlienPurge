@@ -18,7 +18,16 @@ public sealed class StashPanelController :
 
 
     [SerializeField]
+    private TMP_Text titleText;
+
+
+    [SerializeField]
     private InventoryGridView gridView;
+
+
+    [SerializeField]
+    private PendingRecoveryPanelController
+        pendingRecoveryPanel;
 
 
     // =========================================================
@@ -87,9 +96,6 @@ public sealed class StashPanelController :
     private Button discardButton;
 
 
-    [Tooltip(
-        "Phase39 Step6才接Trader。"
-    )]
     [SerializeField]
     private Button sellButton;
 
@@ -100,11 +106,20 @@ public sealed class StashPanelController :
 
     private PersistentProfile profile;
 
+
     private PersistentStash stash;
+
 
     private ItemStack selectedStack;
 
+
+    private TraderService traderService;
+
+
     private bool initialized;
+
+
+    private bool traderMode;
 
 
     // =========================================================
@@ -113,6 +128,10 @@ public sealed class StashPanelController :
 
     private void Awake()
     {
+        traderService =
+            new TraderService();
+
+
         if (panelRoot != null)
         {
             panelRoot.SetActive(
@@ -139,7 +158,11 @@ public sealed class StashPanelController :
 
         if (sellButton != null)
         {
-            // Step6才正式接Trader。
+            sellButton.onClick.AddListener(
+                SellSelectedStack
+            );
+
+
             sellButton.interactable =
                 false;
         }
@@ -184,6 +207,7 @@ public sealed class StashPanelController :
                 this
             );
 
+
             return;
         }
 
@@ -225,10 +249,32 @@ public sealed class StashPanelController :
 
 
     // =========================================================
-    // Open
+    // Open Stash
     // =========================================================
 
     public void OpenPanel()
+    {
+        OpenInternal(
+            false
+        );
+    }
+
+
+    // =========================================================
+    // Open Trader
+    // =========================================================
+
+    public void OpenTraderPanel()
+    {
+        OpenInternal(
+            true
+        );
+    }
+
+
+    private void OpenInternal(
+        bool asTrader
+    )
     {
         if (!initialized)
         {
@@ -244,8 +290,13 @@ public sealed class StashPanelController :
                 this
             );
 
+
             return;
         }
+
+
+        traderMode =
+            asTrader;
 
 
         if (panelRoot != null)
@@ -256,9 +307,27 @@ public sealed class StashPanelController :
         }
 
 
-        RefreshAll();
+        if (pendingRecoveryPanel != null)
+        {
+            pendingRecoveryPanel.SetTraderMode(
+                traderMode
+            );
+        }
+
 
         ClearSelection();
+
+        RefreshAll();
+
+
+        Debug.Log(
+            traderMode
+                ?
+                "[Trader UI] Opened."
+                :
+                "[Stash UI] Opened.",
+            this
+        );
     }
 
 
@@ -274,6 +343,10 @@ public sealed class StashPanelController :
                 false
             );
         }
+
+
+        traderMode =
+            false;
 
 
         ClearSelection();
@@ -315,8 +388,12 @@ public sealed class StashPanelController :
         if (selectedDescriptionText != null)
         {
             selectedDescriptionText.text =
-                "Select an item in your stash "
-                + "to inspect it.";
+                traderMode
+                    ?
+                    "Select an item to sell."
+                    :
+                    "Select an item in your stash "
+                    + "to inspect it.";
         }
 
 
@@ -370,6 +447,7 @@ public sealed class StashPanelController :
             selectedStack.Item == null)
         {
             ClearSelection();
+
             return;
         }
 
@@ -388,6 +466,7 @@ public sealed class StashPanelController :
         {
             selectedNameText.text =
                 item.DisplayName;
+
 
             selectedNameText.color =
                 rarityColor;
@@ -451,12 +530,79 @@ public sealed class StashPanelController :
         }
 
 
-        // SELL在第六大步开启。
         if (sellButton != null)
         {
             sellButton.interactable =
-                false;
+                traderMode;
         }
+    }
+
+
+    // =========================================================
+    // Sell
+    // =========================================================
+
+    private void SellSelectedStack()
+    {
+        if (!traderMode ||
+            selectedStack == null ||
+            selectedStack.IsEmpty)
+        {
+            return;
+        }
+
+
+        if (traderService == null)
+        {
+            traderService =
+                new TraderService();
+        }
+
+
+        bool success =
+            traderService.TrySellStashStack(
+                profile,
+                SaveManager.Instance,
+                selectedStack,
+                out TraderSaleResult result
+            );
+
+
+        if (!success)
+        {
+            Debug.LogError(
+                "[Trader UI] "
+                + "Sale failed: "
+                + (
+                    result != null
+                        ?
+                        result.FailureReason
+                        :
+                        "Unknown failure"
+                ),
+                this
+            );
+
+
+            return;
+        }
+
+
+        Debug.Log(
+            "[Trader UI] Sold "
+            + result.DisplayName
+            + " x"
+            + result.Quantity
+            + " for "
+            + result.TotalValue
+            + " Credits.",
+            this
+        );
+
+
+        ClearSelection();
+
+        RefreshAll();
     }
 
 
@@ -476,8 +622,10 @@ public sealed class StashPanelController :
 
         string itemName =
             selectedStack.Item != null
-                ? selectedStack.Item.DisplayName
-                : "Unknown Item";
+                ?
+                selectedStack.Item.DisplayName
+                :
+                "Unknown Item";
 
 
         int quantity =
@@ -581,11 +729,35 @@ public sealed class StashPanelController :
         }
 
 
+        if (titleText != null)
+        {
+            titleText.text =
+                traderMode
+                    ?
+                    "TRADER"
+                    :
+                    "STASH";
+        }
+
+
         gridView.Refresh();
+
 
         RefreshSummary();
 
+
         RefreshSelectedItem();
+
+
+        if (pendingRecoveryPanel != null)
+        {
+            pendingRecoveryPanel.SetTraderMode(
+                traderMode
+            );
+
+
+            pendingRecoveryPanel.Refresh();
+        }
     }
 
 
@@ -677,6 +849,14 @@ public sealed class StashPanelController :
         {
             discardButton.onClick.RemoveListener(
                 DiscardSelectedStack
+            );
+        }
+
+
+        if (sellButton != null)
+        {
+            sellButton.onClick.RemoveListener(
+                SellSelectedStack
             );
         }
     }
