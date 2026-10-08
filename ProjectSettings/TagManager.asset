@@ -13,7 +13,7 @@ TagManager:
   - Water
   - UI
   - Interactable
-  - 
+  - Environment
   - 
   - 
   - 
@@ -68,4 +68,16 @@ TagManager:
     locked: 0
   - name: UI
     uniqueID: 3977446391
+    locked: 0
+  - name: Environment
+    uniqueID: 3666227529
+    locked: 0
+  - name: World
+    uniqueID: 1987124591
+    locked: 0
+  - name: Foreground
+    uniqueID: 1801411371
+    locked: 0
+  - name: VFX
+    uniqueID: 1822704333
     locked: 0
