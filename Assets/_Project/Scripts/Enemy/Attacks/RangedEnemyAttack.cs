@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 
 [DisallowMultipleComponent]
 [RequireComponent(typeof(Rigidbody2D))]
@@ -17,10 +18,48 @@ public class RangedEnemyAttack : MonoBehaviour
         Cooldown
     }
 
+    // =========================================================
+    // Original: Trigger Settings
+    // =========================================================
+
     [Header("Trigger Settings")]
     [Min(0f)]
     [SerializeField]
     private float triggerDistance = 7f;
+
+    // =========================================================
+    // Phase40: Line of Sight
+    // =========================================================
+
+    [Header("Phase40 - Line of Sight")]
+
+    [Tooltip(
+        "Require an unobstructed line of sight " +
+        "before aiming and before firing."
+    )]
+    [SerializeField]
+    private bool requireClearLineOfSight = false;
+
+    [Tooltip(
+        "Solid world obstacles that block ranged attacks. " +
+        "Select Environment."
+    )]
+    [SerializeField]
+    private LayerMask lineOfSightBlockingLayers = 1 << 7;
+
+    [Tooltip(
+        "Draw green rays for clear sight and red rays " +
+        "for blocked sight in the Scene view."
+    )]
+    [SerializeField]
+    private bool drawLineOfSightDebug = false;
+
+    private readonly RaycastHit2D[] lineOfSightHits =
+        new RaycastHit2D[16];
+
+    // =========================================================
+    // Original: Attack Timing
+    // =========================================================
 
     [Header("Attack Timing")]
     [Min(0f)]
@@ -39,6 +78,10 @@ public class RangedEnemyAttack : MonoBehaviour
     [SerializeField]
     private float interruptedCooldown = 1.1f;
 
+    // =========================================================
+    // Original: Projectile Settings
+    // =========================================================
+
     [Header("Projectile Settings")]
     [Min(0f)]
     [SerializeField]
@@ -56,8 +99,13 @@ public class RangedEnemyAttack : MonoBehaviour
     [SerializeField]
     private float projectileScaleMultiplier = 1f;
 
+    // =========================================================
+    // Original: Temporary Aim Warning
+    // =========================================================
+
     [Header("Temporary Aim Warning")]
-    [Tooltip("RangedAimWarning 子对象上的 LineRenderer")]
+
+    [Tooltip("RangedAimWarning child LineRenderer")]
     [SerializeField]
     private LineRenderer warningLine;
 
@@ -91,6 +139,10 @@ public class RangedEnemyAttack : MonoBehaviour
             0.82f
         );
 
+    // =========================================================
+    // Original: Runtime State
+    // =========================================================
+
     [Header("Runtime State")]
     [SerializeField]
     private RangedAttackState currentState =
@@ -102,6 +154,10 @@ public class RangedEnemyAttack : MonoBehaviour
     [SerializeField]
     private Vector2 lockedDirection;
 
+    // =========================================================
+    // References
+    // =========================================================
+
     private Rigidbody2D rb;
     private EnemyMovement enemyMovement;
     private EnemyHealth enemyHealth;
@@ -110,6 +166,10 @@ public class RangedEnemyAttack : MonoBehaviour
     private EnemyDefinition enemyDefinition;
 
     private Transform playerTarget;
+
+    // =========================================================
+    // Unity Lifecycle
+    // =========================================================
 
     private void Awake()
     {
@@ -141,10 +201,8 @@ public class RangedEnemyAttack : MonoBehaviour
 
         if (enemyMovement.IsKnockedBack)
         {
-            if (currentState
-                == RangedAttackState.Preparing
-                || currentState
-                == RangedAttackState.Recovering)
+            if (currentState == RangedAttackState.Preparing
+                || currentState == RangedAttackState.Recovering)
             {
                 InterruptAttack();
             }
@@ -172,6 +230,11 @@ public class RangedEnemyAttack : MonoBehaviour
         }
     }
 
+    // =========================================================
+    // Original: Begin Attack
+    // Phase40: Check LOS before locking movement
+    // =========================================================
+
     private void TryBeginPreparing()
     {
         if (enemyDefinition == null
@@ -191,34 +254,32 @@ public class RangedEnemyAttack : MonoBehaviour
         }
 
         Vector2 directionToPlayer =
-            (Vector2)playerTarget.position
-            - rb.position;
+            (Vector2)playerTarget.position - rb.position;
 
-        if (directionToPlayer.magnitude
-            > triggerDistance)
+        if (directionToPlayer.magnitude > triggerDistance)
         {
             return;
         }
 
-        if (directionToPlayer.sqrMagnitude
-            <= 0.0001f)
+        // Phase40:
+        // If a solid Environment collider blocks the player,
+        // stay Idle so EnemyMovement continues A* chasing.
+        if (!HasClearLineOfSightToPlayer())
         {
-            directionToPlayer =
-                Vector2.right;
+            return;
         }
 
-        lockedDirection =
-            directionToPlayer.normalized;
+        if (directionToPlayer.sqrMagnitude <= 0.0001f)
+        {
+            directionToPlayer = Vector2.right;
+        }
 
-        currentState =
-            RangedAttackState.Preparing;
+        lockedDirection = directionToPlayer.normalized;
 
-        stateTimeRemaining =
-            windupDuration;
+        currentState = RangedAttackState.Preparing;
+        stateTimeRemaining = windupDuration;
 
-        enemyMovement.SetMovementLocked(
-            true
-        );
+        enemyMovement.SetMovementLocked(true);
 
         StopRigidbodyMotion();
         ShowWarning();
@@ -229,12 +290,26 @@ public class RangedEnemyAttack : MonoBehaviour
         }
     }
 
+    // =========================================================
+    // Original: Windup
+    // Phase40: Cancel if player moves behind cover
+    // =========================================================
+
     private void UpdatePreparing()
     {
+        if (requireClearLineOfSight)
+        {
+            if (!TryFindPlayer()
+                || !HasClearLineOfSightToPlayer())
+            {
+                CancelBlockedPreparation();
+                return;
+            }
+        }
+
         UpdateWarningVisual();
 
-        stateTimeRemaining -=
-            Time.deltaTime;
+        stateTimeRemaining -= Time.deltaTime;
 
         if (stateTimeRemaining <= 0f)
         {
@@ -242,23 +317,37 @@ public class RangedEnemyAttack : MonoBehaviour
         }
     }
 
+    // =========================================================
+    // Original: Projectile Fire
+    // Phase40: Final LOS and locked-ray validation
+    // =========================================================
+
     private void FireProjectile()
     {
+        if (requireClearLineOfSight)
+        {
+            if (!TryFindPlayer()
+                || !HasClearLineOfSightToPlayer()
+                || !HasClearLockedShotPath())
+            {
+                CancelBlockedPreparation();
+                return;
+            }
+        }
+
         HideWarning();
 
         Vector3 spawnPosition =
             transform.position
             + (Vector3)(
-                lockedDirection
-                * projectileSpawnOffset
+                lockedDirection * projectileSpawnOffset
             );
 
         EnemyProjectile projectile =
-            EnemyProjectilePool.Instance
-                .GetProjectile(
-                    spawnPosition,
-                    Quaternion.identity
-                );
+            EnemyProjectilePool.Instance.GetProjectile(
+                spawnPosition,
+                Quaternion.identity
+            );
 
         if (projectile != null)
         {
@@ -266,11 +355,10 @@ public class RangedEnemyAttack : MonoBehaviour
 
             if (enemyContactDamage != null)
             {
-                projectileDamage =
-                    Mathf.Max(
-                        1,
-                        enemyContactDamage.Damage
-                    );
+                projectileDamage = Mathf.Max(
+                    1,
+                    enemyContactDamage.Damage
+                );
             }
 
             projectile.Initialize(
@@ -285,13 +373,199 @@ public class RangedEnemyAttack : MonoBehaviour
         EnterRecovering();
     }
 
+    // =========================================================
+    // Phase40: Line of Sight Detection
+    // =========================================================
+
+    /// <summary>
+    /// Returns true when no solid Environment obstacle
+    /// exists between this enemy and the current player.
+    /// </summary>
+    private bool HasClearLineOfSightToPlayer()
+    {
+        if (!requireClearLineOfSight)
+        {
+            return true;
+        }
+
+        if (rb == null || playerTarget == null)
+        {
+            return false;
+        }
+
+        Vector2 origin = rb.position;
+
+        Vector2 toPlayer =
+            (Vector2)playerTarget.position - origin;
+
+        float distance = toPlayer.magnitude;
+
+        if (distance <= 0.0001f)
+        {
+            return true;
+        }
+
+        return !IsEnvironmentBlockingRay(
+            origin,
+            toPlayer,
+            distance
+        );
+    }
+
+    /// <summary>
+    /// Checks the original locked firing direction.
+    /// Prevents a projectile from being spawned beyond
+    /// nearby cover even if the player moved during windup.
+    /// </summary>
+    private bool HasClearLockedShotPath()
+    {
+        if (!requireClearLineOfSight)
+        {
+            return true;
+        }
+
+        if (rb == null || playerTarget == null)
+        {
+            return false;
+        }
+
+        Vector2 toPlayer =
+            (Vector2)playerTarget.position - rb.position;
+
+        float forwardDistance =
+            Vector2.Dot(toPlayer, lockedDirection);
+
+        if (forwardDistance <= 0.0001f)
+        {
+            return false;
+        }
+
+        float checkDistance = Mathf.Max(
+            projectileSpawnOffset,
+            forwardDistance
+        );
+
+        return !IsEnvironmentBlockingRay(
+            rb.position,
+            lockedDirection,
+            checkDistance
+        );
+    }
+
+    /// <summary>
+    /// Uses a non-allocating Physics2D.Raycast query
+    /// with a ContactFilter2D.
+    ///
+    /// Only the configured blocking layers count.
+    /// Trigger colliders and this enemy's own collider
+    /// are ignored.
+    /// </summary>
+    private bool IsEnvironmentBlockingRay(
+        Vector2 origin,
+        Vector2 direction,
+        float distance)
+    {
+        // Fail closed for a missing LayerMask.
+        // This prevents accidentally shooting through
+        // every wall due to an empty Inspector mask.
+        if (lineOfSightBlockingLayers.value == 0)
+        {
+            return true;
+        }
+
+        if (distance <= 0f
+            || direction.sqrMagnitude <= 0.00000001f)
+        {
+            return false;
+        }
+
+        ContactFilter2D filter = new ContactFilter2D();
+
+        filter.SetLayerMask(lineOfSightBlockingLayers);
+
+        // Loot/search Trigger colliders should not
+        // block the enemy's line of sight.
+        filter.useTriggers = false;
+
+        Vector2 rayDirection = direction.normalized;
+
+        int hitCount = Physics2D.Raycast(
+            origin,
+            rayDirection,
+            filter,
+            lineOfSightHits,
+            distance
+        );
+
+        bool blocked = false;
+
+        for (int i = 0; i < hitCount; i++)
+        {
+            Collider2D hitCollider =
+                lineOfSightHits[i].collider;
+
+            if (hitCollider == null)
+            {
+                continue;
+            }
+
+            if (hitCollider.isTrigger)
+            {
+                continue;
+            }
+
+            // Ignore this enemy's own rigidbody colliders.
+            if (hitCollider.attachedRigidbody == rb)
+            {
+                continue;
+            }
+
+            blocked = true;
+            break;
+        }
+
+        if (drawLineOfSightDebug)
+        {
+            Debug.DrawLine(
+                origin,
+                origin + rayDirection * distance,
+                blocked ? Color.red : Color.green,
+                0.12f
+            );
+        }
+
+        return blocked;
+    }
+
+    // =========================================================
+    // Phase40: Cancel Attack When Sight Is Blocked
+    // =========================================================
+
+    private void CancelBlockedPreparation()
+    {
+        HideWarning();
+        StopRigidbodyMotion();
+
+        currentState = RangedAttackState.Idle;
+        stateTimeRemaining = 0f;
+        lockedDirection = Vector2.zero;
+
+        // Important:
+        // Restore normal A* movement immediately.
+        if (enemyMovement != null)
+        {
+            enemyMovement.SetMovementLocked(false);
+        }
+    }
+
+    // =========================================================
+    // Original: Recovering
+    // =========================================================
+
     private void EnterRecovering()
     {
-        currentState =
-            RangedAttackState.Recovering;
-
-        stateTimeRemaining =
-            recoveryDuration;
+        currentState = RangedAttackState.Recovering;
+        stateTimeRemaining = recoveryDuration;
 
         StopRigidbodyMotion();
 
@@ -303,8 +577,7 @@ public class RangedEnemyAttack : MonoBehaviour
 
     private void UpdateRecovering()
     {
-        stateTimeRemaining -=
-            Time.deltaTime;
+        stateTimeRemaining -= Time.deltaTime;
 
         if (stateTimeRemaining <= 0f)
         {
@@ -312,20 +585,18 @@ public class RangedEnemyAttack : MonoBehaviour
         }
     }
 
+    // =========================================================
+    // Original: Cooldown
+    // =========================================================
+
     private void EnterCooldown()
     {
-        currentState =
-            RangedAttackState.Cooldown;
+        currentState = RangedAttackState.Cooldown;
+        stateTimeRemaining = attackCooldown;
 
-        stateTimeRemaining =
-            attackCooldown;
+        lockedDirection = Vector2.zero;
 
-        lockedDirection =
-            Vector2.zero;
-
-        enemyMovement.SetMovementLocked(
-            false
-        );
+        enemyMovement.SetMovementLocked(false);
 
         if (attackCooldown <= 0f)
         {
@@ -335,8 +606,7 @@ public class RangedEnemyAttack : MonoBehaviour
 
     private void UpdateCooldown()
     {
-        stateTimeRemaining -=
-            Time.deltaTime;
+        stateTimeRemaining -= Time.deltaTime;
 
         if (stateTimeRemaining <= 0f)
         {
@@ -346,36 +616,37 @@ public class RangedEnemyAttack : MonoBehaviour
 
     private void FinishCooldown()
     {
-        currentState =
-            RangedAttackState.Idle;
+        currentState = RangedAttackState.Idle;
 
         stateTimeRemaining = 0f;
         lockedDirection = Vector2.zero;
     }
+
+    // =========================================================
+    // Original: Attack Interrupted By Knockback
+    // =========================================================
 
     private void InterruptAttack()
     {
         HideWarning();
         StopRigidbodyMotion();
 
-        enemyMovement.SetMovementLocked(
-            false
-        );
+        enemyMovement.SetMovementLocked(false);
 
-        currentState =
-            RangedAttackState.Cooldown;
+        currentState = RangedAttackState.Cooldown;
+        stateTimeRemaining = interruptedCooldown;
 
-        stateTimeRemaining =
-            interruptedCooldown;
-
-        lockedDirection =
-            Vector2.zero;
+        lockedDirection = Vector2.zero;
 
         if (interruptedCooldown <= 0f)
         {
             FinishCooldown();
         }
     }
+
+    // =========================================================
+    // Original: Attack State Validation
+    // =========================================================
 
     private bool ShouldCancelAttack()
     {
@@ -390,14 +661,12 @@ public class RangedEnemyAttack : MonoBehaviour
             return true;
         }
 
-        if (enemyHealth == null
-            || enemyHealth.IsDead)
+        if (enemyHealth == null || enemyHealth.IsDead)
         {
             return true;
         }
 
-        if (pooledEnemy == null
-            || pooledEnemy.IsReturned)
+        if (pooledEnemy == null || pooledEnemy.IsReturned)
         {
             return true;
         }
@@ -420,17 +689,18 @@ public class RangedEnemyAttack : MonoBehaviour
         return Time.timeScale <= 0f;
     }
 
+    // =========================================================
+    // Original: Find Player
+    // =========================================================
+
     private bool TryFindPlayer()
     {
         if (playerTarget != null)
         {
             PlayerHealth cachedHealth =
-                playerTarget.GetComponent<
-                    PlayerHealth
-                >();
+                playerTarget.GetComponent<PlayerHealth>();
 
-            if (cachedHealth != null
-                && !cachedHealth.IsDead)
+            if (cachedHealth != null && !cachedHealth.IsDead)
             {
                 return true;
             }
@@ -439,9 +709,7 @@ public class RangedEnemyAttack : MonoBehaviour
         }
 
         GameObject playerObject =
-            GameObject.FindGameObjectWithTag(
-                "Player"
-            );
+            GameObject.FindGameObjectWithTag("Player");
 
         if (playerObject == null)
         {
@@ -449,21 +717,21 @@ public class RangedEnemyAttack : MonoBehaviour
         }
 
         PlayerHealth playerHealth =
-            playerObject.GetComponent<
-                PlayerHealth
-            >();
+            playerObject.GetComponent<PlayerHealth>();
 
-        if (playerHealth == null
-            || playerHealth.IsDead)
+        if (playerHealth == null || playerHealth.IsDead)
         {
             return false;
         }
 
-        playerTarget =
-            playerObject.transform;
+        playerTarget = playerObject.transform;
 
         return true;
     }
+
+    // =========================================================
+    // Original: Warning Visual
+    // =========================================================
 
     private void ShowWarning()
     {
@@ -472,9 +740,7 @@ public class RangedEnemyAttack : MonoBehaviour
             return;
         }
 
-        warningLine.gameObject.SetActive(
-            true
-        );
+        warningLine.gameObject.SetActive(true);
 
         UpdateWarningVisual();
     }
@@ -493,103 +759,81 @@ public class RangedEnemyAttack : MonoBehaviour
             progress =
                 1f
                 - Mathf.Clamp01(
-                    stateTimeRemaining
-                    / windupDuration
+                    stateTimeRemaining / windupDuration
                 );
         }
 
-        Vector3 lineStart =
-            transform.position;
+        Vector3 lineStart = transform.position;
 
         Vector3 lineEnd =
             lineStart
             + (Vector3)(
-                lockedDirection
-                * warningLength
+                lockedDirection * warningLength
             );
 
         warningLine.positionCount = 2;
         warningLine.useWorldSpace = true;
 
-        warningLine.SetPosition(
-            0,
-            lineStart
+        warningLine.SetPosition(0, lineStart);
+        warningLine.SetPosition(1, lineEnd);
+
+        float currentWidth = Mathf.Lerp(
+            warningStartWidth,
+            warningEndWidth,
+            progress
         );
 
-        warningLine.SetPosition(
-            1,
-            lineEnd
+        warningLine.startWidth = currentWidth;
+        warningLine.endWidth = currentWidth;
+
+        Color currentColor = Color.Lerp(
+            warningStartColor,
+            warningEndColor,
+            progress
         );
 
-        float currentWidth =
-            Mathf.Lerp(
-                warningStartWidth,
-                warningEndWidth,
-                progress
-            );
-
-        warningLine.startWidth =
-            currentWidth;
-
-        warningLine.endWidth =
-            currentWidth;
-
-        Color currentColor =
-            Color.Lerp(
-                warningStartColor,
-                warningEndColor,
-                progress
-            );
-
-        warningLine.startColor =
-            currentColor;
-
-        warningLine.endColor =
-            currentColor;
+        warningLine.startColor = currentColor;
+        warningLine.endColor = currentColor;
     }
 
     private void HideWarning()
     {
         if (warningLine != null)
         {
-            warningLine.gameObject.SetActive(
-                false
-            );
+            warningLine.gameObject.SetActive(false);
         }
     }
+
+    // =========================================================
+    // Original: Cache Components
+    // =========================================================
 
     private void CacheComponents()
     {
         if (rb == null)
         {
-            rb =
-                GetComponent<Rigidbody2D>();
+            rb = GetComponent<Rigidbody2D>();
         }
 
         if (enemyMovement == null)
         {
-            enemyMovement =
-                GetComponent<EnemyMovement>();
+            enemyMovement = GetComponent<EnemyMovement>();
         }
 
         if (enemyHealth == null)
         {
-            enemyHealth =
-                GetComponent<EnemyHealth>();
+            enemyHealth = GetComponent<EnemyHealth>();
         }
 
         if (enemyContactDamage == null)
         {
             enemyContactDamage =
-                GetComponent<
-                    EnemyContactDamage
-                >();
+                GetComponent<EnemyContactDamage>();
         }
 
         if (pooledEnemy == null)
         {
-            pooledEnemy =
-                GetComponent<PooledEnemy>();
+            pooledEnemy = GetComponent<PooledEnemy>();
         }
 
         if (enemyDefinition == null)
@@ -607,18 +851,18 @@ public class RangedEnemyAttack : MonoBehaviour
         }
 
         Transform warningTransform =
-            transform.Find(
-                "RangedAimWarning"
-            );
+            transform.Find("RangedAimWarning");
 
         if (warningTransform != null)
         {
             warningLine =
-                warningTransform.GetComponent<
-                    LineRenderer
-                >();
+                warningTransform.GetComponent<LineRenderer>();
         }
     }
+
+    // =========================================================
+    // Original: Stop Rigidbody
+    // =========================================================
 
     private void StopRigidbodyMotion()
     {
@@ -631,6 +875,10 @@ public class RangedEnemyAttack : MonoBehaviour
         rb.angularVelocity = 0f;
     }
 
+    // =========================================================
+    // Original: Cancel To Idle
+    // =========================================================
+
     private void CancelToIdle()
     {
         HideWarning();
@@ -638,26 +886,26 @@ public class RangedEnemyAttack : MonoBehaviour
 
         if (enemyMovement != null)
         {
-            enemyMovement.SetMovementLocked(
-                false
-            );
+            enemyMovement.SetMovementLocked(false);
         }
 
-        currentState =
-            RangedAttackState.Idle;
+        currentState = RangedAttackState.Idle;
 
         stateTimeRemaining = 0f;
         lockedDirection = Vector2.zero;
         playerTarget = null;
     }
 
+    // =========================================================
+    // Original: Object Pool Runtime Reset
+    // =========================================================
+
     private void ResetRuntimeState()
     {
         HideWarning();
         StopRigidbodyMotion();
 
-        currentState =
-            RangedAttackState.Idle;
+        currentState = RangedAttackState.Idle;
 
         stateTimeRemaining = 0f;
         lockedDirection = Vector2.zero;
@@ -665,11 +913,13 @@ public class RangedEnemyAttack : MonoBehaviour
 
         if (enemyMovement != null)
         {
-            enemyMovement.SetMovementLocked(
-                false
-            );
+            enemyMovement.SetMovementLocked(false);
         }
     }
+
+    // =========================================================
+    // Original: Inspector Validation
+    // =========================================================
 
     private void ValidateSettings()
     {
@@ -686,52 +936,28 @@ public class RangedEnemyAttack : MonoBehaviour
             Mathf.Max(0f, attackCooldown);
 
         interruptedCooldown =
-            Mathf.Max(
-                0f,
-                interruptedCooldown
-            );
+            Mathf.Max(0f, interruptedCooldown);
 
         projectileSpawnOffset =
-            Mathf.Max(
-                0f,
-                projectileSpawnOffset
-            );
+            Mathf.Max(0f, projectileSpawnOffset);
 
         projectileSpeed =
-            Mathf.Max(
-                0.01f,
-                projectileSpeed
-            );
+            Mathf.Max(0.01f, projectileSpeed);
 
         projectileLifeTime =
-            Mathf.Max(
-                0.01f,
-                projectileLifeTime
-            );
+            Mathf.Max(0.01f, projectileLifeTime);
 
         projectileScaleMultiplier =
-            Mathf.Max(
-                0.01f,
-                projectileScaleMultiplier
-            );
+            Mathf.Max(0.01f, projectileScaleMultiplier);
 
         warningLength =
-            Mathf.Max(
-                0.1f,
-                warningLength
-            );
+            Mathf.Max(0.1f, warningLength);
 
         warningStartWidth =
-            Mathf.Max(
-                0.001f,
-                warningStartWidth
-            );
+            Mathf.Max(0.001f, warningStartWidth);
 
         warningEndWidth =
-            Mathf.Max(
-                0.001f,
-                warningEndWidth
-            );
+            Mathf.Max(0.001f, warningEndWidth);
     }
 
     private void OnDisable()
@@ -743,6 +969,10 @@ public class RangedEnemyAttack : MonoBehaviour
     {
         ValidateSettings();
     }
+
+    // =========================================================
+    // Original: Attack Range Gizmo
+    // =========================================================
 
     private void OnDrawGizmosSelected()
     {

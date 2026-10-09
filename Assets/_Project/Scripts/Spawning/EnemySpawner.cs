@@ -395,6 +395,28 @@ public class EnemySpawner : MonoBehaviour
 
 
     // =========================================================
+    // Phase40 - A* Safe Spawn Position Validation
+    // =========================================================
+
+    [Header("Phase40 - A* Safe Spawn Positions")]
+    [Tooltip(
+        "Enable only for the Cargo Yard / Level01 scene. "
+        + "If enabled, a valid region and scanned A* graph "
+        + "are required; spawning fails safely otherwise."
+    )]
+    [SerializeField]
+    private bool useValidatedSpawnPositions = false;
+
+    [Tooltip(
+        "Add EnemySpawnPositionValidator on the same "
+        + "EnemySpawner GameObject, then drag it here. "
+        + "If left empty, the same-object component is auto-found."
+    )]
+    [SerializeField]
+    private EnemySpawnPositionValidator spawnPositionValidator;
+
+
+    // =========================================================
     // Target Settings
     // =========================================================
 
@@ -1852,8 +1874,14 @@ public class EnemySpawner : MonoBehaviour
         }
 
 
-        Vector3 spawnPosition =
-            GetRandomSpawnPositionAroundPlayer();
+        // Phase40: validate a spawn BEFORE requesting a pooled enemy.
+        // Never teleport a pooled object to an unchecked position.
+        Vector3 spawnPosition;
+
+        if (!TryGetSpawnPosition(out spawnPosition))
+        {
+            return false;
+        }
 
 
         PooledEnemy pooledEnemy =
@@ -2005,6 +2033,61 @@ public class EnemySpawner : MonoBehaviour
             GameObject.FindGameObjectsWithTag(
                 enemyTag
             ).Length;
+    }
+
+
+    // =========================================================
+    // Phase40: Resolve a Safe Spawn Position
+    // =========================================================
+
+    private bool TryGetSpawnPosition(out Vector3 spawnPosition)
+    {
+        // Preserve existing behavior in Day01 and other old scenes
+        // unless the Phase40 switch is explicitly enabled.
+        if (!useValidatedSpawnPositions)
+        {
+            spawnPosition = GetRandomSpawnPositionAroundPlayer();
+            return true;
+        }
+
+        // Can be left unassigned in Inspector if the validator is
+        // attached to the same GameObject.
+        if (spawnPositionValidator == null)
+        {
+            spawnPositionValidator =
+                GetComponent<EnemySpawnPositionValidator>();
+        }
+
+        if (spawnPositionValidator == null
+            || !spawnPositionValidator.isActiveAndEnabled)
+        {
+            spawnPosition = Vector3.zero;
+
+            Debug.LogError(
+                "[Phase40] Safe spawn is enabled, but "
+                + "EnemySpawnPositionValidator is missing or disabled. "
+                + "This spawn was cancelled (no legacy fallback).",
+                this
+            );
+
+            return false;
+        }
+
+        // Keep the existing distance, rectangular bounds and retry
+        // settings as the single source of configuration.
+        // The validator also checks Cargo Yard polygon, Physics2D
+        // obstacles and A* connected walkable graph nodes.
+        return spawnPositionValidator.TryFindValidSpawnPosition(
+            player,
+            minSpawnDistance,
+            maxSpawnDistance,
+            limitSpawnToMapBounds,
+            spawnMapMin,
+            spawnMapMax,
+            spawnBoundsPadding,
+            maxSpawnPositionAttempts,
+            out spawnPosition
+        );
     }
 
 

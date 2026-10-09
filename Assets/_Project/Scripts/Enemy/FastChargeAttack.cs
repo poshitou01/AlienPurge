@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 
 [DisallowMultipleComponent]
 [RequireComponent(typeof(Rigidbody2D))]
@@ -18,10 +19,18 @@ public class FastChargeAttack : MonoBehaviour
         Cooldown
     }
 
+    // =====================================================
+    // Trigger Settings
+    // =====================================================
+
     [Header("Trigger Settings")]
     [Min(0f)]
     [SerializeField]
     private float triggerDistance = 6f;
+
+    // =====================================================
+    // Charge Timing
+    // =====================================================
 
     [Header("Charge Timing")]
     [Min(0f)]
@@ -44,17 +53,55 @@ public class FastChargeAttack : MonoBehaviour
     [SerializeField]
     private float interruptedCooldown = 1f;
 
+    // =====================================================
+    // Charge Movement
+    // =====================================================
+
     [Header("Charge Movement")]
     [Min(0f)]
     [SerializeField]
     private float chargeSpeed = 11f;
 
+    // =====================================================
+    // Phase40: Charge Environment Collision Guard
+    // =====================================================
+
+    [Header("Phase40 - Charge Environment Collision Guard")]
+
+    [Tooltip(
+        "Check solid environment obstacles before each charge step."
+    )]
+    [SerializeField]
+    private bool preventChargeThroughWalls = false;
+
+    [Tooltip(
+        "Physics layers containing solid walls, " +
+        "containers and buildings."
+    )]
+    [SerializeField]
+    private LayerMask chargeObstacleLayers = 1 << 7;
+
+    [Tooltip(
+        "Small extra distance used to stop before a wall."
+    )]
+    [Min(0f)]
+    [SerializeField]
+    private float chargeWallSkin = 0.025f;
+
+    private readonly RaycastHit2D[] chargeWallHits =
+        new RaycastHit2D[16];
+
+    // =====================================================
+    // Temporary Warning
+    // =====================================================
+
     [Header("Temporary Warning")]
-    [Tooltip("FastChargeWarning 子对象的 Transform")]
+
+    [Tooltip("FastChargeWarning child Transform")]
     [SerializeField]
     private Transform warningVisual;
 
-    [Tooltip("FastChargeWarning 子对象的 SpriteRenderer")]
+    [Tooltip("FastChargeWarning child SpriteRenderer")]
     [SerializeField]
     private SpriteRenderer warningRenderer;
 
@@ -70,6 +117,10 @@ public class FastChargeAttack : MonoBehaviour
     private Color warningEndColor =
         new Color(1f, 0.1f, 0.05f, 0.85f);
 
+    // =====================================================
+    // Runtime State
+    // =====================================================
+
     [Header("Runtime State")]
     [SerializeField]
     private ChargeState currentState =
@@ -84,6 +135,10 @@ public class FastChargeAttack : MonoBehaviour
     [SerializeField]
     private bool hasHitPlayerThisCharge;
 
+    // =====================================================
+    // References
+    // =====================================================
+
     private Rigidbody2D rb;
     private EnemyMovement enemyMovement;
     private EnemyHealth enemyHealth;
@@ -92,6 +147,10 @@ public class FastChargeAttack : MonoBehaviour
     private EnemyDefinition enemyDefinition;
 
     private Transform playerTarget;
+
+    // =====================================================
+    // Unity Lifecycle
+    // =====================================================
 
     private void Awake()
     {
@@ -142,7 +201,8 @@ public class FastChargeAttack : MonoBehaviour
                 break;
 
             case ChargeState.Charging:
-                // Charging 的移动和计时由 FixedUpdate 处理。
+                // Charging movement and timer
+                // are handled in FixedUpdate.
                 break;
 
             case ChargeState.Recovering:
@@ -154,6 +214,10 @@ public class FastChargeAttack : MonoBehaviour
                 break;
         }
     }
+
+    // =====================================================
+    // Charge Physics Movement
+    // =====================================================
 
     private void FixedUpdate()
     {
@@ -179,11 +243,31 @@ public class FastChargeAttack : MonoBehaviour
             return;
         }
 
+        float movementDistance =
+            chargeSpeed * Time.fixedDeltaTime;
+
+        // =================================================
+        // Phase40:
+        // Check the charge collider against Environment
+        // BEFORE using Rigidbody2D.MovePosition.
+        // =================================================
+
+        if (WouldChargeHitEnvironment(movementDistance))
+        {
+            // Stop before the obstacle.
+            // Do not teleport through or into it.
+            EnterRecovering();
+            return;
+        }
+
+        // =================================================
+        // Original Charge Movement
+        // =================================================
+
         Vector2 nextPosition =
             rb.position
             + lockedDirection
-            * chargeSpeed
-            * Time.fixedDeltaTime;
+            * movementDistance;
 
         rb.MovePosition(nextPosition);
 
@@ -195,6 +279,90 @@ public class FastChargeAttack : MonoBehaviour
             EnterRecovering();
         }
     }
+
+    // =====================================================
+    // Phase40: Charge Obstacle Detection
+    // =====================================================
+
+    /// <summary>
+    /// Checks whether the enemy's attached Collider2D
+    /// would collide with a solid environment obstacle
+    /// during the next physics charge step.
+    ///
+    /// Uses Rigidbody2D.Cast so detection takes the
+    /// actual collider geometry into account.
+    ///
+    /// Trigger colliders are excluded.
+    /// </summary>
+    private bool WouldChargeHitEnvironment(
+        float movementDistance)
+    {
+        if (!preventChargeThroughWalls)
+        {
+            return false;
+        }
+
+        if (rb == null)
+        {
+            return false;
+        }
+
+        if (chargeObstacleLayers.value == 0)
+        {
+            return false;
+        }
+
+        if (movementDistance <= 0.00001f)
+        {
+            return false;
+        }
+
+        if (lockedDirection.sqrMagnitude <= 0.0001f)
+        {
+            return false;
+        }
+
+        ContactFilter2D collisionFilter =
+            new ContactFilter2D();
+
+        collisionFilter.SetLayerMask(
+            chargeObstacleLayers
+        );
+
+        // Search only for solid obstacles.
+        // Loot interaction triggers must not stop charging.
+        collisionFilter.useTriggers = false;
+
+        float castDistance =
+            movementDistance + chargeWallSkin;
+
+        int hitCount = rb.Cast(
+            lockedDirection.normalized,
+            collisionFilter,
+            chargeWallHits,
+            castDistance
+        );
+
+        for (int i = 0; i < hitCount; i++)
+        {
+            RaycastHit2D hit = chargeWallHits[i];
+
+            if (hit.collider == null)
+            {
+                continue;
+            }
+
+            // A solid environment collider lies within
+            // the next movement step plus safety margin.
+            return true;
+        }
+
+        return false;
+    }
+
+    // =====================================================
+    // Start Charge Preparation
+    // =====================================================
 
     private void TryBeginPreparing()
     {
@@ -262,6 +430,10 @@ public class FastChargeAttack : MonoBehaviour
         }
     }
 
+    // =====================================================
+    // Charging
+    // =====================================================
+
     private void BeginCharging()
     {
         HideWarning();
@@ -280,6 +452,10 @@ public class FastChargeAttack : MonoBehaviour
             EnterRecovering();
         }
     }
+
+    // =====================================================
+    // Recovering
+    // =====================================================
 
     private void EnterRecovering()
     {
@@ -306,6 +482,10 @@ public class FastChargeAttack : MonoBehaviour
             EnterCooldown();
         }
     }
+
+    // =====================================================
+    // Cooldown
+    // =====================================================
 
     private void EnterCooldown()
     {
@@ -350,6 +530,10 @@ public class FastChargeAttack : MonoBehaviour
         hasHitPlayerThisCharge = false;
     }
 
+    // =====================================================
+    // Interrupt
+    // =====================================================
+
     private void InterruptAttack()
     {
         HideWarning();
@@ -385,6 +569,10 @@ public class FastChargeAttack : MonoBehaviour
             || currentState
             == ChargeState.Recovering;
     }
+
+    // =====================================================
+    // Attack Validation
+    // =====================================================
 
     private bool ShouldCancelAttack()
     {
@@ -429,6 +617,10 @@ public class FastChargeAttack : MonoBehaviour
         return Time.timeScale <= 0f;
     }
 
+    // =====================================================
+    // Player Target
+    // =====================================================
+
     private bool TryFindPlayer()
     {
         if (playerTarget != null)
@@ -469,6 +661,10 @@ public class FastChargeAttack : MonoBehaviour
 
         return true;
     }
+
+    // =====================================================
+    // Charge Warning
+    // =====================================================
 
     private void ShowWarning()
     {
@@ -582,6 +778,10 @@ public class FastChargeAttack : MonoBehaviour
         }
     }
 
+    // =====================================================
+    // Contact Damage Control
+    // =====================================================
+
     private void DisableContactDamageForAttack()
     {
         if (enemyContactDamage != null)
@@ -613,12 +813,14 @@ public class FastChargeAttack : MonoBehaviour
         enemyContactDamage.ResetDamageCooldown();
     }
 
+    // =====================================================
+    // Charge Player Damage
+    // =====================================================
+
     private void TryDamagePlayer(
-        GameObject targetObject
-    )
+        GameObject targetObject)
     {
-        if (currentState
-            != ChargeState.Charging)
+        if (currentState != ChargeState.Charging)
         {
             return;
         }
@@ -663,9 +865,12 @@ public class FastChargeAttack : MonoBehaviour
         EnterRecovering();
     }
 
+    // =====================================================
+    // Physics Contact Callbacks
+    // =====================================================
+
     private void OnCollisionEnter2D(
-        Collision2D collision
-    )
+        Collision2D collision)
     {
         TryDamagePlayer(
             collision.gameObject
@@ -673,8 +878,7 @@ public class FastChargeAttack : MonoBehaviour
     }
 
     private void OnCollisionStay2D(
-        Collision2D collision
-    )
+        Collision2D collision)
     {
         TryDamagePlayer(
             collision.gameObject
@@ -682,8 +886,7 @@ public class FastChargeAttack : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(
-        Collider2D other
-    )
+        Collider2D other)
     {
         TryDamagePlayer(
             other.gameObject
@@ -691,13 +894,16 @@ public class FastChargeAttack : MonoBehaviour
     }
 
     private void OnTriggerStay2D(
-        Collider2D other
-    )
+        Collider2D other)
     {
         TryDamagePlayer(
             other.gameObject
         );
     }
+
+    // =====================================================
+    // Component References
+    // =====================================================
 
     private void CacheComponents()
     {
@@ -774,6 +980,10 @@ public class FastChargeAttack : MonoBehaviour
         rb.angularVelocity = 0f;
     }
 
+    // =====================================================
+    // Cancel
+    // =====================================================
+
     private void CancelToIdle()
     {
         HideWarning();
@@ -797,6 +1007,10 @@ public class FastChargeAttack : MonoBehaviour
         playerTarget = null;
     }
 
+    // =====================================================
+    // Pool Lifecycle Reset
+    // =====================================================
+
     private void ResetRuntimeState()
     {
         HideWarning();
@@ -819,6 +1033,10 @@ public class FastChargeAttack : MonoBehaviour
 
         RestoreContactDamage();
     }
+
+    // =====================================================
+    // Validation
+    // =====================================================
 
     private void ValidateSettings()
     {
@@ -845,6 +1063,10 @@ public class FastChargeAttack : MonoBehaviour
 
         warningWidth =
             Mathf.Max(0.01f, warningWidth);
+
+        // Phase40
+        chargeWallSkin =
+            Mathf.Max(0f, chargeWallSkin);
     }
 
     private void OnDisable()

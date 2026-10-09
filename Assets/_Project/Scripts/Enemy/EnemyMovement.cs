@@ -1,9 +1,30 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// Phase40 - Enemy Movement
+///
+/// 保留：
+/// - Rigidbody2D 移动
+/// - 普通追踪
+/// - Movement Lock
+/// - Knockback
+/// - EnemyPool 初始化
+///
+/// 新增：
+/// - 可选 A* 路径点追踪
+/// - Environment Collider 阻挡检测
+///
+/// 没有 EnemyPathNavigator 时，
+/// 使用原有的直接追踪逻辑。
+/// </summary>
 [DisallowMultipleComponent]
 [RequireComponent(typeof(Rigidbody2D))]
 public class EnemyMovement : MonoBehaviour
 {
+    // =====================================================
+    // Movement Settings
+    // =====================================================
+
     [Header("Movement Settings")]
     [SerializeField]
     private float moveSpeed = 1.5f;
@@ -11,25 +32,73 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField]
     private float stoppingDistance = 0.72f;
 
+    // =====================================================
+    // Target
+    // =====================================================
+
     [Header("Target")]
     [SerializeField]
     private Transform target;
+
+    // =====================================================
+    // Environment Collision Guard
+    // =====================================================
+
+    [Header("Environment Collision Guard")]
+
+    [SerializeField]
+    private bool preventEnvironmentPenetration = false;
+
+    [SerializeField]
+    private LayerMask environmentBlockingLayers = 1 << 7;
+
+    [Min(0f)]
+    [SerializeField]
+    private float collisionSkin = 0.025f;
+
+    // =====================================================
+    // Movement Lock
+    // =====================================================
 
     [Header("Runtime Movement Control")]
     [SerializeField]
     private bool isMovementLocked;
 
+    // =====================================================
+    // Knockback
+    // =====================================================
+
     [Header("Runtime Knockback State")]
     [SerializeField]
     private bool isKnockedBack;
-
-    private Rigidbody2D rb;
 
     private Vector2 knockbackDirection;
     private float knockbackSpeed;
     private float knockbackTimeRemaining;
 
+    // =====================================================
+    // References
+    // =====================================================
+
+    private Rigidbody2D rb;
+
+    private EnemyPathNavigator pathNavigator;
+
+    private ContactFilter2D environmentCastFilter;
+
+    private readonly RaycastHit2D[] castHits =
+        new RaycastHit2D[8];
+
+    // =====================================================
+    // Public Properties
+    // =====================================================
+
     public float MoveSpeed => moveSpeed;
+
+    public float StoppingDistance =>
+        stoppingDistance;
+
+    public Transform NavigationTarget => target;
 
     public bool IsMovementLocked =>
         isMovementLocked;
@@ -37,14 +106,31 @@ public class EnemyMovement : MonoBehaviour
     public bool IsKnockedBack =>
         isKnockedBack;
 
+    // =====================================================
+    // Unity Lifecycle
+    // =====================================================
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
 
+        pathNavigator =
+            GetComponent<EnemyPathNavigator>();
+
         rb.gravityScale = 0f;
         rb.freezeRotation = true;
 
+        environmentCastFilter =
+            new ContactFilter2D();
+
+        environmentCastFilter.SetLayerMask(
+            environmentBlockingLayers
+        );
+
+        environmentCastFilter.useTriggers = false;
+
         ValidateMovementSettings();
+
         SetMovementLocked(false);
         ResetKnockbackState();
     }
@@ -56,6 +142,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // 击退优先于普通移动和移动锁定。
         if (isKnockedBack)
         {
             UpdateKnockbackMovement();
@@ -69,6 +156,10 @@ public class EnemyMovement : MonoBehaviour
 
         UpdateChaseMovement();
     }
+
+    // =====================================================
+    // Chase
+    // =====================================================
 
     private void UpdateChaseMovement()
     {
@@ -99,34 +190,53 @@ public class EnemyMovement : MonoBehaviour
             return;
         }
 
+        Vector2 steeringTarget =
+            targetPosition;
+
+        // 只有安装并启用了导航组件的敌人
+        // 才改为使用 A*。
+        if (pathNavigator != null &&
+            pathNavigator.isActiveAndEnabled)
+        {
+            if (!pathNavigator.TryGetNextWaypoint(
+                    currentPosition,
+                    out steeringTarget))
+            {
+                // 无有效路径时不执行直线追踪。
+                return;
+            }
+        }
+
         Vector2 nextPosition =
             Vector2.MoveTowards(
                 currentPosition,
-                targetPosition,
-                moveSpeed
-                * Time.fixedDeltaTime
+                steeringTarget,
+                moveSpeed * Time.fixedDeltaTime
             );
 
-        rb.MovePosition(nextPosition);
+        MoveWithEnvironmentGuard(nextPosition);
     }
+
+    // =====================================================
+    // Knockback Movement
+    // =====================================================
 
     private void UpdateKnockbackMovement()
     {
-        if (knockbackTimeRemaining <= 0f
-            || knockbackDirection.sqrMagnitude
-            <= 0.0001f)
+        if (knockbackTimeRemaining <= 0f ||
+            knockbackDirection.sqrMagnitude <= 0.0001f)
         {
             ResetKnockbackState();
             return;
         }
 
         Vector2 nextPosition =
-            rb.position
-            + knockbackDirection
-            * knockbackSpeed
-            * Time.fixedDeltaTime;
+            rb.position +
+            knockbackDirection *
+            knockbackSpeed *
+            Time.fixedDeltaTime;
 
-        rb.MovePosition(nextPosition);
+        MoveWithEnvironmentGuard(nextPosition);
 
         knockbackTimeRemaining -=
             Time.fixedDeltaTime;
@@ -137,30 +247,105 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
+    // =====================================================
+    // Environment Collision
+    // =====================================================
+
     /// <summary>
-    /// 对敌人施加一段可控位移的击退。
-    /// distance 表示总击退距离，
-    /// duration 表示击退持续时间。
+    /// 移动前检测 Environment 实体障碍。
+    ///
+    /// 特别针对 Kinematic Rigidbody2D。
+    ///
+    /// 不负责自动滑墙，绕行由 A* 路径负责。
+    /// </summary>
+    private void MoveWithEnvironmentGuard(
+        Vector2 wantedPosition)
+    {
+        Vector2 delta =
+            wantedPosition - rb.position;
+
+        float distance = delta.magnitude;
+
+        if (distance <= 0.00001f)
+        {
+            return;
+        }
+
+        if (!preventEnvironmentPenetration ||
+            environmentBlockingLayers.value == 0)
+        {
+            rb.MovePosition(wantedPosition);
+            return;
+        }
+
+        Vector2 direction =
+            delta / distance;
+
+        int hitCount = rb.Cast(
+            direction,
+            environmentCastFilter,
+            castHits,
+            distance + collisionSkin
+        );
+
+        float allowedDistance = distance;
+
+        for (int i = 0; i < hitCount; i++)
+        {
+            RaycastHit2D hit = castHits[i];
+
+            if (hit.collider == null)
+            {
+                continue;
+            }
+
+            float safeDistance =
+                Mathf.Max(
+                    0f,
+                    hit.distance - collisionSkin
+                );
+
+            allowedDistance =
+                Mathf.Min(
+                    allowedDistance,
+                    safeDistance
+                );
+        }
+
+        if (allowedDistance > 0.00001f)
+        {
+            rb.MovePosition(
+                rb.position +
+                direction * allowedDistance
+            );
+        }
+    }
+
+    // =====================================================
+    // Apply Knockback
+    // =====================================================
+
+    /// <summary>
+    /// direction：击退方向
+    /// distance：总击退距离
+    /// duration：持续时间
     /// </summary>
     public void ApplyKnockback(
         Vector2 direction,
         float distance,
-        float duration
-    )
+        float duration)
     {
         if (!isActiveAndEnabled)
         {
             return;
         }
 
-        if (direction.sqrMagnitude
-            <= 0.0001f)
+        if (direction.sqrMagnitude <= 0.0001f)
         {
             return;
         }
 
-        if (distance <= 0f
-            || duration <= 0f)
+        if (distance <= 0f || duration <= 0f)
         {
             return;
         }
@@ -168,13 +353,19 @@ public class EnemyMovement : MonoBehaviour
         knockbackDirection =
             direction.normalized;
 
-        knockbackTimeRemaining =
-            duration;
+        knockbackTimeRemaining = duration;
 
         knockbackSpeed =
             distance / duration;
 
         isKnockedBack = true;
+
+        // 击退后应重新寻路，
+        // 不继续依赖击退前的路径。
+        if (pathNavigator != null)
+        {
+            pathNavigator.ResetNavigation();
+        }
 
         if (rb != null)
         {
@@ -183,16 +374,29 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
+    // =====================================================
+    // Movement Lock
+    // =====================================================
 
     /// <summary>
-    /// 设置是否禁止 EnemyMovement 执行普通追踪。
+    /// 阻止普通追踪，不阻止击退。
     ///
-    /// 此锁定不阻止 Knockback。
-    /// Fast 等攻击脚本取得移动控制时使用。
+    /// Fast Charge、Heavy Shockwave、
+    /// Ranged Attack 继续使用此方法。
     /// </summary>
     public void SetMovementLocked(bool locked)
     {
+        bool wasLocked = isMovementLocked;
+
         isMovementLocked = locked;
+
+        // 特殊攻击接管移动时清理旧路径。
+        if (locked &&
+            !wasLocked &&
+            pathNavigator != null)
+        {
+            pathNavigator.ResetNavigation();
+        }
 
         if (locked && rb != null)
         {
@@ -200,14 +404,19 @@ public class EnemyMovement : MonoBehaviour
             rb.angularVelocity = 0f;
         }
     }
+
+    // =====================================================
+    // Knockback Reset
+    // =====================================================
+
     private void ResetKnockbackState()
     {
         isKnockedBack = false;
 
-        knockbackDirection =
-            Vector2.zero;
+        knockbackDirection = Vector2.zero;
 
         knockbackSpeed = 0f;
+
         knockbackTimeRemaining = 0f;
 
         if (rb != null)
@@ -217,12 +426,15 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
+    // =====================================================
+    // Difficulty
+    // =====================================================
+
     /// <summary>
-    /// 在敌人生成后初始化本次敌人的移动速度。
+    /// 保留原有难度成长速度初始化接口。
     /// </summary>
     public void InitializeMoveSpeed(
-        float newMoveSpeed
-    )
+        float newMoveSpeed)
     {
         if (newMoveSpeed < 0f)
         {
@@ -244,8 +456,12 @@ public class EnemyMovement : MonoBehaviour
         );
     }
 
+    // =====================================================
+    // EnemyPool
+    // =====================================================
+
     /// <summary>
-    /// 每次从 EnemyPool 取出时重置移动和击退状态。
+    /// 每次从 EnemyPool 取出时重置状态。
     /// </summary>
     public void PrepareForSpawn()
     {
@@ -254,13 +470,31 @@ public class EnemyMovement : MonoBehaviour
             rb = GetComponent<Rigidbody2D>();
         }
 
+        if (pathNavigator == null)
+        {
+            pathNavigator =
+                GetComponent<EnemyPathNavigator>();
+        }
+
         enabled = true;
+
         target = null;
 
         SetMovementLocked(false);
+
         ResetKnockbackState();
+
         FindPlayer();
+
+        if (pathNavigator != null)
+        {
+            pathNavigator.ResetNavigation();
+        }
     }
+
+    // =====================================================
+    // Find Player
+    // =====================================================
 
     private void FindPlayer()
     {
@@ -276,8 +510,7 @@ public class EnemyMovement : MonoBehaviour
 
         if (playerObject != null)
         {
-            target =
-                playerObject.transform;
+            target = playerObject.transform;
         }
         else
         {
@@ -289,6 +522,10 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
+    // =====================================================
+    // Validation
+    // =====================================================
+
     private void ValidateMovementSettings()
     {
         moveSpeed =
@@ -296,18 +533,31 @@ public class EnemyMovement : MonoBehaviour
 
         stoppingDistance =
             Mathf.Max(0f, stoppingDistance);
+
+        collisionSkin =
+            Mathf.Max(0f, collisionSkin);
     }
 
     private void OnDisable()
     {
         SetMovementLocked(false);
+
         ResetKnockbackState();
+
+        if (pathNavigator != null)
+        {
+            pathNavigator.ResetNavigation();
+        }
     }
 
     private void OnValidate()
     {
         ValidateMovementSettings();
     }
+
+    // =====================================================
+    // Existing Debug Function
+    // =====================================================
 
     [ContextMenu(
         "Test Initialize Move Speed To 3"

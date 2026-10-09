@@ -49,6 +49,7 @@ Transform:
   - {fileID: 7548263635583615821}
   - {fileID: 6755379844367294664}
   - {fileID: 7496501415429221868}
+  - {fileID: 993800206702277368}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &2477182317709712144
@@ -563,6 +564,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6755379844367294664}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3412409482711590063
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 993800206702277368}
+  m_Layer: 0
+  m_Name: SortAnchor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &993800206702277368
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3412409482711590063}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.644, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3125485742643281989}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3606381915730823860
 GameObject:
   m_ObjectHideFlags: 0
@@ -718,8 +750,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1707344351
-  m_SortingLayer: 5
+  m_SortingLayerID: 1987124591
+  m_SortingLayer: 11
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b23cc5613b075464e9b83b3f8e7a1bb9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -763,6 +795,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6755379844367294664}
   - component: {fileID: 5203973711766467590}
+  - component: {fileID: 5039275618736718510}
+  - component: {fileID: 6004261890251467944}
   m_Layer: 0
   m_Name: VisualRoot
   m_TagString: Untagged
@@ -902,6 +936,37 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 0
   m_ApplyActiveColorSpace: 1
+--- !u!210 &5039275618736718510
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4770476302947947789}
+  m_Enabled: 1
+  m_SortingLayerID: 1987124591
+  m_SortingLayer: 11
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
+--- !u!114 &6004261890251467944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4770476302947947789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bff052dba70d0444888e349dc17be7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sortAnchor: {fileID: 993800206702277368}
+  sortingGroup: {fileID: 5039275618736718510}
+  fallbackSpriteRenderer: {fileID: 0}
+  updateEveryFrame: 1
+  baseOrder: 0
+  orderPerUnit: 100
+  orderOffset: 0
 --- !u!1 &7111334168159167684
 GameObject:
   m_ObjectHideFlags: 0
@@ -1003,8 +1068,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1707344351
-  m_SortingLayer: 5
+  m_SortingLayerID: 1987124591
+  m_SortingLayer: 11
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 532e9a2a1c0bd114fab02fb590655626, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1219,6 +1284,14 @@ PrefabInstance:
     - target: {fileID: 2598380978969307951, guid: 19be8c993cae0e84d944c188a361cb44, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7254708789357516301, guid: 19be8c993cae0e84d944c188a361cb44, type: 3}
+      propertyPath: m_SortingLayer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7254708789357516301, guid: 19be8c993cae0e84d944c188a361cb44, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1987124591
       objectReference: {fileID: 0}
     - target: {fileID: 7279855769101839254, guid: 19be8c993cae0e84d944c188a361cb44, type: 3}
       propertyPath: m_Name
