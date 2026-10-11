@@ -17,8 +17,8 @@ MonoBehaviour:
   description: Preserved biological tissue collected from hostile lifeforms.
   category: 0
   rarity: 0
-  icon: {fileID: 0}
-  worldSprite: {fileID: 0}
+  icon: {fileID: 21300000, guid: 77da82913804cc44288f3dfefd24ce4f, type: 3}
+  worldSprite: {fileID: 21300000, guid: 911d9bfea261e7442b80b6d1f32e7bab, type: 3}
   gridWidth: 1
   gridHeight: 1
   maxStackSize: 10

@@ -1,216 +1,139 @@
+
 using System.Collections.Generic;
 using UnityEngine;
-
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Bullet : MonoBehaviour
 {
     [Header("Bullet Settings")]
-    [SerializeField]
-    private float speed = 12f;
-
-    [SerializeField]
-    private float lifeTime = 2f;
-
+    [SerializeField] private float speed = 12f;
+    [SerializeField] private float lifeTime = 2f;
 
     [Header("Damage Settings")]
-    [SerializeField]
-    private int damage = 1;
-
+    [SerializeField] private int damage = 1;
 
     [Header("Scale Settings")]
-    [SerializeField]
-    private float scaleMultiplier = 1f;
+    [SerializeField] private float scaleMultiplier = 1f;
 
+    // Phase40: disabled by default to preserve legacy Day01 prefabs.
+    [Header("Phase40 - Environment Blocking")]
+    [Tooltip("Enable on the Bullet prefab used by Level01's BulletPool.")]
+    [SerializeField] private bool stopOnEnvironment = false;
+
+    [Tooltip("Solid obstacle layer. Set to Environment (Layer 7 in this project).")]
+    [SerializeField] private LayerMask environmentBlockingLayers = 1 << 7;
+
+    [Min(0f)]
+    [Tooltip("Extra forward distance for collision casting.")]
+    [SerializeField] private float environmentCastSkin = 0.025f;
 
     [Header("Modifier Snapshot Debug")]
-    [SerializeField]
-    private ProjectileModifierSnapshot
-        modifierSnapshot;
-
+    [SerializeField] private ProjectileModifierSnapshot modifierSnapshot;
 
     [Header("Piercing Runtime Debug")]
-    [SerializeField]
-    private int remainingPierceCount;
-
-    [SerializeField]
-    private int directHitEnemyCount;
-
+    [SerializeField] private int remainingPierceCount;
+    [SerializeField] private int directHitEnemyCount;
 
     [Header("Explosion Runtime Debug")]
-    [SerializeField]
-    private int lastExplosionTargetCount;
-
-    [SerializeField]
-    private int lastExplosionDamage;
-
+    [SerializeField] private int lastExplosionTargetCount;
+    [SerializeField] private int lastExplosionDamage;
 
     [Header("Chain Lightning Runtime Debug")]
-    [SerializeField]
-    private int chainTriggerCount;
-
-    [SerializeField]
-    private int lastChainHitCount;
-
-    [SerializeField]
-    private int lastChainDamage;
-
+    [SerializeField] private int chainTriggerCount;
+    [SerializeField] private int lastChainHitCount;
+    [SerializeField] private int lastChainDamage;
 
     [Header("Split Shot Runtime Debug")]
-    [SerializeField]
-    private int lastSplitSpawnCount;
-
-    [SerializeField]
-    private int totalSplitSpawnCount;
-
+    [SerializeField] private int lastSplitSpawnCount;
+    [SerializeField] private int totalSplitSpawnCount;
 
     [Header("Runtime Debug")]
-    [SerializeField]
-    private float elapsedLifeTime;
-
-    [SerializeField]
-    private bool isReturned;
-
-    [SerializeField]
-    private bool hasPool;
-
+    [SerializeField] private float elapsedLifeTime;
+    [SerializeField] private bool isReturned;
+    [SerializeField] private bool hasPool;
 
     [Header("Visual Runtime Debug")]
-    [SerializeField]
-    private WeaponEvolutionData
-        currentEvolutionVisualData;
-
+    [SerializeField] private WeaponEvolutionData currentEvolutionVisualData;
 
     private Rigidbody2D rb;
-
     private Collider2D bulletCollider;
-
     private SpriteRenderer projectileRenderer;
-
     private TrailRenderer trailRenderer;
-
-
     private BulletPool ownerPool;
 
-
-    private Vector2 moveDirection =
-        Vector2.right;
-
+    private Vector2 moveDirection = Vector2.right;
     private Vector3 originalScale;
-
     private Sprite starterProjectileSprite;
 
+    private readonly HashSet<EnemyHealth> hitEnemies =
+        new HashSet<EnemyHealth>();
 
-    private readonly HashSet<EnemyHealth>
-        hitEnemies =
-            new HashSet<EnemyHealth>();
+    private readonly HashSet<EnemyHealth> explosionHitEnemies =
+        new HashSet<EnemyHealth>();
 
-    private readonly HashSet<EnemyHealth>
-        explosionHitEnemies =
-            new HashSet<EnemyHealth>();
+    private readonly HashSet<EnemyHealth> chainVisitedEnemies =
+        new HashSet<EnemyHealth>();
 
-    private readonly HashSet<EnemyHealth>
-        chainVisitedEnemies =
-            new HashSet<EnemyHealth>();
+    // Reused buffers avoid allocating arrays on every physics tick.
+    private readonly RaycastHit2D[] environmentCastHits =
+        new RaycastHit2D[16];
 
+    private readonly Collider2D[] environmentOverlapHits =
+        new Collider2D[16];
 
-    public ProjectileModifierSnapshot
-        ModifierSnapshot =>
-            modifierSnapshot;
-
-    public int RemainingPierceCount =>
-        remainingPierceCount;
-
-    public int DirectHitEnemyCount =>
-        directHitEnemyCount;
-
-    public bool HasTriggeredChain =>
-        chainTriggerCount > 0;
-
-    public int ChainTriggerCount =>
-        chainTriggerCount;
-
-    public int LastChainHitCount =>
-        lastChainHitCount;
-
+    public ProjectileModifierSnapshot ModifierSnapshot => modifierSnapshot;
+    public int RemainingPierceCount => remainingPierceCount;
+    public int DirectHitEnemyCount => directHitEnemyCount;
+    public bool HasTriggeredChain => chainTriggerCount > 0;
+    public int ChainTriggerCount => chainTriggerCount;
+    public int LastChainHitCount => lastChainHitCount;
 
     // =========================================================
-    // Unity Lifecycle
+    // Original lifecycle and pooling
     // =========================================================
 
     private void Awake()
     {
-        rb =
-            GetComponent<Rigidbody2D>();
-
-        bulletCollider =
-            GetComponent<Collider2D>();
-
-        projectileRenderer =
-            GetComponent<SpriteRenderer>();
-
-        trailRenderer =
-            GetComponent<TrailRenderer>();
-
-
-        originalScale =
-            transform.localScale;
-
+        rb = GetComponent<Rigidbody2D>();
+        bulletCollider = GetComponent<Collider2D>();
+        projectileRenderer = GetComponent<SpriteRenderer>();
+        trailRenderer = GetComponent<TrailRenderer>();
+        originalScale = transform.localScale;
 
         if (projectileRenderer != null)
         {
-            starterProjectileSprite =
-                projectileRenderer.sprite;
+            starterProjectileSprite = projectileRenderer.sprite;
         }
-
 
         ResetProjectileVisual();
     }
-
 
     private void OnEnable()
     {
         ResetRuntimeState();
     }
 
-
     private void OnDisable()
     {
         StopRigidbodyMovement();
-
         ClearTrail();
     }
 
-
-    // =========================================================
-    // Pool
-    // =========================================================
-
-    public void SetPool(
-        BulletPool pool)
+    public void SetPool(BulletPool pool)
     {
-        ownerPool =
-            pool;
-
-        hasPool =
-            ownerPool != null;
+        ownerPool = pool;
+        hasPool = ownerPool != null;
     }
 
-
     // =========================================================
-    // Initialize
+    // Original Initialize overloads -- keep all call signatures
     // =========================================================
 
-    public void Initialize(
-        Vector2 direction)
+    public void Initialize(Vector2 direction)
     {
         ResetRuntimeState();
-
-        SetMoveDirection(
-            direction
-        );
+        SetMoveDirection(direction);
     }
-
 
     public void Initialize(
         Vector2 direction,
@@ -219,16 +142,9 @@ public class Bullet : MonoBehaviour
         float newScaleMultiplier)
     {
         Initialize(
-            direction,
-            newSpeed,
-            newDamage,
-            newScaleMultiplier,
-            lifeTime,
-            ProjectileModifierSnapshot.Default,
-            null
-        );
+            direction, newSpeed, newDamage, newScaleMultiplier,
+            lifeTime, ProjectileModifierSnapshot.Default, null);
     }
-
 
     public void Initialize(
         Vector2 direction,
@@ -238,16 +154,9 @@ public class Bullet : MonoBehaviour
         float newLifeTime)
     {
         Initialize(
-            direction,
-            newSpeed,
-            newDamage,
-            newScaleMultiplier,
-            newLifeTime,
-            ProjectileModifierSnapshot.Default,
-            null
-        );
+            direction, newSpeed, newDamage, newScaleMultiplier,
+            newLifeTime, ProjectileModifierSnapshot.Default, null);
     }
-
 
     public void Initialize(
         Vector2 direction,
@@ -255,20 +164,12 @@ public class Bullet : MonoBehaviour
         int newDamage,
         float newScaleMultiplier,
         float newLifeTime,
-        ProjectileModifierSnapshot
-            newModifierSnapshot)
+        ProjectileModifierSnapshot newModifierSnapshot)
     {
         Initialize(
-            direction,
-            newSpeed,
-            newDamage,
-            newScaleMultiplier,
-            newLifeTime,
-            newModifierSnapshot,
-            null
-        );
+            direction, newSpeed, newDamage, newScaleMultiplier,
+            newLifeTime, newModifierSnapshot, null);
     }
-
 
     public void Initialize(
         Vector2 direction,
@@ -280,206 +181,104 @@ public class Bullet : MonoBehaviour
         WeaponEvolutionData newEvolutionVisualData)
     {
         ResetRuntimeState();
+        SetMoveDirection(direction);
+        SetSpeed(newSpeed);
+        SetDamage(newDamage);
+        SetScaleMultiplier(newScaleMultiplier);
+        SetLifeTime(newLifeTime);
 
+        modifierSnapshot = newModifierSnapshot;
+        currentEvolutionVisualData = newEvolutionVisualData;
+        ApplyProjectileVisual(currentEvolutionVisualData);
 
-        SetMoveDirection(
-            direction
-        );
-
-        SetSpeed(
-            newSpeed
-        );
-
-        SetDamage(
-            newDamage
-        );
-
-        SetScaleMultiplier(
-            newScaleMultiplier
-        );
-
-        SetLifeTime(
-            newLifeTime
-        );
-
-
-        modifierSnapshot =
-            newModifierSnapshot;
-
-
-        currentEvolutionVisualData =
-            newEvolutionVisualData;
-
-
-        ApplyProjectileVisual(
-            currentEvolutionVisualData
-        );
-
-
-        remainingPierceCount =
-            Mathf.Max(
-                0,
-                modifierSnapshot.PierceCount
-            );
+        remainingPierceCount = Mathf.Max(0, modifierSnapshot.PierceCount);
     }
-
 
     private void ResetRuntimeState()
     {
         elapsedLifeTime = 0f;
-
         isReturned = false;
-
-
-        modifierSnapshot =
-            ProjectileModifierSnapshot.Default;
-
-
+        modifierSnapshot = ProjectileModifierSnapshot.Default;
         remainingPierceCount = 0;
-
         directHitEnemyCount = 0;
-
-
         lastExplosionTargetCount = 0;
-
         lastExplosionDamage = 0;
-
-
         chainTriggerCount = 0;
-
         lastChainHitCount = 0;
-
         lastChainDamage = 0;
-
-
         lastSplitSpawnCount = 0;
-
         totalSplitSpawnCount = 0;
-
-
-        currentEvolutionVisualData =
-            null;
-
+        currentEvolutionVisualData = null;
 
         hitEnemies.Clear();
-
         explosionHitEnemies.Clear();
-
         chainVisitedEnemies.Clear();
 
-
         ResetProjectileVisual();
-
         StopRigidbodyMovement();
-
 
         if (bulletCollider != null)
         {
-            bulletCollider.enabled =
-                true;
+            bulletCollider.enabled = true;
         }
     }
 
-
     // =========================================================
-    // Projectile Visual
+    // Original projectile visual behavior
     // =========================================================
 
-    private void ApplyProjectileVisual(
-        WeaponEvolutionData evolutionData)
+    private void ApplyProjectileVisual(WeaponEvolutionData evolutionData)
     {
         if (projectileRenderer != null)
         {
-            if (evolutionData != null
-                && evolutionData
-                        .ProjectileSprite != null)
+            if (evolutionData != null && evolutionData.ProjectileSprite != null)
             {
-                projectileRenderer.sprite =
-                    evolutionData
-                        .ProjectileSprite;
+                projectileRenderer.sprite = evolutionData.ProjectileSprite;
             }
             else
             {
-                projectileRenderer.sprite =
-                    starterProjectileSprite;
+                projectileRenderer.sprite = starterProjectileSprite;
             }
         }
-
 
         if (trailRenderer == null)
         {
             return;
         }
 
-
         ClearTrail();
 
-
-        bool useTrail =
-            evolutionData != null
-            && evolutionData
-                .UseProjectileTrail;
-
-
-        trailRenderer.enabled =
-            useTrail;
-
-        trailRenderer.emitting =
-            useTrail;
-
+        bool useTrail = evolutionData != null && evolutionData.UseProjectileTrail;
+        trailRenderer.enabled = useTrail;
+        trailRenderer.emitting = useTrail;
 
         if (!useTrail)
         {
             return;
         }
 
-
-        trailRenderer.time =
-            evolutionData
-                .ProjectileTrailTime;
-
-        trailRenderer.startWidth =
-            evolutionData
-                .ProjectileTrailStartWidth;
-
-        trailRenderer.endWidth =
-            evolutionData
-                .ProjectileTrailEndWidth;
-
-        trailRenderer.startColor =
-            evolutionData
-                .ProjectileTrailStartColor;
-
-        trailRenderer.endColor =
-            evolutionData
-                .ProjectileTrailEndColor;
-
-
+        trailRenderer.time = evolutionData.ProjectileTrailTime;
+        trailRenderer.startWidth = evolutionData.ProjectileTrailStartWidth;
+        trailRenderer.endWidth = evolutionData.ProjectileTrailEndWidth;
+        trailRenderer.startColor = evolutionData.ProjectileTrailStartColor;
+        trailRenderer.endColor = evolutionData.ProjectileTrailEndColor;
         trailRenderer.Clear();
     }
-
 
     private void ResetProjectileVisual()
     {
         if (projectileRenderer != null)
         {
-            projectileRenderer.sprite =
-                starterProjectileSprite;
+            projectileRenderer.sprite = starterProjectileSprite;
         }
-
 
         if (trailRenderer != null)
         {
-            trailRenderer.emitting =
-                false;
-
+            trailRenderer.emitting = false;
             trailRenderer.Clear();
-
-            trailRenderer.enabled =
-                false;
+            trailRenderer.enabled = false;
         }
     }
-
 
     private void ClearTrail()
     {
@@ -488,35 +287,20 @@ public class Bullet : MonoBehaviour
             return;
         }
 
-
-        trailRenderer.emitting =
-            false;
-
+        trailRenderer.emitting = false;
         trailRenderer.Clear();
     }
 
-
-    // =========================================================
-    // Ignore Direct Hit
-    // =========================================================
-
-    public void IgnoreEnemyForDirectHit(
-        EnemyHealth enemyHealth)
+    public void IgnoreEnemyForDirectHit(EnemyHealth enemyHealth)
     {
-        if (enemyHealth == null)
+        if (enemyHealth != null)
         {
-            return;
+            hitEnemies.Add(enemyHealth);
         }
-
-
-        hitEnemies.Add(
-            enemyHealth
-        );
     }
 
-
     // =========================================================
-    // Movement
+    // Movement: Phase40 environment sweep before MovePosition
     // =========================================================
 
     private void Update()
@@ -526,210 +310,207 @@ public class Bullet : MonoBehaviour
             return;
         }
 
-
-        elapsedLifeTime +=
-            Time.deltaTime;
-
-
+        elapsedLifeTime += Time.deltaTime;
         if (elapsedLifeTime >= lifeTime)
         {
             ReturnToPool();
         }
     }
 
-
     private void FixedUpdate()
     {
-        if (isReturned
-            || rb == null)
+        if (isReturned || rb == null)
         {
             return;
         }
 
+        float movementDistance = speed * Time.fixedDeltaTime;
 
-        Vector2 nextPosition =
-            rb.position
-            + moveDirection
-            * speed
-            * Time.fixedDeltaTime;
-
-
-        rb.MovePosition(
-            nextPosition
-        );
-    }
-
-
-    private void SetMoveDirection(
-        Vector2 direction)
-    {
-        if (direction.sqrMagnitude
-            <= 0.0001f)
+        // Check both existing overlaps and obstacles along the full
+        // next movement. This prevents high-speed tunnelling.
+        if (stopOnEnvironment && IsEnvironmentInMovementPath(movementDistance))
         {
-            direction =
-                Vector2.right;
+            ReturnToPool();
+            return;
         }
 
+        Vector2 nextPosition = rb.position + moveDirection * movementDistance;
+        rb.MovePosition(nextPosition);
+    }
 
-        moveDirection =
-            direction.normalized;
+    private bool IsEnvironmentInMovementPath(float movementDistance)
+    {
+        if (environmentBlockingLayers.value == 0)
+        {
+            // Fail closed when this feature is enabled but the mask is missing.
+            return true;
+        }
 
+        ContactFilter2D filter = new ContactFilter2D();
+        filter.SetLayerMask(environmentBlockingLayers);
+        filter.useTriggers = false;
 
-        float angle =
-            Mathf.Atan2(
-                moveDirection.y,
-                moveDirection.x
-            )
+        // Covers bullets spawned with the muzzle inside a solid wall.
+        if (bulletCollider != null && bulletCollider.enabled)
+        {
+            int overlapCount = bulletCollider.OverlapCollider(
+                filter, environmentOverlapHits);
+
+            for (int i = 0; i < overlapCount; i++)
+            {
+                Collider2D hit = environmentOverlapHits[i];
+                if (hit != null && !hit.isTrigger)
+                {
+                    return true;
+                }
+            }
+        }
+
+        if (movementDistance <= 0f || moveDirection.sqrMagnitude <= 0.0001f)
+        {
+            return false;
+        }
+
+        int hitCount = rb.Cast(
+            moveDirection.normalized,
+            filter,
+            environmentCastHits,
+            movementDistance + environmentCastSkin);
+
+        for (int i = 0; i < hitCount; i++)
+        {
+            Collider2D hit = environmentCastHits[i].collider;
+            if (hit != null && !hit.isTrigger)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private bool IsSolidEnvironmentCollider(Collider2D collider)
+    {
+        return stopOnEnvironment
+            && collider != null
+            && !collider.isTrigger
+            && (environmentBlockingLayers.value & (1 << collider.gameObject.layer)) != 0;
+    }
+
+    private void SetMoveDirection(Vector2 direction)
+    {
+        if (direction.sqrMagnitude <= 0.0001f)
+        {
+            direction = Vector2.right;
+        }
+
+        moveDirection = direction.normalized;
+
+        float angle = Mathf.Atan2(moveDirection.y, moveDirection.x)
             * Mathf.Rad2Deg;
-
-
-        transform.rotation =
-            Quaternion.Euler(
-                0f,
-                0f,
-                angle
-            );
+        transform.rotation = Quaternion.Euler(0f, 0f, angle);
     }
 
-
-    public void SetSpeed(
-        float newSpeed)
+    public void SetSpeed(float newSpeed)
     {
-        speed =
-            Mathf.Max(
-                0.01f,
-                newSpeed
-            );
+        speed = Mathf.Max(0.01f, newSpeed);
     }
 
-
-    public void SetDamage(
-        int newDamage)
+    public void SetDamage(int newDamage)
     {
-        damage =
-            Mathf.Max(
-                1,
-                newDamage
-            );
+        damage = Mathf.Max(1, newDamage);
     }
 
-
-    public void SetLifeTime(
-        float newLifeTime)
+    public void SetLifeTime(float newLifeTime)
     {
-        lifeTime =
-            Mathf.Max(
-                0.01f,
-                newLifeTime
-            );
+        lifeTime = Mathf.Max(0.01f, newLifeTime);
     }
 
-
-    public void SetScaleMultiplier(
-        float newScaleMultiplier)
+    public void SetScaleMultiplier(float newScaleMultiplier)
     {
-        scaleMultiplier =
-            Mathf.Max(
-                0.01f,
-                newScaleMultiplier
-            );
-
-
-        transform.localScale =
-            originalScale
-            * scaleMultiplier;
+        scaleMultiplier = Mathf.Max(0.01f, newScaleMultiplier);
+        transform.localScale = originalScale * scaleMultiplier;
     }
-
 
     // =========================================================
-    // Direct Hit
+    // Direct hit: preserve original damage/synergy ordering
     // =========================================================
 
-    private void OnTriggerEnter2D(
-        Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (isReturned)
         {
             return;
         }
 
+        // Phase40: environment takes priority over enemy hits.
+        if (IsSolidEnvironmentCollider(other))
+        {
+            ReturnToPool();
+            return;
+        }
 
         if (!other.CompareTag("Enemy"))
         {
             return;
         }
 
-
-        EnemyHealth enemyHealth =
-            other.GetComponentInParent<
-                EnemyHealth>();
-
-
+        EnemyHealth enemyHealth = other.GetComponentInParent<EnemyHealth>();
         if (enemyHealth == null)
         {
             ReturnToPool();
-
             return;
         }
-
 
         if (enemyHealth.IsDead)
         {
             return;
         }
 
-
-        if (!hitEnemies.Add(
-                enemyHealth))
+        if (!hitEnemies.Add(enemyHealth))
         {
             return;
         }
 
-
-        directHitEnemyCount =
-            hitEnemies.Count;
-
-
-        enemyHealth.TakeDamage(
-            damage
-        );
-
+        directHitEnemyCount = hitEnemies.Count;
+        enemyHealth.TakeDamage(damage);
 
         if (AudioManager.Instance != null)
         {
-            AudioManager.Instance
-                .PlayEnemyHit();
+            AudioManager.Instance.PlayEnemyHit();
         }
 
-
         SpawnHitEffect();
-
-
         TriggerExplosion();
+        TriggerChainLightning(enemyHealth);
+        TriggerSplitShot(enemyHealth);
 
-        TriggerChainLightning(
-            enemyHealth
-        );
-
-        TriggerSplitShot(
-            enemyHealth
-        );
-
-
+        // Piercing only applies to enemies, never solid world walls.
         if (remainingPierceCount > 0)
         {
             remainingPierceCount--;
-
             return;
         }
-
 
         ReturnToPool();
     }
 
+    // Defensive fallback for a non-trigger environment collision.
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (isReturned || collision == null)
+        {
+            return;
+        }
+
+        if (IsSolidEnvironmentCollider(collision.collider))
+        {
+            ReturnToPool();
+        }
+    }
 
     // =========================================================
-    // Explosion
+    // Original Explosion mechanic
     // =========================================================
 
     private void TriggerExplosion()
@@ -739,130 +520,68 @@ public class Bullet : MonoBehaviour
             return;
         }
 
+        float radius = modifierSnapshot.ExplosionRadius;
+        float damageMultiplier = modifierSnapshot.ExplosionDamageMultiplier;
 
-        float radius =
-            modifierSnapshot
-                .ExplosionRadius;
-
-        float damageMultiplier =
-            modifierSnapshot
-                .ExplosionDamageMultiplier;
-
-
-        if (radius <= 0f
-            || damageMultiplier <= 0f)
+        if (radius <= 0f || damageMultiplier <= 0f)
         {
             return;
         }
 
-
-        int explosionDamage =
-            CalculateSecondaryDamage(
-                damageMultiplier
-            );
-
-
-        lastExplosionDamage =
-            explosionDamage;
-
-
+        int explosionDamage = CalculateSecondaryDamage(damageMultiplier);
+        lastExplosionDamage = explosionDamage;
         explosionHitEnemies.Clear();
 
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(
+            transform.position, radius);
 
-        Collider2D[] colliders =
-            Physics2D.OverlapCircleAll(
-                transform.position,
-                radius
-            );
-
-
-        foreach (Collider2D targetCollider
-                 in colliders)
+        foreach (Collider2D targetCollider in colliders)
         {
             if (targetCollider == null)
             {
                 continue;
             }
 
-
-            EnemyHealth target =
-                targetCollider
-                    .GetComponentInParent<
-                        EnemyHealth>();
-
-
-            if (target == null
-                || target.IsDead)
+            EnemyHealth target = targetCollider.GetComponentInParent<EnemyHealth>();
+            if (target == null || target.IsDead)
             {
                 continue;
             }
 
-
-            if (!explosionHitEnemies.Add(
-                    target))
+            if (!explosionHitEnemies.Add(target))
             {
                 continue;
             }
 
-
-            target.TakeDamage(
-                explosionDamage
-            );
+            target.TakeDamage(explosionDamage);
         }
 
-
-        lastExplosionTargetCount =
-            explosionHitEnemies.Count;
-
-
-        SpawnExplosionEffect(
-            transform.position,
-            radius
-        );
+        lastExplosionTargetCount = explosionHitEnemies.Count;
+        SpawnExplosionEffect(transform.position, radius);
     }
 
-
     // =========================================================
-    // Chain
+    // Original Chain Lightning mechanic
     // =========================================================
 
-    private void TriggerChainLightning(
-        EnemyHealth directHitTarget)
+    private void TriggerChainLightning(EnemyHealth directHitTarget)
     {
-        if (!modifierSnapshot
-                .ChainLightning)
+        if (!modifierSnapshot.ChainLightning)
         {
             return;
         }
 
+        int maxTriggerCount = Mathf.Max(
+            1, modifierSnapshot.MaxChainTriggerCount);
 
-        int maxTriggerCount =
-            Mathf.Max(
-                1,
-                modifierSnapshot
-                    .MaxChainTriggerCount
-            );
-
-
-        if (chainTriggerCount
-            >= maxTriggerCount)
+        if (chainTriggerCount >= maxTriggerCount)
         {
             return;
         }
 
-
-        int maximumChainCount =
-            modifierSnapshot
-                .ChainCount;
-
-        float chainRange =
-            modifierSnapshot
-                .ChainRange;
-
-        float damageMultiplier =
-            modifierSnapshot
-                .ChainDamageMultiplier;
-
+        int maximumChainCount = modifierSnapshot.ChainCount;
+        float chainRange = modifierSnapshot.ChainRange;
+        float damageMultiplier = modifierSnapshot.ChainDamageMultiplier;
 
         if (maximumChainCount <= 0
             || chainRange <= 0f
@@ -871,268 +590,123 @@ public class Bullet : MonoBehaviour
             return;
         }
 
-
         chainTriggerCount++;
-
-
         lastChainHitCount = 0;
-
-        lastChainDamage =
-            CalculateSecondaryDamage(
-                damageMultiplier
-            );
-
-
+        lastChainDamage = CalculateSecondaryDamage(damageMultiplier);
         chainVisitedEnemies.Clear();
-
 
         if (directHitTarget != null)
         {
-            chainVisitedEnemies.Add(
-                directHitTarget
-            );
+            chainVisitedEnemies.Add(directHitTarget);
         }
 
+        Vector2 currentOrigin = directHitTarget != null
+            ? (Vector2)directHitTarget.transform.position
+            : (Vector2)transform.position;
 
-        Vector2 currentOrigin =
-            directHitTarget != null
-                ? (Vector2)
-                    directHitTarget
-                        .transform.position
-                : (Vector2)
-                    transform.position;
-
-
-        for (int jumpIndex = 0;
-             jumpIndex < maximumChainCount;
-             jumpIndex++)
+        for (int jumpIndex = 0; jumpIndex < maximumChainCount; jumpIndex++)
         {
-            EnemyHealth nextTarget =
-                FindNearestChainTarget(
-                    currentOrigin,
-                    chainRange
-                );
-
+            EnemyHealth nextTarget = FindNearestChainTarget(
+                currentOrigin, chainRange);
 
             if (nextTarget == null)
             {
                 break;
             }
 
-
-            Vector2 nextPosition =
-                nextTarget
-                    .transform.position;
-
-
-            chainVisitedEnemies.Add(
-                nextTarget
-            );
-
-
-            nextTarget.TakeDamage(
-                lastChainDamage
-            );
-
-
-            SpawnChainLightningEffect(
-                currentOrigin,
-                nextPosition
-            );
-
-
+            Vector2 nextPosition = nextTarget.transform.position;
+            chainVisitedEnemies.Add(nextTarget);
+            nextTarget.TakeDamage(lastChainDamage);
+            SpawnChainLightningEffect(currentOrigin, nextPosition);
             lastChainHitCount++;
-
-            currentOrigin =
-                nextPosition;
+            currentOrigin = nextPosition;
         }
     }
 
-
-    private EnemyHealth
-        FindNearestChainTarget(
-            Vector2 origin,
-            float chainRange)
+    private EnemyHealth FindNearestChainTarget(Vector2 origin, float chainRange)
     {
-        Collider2D[] colliders =
-            Physics2D.OverlapCircleAll(
-                origin,
-                chainRange
-            );
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(origin, chainRange);
+        EnemyHealth nearestTarget = null;
+        float nearestDistance = float.MaxValue;
+        float maxDistance = chainRange * chainRange;
 
-
-        EnemyHealth nearestTarget =
-            null;
-
-        float nearestDistance =
-            float.MaxValue;
-
-        float maxDistance =
-            chainRange
-            * chainRange;
-
-
-        foreach (Collider2D targetCollider
-                 in colliders)
+        foreach (Collider2D targetCollider in colliders)
         {
             if (targetCollider == null)
             {
                 continue;
             }
 
-
             EnemyHealth candidate =
-                targetCollider
-                    .GetComponentInParent<
-                        EnemyHealth>();
-
+                targetCollider.GetComponentInParent<EnemyHealth>();
 
             if (candidate == null
                 || candidate.IsDead
-                || chainVisitedEnemies
-                    .Contains(candidate))
+                || chainVisitedEnemies.Contains(candidate))
             {
                 continue;
             }
 
+            Vector2 candidatePosition = candidate.transform.position;
+            float sqrDistance = (candidatePosition - origin).sqrMagnitude;
 
-            Vector2 candidatePosition =
-                candidate
-                    .transform.position;
-
-
-            float sqrDistance =
-                (candidatePosition - origin)
-                    .sqrMagnitude;
-
-
-            if (sqrDistance > maxDistance
-                || sqrDistance >= nearestDistance)
+            if (sqrDistance > maxDistance || sqrDistance >= nearestDistance)
             {
                 continue;
             }
 
-
-            nearestDistance =
-                sqrDistance;
-
-            nearestTarget =
-                candidate;
+            nearestDistance = sqrDistance;
+            nearestTarget = candidate;
         }
-
 
         return nearestTarget;
     }
 
-
     // =========================================================
-    // Split
+    // Original Split Shot mechanic, including child modifiers
     // =========================================================
 
-    private void TriggerSplitShot(
-        EnemyHealth directHitTarget)
+    private void TriggerSplitShot(EnemyHealth directHitTarget)
     {
-        lastSplitSpawnCount =
-            0;
+        lastSplitSpawnCount = 0;
 
-
-        if (!modifierSnapshot.SplitShot)
+        if (!modifierSnapshot.SplitShot || modifierSnapshot.Generation >= 1)
         {
             return;
         }
 
-
-        if (modifierSnapshot.Generation
-            >= 1)
+        int splitCount = modifierSnapshot.SplitCount;
+        if (splitCount <= 0 || ownerPool == null)
         {
             return;
         }
 
+        int childDamage = Mathf.Max(1, Mathf.RoundToInt(
+            damage * modifierSnapshot.ChildDamageMultiplier));
 
-        int splitCount =
-            modifierSnapshot.SplitCount;
+        float childSpeed = Mathf.Max(0.01f,
+            speed * modifierSnapshot.ChildSpeedMultiplier);
 
+        float childScale = Mathf.Max(0.01f,
+            scaleMultiplier * modifierSnapshot.ChildScaleMultiplier);
 
-        if (splitCount <= 0
-            || ownerPool == null)
+        float childLifeTime = Mathf.Max(0.01f,
+            lifeTime * modifierSnapshot.ChildLifeTimeMultiplier);
+
+        ProjectileModifierSnapshot childSnapshot = CreateChildModifierSnapshot();
+
+        for (int i = 0; i < splitCount; i++)
         {
-            return;
-        }
+            float angleOffset = GetSplitAngleOffset(splitCount, i);
+            Vector2 childDirection = RotateDirection(moveDirection, angleOffset);
 
-
-        int childDamage =
-            Mathf.Max(
-                1,
-                Mathf.RoundToInt(
-                    damage
-                    * modifierSnapshot
-                        .ChildDamageMultiplier
-                )
-            );
-
-
-        float childSpeed =
-            Mathf.Max(
-                0.01f,
-                speed
-                * modifierSnapshot
-                    .ChildSpeedMultiplier
-            );
-
-
-        float childScale =
-            Mathf.Max(
-                0.01f,
-                scaleMultiplier
-                * modifierSnapshot
-                    .ChildScaleMultiplier
-            );
-
-
-        float childLifeTime =
-            Mathf.Max(
-                0.01f,
-                lifeTime
-                * modifierSnapshot
-                    .ChildLifeTimeMultiplier
-            );
-
-
-        ProjectileModifierSnapshot
-            childSnapshot =
-                CreateChildModifierSnapshot();
-
-
-        for (int i = 0;
-             i < splitCount;
-             i++)
-        {
-            float angleOffset =
-                GetSplitAngleOffset(
-                    splitCount,
-                    i
-                );
-
-
-            Vector2 childDirection =
-                RotateDirection(
-                    moveDirection,
-                    angleOffset
-                );
-
-
-            Bullet childBullet =
-                ownerPool.GetBullet(
-                    transform.position,
-                    Quaternion.identity
-                );
-
+            Bullet childBullet = ownerPool.GetBullet(
+                transform.position, Quaternion.identity);
 
             if (childBullet == null)
             {
                 continue;
             }
-
 
             childBullet.Initialize(
                 childDirection,
@@ -1141,169 +715,83 @@ public class Bullet : MonoBehaviour
                 childScale,
                 childLifeTime,
                 childSnapshot,
-                currentEvolutionVisualData
-            );
+                currentEvolutionVisualData);
 
-
-            childBullet.IgnoreEnemyForDirectHit(
-                directHitTarget
-            );
-
-
+            childBullet.IgnoreEnemyForDirectHit(directHitTarget);
             lastSplitSpawnCount++;
-
             totalSplitSpawnCount++;
         }
     }
 
-
-    private ProjectileModifierSnapshot
-        CreateChildModifierSnapshot()
+    private ProjectileModifierSnapshot CreateChildModifierSnapshot()
     {
-        int childPierceCount =
-            Mathf.Max(
-                0,
-                modifierSnapshot.PierceCount
-                - 1
-            );
-
+        int childPierceCount = Mathf.Max(0, modifierSnapshot.PierceCount - 1);
 
         float childExplosionRadius =
-            modifierSnapshot
-                .ExplosionRadius
-            * modifierSnapshot
-                .ChildExplosionRadiusMultiplier;
-
+            modifierSnapshot.ExplosionRadius
+            * modifierSnapshot.ChildExplosionRadiusMultiplier;
 
         float childExplosionDamage =
-            modifierSnapshot
-                .ExplosionDamageMultiplier
-            * modifierSnapshot
-                .ChildExplosionDamageMultiplier;
+            modifierSnapshot.ExplosionDamageMultiplier
+            * modifierSnapshot.ChildExplosionDamageMultiplier;
 
-
-        return
-            new ProjectileModifierSnapshot(
-                childPierceCount,
-
-                modifierSnapshot.Explosive,
-                childExplosionRadius,
-                childExplosionDamage,
-
-                modifierSnapshot.ChainLightning,
-                modifierSnapshot.ChainCount,
-                modifierSnapshot.ChainRange,
-                modifierSnapshot
-                    .ChainDamageMultiplier,
-                modifierSnapshot
-                    .MaxChainTriggerCount,
-
-                false,
-                0,
-                0f,
-                0f,
-                0f,
-                0f,
-
-                modifierSnapshot
-                    .ChildExplosionRadiusMultiplier,
-                modifierSnapshot
-                    .ChildExplosionDamageMultiplier,
-
-                modifierSnapshot.Generation
-                + 1
-            );
-    }
-
-
-    private float GetSplitAngleOffset(
-        int splitCount,
-        int childIndex)
-    {
-        switch (splitCount)
-        {
-            case 2:
-                return childIndex == 0
-                    ? -15f
-                    : 15f;
-
-            case 3:
-                return
-                    (childIndex - 1)
-                    * 20f;
-
-            case 4:
-                return
-                    -30f
-                    + childIndex
-                    * 20f;
-
-            case 5:
-                return
-                    -40f
-                    + childIndex
-                    * 20f;
-
-            default:
-                return 0f;
-        }
-    }
-
-
-    private Vector2 RotateDirection(
-        Vector2 direction,
-        float angleDegrees)
-    {
-        float radians =
-            angleDegrees
-            * Mathf.Deg2Rad;
-
-
-        float cosine =
-            Mathf.Cos(radians);
-
-        float sine =
-            Mathf.Sin(radians);
-
-
-        Vector2 result =
-            new Vector2(
-                direction.x * cosine
-                - direction.y * sine,
-
-                direction.x * sine
-                + direction.y * cosine
-            );
-
-
-        return
-            result.sqrMagnitude
-            <= 0.0001f
-                ? Vector2.right
-                : result.normalized;
-    }
-
-
-    // =========================================================
-    // Shared Damage
-    // =========================================================
-
-    private int CalculateSecondaryDamage(
-        float multiplier)
-    {
-        return Mathf.Max(
-            1,
-            Mathf.RoundToInt(
-                damage
-                * multiplier
-            )
+        return new ProjectileModifierSnapshot(
+            childPierceCount,
+            modifierSnapshot.Explosive,
+            childExplosionRadius,
+            childExplosionDamage,
+            modifierSnapshot.ChainLightning,
+            modifierSnapshot.ChainCount,
+            modifierSnapshot.ChainRange,
+            modifierSnapshot.ChainDamageMultiplier,
+            modifierSnapshot.MaxChainTriggerCount,
+            false,
+            0,
+            0f,
+            0f,
+            0f,
+            0f,
+            modifierSnapshot.ChildExplosionRadiusMultiplier,
+            modifierSnapshot.ChildExplosionDamageMultiplier,
+            modifierSnapshot.Generation + 1
         );
     }
 
+    private float GetSplitAngleOffset(int splitCount, int childIndex)
+    {
+        switch (splitCount)
+        {
+            case 2: return childIndex == 0 ? -15f : 15f;
+            case 3: return (childIndex - 1) * 20f;
+            case 4: return -30f + childIndex * 20f;
+            case 5: return -40f + childIndex * 20f;
+            default: return 0f;
+        }
+    }
+
+    private Vector2 RotateDirection(Vector2 direction, float angleDegrees)
+    {
+        float radians = angleDegrees * Mathf.Deg2Rad;
+        float cosine = Mathf.Cos(radians);
+        float sine = Mathf.Sin(radians);
+
+        Vector2 result = new Vector2(
+            direction.x * cosine - direction.y * sine,
+            direction.x * sine + direction.y * cosine);
+
+        return result.sqrMagnitude <= 0.0001f
+            ? Vector2.right
+            : result.normalized;
+    }
 
     // =========================================================
-    // Return
+    // Original shared damage / return / effects
     // =========================================================
+
+    private int CalculateSecondaryDamage(float multiplier)
+    {
+        return Mathf.Max(1, Mathf.RoundToInt(damage * multiplier));
+    }
 
     public void ReturnToPool()
     {
@@ -1312,37 +800,24 @@ public class Bullet : MonoBehaviour
             return;
         }
 
-
-        isReturned =
-            true;
-
-
+        isReturned = true;
         ClearTrail();
-
         StopRigidbodyMovement();
-
 
         if (bulletCollider != null)
         {
-            bulletCollider.enabled =
-                false;
+            bulletCollider.enabled = false;
         }
-
 
         if (ownerPool != null)
         {
-            ownerPool.ReturnBullet(
-                this
-            );
+            ownerPool.ReturnBullet(this);
         }
         else
         {
-            Destroy(
-                gameObject
-            );
+            Destroy(gameObject);
         }
     }
-
 
     private void StopRigidbodyMovement()
     {
@@ -1351,56 +826,30 @@ public class Bullet : MonoBehaviour
             return;
         }
 
-
-        rb.velocity =
-            Vector2.zero;
-
-        rb.angularVelocity =
-            0f;
+        rb.velocity = Vector2.zero;
+        rb.angularVelocity = 0f;
     }
-
-
-    // =========================================================
-    // Effects
-    // =========================================================
 
     private void SpawnChainLightningEffect(
-        Vector2 startPosition,
-        Vector2 endPosition)
+        Vector2 startPosition, Vector2 endPosition)
     {
-        if (ChainLightningEffectPool.Instance
-            == null)
+        if (ChainLightningEffectPool.Instance == null)
         {
             return;
         }
 
-
-        ChainLightningEffectPool.Instance
-            .GetEffect(
-                startPosition,
-                endPosition
-            );
+        ChainLightningEffectPool.Instance.GetEffect(startPosition, endPosition);
     }
 
-
-    private void SpawnExplosionEffect(
-        Vector3 position,
-        float radius)
+    private void SpawnExplosionEffect(Vector3 position, float radius)
     {
-        if (ExplosionEffectPool.Instance
-            == null)
+        if (ExplosionEffectPool.Instance == null)
         {
             return;
         }
 
-
-        ExplosionEffectPool.Instance
-            .GetEffect(
-                position,
-                radius
-            );
+        ExplosionEffectPool.Instance.GetEffect(position, radius);
     }
-
 
     private void SpawnHitEffect()
     {
@@ -1409,14 +858,8 @@ public class Bullet : MonoBehaviour
             return;
         }
 
-
-        HitEffect effect =
-            HitEffectPool.Instance
-                .GetHitEffect(
-                    transform.position,
-                    Quaternion.identity
-                );
-
+        HitEffect effect = HitEffectPool.Instance.GetHitEffect(
+            transform.position, Quaternion.identity);
 
         if (effect != null)
         {
@@ -1424,77 +867,40 @@ public class Bullet : MonoBehaviour
         }
     }
 
-
     // =========================================================
-    // Debug
+    // Original debug and validation methods
     // =========================================================
 
-    [ContextMenu(
-        "Debug/Print Modifier Snapshot")]
+    [ContextMenu("Debug/Print Modifier Snapshot")]
     private void PrintModifierSnapshot()
     {
-        Debug.Log(
-            modifierSnapshot
-                .GetDebugText(),
-            this
-        );
+        Debug.Log(modifierSnapshot.GetDebugText(), this);
     }
 
-
-    [ContextMenu(
-        "Debug/Print Projectile Visual State")]
+    [ContextMenu("Debug/Print Projectile Visual State")]
     private void PrintProjectileVisualState()
     {
         Debug.Log(
             "===== Projectile Visual State =====\n"
             + "Evolution: "
             + (currentEvolutionVisualData != null
-                ? currentEvolutionVisualData
-                    .EvolutionType.ToString()
+                ? currentEvolutionVisualData.EvolutionType.ToString()
                 : "None")
-
             + "\nProjectile Sprite: "
-            + (projectileRenderer != null
-               && projectileRenderer.sprite != null
+            + (projectileRenderer != null && projectileRenderer.sprite != null
                 ? projectileRenderer.sprite.name
                 : "None")
-
             + "\nTrail Enabled: "
-            + (trailRenderer != null
-               && trailRenderer.enabled),
-            this
-        );
+            + (trailRenderer != null && trailRenderer.enabled),
+            this);
     }
-
-
-    // =========================================================
-    // Validation
-    // =========================================================
 
     private void OnValidate()
     {
-        speed =
-            Mathf.Max(
-                0.01f,
-                speed
-            );
-
-        lifeTime =
-            Mathf.Max(
-                0.01f,
-                lifeTime
-            );
-
-        damage =
-            Mathf.Max(
-                1,
-                damage
-            );
-
-        scaleMultiplier =
-            Mathf.Max(
-                0.01f,
-                scaleMultiplier
-            );
+        speed = Mathf.Max(0.01f, speed);
+        lifeTime = Mathf.Max(0.01f, lifeTime);
+        damage = Mathf.Max(1, damage);
+        scaleMultiplier = Mathf.Max(0.01f, scaleMultiplier);
+        environmentCastSkin = Mathf.Max(0f, environmentCastSkin);
     }
 }

@@ -17,8 +17,8 @@ MonoBehaviour:
   description: An extremely rare artifact of unknown alien origin.
   category: 2
   rarity: 4
-  icon: {fileID: 0}
-  worldSprite: {fileID: 0}
+  icon: {fileID: 21300000, guid: 5dacd041e896b904cb3a88a94a00ca21, type: 3}
+  worldSprite: {fileID: 21300000, guid: 70d12cac328cec64b82a26f980c2c891, type: 3}
   gridWidth: 2
   gridHeight: 2
   maxStackSize: 1

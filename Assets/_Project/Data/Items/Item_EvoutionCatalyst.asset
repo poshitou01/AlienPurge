@@ -17,8 +17,8 @@ MonoBehaviour:
   description: A rare catalyst capable of stabilizing advanced weapon evolution.
   category: 0
   rarity: 3
-  icon: {fileID: 0}
-  worldSprite: {fileID: 0}
+  icon: {fileID: 21300000, guid: 06dfc9f8bc742d54b8cedabab908e731, type: 3}
+  worldSprite: {fileID: 21300000, guid: b56c12cffd9e3cf4e8af93cbe0720070, type: 3}
   gridWidth: 1
   gridHeight: 2
   maxStackSize: 3

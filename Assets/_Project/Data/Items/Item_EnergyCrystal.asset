@@ -19,8 +19,8 @@ MonoBehaviour:
 '
   category: 0
   rarity: 2
-  icon: {fileID: 0}
-  worldSprite: {fileID: 0}
+  icon: {fileID: 21300000, guid: 3bc886ae846734542a76ee00e721eb35, type: 3}
+  worldSprite: {fileID: 21300000, guid: 7a703dadc62aff342a1cc23e166ec7b4, type: 3}
   gridWidth: 1
   gridHeight: 2
   maxStackSize: 5

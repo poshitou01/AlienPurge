@@ -17,8 +17,8 @@ MonoBehaviour:
   description: A military-grade injector designed for rapid emergency treatment.
   category: 0
   rarity: 0
-  icon: {fileID: 0}
-  worldSprite: {fileID: 0}
+  icon: {fileID: 21300000, guid: 3685908bf22513a48936a844b8064485, type: 3}
+  worldSprite: {fileID: 21300000, guid: d6c4c13eeccc6cd4ebc0d05380f407e4, type: 3}
   gridWidth: 1
   gridHeight: 1
   maxStackSize: 3

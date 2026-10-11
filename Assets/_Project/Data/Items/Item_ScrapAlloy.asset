@@ -17,8 +17,8 @@ MonoBehaviour:
   description: Common salvaged alloy used for field crafting and upgrades.
   category: 0
   rarity: 0
-  icon: {fileID: 0}
-  worldSprite: {fileID: 0}
+  icon: {fileID: 21300000, guid: 1ca40a2743f3fd94f86d897182a0525c, type: 3}
+  worldSprite: {fileID: 21300000, guid: 6f16c25acbf94f54b90c333060ee113d, type: 3}
   gridWidth: 1
   gridHeight: 1
   maxStackSize: 20

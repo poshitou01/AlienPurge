@@ -1,531 +1,504 @@
 using UnityEngine;
 
+/// <summary>
+/// AlienPurge - Safe Zone Controller (Phase40 Level01 opt-in).
+/// Legacy random mode is preserved for older scenes.
+/// Level01 mode uses designer-placed, reachable anchors and rejects
+/// any complete Safe Zone circle intersecting the predicted fog ribbon.
+/// </summary>
 [DisallowMultipleComponent]
 public class SafeZoneController : MonoBehaviour
 {
     // =========================================================
-    // References
+    // Original References and Settings (serialized names preserved)
     // =========================================================
 
     [Header("References")]
-
-    [Tooltip("玩家逻辑根对象。Safe Zone 判断使用 Player Root，而不是 VisualRoot。")]
-    [SerializeField]
-    private Transform player;
-
-    [Tooltip("提供正式地图世界范围。")]
-    [SerializeField]
-    private CameraFollow cameraFollow;
-
-
-    // =========================================================
-    // Safe Zone Settings
-    // =========================================================
+    [SerializeField] private Transform player;
+    [SerializeField] private CameraFollow cameraFollow;
 
     [Header("Safe Zone Settings")]
-
-    [Tooltip("安全区域半径。")]
     [Min(0.1f)]
-    [SerializeField]
-    private float safeZoneRadius = 8f;
+    [SerializeField] private float safeZoneRadius = 8f;
 
-
-    // =========================================================
-    // Relocation Rules
-    // =========================================================
-
-    [Header("Relocation Rules")]
-
-    [Tooltip("新安全区中心与玩家之间允许的最小距离。")]
+    [Header("Relocation Rules - Legacy Mode")]
     [Min(0f)]
-    [SerializeField]
-    private float minRelocationDistance = 10f;
-
-    [Tooltip("新安全区中心与玩家之间允许的最大距离。")]
+    [SerializeField] private float minRelocationDistance = 10f;
     [Min(0f)]
-    [SerializeField]
-    private float maxRelocationDistance = 20f;
-
-    [Tooltip("安全区最外缘与地图边界之间额外保留的距离。")]
+    [SerializeField] private float maxRelocationDistance = 20f;
     [Min(0f)]
-    [SerializeField]
-    private float mapPadding = 1f;
-
-    [Tooltip("随机寻找合法安全区位置时允许的最大尝试次数。")]
+    [SerializeField] private float mapPadding = 1f;
     [Min(1)]
-    [SerializeField]
-    private int maxGenerationAttempts = 24;
-
+    [SerializeField] private int maxGenerationAttempts = 24;
 
     // =========================================================
-    // Runtime Debug
+    // Level01 - NEW, OPT-IN ONLY
+    // =========================================================
+
+    [Header("Phase40 Level01 - Fog Aware Generation")]
+    [Tooltip("OFF = original random + original fallback. " +
+             "ON = only place Safe Zones at valid Level01 anchors.")]
+    [SerializeField] private bool useLevel01FogAwareAnchors = false;
+
+    [Tooltip("The existing ToxicFogAreaController on CargoYard_FogRoute.")]
+    [SerializeField] private ToxicFogAreaController toxicFogArea;
+
+    [Tooltip("The existing ToxicFogRouteController on CargoYard_FogRoute.")]
+    [SerializeField] private ToxicFogRouteController toxicFogRoute;
+
+    [Tooltip("Ordered Route_00 ... Route_05 ToxicFogCrossSection components.")]
+    [SerializeField]
+    private ToxicFogCrossSection[] fogSections =
+        new ToxicFogCrossSection[0];
+
+    [Tooltip("Designer-placed, accessible Safe Zone CENTER points. " +
+             "At least 3 are recommended. NO random fallback in Level01 mode.")]
+    [SerializeField]
+    private Transform[] level01SafeZoneAnchors =
+        new Transform[0];
+
+    [Tooltip("How far the fog can travel during Warning + Active + margin, " +
+             "in world units. At 0.35 units/s for 26s use at least 9.1; " +
+             "11 is a reasonable starting value. Update if fog speed changes.")]
+    [Min(0f)]
+    [SerializeField] private float fogFutureTravelBuffer = 11f;
+
+    [Tooltip("Extra separation between the entire Safe Zone circle and " +
+             "the predicted Toxic Fog coverage, in world units.")]
+    [Min(0f)]
+    [SerializeField] private float fogSeparationPadding = 0.5f;
+
+    [Tooltip("Avoid centers behind the Player relative to the route exit.")]
+    [SerializeField] private bool requireForwardAnchor = true;
+
+    [Tooltip("Allowed slight backtracking in the direction-to-exit test.")]
+    [Min(0f)]
+    [SerializeField] private float allowedBacktrackDistance = 1f;
+
+    [Tooltip("Ignore Safe Zone anchors farther away than this from Player.")]
+    [Min(1f)]
+    [SerializeField] private float anchorMaxPlayerDistance = 28f;
+
+    [Tooltip("Check the CENTER of each anchor is clear of Environment walls. " +
+             "This is not a navigation path test; anchors must be placed on " +
+             "confirmed reachable ground manually.")]
+    [SerializeField] private bool checkAnchorCenterForWalls = true;
+
+    [SerializeField] private LayerMask environmentBlockingLayers = 1 << 7;
+    [Min(0.01f)]
+    [SerializeField] private float anchorCenterClearanceRadius = 0.4f;
+
+    // =========================================================
+    // Runtime Debug - Original Fields Preserved
     // =========================================================
 
     [Header("Runtime Debug")]
+    [SerializeField] private Vector2 currentCenter;
+    [SerializeField] private bool hasActiveZone;
+    [SerializeField] private int lastGenerationAttemptCount;
+    [SerializeField] private bool usedFallbackLastGeneration;
+    [SerializeField] private float lastPlayerToZoneDistance;
 
-    [SerializeField]
-    private Vector2 currentCenter;
+    [Header("Phase40 Runtime Debug")]
+    [SerializeField] private int rejectedByFog;
+    [SerializeField] private int rejectedByBounds;
+    [SerializeField] private int rejectedByWalls;
+    [SerializeField] private int rejectedByDistanceOrDirection;
+    [SerializeField] private float lastPredictedFogDistance;
+    [SerializeField] private string lastGenerationResult = "Not generated yet";
 
-    [SerializeField]
-    private bool hasActiveZone;
-
-    [SerializeField]
-    private int lastGenerationAttemptCount;
-
-    [SerializeField]
-    private bool usedFallbackLastGeneration;
-
-    [SerializeField]
-    private float lastPlayerToZoneDistance;
-
-    
-    // =========================================================
-    // Public Read Only State
-    // =========================================================
-
-    public Vector2 CurrentCenter =>
-        currentCenter;
-
-    public float Radius =>
-        safeZoneRadius;
-
-    public bool HasActiveZone =>
-        hasActiveZone;
-
-
-    // =========================================================
-    // Unity Lifecycle
-    // =========================================================
+    // IMPORTANT: these public APIs are used by Storm Damage / HUD.
+    public Vector2 CurrentCenter => currentCenter;
+    public float Radius => safeZoneRadius;
+    public bool HasActiveZone => hasActiveZone;
 
     private void Awake()
     {
         ResolveReferences();
     }
 
-
     private void OnValidate()
     {
-        safeZoneRadius =
-            Mathf.Max(
-                0.1f,
-                safeZoneRadius
-            );
-
-        minRelocationDistance =
-            Mathf.Max(
-                0f,
-                minRelocationDistance
-            );
-
-        maxRelocationDistance =
-            Mathf.Max(
-                minRelocationDistance,
-                maxRelocationDistance
-            );
-
-        mapPadding =
-            Mathf.Max(
-                0f,
-                mapPadding
-            );
-
-        maxGenerationAttempts =
-            Mathf.Max(
-                1,
-                maxGenerationAttempts
-            );
+        safeZoneRadius = Mathf.Max(0.1f, safeZoneRadius);
+        minRelocationDistance = Mathf.Max(0f, minRelocationDistance);
+        maxRelocationDistance = Mathf.Max(
+            minRelocationDistance, maxRelocationDistance);
+        mapPadding = Mathf.Max(0f, mapPadding);
+        maxGenerationAttempts = Mathf.Max(1, maxGenerationAttempts);
+        fogFutureTravelBuffer = Mathf.Max(0f, fogFutureTravelBuffer);
+        fogSeparationPadding = Mathf.Max(0f, fogSeparationPadding);
+        allowedBacktrackDistance = Mathf.Max(0f, allowedBacktrackDistance);
+        anchorMaxPlayerDistance = Mathf.Max(1f, anchorMaxPlayerDistance);
+        anchorCenterClearanceRadius = Mathf.Max(0.01f,
+            anchorCenterClearanceRadius);
     }
-
-
-    // =========================================================
-    // References
-    // =========================================================
 
     private void ResolveReferences()
     {
         if (player == null)
         {
-            GameObject playerObject =
-                GameObject.FindGameObjectWithTag(
-                    "Player"
-                );
-
-            if (playerObject != null)
-            {
-                player =
-                    playerObject.transform;
-            }
+            GameObject obj = GameObject.FindGameObjectWithTag("Player");
+            if (obj != null) player = obj.transform;
         }
 
-        if (cameraFollow == null)
-        {
-            cameraFollow =
-                CameraFollow.Instance;
-        }
+        if (cameraFollow == null) cameraFollow = CameraFollow.Instance;
     }
 
-
     // =========================================================
-    // Safe Zone Generation
+    // Public Entry Point - Preserved
     // =========================================================
 
     public bool GenerateSafeZone()
     {
         ResolveReferences();
+        ResetGenerationDebug();
 
-        if (player == null)
+        if (player == null || cameraFollow == null)
         {
-            Debug.LogWarning(
-                "SafeZoneController: "
-                + "找不到 Player，"
-                + "无法生成安全区域。",
-                this
-            );
-
+            lastGenerationResult = "Missing Player or CameraFollow";
+            Debug.LogWarning("SafeZoneController: " + lastGenerationResult, this);
             return false;
         }
 
-        if (cameraFollow == null)
+        Vector2 allowedMin;
+        Vector2 allowedMax;
+        if (!TryGetAllowedBounds(out allowedMin, out allowedMax))
         {
-            Debug.LogWarning(
-                "SafeZoneController: "
-                + "找不到 CameraFollow，"
-                + "无法读取地图边界。",
-                this
-            );
-
+            lastGenerationResult = "Map too small for Safe Zone radius";
+            Debug.LogWarning("SafeZoneController: " + lastGenerationResult, this);
             return false;
         }
 
+        if (useLevel01FogAwareAnchors)
+            return GenerateLevel01SafeZone(allowedMin, allowedMax);
 
-        Vector2 mapMin =
-            cameraFollow.MapMin;
+        // IMPORTANT: Legacy mode follows the original random algorithm
+        // and retains its map-center fallback for older Day01 scenes.
+        return GenerateLegacySafeZone(allowedMin, allowedMax);
+    }
 
-        Vector2 mapMax =
-            cameraFollow.MapMax;
+    private bool TryGetAllowedBounds(out Vector2 allowedMin,
+        out Vector2 allowedMax)
+    {
+        float edge = safeZoneRadius + mapPadding;
+        allowedMin = cameraFollow.MapMin + Vector2.one * edge;
+        allowedMax = cameraFollow.MapMax - Vector2.one * edge;
+        return allowedMin.x <= allowedMax.x &&
+               allowedMin.y <= allowedMax.y;
+    }
 
+    // =========================================================
+    // Original Day01 Behavior (opt-in OFF)
+    // =========================================================
 
-        // -----------------------------------------------------
-        // Safe Zone 的“中心”不能直接跑到 Map Bounds。
-        //
-        // 必须额外扣除：
-        // Safe Zone Radius + Padding
-        //
-        // 这样才能保证整个圆都处于地图内部。
-        // -----------------------------------------------------
+    private bool GenerateLegacySafeZone(Vector2 allowedMin,
+        Vector2 allowedMax)
+    {
+        Vector2 playerPosition = player.position;
+        float minDist = Mathf.Max(0f, minRelocationDistance);
+        float maxDist = Mathf.Max(minDist, maxRelocationDistance);
 
-        float requiredEdgeDistance =
-            safeZoneRadius
-            + mapPadding;
-
-
-        Vector2 allowedCenterMin =
-            mapMin
-            + Vector2.one
-            * requiredEdgeDistance;
-
-        Vector2 allowedCenterMax =
-            mapMax
-            - Vector2.one
-            * requiredEdgeDistance;
-
-
-        if (allowedCenterMin.x
-                > allowedCenterMax.x
-            || allowedCenterMin.y
-                > allowedCenterMax.y)
+        for (int i = 0; i < maxGenerationAttempts; i++)
         {
-            Debug.LogWarning(
-                "SafeZoneController: "
-                + "地图范围不足以容纳当前安全区半径。"
-                + "\nMap Min: "
-                + mapMin
-                + "\nMap Max: "
-                + mapMax
-                + "\nSafe Zone Radius: "
-                + safeZoneRadius
-                + "\nPadding: "
-                + mapPadding,
-                this
-            );
-
-            return false;
-        }
-
-
-        Vector2 playerPosition =
-            player.position;
-
-
-        float safeMinDistance =
-            Mathf.Max(
-                0f,
-                minRelocationDistance
-            );
-
-        float safeMaxDistance =
-            Mathf.Max(
-                safeMinDistance,
-                maxRelocationDistance
-            );
-
-
-        lastGenerationAttemptCount = 0;
-        usedFallbackLastGeneration = false;
-
-
-        // -----------------------------------------------------
-        // 有限随机尝试。
-        //
-        // 不允许 while(true)，
-        // 防止特殊地图位置导致无限循环。
-        // -----------------------------------------------------
-
-        for (int i = 0;
-             i < maxGenerationAttempts;
-             i++)
-        {
-            lastGenerationAttemptCount =
-                i + 1;
-
-
-            float angle =
-                Random.Range(
-                    0f,
-                    Mathf.PI * 2f
-                );
-
-
-            // 使用平方距离随机，
-            // 让 10~20 范围内的二维面积分布更自然。
-            float minDistanceSquared =
-                safeMinDistance
-                * safeMinDistance;
-
-            float maxDistanceSquared =
-                safeMaxDistance
-                * safeMaxDistance;
-
-
-            float distance =
-                Mathf.Sqrt(
-                    Random.Range(
-                        minDistanceSquared,
-                        maxDistanceSquared
-                    )
-                );
-
-
-            Vector2 direction =
-                new Vector2(
-                    Mathf.Cos(angle),
-                    Mathf.Sin(angle)
-                );
-
-
-            Vector2 candidateCenter =
-                playerPosition
-                + direction * distance;
-
-
-            if (!IsCenterInsideAllowedBounds(
-                    candidateCenter,
-                    allowedCenterMin,
-                    allowedCenterMax
-                ))
-            {
+            lastGenerationAttemptCount = i + 1;
+            float angle = Random.Range(0f, Mathf.PI * 2f);
+            float minSq = minDist * minDist;
+            float maxSq = maxDist * maxDist;
+            float distance = Mathf.Sqrt(Random.Range(minSq, maxSq));
+            Vector2 direction = new Vector2(
+                Mathf.Cos(angle), Mathf.Sin(angle));
+            Vector2 center = playerPosition + direction * distance;
+            if (!IsCenterInsideAllowedBounds(center, allowedMin, allowedMax))
                 continue;
-            }
 
-
-            ApplySafeZoneCenter(
-                candidateCenter,
-                playerPosition
-            );
-
-
-            Debug.Log(
-                "===== Safe Zone Generated ====="
-                + "\nCenter: "
-                + currentCenter
-                + "\nRadius: "
-                + safeZoneRadius.ToString("F2")
-                + "\nPlayer Distance: "
-                + lastPlayerToZoneDistance.ToString("F2")
-                + "\nAttempts: "
-                + lastGenerationAttemptCount
-                + "\nFallback: False",
-                this
-            );
-
-
+            ApplySafeZoneCenter(center, playerPosition);
+            lastGenerationResult = "Legacy random";
+            Debug.Log("===== Safe Zone Generated =====\nCenter: " +
+                currentCenter + "\nRadius: " + safeZoneRadius.ToString("F2") +
+                "\nAttempts: " + lastGenerationAttemptCount +
+                "\nFallback: False", this);
             return true;
         }
 
-
-        // -----------------------------------------------------
-        // Fallback
-        //
-        // 如果随机 24 次仍然没有成功，
-        // 朝地图中心方向寻找一个确定位置。
-        //
-        // Fallback 首先保证：
-        // “安全区一定完整位于地图内部”。
-        //
-        // 极端边缘情况下，
-        // 玩家距离规则允许退居第二优先级。
-        // -----------------------------------------------------
-
         usedFallbackLastGeneration = true;
-
-
-        Vector2 allowedMapCenter =
-            (
-                allowedCenterMin
-                + allowedCenterMax
-            ) * 0.5f;
-
-
-        Vector2 fallbackDirection =
-            allowedMapCenter
-            - playerPosition;
-
-
-        if (fallbackDirection.sqrMagnitude
-            < 0.0001f)
-        {
-            fallbackDirection =
-                Vector2.right;
-        }
+        Vector2 mapCenter = (allowedMin + allowedMax) * 0.5f;
+        Vector2 directionFallback = mapCenter - playerPosition;
+        if (directionFallback.sqrMagnitude < 0.0001f)
+            directionFallback = Vector2.right;
         else
-        {
-            fallbackDirection.Normalize();
-        }
+            directionFallback.Normalize();
 
+        float fallbackDistance = (minDist + maxDist) * 0.5f;
+        Vector2 fallback = playerPosition +
+                           directionFallback * fallbackDistance;
+        fallback.x = Mathf.Clamp(fallback.x, allowedMin.x, allowedMax.x);
+        fallback.y = Mathf.Clamp(fallback.y, allowedMin.y, allowedMax.y);
 
-        float fallbackDistance =
-            (
-                safeMinDistance
-                + safeMaxDistance
-            ) * 0.5f;
-
-
-        Vector2 fallbackCenter =
-            playerPosition
-            + fallbackDirection
-            * fallbackDistance;
-
-
-        fallbackCenter.x =
-            Mathf.Clamp(
-                fallbackCenter.x,
-                allowedCenterMin.x,
-                allowedCenterMax.x
-            );
-
-        fallbackCenter.y =
-            Mathf.Clamp(
-                fallbackCenter.y,
-                allowedCenterMin.y,
-                allowedCenterMax.y
-            );
-
-
-        ApplySafeZoneCenter(
-            fallbackCenter,
-            playerPosition
-        );
-
-
-        Debug.LogWarning(
-            "===== Safe Zone Fallback Used ====="
-            + "\nCenter: "
-            + currentCenter
-            + "\nRadius: "
-            + safeZoneRadius.ToString("F2")
-            + "\nPlayer Distance: "
-            + lastPlayerToZoneDistance.ToString("F2")
-            + "\nRandom Attempts: "
-            + lastGenerationAttemptCount,
-            this
-        );
-
-
+        ApplySafeZoneCenter(fallback, playerPosition);
+        lastGenerationResult = "Legacy map-center fallback";
+        Debug.LogWarning("===== Safe Zone Fallback Used =====\nCenter: " +
+            currentCenter + "\nRadius: " + safeZoneRadius.ToString("F2") +
+            "\nRandom Attempts: " + lastGenerationAttemptCount,
+            this);
         return true;
     }
 
-
-    private void ApplySafeZoneCenter(
-        Vector2 center,
-        Vector2 playerPosition
-    )
-    {
-        currentCenter = center;
-
-        hasActiveZone = true;
-
-        lastPlayerToZoneDistance =
-            Vector2.Distance(
-                playerPosition,
-                currentCenter
-            );
-    }
-
-
-    private bool IsCenterInsideAllowedBounds(
-        Vector2 center,
-        Vector2 allowedMin,
-        Vector2 allowedMax
-    )
-    {
-        return center.x >= allowedMin.x
-            && center.x <= allowedMax.x
-            && center.y >= allowedMin.y
-            && center.y <= allowedMax.y;
-    }
-
-
     // =========================================================
-    // Safe Check
+    // Level01 Generation - NO HAZARDOUS FALLBACK
     // =========================================================
 
-    public bool IsPositionSafe(
-        Vector2 worldPosition
-    )
+    private bool GenerateLevel01SafeZone(Vector2 allowedMin,
+        Vector2 allowedMax)
     {
-        // 没有启用安全区域时，
-        // 世界环境处于普通状态，因此视为安全。
-        if (!hasActiveZone)
+        // Misconfigured dependencies must NOT silently revert to unsafe random.
+        if (toxicFogArea == null || !toxicFogArea.GeometryIsValid ||
+            toxicFogRoute == null || !ValidateFogSections() ||
+            level01SafeZoneAnchors == null ||
+            level01SafeZoneAnchors.Length == 0)
         {
+            ClearSafeZone();
+            lastGenerationResult = "Level01 dependencies/anchors missing";
+            Debug.LogWarning("[SafeZone Level01] " + lastGenerationResult +
+                ". Storm will skip this wave instead of spawning " +
+                "an unsafe Safe Zone.", this);
+            return false;
+        }
+
+        float predicted = Mathf.Clamp(
+            toxicFogRoute.DistanceTravelled + fogFutureTravelBuffer,
+            0f, toxicFogRoute.TotalRouteDistance);
+        lastPredictedFogDistance = predicted;
+
+        // Rotate the search order for variety, but use ONLY designer anchors.
+        int count = level01SafeZoneAnchors.Length;
+        int startIndex = Random.Range(0, count);
+        for (int attempt = 0; attempt < count; attempt++)
+        {
+            lastGenerationAttemptCount = attempt + 1;
+            Transform anchor = level01SafeZoneAnchors[
+                (startIndex + attempt) % count];
+            if (anchor == null) continue;
+            Vector2 candidate = anchor.position;
+            if (!IsCenterInsideAllowedBounds(candidate, allowedMin, allowedMax))
+            {
+                rejectedByBounds++;
+                continue;
+            }
+            if (!IsWithinForwardReach(candidate))
+            {
+                rejectedByDistanceOrDirection++;
+                continue;
+            }
+            if (checkAnchorCenterForWalls &&
+                Physics2D.OverlapCircle(candidate,
+                    anchorCenterClearanceRadius,
+                    environmentBlockingLayers) != null)
+            {
+                rejectedByWalls++;
+                continue;
+            }
+
+            // Circle-vs-polygon intersection: reject even PARTIAL overlap.
+            if (CircleIntersectsPredictedFog(candidate,
+                    safeZoneRadius + fogSeparationPadding, predicted))
+            {
+                rejectedByFog++;
+                continue;
+            }
+
+            ApplySafeZoneCenter(candidate, player.position);
+            lastGenerationResult = "Level01 valid anchor: " + anchor.name;
+            Debug.Log("===== Level01 Safe Zone Generated =====" +
+                "\nAnchor: " + anchor.name +
+                "\nCenter: " + currentCenter +
+                "\nRadius: " + safeZoneRadius.ToString("F2") +
+                "\nPredicted Fog Distance: " +
+                predicted.ToString("F2") +
+                "\nSafe Margin: " + fogSeparationPadding.ToString("F2"),
+                this);
             return true;
         }
 
-
-        float distanceSquared =
-            (
-                worldPosition
-                - currentCenter
-            ).sqrMagnitude;
-
-
-        float radiusSquared =
-            safeZoneRadius
-            * safeZoneRadius;
-
-
-        return distanceSquared
-            <= radiusSquared;
+        // Critical: NEVER use the old fallback when the fog-aware mode is ON.
+        // PlanetStormController already handles GenerateSafeZone()==false.
+        ClearSafeZone();
+        lastGenerationResult = "No valid Level01 Safe Zone anchor";
+        Debug.LogWarning("[SafeZone Level01] No safe anchor. " +
+            "Storm will skip this wave. " +
+            "Rejected Fog=" + rejectedByFog +
+            ", Bounds=" + rejectedByBounds +
+            ", Walls=" + rejectedByWalls +
+            ", Direction/Distance=" + rejectedByDistanceOrDirection +
+            ". Consider smaller radius, more forward anchors, or " +
+            "adjusting Storm/Fog timings.", this);
+        return false;
     }
 
+    private bool IsWithinForwardReach(Vector2 candidate)
+    {
+        Vector2 fromPlayer = candidate - (Vector2)player.position;
+        if (fromPlayer.magnitude > anchorMaxPlayerDistance)
+            return false;
+        if (!requireForwardAnchor) return true;
+
+        Vector2 goal = fogSections[fogSections.Length - 1].Center;
+        Vector2 towardExit = goal - (Vector2)player.position;
+        if (towardExit.sqrMagnitude < 0.0001f) return true;
+        return Vector2.Dot(fromPlayer, towardExit.normalized) >=
+               -allowedBacktrackDistance;
+    }
+
+    private bool ValidateFogSections()
+    {
+        if (fogSections == null || fogSections.Length < 2) return false;
+        for (int i = 0; i < fogSections.Length; i++)
+            if (fogSections[i] == null || !fogSections[i].IsValid)
+                return false;
+
+        float measured = 0f;
+        for (int i = 0; i < fogSections.Length - 1; i++)
+            measured += Vector2.Distance(fogSections[i].Center,
+                                         fogSections[i + 1].Center);
+        return Mathf.Abs(measured - toxicFogRoute.TotalRouteDistance) < 0.1f;
+    }
+
+    [ContextMenu("Debug/Assign Fog Sections From Route Children")]
+    private void AssignFogSectionsFromRouteChildren()
+    {
+        if (toxicFogRoute == null)
+        {
+            Debug.LogWarning("Assign Toxic Fog Route first.", this);
+            return;
+        }
+        Transform root = toxicFogRoute.transform;
+        fogSections = new ToxicFogCrossSection[root.childCount];
+        for (int i = 0; i < root.childCount; i++)
+            fogSections[i] = root.GetChild(i)
+                .GetComponent<ToxicFogCrossSection>();
+    }
+
+    // =========================================================
+    // Exact circle-vs-covered-quadrilateral geometry
+    // =========================================================
+
+    private bool CircleIntersectsPredictedFog(Vector2 circleCenter,
+        float radius, float distance)
+    {
+        float remaining = distance;
+        for (int i = 0; i < fogSections.Length - 1; i++)
+        {
+            if (remaining <= 0.00001f) return false;
+
+            ToxicFogCrossSection a = fogSections[i];
+            ToxicFogCrossSection b = fogSections[i + 1];
+            float length = Vector2.Distance(a.Center, b.Center);
+            if (length <= 0.00001f) continue;
+            float t = Mathf.Clamp01(remaining / length);
+
+            // Same four corners as ToxicFogAreaController's ribbon.
+            Vector2 p0 = a.LeftPosition;
+            Vector2 p1 = a.RightPosition;
+            Vector2 p2 = Vector2.Lerp(a.RightPosition, b.RightPosition, t);
+            Vector2 p3 = Vector2.Lerp(a.LeftPosition, b.LeftPosition, t);
+
+            if (CircleIntersectsQuad(circleCenter, radius,
+                                     p0, p1, p2, p3))
+                return true;
+            remaining -= length;
+        }
+        return false;
+    }
+
+    private static bool CircleIntersectsQuad(Vector2 center, float radius,
+        Vector2 a, Vector2 b, Vector2 c, Vector2 d)
+    {
+        if (PointInQuad(center, a, b, c, d)) return true;
+        float rSq = radius * radius;
+        if ((center - a).sqrMagnitude <= rSq ||
+            (center - b).sqrMagnitude <= rSq ||
+            (center - c).sqrMagnitude <= rSq ||
+            (center - d).sqrMagnitude <= rSq)
+            return true;
+
+        return DistanceSquaredToSegment(center, a, b) <= rSq ||
+               DistanceSquaredToSegment(center, b, c) <= rSq ||
+               DistanceSquaredToSegment(center, c, d) <= rSq ||
+               DistanceSquaredToSegment(center, d, a) <= rSq;
+    }
+
+    private static float DistanceSquaredToSegment(Vector2 p,
+        Vector2 a, Vector2 b)
+    {
+        Vector2 ab = b - a;
+        float lengthSquared = ab.sqrMagnitude;
+        if (lengthSquared < 0.0000001f) return (p - a).sqrMagnitude;
+        float t = Mathf.Clamp01(Vector2.Dot(p - a, ab) / lengthSquared);
+        return (p - (a + t * ab)).sqrMagnitude;
+    }
+
+    private static bool PointInQuad(Vector2 p,
+        Vector2 a, Vector2 b, Vector2 c, Vector2 d)
+    {
+        bool inside = false;
+        Vector2 previous = d;
+        for (int i = 0; i < 4; i++)
+        {
+            Vector2 current = i == 0 ? a : i == 1 ? b : i == 2 ? c : d;
+            if ((current.y > p.y) != (previous.y > p.y))
+            {
+                float x = current.x + (p.y - current.y) *
+                          (previous.x - current.x) /
+                          (previous.y - current.y);
+                if (p.x < x) inside = !inside;
+            }
+            previous = current;
+        }
+        return inside;
+    }
+
+    // =========================================================
+    // Original Public API / Helpers
+    // =========================================================
+
+    private void ApplySafeZoneCenter(Vector2 center, Vector2 playerPosition)
+    {
+        currentCenter = center;
+        hasActiveZone = true;
+        lastPlayerToZoneDistance = Vector2.Distance(playerPosition, center);
+    }
+
+    private static bool IsCenterInsideAllowedBounds(Vector2 center,
+        Vector2 allowedMin, Vector2 allowedMax)
+    {
+        return center.x >= allowedMin.x && center.x <= allowedMax.x &&
+               center.y >= allowedMin.y && center.y <= allowedMax.y;
+    }
+
+    public bool IsPositionSafe(Vector2 worldPosition)
+    {
+        if (!hasActiveZone) return true;
+        return ((Vector2)worldPosition - currentCenter).sqrMagnitude <=
+               safeZoneRadius * safeZoneRadius;
+    }
 
     public void ClearSafeZone()
     {
         hasActiveZone = false;
     }
 
+    private void ResetGenerationDebug()
+    {
+        lastGenerationAttemptCount = 0;
+        usedFallbackLastGeneration = false;
+        rejectedByFog = 0;
+        rejectedByBounds = 0;
+        rejectedByWalls = 0;
+        rejectedByDistanceOrDirection = 0;
+        lastPredictedFogDistance = 0f;
+    }
 
     // =========================================================
-    // Debug
+    // Original Context Menus - Preserved
     // =========================================================
 
     [ContextMenu("Test Generate Safe Zone")]
@@ -533,47 +506,37 @@ public class SafeZoneController : MonoBehaviour
     {
         if (!Application.isPlaying)
         {
-            Debug.LogWarning(
-                "SafeZoneController: "
-                + "请进入 Play Mode 后测试 Safe Zone。",
-                this
-            );
-
+            Debug.LogWarning("SafeZoneController: 请进入 Play Mode 后测试 Safe Zone。", this);
             return;
         }
-
-
         GenerateSafeZone();
     }
-
 
     [ContextMenu("Test Clear Safe Zone")]
     private void TestClearSafeZone()
     {
         ClearSafeZone();
-
-        Debug.Log(
-            "Safe Zone 已清除。",
-            this
-        );
+        Debug.Log("Safe Zone 已清除。", this);
     }
-
 
     private void OnDrawGizmosSelected()
     {
-        if (!hasActiveZone)
+        if (hasActiveZone)
         {
-            return;
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawWireSphere(new Vector3(currentCenter.x,
+                currentCenter.y, 0f), safeZoneRadius);
         }
 
+        if (!useLevel01FogAwareAnchors ||
+            level01SafeZoneAnchors == null) return;
 
-        Gizmos.DrawWireSphere(
-            new Vector3(
-                currentCenter.x,
-                currentCenter.y,
-                0f
-            ),
-            safeZoneRadius
-        );
+        Gizmos.color = new Color(0.35f, 0.9f, 1f, 0.35f);
+        for (int i = 0; i < level01SafeZoneAnchors.Length; i++)
+        {
+            Transform anchor = level01SafeZoneAnchors[i];
+            if (anchor != null)
+                Gizmos.DrawWireSphere(anchor.position, safeZoneRadius);
+        }
     }
 }

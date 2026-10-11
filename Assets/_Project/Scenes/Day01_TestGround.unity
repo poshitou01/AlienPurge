@@ -4168,6 +4168,8 @@ MonoBehaviour:
   spawnMapMax: {x: 25, y: 25}
   spawnBoundsPadding: 1
   maxSpawnPositionAttempts: 24
+  useValidatedSpawnPositions: 0
+  spawnPositionValidator: {fileID: 0}
   playerTag: Player
   enemyTag: Enemy
   enableAutomaticSpawning: 1

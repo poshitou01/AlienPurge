@@ -17,8 +17,8 @@ MonoBehaviour:
   description: ' A secured data module containing valuable research information.'
   category: 2
   rarity: 0
-  icon: {fileID: 0}
-  worldSprite: {fileID: 0}
+  icon: {fileID: 21300000, guid: 84daba2d0ef159447b4d28119bbffba1, type: 3}
+  worldSprite: {fileID: 21300000, guid: 147f2422936801947894d0cacd3778aa, type: 3}
   gridWidth: 1
   gridHeight: 1
   maxStackSize: 1

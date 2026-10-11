@@ -17,8 +17,8 @@ MonoBehaviour:
   description: A standard power cell used in advanced technology.
   category: 0
   rarity: 0
-  icon: {fileID: 0}
-  worldSprite: {fileID: 0}
+  icon: {fileID: 21300000, guid: 77b808f34aad42f498e677ad22a5948d, type: 3}
+  worldSprite: {fileID: 21300000, guid: 9c6143d75e194d647bf03362432b8a22, type: 3}
   gridWidth: 1
   gridHeight: 1
   maxStackSize: 10

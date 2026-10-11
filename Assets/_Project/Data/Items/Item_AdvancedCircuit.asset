@@ -17,8 +17,8 @@ MonoBehaviour:
   description: A high-grade electronic component recovered from alien technology.
   category: 0
   rarity: 2
-  icon: {fileID: 0}
-  worldSprite: {fileID: 0}
+  icon: {fileID: 21300000, guid: 3f12a0215e81afc478de02a95d54ce8e, type: 3}
+  worldSprite: {fileID: 21300000, guid: 4100c62a205ec1f4e993682c1b50042d, type: 3}
   gridWidth: 2
   gridHeight: 1
   maxStackSize: 3

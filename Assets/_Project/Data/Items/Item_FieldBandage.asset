@@ -17,8 +17,8 @@ MonoBehaviour:
   description: A compact emergency bandage for treating minor injuries.
   category: 1
   rarity: 0
-  icon: {fileID: 0}
-  worldSprite: {fileID: 0}
+  icon: {fileID: 21300000, guid: ba4b57af7566c6448b8a08a173be74d1, type: 3}
+  worldSprite: {fileID: 21300000, guid: 7f54582503216cc4481824ba85c7ee5a, type: 3}
   gridWidth: 1
   gridHeight: 1
   maxStackSize: 5

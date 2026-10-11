@@ -17,8 +17,8 @@ MonoBehaviour:
   description: Lightweight composite fiber used in reinforced equipment.
   category: 0
   rarity: 0
-  icon: {fileID: 0}
-  worldSprite: {fileID: 0}
+  icon: {fileID: 21300000, guid: 025b602a7986b13478f7812168f1ab7a, type: 3}
+  worldSprite: {fileID: 21300000, guid: 5bae77760b962504cbfcfe81dca78d3e, type: 3}
   gridWidth: 1
   gridHeight: 1
   maxStackSize: 1

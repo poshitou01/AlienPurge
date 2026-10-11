@@ -76,6 +76,10 @@ public class BackpackPanelController :
     [SerializeField]
     private TMP_Text selectedValueText;
 
+    [Header("Selected Item Icon")]
+    [SerializeField]
+    private Image selectedItemIcon;
+
 
     // =========================================================
     // Buttons
@@ -665,6 +669,11 @@ public class BackpackPanelController :
     {
         selectedStack = null;
 
+        if (selectedItemIcon != null)
+        {
+            selectedItemIcon.sprite = null;
+            selectedItemIcon.enabled = false;
+        }
 
         if (selectedNameText != null)
         {
@@ -733,6 +742,19 @@ public class BackpackPanelController :
 
         ItemData item =
             selectedStack.Item;
+
+        // Display the selected item's inventory icon.
+        if (selectedItemIcon != null)
+        {
+            Sprite iconSprite = item.Icon;
+
+            selectedItemIcon.sprite = iconSprite;
+
+            selectedItemIcon.preserveAspect = true;
+
+            selectedItemIcon.enabled =
+                iconSprite != null;
+        }
 
 
         Color rarityColor =

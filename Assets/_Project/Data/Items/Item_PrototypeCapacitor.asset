@@ -17,8 +17,8 @@ MonoBehaviour:
   description: Experimental energy storage technology with exceptional output.
   category: 0
   rarity: 3
-  icon: {fileID: 0}
-  worldSprite: {fileID: 0}
+  icon: {fileID: 21300000, guid: 178c5562a1a4a7b459bc4733df8a4252, type: 3}
+  worldSprite: {fileID: 21300000, guid: 7901c39295784d64ebd5b1f9cbb0668d, type: 3}
   gridWidth: 2
   gridHeight: 2
   maxStackSize: 1
