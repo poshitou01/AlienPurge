@@ -4336,7 +4336,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &253084423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4359,11 +4359,11 @@ MonoBehaviour:
     unlockTime: 30
     spawnWeight: 4
   - enemyType: 3
-    enemyPrefab: {fileID: 3319235536976819082, guid: 2475c72a13e2691459a8d853525e7fff, type: 3}
+    enemyPrefab: {fileID: 2452396907102532111, guid: 838da7030e45d5d4b8e3848be77bc696, type: 3}
     unlockTime: 90
     spawnWeight: 2.5
   - enemyType: 2
-    enemyPrefab: {fileID: 3319235536976819082, guid: 5da49d37e7931534cb71e50bbba34859, type: 3}
+    enemyPrefab: {fileID: 4440553926595022019, guid: f3f3be1d341d74244acc6822b91083e2, type: 3}
     unlockTime: 180
     spawnWeight: 1.5
   spawnInterval: 2
@@ -17799,7 +17799,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &773121420
 RectTransform:
   m_ObjectHideFlags: 0
@@ -21156,12 +21156,12 @@ MonoBehaviour:
     allowExpansion: 1
     expansionAmount: 3
   - enemyType: 2
-    enemyPrefab: {fileID: 4440553926595022019, guid: 703ff4ea40059b3468834846397399d0, type: 3}
+    enemyPrefab: {fileID: 4440553926595022019, guid: f3f3be1d341d74244acc6822b91083e2, type: 3}
     initialPoolSize: 4
     allowExpansion: 1
     expansionAmount: 2
   - enemyType: 3
-    enemyPrefab: {fileID: 2452396907102532111, guid: da6b9a42fe66c7946a077fb0ed4f7f0f, type: 3}
+    enemyPrefab: {fileID: 2452396907102532111, guid: 838da7030e45d5d4b8e3848be77bc696, type: 3}
     initialPoolSize: 4
     allowExpansion: 1
     expansionAmount: 2

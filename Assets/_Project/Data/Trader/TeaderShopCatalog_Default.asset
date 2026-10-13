@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87448715d024f464485f132e109360f4, type: 3}
+  m_Name: TeaderShopCatalog_Default
+  m_EditorClassIdentifier: 
+  offers:
+  - item: {fileID: 11400000, guid: 0f3e2bef4c36b2c47b028690ad24224e, type: 2}
+    purchasePrice: 90
+    quantityPerPurchase: 1
+    isAvailable: 1
+  - item: {fileID: 11400000, guid: 76e9da03638a24043a46d2c1c50329f8, type: 2}
+    purchasePrice: 200
+    quantityPerPurchase: 1
+    isAvailable: 1
+  - item: {fileID: 11400000, guid: 970b6c8cda39e3943bb70a6d64bcc72f, type: 2}
+    purchasePrice: 80
+    quantityPerPurchase: 1
+    isAvailable: 1
+  - item: {fileID: 11400000, guid: 72e1fb12907afc14db23333473c49dd4, type: 2}
+    purchasePrice: 60
+    quantityPerPurchase: 1
+    isAvailable: 1
+  - item: {fileID: 11400000, guid: f40c183896cd46c47a78d285566b11d3, type: 2}
+    purchasePrice: 180
+    quantityPerPurchase: 1
+    isAvailable: 1

@@ -60,6 +60,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_Fast_Rusher
       objectReference: {fileID: 0}
+    - target: {fileID: 8204914561269109623, guid: 0cf24eb3569dc414f9912d10fc4005cd, type: 3}
+      propertyPath: warningWidth
+      value: 0.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204914561269109623, guid: 0cf24eb3569dc414f9912d10fc4005cd, type: 3}
+      propertyPath: warningEndColor.a
+      value: 0.9490196
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204914561269109623, guid: 0cf24eb3569dc414f9912d10fc4005cd, type: 3}
+      propertyPath: warningEndColor.b
+      value: 0.06666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204914561269109623, guid: 0cf24eb3569dc414f9912d10fc4005cd, type: 3}
+      propertyPath: warningEndColor.g
+      value: 0.13333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204914561269109623, guid: 0cf24eb3569dc414f9912d10fc4005cd, type: 3}
+      propertyPath: warningStartColor.a
+      value: 0.34901962
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204914561269109623, guid: 0cf24eb3569dc414f9912d10fc4005cd, type: 3}
+      propertyPath: warningStartColor.b
+      value: 0.14901961
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204914561269109623, guid: 0cf24eb3569dc414f9912d10fc4005cd, type: 3}
+      propertyPath: warningStartColor.g
+      value: 0.4509804
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
