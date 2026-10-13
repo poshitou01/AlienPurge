@@ -45,6 +45,9 @@ public sealed class PendingRecoveryPanelController :
     [SerializeField]
     private TMP_Text moveAllButtonText;
 
+    [Header("Sale Confirmation")]
+    [SerializeField]
+    private SaleConfirmationDialog saleConfirmationDialog;
 
     // =========================================================
     // Runtime
@@ -64,8 +67,7 @@ public sealed class PendingRecoveryPanelController :
     private bool initialized;
 
 
-    private bool traderMode;
-
+    private bool allowSelling;
 
     // =========================================================
     // Unity
@@ -118,17 +120,12 @@ public sealed class PendingRecoveryPanelController :
     // Mode
     // =========================================================
 
-    public void SetTraderMode(
-        bool enabled
-    )
+    public void SetAllowSelling(bool enabled)
     {
-        traderMode =
-            enabled;
-
+        allowSelling = enabled;
 
         Refresh();
     }
-
 
     // =========================================================
     // Initialization
@@ -226,7 +223,7 @@ public sealed class PendingRecoveryPanelController :
                 entry,
                 MoveItem,
                 SellItem,
-                traderMode
+                allowSelling
             );
         }
 
@@ -356,11 +353,86 @@ public sealed class PendingRecoveryPanelController :
     // Sell Pending
     // =========================================================
 
-    private void SellItem(
-        ItemData item
-    )
+
+    private void SellItem(ItemData item)
     {
-        if (!traderMode ||
+        if (!allowSelling ||
+            item == null ||
+            profile == null ||
+            !profile.IsInitialized)
+        {
+            return;
+        }
+
+        int requestedQuantity =
+            profile.GetPendingRecoveryQuantity(item);
+
+        if (requestedQuantity <= 0)
+        {
+            return;
+        }
+
+        // Common / Uncommon:
+        // Sell immediately without confirmation.
+        if (!SaleConfirmationDialog.RequiresConfirmation(item))
+        {
+            ExecuteSellItem(item);
+            return;
+        }
+
+        // Rare / Epic / Legendary:
+        // Require confirmation.
+        if (saleConfirmationDialog == null)
+        {
+            Debug.LogError(
+                "[Pending Recovery UI] " +
+                "Sale Confirmation Dialog is missing.",
+                this
+            );
+            return;
+        }
+
+        saleConfirmationDialog.Show(
+            item,
+            requestedQuantity,
+            () =>
+            {
+                // Validate again before committing the sale.
+                if (!isActiveAndEnabled ||
+                    !allowSelling ||
+                    profile == null ||
+                    !profile.IsInitialized)
+                {
+                    Debug.LogWarning(
+                        "[Pending Recovery UI] " +
+                        "Sale cancelled: panel unavailable.",
+                        this
+                    );
+                    return;
+                }
+
+                int currentQuantity =
+                    profile.GetPendingRecoveryQuantity(item);
+
+                if (currentQuantity <= 0 ||
+                    currentQuantity != requestedQuantity)
+                {
+                    Debug.LogWarning(
+                        "[Pending Recovery UI] " +
+                        "Sale cancelled: Pending quantity changed.",
+                        this
+                    );
+                    return;
+                }
+
+                ExecuteSellItem(item);
+            }
+        );
+    }
+
+    private void ExecuteSellItem(ItemData item)
+    {
+        if (!allowSelling ||
             item == null)
         {
             return;

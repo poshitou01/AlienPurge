@@ -20,6 +20,10 @@ public class LootSearchItemView :
     [SerializeField]
     private Image backgroundImage;
 
+    [Header("Item Icon")]
+    [SerializeField]
+    private Image itemIconImage;
+
     [SerializeField]
     private Outline outline;
 
@@ -357,6 +361,8 @@ public class LootSearchItemView :
     // Visual
     // =========================================================
 
+
+
     private void RefreshVisual()
     {
         if (entry == null ||
@@ -366,84 +372,103 @@ public class LootSearchItemView :
             return;
         }
 
+        ItemData item = entry.Stack.Item;
 
-        ItemData item =
-            entry.Stack.Item;
-
+        // =====================================================
+        // Identification State
+        // =====================================================
 
         bool identified =
-            entry.State ==
-                LootSearchState.Identified;
-
+            entry.State == LootSearchState.Identified;
 
         Color borderColor =
             identified
-                ? ItemRarityVisuals.GetColor(
-                    item.Rarity
-                )
-                : new Color(
-                    0.45f,
-                    0.48f,
-                    0.52f,
-                    1f
-                );
+                ? ItemRarityVisuals.GetColor(item.Rarity)
+                : new Color(0.45f, 0.48f, 0.52f, 1f);
 
+        // =====================================================
+        // Background
+        // =====================================================
 
         if (backgroundImage != null)
         {
             backgroundImage.color =
-                new Color(
-                    0.07f,
-                    0.09f,
-                    0.11f,
-                    0.96f
-                );
+                new Color(0.07f, 0.09f, 0.11f, 0.96f);
         }
 
+        // =====================================================
+        // Rarity Border
+        // =====================================================
 
         if (outline != null)
         {
-            outline.effectColor =
-                borderColor;
+            outline.effectColor = borderColor;
         }
 
+        // =====================================================
+        // Item Icon
+        // Do not reveal unidentified loot.
+        // =====================================================
+
+        bool showIcon =
+            identified &&
+            item.Icon != null &&
+            itemIconImage != null;
+
+        if (itemIconImage != null)
+        {
+            itemIconImage.sprite =
+                identified ? item.Icon : null;
+
+            itemIconImage.preserveAspect = true;
+
+            itemIconImage.raycastTarget = false;
+
+            itemIconImage.enabled = showIcon;
+        }
+
+        // =====================================================
+        // Unknown Text / Name Fallback
+        // =====================================================
 
         if (nameText != null)
         {
-            if (identified)
-            {
-                nameText.text =
-                    item.DisplayName;
+            nameText.text =
+                identified
+                    ? item.DisplayName
+                    : "?";
 
-                nameText.color =
-                    borderColor;
-            }
-            else
-            {
-                nameText.text =
-                    "?";
+            nameText.color =
+                identified
+                    ? borderColor
+                    : Color.white;
 
-                nameText.color =
-                    Color.white;
-            }
+            // Show ? until identification.
+            // If an identified item has no Icon,
+            // display its name as a fallback.
+            nameText.enabled = !showIcon;
         }
 
+        // =====================================================
+        // Quantity
+        // =====================================================
 
         if (quantityText != null)
         {
             quantityText.text =
                 identified &&
                 entry.Stack.Quantity > 1
-                    ? "x" +
-                      entry.Stack.Quantity
+                    ? "x" + entry.Stack.Quantity
                     : string.Empty;
         }
 
+        // =====================================================
+        // Interaction
+        // =====================================================
 
         if (button != null)
         {
-            button.interactable =
-                identified;
+            button.interactable = identified;
         }
     }
 

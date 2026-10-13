@@ -306,7 +306,7 @@ public class LootSearchPanelController :
         if (hintText != null)
         {
             hintText.text =
-                "[E] CLOSE  //  "
+                "[E] CLOSE\n"
                 + "CLICK IDENTIFIED ITEM TO TAKE";
         }
     }

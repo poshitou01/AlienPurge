@@ -81,6 +81,10 @@ public sealed class StashPanelController :
     [SerializeField]
     private TMP_Text selectedStackValueText;
 
+    [Header("Selected Item Icon")]
+    [SerializeField]
+    private Image selectedItemIcon;
+
 
     // =========================================================
     // Buttons
@@ -99,6 +103,9 @@ public sealed class StashPanelController :
     [SerializeField]
     private Button sellButton;
 
+    [Header("Sale Confirmation")]
+    [SerializeField]
+    private SaleConfirmationDialog saleConfirmationDialog;
 
     // =========================================================
     // Runtime
@@ -309,9 +316,9 @@ public sealed class StashPanelController :
 
         if (pendingRecoveryPanel != null)
         {
-            pendingRecoveryPanel.SetTraderMode(
-                traderMode
-            );
+            pendingRecoveryPanel.SetAllowSelling(
+    !traderMode
+);
         }
 
 
@@ -337,6 +344,11 @@ public sealed class StashPanelController :
 
     public void ClosePanel()
     {
+
+        if (saleConfirmationDialog != null)
+        {
+            saleConfirmationDialog.Cancel();
+        }
         if (panelRoot != null)
         {
             panelRoot.SetActive(
@@ -374,6 +386,11 @@ public sealed class StashPanelController :
         selectedStack =
             null;
 
+        if (selectedItemIcon != null)
+        {
+            selectedItemIcon.sprite = null;
+            selectedItemIcon.enabled = false;
+        }
 
         if (selectedNameText != null)
         {
@@ -455,6 +472,13 @@ public sealed class StashPanelController :
         ItemData item =
             selectedStack.Item;
 
+        if (selectedItemIcon != null)
+        {
+            selectedItemIcon.sprite = item.Icon;
+            selectedItemIcon.preserveAspect = true;
+            selectedItemIcon.raycastTarget = false;
+            selectedItemIcon.enabled = item.Icon != null;
+        }
 
         Color rarityColor =
             ItemRarityVisuals.GetColor(
@@ -532,9 +556,64 @@ public sealed class StashPanelController :
 
         if (sellButton != null)
         {
-            sellButton.interactable =
-                traderMode;
+            sellButton.interactable = true;
         }
+    }
+
+
+    private void SellSelectedStack()
+    {
+        if (selectedStack == null ||
+            selectedStack.IsEmpty ||
+            selectedStack.Item == null)
+        {
+            return;
+        }
+
+        ItemStack requestedStack = selectedStack;
+        int requestedQuantity = requestedStack.Quantity;
+        ItemData requestedItem = requestedStack.Item;
+
+        // Common / Uncommon: sell immediately.
+        if (!SaleConfirmationDialog.RequiresConfirmation(
+                requestedItem))
+        {
+            ExecuteSellSelectedStack();
+            return;
+        }
+
+        // Rare / Epic / Legendary: require confirmation.
+        if (saleConfirmationDialog == null)
+        {
+            Debug.LogError(
+                "[Stash UI] Sale Confirmation Dialog is missing.",
+                this
+            );
+            return;
+        }
+
+        saleConfirmationDialog.Show(
+            requestedItem,
+            requestedQuantity,
+            () =>
+            {
+                // Verify the original selection is unchanged.
+                if (selectedStack != requestedStack ||
+                    requestedStack.IsEmpty ||
+                    requestedStack.Item != requestedItem ||
+                    requestedStack.Quantity != requestedQuantity)
+                {
+                    Debug.LogWarning(
+                        "[Stash UI] Sale cancelled because " +
+                        "the selected stack changed.",
+                        this
+                    );
+                    return;
+                }
+
+                ExecuteSellSelectedStack();
+            }
+        );
     }
 
 
@@ -542,11 +621,11 @@ public sealed class StashPanelController :
     // Sell
     // =========================================================
 
-    private void SellSelectedStack()
+    private void ExecuteSellSelectedStack()
     {
-        if (!traderMode ||
-            selectedStack == null ||
-            selectedStack.IsEmpty)
+        if (selectedStack == null ||
+            selectedStack.IsEmpty ||
+            selectedStack.Item == null)
         {
             return;
         }
@@ -751,9 +830,9 @@ public sealed class StashPanelController :
 
         if (pendingRecoveryPanel != null)
         {
-            pendingRecoveryPanel.SetTraderMode(
-                traderMode
-            );
+            pendingRecoveryPanel.SetAllowSelling(
+    !traderMode
+);
 
 
             pendingRecoveryPanel.Refresh();

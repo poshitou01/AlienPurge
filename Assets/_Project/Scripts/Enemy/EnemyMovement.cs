@@ -13,6 +13,7 @@
 /// 新增：
 /// - 可选 A* 路径点追踪
 /// - Environment Collider 阻挡检测
+/// - 可选同类敌人避让（默认关闭）
 ///
 /// 没有 EnemyPathNavigator 时，
 /// 使用原有的直接追踪逻辑。
@@ -57,6 +58,34 @@ public class EnemyMovement : MonoBehaviour
     private float collisionSkin = 0.025f;
 
     // =====================================================
+    // Optional Crowd Separation
+    // =====================================================
+
+    [Header("Crowd Separation (Optional)")]
+
+    [Tooltip("仅在需要分离的敌人（如 Swarmer）上勾选；其他敌人保持原样")]
+    [SerializeField]
+    private bool enableSeparation = false;
+
+    [Tooltip("在这个半径内检测同类敌人，单位为 Unity 世界单位")]
+    [Min(0.1f)]
+    [SerializeField]
+    private float separationRadius = 1.0f;
+
+    [Tooltip("邻近敌人排斥方向相对于追踪方向的权重")]
+    [Min(0f)]
+    [SerializeField]
+    private float separationStrength = 1.5f;
+
+    [Tooltip("参与检测的物理 Layer。仓库中 Enemy_Normal 使用 Default Layer。")]
+    [SerializeField]
+    private LayerMask separationLayers = 1 << 0;
+
+    [Tooltip("只避让与自己相同 EnemyType 的敌人")]
+    [SerializeField]
+    private bool sameEnemyTypeOnly = true;
+
+    // =====================================================
     // Movement Lock
     // =====================================================
 
@@ -89,6 +118,12 @@ public class EnemyMovement : MonoBehaviour
     private readonly RaycastHit2D[] castHits =
         new RaycastHit2D[8];
 
+    // 每个敌人只创建一次查询缓存，避免每次 FixedUpdate 分配数组。
+    private readonly Collider2D[] separationHits =
+        new Collider2D[32];
+
+    private PooledEnemy pooledEnemy;
+
     // =====================================================
     // Public Properties
     // =====================================================
@@ -116,6 +151,8 @@ public class EnemyMovement : MonoBehaviour
 
         pathNavigator =
             GetComponent<EnemyPathNavigator>();
+
+        pooledEnemy = GetComponent<PooledEnemy>();
 
         rb.gravityScale = 0f;
         rb.freezeRotation = true;
@@ -173,28 +210,29 @@ public class EnemyMovement : MonoBehaviour
             }
         }
 
-        Vector2 currentPosition =
-            rb.position;
+        Vector2 currentPosition = rb.position;
+        Vector2 targetPosition = target.position;
 
-        Vector2 targetPosition =
-            target.position;
+        float distance = Vector2.Distance(
+            currentPosition, targetPosition);
 
-        float distance =
-            Vector2.Distance(
-                currentPosition,
-                targetPosition
-            );
-
+        // 已抵达原有攻击/停靠距离：停止追踪，但允许挤在
+        // 同一点的同类敌人缓慢互相避让。
         if (distance <= stoppingDistance)
         {
+            if (enableSeparation)
+            {
+                MoveWithOptionalSeparation(
+                    currentPosition, Vector2.zero);
+            }
+
             return;
         }
 
-        Vector2 steeringTarget =
-            targetPosition;
+        Vector2 steeringTarget = targetPosition;
 
-        // 只有安装并启用了导航组件的敌人
-        // 才改为使用 A*。
+        // 原 Phase40 A* 路径点追踪保持不变。
+        // 导航启用但找不到路径时，不改为穿过障碍直追玩家。
         if (pathNavigator != null &&
             pathNavigator.isActiveAndEnabled)
         {
@@ -202,19 +240,159 @@ public class EnemyMovement : MonoBehaviour
                     currentPosition,
                     out steeringTarget))
             {
-                // 无有效路径时不执行直线追踪。
                 return;
             }
         }
 
-        Vector2 nextPosition =
+        // 保留原本 MoveTowards 的步长，避免抵达临近
+        // waypoint 时发生不必要的越界移动。
+        Vector2 normalNextPosition =
             Vector2.MoveTowards(
                 currentPosition,
                 steeringTarget,
-                moveSpeed * Time.fixedDeltaTime
-            );
+                moveSpeed * Time.fixedDeltaTime);
 
-        MoveWithEnvironmentGuard(nextPosition);
+        if (!enableSeparation)
+        {
+            // 与原 Phase40 完全相同的追踪和环境碰撞流程。
+            MoveWithEnvironmentGuard(normalNextPosition);
+            return;
+        }
+
+        MoveWithOptionalSeparation(
+            currentPosition,
+            normalNextPosition - currentPosition);
+    }
+
+    // =====================================================
+    // Optional Separation: steer, never move Rigidbody twice
+    // =====================================================
+
+    private void MoveWithOptionalSeparation(
+        Vector2 currentPosition,
+        Vector2 originalStep)
+    {
+        // 查不到同类邻居时，直接执行原来的移动结果。
+        Vector2 away = CalculateSeparation(currentPosition);
+
+        if (away.sqrMagnitude <= 0.000001f)
+        {
+            if (originalStep.sqrMagnitude > 0.00000001f)
+            {
+                MoveWithEnvironmentGuard(
+                    currentPosition + originalStep);
+            }
+
+            return;
+        }
+
+        Vector2 chaseDirection =
+            originalStep.sqrMagnitude > 0.00000001f
+                ? originalStep.normalized
+                : Vector2.zero;
+
+        Vector2 adjustedDirection =
+            chaseDirection + away * separationStrength;
+
+        // 单次移动上限仍为原始 moveSpeed，不额外加速。
+        Vector2 adjustedStep =
+            Vector2.ClampMagnitude(adjustedDirection, 1f)
+            * moveSpeed * Time.fixedDeltaTime;
+
+        if (adjustedStep.sqrMagnitude <= 0.00000001f)
+        {
+            return;
+        }
+
+        // 关键：避让位移仍走现有环境 Cast 阻挡路径，
+        // 不能绕过 Phase40 的墙壁碰撞安全逻辑。
+        MoveWithEnvironmentGuard(
+            currentPosition + adjustedStep);
+    }
+
+    private Vector2 CalculateSeparation(
+        Vector2 currentPosition)
+    {
+        if (separationRadius <= 0f ||
+            separationStrength <= 0f ||
+            separationLayers.value == 0)
+        {
+            return Vector2.zero;
+        }
+
+        // Unity 2022.3 支持的 NonAlloc 查询，避免每帧 new。
+        int count = Physics2D.OverlapCircleNonAlloc(
+            currentPosition,
+            separationRadius,
+            separationHits,
+            separationLayers);
+
+        Vector2 combinedAway = Vector2.zero;
+
+        for (int i = 0; i < count; i++)
+        {
+            Collider2D candidate = separationHits[i];
+
+            if (candidate == null || candidate.isTrigger)
+            {
+                continue;
+            }
+
+            EnemyMovement other =
+                candidate.GetComponentInParent<EnemyMovement>();
+
+            if (other == null || other == this ||
+                !other.isActiveAndEnabled)
+            {
+                continue;
+            }
+
+            if (sameEnemyTypeOnly)
+            {
+                if (pooledEnemy == null ||
+                    other.pooledEnemy == null ||
+                    pooledEnemy.Type != other.pooledEnemy.Type)
+                {
+                    continue;
+                }
+            }
+
+            EnemyHealth otherHealth =
+                other.GetComponent<EnemyHealth>();
+
+            if (otherHealth != null && otherHealth.IsDead)
+            {
+                continue;
+            }
+
+            Vector2 away =
+                currentPosition - (Vector2)other.transform.position;
+
+            float neighborDistance = away.magnitude;
+
+            if (neighborDistance >= separationRadius)
+            {
+                continue;
+            }
+
+            if (neighborDistance < 0.001f)
+            {
+                // 完全重叠时按实例 ID 产生相反的解散方向。
+                away = GetInstanceID() < other.GetInstanceID()
+                    ? Vector2.left : Vector2.right;
+            }
+            else
+            {
+                away /= neighborDistance;
+            }
+
+            float weight =
+                1f - neighborDistance / separationRadius;
+
+            combinedAway += away * weight;
+        }
+
+        return Vector2.ClampMagnitude(combinedAway, 1f);
     }
 
     // =====================================================
@@ -476,6 +654,11 @@ public class EnemyMovement : MonoBehaviour
                 GetComponent<EnemyPathNavigator>();
         }
 
+        if (pooledEnemy == null)
+        {
+            pooledEnemy = GetComponent<PooledEnemy>();
+        }
+
         enabled = true;
 
         target = null;
@@ -536,6 +719,12 @@ public class EnemyMovement : MonoBehaviour
 
         collisionSkin =
             Mathf.Max(0f, collisionSkin);
+
+        separationRadius =
+            Mathf.Max(0.1f, separationRadius);
+
+        separationStrength =
+            Mathf.Max(0f, separationStrength);
     }
 
     private void OnDisable()
@@ -553,6 +742,22 @@ public class EnemyMovement : MonoBehaviour
     private void OnValidate()
     {
         ValidateMovementSettings();
+    }
+
+    // =====================================================
+    // Scene Debug (selected object only)
+    // =====================================================
+
+    private void OnDrawGizmosSelected()
+    {
+        if (!enableSeparation)
+        {
+            return;
+        }
+
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(
+            transform.position, separationRadius);
     }
 
     // =====================================================

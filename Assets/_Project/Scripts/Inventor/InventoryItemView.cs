@@ -24,6 +24,10 @@ public class InventoryItemView :
     [SerializeField]
     private Image backgroundImage;
 
+    [Header("Item Icon")]
+    [SerializeField]
+    private Image itemIconImage;
+
     [SerializeField]
     private Outline rarityOutline;
 
@@ -253,6 +257,7 @@ public class InventoryItemView :
     // Visuals
     // =========================================================
 
+
     private void RefreshVisuals()
     {
         if (stack == null ||
@@ -261,60 +266,79 @@ public class InventoryItemView :
             return;
         }
 
-
-        ItemData item =
-            stack.Item;
-
+        ItemData item = stack.Item;
 
         Color rarityColor =
-            ItemRarityVisuals.GetColor(
-                item.Rarity
-            );
+            ItemRarityVisuals.GetColor(item.Rarity);
 
+        // =====================================================
+        // Background
+        // =====================================================
 
         if (backgroundImage != null)
         {
-            backgroundImage.color =
-                new Color(
-                    0.09f,
-                    0.10f,
-                    0.12f,
-                    0.96f
-                );
+            backgroundImage.color = new Color(
+                0.09f,
+                0.10f,
+                0.12f,
+                0.96f
+            );
         }
 
+        // =====================================================
+        // Rarity Border
+        // =====================================================
 
         if (rarityOutline != null)
         {
-            rarityOutline.effectColor =
-                rarityColor;
-
+            rarityOutline.effectColor = rarityColor;
 
             rarityOutline.effectDistance =
-                new Vector2(
-                    2f,
-                    -2f
-                );
+                new Vector2(2f, -2f);
         }
 
+        // =====================================================
+        // Item Icon
+        // =====================================================
+
+        bool hasIcon = item.Icon != null;
+
+        if (itemIconImage != null)
+        {
+            itemIconImage.sprite = item.Icon;
+
+            itemIconImage.preserveAspect = true;
+
+            itemIconImage.raycastTarget = false;
+
+            itemIconImage.enabled = hasIcon;
+        }
+
+        // =====================================================
+        // Name Fallback
+        // =====================================================
 
         if (nameText != null)
         {
-            nameText.text =
-                item.DisplayName;
+            nameText.text = item.DisplayName;
 
+            nameText.color = rarityColor;
 
-            nameText.color =
-                rarityColor;
+            // When an icon exists, hide the old text.
+            // Otherwise, keep the name as a fallback.
+            nameText.enabled =
+                itemIconImage == null || !hasIcon;
         }
 
+        // =====================================================
+        // Stack Quantity
+        // =====================================================
 
         if (quantityText != null)
         {
             quantityText.text =
                 stack.Quantity > 1
-                    ? "x" +
-                      stack.Quantity
+                    ? "x" + stack.Quantity
                     : string.Empty;
         }
     }
