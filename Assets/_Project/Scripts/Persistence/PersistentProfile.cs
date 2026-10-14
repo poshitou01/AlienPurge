@@ -804,6 +804,42 @@ public sealed class PersistentProfile :
 
 
     // =========================================================
+    // Phase 6 - Credit Affordability
+    // =========================================================
+
+    public bool CanAffordCredits(int amount)
+    {
+        if (!initialized || amount <= 0)
+        {
+            return false;
+        }
+
+        return credits >= amount;
+    }
+
+    // =========================================================
+    // Phase 6 - Safe Credit Spending
+    // =========================================================
+
+    public bool TrySpendCredits(int amount)
+    {
+        // Reject invalid amounts and insufficient credits.
+        if (!CanAffordCredits(amount))
+        {
+            return false;
+        }
+
+        credits -= amount;
+
+        // Notify UI and other persistent systems.
+        Changed?.Invoke();
+
+        return true;
+    }
+
+
+
+    // =========================================================
     // Debug
     // =========================================================
 

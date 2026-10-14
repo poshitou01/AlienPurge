@@ -28,6 +28,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_Heavy_Tank
       objectReference: {fileID: 0}
+    - target: {fileID: 8521493281721276124, guid: 5da49d37e7931534cb71e50bbba34859, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3b1154c41978fe54db628128ffd05253, type: 3}
     - target: {fileID: 8891348889322874304, guid: 5da49d37e7931534cb71e50bbba34859, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

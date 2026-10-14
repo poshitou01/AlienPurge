@@ -957,6 +957,20 @@ public class WeaponModuleSelectionManager : MonoBehaviour
                     displayedModules[i]
                 )
             );
+
+            UpgradeCardView cardView =
+    button.GetComponent<UpgradeCardView>();
+
+            if (cardView != null)
+            {
+                bool isOverclock =
+                    currentSelectionMode == ModuleSelectionMode.Overclock;
+
+                cardView.SetModuleCard(
+                    displayedModules[i],
+                    isOverclock
+                );
+            }
         }
     }
 

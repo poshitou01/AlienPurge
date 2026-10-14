@@ -764,10 +764,22 @@ public class UpgradeManager : MonoBehaviour
             button.gameObject.SetActive(true);
             button.interactable = true;
 
+
             SetButtonText(
                 button,
                 option.GetDisplayText()
             );
+
+            // 根据本次实际抽到的升级类型，
+            // 自动切换对应的 v06 卡牌 Sprite。
+            UpgradeCardView cardView =
+                button.GetComponent<UpgradeCardView>();
+
+            if (cardView != null)
+            {
+                cardView.SetOption(option);
+            }
+
         }
     }
 

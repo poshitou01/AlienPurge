@@ -19,4 +19,4 @@ MonoBehaviour:
   damageMultiplier: 1
   experienceAmount: 1
   visualScale: 1
-  visualColor: {r: 0.7, g: 0.3, b: 1, a: 1}
+  visualColor: {r: 1, g: 1, b: 1, a: 1}
