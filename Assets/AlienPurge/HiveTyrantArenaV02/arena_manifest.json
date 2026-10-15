@@ -1,0 +1,140 @@
+{
+  "entries": [
+    {
+      "id": "Ground_MatteResearch_Surface",
+      "file": "Ground/AP_HT_V02_Ground_MatteResearch_Surface.png",
+      "kind": "texture",
+      "parent": "",
+      "width": 8,
+      "visiblePixels": 1254,
+      "position": [
+        0,
+        0
+      ],
+      "pivot": [
+        0.5,
+        0.0
+      ],
+      "order": -200
+    },
+    {
+      "id": "Block_North_HiveComplex",
+      "file": "LargeBlocks/AP_HT_V02_Block_North_HiveComplex.png",
+      "kind": "sprite",
+      "parent": "",
+      "width": 44,
+      "visiblePixels": 1761,
+      "position": [
+        0,
+        10
+      ],
+      "pivot": [
+        0.5014092446448704,
+        0.0777903043968433
+      ],
+      "order": -50
+    },
+    {
+      "id": "Block_West_TankWing",
+      "file": "LargeBlocks/AP_HT_V02_Block_West_TankWing.png",
+      "kind": "sprite",
+      "parent": "",
+      "width": 14,
+      "visiblePixels": 913,
+      "position": [
+        -22,
+        -8
+      ],
+      "pivot": [
+        0.48296500920810315,
+        0.0006906077348066298
+      ],
+      "order": -20
+    },
+    {
+      "id": "Block_East_ObservationWing",
+      "file": "LargeBlocks/AP_HT_V02_Block_East_ObservationWing.png",
+      "kind": "sprite",
+      "parent": "",
+      "width": 14,
+      "visiblePixels": 919,
+      "position": [
+        22,
+        -8
+      ],
+      "pivot": [
+        0.5612338858195212,
+        0.004143646408839779
+      ],
+      "order": -20
+    },
+    {
+      "id": "Block_SouthWest_HatcheryCorner",
+      "file": "LargeBlocks/AP_HT_V02_Block_SouthWest_HatcheryCorner.png",
+      "kind": "sprite",
+      "parent": "",
+      "width": 20,
+      "visiblePixels": 1516,
+      "position": [
+        -18,
+        -19
+      ],
+      "pivot": [
+        0.4993489583333333,
+        0.0048828125
+      ],
+      "order": 30
+    },
+    {
+      "id": "Block_SouthEast_HatcheryCorner",
+      "file": "LargeBlocks/AP_HT_V02_Block_SouthEast_HatcheryCorner.png",
+      "kind": "sprite",
+      "parent": "",
+      "width": 20,
+      "visiblePixels": 1517,
+      "position": [
+        18,
+        -19
+      ],
+      "pivot": [
+        0.5003255208333334,
+        0.015625
+      ],
+      "order": 30
+    },
+    {
+      "id": "Block_South_EntryComplex",
+      "file": "LargeBlocks/AP_HT_V02_Block_South_EntryComplex.png",
+      "kind": "sprite",
+      "parent": "",
+      "width": 24,
+      "visiblePixels": 1762,
+      "position": [
+        0,
+        -19.4
+      ],
+      "pivot": [
+        0.503102086858432,
+        0.09808342728297632
+      ],
+      "order": 45
+    },
+    {
+      "id": "Gate_ClosingLeaf",
+      "file": "LargeBlocks/AP_HT_V02_Gate_ClosingLeaf.png",
+      "kind": "door_leaf",
+      "parent": "Block_South_EntryComplex",
+      "width": 5.2,
+      "visiblePixels": 1090,
+      "position": [
+        0,
+        2.5
+      ],
+      "pivot": [
+        0.5007132667617689,
+        0.18538324420677363
+      ],
+      "order": 44
+    }
+  ]
+}

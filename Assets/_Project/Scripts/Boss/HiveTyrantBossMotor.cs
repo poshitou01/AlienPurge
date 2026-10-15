@@ -5,54 +5,80 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class HiveTyrantBossMotor : MonoBehaviour
 {
+    // =========================================================
+    // References
+    // =========================================================
+
     [Header("References")]
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator bodyAnimator;
     [SerializeField] private Transform target;
 
+    // =========================================================
+    // Auto Find
+    // =========================================================
+
     [Header("Auto Find")]
     [SerializeField] private bool autoFindPlayer = true;
     [SerializeField] private string playerTag = "Player";
+
+    // =========================================================
+    // Movement
+    // =========================================================
 
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 1.7f;
     [SerializeField] private float stoppingDistance = 2.2f;
     [SerializeField] private float movementThreshold = 0.02f;
 
-    [Header("Smooth Turning")]
-    [Tooltip("转向速度，单位：度/秒")]
-    [SerializeField] private float turnSpeed = 360f;
-
-    [Tooltip("方向切换缓冲角度，减少临界点抖动")]
-    [Range(0f, 15f)]
-    [SerializeField] private float directionHysteresis = 7f;
-
-    [Tooltip("目标转向角度过大时，先原地转向")]
-    [SerializeField] private bool turnInPlace = true;
-
-    [Range(20f, 180f)]
-    [SerializeField] private float turnInPlaceAngle = 60f;
+    // =========================================================
+    // Animator Parameters
+    // =========================================================
 
     [Header("Animator Parameters")]
     [SerializeField] private string directionParam = "Direction";
     [SerializeField] private string actionParam = "Action";
 
-    [Header("Debug")]
-    [SerializeField] private bool movementLocked;
-    [SerializeField] private bool dead;
+    // =========================================================
+    // Debug
+    // =========================================================
 
-    [SerializeField] private int currentDirection = 1;
-    [SerializeField] private float currentFacingAngle = -45f;
+    [Header("Debug")]
+    [SerializeField] private bool movementLocked = false;
+    [SerializeField] private bool dead = false;
+
+    // =========================================================
+    // Animator Action Mapping
+    // =========================================================
 
     private const int ACTION_IDLE = 0;
     private const int ACTION_MOVE = 1;
     private const int ACTION_HIT = 2;
     private const int ACTION_DEATH = 3;
     private const int ACTION_IDLE_PHASE2 = 4;
+    private const int ACTION_MOVE_PHASE2 = 5;
+
+    // =========================================================
+    // Runtime State
+    // =========================================================
+
+    private int currentDirection = 1; // DR
+
+    private bool isPhase2 = false;
+    private bool isMoving = false;
+
+    // =========================================================
+    // Public Properties
+    // =========================================================
 
     public Transform Target => target;
     public bool IsDead => dead;
     public bool IsMovementLocked => movementLocked;
+    public bool IsPhase2 => isPhase2;
+
+    // =========================================================
+    // Unity Lifecycle
+    // =========================================================
 
     private void Reset()
     {
@@ -67,12 +93,13 @@ public class HiveTyrantBossMotor : MonoBehaviour
 
         FindBodyAnimator();
 
-        // 保持与原有默认 DR 方向一致。
+        // 默认从普通阶段开始。
+        isPhase2 = false;
+        isMoving = false;
         currentDirection = 1;
-        currentFacingAngle = -45f;
 
         SetDirection(currentDirection);
-        SetAction(ACTION_IDLE);
+        SetLocomotionAction(false);
     }
 
     private void Start()
@@ -89,114 +116,141 @@ public class HiveTyrantBossMotor : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // 死亡具有最高优先级。
         if (dead)
         {
+            isMoving = false;
             SetAction(ACTION_DEATH);
             return;
         }
 
+        // 移动锁定时保持当前阶段的 Idle。
         if (movementLocked || target == null)
         {
-            SetAction(ACTION_IDLE);
+            SetLocomotionAction(false);
             return;
         }
 
         Vector2 currentPos = rb.position;
         Vector2 targetPos = target.position;
+
         Vector2 toTarget = targetPos - currentPos;
-
         float distance = toTarget.magnitude;
-
-        if (distance <= movementThreshold)
-        {
-            SetAction(ACTION_IDLE);
-            return;
-        }
-
-        Vector2 desiredDirection = toTarget.normalized;
-
-        // 即使停止追击，也允许缓慢朝向 Player。
-        float remainingTurnAngle =
-            UpdateSmoothFacing(desiredDirection);
 
         if (distance <= stoppingDistance)
         {
-            SetAction(ACTION_IDLE);
+            SetLocomotionAction(false);
             return;
         }
 
-        // 玩家突然绕到背后时，先转身再追击。
-        if (turnInPlace &&
-            remainingTurnAngle > turnInPlaceAngle)
+        Vector2 moveDir = toTarget.normalized;
+
+        if (moveDir.sqrMagnitude <=
+            movementThreshold * movementThreshold)
         {
-            SetAction(ACTION_IDLE);
+            SetLocomotionAction(false);
             return;
         }
+
+        // 保持原来的八方向立即转向机制。
+        currentDirection = GetDirectionIndex(moveDir);
+
+        SetDirection(currentDirection);
 
         Vector2 nextPos =
             currentPos +
-            desiredDirection * moveSpeed * Time.fixedDeltaTime;
+            moveDir * moveSpeed * Time.fixedDeltaTime;
 
         rb.MovePosition(nextPos);
 
-        SetAction(ACTION_MOVE);
+        // 这里会根据 Phase1 / Phase2 自动选择 Move。
+        SetLocomotionAction(true);
     }
 
-    private float UpdateSmoothFacing(Vector2 desiredDirection)
+    // =========================================================
+    // Persistent Phase2 State
+    // =========================================================
+
+    /// <summary>
+    /// 进入狂暴阶段。
+    /// 一旦进入 Phase2，本次战斗不会自动恢复 Phase1。
+    /// </summary>
+    public void EnterPhase2()
     {
-        if (desiredDirection.sqrMagnitude <= 0.0001f)
-            return 0f;
+        if (dead)
+            return;
 
-        float desiredAngle =
-            Mathf.Atan2(
-                desiredDirection.y,
-                desiredDirection.x
-            ) * Mathf.Rad2Deg;
+        if (isPhase2)
+            return;
 
-        // 不是立即设置 desiredAngle，
-        // 而是按固定转向速度逐步接近。
-        currentFacingAngle =
-            Mathf.MoveTowardsAngle(
-                currentFacingAngle,
-                desiredAngle,
-                turnSpeed * Time.fixedDeltaTime
-            );
+        isPhase2 = true;
 
-        Vector2 facingVector = new Vector2(
-            Mathf.Cos(currentFacingAngle * Mathf.Deg2Rad),
-            Mathf.Sin(currentFacingAngle * Mathf.Deg2Rad)
+        // 立即刷新当前动画，不必等待下一次移动。
+        SetLocomotionAction(isMoving);
+
+        Debug.Log(
+            "[HiveTyrant] Entered Phase2.",
+            this
         );
+    }
 
-        int candidateDirection =
-            GetDirectionIndex(facingVector);
+    // =========================================================
+    // Locomotion Action
+    // =========================================================
 
-        // 防止在两个方向的分界线上反复切换。
-        if (candidateDirection != currentDirection)
+    private void SetLocomotionAction(bool moving)
+    {
+        isMoving = moving;
+
+        int action;
+
+        if (isPhase2)
         {
-            float currentCenterAngle =
-                (currentDirection - 2) * 45f;
-
-            float deviation =
-                Mathf.Abs(
-                    Mathf.DeltaAngle(
-                        currentCenterAngle,
-                        currentFacingAngle
-                    )
-                );
-
-            if (deviation >= 22.5f + directionHysteresis)
-            {
-                SetDirection(candidateDirection);
-            }
+            action = moving
+                ? ACTION_MOVE_PHASE2
+                : ACTION_IDLE_PHASE2;
+        }
+        else
+        {
+            action = moving
+                ? ACTION_MOVE
+                : ACTION_IDLE;
         }
 
-        return Mathf.Abs(
-            Mathf.DeltaAngle(
-                currentFacingAngle,
-                desiredAngle
-            )
-        );
+        SetAction(action);
     }
+
+    // =========================================================
+    // Animator
+    // =========================================================
+
+    private void SetDirection(int dir)
+    {
+        currentDirection = dir;
+
+        if (bodyAnimator != null)
+        {
+            bodyAnimator.SetInteger(
+                directionParam,
+                currentDirection
+            );
+        }
+    }
+
+    private void SetAction(int action)
+    {
+        if (bodyAnimator != null)
+        {
+            bodyAnimator.SetInteger(
+                actionParam,
+                action
+            );
+        }
+    }
+
+    // =========================================================
+    // Direction Mapping
+    // =========================================================
 
     private int GetDirectionIndex(Vector2 dir)
     {
@@ -204,8 +258,14 @@ public class HiveTyrantBossMotor : MonoBehaviour
             Mathf.Atan2(dir.y, dir.x) *
             Mathf.Rad2Deg;
 
-        // 0 D, 1 DR, 2 R, 3 UR
-        // 4 U, 5 UL, 6 L, 7 DL
+        // 0 = D
+        // 1 = DR
+        // 2 = R
+        // 3 = UR
+        // 4 = U
+        // 5 = UL
+        // 6 = L
+        // 7 = DL
 
         if (angle >= -112.5f && angle < -67.5f)
             return 0;
@@ -230,6 +290,10 @@ public class HiveTyrantBossMotor : MonoBehaviour
 
         return 7;
     }
+
+    // =========================================================
+    // References
+    // =========================================================
 
     private void FindBodyAnimator()
     {
@@ -258,31 +322,9 @@ public class HiveTyrantBossMotor : MonoBehaviour
             target = player.transform;
     }
 
-    private void SetDirection(int direction)
-    {
-        currentDirection = direction;
-
-        if (bodyAnimator != null)
-        {
-            bodyAnimator.SetInteger(
-                directionParam,
-                direction
-            );
-        }
-    }
-
-    private void SetAction(int action)
-    {
-        if (bodyAnimator != null)
-        {
-            bodyAnimator.SetInteger(
-                actionParam,
-                action
-            );
-        }
-    }
-
-    // 供后续 BossController 调用。
+    // =========================================================
+    // Public Control API
+    // =========================================================
 
     public void SetTarget(Transform newTarget)
     {
@@ -294,7 +336,7 @@ public class HiveTyrantBossMotor : MonoBehaviour
         movementLocked = locked;
 
         if (locked && !dead)
-            SetAction(ACTION_IDLE);
+            SetLocomotionAction(false);
     }
 
     public void SetDead(bool isDead)
@@ -302,19 +344,26 @@ public class HiveTyrantBossMotor : MonoBehaviour
         dead = isDead;
 
         if (dead)
+        {
+            isMoving = false;
             SetAction(ACTION_DEATH);
+        }
+        else
+        {
+            SetLocomotionAction(false);
+        }
     }
 
     public void ForceIdle()
     {
         if (!dead)
-            SetAction(ACTION_IDLE);
+            SetLocomotionAction(false);
     }
 
     public void ForceMove()
     {
         if (!dead)
-            SetAction(ACTION_MOVE);
+            SetLocomotionAction(true);
     }
 
     public void ForceHit()
@@ -325,8 +374,11 @@ public class HiveTyrantBossMotor : MonoBehaviour
 
     public void ForcePhase2Idle()
     {
-        if (!dead)
-            SetAction(ACTION_IDLE_PHASE2);
+        if (dead)
+            return;
+
+        EnterPhase2();
+        SetLocomotionAction(false);
     }
 
     public int GetCurrentDirection()
@@ -334,11 +386,33 @@ public class HiveTyrantBossMotor : MonoBehaviour
         return currentDirection;
     }
 
+    // =========================================================
+    // Inspector Testing
+    // =========================================================
+
+    [ContextMenu("Test - Enter Phase2 (Play Mode)")]
+    private void TestEnterPhase2()
+    {
+        if (!Application.isPlaying)
+        {
+            Debug.LogWarning(
+                "[HiveTyrant] Enter Play Mode before testing Phase2.",
+                this
+            );
+            return;
+        }
+
+        EnterPhase2();
+    }
+
+    // =========================================================
+    // Validation
+    // =========================================================
+
     private void OnValidate()
     {
         moveSpeed = Mathf.Max(0f, moveSpeed);
         stoppingDistance = Mathf.Max(0f, stoppingDistance);
         movementThreshold = Mathf.Max(0f, movementThreshold);
-        turnSpeed = Mathf.Max(1f, turnSpeed);
     }
 }
