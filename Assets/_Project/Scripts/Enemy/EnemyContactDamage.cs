@@ -6,10 +6,11 @@ public class EnemyContactDamage : MonoBehaviour
     [Header("Contact Damage Settings")]
     [SerializeField] private int damage = 1;
     [SerializeField] private float damageInterval = 1f;
+    [SerializeField] private bool canDealContactDamage = true;
 
     private float nextDamageTime;
 
-    public int Damage => damage;
+    public int Damage => damage + (TryGetComponent<EnemySupportBuff>(out var buff) ? buff.BonusDamage : 0);
     public float DamageInterval => damageInterval;
 
     private void Awake()
@@ -98,6 +99,7 @@ public class EnemyContactDamage : MonoBehaviour
 
     private void TryDamagePlayer(GameObject target)
     {
+        if (!canDealContactDamage) return;
         if (Time.time < nextDamageTime)
         {
             return;
@@ -127,7 +129,7 @@ public class EnemyContactDamage : MonoBehaviour
             return;
         }
 
-        playerHealth.TakeDamage(damage);
+        playerHealth.TakeDamage(Damage);
 
         nextDamageTime =
             Time.time + damageInterval;

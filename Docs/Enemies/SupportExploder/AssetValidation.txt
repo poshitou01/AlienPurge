@@ -1,0 +1,2 @@
+PASS: enum identities, data/prefab types, native A*, 16 temporary clips / 128 inherited frames / PPU 256, Boss whitelist.
+Art remains TEMP; this does not certify final enemy art.

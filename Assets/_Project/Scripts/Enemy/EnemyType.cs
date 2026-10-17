@@ -8,5 +8,7 @@ public enum EnemyType
     Normal = 0,
     Fast = 1,
     Heavy = 2,
-    Ranged = 3
+    Ranged = 3,
+    Support = 4,
+    Exploder = 5
 }

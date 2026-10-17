@@ -1,0 +1,121 @@
+Unity 2022.3.62f3c1 / real Editor Play Mode / Direct3D11
+PASS: Repeated configure leaves one of each manager/lab
+PASS: Explicit test-pool capacities (2 Support / 3 Exploder)
+PASS: Pool spawn Support
+PASS: Pool spawn Normal
+PASS: Pool spawn Normal
+PASS: Pool spawn Normal
+PASS: Pool spawn Normal
+PASS: Pool spawn Normal
+PASS: Pool spawn Normal
+PASS: Pool spawn Normal
+PASS: Pool spawn Normal
+PASS: Support hard target cap is three
+PASS: Exactly three base-damage-one allies receive +1
+PASS: Pool spawn Support
+PASS: Two Supports never stack past strongest +1
+PASS: Supports cannot buff one another
+PASS: Out-of-range damage revocation is immediate (before refresh)
+PASS: Pool spawn Normal
+PASS: Same pooled target has no stale buff on reuse
+PASS: Support death immediately revokes its leases and rewards once
+PASS: Other living Support remains effective after one source dies
+PASS: Source recycle removes remaining bonus synchronously
+PASS: Repeated lethal hit does not duplicate rewards
+PASS: Shared EnemyData unchanged by buffs
+PASS: Pool spawn Support
+PASS: Reused Support starts without old leases
+PASS: Pool spawn Fast
+PASS: Pool spawn Heavy
+PASS: Pool spawn Ranged
+PASS: Damage integration for Fast
+PASS: Damage integration for Heavy
+PASS: Damage integration for Ranged
+PASS: Support has no contact damage while touched
+PASS: Pool spawn Exploder
+PASS: Pool spawn Exploder
+PASS: Pool spawn Exploder
+PASS: Unsafe spawn on player cannot arm, detonate or deal contact damage
+PASS: Grace and observed safe separation precede a full warning
+PASS: Killed Exploder rewards exactly once
+PASS: Killing during warning cancels active explosion and returns to pool
+PASS: Pool spawn Exploder
+PASS: Guaranteed same-instance Exploder pool reuse
+PASS: Fresh spawn clears state immediately
+PASS: Proximity enters visible warning after arming
+PASS: Same instance resets old explosion count and timer
+PASS: Nonlethal damage does not skip or reset warning
+PASS: Warning locks position and stops chase/knockback movement
+PASS: Displayed world radius equals damage query radius
+PASS: Moving out avoids one committed blast and automatic pool return
+PASS: Active self-destruction grants exactly one native kill / XP orb
+PASS: Return hides all warning geometry
+PASS: Pool spawn Exploder
+PASS: Guaranteed same-instance Exploder pool reuse
+PASS: Fresh spawn clears state immediately
+PASS: Proximity enters visible warning after arming
+PASS: Direct recycle during warning causes no blast or reward
+PASS: Pool spawn Exploder
+PASS: Guaranteed same-instance Exploder pool reuse
+PASS: Fresh spawn clears state immediately
+PASS: Proximity enters visible warning after arming
+PASS: Pool spawn Normal
+PASS: Multiple player colliders resolve one blast hit
+PASS: Players-only faction excludes ordinary enemies
+PASS: Blast cannot damage a second time on later frames
+PASS: Pool spawn Exploder
+PASS: Guaranteed same-instance Exploder pool reuse
+PASS: Fresh spawn clears state immediately
+PASS: Proximity enters visible warning after arming
+PASS: Full player collider beyond ring edge receives no damage
+PASS: Pool spawn Exploder
+PASS: Guaranteed same-instance Exploder pool reuse
+PASS: Fresh spawn clears state immediately
+PASS: Proximity enters visible warning after arming
+PASS: Collider overlapping ring edge receives exactly the configured hit
+PASS: Pool spawn Exploder
+PASS: Guaranteed same-instance Exploder pool reuse
+PASS: Fresh spawn clears state immediately
+PASS: Proximity enters visible warning after arming
+PASS: Native Jet Jump starts through its normal gate
+PASS: Native airborne state avoids ground blast
+PASS: Pool spawn Exploder
+PASS: Guaranteed same-instance Exploder pool reuse
+PASS: Fresh spawn clears state immediately
+PASS: Proximity enters visible warning after arming
+PASS: Native Dash starts through its normal gate
+PASS: Native Dash / movement avoids warning expiration
+PASS: Pool spawn Support
+PASS: Pool spawn Normal
+PASS: Pool spawn Exploder
+PASS: Both specialists obtain native A* paths around cover
+PASS: Both specialists physically move using native motor
+PASS: Native Animator swaps actual inherited frames without rotating the body
+PASS: Native collision guard keeps enemies out of environment
+PASS: Pool spawn Support
+PASS: Native weapon fires toward Support
+PASS: Real pooled bullet / physics damages Support
+PASS: Native XP pickup collects reward for Support
+PASS: Pool spawn Exploder
+PASS: Native weapon fires toward Exploder
+PASS: Real pooled bullet / physics damages Exploder
+PASS: Native XP pickup collects reward for Exploder
+PASS: Boss probe uses a pool with both new types registered
+PASS: Boss prepares an actual native summon plan
+PASS: Boss plan retains original four-type whitelist
+PASS: Boss plan retains original four-type whitelist
+PASS: Boss plan retains original four-type whitelist
+PASS: Boss plan retains original four-type whitelist
+PASS: Boss plan retains original four-type whitelist
+PASS: Boss plan retains original four-type whitelist
+PASS: Boss plan retains original four-type whitelist
+PASS: Boss releases original summons only with expanded registration
+PASS: Boss is never a Support recipient
+PASS: Pool spawn Support
+PASS: Pool spawn Normal
+PASS: Pool spawn Exploder
+PASS: Restart creates a fresh run and clears kill state
+PASS: Restart loads the authored encounter without duplicated managers/enemies
+PASS: Restart clears countdowns and blast history
+PASS: No Unity errors or exceptions
+RESULT: PASS
