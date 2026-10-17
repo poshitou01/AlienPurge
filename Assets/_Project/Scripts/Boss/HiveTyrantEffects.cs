@@ -10,7 +10,7 @@ public sealed class HiveTyrantEffects : MonoBehaviour
     private Material material;
     private HiveTyrantCombat boss;
     private readonly Surface[] bursts = new Surface[10];
-    private readonly Surface[] wave = new Surface[3];
+    private readonly Surface[] wave = new Surface[HiveTyrantWavePlan.MaximumSegments];
     private readonly Surface[] crescents = new Surface[2];
     private Surface spores, sweepGuide;
     private readonly HiveTyrantTelegraph[] warnings = new HiveTyrantTelegraph[12];
@@ -19,7 +19,7 @@ public sealed class HiveTyrantEffects : MonoBehaviour
     private readonly float[] radii = new float[10], angles = new float[10];
     private readonly int[] kinds = new int[10];
     public int ActiveCount { get; private set; }
-    public int OwnedMeshCount => 29;
+    public int OwnedMeshCount => bursts.Length + wave.Length + crescents.Length + warnings.Length + 2;
     public Material SharedMaterial => material;
     private void Awake()
     {
@@ -116,39 +116,52 @@ public sealed class HiveTyrantEffects : MonoBehaviour
     }
     public void DrawWave(HiveTyrantWavePlan plan, float distance, bool warning)
     {
-        for (int s = 0; s < 3; s++)
+        for (int s = 0; s < wave.Length; s++)
         {
             Surface surface = wave[s]; surface.Clear();
+            if (s >= plan.SegmentCount) { surface.Hide(); continue; }
             float length = plan.lengths[s];
-            if (length <= 0 || (!warning && distance > length + plan.thickness * .5f)) { surface.Hide(); continue; }
+            if (length <= 0) { surface.Hide(); continue; }
             float x = plan.SegmentCenter(s), half = plan.width * .5f;
             if (warning)
             {
-                Rect(surface, plan, x - half, x + half, 0, length, new Color(.8f, .48f, .21f, .13f));
-                Rect(surface, plan, x - half, x - half + .055f, 0, length, new Color(.98f, .82f, .51f, .7f));
-                Rect(surface, plan, x + half - .055f, x + half, 0, length, new Color(.98f, .82f, .51f, .7f));
+                Color edge = plan.enraged ? new Color(.94f, .58f, 1, .8f) : new Color(.98f, .82f, .51f, .7f);
+                Rect(surface, plan, x - half, x + half, 0, length, plan.enraged ? new Color(.6f, .22f, .8f, .14f) : new Color(.8f, .48f, .21f, .13f));
+                Rect(surface, plan, x - half, x - half + .055f, 0, length, edge);
+                Rect(surface, plan, x + half - .055f, x + half, 0, length, edge);
                 for (float z = .6f; z < length; z += 1.6f)
                 {
                     Vector2 a = plan.Point(x - .35f, z - .28f), b = plan.Point(x, z), c = plan.Point(x + .35f, z - .28f);
-                    surface.Line(a, b, .07f, new Color(1, .85f, .55f, .55f)); surface.Line(b, c, .07f, new Color(1, .85f, .55f, .55f));
+                    surface.Line(a, b, .07f, edge); surface.Line(b, c, .07f, edge);
+                    // Three notches advertise the cascade before any front is released.
+                    if (plan.enraged) for (int n = 1; n < plan.volleyCount; n++)
+                    {
+                        Vector2 offset = plan.forward * (-.18f * n);
+                        surface.Line(a + offset, b + offset, .035f, edge); surface.Line(b + offset, c + offset, .035f, edge);
+                    }
                 }
             }
             else
             {
-                float front = Mathf.Min(length, distance + plan.thickness * .5f), back = Mathf.Max(0, distance - plan.thickness * .5f);
-                if (front <= back) { surface.Hide(); continue; }
-                // Every rock and dust fragment remains strictly within its dangerous segment.
-                int fragments = boss.Config != null ? Mathf.Clamp(boss.Config.effectFragmentCount, 8, 24) : 16;
-                for (int j = 0; j < fragments; j++)
+                for (int volley = 0; volley < plan.volleyCount; volley++)
                 {
-                    float left = x - half + j * plan.width / fragments, right = left + plan.width / fragments;
-                    float crest = front - .09f * (j % 3);
-                    float heel = Mathf.Lerp(back, front, .16f + .14f * (j % 3));
-                    Vector2 a = plan.Point(left + .025f, heel), b = plan.Point(right - .025f, heel + .04f), c = plan.Point(right, crest), d = plan.Point(left, front);
-                    surface.Quad(a, b, c, d, new Color(.38f + .07f * (j % 2), .34f, .29f, .88f));
-                    surface.Line(d, c, .085f, new Color(1, .92f, .73f, .95f));
-                    surface.Diamond(plan.Point((left + right) * .5f, Mathf.Lerp(back, front, .3f + .12f * (j % 3))), .075f, new Color(.88f, .8f, .66f, .8f));
-                    if (j % 3 == 0) surface.Diamond(plan.Point((left + right) * .5f, back + .08f), .11f, new Color(.74f, .7f, .62f, .2f));
+                    float travelled = distance - volley * plan.volleyInterval * plan.speed;
+                    if (travelled < 0 || travelled > length + plan.thickness * .5f) continue;
+                    float front = Mathf.Min(length, travelled + plan.thickness * .5f), back = Mathf.Max(0, travelled - plan.thickness * .5f);
+                    if (front <= back) continue;
+                    // Every rock and dust fragment remains strictly within its dangerous segment.
+                    int fragments = boss.Config != null ? Mathf.Clamp(boss.Config.effectFragmentCount, 8, 24) : 16;
+                    for (int j = 0; j < fragments; j++)
+                    {
+                        float left = x - half + j * plan.width / fragments, right = left + plan.width / fragments;
+                        float crest = front - .09f * (j % 3);
+                        float heel = Mathf.Lerp(back, front, .16f + .14f * (j % 3));
+                        Vector2 a = plan.Point(left + .025f, heel), b = plan.Point(right - .025f, heel + .04f), c = plan.Point(right, crest), d = plan.Point(left, front);
+                        surface.Quad(a, b, c, d, new Color(.38f + .07f * (j % 2), .34f, .29f, .88f));
+                        surface.Line(d, c, .085f, plan.enraged ? new Color(.97f, .64f, 1, 1) : new Color(1, .92f, .73f, .95f));
+                        surface.Diamond(plan.Point((left + right) * .5f, Mathf.Lerp(back, front, .3f + .12f * (j % 3))), .075f, new Color(.88f, .8f, .66f, .8f));
+                        if (j % 3 == 0) surface.Diamond(plan.Point((left + right) * .5f, back + .08f), .11f, new Color(.74f, .7f, .62f, .2f));
+                    }
                 }
             }
             surface.Apply();
@@ -183,7 +196,7 @@ public sealed class HiveTyrantEffects : MonoBehaviour
             {
                 if (arc.stops[s] < arc.distance) continue;
                 Vector2 a = arc.a[s] + arc.forward * arc.distance, b = arc.b[s] + arc.forward * arc.distance;
-                surface.Line(a, b, boss.Config.sweepThickness, new Color(1, .38f, .055f, .7f));
+                surface.Line(a, b, boss.Config.sweepThickness, arc.enraged ? new Color(.82f, .24f, 1, .75f) : new Color(1, .38f, .055f, .7f));
                 surface.Line(a, b, .12f, new Color(1, .94f, .63f, 1));
                 if (s % 3 == 0) surface.Diamond((a + b) * .5f - arc.forward * .25f, .075f, new Color(1, .65f, .18f, .9f));
             }
@@ -197,8 +210,8 @@ public sealed class HiveTyrantEffects : MonoBehaviour
         {
             if (!spore.active) continue;
             float radius = boss.Config.sporeRadius;
-            float progress = Mathf.Clamp01(spore.age / boss.Config.sporeWarning);
-            float fade = spore.impacted ? 1 - Mathf.Clamp01((spore.age - boss.Config.sporeWarning) / boss.Config.sporeResidueTime) : 1;
+            float progress = Mathf.Clamp01(spore.age / spore.warning);
+            float fade = spore.impacted ? 1 - Mathf.Clamp01((spore.age - spore.warning) / spore.residue) : 1;
             Color edge = spore.impacted ? new Color(.87f, .22f, 1, .85f * fade) : new Color(.95f, .66f, 1, .95f);
             for (int i = 0; i < 40; i++)
             {

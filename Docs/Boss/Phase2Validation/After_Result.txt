@@ -1,0 +1,171 @@
+PASSED actual Unity Play Mode 2022.3.62f3c1; Direct3D11
+PASS Saved encounter still starts autonomous AI without function keys
+PASS P1 sweep geometry, warning and propagation speed preserved
+PASS P1 faultline remains three segments, two gaps and one front
+PASS P1 spore timing and quantity preserved
+PASS P1 brood composition and timing preserved
+PASS P1 crescent captures its original travel speed
+PASS P1 shell captures its own detonation and residue times
+PASS Exactly one complete Riftwing reveal at the health threshold
+PASS Phase reveal cancels P1 hazards before installing the new pattern
+PASS All P2 attack preparations are faster than their P1 versions
+PASS P2 reduces recovery, cooldowns and the decision gap
+PASS Twin sweeps still allow the native 2.5-second jump cooldown
+PASS P2 cascade accepted at 5m, gap side 0
+PASS Five segments / four physical gaps / three scheduled fronts; inner escape reachable
+PASS Preparing cascade never relocates Boss or player
+PASS Real P2 faultline release matches the shorter 1.10-second warning
+PASS Moving during the tell cannot rotate or translate the locked cascade
+PASS Cast and all independently travelling hazards finish
+PASS All three fronts avoided with base-speed walking and no jump/invulnerability at 5m
+PASS Whole player body reaches and remains in the fixed safe corridor
+PASS P2 cascade accepted at 5m, gap side 1
+PASS Five segments / four physical gaps / three scheduled fronts; inner escape reachable
+PASS Preparing cascade never relocates Boss or player
+PASS Real P2 faultline release matches the shorter 1.10-second warning
+PASS Moving during the tell cannot rotate or translate the locked cascade
+PASS Cast and all independently travelling hazards finish
+PASS All three fronts avoided with base-speed walking and no jump/invulnerability at 5m
+PASS Whole player body reaches and remains in the fixed safe corridor
+PASS P2 cascade accepted at 9m, gap side 0
+PASS Five segments / four physical gaps / three scheduled fronts; inner escape reachable
+PASS Preparing cascade never relocates Boss or player
+PASS Actual Game View capture Phase2_Cascade_Warning
+PASS Real P2 faultline release matches the shorter 1.10-second warning
+PASS Moving during the tell cannot rotate or translate the locked cascade
+PASS Actual Game View capture Phase2_Cascade_ThreeFronts
+PASS Cast and all independently travelling hazards finish
+PASS All three fronts avoided with base-speed walking and no jump/invulnerability at 9m
+PASS Whole player body reaches and remains in the fixed safe corridor
+PASS P2 cascade accepted at 9m, gap side 1
+PASS Five segments / four physical gaps / three scheduled fronts; inner escape reachable
+PASS Preparing cascade never relocates Boss or player
+PASS Real P2 faultline release matches the shorter 1.10-second warning
+PASS Moving during the tell cannot rotate or translate the locked cascade
+PASS Cast and all independently travelling hazards finish
+PASS All three fronts avoided with base-speed walking and no jump/invulnerability at 9m
+PASS Whole player body reaches and remains in the fixed safe corridor
+PASS P2 cascade accepted at 14m, gap side 0
+PASS Five segments / four physical gaps / three scheduled fronts; inner escape reachable
+PASS Preparing cascade never relocates Boss or player
+PASS Real P2 faultline release matches the shorter 1.10-second warning
+PASS Moving during the tell cannot rotate or translate the locked cascade
+PASS Cast and all independently travelling hazards finish
+PASS All three fronts avoided with base-speed walking and no jump/invulnerability at 14m
+PASS Whole player body reaches and remains in the fixed safe corridor
+PASS P2 cascade accepted at 14m, gap side 1
+PASS Five segments / four physical gaps / three scheduled fronts; inner escape reachable
+PASS Preparing cascade never relocates Boss or player
+PASS Real P2 faultline release matches the shorter 1.10-second warning
+PASS Moving during the tell cannot rotate or translate the locked cascade
+PASS Cast and all independently travelling hazards finish
+PASS All three fronts avoided with base-speed walking and no jump/invulnerability at 14m
+PASS Whole player body reaches and remains in the fixed safe corridor
+PASS P2 collision fixture uses the real arena plan
+PASS Large 4-second step resolves each of three fronts once, with no tunnelling
+PASS A completed cascade has no lingering damage
+PASS P2 collider-sized gap 0 edge -1 remains safe through every front
+PASS P2 collider-sized gap 0 edge -1 exposed body is hit once by each front
+PASS P2 collider-sized gap 0 edge 1 remains safe through every front
+PASS P2 collider-sized gap 0 edge 1 exposed body is hit once by each front
+PASS P2 collider-sized gap 1 edge -1 remains safe through every front
+PASS P2 collider-sized gap 1 edge -1 exposed body is hit once by each front
+PASS P2 collider-sized gap 1 edge 1 remains safe through every front
+PASS P2 collider-sized gap 1 edge 1 exposed body is hit once by each front
+PASS P2 collider-sized gap 2 edge -1 remains safe through every front
+PASS P2 collider-sized gap 2 edge -1 exposed body is hit once by each front
+PASS P2 collider-sized gap 2 edge 1 remains safe through every front
+PASS P2 collider-sized gap 2 edge 1 exposed body is hit once by each front
+PASS P2 collider-sized gap 3 edge -1 remains safe through every front
+PASS P2 collider-sized gap 3 edge -1 exposed body is hit once by each front
+PASS P2 collider-sized gap 3 edge 1 remains safe through every front
+PASS P2 collider-sized gap 3 edge 1 exposed body is hit once by each front
+PASS A later front born during a long step never hits a player's earlier position
+PASS Existing airborne state accepts collision fixture
+PASS Every P2 ground front respects the existing airborne exclusion
+PASS P2 finds a reachable escape in front of a wall
+PASS All five segments and all three fronts stop at the environment wall
+PASS Sealed launch/escape lanes reject a P2 cascade
+PASS P2 twin-rift sweep accepted
+PASS First P2 sweep has the actual 0.85-second tell
+PASS Faster twin sweep retains separately warned releases and jump recovery
+PASS P2 crescent propagates at 10.5 with distinct energy coloring
+PASS Actual Game View capture Phase2_Twin_Rift
+PASS Cast and all independently travelling hazards finish
+PASS P2 paired spore attack accepted
+PASS First salvo locks two simultaneous circles
+PASS One flanking circle leaves the opposite side open
+PASS P2 warning does no early damage and captures shorter residue timing
+PASS Actual Game View capture Phase2_Spore_Crossfire
+PASS Three paired salvos produce six independently telegraphed shells
+PASS Paired spore markers never follow the player after locking
+PASS Crossfire cannot overlap a new faultline and seal its safe lanes
+PASS Cast and all independently travelling hazards finish
+PASS P2 brood rally accepted
+PASS P2 legal rally includes a heavy anchor, fast flanker and two ranged threats
+PASS Rally releases on its shorter 1.05-second animation tell
+PASS Cast and all independently travelling hazards finish
+PASS Repeated cascades reuse the same five meshes without creating projectile objects
+PASS Disable cancels travelling and not-yet-born fronts without invisible damage
+PASS Restart restores P1 without leaking any P2 pattern parameters
+PASS Exactly one complete Riftwing reveal at the health threshold
+PASS Automatic P2 opener first rallies the brood
+PASS Automatic opener follows with the new cascade, without debug keys
+PASS P2 death cancels the full queue, markers and owned summons
+PASS No post-death delayed front can damage the player
+BATTLE Tier1_Stationary HP=8/8, speed=5.8, bulletDamage=3, projectiles=3, fireCooldown=0.12, modules(P/E/C/S)=1/1/0/0, evolution=None; BossHP=7202; entryPower=12.9375; summonHealthScale=2.449896
+PASS Tier1_Stationary authored AI, native weapon/movement, no healing, no direct Boss damage
+Tier1_Stationary t=0.0 Player=8 Boss=7202 living=0
+Tier1_Stationary t=10.0 Player=4 Boss=6226 living=1
+OUTCOME Tier1_Stationary won=False playerHP=0 elapsed=13.5 BossStartHP=7202 shots=109 jumps=0 phases=0 totalSummons=7 peakAlive=7 sweepHits=2 sporeHits=1 releases=2,0,1,3
+FRAME Tier1_Stationary median=8.14 P95=9.66 ms; actual Editor Game View, captures included
+PASS Tier1_Stationary upgraded stand-and-fire strategy is punished
+BATTLE Tier1_Reactive HP=8/8, speed=5.8, bulletDamage=3, projectiles=3, fireCooldown=0.12, modules(P/E/C/S)=1/1/0/0, evolution=None; BossHP=7202; entryPower=12.9375; summonHealthScale=2.449896
+PASS Tier1_Reactive authored AI, native weapon/movement, no healing, no direct Boss damage
+Tier1_Reactive t=0.0 Player=8 Boss=7202 living=0
+PASS Actual Game View capture Battle_Spores
+Tier1_Reactive t=10.0 Player=8 Boss=6402 living=0
+Tier1_Reactive t=20.0 Player=8 Boss=5478 living=2
+PASS Actual Game View capture Battle_Crescent
+Tier1_Reactive t=30.0 Player=8 Boss=4600 living=0
+Tier1_Reactive t=40.0 Player=8 Boss=3720 living=0
+PASS Actual Game View capture Battle_Phase2
+PASS Actual Game View capture Battle_Cascade
+Tier1_Reactive t=50.0 Player=8 Boss=2951 living=1
+Tier1_Reactive t=60.0 Player=8 Boss=2103 living=2
+PASS Actual Game View capture Battle_Crossfire
+Tier1_Reactive t=70.0 Player=4 Boss=1286 living=1
+Tier1_Reactive t=80.0 Player=4 Boss=456 living=0
+OUTCOME Tier1_Reactive won=True playerHP=2 elapsed=84.9 BossStartHP=7202 shots=676 jumps=6 phases=1 totalSummons=62 peakAlive=9 sweepHits=0 sporeHits=3 releases=6,8,8,19
+FRAME Tier1_Reactive median=8.42 P95=11.74 ms; actual Editor Game View, captures included
+PASS Tier1_Reactive wins both phases using normal play
+PASS Tier1_Reactive all four skills and native jump exercised
+BATTLE Tier2_Reactive HP=10/10, speed=6.6, bulletDamage=5, projectiles=5, fireCooldown=0.09900001, modules(P/E/C/S)=0/3/0/3, evolution=ClusterBurst; BossHP=21230; entryPower=60.60606; summonHealthScale=3
+PASS Tier2_Reactive authored AI, native weapon/movement, no healing, no direct Boss damage
+Tier2_Reactive t=0.0 Player=10 Boss=21230 living=0
+Tier2_Reactive t=10.0 Player=10 Boss=17214 living=0
+Tier2_Reactive t=20.0 Player=10 Boss=12849 living=0
+Tier2_Reactive t=30.0 Player=10 Boss=8616 living=4
+Tier2_Reactive t=40.0 Player=10 Boss=4460 living=0
+Tier2_Reactive t=50.0 Player=10 Boss=537 living=4
+OUTCOME Tier2_Reactive won=True playerHP=10 elapsed=51.8 BossStartHP=21230 shots=496 jumps=4 phases=1 totalSummons=34 peakAlive=10 sweepHits=0 sporeHits=0 releases=4,5,5,9
+FRAME Tier2_Reactive median=9.93 P95=14.33 ms; actual Editor Game View, captures included
+PASS Tier2_Reactive wins both phases using normal play
+PASS Tier2_Reactive all four skills and native jump exercised
+BATTLE Tier3_Reactive HP=10/10, speed=6.6, bulletDamage=5, projectiles=5, fireCooldown=0.09, modules(P/E/C/S)=3/0/3/0, evolution=ThunderPiercer; BossHP=17680; entryPower=46.66667; summonHealthScale=3
+PASS Tier3_Reactive authored AI, native weapon/movement, no healing, no direct Boss damage
+Tier3_Reactive t=0.0 Player=10 Boss=17680 living=0
+Tier3_Reactive t=10.0 Player=10 Boss=15300 living=0
+Tier3_Reactive t=20.0 Player=10 Boss=12780 living=2
+Tier3_Reactive t=30.0 Player=10 Boss=10245 living=0
+Tier3_Reactive t=40.0 Player=10 Boss=7860 living=0
+Tier3_Reactive t=50.0 Player=10 Boss=5295 living=0
+Tier3_Reactive t=60.0 Player=10 Boss=2735 living=0
+Tier3_Reactive t=70.0 Player=10 Boss=320 living=6
+OUTCOME Tier3_Reactive won=True playerHP=10 elapsed=71.9 BossStartHP=17680 shots=755 jumps=5 phases=1 totalSummons=58 peakAlive=10 sweepHits=0 sporeHits=0 releases=5,7,7,15
+FRAME Tier3_Reactive median=9.52 P95=12.32 ms; actual Editor Game View, captures included
+PASS Tier3_Reactive wins both phases using normal play
+PASS Tier3_Reactive all four skills and native jump exercised
+PASS Formal level leaves Boss dormant without taking a premature loadout snapshot
+PASS Existing arena bridge activates the encounter and captures the upgraded loadout on entry
+PASS Formal Boss defeat still clears hazards and completes the existing bridge

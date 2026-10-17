@@ -12,7 +12,8 @@ using UnityEngine;
 public static class HiveTyrantPressureVerification
 {
     const string Key = "HiveTyrant.PressureVerification";
-    public const string Folder = "Docs/Boss/PressureValidation";
+    public static string Folder => Phase2Pass ? "Docs/Boss/Phase2Validation" : "Docs/Boss/PressureValidation";
+    static bool Phase2Pass => SessionState.GetBool(Key + ".Phase2", false);
     static readonly Stack<IEnumerator> jobs = new Stack<IEnumerator>();
     static readonly List<string> report = new List<string>();
     static readonly List<string> errors = new List<string>();
@@ -30,10 +31,12 @@ public static class HiveTyrantPressureVerification
     }
     public static void RunBaseline() { Begin(true); }
     public static void RunPressure() { Begin(false); }
+    public static void RunPhase2() { Begin(false, false, true); }
+    public static void BuildPhase2Windows() { SessionState.SetBool(Key + ".Phase2", true); BuildPressureWindows(); }
     public static void RunFinalVisual() { Begin(false, true); }
     public static void BuildPressureWindows()
     {
-        const string output = "D:/AlienPurge/Builds/HiveTyrantPressure/AlienPurge.exe";
+        string output = "D:/AlienPurge/Builds/" + (Phase2Pass ? "HiveTyrantPhase2" : "HiveTyrantPressure") + "/AlienPurge.exe";
         Directory.CreateDirectory(Path.GetDirectoryName(output));
         var build = BuildPipeline.BuildPlayer(new BuildPlayerOptions {
             scenes = new[] { HiveTyrantCombatSetup.TestScene }, locationPathName = output,
@@ -43,9 +46,10 @@ public static class HiveTyrantPressureVerification
             "Errors=" + build.summary.totalErrors + " Warnings=" + build.summary.totalWarnings, "Duration=" + build.summary.totalTime });
         if (build.summary.result != UnityEditor.Build.Reporting.BuildResult.Succeeded) throw new InvalidOperationException("Polish build failed");
     }
-    static void Begin(bool baseline, bool visual = false)
+    static void Begin(bool baseline, bool visual = false, bool phase2 = false)
     {
         if (EditorApplication.isPlayingOrWillChangePlaymode) throw new InvalidOperationException("Exit Play Mode first.");
+        SessionState.SetBool(Key + ".Phase2", phase2);
         Directory.CreateDirectory(Folder);
         EditorSceneManager.OpenScene(HiveTyrantCombatSetup.TestScene);
         SessionState.SetBool(Key, true); SessionState.SetBool(Key + ".Baseline", baseline);
@@ -97,24 +101,24 @@ public static class HiveTyrantPressureVerification
         SessionState.SetInt(Key + ".Exit", success ? 0 : 1);
         Debug.Log("[HiveTyrantPressure] " + report[0]); EditorApplication.isPlaying = false;
     }
-    static void Check(bool ok, string message) { if (!ok) throw new InvalidOperationException(message); report.Add("PASS " + message); }
-    static IEnumerator Wait(float duration) { float end = Time.realtimeSinceStartup + duration; while (Time.realtimeSinceStartup < end) yield return null; }
-    static void Place(PlayerHealth player, Vector2 point)
+    internal static void Check(bool ok, string message) { if (!ok) throw new InvalidOperationException(message); report.Add("PASS " + message); Debug.Log("[HiveTyrantPressure] PASS " + message); }
+    internal static IEnumerator Wait(float duration) { float end = Time.realtimeSinceStartup + duration; while (Time.realtimeSinceStartup < end) yield return null; }
+    internal static void Place(PlayerHealth player, Vector2 point)
     {
         player.transform.position = point; var rb = player.GetComponent<Rigidbody2D>(); rb.position = point; rb.velocity = Vector2.zero; Physics2D.SyncTransforms();
     }
-    static IEnumerator Capture(string name)
+    internal static IEnumerator Capture(string name)
     {
         string path = Path.GetFullPath(Folder + "/" + Prefix + "_" + name + ".png");
         ScreenCapture.CaptureScreenshot(path); yield return Wait(.35f);
         Check(File.Exists(path), "Actual Game View capture " + name);
     }
-    static IEnumerator Fresh()
+    internal static IEnumerator Fresh()
     {
         HiveTyrantCombatDebug.RequestedTestTier = 0;
         Time.timeScale = 1; HiveTyrantCombatDebug.RestartScene(); yield return Wait(.7f);
     }
-    static void Jump(PlayerHealth player)
+    internal static void Jump(PlayerHealth player)
     {
         typeof(PlayerJetJump).GetMethod("TryStartJump", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)
             .Invoke(player.GetComponent<PlayerJetJump>(), null);
@@ -122,6 +126,14 @@ public static class HiveTyrantPressureVerification
     static IEnumerator Verify()
     {
         yield return Wait(.7f);
+        if (Phase2Pass)
+        {
+            yield return HiveTyrantPhase2Verification.Verify();
+            yield return Battle(1, false); yield return Battle(1, true);
+            yield return Battle(2, true); yield return Battle(3, true);
+            yield return FormalEntry();
+            yield break;
+        }
         UnityEngine.Random.InitState(1710);
         var boss = UnityEngine.Object.FindObjectOfType<HiveTyrantCombat>();
         var player = UnityEngine.Object.FindObjectOfType<PlayerHealth>();
@@ -255,6 +267,7 @@ public static class HiveTyrantPressureVerification
         float began = Time.time, next = began, timeout = Time.realtimeSinceStartup + 240;
         int peak = 0, phases = 0, total = 0, sweepHits = 0, sporeHits = 0, maximum = boss.Health.MaxHealth;
         int[] releases = new int[4]; var frames = new List<float>(); bool capturedBarrage = false, capturedWave = false, capturedP2 = false;
+        bool capturedCascade = false, capturedCrossfire = false;
         while (boss != null && !boss.Health.IsDead && !player.IsDead && Time.realtimeSinceStartup < timeout)
         {
             peak = Mathf.Max(peak, boss.LivingSummons); phases = boss.PhaseTransitionCount; total = boss.TotalSummoned;
@@ -267,6 +280,10 @@ public static class HiveTyrantPressureVerification
             }
             if (dodge && tier == 1)
             {
+                if (Phase2Pass && boss.Phase2Entered && boss.Wave.IsTravelling && boss.Wave.LaunchedFronts == 3 && !capturedCascade)
+                { capturedCascade = true; yield return Capture("Battle_Cascade"); }
+                if (Phase2Pass && boss.Phase2Entered && boss.Pressure.WarningCount >= 4 && !capturedCrossfire)
+                { capturedCrossfire = true; yield return Capture("Battle_Crossfire"); }
                 if (!capturedBarrage && boss.Pressure.HasSpores) { capturedBarrage = true; yield return Capture("Battle_Spores"); }
                 if (!capturedWave && boss.Pressure.HasCrescent) { capturedWave = true; yield return Capture("Battle_Crescent"); }
                 if (!capturedP2 && boss.State == HiveTyrantState.PhaseTransition && boss.Motor.IsPhase2) { capturedP2 = true; yield return Capture("Battle_Phase2"); }

@@ -103,8 +103,10 @@ public sealed class HiveTyrantHealthBar : MonoBehaviour
         bool phase2 = boss.Phase2Entered;
         bool sweep = boss.State == HiveTyrantState.SweepWindup || boss.Pressure.HasCrescent;
         bool spores = boss.State == HiveTyrantState.SporeWindup || boss.Pressure.HasSpores;
-        attackHint.text = sweep ? "RIFT CLEAVE  /  SPACE TO JUMP OR FLANK" : spores ? "SPORE BARRAGE  /  KEEP MOVING" :
-            boss.Wave.IsWarning || boss.Wave.IsTravelling ? "FAULTLINE  /  FIND THE OPEN LANE" : "";
+        attackHint.text = sweep ? (phase2 ? "TWIN RIFT  /  WATCH FOR THE SECOND SWEEP" : "RIFT CLEAVE  /  SPACE TO JUMP OR FLANK") :
+            spores ? (phase2 ? "SPORE CROSSFIRE  /  ESCAPE THE PAIRED MARKS" : "SPORE BARRAGE  /  KEEP MOVING") :
+            boss.Wave.IsWarning || boss.Wave.IsTravelling ? (phase2 ? "FAULTLINE CASCADE  /  HOLD THE GAP THROUGH EACH WAVE" : "FAULTLINE  /  FIND THE OPEN LANE") :
+            phase2 && boss.State == HiveTyrantState.SummonWindup ? "BROOD RALLY  /  BREAK THE RANGED LINE" : "";
         attackHint.color = spores ? new Color(.94f, .73f, 1) : Gold;
         if (lastPhase != phase2)
         {

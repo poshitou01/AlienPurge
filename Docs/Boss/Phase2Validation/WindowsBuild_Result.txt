@@ -1,0 +1,4 @@
+Succeeded
+Output=D:/AlienPurge/Builds/HiveTyrantPhase2/AlienPurge.exe
+Errors=0 Warnings=2
+Duration=00:00:43.4392981

@@ -56,7 +56,7 @@ public sealed class HiveTyrantPlaytestPilot : MonoBehaviour
         foreach (var arc in Boss.Pressure.Crescents)
         {
             if (!arc.active) continue;
-            Vector2 relative = current - arc.forward * (arc.distance + Boss.Config.sweepTravelSpeed * .16f);
+            Vector2 relative = current - arc.forward * (arc.distance + arc.speed * .16f);
             for (int i = 0; i < HiveTyrantPressureAttacks.ArcSegments; i++)
             {
                 if (arc.stops[i] < arc.distance) continue;
@@ -99,9 +99,11 @@ public sealed class HiveTyrantPlaytestPilot : MonoBehaviour
             var plan = wave.Plan;
             float z = Vector2.Dot(current - plan.origin, plan.forward);
             float x = Vector2.Dot(current - plan.origin, plan.right);
-            int gap = Mathf.Abs(x - plan.GapCenter(0)) < Mathf.Abs(x - plan.GapCenter(1)) ? 0 : 1;
-            if (!plan.reachableGaps[gap]) gap = 1 - gap;
-            Destination = plan.Point(plan.GapCenter(gap), Mathf.Clamp(z, 2, 10)); return;
+            int gap = -1; float nearest = float.PositiveInfinity;
+            for (int i = 0; i < plan.GapCount; i++)
+                if (plan.reachableGaps[i] && Mathf.Abs(x - plan.GapCenter(i)) < nearest)
+                { gap = i; nearest = Mathf.Abs(x - plan.GapCenter(i)); }
+            if (gap >= 0) { Destination = plan.Point(plan.GapCenter(gap), Mathf.Clamp(z, 2, 10)); return; }
         }
         Vector2 radial = current - center;
         if (radial.sqrMagnitude < .01f) radial = Vector2.down;

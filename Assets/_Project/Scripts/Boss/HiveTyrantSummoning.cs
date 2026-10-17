@@ -82,9 +82,9 @@ public sealed class HiveTyrantSummoning : MonoBehaviour
     {
         // Reserve a frontline anchor and a ranged threat when their caps and spawn space allow it.
         // Remaining slots retain the authored weighted mix and native enemy behavior.
-        if (index < 2)
+        if (index < (boss.Phase2Entered ? 4 : 2))
         {
-            EnemyType preferred = index == 0 ? EnemyType.Heavy : EnemyType.Ranged;
+            EnemyType preferred = index == 0 ? EnemyType.Heavy : index == 2 ? EnemyType.Fast : EnemyType.Ranged;
             foreach (var choice in boss.Config.summonChoices)
                 if (choice != null && choice.type == preferred && Eligible(choice, out prefab)) { selected = choice; return true; }
         }

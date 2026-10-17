@@ -17,20 +17,33 @@ MonoBehaviour:
   entryPowerExponent: 0.7
   maximumHealthScale: 18
   maximumSummonHealthScale: 3
-  phase2GlobalRecovery: 0.35
+  phase2GlobalRecovery: .22
   sweepTravelDistance: 14
   sweepTravelSpeed: 8.5
   sweepThickness: 0.55
   phase2SweepSpacing: 2.9
   sporeCount: 3
-  phase2SporeCount: 4
+  phase2SporeCount: 6
   sporeWarning: 1.3
   sporeInterval: 0.75
   sporeRadius: 1.7
   sporeResidueTime: 2.2
   sporeDamage: 2
   sporeCooldown: 11
-  phase2SummonInterval: 10
+  phase2SummonInterval: 9
+  phase2RecoveryMultiplier: .65
+  phase2CooldownMultiplier: .78
+  phase2SweepWindup: .85
+  phase2SweepTravelSpeed: 10.5
+  phase2SporeWarning: 1.15
+  phase2SporeSalvoInterval: .65
+  phase2SporeResidueTime: 1.6
+  phase2SporeFlankOffset: 3.8
+  phase2SlamWindup: 1.1
+  phase2WaveSpeed: 10.5
+  phase2WaveVolleyCount: 3
+  phase2WaveVolleyInterval: .55
+  phase2SummonWarning: 1.05
   phase2HealthRatio: 0.5
   phaseTransitionTime: 3
   deathTime: 1.6
@@ -45,8 +58,8 @@ MonoBehaviour:
   sweepWindup: 1.15
   sweepRecovery: 0.75
   sweepCooldown: 4.5
-  phase2SecondSweepWarning: 1.1
-  contentVersion: 4
+  phase2SecondSweepWarning: .8
+  contentVersion: 5
   slamRadius: 7
   slamDamage: 2
   slamWindup: 1.55

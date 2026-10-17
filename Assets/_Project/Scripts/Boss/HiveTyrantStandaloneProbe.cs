@@ -56,10 +56,25 @@ public sealed class HiveTyrantStandaloneProbe : MonoBehaviour
         report.Add("Loadout tier=" + testTier + "; " + HiveTyrantTestLoadouts.Describe(player) + "; native weapon/movement, input automation only; no battle healing.");
         report.Add("Boss starting HP=" + boss.Health.MaxHealth + "; entry power=" + boss.EntryPower);
         float began = Time.time, deadline = Time.realtimeSinceStartup + 240, next = 0;
-        int phases = 0, summons = 0, releases = 0;
+        int phases = 0, summons = 0, releases = 0, phase2Cascades = 0, phase2Fronts = 0, observedFronts = 0;
+        bool crossfireSeen = false;
+        HiveTyrantWavePlan observedCascade = null;
         while (boss != null && !boss.Health.IsDead && !player.IsDead && Time.realtimeSinceStartup < deadline)
         {
             phases = boss.PhaseTransitionCount; summons = boss.TotalSummoned; releases = boss.ReleaseCount;
+            var plan = boss.Wave.Plan;
+            if (plan != null && plan.enraged)
+            {
+                if (plan != observedCascade) { observedCascade = plan; observedFronts = 0; phase2Cascades++; }
+                if (boss.Wave.LaunchedFronts > observedFronts)
+                { phase2Fronts += boss.Wave.LaunchedFronts - observedFronts; observedFronts = boss.Wave.LaunchedFronts; }
+                if (boss.Wave.IsTravelling && observedFronts == 3 && captured.Add("P2_Cascade")) Capture("P2_Cascade");
+            }
+            if (boss.Phase2Entered && boss.Pressure.WarningCount >= 4)
+            {
+                crossfireSeen = true;
+                if (captured.Add("P2_Crossfire")) Capture("P2_Crossfire");
+            }
             frames.Add(Time.unscaledDeltaTime * 1000);
             string state = (boss.Phase2Entered ? "P2_" : "P1_") + boss.State;
             if (boss.State != HiveTyrantState.Chase && captured.Add(state)) Capture(state);
@@ -73,9 +88,11 @@ public sealed class HiveTyrantStandaloneProbe : MonoBehaviour
         yield return new WaitForSecondsRealtime(2);
         frames.Sort();
         report.Add("Outcome won=" + won + ", playerHP=" + player.CurrentHealth + ", elapsed=" + (Time.time - began).ToString("F1") + ", phases=" + phases + ", summons=" + summons + ", releases=" + releases + ", shots=" + pilot.Shots + ", jumps=" + pilot.Jumps);
+        report.Add("Phase II cascades=" + phase2Cascades + "; scheduled fronts actually launched=" + phase2Fronts + "; paired crossfire observed=" + crossfireSeen);
         report.Add("Hidden-window simulation timing median=" + frames[frames.Count / 2].ToString("F2") + "; P95=" + frames[(int)(frames.Count * .95f)].ToString("F2") + " ms. Not rendering FPS; only explicit captures render camera+UI.");
         report.Add("Errors=" + errors + "; encounter FX roots remaining=" + FindObjectsOfType<Transform>().Count(t => t.name == "HiveTyrant_EncounterEffects"));
         bool success = authoredAuto && won && phases == 1 && errors == 0;
+        if (Environment.GetCommandLineArgs().Contains("-hivetyrant-phase2")) success &= phase2Fronts >= 3 && crossfireSeen;
         report.Insert(0, success ? "PASSED" : "FAILED"); File.WriteAllLines(Path.Combine(directory, "Standalone_Result.txt"), report);
         Application.logMessageReceived -= RecordError; Application.Quit(success ? 0 : 1);
     }

@@ -10,7 +10,8 @@ public sealed class HiveTyrantPressureAttacks
     {
         public bool active;
         public Vector2 origin, forward;
-        public float distance;
+        public float distance, speed;
+        public bool enraged;
         public readonly Vector2[] a = new Vector2[ArcSegments], b = new Vector2[ArcSegments];
         public readonly float[] stops = new float[ArcSegments];
         public readonly HashSet<PlayerHealth> hit = new HashSet<PlayerHealth>();
@@ -19,7 +20,8 @@ public sealed class HiveTyrantPressureAttacks
     {
         public bool active, impacted;
         public Vector2 position;
-        public float age;
+        public float age, warning, residue;
+        public bool enraged;
         public readonly HashSet<PlayerHealth> hit = new HashSet<PlayerHealth>();
     }
     private sealed class Target
@@ -57,6 +59,7 @@ public sealed class HiveTyrantPressureAttacks
         foreach (var candidate in Crescents) if (!candidate.active) { arc = candidate; break; }
         if (arc == null) return;
         arc.active = true; arc.origin = origin; arc.forward = forward.normalized; arc.distance = 0; arc.hit.Clear();
+        arc.enraged = boss.Phase2Entered; arc.speed = arc.enraged ? config.phase2SweepTravelSpeed : config.sweepTravelSpeed;
         float heading = Mathf.Atan2(forward.y, forward.x);
         for (int i = 0; i < ArcSegments; i++)
         {
@@ -97,6 +100,9 @@ public sealed class HiveTyrantPressureAttacks
         foreach (var spore in Spores) if (!spore.active)
         {
             spore.active = true; spore.impacted = false; spore.position = position; spore.age = 0; spore.hit.Clear();
+            spore.enraged = boss.Phase2Entered;
+            spore.warning = spore.enraged ? boss.Config.phase2SporeWarning : boss.Config.sporeWarning;
+            spore.residue = spore.enraged ? boss.Config.phase2SporeResidueTime : boss.Config.sporeResidueTime;
             effects.DrawSpores(this); return true;
         }
         return false;
@@ -110,7 +116,7 @@ public sealed class HiveTyrantPressureAttacks
         foreach (var arc in Crescents)
         {
             if (!arc.active) continue;
-            float from = arc.distance, to = Mathf.Min(config.sweepTravelDistance + config.sweepThickness, from + dt * config.sweepTravelSpeed);
+            float from = arc.distance, to = Mathf.Min(config.sweepTravelDistance + config.sweepThickness, from + dt * arc.speed);
             foreach (var target in targets)
             {
                 if (target.health == null || target.health.IsDead || arc.hit.Contains(target.health)) continue;
@@ -147,7 +153,7 @@ public sealed class HiveTyrantPressureAttacks
         {
             if (!spore.active) continue;
             spore.age += dt;
-            if (spore.age < config.sporeWarning) continue;
+            if (spore.age < spore.warning) continue;
             if (!spore.impacted) { spore.impacted = true; effects.Burst(2, spore.position, Vector2.up, config.sporeRadius); }
             foreach (var target in targets)
             {
@@ -160,7 +166,7 @@ public sealed class HiveTyrantPressureAttacks
                     Hit(target, spore.hit, false); break;
                 }
             }
-            if (spore.age >= config.sporeWarning + config.sporeResidueTime) spore.active = false;
+            if (spore.age >= spore.warning + spore.residue) spore.active = false;
         }
         foreach (var target in targets) if (target.health != null) target.previous = target.health.transform.position;
         effects.DrawCrescents(this); effects.DrawSpores(this);

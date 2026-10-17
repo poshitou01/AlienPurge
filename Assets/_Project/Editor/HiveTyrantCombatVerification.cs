@@ -32,7 +32,8 @@ public static class HiveTyrantCombatVerification
     public static void RunRepairRegression() { SessionState.SetString("HiveTyrant.VerificationMode", "RepairRegression"); Begin(true); }
     public static void RunPolishRegression() { SessionState.SetString("HiveTyrant.VerificationMode", "PolishRegression"); Begin(true); }
     public static void RunPressureCompatibility() { SessionState.SetString("HiveTyrant.VerificationMode", "PressureCompatibility"); Begin(true); }
-    private static string OutputFolder(string mode) => mode.StartsWith("Pressure") ? "Docs/Boss/PressureValidation/Compatibility" : mode.StartsWith("Polish") ? "Docs/Boss/CombatPolishValidation/Regression" : mode.StartsWith("Repair") ? "Docs/Boss/RepairValidation/Regression" : "Docs/Boss/CompletionValidation";
+    public static void RunPhase2Compatibility() { SessionState.SetString("HiveTyrant.VerificationMode", "Phase2Compatibility"); Begin(true); }
+    private static string OutputFolder(string mode) => mode.StartsWith("Phase2") ? "Docs/Boss/Phase2Validation/Compatibility" : mode.StartsWith("Pressure") ? "Docs/Boss/PressureValidation/Compatibility" : mode.StartsWith("Polish") ? "Docs/Boss/CombatPolishValidation/Regression" : mode.StartsWith("Repair") ? "Docs/Boss/RepairValidation/Regression" : "Docs/Boss/CompletionValidation";
     public static void RunVisualSample() { SessionState.SetString("HiveTyrant.VerificationMode", "VisualSample"); Begin(true); }
     public static void ConfigureAndRunVisualSample() { HiveTyrantCombatSetup.ConfigureAndValidate(); RunVisualSample(); }
     public static void RunPoseAtlas() { SessionState.SetString("HiveTyrant.VerificationMode", "PoseAtlas"); Begin(true); }
@@ -150,7 +151,7 @@ public static class HiveTyrantCombatVerification
     private static IEnumerator Verify()
     {
         yield return Delay(1.5f);
-        if (SessionState.GetString("HiveTyrant.VerificationMode", "PlayMode") == "PressureCompatibility")
+        if (SessionState.GetString("HiveTyrant.VerificationMode", "PlayMode") == "PressureCompatibility" || SessionState.GetString("HiveTyrant.VerificationMode", "PlayMode") == "Phase2Compatibility")
         {
             var encounter = UnityEngine.Object.FindObjectOfType<HiveTyrantCombat>();
             var target = UnityEngine.Object.FindObjectOfType<PlayerHealth>();

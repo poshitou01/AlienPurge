@@ -14,7 +14,10 @@ public sealed class HiveTyrantCombatConfig : ScriptableObject
     [Min(.1f)] public float deathTime = 1.6f;
     [Min(1)] public float engageDistance = 18;
     [Min(.1f)] public float globalRecovery = .55f;
-    [Min(.1f)] public float phase2GlobalRecovery = .35f;
+    [Min(.1f)] public float phase2GlobalRecovery = .22f;
+    [Header("Riftwing tempo (Phase II only)")]
+    [Range(.5f, 1)] public float phase2RecoveryMultiplier = .65f;
+    [Range(.5f, 1)] public float phase2CooldownMultiplier = .78f;
     [Header("Autonomous decisions")]
     [Min(.5f)] public float openingDelay = 2.2f;
     [Min(.1f)] public float decisionInterval = .25f;
@@ -26,7 +29,9 @@ public sealed class HiveTyrantCombatConfig : ScriptableObject
     [Min(.2f)] public float sweepWindup = 1.15f;
     [Min(.1f)] public float sweepRecovery = .75f;
     [Min(.2f)] public float sweepCooldown = 4.5f;
-    [Min(.3f)] public float phase2SecondSweepWarning = 1.1f;
+    [Min(.5f)] public float phase2SweepWindup = .85f;
+    [Min(.5f)] public float phase2SecondSweepWarning = .8f;
+    [Min(1)] public float phase2SweepTravelSpeed = 10.5f;
     [Min(1)] public float sweepTravelDistance = 14;
     [Min(1)] public float sweepTravelSpeed = 8.5f;
     [Min(.1f)] public float sweepThickness = .55f;
@@ -34,7 +39,12 @@ public sealed class HiveTyrantCombatConfig : ScriptableObject
     [Min(2.6f)] public float phase2SweepSpacing = 2.9f;
     [Header("Spore barrage: each ground mark locks once, then detonates")]
     [Range(1, 6)] public int sporeCount = 3;
-    [Range(1, 6)] public int phase2SporeCount = 4;
+    [Range(2, 6)] public int phase2SporeCount = 6;
+    [Min(.6f)] public float phase2SporeWarning = 1.15f;
+    [Min(.4f)] public float phase2SporeSalvoInterval = .65f;
+    [Min(.1f)] public float phase2SporeResidueTime = 1.6f;
+    [Tooltip("A paired shell flanks one side; the opposite side remains an exit.")]
+    [Min(3.4f)] public float phase2SporeFlankOffset = 3.8f;
     [Min(.5f)] public float sporeWarning = 1.3f;
     [Min(.3f)] public float sporeInterval = .75f;
     [Min(.5f)] public float sporeRadius = 1.7f;
@@ -58,6 +68,11 @@ public sealed class HiveTyrantCombatConfig : ScriptableObject
     [Min(0)] public float waveGapMargin = .35f;
     [Min(.1f)] public float waveMinimumGap = 1.65f;
     [Min(.1f)] public float waveRouteReactionMargin = .25f;
+    [Header("Phase II faultline: five lanes, three fronts, fixed safe corridors")]
+    [Min(.6f)] public float phase2SlamWindup = 1.1f;
+    [Min(1)] public float phase2WaveSpeed = 10.5f;
+    [Range(2, 3)] public int phase2WaveVolleyCount = 3;
+    [Min(.4f)] public float phase2WaveVolleyInterval = .55f;
     [Header("Summon: existing native enemy definitions and attacks")]
     [Min(0)] public int summonWaveSize = 7;
     [Min(0)] public int summonAliveCap = 12;
@@ -65,7 +80,8 @@ public sealed class HiveTyrantCombatConfig : ScriptableObject
     [Min(0)] public int phase2SummonAliveCap = 16;
     [Min(0)] public int summonBudget = 64;
     [Min(.5f)] public float summonInterval = 12;
-    [Min(.5f)] public float phase2SummonInterval = 10;
+    [Min(.5f)] public float phase2SummonInterval = 9;
+    [Min(.6f)] public float phase2SummonWarning = 1.05f;
     [Min(.5f)] public float summonWarning = 1.4f;
     [Min(.1f)] public float summonRecovery = .8f;
     [Min(1)] public float summonMinRadius = 5;

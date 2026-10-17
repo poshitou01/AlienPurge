@@ -34,6 +34,7 @@ public sealed class HiveTyrantCombat : MonoBehaviour, IEnemyDeathPresentation
     private readonly float[] lastUsed = new float[4];
     private bool entryCaptured;
     private bool phase2RallyPending;
+    private bool phase2FaultlinePending;
     private readonly List<HiveTyrantTelegraph> markers = new List<HiveTyrantTelegraph>(8);
     private readonly HashSet<PlayerHealth> damagedPlayers = new HashSet<PlayerHealth>();
     private readonly Collider2D[] damageCandidates = new Collider2D[64];
@@ -59,7 +60,7 @@ public sealed class HiveTyrantCombat : MonoBehaviour, IEnemyDeathPresentation
     public int TotalSummoned => summoning != null ? summoning.Total : 0;
     public int ReleaseCount { get; private set; }
     public int PhaseTransitionCount { get; private set; }
-    public int ActiveWarningCount => markers.Count + (wave != null && wave.IsWarning ? 3 : 0) + (Pressure != null ? Pressure.WarningCount : 0);
+    public int ActiveWarningCount => markers.Count + (wave != null && wave.IsWarning ? wave.Plan.SegmentCount : 0) + (Pressure != null ? Pressure.WarningCount : 0);
     public int PendingSpawnCount => summoning != null ? summoning.PendingCount : 0;
     public int LivingSummons => summoning != null ? summoning.Living : 0;
     public float DeathPresentationDuration => config != null ? Mathf.Max(config.deathTime, 1.6f) : 1.6f;
@@ -123,6 +124,8 @@ public sealed class HiveTyrantCombat : MonoBehaviour, IEnemyDeathPresentation
             if (summoning.CanSummon() && RequestSkill(HiveTyrantSkill.Summon)) { phase2RallyPending = false; return; }
             if (!summoning.CanSummon()) phase2RallyPending = false;
         }
+        if (phase2FaultlinePending && RequestSkill(HiveTyrantSkill.Slam))
+        { phase2FaultlinePending = false; return; }
         float distance = Vector2.Distance(motor.CombatOrigin, motor.Target.position);
         int living = summoning.Living;
         // Pressure follows the situation. Neither a fixed rotation nor a roll every frame.
@@ -183,6 +186,7 @@ public sealed class HiveTyrantCombat : MonoBehaviour, IEnemyDeathPresentation
         lastUsed[index] = Time.time;
         float cooldown = skill == HiveTyrantSkill.Sweep ? config.sweepCooldown : skill == HiveTyrantSkill.Slam ? config.slamCooldown :
             skill == HiveTyrantSkill.SporeBarrage ? config.sporeCooldown : (phase2Entered ? config.phase2SummonInterval : config.summonInterval);
+        if (phase2Entered && skill != HiveTyrantSkill.Summon) cooldown *= config.phase2CooldownMultiplier;
         readyTimes[index] = Time.time + cooldown;
         actionRoutine = StartCoroutine(ExecuteSkill(skill)); return true;
     }
@@ -190,11 +194,11 @@ public sealed class HiveTyrantCombat : MonoBehaviour, IEnemyDeathPresentation
     {
         if (skill == HiveTyrantSkill.Sweep)
         {
-            yield return Sweep(config.sweepWindup);
+            yield return Sweep(phase2Entered ? config.phase2SweepWindup : config.sweepWindup);
             if (phase2Entered)
             {
                 State = HiveTyrantState.Recovery;
-                yield return new WaitForSeconds(Mathf.Max(config.sweepRecovery, config.phase2SweepSpacing - config.phase2SecondSweepWarning - .18f));
+                yield return new WaitForSeconds(Mathf.Max(RecoveryTime(config.sweepRecovery), config.phase2SweepSpacing - config.phase2SecondSweepWarning - .18f));
                 yield return Sweep(config.phase2SecondSweepWarning);
             }
         }
@@ -203,11 +207,12 @@ public sealed class HiveTyrantCombat : MonoBehaviour, IEnemyDeathPresentation
         else yield return SporeBarrage();
         State = HiveTyrantState.Recovery;
         float recovery = skill == HiveTyrantSkill.Sweep ? config.sweepRecovery : skill == HiveTyrantSkill.Slam ? config.slamRecovery : config.summonRecovery;
-        yield return new WaitForSeconds(recovery);
+        yield return new WaitForSeconds(RecoveryTime(recovery));
         ClearWarnings(); presentation.StopAction(); motor.EndAction();
         nextActionTime = Time.time + (phase2Entered ? config.phase2GlobalRecovery : config.globalRecovery);
         State = HiveTyrantState.Chase; actionRoutine = null;
     }
+    private float RecoveryTime(float duration) => duration * (phase2Entered ? config.phase2RecoveryMultiplier : 1);
     private Vector2 Aim()
     {
         Vector2 delta = motor.Target != null ? (Vector2)motor.Target.position - motor.CombatOrigin : Vector2.down;
@@ -218,7 +223,7 @@ public sealed class HiveTyrantCombat : MonoBehaviour, IEnemyDeathPresentation
         Vector2 origin = motor.CombatOrigin, direction = Aim();
         SweepOrigin = origin; SweepDirection = direction; SweepReleaseAt = Time.time + warning;
         motor.BeginAction(6, direction); State = HiveTyrantState.SweepWindup;
-        presentation.Play(6, warning, .18f, config.sweepRecovery);
+        presentation.Play(6, warning, .18f, RecoveryTime(config.sweepRecovery));
         var marker = AddWarning(origin, direction, config.sweepRadius, config.sweepAngle, new Color(.92f, .58f, .26f, .25f));
         effects.DrawSweepGuide(origin, direction);
         yield return new WaitForSeconds(warning);
@@ -229,8 +234,9 @@ public sealed class HiveTyrantCombat : MonoBehaviour, IEnemyDeathPresentation
     private IEnumerator Slam()
     {
         motor.BeginAction(7, wave.Plan.forward); State = HiveTyrantState.SlamWindup;
-        presentation.Play(7, config.slamWindup, .22f, config.slamRecovery);
-        yield return new WaitForSeconds(config.slamWindup);
+        float warning = wave.Plan.warning;
+        presentation.Play(7, warning, .22f, RecoveryTime(config.slamRecovery));
+        yield return new WaitForSeconds(warning);
         State = HiveTyrantState.SlamRelease; wave.Launch(); ReleaseCount++; SkillReleases[1]++;
         if (CameraFollow.Instance != null) CameraFollow.Instance.PlayMediumShake();
         yield return new WaitForSeconds(.22f);
@@ -239,28 +245,43 @@ public sealed class HiveTyrantCombat : MonoBehaviour, IEnemyDeathPresentation
     private IEnumerator Summon()
     {
         motor.BeginAction(8, Aim()); State = HiveTyrantState.SummonWindup;
-        presentation.Play(8, config.summonWarning, .2f, config.summonRecovery);
+        float warning = phase2Entered ? config.phase2SummonWarning : config.summonWarning;
+        presentation.Play(8, warning, .2f, RecoveryTime(config.summonRecovery));
         summoning.Prepare();
         for (int i = 0; i < summoning.PendingCount; i++)
         {
             var spawn = summoning.Pending(i);
             AddWarning(spawn.point, Vector2.right, spawn.clearance, 360, new Color(.65f, .48f, .8f, .45f));
         }
-        yield return new WaitForSeconds(config.summonWarning);
+        yield return new WaitForSeconds(warning);
         summoning.Release(); ReleaseCount++; SkillReleases[2]++; ClearWarnings(); yield return new WaitForSeconds(.2f);
     }
     private IEnumerator SporeBarrage()
     {
         State = HiveTyrantState.SporeWindup; motor.BeginAction(10, Aim());
         int count = Mathf.Clamp(phase2Entered ? config.phase2SporeCount : config.sporeCount, 1, Pressure.Spores.Length);
-        presentation.Play(10, .5f, Mathf.Max(.2f, (count - 1) * config.sporeInterval), .6f);
-        yield return new WaitForSeconds(.5f);
-        for (int i = 0; i < count; i++)
+        int perSalvo = phase2Entered ? 2 : 1, salvos = Mathf.CeilToInt(count / (float)perSalvo);
+        float preparation = phase2Entered ? .35f : .5f;
+        float interval = phase2Entered ? config.phase2SporeSalvoInterval : config.sporeInterval;
+        presentation.Play(10, preparation, Mathf.Max(.2f, (salvos - 1) * interval), RecoveryTime(.6f));
+        yield return new WaitForSeconds(preparation);
+        for (int i = 0; i < salvos; i++)
         {
-            // Sample once per shell. A locked circle never follows the player during its warning.
-            if (motor.Target != null) Pressure.MarkSpore(motor.Target.position);
-            ReleaseCount++; SkillReleases[3]++;
-            if (i + 1 < count) yield return new WaitForSeconds(config.sporeInterval);
+            // Both circles lock at the same instant. Alternate a flank, leaving the other side open.
+            if (motor.Target != null)
+            {
+                Vector2 point = motor.Target.position;
+                if (Pressure.MarkSpore(point)) { ReleaseCount++; SkillReleases[3]++; }
+                if (perSalvo == 2 && i * 2 + 1 < count)
+                {
+                    Vector2 aim = Aim(), right = new Vector2(-aim.y, aim.x);
+                    Vector2 flank = point + right * config.phase2SporeFlankOffset * (i % 2 == 0 ? 1 : -1);
+                    // Skip an obstructed flank rather than moving it onto the player's escape side.
+                    if (Physics2D.Linecast(point, flank, config.environmentLayers).collider == null && Pressure.MarkSpore(flank))
+                    { ReleaseCount++; SkillReleases[3]++; }
+                }
+            }
+            if (i + 1 < salvos) yield return new WaitForSeconds(interval);
         }
         yield return new WaitForSeconds(.25f);
     }
@@ -304,8 +325,9 @@ public sealed class HiveTyrantCombat : MonoBehaviour, IEnemyDeathPresentation
         motor.EnterPhase2(); presentation.RevealPhase2();
         yield return new WaitForSeconds(duration * .58f);
         // The new phase answers with a brood rally, even if an interrupted P1 summon spent its cooldown.
-        phase2RallyPending = true; readyTimes[(int)HiveTyrantSkill.Summon] = Time.time;
-        presentation.StopAction(); motor.EndAction(); nextActionTime = Time.time + config.globalRecovery;
+        phase2RallyPending = true; phase2FaultlinePending = true;
+        for (int i = 0; i < readyTimes.Length; i++) readyTimes[i] = Mathf.Min(readyTimes[i], Time.time);
+        presentation.StopAction(); motor.EndAction(); nextActionTime = Time.time + config.phase2GlobalRecovery;
         State = HiveTyrantState.Chase; actionRoutine = null;
     }
     public void BeginDeathPresentation()
@@ -330,7 +352,7 @@ public sealed class HiveTyrantCombat : MonoBehaviour, IEnemyDeathPresentation
         CancelAction(); summoning.ResetBudget(); health.PrepareForSpawn(); health.InitializeHealth(config.maxHealth);
         GetComponent<Rigidbody2D>().position = home; transform.position = new Vector3(home.x, home.y, transform.position.z); Physics2D.SyncTransforms();
         motor.ResetEncounter(); phase2Entered = false; PhaseTransitionCount = 0; ReleaseCount = 0; lastSkill = -1;
-        entryCaptured = false; phase2RallyPending = false; EntryPower = SummonHealthScale = 1; Pressure.Reset();
+        entryCaptured = false; phase2RallyPending = phase2FaultlinePending = false; EntryPower = SummonHealthScale = 1; Pressure.Reset();
         for (int i = 0; i < SkillReleases.Length; i++) { SkillReleases[i] = 0; lastUsed[i] = 0; }
         for (int i = 0; i < readyTimes.Length; i++) readyTimes[i] = 0;
         engagementStarted = false; nextDecisionTime = 0;
