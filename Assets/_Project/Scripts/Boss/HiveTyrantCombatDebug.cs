@@ -24,7 +24,7 @@ public sealed class HiveTyrantCombatDebug : MonoBehaviour
         if (EventSystem.current == null) ownedEventSystem = new GameObject("HiveTyrant_TestEventSystem", typeof(EventSystem), typeof(StandaloneInputModule));
         var strip = HiveTyrantHudLayout.Root(canvas.transform, "TestHint", new Vector2(440, 30), Vector2.zero, Vector2.zero, new Vector2(24, 20));
         HiveTyrantHudLayout.Box(strip, "Background", new Rect(0, 0, 440, 30), new Color(.04f, .05f, .05f, .72f));
-        hint = HiveTyrantHudLayout.Label(strip, "Hint", new Rect(12, 0, 416, 30), "TEST ARENA    F6 AUTO: OFF    F8 CONTROLS", 12, HiveTyrantHudLayout.Paper);
+        hint = HiveTyrantHudLayout.Label(strip, "Hint", new Rect(12, 0, 416, 30), "TEST ARENA    AUTO AI    F8 CONTROLS", 12, HiveTyrantHudLayout.Paper);
         var panel = HiveTyrantHudLayout.Root(canvas.transform, "TestControls", new Vector2(440, 218), Vector2.zero, Vector2.zero, new Vector2(24, 62));
         controls = panel.gameObject;
         HiveTyrantHudLayout.Box(panel, "Border", new Rect(0, 0, 440, 218), HiveTyrantHudLayout.Line);
@@ -70,7 +70,7 @@ public sealed class HiveTyrantCombatDebug : MonoBehaviour
         {
             nextStatusUpdate = Time.unscaledTime + .2f;
             hint.text = "TEST ARENA    F6 AUTO: " + (boss.AutomaticSkills ? "ON" : "OFF") + "    F8 CONTROLS";
-            if (controls.activeSelf) status.text = boss.State + "   /   Summons " + boss.LivingSummons + "/" + boss.Config.summonAliveCap + "\nSummon budget used: " + boss.TotalSummoned + "/" + boss.Config.summonBudget;
+            if (controls.activeSelf) status.text = boss.State + "   /   Summons " + boss.LivingSummons + "/" + boss.Summoning.AliveCap + "\nSummon budget used: " + boss.TotalSummoned + "/" + boss.Config.summonBudget;
         }
     }
     public void ToggleControls() { showControls = !showControls; if (controls != null && !defeated) controls.SetActive(showControls); }

@@ -20,8 +20,8 @@ public sealed class HiveTyrantPresentation : MonoBehaviour
     private readonly Vector2[] pixels = new Vector2[Count];
     private readonly float[][] scytheWeights = new float[16][], fistWeights = new float[16][];
     private readonly float[][] torsoWeights = new float[16][], wingWeights = new float[16][], coreWeights = new float[16][];
-    private float started, windup, release, recovery, nextHit;
-    private int action = -1, profile, lastHealth;
+    private float started, windup, release, recovery;
+    private int action = -1, profile;
     public bool IsArticulated => action >= 0 && view != null && view.enabled;
     public int CurrentAction => action;
     public int CurrentProfile => profile;
@@ -111,7 +111,8 @@ public sealed class HiveTyrantPresentation : MonoBehaviour
     {
         if (!enabled || library == null) return;
         action = cue; started = Time.time; windup = Mathf.Max(.01f, anticipation); release = Mathf.Max(.01f, strike); recovery = Mathf.Max(.01f, settle);
-        profile = (boss.Phase2Entered ? 8 : 0) + boss.Motor.GetCurrentDirection();
+        // Transformation starts in the old silhouette; wings reveal at the combat cue.
+        profile = ((cue == 9 ? boss.Motor.IsPhase2 : boss.Phase2Entered) ? 8 : 0) + boss.Motor.GetCurrentDirection();
         material.mainTexture = library.directions[profile].source.texture;
         // LateUpdate evaluates once before rendering; no duplicate full mesh pass in RequestSkill.
         body.enabled = false; view.enabled = true;
@@ -121,13 +122,16 @@ public sealed class HiveTyrantPresentation : MonoBehaviour
         if (action == 3 && boss != null && boss.Health != null && boss.Health.IsDead && gameObject.activeInHierarchy) return;
         action = -1; if (body != null) body.enabled = true; if (view != null) view.enabled = false;
     }
+    public void RevealPhase2()
+    {
+        if (action != 9 || profile >= 8) return;
+        profile += 8; material.mainTexture = library.directions[profile].source.texture;
+    }
     private void LateUpdate()
     {
         if (boss.Health == null) return;
-        int hp = boss.Health.CurrentHealth;
-        if (lastHealth > hp && hp > 0 && action < 0 && !boss.Motor.HasActionOwner && Time.time >= nextHit)
-        { Play(2, .06f, .05f, .17f); nextHit = Time.time + .3f; }
-        lastHealth = hp;
+        // Ordinary hits use EnemyHealth's short tint and the projectile's pooled sparks.
+        // Do not replace a moving sprite with the neutral joint mesh on every bullet.
         if (action < 0) return;
         float elapsed = Time.time - started;
         float t = elapsed < windup ? elapsed / windup :
@@ -173,7 +177,7 @@ public sealed class HiveTyrantPresentation : MonoBehaviour
             opacity = 1 - Ease(Mathf.InverseLerp(1.65f, 2, t));
         }
         else if (action == 2)
-        { chest = -4 * Mathf.Sin(t * Mathf.PI * .5f); a = -8 * Mathf.Sin(t * Mathf.PI * .5f); b = 5 * Mathf.Sin(t * Mathf.PI * .5f); }
+        { chest = -.6f * Mathf.Sin(t * Mathf.PI * .5f); a = -1.2f * Mathf.Sin(t * Mathf.PI * .5f); b = .8f * Mathf.Sin(t * Mathf.PI * .5f); }
         a *= rig.swingSign * rig.jointAmplitude; b *= rig.swingSign * rig.jointAmplitude; chest *= rig.swingSign;
         Vector3 scytheJoint = PixelToLocal(rig.scytheJoint), fistJoint = PixelToLocal(rig.fistJoint), chestPivot = PixelToLocal(rig.chestPivot);
         Quaternion scytheRotation = Quaternion.Euler(0, 0, a), fistRotation = Quaternion.Euler(0, 0, b), chestRotation = Quaternion.Euler(0, 0, chest);

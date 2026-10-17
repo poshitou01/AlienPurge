@@ -1,0 +1,5 @@
+PASSED
+Actual Windows runtime camera + existing UI, rendered offscreen at 1280x720.
+Hidden windows skip normal backbuffer rendering. Overlay canvases temporarily bind to the camera only for capture, then restore.
+Visual-only threshold fixture; not a full-battle performance or difficulty test.
+Errors=0

@@ -8,6 +8,10 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private int maxHealth = 3;
     [SerializeField] private int currentHealth;
 
+    [Header("Diagnostics")]
+    [Tooltip("Enable only while diagnosing damage; logging every projectile hit is expensive in the Editor.")]
+    [SerializeField] private bool logDamageEvents;
+
     [Header("Hit Feedback")]
     [SerializeField] private Color hitColor = Color.white;
     [SerializeField] private float hitFlashDuration = 0.08f;
@@ -258,16 +262,19 @@ public class EnemyHealth : MonoBehaviour
         currentHealth -= damage;
         currentHealth = Mathf.Max(0, currentHealth);
 
-        Debug.Log(
-            gameObject.name
-            + " 受到 "
-            + damage
-            + " 点伤害，当前血量："
-            + currentHealth
-            + "/"
-            + maxHealth,
-            this
-        );
+        if (logDamageEvents)
+        {
+            Debug.Log(
+                gameObject.name
+                + " 受到 "
+                + damage
+                + " 点伤害，当前血量："
+                + currentHealth
+                + "/"
+                + maxHealth,
+                this
+            );
+        }
 
         PlayHitFeedback();
 

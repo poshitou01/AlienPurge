@@ -1,0 +1,25 @@
+PASSED actual Unity Play Mode 2022.3.62f3c1; Direct3D11
+Authored auto=True; shots=52; actual damage=52; full-body hit pose restarts=0; per-hit Console logs=0
+Rendered hit probe: frames=888; median_ms=8.939; p95_ms=10.204; max_ms=12.756; camera_step=0.00000; player_step=0.00000
+PASS Continuous native weapon hits reach original EnemyHealth
+PASS Ordinary bullets never restart full-body poses or spam Console
+PASS Actual Game View capture HUD
+PASS Saved test scene starts with automatic AI enabled
+PASS Encounter config: 4/5 per wave, 6/8 alive, 20 total; native type caps retained
+PASS Original frame artwork uses sliced rails and proportional caps
+PASS Phase 1 reserves four valid native summons
+PASS Transition cancels pending attacks and gathers energy before wings appear
+PASS Phase II announcement accompanies old-silhouette charge
+PASS Actual Game View capture Phase2_Charge
+PASS Wing reveal and phase title overlap at the authored cue
+PASS Actual Game View capture Phase2_Reveal
+PASS Transition completes once, with no healing, attack release or lingering title
+PASS Transition never teleports the player or pauses gameplay time
+PASS Phase 2 reserves five valid native summons
+PASS All five warned Phase 2 summons become live native enemies
+PASS Actual Game View capture Phase2_Summons
+PASS Second Phase 2 wave reserves only the three remaining alive slots
+PASS Phase 2 live spawns respect the eight-enemy cap at release
+PASS Disable during transformation removes announcement and effects
+PASS Restart clears phase, caption and wing reveal state
+PASS Lethal hit during transformation immediately cancels announcement and ascension FX

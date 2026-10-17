@@ -6,10 +6,14 @@ public sealed class HiveTyrantCombatConfig : ScriptableObject
     [Header("Test starting values, not final balance")]
     [Min(1)] public int maxHealth = 600;
     [Range(.01f, .99f)] public float phase2HealthRatio = .5f;
-    [Min(.1f)] public float phaseTransitionTime = 1.8f;
+    [Min(.1f)] public float phaseTransitionTime = 3;
     [Min(.1f)] public float deathTime = 1.6f;
     [Min(1)] public float engageDistance = 18;
     [Min(.1f)] public float globalRecovery = 1.1f;
+    [Header("Autonomous decisions")]
+    [Min(.5f)] public float openingDelay = 2.2f;
+    [Min(.1f)] public float decisionInterval = .25f;
+    [Min(0)] public float firstSummonDelay = 8;
     [Header("Sweep: filled sector, direction locked for the entire warning")]
     [Min(.1f)] public float sweepRadius = 7;
     [Range(10, 180)] public float sweepAngle = 120;
@@ -36,10 +40,12 @@ public sealed class HiveTyrantCombatConfig : ScriptableObject
     [Min(.1f)] public float waveMinimumGap = 1.65f;
     [Min(.1f)] public float waveRouteReactionMargin = .25f;
     [Header("Summon: existing native enemy definitions and attacks")]
-    [Min(0)] public int summonWaveSize = 3;
-    [Min(0)] public int summonAliveCap = 5;
-    [Min(0)] public int summonBudget = 12;
-    [Min(.5f)] public float summonInterval = 14;
+    [Min(0)] public int summonWaveSize = 4;
+    [Min(0)] public int summonAliveCap = 6;
+    [Min(0)] public int phase2SummonWaveSize = 5;
+    [Min(0)] public int phase2SummonAliveCap = 8;
+    [Min(0)] public int summonBudget = 20;
+    [Min(.5f)] public float summonInterval = 16;
     [Min(.5f)] public float summonWarning = 1.4f;
     [Min(.1f)] public float summonRecovery = .8f;
     [Min(1)] public float summonMinRadius = 5;

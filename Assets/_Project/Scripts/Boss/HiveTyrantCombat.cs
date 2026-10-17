@@ -26,6 +26,9 @@ public sealed class HiveTyrantCombat : MonoBehaviour, IEnemyDeathPresentation
     private Coroutine actionRoutine;
     private bool phase2Entered;
     private float nextActionTime;
+    private float nextDecisionTime;
+    private bool engagementStarted;
+    private readonly float[] skillScores = new float[3];
     private int lastSkill = -1;
     private readonly float[] readyTimes = new float[3];
     private readonly List<HiveTyrantTelegraph> markers = new List<HiveTyrantTelegraph>(8);
@@ -75,9 +78,39 @@ public sealed class HiveTyrantCombat : MonoBehaviour, IEnemyDeathPresentation
         if (actionRoutine != null) return;
         if (!CanEngage()) { State = HiveTyrantState.Dormant; return; }
         State = HiveTyrantState.Chase;
-        if (!automaticSkills || Time.time < nextActionTime) return;
-        for (int n = 1; n <= 3; n++)
-            if (RequestSkill((HiveTyrantSkill)((lastSkill + n) % 3))) break;
+        if (!engagementStarted)
+        {
+            engagementStarted = true;
+            nextActionTime = Time.time + config.openingDelay;
+            readyTimes[(int)HiveTyrantSkill.Summon] = Time.time + config.firstSummonDelay;
+        }
+        if (!automaticSkills || Time.time < nextActionTime || Time.time < nextDecisionTime) return;
+        nextDecisionTime = Time.time + config.decisionInterval;
+        ChooseAutomaticSkill();
+    }
+    private void ChooseAutomaticSkill()
+    {
+        float distance = Vector2.Distance(motor.CombatOrigin, motor.Target.position);
+        int living = summoning.Living;
+        // Pressure follows the situation. Neither a fixed rotation nor a roll every frame.
+        skillScores[0] = distance <= config.sweepRadius - .3f ? 85 : -1;
+        skillScores[1] = distance <= config.waveDistance + config.waveStartOffset && !wave.IsTravelling
+            ? (distance > config.sweepRadius - 1 ? 95 : 45) : -1;
+        skillScores[2] = living <= 2 && summoning.CanSummon() ? (living == 0 ? 105 : 65) : -1;
+        for (int i = 0; i < 3; i++)
+        {
+            if (Time.time < readyTimes[i]) skillScores[i] = -1;
+            else if (i == lastSkill && skillScores[i] >= 0) skillScores[i] -= 20;
+        }
+        // A blocked wave plan can fall back to another legal skill this decision tick.
+        for (int attempt = 0; attempt < 3; attempt++)
+        {
+            int best = -1;
+            for (int i = 0; i < 3; i++) if (skillScores[i] >= 0 && (best < 0 || skillScores[i] > skillScores[best])) best = i;
+            if (best < 0) return;
+            if (RequestSkill((HiveTyrantSkill)best)) return;
+            skillScores[best] = -1;
+        }
     }
     private bool CanEngage()
     {
@@ -197,10 +230,14 @@ public sealed class HiveTyrantCombat : MonoBehaviour, IEnemyDeathPresentation
     }
     private IEnumerator PhaseTransition()
     {
-        State = HiveTyrantState.PhaseTransition; motor.EnterPhase2(); motor.BeginAction(9, Aim());
-        presentation.Play(9, config.phaseTransitionTime * .65f, .2f, config.phaseTransitionTime * .35f - .2f);
-        effects.Burst(3, motor.CombatOrigin, Vector2.up, 2.5f);
-        yield return new WaitForSeconds(config.phaseTransitionTime);
+        State = HiveTyrantState.PhaseTransition; motor.BeginAction(9, Aim());
+        float duration = config.phaseTransitionTime;
+        presentation.Play(9, duration * .55f, .2f, duration * .45f - .2f);
+        effects.Burst(3, motor.CombatOrigin, Vector2.up, 4.5f);
+        // Gather energy before revealing the winged silhouette. No damage or camera cut.
+        yield return new WaitForSeconds(duration * .42f);
+        motor.EnterPhase2(); presentation.RevealPhase2();
+        yield return new WaitForSeconds(duration * .58f);
         presentation.StopAction(); motor.EndAction(); nextActionTime = Time.time + config.globalRecovery;
         State = HiveTyrantState.Chase; actionRoutine = null;
     }
@@ -226,7 +263,8 @@ public sealed class HiveTyrantCombat : MonoBehaviour, IEnemyDeathPresentation
         GetComponent<Rigidbody2D>().position = home; transform.position = new Vector3(home.x, home.y, transform.position.z); Physics2D.SyncTransforms();
         motor.ResetEncounter(); phase2Entered = false; PhaseTransitionCount = 0; ReleaseCount = 0; lastSkill = -1;
         for (int i = 0; i < readyTimes.Length; i++) readyTimes[i] = 0;
-        nextActionTime = Time.time + config.globalRecovery; State = HiveTyrantState.Chase;
+        engagementStarted = false; nextDecisionTime = 0;
+        nextActionTime = Time.time + config.openingDelay; State = HiveTyrantState.Chase;
     }
     private void OnDisable()
     {

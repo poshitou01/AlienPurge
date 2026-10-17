@@ -14,10 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 600
   phase2HealthRatio: 0.5
-  phaseTransitionTime: 1.8
+  phaseTransitionTime: 3
   deathTime: 1.6
   engageDistance: 18
   globalRecovery: 1.1
+  openingDelay: 2.2
+  decisionInterval: 0.25
+  firstSummonDelay: 8
   sweepRadius: 7
   sweepAngle: 120
   sweepDamage: 1
@@ -40,10 +43,12 @@ MonoBehaviour:
   waveGapMargin: 0.35
   waveMinimumGap: 1.65
   waveRouteReactionMargin: 0.25
-  summonWaveSize: 3
-  summonAliveCap: 5
-  summonBudget: 12
-  summonInterval: 14
+  summonWaveSize: 4
+  summonAliveCap: 6
+  phase2SummonWaveSize: 5
+  phase2SummonAliveCap: 8
+  summonBudget: 20
+  summonInterval: 16
   summonWarning: 1.4
   summonRecovery: 0.8
   summonMinRadius: 5

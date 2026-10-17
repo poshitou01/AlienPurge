@@ -589,8 +589,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 600
   currentHealth: 0
-  hitColor: {r: 1, g: 1, b: 1, a: 1}
-  hitFlashDuration: 0.08
+  hitColor: {r: 1, g: 0.9, b: 0.78, a: 1}
+  hitFlashDuration: 0.055
   deathColor: {r: 1, g: 1, b: 1, a: 1}
   deathDelay: 1.2
   experienceAmount: 30

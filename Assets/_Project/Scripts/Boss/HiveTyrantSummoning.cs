@@ -13,6 +13,8 @@ public sealed class HiveTyrantSummoning : MonoBehaviour
     public int Total { get; private set; }
     public int PendingCount => pending.Count;
     public int Living => Count(null);
+    public int WaveSize => boss.Phase2Entered ? boss.Config.phase2SummonWaveSize : boss.Config.summonWaveSize;
+    public int AliveCap => boss.Phase2Entered ? boss.Config.phase2SummonAliveCap : boss.Config.summonAliveCap;
     public SpawnPlan Pending(int index) => pending[index];
     private void Awake() { boss = GetComponent<HiveTyrantCombat>(); }
     public int Count(EnemyType? type)
@@ -39,8 +41,8 @@ public sealed class HiveTyrantSummoning : MonoBehaviour
     public bool CanSummon()
     {
         var c = boss.Config;
-        if (EnemyPool.Instance == null || !EnemyPool.Instance.IsInitialized || c.summonWaveSize <= 0 ||
-            Total >= c.summonBudget || Living >= c.summonAliveCap || c.summonChoices == null) return false;
+        if (EnemyPool.Instance == null || !EnemyPool.Instance.IsInitialized || WaveSize <= 0 ||
+            Total >= c.summonBudget || Living >= AliveCap || c.summonChoices == null) return false;
         foreach (var choice in c.summonChoices) if (Eligible(choice, out _)) return true;
         return false;
     }
@@ -62,7 +64,7 @@ public sealed class HiveTyrantSummoning : MonoBehaviour
     public void Prepare()
     {
         pending.Clear(); var c = boss.Config;
-        int count = Mathf.Min(c.summonWaveSize, c.summonAliveCap - Living, c.summonBudget - Total);
+        int count = Mathf.Min(WaveSize, AliveCap - Living, c.summonBudget - Total);
         for (int i = 0; i < count; i++)
         {
             if (!Select(out HiveTyrantSummonChoice choice, out GameObject prefab)) break;
@@ -80,7 +82,7 @@ public sealed class HiveTyrantSummoning : MonoBehaviour
     {
         foreach (var plan in pending)
         {
-            if (Total >= boss.Config.summonBudget || Living >= boss.Config.summonAliveCap) break;
+            if (Total >= boss.Config.summonBudget || Living >= AliveCap) break;
             if (Count(plan.choice.type) >= plan.choice.aliveCap || !IsValid(plan.point, plan.clearance, false)) continue;
             var enemy = EnemyPool.Instance.GetEnemy(plan.choice.type, plan.point, Quaternion.identity);
             if (enemy == null) continue;

@@ -48,16 +48,21 @@ public sealed class HiveTyrantEffects : MonoBehaviour
     private void Update()
     {
         ActiveCount = 0;
-        float lifetime = boss.Config != null ? boss.Config.effectLifetime : .45f;
         int fragments = boss.Config != null ? boss.Config.effectFragmentCount : 16;
         for (int i = 0; i < bursts.Length; i++)
         {
             if (ages[i] < 0) continue;
+            float lifetime = kinds[i] == 3 ? boss.Config.phaseTransitionTime : boss.Config.effectLifetime;
             ages[i] += Time.deltaTime;
             if (ages[i] >= lifetime) { ages[i] = -1; bursts[i].Hide(); continue; }
             ActiveCount++;
             float t = ages[i] / lifetime;
             Surface surface = bursts[i]; surface.Clear();
+            if (kinds[i] == 3)
+            {
+                DrawAscension(surface, origins[i], radii[i], t);
+                surface.Apply(); continue;
+            }
             float heading = Mathf.Atan2(directions[i].y, directions[i].x);
             Color tint = kinds[i] == 2 ? new Color(.72f, .58f, .85f, 1 - t) : new Color(1, .9f, .69f, 1 - t);
             if (kinds[i] == 0)
@@ -79,6 +84,29 @@ public sealed class HiveTyrantEffects : MonoBehaviour
                 surface.Diamond(point, size, tint);
             }
             surface.Apply();
+        }
+    }
+    private static void DrawAscension(Surface surface, Vector2 origin, float radius, float t)
+    {
+        // Thin violet arcs and inward motes are presentation only, never a damage ring.
+        float reveal = Mathf.SmoothStep(0, 1, Mathf.InverseLerp(.36f, .68f, t));
+        float alpha = Mathf.SmoothStep(0, 1, t / .12f) * (1 - Mathf.SmoothStep(0, 1, Mathf.InverseLerp(.76f, 1, t)));
+        Color halo = new Color(.77f, .60f, 1, alpha * .55f);
+        float r = Mathf.Lerp(radius * .4f, radius, reveal);
+        for (int i = 0; i < 64; i++)
+        {
+            if (i % 8 == 7) continue;
+            float a = i * Mathf.PI * 2 / 64 + t * .5f, b = (i + 1) * Mathf.PI * 2 / 64 + t * .5f;
+            surface.Line(origin + Unit(a) * r, origin + Unit(b) * r, .025f + .025f * reveal, halo);
+        }
+        for (int i = 0; i < 18; i++)
+        {
+            float a = i * 2.39996f + t * .8f;
+            float inward = Mathf.Lerp(radius * .8f, .45f, Mathf.Clamp01(t / .42f));
+            float distance = t < .42f ? inward : Mathf.Lerp(.45f, radius * 1.15f, reveal);
+            Vector2 point = origin + Unit(a) * distance;
+            point.y += Mathf.Sin(t * Mathf.PI) * .7f;
+            surface.Diamond(point, .035f + .025f * (i % 3), new Color(1, .71f, .36f, alpha * .8f));
         }
     }
     public void DrawWave(HiveTyrantWavePlan plan, float distance, bool warning)
