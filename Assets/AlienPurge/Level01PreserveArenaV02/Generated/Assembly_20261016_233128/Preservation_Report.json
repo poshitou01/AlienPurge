@@ -1,0 +1,13 @@
+{
+    "gameplaySource": "Assets/_Project/Scenes/ArtTests/Level01_Gameplay_Integration_Test.unity",
+    "arenaSource": "Assets/_Project/Scenes/HiveTyrant_Arena.unity",
+    "completeScene": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Scenes/Day01_TestGround.unity",
+    "sourceColliderSummary": "来源根物体：ArenaRoot_Continuous_V03_1\n碰撞组件：3；PolygonCollider2D：1；多边形路径：1；多边形顶点：149；EdgeCollider2D：0\n边界脚本：ArenaV031SolidBoundary\n将复制这里实际保存的碰撞数据，不根据默认轮廓重建。",
+    "colliderSignature": "07099C17F43D12ED6E137F86376EF6E8D5FDA8485219D95C4C2F64EF21A3F9F3",
+    "sourceFeet": "Player/Arena_EnvironmentFeet_V031；size=(0.32, 0.07)；offset=(0.00, 0.00)",
+    "colliderMatched": true,
+    "worldPlacementMatched": true,
+    "feetMatched": true,
+    "buildSettingsChanged": false,
+    "oldSceneFilesVerified": 18
+}

@@ -1,0 +1,9 @@
+Scene: Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Scenes/Day01_TestGround.unity
+Original arena source: Assets/AlienPurge/Level01PreserveArenaV02/Generated/Assembly_20261016_233128/Arena_Final_Copy.unity
+Original gameplay source: Assets/AlienPurge/Level01PreserveArenaV02/Generated/Assembly_20261016_233128/Gameplay_Copy.unity
+Arena copied without image/geometry/transform changes.
+Reference world scale: 1
+Containers: 76
+Arena geometry fingerprint before/after assembly: MATCHED
+
+Original Arena south approach end-stop is disabled ONLY during Play by L01ArenaBridge and restored on disable.
