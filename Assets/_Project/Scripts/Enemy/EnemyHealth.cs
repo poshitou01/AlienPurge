@@ -23,6 +23,7 @@ public class EnemyHealth : MonoBehaviour
     [Tooltip("经验球相对于敌人死亡位置的随机偏移")]
     [SerializeField] private float dropRandomOffset = 0.15f;
 
+    private IEnemyDeathPresentation deathPresentation;
     private bool isDead;
     private bool hasRegisteredKill;
     private bool hasDroppedExperience;
@@ -46,6 +47,7 @@ public class EnemyHealth : MonoBehaviour
 
     private void Awake()
     {
+        deathPresentation = GetComponent<IEnemyDeathPresentation>();
         ValidateHealthSettings();
 
         currentHealth = maxHealth;
@@ -316,6 +318,9 @@ public class EnemyHealth : MonoBehaviour
 
         isDead = true;
 
+        if (hitFlashCoroutine != null) { StopCoroutine(hitFlashCoroutine); hitFlashCoroutine = null; }
+        if (deathPresentation != null) deathPresentation.BeginDeathPresentation();
+
         EnemyType enemyType =
             GetCurrentEnemyType();
 
@@ -469,14 +474,15 @@ public class EnemyHealth : MonoBehaviour
         scaleBeforeDeath =
             transform.localScale;
 
-        if (spriteRenderer != null)
+        if (deathPresentation == null)
         {
-            spriteRenderer.color =
-                deathColor;
+            if (spriteRenderer != null) spriteRenderer.color = deathColor;
+            transform.localScale = scaleBeforeDeath * 1.2f;
         }
-
-        transform.localScale =
-            scaleBeforeDeath * 1.2f;
+        else if (spriteRenderer != null)
+        {
+            spriteRenderer.color = originalColor;
+        }
 
         if (!hasDroppedExperience)
         {
@@ -485,7 +491,7 @@ public class EnemyHealth : MonoBehaviour
         }
 
         yield return new WaitForSeconds(
-            deathDelay
+            deathPresentation != null ? deathPresentation.DeathPresentationDuration : deathDelay
         );
 
         deathCoroutine = null;

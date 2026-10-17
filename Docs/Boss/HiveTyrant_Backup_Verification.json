@@ -1,0 +1,21 @@
+{
+  "project": "D:\\AlienPurge\\AlienPurge",
+  "backup": "D:\\AlienPurge\\AlienPurge_Backup_PreHiveTyrant_20261017_152640",
+  "localTimestamp": "20261017_152640",
+  "timezone": "Asia/Shanghai",
+  "unityState": "Edit mode visually confirmed; Ctrl+S; normal exit succeeded",
+  "sourceFiles": 6260,
+  "sourceBytes": 2591856316.0,
+  "verifiedFiles": 6260,
+  "verifiedBytes": 2591856316.0,
+  "hashVerification": "SHA256 matched for every copied file",
+  "excludedRootCaches": [
+    "Library",
+    "Temp",
+    "Logs",
+    "obj"
+  ],
+  "branch": "feat/level01-integration",
+  "head": "e2ea18910c7cf3a04d8bd7b1c3494cafa9dff1fd",
+  "status": []
+}

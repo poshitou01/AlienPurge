@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaa4d9d50bb984b45b36809a90003418, type: 3}
+  m_Name: HiveTyrant_Combat
+  m_EditorClassIdentifier: 
+  maxHealth: 600
+  phase2HealthRatio: 0.5
+  phaseTransitionTime: 1.8
+  deathTime: 1.6
+  engageDistance: 18
+  globalRecovery: 1.1
+  sweepRadius: 6
+  sweepAngle: 110
+  sweepDamage: 12
+  sweepWindup: 1
+  sweepRecovery: 0.75
+  sweepCooldown: 4.5
+  phase2SecondSweepWarning: 0.85
+  slamRadius: 7
+  slamDamage: 18
+  slamWindup: 1.55
+  slamRecovery: 1
+  slamCooldown: 8
+  summonWaveSize: 3
+  summonAliveCap: 5
+  summonBudget: 12
+  summonInterval: 14
+  summonWarning: 1.4
+  summonRecovery: 0.8
+  summonMinRadius: 5
+  summonMaxRadius: 10
+  summonClearance: 0.6
+  summonPlayerClearance: 3
+  summonAttempts: 32
+  summonHealth: 4
+  summonSpeed: 2
+  summonDamage: 5
+  environmentLayers:
+    serializedVersion: 2
+    m_Bits: 128

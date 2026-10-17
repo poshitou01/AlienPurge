@@ -47238,6 +47238,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HiveTyrant
       objectReference: {fileID: 0}
+    - target: {fileID: 9200017826575157812, guid: 58e55fbdfa60a904394c9dff63b56f45, type: 3}
+      propertyPath: arenaBoundary
+      value: 
+      objectReference: {fileID: 8828376026023684274}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -123072,6 +123076,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 363406c417599434dafd4596ba64d1fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8828376026023684274 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2400577523838576324, guid: f09325cef59ae9b4f9f7c76abfb610f7, type: 3}
+  m_PrefabInstance: {fileID: 8828376026023684271}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52aef7bb51f2f9e41bc42f52efc87ea6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &8828376026023684275 stripped

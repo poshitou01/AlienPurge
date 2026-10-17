@@ -1,0 +1,5 @@
+FAILED - Unity 2022.3.62f3c1 actual Editor Play Mode; Direct3D11
+FAIL System.InvalidOperationException: Editor paused during verification; inspect startup/runtime errors.
+  at HiveTyrantCombatVerification.Tick () [0x00076] in D:\AlienPurge\AlienPurge\Assets\_Project\Editor\HiveTyrantCombatVerification.cs:65 
+Formal eight-direction attack animation and final gameplay balance remain unverified/incomplete.
+Existing unrelated A* Editor update checker diagnostics (also present before changes): InvalidOperationException: Insecure connection not allowed

@@ -480,6 +480,8 @@ GameObject:
   - component: {fileID: 5480249265251489815}
   - component: {fileID: 5097657548192432910}
   - component: {fileID: -7497074032584655436}
+  - component: {fileID: 9200017826575157812}
+  - component: {fileID: 6513643606423520480}
   m_Layer: 0
   m_Name: HiveTyrant
   m_TagString: Enemy
@@ -522,7 +524,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -581,13 +583,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb9d5fa72a721354b9d666c1c4872a3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 60
+  maxHealth: 600
   currentHealth: 0
   hitColor: {r: 1, g: 1, b: 1, a: 1}
   hitFlashDuration: 0.08
   deathColor: {r: 1, g: 1, b: 1, a: 1}
   deathDelay: 1.2
-  experienceAmount: 1
+  experienceAmount: 30
   dropRandomOffset: 0.15
 --- !u!114 &-7497074032584655436
 MonoBehaviour:
@@ -604,15 +606,135 @@ MonoBehaviour:
   rb: {fileID: 3839199084453090541}
   bodyAnimator: {fileID: 4859164886881295963}
   target: {fileID: 0}
+  solidBody: {fileID: 5480249265251489815}
   autoFindPlayer: 1
   playerTag: Player
   moveSpeed: 1.7
-  stoppingDistance: 2.2
+  stoppingDistance: 4.2
   movementThreshold: 0.02
+  blockingLayers:
+    serializedVersion: 2
+    m_Bits: 128
   directionParam: Direction
   actionParam: Action
+  stateNames:
+  - HiveTyrant_Idle_D
+  - HiveTyrant_Idle_DR
+  - HiveTyrant_Idle_R
+  - HiveTyrant_Idle_UR
+  - HiveTyrant_Idle_U
+  - HiveTyrant_Idle_UL
+  - HiveTyrant_Idle_L
+  - HiveTyrant_Idle_DL
+  - HiveTyrant_Move_D
+  - HiveTyrant_Move_DR
+  - HiveTyrant_Move_R
+  - HiveTyrant_Move_UR
+  - HiveTyrant_Move_U
+  - HiveTyrant_Move_UL
+  - HiveTyrant_Move_L
+  - HiveTyrant_Move_DL
+  - HiveTyrant_Hit_D
+  - HiveTyrant_Hit_DR
+  - HiveTyrant_Hit_R
+  - HiveTyrant_Hit_UR
+  - HiveTyrant_Hit_U
+  - HiveTyrant_Hit_UL
+  - HiveTyrant_Hit_L
+  - HiveTyrant_Hit_DL
+  - Hivetyrant_Death_D
+  - Hivetyrant_Death_DR
+  - Hivetyrant_Death_R
+  - Hivetyrant_Death_UR
+  - Hivetyrant_Death_U
+  - Hivetyrant_Death_UL
+  - Hivetyrant_Death_L
+  - Hivetyrant_Death_DL
+  - HiveTyrant_Idle_Phase2_D
+  - HiveTyrant_Idle_Phase2_DR
+  - HiveTyrant_Idle_Phase2_R
+  - HiveTyrant_Idle_Phase2_UR
+  - HiveTyrant_Idle_Phase2_U
+  - HiveTyrant_Idle_Phase2_UL
+  - HiveTyrant_Idle_Phase2_L
+  - HiveTyrant_Idle_Phase2_DL
+  - Move_Phase2_D
+  - Move_Phase2_DR
+  - Move_Phase2_R
+  - Move_Phase2_UR
+  - Move_Phase2_U
+  - Move_Phase2_UL
+  - Move_Phase2_L
+  - Move_Phase2_DL
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  temporaryCombatPoses: 1
   movementLocked: 0
   dead: 0
+--- !u!114 &9200017826575157812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7575083927689973241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc57a7cd56e0fdf40a6a587f0f268978, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  config: {fileID: 11400000, guid: 7143514ec9bd7b64c8a52a223b4a0e72, type: 2}
+  arenaBoundary: {fileID: 0}
+  fallbackHalfSize: {x: 26, y: 18}
+  automaticSkills: 1
+  onDefeated:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &6513643606423520480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7575083927689973241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9ee4c89ec84479438b4818d3bc33022, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boss: {fileID: 9200017826575157812}
+  frame: {fileID: 2800000, guid: 9370f61bf9920034b8cde177d749b1c2, type: 3}
+  portrait: {fileID: 2800000, guid: 9ec35428f167fd242a3d101dd0fdfdbc, type: 3}
 --- !u!1 &8487762094662640954
 GameObject:
   m_ObjectHideFlags: 0

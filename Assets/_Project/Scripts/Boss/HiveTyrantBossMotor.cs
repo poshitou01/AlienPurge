@@ -1,418 +1,188 @@
-
 using UnityEngine;
 
-[DisallowMultipleComponent]
-[RequireComponent(typeof(Rigidbody2D))]
+// Locomotion owns actions 0-5. Combat explicitly leases the animator.
+[DisallowMultipleComponent, RequireComponent(typeof(Rigidbody2D))]
 public class HiveTyrantBossMotor : MonoBehaviour
 {
-    // =========================================================
-    // References
-    // =========================================================
-
     [Header("References")]
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator bodyAnimator;
     [SerializeField] private Transform target;
-
-    // =========================================================
-    // Auto Find
-    // =========================================================
-
+    [SerializeField] private Collider2D solidBody;
     [Header("Auto Find")]
     [SerializeField] private bool autoFindPlayer = true;
     [SerializeField] private string playerTag = "Player";
-
-    // =========================================================
-    // Movement
-    // =========================================================
-
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 1.7f;
-    [SerializeField] private float stoppingDistance = 2.2f;
-    [SerializeField] private float movementThreshold = 0.02f;
-
-    // =========================================================
-    // Animator Parameters
-    // =========================================================
-
+    [SerializeField] private float stoppingDistance = 4.2f;
+    [SerializeField] private float movementThreshold = .02f;
+    [SerializeField] private LayerMask blockingLayers = 1 << 7;
     [Header("Animator Parameters")]
     [SerializeField] private string directionParam = "Direction";
     [SerializeField] private string actionParam = "Action";
-
-    // =========================================================
-    // Debug
-    // =========================================================
-
-    [Header("Debug")]
-    [SerializeField] private bool movementLocked = false;
-    [SerializeField] private bool dead = false;
-
-    // =========================================================
-    // Animator Action Mapping
-    // =========================================================
-
-    private const int ACTION_IDLE = 0;
-    private const int ACTION_MOVE = 1;
-    private const int ACTION_HIT = 2;
-    private const int ACTION_DEATH = 3;
-    private const int ACTION_IDLE_PHASE2 = 4;
-    private const int ACTION_MOVE_PHASE2 = 5;
-
-    // =========================================================
-    // Runtime State
-    // =========================================================
-
-    private int currentDirection = 1; // DR
-
-    private bool isPhase2 = false;
-    private bool isMoving = false;
-
-    // =========================================================
-    // Public Properties
-    // =========================================================
+    [Tooltip("Action-major, eight directions each. Filled by the existing-controller setup.")]
+    [SerializeField] private string[] stateNames = new string[80];
+    [Tooltip("Missing attack poses: hold neutral pose; never speed up idle to fake an attack.")]
+    [SerializeField] private bool temporaryCombatPoses = true;
+    [Header("Runtime")]
+    [SerializeField] private bool movementLocked;
+    [SerializeField] private bool dead;
+    private bool actionOwned, isPhase2;
+    private int currentDirection = 1, currentAction = -1;
+    private readonly RaycastHit2D[] castHits = new RaycastHit2D[32];
+    private HiveTyrantCombat combat;
 
     public Transform Target => target;
     public bool IsDead => dead;
     public bool IsMovementLocked => movementLocked;
     public bool IsPhase2 => isPhase2;
+    public bool HasActionOwner => actionOwned;
+    public Animator BodyAnimator => bodyAnimator;
+    public Vector2 CombatOrigin => solidBody != null ? (Vector2)solidBody.bounds.center : (Vector2)transform.position;
+    public float StoppingDistance => stoppingDistance;
 
-    // =========================================================
-    // Unity Lifecycle
-    // =========================================================
-
-    private void Reset()
+    private void Reset() { Cache(); }
+    private void Awake() { Cache(); SetLocomotionAction(false); }
+    private void Cache()
     {
-        rb = GetComponent<Rigidbody2D>();
-        FindBodyAnimator();
+        if (rb == null) rb = GetComponent<Rigidbody2D>();
+        if (solidBody == null) solidBody = GetComponent<Collider2D>();
+        if (bodyAnimator == null) bodyAnimator = GetComponentInChildren<Animator>(true);
+        combat = GetComponent<HiveTyrantCombat>();
     }
-
-    private void Awake()
-    {
-        if (rb == null)
-            rb = GetComponent<Rigidbody2D>();
-
-        FindBodyAnimator();
-
-        // 默认从普通阶段开始。
-        isPhase2 = false;
-        isMoving = false;
-        currentDirection = 1;
-
-        SetDirection(currentDirection);
-        SetLocomotionAction(false);
-    }
-
-    private void Start()
-    {
-        if (autoFindPlayer && target == null)
-            TryFindPlayer();
-    }
-
     private void Update()
     {
-        if (autoFindPlayer && target == null)
-            TryFindPlayer();
+        if (!dead && autoFindPlayer && target == null)
+        {
+            GameObject player = GameObject.FindGameObjectWithTag(playerTag);
+            if (player != null) target = player.transform;
+        }
     }
-
     private void FixedUpdate()
     {
-        // 死亡具有最高优先级。
-        if (dead)
+        if (dead || actionOwned) { StopMotion(); return; }
+        if (movementLocked || target == null || (combat != null && !combat.TargetInArena) || (GameManager.Instance != null && !GameManager.Instance.IsPlaying))
+        { StopMotion(); SetLocomotionAction(false); return; }
+        Vector2 delta = (Vector2)target.position - CombatOrigin;
+        Face(delta);
+        float distance = delta.magnitude;
+        if (distance <= stoppingDistance) { StopMotion(); SetLocomotionAction(false); return; }
+        Vector2 direction = delta.normalized;
+        float step = Mathf.Min(moveSpeed * Time.fixedDeltaTime, distance - stoppingDistance);
+        Vector2 move = ConstrainMotion(direction * step);
+        if (move.sqrMagnitude < step * step * .05f)
         {
-            isMoving = false;
-            SetAction(ACTION_DEATH);
-            return;
+            Vector2 left = ConstrainMotion((Vector2)(Quaternion.Euler(0, 0, 55) * direction) * step);
+            Vector2 right = ConstrainMotion((Vector2)(Quaternion.Euler(0, 0, -55) * direction) * step);
+            move = left.sqrMagnitude >= right.sqrMagnitude ? left : right;
         }
-
-        // 移动锁定时保持当前阶段的 Idle。
-        if (movementLocked || target == null)
-        {
-            SetLocomotionAction(false);
-            return;
-        }
-
-        Vector2 currentPos = rb.position;
-        Vector2 targetPos = target.position;
-
-        Vector2 toTarget = targetPos - currentPos;
-        float distance = toTarget.magnitude;
-
-        if (distance <= stoppingDistance)
-        {
-            SetLocomotionAction(false);
-            return;
-        }
-
-        Vector2 moveDir = toTarget.normalized;
-
-        if (moveDir.sqrMagnitude <=
-            movementThreshold * movementThreshold)
-        {
-            SetLocomotionAction(false);
-            return;
-        }
-
-        // 保持原来的八方向立即转向机制。
-        currentDirection = GetDirectionIndex(moveDir);
-
-        SetDirection(currentDirection);
-
-        Vector2 nextPos =
-            currentPos +
-            moveDir * moveSpeed * Time.fixedDeltaTime;
-
-        rb.MovePosition(nextPos);
-
-        // 这里会根据 Phase1 / Phase2 自动选择 Move。
-        SetLocomotionAction(true);
+        if (move.sqrMagnitude > .000001f) Face(move);
+        rb.MovePosition(rb.position + move);
+        SetLocomotionAction(move.sqrMagnitude > movementThreshold * movementThreshold * Time.fixedDeltaTime * Time.fixedDeltaTime);
     }
-
-    // =========================================================
-    // Persistent Phase2 State
-    // =========================================================
-
-    /// <summary>
-    /// 进入狂暴阶段。
-    /// 一旦进入 Phase2，本次战斗不会自动恢复 Phase1。
-    /// </summary>
-    public void EnterPhase2()
+    private Vector2 ConstrainMotion(Vector2 move)
     {
-        if (dead)
-            return;
-
-        if (isPhase2)
-            return;
-
-        isPhase2 = true;
-
-        // 立即刷新当前动画，不必等待下一次移动。
-        SetLocomotionAction(isMoving);
-
-        Debug.Log(
-            "[HiveTyrant] Entered Phase2.",
-            this
-        );
+        if (combat != null && !combat.InsideArena(CombatOrigin + move)) return Vector2.zero;
+        if (solidBody == null || move.sqrMagnitude < .000001f) return move;
+        ContactFilter2D filter = new ContactFilter2D();
+        filter.SetLayerMask(blockingLayers); filter.useTriggers = false;
+        float length = move.magnitude;
+        Vector2 direction = move / length;
+        int count = solidBody.Cast(direction, filter, castHits, length + .03f, true);
+        for (int i = 0; i < count; i++)
+        {
+            if (castHits[i].collider == null || castHits[i].collider.transform.IsChildOf(transform)) continue;
+            if (Vector2.Dot(direction, castHits[i].normal) < -.001f)
+                length = Mathf.Min(length, Mathf.Max(0, castHits[i].distance - .03f));
+        }
+        return direction * length;
     }
-
-    // =========================================================
-    // Locomotion Action
-    // =========================================================
-
+    private void StopMotion()
+    {
+        if (rb == null) return;
+        rb.velocity = Vector2.zero; rb.angularVelocity = 0;
+    }
+    public void Face(Vector2 direction)
+    {
+        if (dead || direction.sqrMagnitude < .0001f) return;
+        int next = (Mathf.RoundToInt((Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + 90f) / 45f) + 8) % 8;
+        if (next == currentDirection) return;
+        float gait = 0;
+        if (bodyAnimator != null && (currentAction == 1 || currentAction == 5))
+            gait = Mathf.Repeat(bodyAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime, 1);
+        currentDirection = next;
+        ApplyAnimator(currentAction, gait);
+    }
     private void SetLocomotionAction(bool moving)
     {
-        isMoving = moving;
-
-        int action;
-
-        if (isPhase2)
-        {
-            action = moving
-                ? ACTION_MOVE_PHASE2
-                : ACTION_IDLE_PHASE2;
-        }
-        else
-        {
-            action = moving
-                ? ACTION_MOVE
-                : ACTION_IDLE;
-        }
-
-        SetAction(action);
+        if (dead || actionOwned) return;
+        SetAction(isPhase2 ? (moving ? 5 : 4) : (moving ? 1 : 0));
     }
-
-    // =========================================================
-    // Animator
-    // =========================================================
-
-    private void SetDirection(int dir)
-    {
-        currentDirection = dir;
-
-        if (bodyAnimator != null)
-        {
-            bodyAnimator.SetInteger(
-                directionParam,
-                currentDirection
-            );
-        }
-    }
-
     private void SetAction(int action)
     {
-        if (bodyAnimator != null)
+        if (currentAction == action) return;
+        currentAction = action;
+        ApplyAnimator(action, 0);
+    }
+    private void ApplyAnimator(int action, float normalizedTime)
+    {
+        if (bodyAnimator == null || bodyAnimator.runtimeAnimatorController == null || action < 0) return;
+        bodyAnimator.SetInteger(directionParam, currentDirection);
+        int visualAction = temporaryCombatPoses && action >= 6 ? (isPhase2 ? 4 : 0) : action;
+        bodyAnimator.SetInteger(actionParam, visualAction);
+        int index = visualAction * 8 + currentDirection;
+        if (index < stateNames.Length && !string.IsNullOrEmpty(stateNames[index]))
         {
-            bodyAnimator.SetInteger(
-                actionParam,
-                action
-            );
+            int hash = Animator.StringToHash("Base Layer." + stateNames[index]);
+            if (bodyAnimator.HasState(0, hash)) bodyAnimator.Play(hash, 0, normalizedTime);
         }
     }
-
-    // =========================================================
-    // Direction Mapping
-    // =========================================================
-
-    private int GetDirectionIndex(Vector2 dir)
+    public void BeginAction(int action, Vector2 facing)
     {
-        float angle =
-            Mathf.Atan2(dir.y, dir.x) *
-            Mathf.Rad2Deg;
-
-        // 0 = D
-        // 1 = DR
-        // 2 = R
-        // 3 = UR
-        // 4 = U
-        // 5 = UL
-        // 6 = L
-        // 7 = DL
-
-        if (angle >= -112.5f && angle < -67.5f)
-            return 0;
-
-        if (angle >= -67.5f && angle < -22.5f)
-            return 1;
-
-        if (angle >= -22.5f && angle < 22.5f)
-            return 2;
-
-        if (angle >= 22.5f && angle < 67.5f)
-            return 3;
-
-        if (angle >= 67.5f && angle < 112.5f)
-            return 4;
-
-        if (angle >= 112.5f && angle < 157.5f)
-            return 5;
-
-        if (angle >= 157.5f || angle < -157.5f)
-            return 6;
-
-        return 7;
+        if (dead) return;
+        Face(facing); actionOwned = true; StopMotion();
+        SetAction(action);
+        if (bodyAnimator != null) bodyAnimator.speed = temporaryCombatPoses && action >= 6 ? 0 : 1;
     }
-
-    // =========================================================
-    // References
-    // =========================================================
-
-    private void FindBodyAnimator()
+    public void EndAction()
     {
-        if (bodyAnimator != null)
-            return;
-
-        Transform body =
-            transform.Find("VisualRoot/Body");
-
-        if (body == null)
-            body = transform.Find("BossVisualRoot/Body");
-
-        if (body == null)
-            body = transform.Find("Body");
-
-        if (body != null)
-            bodyAnimator = body.GetComponent<Animator>();
-    }
-
-    private void TryFindPlayer()
-    {
-        GameObject player =
-            GameObject.FindGameObjectWithTag(playerTag);
-
-        if (player != null)
-            target = player.transform;
-    }
-
-    // =========================================================
-    // Public Control API
-    // =========================================================
-
-    public void SetTarget(Transform newTarget)
-    {
-        target = newTarget;
-    }
-
-    public void SetMovementLocked(bool locked)
-    {
-        movementLocked = locked;
-
-        if (locked && !dead)
-            SetLocomotionAction(false);
-    }
-
-    public void SetDead(bool isDead)
-    {
-        dead = isDead;
-
-        if (dead)
-        {
-            isMoving = false;
-            SetAction(ACTION_DEATH);
-        }
-        else
-        {
-            SetLocomotionAction(false);
-        }
-    }
-
-    public void ForceIdle()
-    {
-        if (!dead)
-            SetLocomotionAction(false);
-    }
-
-    public void ForceMove()
-    {
-        if (!dead)
-            SetLocomotionAction(true);
-    }
-
-    public void ForceHit()
-    {
-        if (!dead)
-            SetAction(ACTION_HIT);
-    }
-
-    public void ForcePhase2Idle()
-    {
-        if (dead)
-            return;
-
-        EnterPhase2();
+        if (dead) return;
+        actionOwned = false;
+        if (bodyAnimator != null) bodyAnimator.speed = 1;
         SetLocomotionAction(false);
     }
-
-    public int GetCurrentDirection()
+    public void EnterPhase2()
     {
-        return currentDirection;
+        if (dead || isPhase2) return;
+        isPhase2 = true;
+        if (!actionOwned) SetLocomotionAction(false);
     }
-
-    // =========================================================
-    // Inspector Testing
-    // =========================================================
-
-    [ContextMenu("Test - Enter Phase2 (Play Mode)")]
-    private void TestEnterPhase2()
+    public void SetTarget(Transform value) { target = value; }
+    public void SetMovementLocked(bool value)
     {
-        if (!Application.isPlaying)
-        {
-            Debug.LogWarning(
-                "[HiveTyrant] Enter Play Mode before testing Phase2.",
-                this
-            );
-            return;
-        }
-
-        EnterPhase2();
+        movementLocked = value;
+        if (value) { StopMotion(); if (!actionOwned && !dead) SetLocomotionAction(false); }
     }
-
-    // =========================================================
-    // Validation
-    // =========================================================
-
+    public void SetDead(bool value)
+    {
+        dead = value; StopMotion();
+        if (bodyAnimator != null) bodyAnimator.speed = 1;
+        if (value) { actionOwned = true; SetAction(3); }
+        else { actionOwned = false; SetLocomotionAction(false); }
+    }
+    public void ResetEncounter()
+    {
+        isPhase2 = false; dead = false; actionOwned = false; movementLocked = false; currentAction = -1;
+        if (bodyAnimator != null) bodyAnimator.speed = 1;
+        StopMotion(); SetLocomotionAction(false);
+    }
+    public void ForceIdle() { if (!dead && !actionOwned) SetLocomotionAction(false); }
+    public void ForceMove() { if (!dead && !actionOwned) SetLocomotionAction(true); }
+    public void ForceHit() { if (!dead && !actionOwned) SetAction(2); }
+    public void ForcePhase2Idle() { EnterPhase2(); ForceIdle(); }
+    public int GetCurrentDirection() => currentDirection;
+    private void OnDisable() { StopMotion(); }
     private void OnValidate()
-    {
-        moveSpeed = Mathf.Max(0f, moveSpeed);
-        stoppingDistance = Mathf.Max(0f, stoppingDistance);
-        movementThreshold = Mathf.Max(0f, movementThreshold);
-    }
+    { moveSpeed = Mathf.Max(0, moveSpeed); stoppingDistance = Mathf.Max(.1f, stoppingDistance); movementThreshold = Mathf.Max(0, movementThreshold); }
 }
+
