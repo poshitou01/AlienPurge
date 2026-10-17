@@ -5,6 +5,29 @@ using UnityEngine.UI;
 
 public class UpgradeManager : MonoBehaviour
 {
+    public AlienPurge.Level01.RegionLoop.RegionRewardQueue regionRewards;
+    private bool regionChoiceApplied;
+    public void ShowUpgradePanel()
+    {
+        if (regionRewards != null) { regionRewards.EnqueueUpgrade(); return; }
+        ShowUpgradePanelImmediate();
+    }
+    public bool TryShowQueuedUpgrade()
+    {
+        if (WeaponModuleSelectionManager.IsChoosingModule) return false;
+        ShowUpgradePanelImmediate();
+        return IsChoosingUpgrade;
+    }
+    public void CancelRegionChoice()
+    {
+        if (upgradePanel != null) upgradePanel.SetActive(false);
+        ClearDisplayedOptions(); IsChoosingUpgrade = false; regionChoiceApplied = false;
+    }
+    private void OnDestroy()
+    {
+        if (Instance == this) { Instance = null; IsChoosingUpgrade = false; }
+    }
+
     public static UpgradeManager Instance { get; private set; }
 
     public static bool IsChoosingUpgrade { get; private set; }
@@ -170,7 +193,7 @@ public class UpgradeManager : MonoBehaviour
         }
     }
 
-    public void ShowUpgradePanel()
+    private void ShowUpgradePanelImmediate()
     {
         if (upgradePanel == null)
         {
@@ -883,6 +906,7 @@ public class UpgradeManager : MonoBehaviour
         }
 
         ApplyUpgrade(selectedOption);
+        regionChoiceApplied = true;
 
  
 
@@ -1164,6 +1188,8 @@ public class UpgradeManager : MonoBehaviour
         ClearDisplayedOptions();
 
         IsChoosingUpgrade = false;
+        if (regionRewards != null) { bool applied = regionChoiceApplied; regionChoiceApplied = false; regionRewards.ChoiceClosed(applied); return; }
+
 
         if (GameManager.Instance == null ||
             GameManager.Instance.CurrentState ==

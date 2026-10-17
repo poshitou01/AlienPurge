@@ -5,6 +5,8 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class EnemySpawner : MonoBehaviour
 {
+    [Tooltip("Scene-owned region scheduling; default false preserves legacy scenes.")] public bool regionDriven;
+
     // =========================================================
     // Enemy Spawn Configuration
     // =========================================================
@@ -628,6 +630,8 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
+        if (regionDriven) return;
+
         FindPlayer();
 
         UpdateDifficulty();
@@ -649,6 +653,8 @@ public class EnemySpawner : MonoBehaviour
 
     private void Update()
     {
+        if (regionDriven) return;
+
         if (!enableAutomaticSpawning)
         {
             return;
@@ -696,6 +702,8 @@ public class EnemySpawner : MonoBehaviour
 
     private bool CanSpawnEnemies()
     {
+        if (regionDriven) return false;
+
         if (GameManager.Instance == null)
         {
             return false;

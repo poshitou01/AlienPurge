@@ -1,0 +1,5 @@
+FAILED at preflight
+System.InvalidOperationException: Protected assets differ from committed baseline 5c8e0cef9449aa722e6f32c35c3269aa7f0d1f67:
+Assets/_Project/Fonts/TMP_Chinese_Font.asset
+  at AlienPurge.Level01.Editor.RegionLoopInstaller.ValidateProtected () [0x000af] in D:\AlienPurge_RegionLoopV01\Assets\_Project\Editor\Level01\RegionLoopInstaller.cs:424 
+  at AlienPurge.Level01.Editor.RegionLoopInstaller.Install () [0x00086] in D:\AlienPurge_RegionLoopV01\Assets\_Project\Editor\Level01\RegionLoopInstaller.cs:41 

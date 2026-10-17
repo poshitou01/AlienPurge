@@ -8,6 +8,7 @@ namespace AlienPurge.Level01ConnectedV01
     [DefaultExecutionOrder(-17000),DisallowMultipleComponent]
     public sealed class L01Progression : MonoBehaviour
     {
+        public AlienPurge.Level01.RegionLoop.RegionLoopController regionLoop;
         public L01World world;
         public L01Gate[] gates;
         public MonoBehaviour missionManager;
@@ -29,7 +30,7 @@ namespace AlienPurge.Level01ConnectedV01
         {
             if(Time.unscaledTime<nextObserve)return;nextObserve=Time.unscaledTime+.12f;
             if(world==null)return;
-            if(missionManager!=null)
+            if(regionLoop==null && missionManager!=null)
             {
                 string kind=Convert.ToString(L01ProjectAccess.Get(missionManager,"CurrentMissionType"));
                 string state=Convert.ToString(L01ProjectAccess.Get(missionManager,"CurrentMissionState"));
@@ -42,9 +43,11 @@ namespace AlienPurge.Level01ConnectedV01
                 currentRegion=region;world.MoveMissionPoints(region);
             }
         }
-        public bool Has(string flag){return string.IsNullOrEmpty(flag)||flags.Contains(flag);}
+        public bool Has(string flag){return regionLoop!=null ? regionLoop.HasMilestone(flag) : string.IsNullOrEmpty(flag)||flags.Contains(flag);}
+        public void RefreshRegionDoors(){if(regionLoop!=null)RefreshDoors();}
         public bool Complete(string flag)
         {
+            if(regionLoop!=null)return false; // The region controller alone owns completion in this mode.
             if(string.IsNullOrEmpty(flag)||!flags.Add(flag))return false;
             completedFlags.Add(flag);RefreshDoors();
             if(flag=="Beacon")onBeaconCompleted.Invoke();
@@ -63,7 +66,7 @@ namespace AlienPurge.Level01ConnectedV01
             foreach(L01Gate gate in gates)
             {
                 if(gate==null)continue;
-                bool shouldLock=!previewAllDoorsOpen&&!Has(gate.requirement);
+                bool shouldLock=!(previewAllDoorsOpen&&regionLoop==null)&&!Has(gate.requirement);
                 if(gate.gateId=="G6"&&combatLocked)shouldLock=true;
                 gate.SetLocked(shouldLock,force);
             }

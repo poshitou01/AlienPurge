@@ -1,0 +1,2 @@
+PASS: required references, unique managers/IDs, G1-G3 mappings, finite waves, pool types, traversable anchors, scheduler opt-in, dormant hazards, protected asset hashes.
+This is Editor validation, not a Play Mode result.

@@ -1,0 +1,3 @@
+PASS: 790 protected original assets/metas match committed Git blobs after Play Mode.
+Baseline: 5c8e0cef9449aa722e6f32c35c3269aa7f0d1f67
+Checked UTC: 2026-10-17 14:11:11Z

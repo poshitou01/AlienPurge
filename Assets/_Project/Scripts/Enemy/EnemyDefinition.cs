@@ -13,6 +13,27 @@ using UnityEngine;
 [RequireComponent(typeof(EnemyContactDamage))]
 public class EnemyDefinition : MonoBehaviour
 {
+    // Optional scene profile API. Existing global-difficulty callers are unchanged.
+    public void InitializeInstanceAttributes(int health, float speed, int damage, int experience)
+    {
+        CacheComponents();
+        if (enemyData == null) throw new System.InvalidOperationException("EnemyData is required for an instance profile.");
+        finalMaxHealth = Mathf.Max(1, health);
+        finalMoveSpeed = Mathf.Max(.01f, speed);
+        finalContactDamage = Mathf.Max(1, damage);
+        finalExperienceAmount = Mathf.Max(1, experience);
+        finalVisualScale = Mathf.Max(.1f, enemyData.VisualScale);
+        ApplyCalculatedAttributes();
+        hasBeenInitialized = true;
+    }
+    public void ClearInstanceInitialization()
+    {
+        hasBeenInitialized = false;
+        finalMaxHealth = 0; finalMoveSpeed = 0; finalContactDamage = 0; finalExperienceAmount = 0;
+        finalVisualScale = 1;
+        transform.localScale = originalLocalScale;
+    }
+
     [Header("Enemy Data")]
     [Tooltip("该敌人 Prefab 使用的敌人类型数据")]
     [SerializeField] private EnemyData enemyData;

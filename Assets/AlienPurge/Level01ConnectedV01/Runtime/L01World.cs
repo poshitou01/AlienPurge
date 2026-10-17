@@ -6,6 +6,7 @@ namespace AlienPurge.Level01ConnectedV01
     [DefaultExecutionOrder(-18000),DisallowMultipleComponent]
     public sealed class L01World : MonoBehaviour
     {
+        public bool regionDriven;
         public TextAsset layoutAsset;
         public GameObject player,boss;
         public MonoBehaviour existingArena;
@@ -50,6 +51,7 @@ namespace AlienPurge.Level01ConnectedV01
         }
         public void MoveMissionPoints(string regionId)
         {
+            if(regionDriven)return; // Region objectives retain their authored / activated position.
             L01Region r=Region(regionId);if(r==null)return;
             Place(missionPoints,r.missionPoints);Place(safeZoneAnchors,r.safePoints);
             // Existing ExtractionController still owns the one timed High-Risk Cache.

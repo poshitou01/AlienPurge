@@ -1,0 +1,13 @@
+﻿SUCCESS
+Project: D:\AlienPurge_RegionLoopV01
+Source: Assets/_Project/Scenes/ArtTests/Level01_FullWorld.unity
+Target: Assets/_Project/Scenes/ArtTests/Level01_FullWorld_GameplayV01.unity
+Scene created: False
+Build entry appended: False
+Definitions: 3
+Devices: 3
+Ingress anchors: 18
+Existing positions, wave counts and tuning retained.
+ColonyEntry device world position: (-205.59, -28.00, 0.00)
+CargoYard device world position: (-204.00, 40.00, 0.00)
+PowerMaintenance device world position: (-121.40, -33.00, 0.00)

@@ -4,6 +4,23 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class MissionManager : MonoBehaviour
 {
+    private string regionViewId;
+    private readonly HashSet<string> regionCompletedIds = new HashSet<string>();
+    public void SetRegionObjectiveView(string id, MissionState state, Vector2 position, float progress, float remaining)
+    {
+        if (!regionDriven) return;
+        if (state == MissionState.Completed && regionCompletedIds.Add(id)) completedMissionCount++;
+        if (state == MissionState.Failed && (regionViewId != id || currentMissionState != state)) failedMissionCount++;
+        regionViewId = id;
+        currentMissionType = MissionType.BeaconActivation;
+        currentMissionState = state;
+        currentObjectivePosition = position;
+        missionProgress01 = progress;
+        missionTimeRemaining = remaining;
+    }
+
+    [Tooltip("Scene-owned region scheduling; default false preserves legacy scenes.")] public bool regionDriven;
+
     // =========================================================
     // References
     // =========================================================
@@ -341,6 +358,8 @@ public class MissionManager : MonoBehaviour
 
     private void Update()
     {
+        if (regionDriven) return;
+
         if (GameManager.Instance == null)
         {
             return;
@@ -906,6 +925,8 @@ public class MissionManager : MonoBehaviour
     /// </summary>
     public void CompleteCurrentMission()
     {
+        if (regionDriven) return;
+
         // -----------------------------------------------------
         // Complete Guard
         // -----------------------------------------------------
@@ -1008,6 +1029,8 @@ public class MissionManager : MonoBehaviour
     /// </summary>
     public void FailCurrentMission()
     {
+        if (regionDriven) return;
+
         if (!HasActiveMission)
         {
             return;

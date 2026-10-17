@@ -1,0 +1,3165 @@
+{
+  "baseline": "5c8e0cef9449aa722e6f32c35c3269aa7f0d1f67",
+  "files": [
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV02/BoundaryFix/Generated/ContinuousWall 1.asset",
+      "blob": "b51b74e6a1f177d92c4b16369f3763096795136f"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV02/BoundaryFix/Generated/ContinuousWall 1.asset.meta",
+      "blob": "3fb7892a5796154c8e9c4b4f83a9b28b938c3237"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV02/BoundaryFix/Generated/ContinuousWall 1.mat",
+      "blob": "c687597dc9620eade6781258e99e0f2c08f73457"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV02/BoundaryFix/Generated/ContinuousWall 1.mat.meta",
+      "blob": "3657bfc0700d33758aca9fd1e2a1b327a0ea7906"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV02/BoundaryFix/Generated/ContinuousWall 2.asset",
+      "blob": "c6308b2a0078b62e9d226c0e7ca8bc04822a0c86"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV02/BoundaryFix/Generated/ContinuousWall 2.asset.meta",
+      "blob": "446bbf87b98705d0c7af5a7d09621ab265c98732"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV02/BoundaryFix/Generated/ContinuousWall 2.mat",
+      "blob": "c4ba083525e28d6b629255d0def316297bdeada2"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV02/BoundaryFix/Generated/ContinuousWall 2.mat.meta",
+      "blob": "b6492776bc449abe3ab08e823a0e3a7fc156da5f"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV02/BoundaryFix/Generated/ContinuousWall 3.asset",
+      "blob": "58c11ed81317b51d4eb8b8f06cf7503d6b7bdb6b"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV02/BoundaryFix/Generated/ContinuousWall 3.asset.meta",
+      "blob": "8adb2a83a1c5b7fee12a5ac701761f3ddd0db7dc"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV02/BoundaryFix/Generated/ContinuousWall 3.mat",
+      "blob": "2b5f6deec38724709873680f93079b8fc983d468"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV02/BoundaryFix/Generated/ContinuousWall 3.mat.meta",
+      "blob": "1757b89cb2d4f9e31a40355b895da2e701d7a2b4"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV02/BoundaryFix/Generated/ContinuousWall.asset",
+      "blob": "ca61852d1e7ac1687e177ed26ffac45b2fa013e6"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV02/BoundaryFix/Generated/ContinuousWall.asset.meta",
+      "blob": "b8badee461f00f2e0d08fc3f567248c025b472eb"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV02/BoundaryFix/Generated/ContinuousWall.mat",
+      "blob": "73c2951d1943cef382de50166d48531d6b9e089f"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV02/BoundaryFix/Generated/ContinuousWall.mat.meta",
+      "blob": "29b3f44a6acf91351bd71ee38ca8ba0c4eab22be"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV02/Generated/ArenaV02_ApproachMesh 1.asset",
+      "blob": "5d64feeecba8cadd8bbfc0efc66376e5c90b9611"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV02/Generated/ArenaV02_ApproachMesh 1.asset.meta",
+      "blob": "365c132f63d7f4b5d03a061af424600284e5235a"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV02/Generated/ArenaV02_ApproachMesh.asset",
+      "blob": "828fc8f1b09249a0b0c21ed536b6a584042749cf"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV02/Generated/ArenaV02_ApproachMesh.asset.meta",
+      "blob": "693a63d0ec621f793d16f1652d3d38e81e07f2aa"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV02/Generated/ArenaV02_Ground 1.mat",
+      "blob": "e916f9faf771eb0b38e428bacf43ef11f34ee24a"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV02/Generated/ArenaV02_Ground 1.mat.meta",
+      "blob": "85e0a0bbb7279abe2550ab8fd21bea30ede687b3"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV02/Generated/ArenaV02_Ground.mat",
+      "blob": "de2df534190c60c5ed3d1d61a97951cc15928c2b"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV02/Generated/ArenaV02_Ground.mat.meta",
+      "blob": "a7dbaffc573d5d07f450076b224427fc53eb1baf"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV02/Generated/ArenaV02_GroundMesh 1.asset",
+      "blob": "e14b21a3aaf629ac6361fbc8c1f3f7cebc9f774d"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV02/Generated/ArenaV02_GroundMesh 1.asset.meta",
+      "blob": "3e0bc685d199a0d2b98f47875ab0090a4ff8ef8b"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV02/Generated/ArenaV02_GroundMesh.asset",
+      "blob": "d1b608a373d95183c154940b5d6ac77998ed9be0"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV02/Generated/ArenaV02_GroundMesh.asset.meta",
+      "blob": "09c7edc0b95c1ac7cd8ecf0d38f55612e42b8c58"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV02/Generated/ArenaV02_SpriteUnlit 1.mat",
+      "blob": "8300a7b0f025db4b742fa5d4f5ec0c13da489879"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV02/Generated/ArenaV02_SpriteUnlit 1.mat.meta",
+      "blob": "960acb396deab5a41f11a7c1401a1515143b373e"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV02/Generated/ArenaV02_SpriteUnlit.mat",
+      "blob": "fb94e316236e51d6a2c7e6faf9de81332c3ff90e"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV02/Generated/ArenaV02_SpriteUnlit.mat.meta",
+      "blob": "38fc09b225a84197b9420911bb5867ca3fdbb6c6"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV02/Generated/HiveTyrantArenaV02 1.prefab",
+      "blob": "c1aa83eb9d390579df11518aa0663ce76609c4bb"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV02/Generated/HiveTyrantArenaV02 1.prefab.meta",
+      "blob": "508f4a836bc67ee10ae28fac22b68231153ebdf9"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV02/Generated/HiveTyrantArenaV02.prefab",
+      "blob": "9a9c4c1ef034ce94d52b1f345d314461756fef44"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV02/Generated/HiveTyrantArenaV02.prefab.meta",
+      "blob": "621e32a840d9471bd13133f0a1e07b2ea5cb455b"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV03/Generated/ArenaV03_1/Closed_Entry_Leaf.mat",
+      "blob": "3ca41802138bd49689ea7d99620dfe95f8f85dcc"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV03/Generated/ArenaV03_1/Closed_Entry_Leaf.mat.meta",
+      "blob": "63d83f372d0da64af9da606569094adc79d38434"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV03/Generated/ArenaV03_1/Continuous_Environment.mat",
+      "blob": "91353f424895d71a3aacc291dc7f5b76876a609f"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV03/Generated/ArenaV03_1/Continuous_Environment.mat.meta",
+      "blob": "373ba70e140b772bed4cc0d86a0007692b2d5a76"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV03/Generated/ArenaV03_1/East_Shattered_Pod.asset",
+      "blob": "6f79f019c82a5840a6e029fd25eb62b380071367"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV03/Generated/ArenaV03_1/East_Shattered_Pod.asset.meta",
+      "blob": "9a3d878410ea6b299e922a97f2231dd29523d4bf"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV03/Generated/ArenaV03_1/Entry_ClosedLeaf.asset",
+      "blob": "a95aed580a8159dd51d572592bee731c29f1bd41"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV03/Generated/ArenaV03_1/Entry_ClosedLeaf.asset.meta",
+      "blob": "cc3bd452f4a2da2df105453c22affd0aff2828ee"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV03/Generated/ArenaV03_1/Entry_Left_Jamb.asset",
+      "blob": "29affd1029620046e442a9574fac21e85fca6fa4"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV03/Generated/ArenaV03_1/Entry_Left_Jamb.asset.meta",
+      "blob": "bcca2cc629b89b5fa7f060bfbe50d502d2c4e8bb"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV03/Generated/ArenaV03_1/Entry_Right_Jamb.asset",
+      "blob": "5afe630340402192e0e80b5505e35417a01b8885"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV03/Generated/ArenaV03_1/Entry_Right_Jamb.asset.meta",
+      "blob": "a2d39847ce675615174a7cace6b87652fb0b5bda"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV03/Generated/ArenaV03_1/Ground_And_Connected_Perimeter.asset",
+      "blob": "3c022234a775ca1f33792782f42bbf112195c0a8"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV03/Generated/ArenaV03_1/Ground_And_Connected_Perimeter.asset.meta",
+      "blob": "aaa4f1a5456f03f524b649255641fda440bc3cd4"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV03/Generated/ArenaV03_1/Ground_Closeup_Microdetail.asset",
+      "blob": "ff81f37c8b6ff98c0705477c1318781fd761ab0e"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV03/Generated/ArenaV03_1/Ground_Closeup_Microdetail.asset.meta",
+      "blob": "4e6531eeb8d440f7a618ed744157cbffcaf66680"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV03/Generated/ArenaV03_1/Ground_Detail.mat",
+      "blob": "24a52dfad5fe17133348388b9242194cda20ae67"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV03/Generated/ArenaV03_1/Ground_Detail.mat.meta",
+      "blob": "c02865858e715a5aec05d084808fd7619801de2c"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV03/Generated/ArenaV03_1/HiveTyrantArenaV03_1.prefab",
+      "blob": "55e2d4d5b2afea859de56f5d31e303f8402ce938"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV03/Generated/ArenaV03_1/HiveTyrantArenaV03_1.prefab.meta",
+      "blob": "d611bd55dc1bd9eb8a810f5b251bbbab3995f7d6"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV03/Generated/ArenaV03_1/SouthEast_Wall_Glass_Hatchery.asset",
+      "blob": "02f86f0d053548e8b776de05fd15a96a5c33fb56"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV03/Generated/ArenaV03_1/SouthEast_Wall_Glass_Hatchery.asset.meta",
+      "blob": "4b404a65596f1d5632f6adcdb98dc753e62353f0"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV03/Generated/ArenaV03_1/SouthWest_Wall_Glass_Hatchery.asset",
+      "blob": "48f451d9440455dcf9b99532a952940fab5c4a23"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV03/Generated/ArenaV03_1/SouthWest_Wall_Glass_Hatchery.asset.meta",
+      "blob": "a8c98a1431b92593b5aa42ad4900198dc0ca9a9e"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV03/Generated/ArenaV03_1/West_Cultivation_Pod.asset",
+      "blob": "e084b35b9ffb03fea5b5798f75ff58099482ffa2"
+    },
+    {
+      "path": "Assets/AlienPurge/HiveTyrantArenaV03/Generated/ArenaV03_1/West_Cultivation_Pod.asset.meta",
+      "blob": "bd3dfea2b52e2f224de96e379f6bb47cc165ebd9"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Materials/CargoYard.mat",
+      "blob": "7185ac41bcfd7d35ff3220ae36fadb3763ddea22"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Materials/CargoYard.mat.meta",
+      "blob": "0a8886235d168dc39d74011273314876e2c3faef"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Materials/ColonyEntry.mat",
+      "blob": "bb82220a51204c458b4e83372b665eabc249f3cc"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Materials/ColonyEntry.mat.meta",
+      "blob": "b453ff510a7f638cc85c7a45a5a857d067c23a66"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Materials/ConnectorKit.mat",
+      "blob": "11838dcc5ae9bdaa5f5610b921931443cfea82d2"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Materials/ConnectorKit.mat.meta",
+      "blob": "fef59825caa327e4910571036ab9261a20c7cc65"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Materials/Extraction.mat",
+      "blob": "e14e890940cff7d1af47ff61cca9403a0e3e7604"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Materials/Extraction.mat.meta",
+      "blob": "208769af46e2bc779c1acf2f45d401622368a0ec"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Materials/GateStates.mat",
+      "blob": "16ce5782d2f3c8588276259a53e6d79e94dadfbd"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Materials/GateStates.mat.meta",
+      "blob": "e9f8d9ff48cbe7e5cc5f3b08e72a8af68d1f7fa8"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Materials/InfectedResearch.mat",
+      "blob": "2c09a6f2f02080eb37f8cf295ac7aef5d6203730"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Materials/InfectedResearch.mat.meta",
+      "blob": "2e81435b9122e6d70d85c9edea75031d8ddae313"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Materials/LootStates.mat",
+      "blob": "a120df006c6d638a7e37291439dcc99eb5cd3332"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Materials/LootStates.mat.meta",
+      "blob": "d4ae905677381c6dea880a1a8ec592d8dd302c75"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Materials/OutsideGround.mat",
+      "blob": "6102e2b642c11eaa761241803004ab5070d91ac1"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Materials/OutsideGround.mat.meta",
+      "blob": "296f18c0cd3c8871cb1b19a8fdfa396c70f66e59"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Materials/PowerMaintenance.mat",
+      "blob": "bd6d37d2f19635ded2d31cacba85c457bb88b2d6"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Materials/PowerMaintenance.mat.meta",
+      "blob": "aa8b11952102618cad992ec7c301682a2dd1cf3b"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Materials/QuarantineCommons.mat",
+      "blob": "2a4949971ae9968ec68ca4acaf2ba463da361d1d"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Materials/QuarantineCommons.mat.meta",
+      "blob": "ff07756bf190438c6e4c1c8bbcb7458c2e6e5006"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Materials/RoadExpansionJoint.mat",
+      "blob": "4b3f58998c8211313701cef8da2f8a947e949200"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Materials/RoadExpansionJoint.mat.meta",
+      "blob": "ef4f872ff24b8ff524ae65cccead505e69e04448"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Materials/RoadGround.mat",
+      "blob": "9906cf307a24f87de767ea7e39fbad8b4015412f"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Materials/RoadGround.mat.meta",
+      "blob": "af3d146cc135e849bb0af26ff14ed81ec1133eb7"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Cargo_Beacon.asset",
+      "blob": "7544092ef6e543f33c8a8e5834d1ed21c2184af1"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Cargo_Beacon.asset.meta",
+      "blob": "34f4ca70e4fba8eb07cedc3302dfadcd8bce863f"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Cargo_SouthEast_Wall.asset",
+      "blob": "4795d752693613cb4ef479b5417f5f9c658fe62d"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Cargo_SouthEast_Wall.asset.meta",
+      "blob": "c53831a9e5d40ca3a54eccc588dca900b5cb2871"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Cargo_Truck.asset",
+      "blob": "20e43a53b34bcbf6e334a50dc91a2583ec1db3b0"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Cargo_Truck.asset.meta",
+      "blob": "89642b73eddd117f035370b94fce4889b8e18b5a"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Cargo_Warehouse.asset",
+      "blob": "b9c149b1a20741453b9625a14ff50187d4618191"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Cargo_Warehouse.asset.meta",
+      "blob": "a7af523b92cd59f3e5e790f10e7f5aedff7cea37"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Cargo_WestWall.asset",
+      "blob": "2acf4188f80599f0f7515ebd10d01b4756e78602"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Cargo_WestWall.asset.meta",
+      "blob": "f0437bdeb4de9a4da7aadb67e2bf8a6df3ad86f2"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Continuous_Environment 1.asset",
+      "blob": "32e2a93fc6d7b6ebd152ab1f47b28f91d4155311"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Continuous_Environment 1.asset.meta",
+      "blob": "fb048d47357181d7ca10819cdeb601c84b2dba6d"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Continuous_Environment 2.asset",
+      "blob": "419b4d225871c548c83cae2df2203c2867f548bf"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Continuous_Environment 2.asset.meta",
+      "blob": "5fb54098cabab433df8535f59725246d9df175be"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Continuous_Environment 3.asset",
+      "blob": "88ea9160e7d735eb559f634ec36024147c912014"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Continuous_Environment 3.asset.meta",
+      "blob": "c55b2d5ecdd3ce6eed76d0526432949479e132d6"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Continuous_Environment 4.asset",
+      "blob": "ba7cc74772b3352b50256d4f5d00fc935067e18b"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Continuous_Environment 4.asset.meta",
+      "blob": "bed791ab23135eaf3f662fc06c8c013e92dd2cad"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Continuous_Environment 5.asset",
+      "blob": "90efb50ad1000f894cc98355325d28ff2d19cb35"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Continuous_Environment 5.asset.meta",
+      "blob": "360ea5c2962039c1a60eb562a94fb1295496d024"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Continuous_Environment.asset",
+      "blob": "f15a1aaa437ae99640545c41297f0b6f203cc19c"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Continuous_Environment.asset.meta",
+      "blob": "f0e9bb036a3266036620cc453c4ab44f65d9cca1"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Door_Visual 1.asset",
+      "blob": "8961855a6fec76df7b820760ed0fabe55ebb983e"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Door_Visual 1.asset.meta",
+      "blob": "4c7f850c951b6abbb073c73b92e4ca66cb0d0128"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Door_Visual 2.asset",
+      "blob": "1a7f188e1315aa556d10d7eb5aeb0c753f7d593a"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Door_Visual 2.asset.meta",
+      "blob": "8aefc7ff67aefe3ef8db06f327ab14dda02adce3"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Door_Visual 3.asset",
+      "blob": "3d14ce617a8a8ac252bb3ec644408804379caf72"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Door_Visual 3.asset.meta",
+      "blob": "bb9d6b7a3167db04f0f1e3932885226ba44ffb96"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Door_Visual 4.asset",
+      "blob": "e814bb5b66b23765dd11b510b5c6bc1a7b7fcfc5"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Door_Visual 4.asset.meta",
+      "blob": "7fa2328402af09058706f89ec59c3eb870ae32bb"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Door_Visual 5.asset",
+      "blob": "cd62531fa764030e55633424c188d6f62a5fb715"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Door_Visual 5.asset.meta",
+      "blob": "db9fcf37f1e7f5955ed7bcfceeaaa9231b5a6073"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Door_Visual.asset",
+      "blob": "b29bc7dffa383eb46c3360097c080af503b8639d"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Door_Visual.asset.meta",
+      "blob": "b4c609cd874cbbe3b149292bafc0e5a61e9bdbe7"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/East_LowWall.asset",
+      "blob": "51119042b45d1a5c542695bae075c2555255e27a"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/East_LowWall.asset.meta",
+      "blob": "c9110ca8cb7326c48abdec210d2ca2b949064e9a"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/East_Utility.asset",
+      "blob": "917f03a568737a099aecdf9359533f9e22a60155"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/East_Utility.asset.meta",
+      "blob": "66f10a306a924e92cb7115fb502f70c4232b7814"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/East_Workshop.asset",
+      "blob": "4ff2a559a70d482119173b0273866a2c451c8849"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/East_Workshop.asset.meta",
+      "blob": "77f5ed89765afa55e5d0113e4a48d5e07a67a3c7"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Evac_Shuttle.asset",
+      "blob": "7069052b8348239d54926eb7a0dcaacfba64195c"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Evac_Shuttle.asset.meta",
+      "blob": "6b7103c0f44206e5774fdd558e1239ef373436ef"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Extraction_North_Utility.asset",
+      "blob": "5923f86de795253d0207b728be49bf5b5fdc10f4"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Extraction_North_Utility.asset.meta",
+      "blob": "1ac8d2ca160fe699a92f96331214a98e1b86c90a"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Extraction_SouthEast_Boundary.asset",
+      "blob": "35a8c6341fe89ffa11c5125b4e2d6f8b2cfe79ec"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Extraction_SouthEast_Boundary.asset.meta",
+      "blob": "f5bffa9d9ca72e5c2bf1407ced693155a7415501"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Extraction_South_Boundary.asset",
+      "blob": "f7dc0c9f70676e3fcb58865d9cb4e8a9a90444f0"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Extraction_South_Boundary.asset.meta",
+      "blob": "75c334b2bc971c50699541dae053dc2327fd9e29"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Extraction_South_Service.asset",
+      "blob": "1099501beb417b6de833da7d4f030e0e278e3b51"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Extraction_South_Service.asset.meta",
+      "blob": "56f484d94533e3e88a08236e960e4ffa7f3c5ac4"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Medical_CrossRoof.asset",
+      "blob": "36c9b4804eefb6d99ef6a4eeac02f3ca2bec9d37"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Medical_CrossRoof.asset.meta",
+      "blob": "120ad54125dce167c205d23a0e103addb8d36498"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Medical_Northwest.asset",
+      "blob": "49d837144df84ed6538b6d9cb9748893b964de83"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Medical_Northwest.asset.meta",
+      "blob": "7e32b186d60201ccc9faa8cbd77a3fe938dcec27"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Medical_West.asset",
+      "blob": "81936bc5aeacba7929ee993881b974eeb10d9073"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Medical_West.asset.meta",
+      "blob": "74609c4c24140b30e9a28e82ff1e82e7864f6ad1"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Metal_Expansion_Joint 1.asset",
+      "blob": "8efb4243580d7dd934f1029a8efea74adfc7c0be"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Metal_Expansion_Joint 1.asset.meta",
+      "blob": "32d0696cad6d5ac21fc7ea8959d22130920e38f1"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Metal_Expansion_Joint 2.asset",
+      "blob": "974ebe230e9c029285d21abcbb8f4f9f65820acb"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Metal_Expansion_Joint 2.asset.meta",
+      "blob": "9292d9513313923593256d8dc575d639ed27960b"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Metal_Expansion_Joint 3.asset",
+      "blob": "b1dcad299e526a4b6d6252fead2174fe8fe0c5fe"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Metal_Expansion_Joint 3.asset.meta",
+      "blob": "7da9c3c5a52ef660526aada166038669a0e736db"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Metal_Expansion_Joint 4.asset",
+      "blob": "b4a75e06ad0505f0ad96d91a5f6858de502ba8c5"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Metal_Expansion_Joint 4.asset.meta",
+      "blob": "ffb5dd80512ae48247e5bc39653221194e166d0c"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Metal_Expansion_Joint 5.asset",
+      "blob": "afd0169b242bdc363d0ef8a5bcc1b75e767f430d"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Metal_Expansion_Joint 5.asset.meta",
+      "blob": "43bd3198c5768792b57d2808048fc0f5d78c47ee"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Metal_Expansion_Joint 6.asset",
+      "blob": "6be7cba7afb329a25fecf2e3688f190a30d0af25"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Metal_Expansion_Joint 6.asset.meta",
+      "blob": "519a99e72e8b7730ca8de625e9814e566fe65291"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Metal_Expansion_Joint 7.asset",
+      "blob": "4d1fe257e066100f2b5b0b42e53d5b176ce7ecf7"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Metal_Expansion_Joint 7.asset.meta",
+      "blob": "acbdc1bb190acc4410135c5f7f50c065187b83a5"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Metal_Expansion_Joint 8.asset",
+      "blob": "d0778c46af096a2d9efc4991f1b9e1619fa0ca23"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Metal_Expansion_Joint 8.asset.meta",
+      "blob": "dc704d01a5ff1f107a7046c71bd3ca47c323e532"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Metal_Expansion_Joint 9.asset",
+      "blob": "52b70cc130535ec02f8d0009e34ead9fd906d87d"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Metal_Expansion_Joint 9.asset.meta",
+      "blob": "58742b43e804b870cacc3649dc4dfcbfe033dd09"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Metal_Expansion_Joint.asset",
+      "blob": "47efdb1a7aabd35b896dd741b230e29d699df56c"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Metal_Expansion_Joint.asset.meta",
+      "blob": "f305efcdd353d41524ace1433853e656e69b7879"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Outside_Rocky_Ground.asset",
+      "blob": "db52bc17446725bd5f6a4d5231faa975ee1f380d"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Outside_Rocky_Ground.asset.meta",
+      "blob": "5d55dc8ea1c773972609e5c1a88aae1227853e65"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Research_East_Glass.asset",
+      "blob": "d5cdfd35de7e179492f9def274707345b544871a"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Research_East_Glass.asset.meta",
+      "blob": "d393fd513fede9886afa4f62d3bfdcbaa5119c9a"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Research_GlassAnnex.asset",
+      "blob": "dc38880583b0d39d304147b043f006b96043cab3"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Research_GlassAnnex.asset.meta",
+      "blob": "575336479a9533ffcadb3c6d0f0563ae00baba97"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Research_Northwest_Annex.asset",
+      "blob": "616de80c0dda83fdf8caef720c25daa5f819f272"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Research_Northwest_Annex.asset.meta",
+      "blob": "a62e6718a1bd090fb5a38bd6a4c39a07ca0e8025"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Research_SouthEast_Wall.asset",
+      "blob": "fdd6de9be93b8b29f2d54256c21ca58f8117a109"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Research_SouthEast_Wall.asset.meta",
+      "blob": "db5e6e848e4ebdaaca180aa21f4172a2ad2791c4"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Research_SouthWest_Block.asset",
+      "blob": "8e697583b194b309d7cedaf1d83a89e35de849c8"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Research_SouthWest_Block.asset.meta",
+      "blob": "cdd70cc683cc9a3ffa854b41e2617c913d0e4733"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Research_SouthWest_Wall.asset",
+      "blob": "d05c6bc88408d5fea81fdaf1c554d65d6873f945"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Research_SouthWest_Wall.asset.meta",
+      "blob": "b9031403bc8eb584a293b95c254a12e1d25e1242"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Research_South_Generators.asset",
+      "blob": "f1c418221529ec2cbb26af63e9bcbe3d949ca170"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Research_South_Generators.asset.meta",
+      "blob": "c5c7f3cdf091a837ddd50ef3d11c024853131ce0"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Research_South_Services.asset",
+      "blob": "f066c12b66243462b61a902d4f54966dc54b2e24"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Research_South_Services.asset.meta",
+      "blob": "88c6cae80be59b8d0c4f82769622795f3d1e9a36"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/RoadSurface 1.asset",
+      "blob": "4dfcdeede388e0b7daaf7ac9b32cfba2e78e54b8"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/RoadSurface 1.asset.meta",
+      "blob": "dc3301b237c48d0b27d86de91e6cb1e84f14f801"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/RoadSurface 2.asset",
+      "blob": "4de0e740b9565c8acf5aa670a0cacbd4947e069d"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/RoadSurface 2.asset.meta",
+      "blob": "48fcb15fc40f7209a18e1dfb41b624590acac0a0"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/RoadSurface 3.asset",
+      "blob": "e57648db2dc23a519042ded630d1dc589bf5801a"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/RoadSurface 3.asset.meta",
+      "blob": "a8a4eb6153c92950b82f102b662c6ded5492b0cb"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/RoadSurface 4.asset",
+      "blob": "6b87091d463d6cde711924c4240187aedb07c354"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/RoadSurface 4.asset.meta",
+      "blob": "7935367f9de57f664204467ace40bd99b5c024ed"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/RoadSurface 5.asset",
+      "blob": "0fb51f1aa0d04205fc807146aaab1bc8ce855a8c"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/RoadSurface 5.asset.meta",
+      "blob": "4c12d0d31e480f8f68d156fbdb767ee527b78c58"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/RoadSurface 6.asset",
+      "blob": "6e007e0ee149c7c4fcb2b3427391acab38e77d23"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/RoadSurface 6.asset.meta",
+      "blob": "13c88d10a5b904fb7781f96f3a142d05938437b3"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/RoadSurface.asset",
+      "blob": "e1b6b649c920e4e16d66500ecf16e3fb8d3811b0"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/RoadSurface.asset.meta",
+      "blob": "5a86ee4023020ee40c711455f5597b7bd5f96767"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/SouthEast_Boundary.asset",
+      "blob": "7f9c6f8d2f6d67fae732bd84b793a60d8a91d82e"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/SouthEast_Boundary.asset.meta",
+      "blob": "b9099351cfebe2d5d4c04489431bdf0089939a05"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/SouthEast_Equipment.asset",
+      "blob": "48bcf6cc0906820b3b438463aafe68036e116253"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/SouthEast_Equipment.asset.meta",
+      "blob": "6287643595971dc14155a45c899f0c0be3a34cf5"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/SouthEast_Wall.asset",
+      "blob": "ed0e3302fab5c3140f5e7f29b9f6904fbee97ce8"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/SouthEast_Wall.asset.meta",
+      "blob": "b99026fd0d2f4922abec2df3bc35ab9e6b5ed4f6"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/SouthWest_Boundary.asset",
+      "blob": "bb6f3a6c2872d5cbca00de5572f83ffb6787e1bf"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/SouthWest_Boundary.asset.meta",
+      "blob": "c2aa310e20de28588e9d246af48ed0f4dc56a964"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/SouthWest_Generator.asset",
+      "blob": "0a7b89f28409048ea0bd22cda232f78a2123da5e"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/SouthWest_Generator.asset.meta",
+      "blob": "60fea54b8ed7dd5786ce3516faa76ab41ce14847"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/SouthWest_Service.asset",
+      "blob": "7f1c5324dcf63559f18bf77bb838153ca79a0733"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/SouthWest_Service.asset.meta",
+      "blob": "65497d99f5e04a527ad73eea7fc1774907178f5f"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/SouthWest_Wall.asset",
+      "blob": "a2c07fddf6793c93e8fa9a01a9fef0c3e9a6e4ff"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/SouthWest_Wall.asset.meta",
+      "blob": "0c2603491a7881c091988ccff3633028ed38170f"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/South_Boundary.asset",
+      "blob": "d546a7341290ff5a2ae4c9fb1f1ea9a02ee37769"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/South_Boundary.asset.meta",
+      "blob": "967513d8ca5f89fde635f2927f100174d11d1cba"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/South_Gantry_Beam.asset",
+      "blob": "e658a5e20a4979f413366cf7b82c0b427f67e9ca"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/South_Gantry_Beam.asset.meta",
+      "blob": "a88f512124a2fc1f1ba3df658adabf6146cab3c8"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/South_Gantry_LeftLeg.asset",
+      "blob": "8b70c38716e47ceea817611ce55cdbce90db0009"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/South_Gantry_LeftLeg.asset.meta",
+      "blob": "b81dc6d6d0db6e11f51b9c378d641eab496177f1"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/South_Gantry_RightLeg.asset",
+      "blob": "c500271d3ecbfe479c379271a446c7e0a98bf923"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/South_Gantry_RightLeg.asset.meta",
+      "blob": "f883a92a168239a71f7222deed7916f1fd095efe"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Visual 1.asset",
+      "blob": "b28fb3251c5cabc8f5cc776fae572db735719077"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Visual 1.asset.meta",
+      "blob": "6daa63fa37d08d9f266279eb5cb30aa1c46ffedc"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Visual 2.asset",
+      "blob": "e66ba7b2a5c4b0e5f6340ca6ac2536e439cd736e"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Visual 2.asset.meta",
+      "blob": "dfab3a7829710d41950adee528925c2563d59f09"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Visual 3.asset",
+      "blob": "9d2a1219c9c55e09cbea818ab1258dd51c42df3e"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Visual 3.asset.meta",
+      "blob": "eca196ebd0a6bc4d019091f76b6f8214b07fe7c1"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Visual 4.asset",
+      "blob": "53f1034179c34e1a8bfbed2aa7b615f0f0190f9f"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Visual 4.asset.meta",
+      "blob": "458fc6aad113ef39e92a9f5d2fc3e0f58c24fe31"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Visual.asset",
+      "blob": "6108306167ba7ff51985b584735273207d291845"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/Visual.asset.meta",
+      "blob": "945745917f47e916ecac91e56513f2df70d0292e"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/West_Checkpoint.asset",
+      "blob": "f70e960482101f38f39e09ef7e8ec52aff34e976"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/West_Checkpoint.asset.meta",
+      "blob": "075543018aed0242fa700163b1e130bc05b8ad19"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/West_LowWall.asset",
+      "blob": "4d5327e0ce23ff37afa7c4716794320305ef633b"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/West_LowWall.asset.meta",
+      "blob": "37f3f73477d9b8ca66e13d1f4adca52a2fb12156"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/West_Turbine.asset",
+      "blob": "3675ceead4f2e99d9e63fdda9e72c2c8cbd5b230"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/West_Turbine.asset.meta",
+      "blob": "6bde5b65a3532cb8ed9c54761819066aa93774bc"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/World_Case_Visual 1.asset",
+      "blob": "5d3d1b7e00d513e73bb91889eb94f94ed32f6b5a"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/World_Case_Visual 1.asset.meta",
+      "blob": "03fc60cd22611bcca531036a72d78b2ee10c33a8"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/World_Case_Visual 2.asset",
+      "blob": "a26d8b83376395c4dcaab6ebcb337b77142914ca"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/World_Case_Visual 2.asset.meta",
+      "blob": "ed94122adf185729757fbfe3f514dd2bf2e9b579"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/World_Case_Visual 3.asset",
+      "blob": "6c009a547df08659d633ba3397fa65171f3053e7"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/World_Case_Visual 3.asset.meta",
+      "blob": "36210f5f70835af87f9870879796d5afd3bb9a52"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/World_Case_Visual.asset",
+      "blob": "e27f512bd306b10a1fb35472c509e3bccd6526a1"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Meshes/World_Case_Visual.asset.meta",
+      "blob": "f1c67d03ff491265a8723be3b7b4cd388b16c0f0"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Prefabs/L01_LootContainer_FieldSupply.prefab",
+      "blob": "20fe0a312784fdb33e7d7310c116d2b05b97e6f3"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Prefabs/L01_LootContainer_FieldSupply.prefab.meta",
+      "blob": "8d5f0446f4371c4fed7dc4ddd527e612ded060da"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Prefabs/L01_LootContainer_HighRiskCase.prefab",
+      "blob": "62e476e031b5bf98407685b83ce3434707002ffd"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Prefabs/L01_LootContainer_HighRiskCase.prefab.meta",
+      "blob": "bcd26f70128057303b7329be539bea5725e6b203"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Prefabs/L01_LootContainer_MedicalCache.prefab",
+      "blob": "d6f3b9c3c2c2e64d6957c59a8fe129f314eb1430"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Prefabs/L01_LootContainer_MedicalCache.prefab.meta",
+      "blob": "48e8d7cb0686a52e2a20eff741fc29f64238df22"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Prefabs/L01_LootContainer_ResearchCase 1.prefab",
+      "blob": "e021155955a048b99d4f3210e9bc588a530f6e53"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Prefabs/L01_LootContainer_ResearchCase 1.prefab.meta",
+      "blob": "6e3447ebb9ea73368624c2742083e5cae68baf1d"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Scenes/Day01_TestGround.unity",
+      "blob": "0dd28eeb6277419b13d3c74169a44cf9e3669aa1"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Scenes/Day01_TestGround.unity.meta",
+      "blob": "61f20d4072a0259688dbd62cbbc5d137681f832c"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Scenes/Source_Arena_Snapshot.unity",
+      "blob": "d1b3e74fbeff8b184fe571e9181fb31e97f5b4cd"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01ConnectedV01/Generated/Level01_Run/Scenes/Source_Arena_Snapshot.unity.meta",
+      "blob": "2af1cfc38d8ae29a4a27a7c4973257aa9ed41933"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01PreserveArenaV02/Generated/Assembly_20261016_233128/Arena_Final_Copy.unity",
+      "blob": "d1b3e74fbeff8b184fe571e9181fb31e97f5b4cd"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01PreserveArenaV02/Generated/Assembly_20261016_233128/Arena_Final_Copy.unity.meta",
+      "blob": "2131b3668102f42d2ea17de5cd593477c07a45eb"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01PreserveArenaV02/Generated/Assembly_20261016_233128/Gameplay_Copy.unity",
+      "blob": "1b7817fe65ff890f5f652f7b88ba2d0b22acfe13"
+    },
+    {
+      "path": "Assets/AlienPurge/Level01PreserveArenaV02/Generated/Assembly_20261016_233128/Gameplay_Copy.unity.meta",
+      "blob": "b2283ea52ae25716ef4f76a8cca417a4a44b5940"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/Editor/EditorAssets/Materials/Navmesh.mat",
+      "blob": "b777050d4c56056d1143a647c90915a53268b5be"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/Editor/EditorAssets/Materials/Navmesh.mat.meta",
+      "blob": "c96943fec9fb1f70a8b15f9dbeca93e30274e67b"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/Editor/EditorAssets/Materials/NavmeshOutline.mat",
+      "blob": "463538acd8b34d80aafec5a5af71196c9c871214"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/Editor/EditorAssets/Materials/NavmeshOutline.mat.meta",
+      "blob": "7ca49299785a5e511692f8a036f404d66b8d296d"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Example12_Procedural/Procedural.unity",
+      "blob": "ccadff920a6ee7e511214292c65d87700a0e53df"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Example12_Procedural/Procedural.unity.meta",
+      "blob": "b9d3c41372973e583bdbcff29b422e3a642380c3"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Example12_Procedural/ProceduralGround.prefab",
+      "blob": "1d81315480bfbf2a8bba3c857b46e56f03c409a7"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Example12_Procedural/ProceduralGround.prefab.meta",
+      "blob": "9f3b3c2228a6cf1925c16c2494346d4ddcafbb56"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Example12_Procedural/ProceduralPrefab1.prefab",
+      "blob": "d1da2356f55d7cbae4901b01c717a9f26774376a"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Example12_Procedural/ProceduralPrefab1.prefab.meta",
+      "blob": "bdba0b9418eff8da45d58d7e12255ce3715fc34a"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Example12_Procedural/ProceduralPrefab2.prefab",
+      "blob": "f43baa01fa3dc5be2018aaccfce3b8e2076534b6"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Example12_Procedural/ProceduralPrefab2.prefab.meta",
+      "blob": "3b1a43845b59958c9a8a7fae8411fb66ae3795a7"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Example12_Procedural/ProceduralPrefab3.prefab",
+      "blob": "0a69c7e7d2d9ce8e78892afdb2291c3d96eaf30f"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Example12_Procedural/ProceduralPrefab3.prefab.meta",
+      "blob": "442917f30412a82ca6bb31a21d98779a34fd0915"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Example12_Procedural/ProceduralPrefab4.prefab",
+      "blob": "875e8e02419369f3538af76efd29b490fb961c52"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Example12_Procedural/ProceduralPrefab4.prefab.meta",
+      "blob": "bb212ffef49f04406ccbe8f74428b3f26e5ac28b"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Example12_Procedural/TopDownOverlay.mat",
+      "blob": "2b7cdd06dfca24920bb7f517e6d76e087e51f6a6"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Example12_Procedural/TopDownOverlay.mat.meta",
+      "blob": "378287065b3ab3faf842477cc4d1394dba93c030"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Example15_2D/2D.unity",
+      "blob": "40070c6f8c94394248a355ee57d1b84c2d32b36d"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Example15_2D/2D.unity.meta",
+      "blob": "a85a5cbbe915949222ecd4f0afd68ed633dbb555"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Example2_Terrain/Example2.unity",
+      "blob": "45a998af01ef72ea0f0446f600dc6eeec0401793"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Example2_Terrain/Example2.unity.meta",
+      "blob": "21f20214b1de17671bf1f598abf81f42660bd0fd"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Example2_Terrain/Pathfinding_Terrain.asset",
+      "blob": "b386543844af67ac6d15e0828857aea3509f56fa"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Example2_Terrain/Pathfinding_Terrain.asset.meta",
+      "blob": "6c904d88914468d802903496a2b9d9a6047c85c7"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Example2_Terrain/dynamicObstacle.anim",
+      "blob": "6c228d71e628b6982ea7dcef22a998c4766b1952"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Example2_Terrain/dynamicObstacle.anim.meta",
+      "blob": "2ac65fd14915c79b1b36ca442b9f449c233834b1"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Example5_PointGraph/ListCubes.mat",
+      "blob": "2a92a85fdcaac4f30b6ecb2da7c376ff82f5cc59"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Example5_PointGraph/ListCubes.mat.meta",
+      "blob": "36b39b3631418c9363b83ad55181fac6def94732"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Example5_PointGraph/PointGraphExample.unity",
+      "blob": "0a3989ed5a2f03ad80a2c95b4a420a1221b20888"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Example5_PointGraph/PointGraphExample.unity.meta",
+      "blob": "15b1471ca1ef4e3b4a858038b6a774b5a50bb224"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Example5_PointGraph/blackText.mat",
+      "blob": "71d9e68abb5121c8186f08ef3d8cb12e5d9559d5"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Example5_PointGraph/blackText.mat.meta",
+      "blob": "77a578b3e039f1f8994eb2af4471ec9225ec347e"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Example5_PointGraph/ex5Ground.mat",
+      "blob": "2271e35ec041ae437011a1d7dc6d580a0f0fb7ac"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Example5_PointGraph/ex5Ground.mat.meta",
+      "blob": "30bef4fcbc292ac610a032089967fe4e5f8e5591"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Example6_Navmesh/Materials/navmesh-navmesh_example6navmeshMat.mat",
+      "blob": "9fcf7f80cac56f1b8eb62b76d94ff67ac87a91f6"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Example6_Navmesh/Materials/navmesh-navmesh_example6navmeshMat.mat.meta",
+      "blob": "feec57612901c4b9126bbca84d56a13b8b1d5b6a"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Example6_Navmesh/NavmeshExample.unity",
+      "blob": "f7612616a911791f5ced0c7480b72803c67da7e3"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Example6_Navmesh/NavmeshExample.unity.meta",
+      "blob": "c4871856c8eb732f9bb3d7d8512f6a90dd204c1d"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Example9_Penalties/PenaltiesExample.unity",
+      "blob": "443bb67b8e811c604964ba2f1cca77bc32c31f9d"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Example9_Penalties/PenaltiesExample.unity.meta",
+      "blob": "29f443b3109db73b863f9471e1a7ca90c1b97c95"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Materials/AI.mat",
+      "blob": "b056c01779a0467c581c2381551279a8d7b137d7"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Materials/AI.mat.meta",
+      "blob": "c2a317d0dba2b6bea26b9e649fa7dbebd4eb1dd5"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Materials/BlueBox.mat",
+      "blob": "6c3a29c394bed792f8375a6e6d48989c6bd64ac3"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Materials/BlueBox.mat.meta",
+      "blob": "63e67de810cbf61cec60893abeace4897b419ded"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Materials/BlueCheckerGround.mat",
+      "blob": "9ed22b8864309af2099de924646668a00be8da62"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Materials/BlueCheckerGround.mat.meta",
+      "blob": "cd705ed06c93f42517af418ce188a6813ea75fcf"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Materials/BlueGround.mat",
+      "blob": "483cecf857e592e94113ad49cbae4a519deef7ec"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Materials/BlueGround.mat.meta",
+      "blob": "8a0cda783b63c9089c5ee69673cdf8fef20e3e6b"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Materials/Door.mat",
+      "blob": "d3a7ad1432ac121f6d433c03137baed59a42493c"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Materials/Door.mat.meta",
+      "blob": "8bd3e4b8d66eb909dfeb23ae85447db08fc0f24f"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Materials/Ground.mat",
+      "blob": "dbb34c90b0352a677791516ffda2f171faa92322"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Materials/Ground.mat.meta",
+      "blob": "fcf5f9d4813a4c60f79d6de74f323b03df76c109"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Materials/GroundRTS.mat",
+      "blob": "979ff574d71b7590dc5a6e8e7317cb506fbafd1d"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Materials/GroundRTS.mat.meta",
+      "blob": "853e3bd829c53049fe79f9e642c6ad2dca2edb9c"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Materials/OrangeGround.mat",
+      "blob": "f439b677b375a57469ee10fc1acbe8a7c9cc1f02"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Materials/OrangeGround.mat.meta",
+      "blob": "88857ab7f691729cd8de037ebd170ccadae3eed1"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Materials/PathBlueArea.mat",
+      "blob": "1ce4416f1cd0da1eaa2bf8b4bc00d733ab8a0965"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Materials/PathBlueArea.mat.meta",
+      "blob": "18fe6581e0c0fb60cc39f9cff8083009bc413846"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Materials/PathGreyCube.mat",
+      "blob": "562eddca1cca032f569ac0f63f368c13a848a0ea"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Materials/PathGreyCube.mat.meta",
+      "blob": "4ebde37374f6fa99975721a84c9bd0b60bd991cd"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Materials/PathRedArea.mat",
+      "blob": "264d287d80b2199f8513a1b7b7d382c2b5919cc3"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Materials/PathRedArea.mat.meta",
+      "blob": "0508109ab78dfbbc107ad011982166006eac89b5"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Materials/SomeBox.mat",
+      "blob": "f2a37135d9815b9a1ed6bfae4d458dbacb689fc6"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Materials/SomeBox.mat.meta",
+      "blob": "52ce3b1ddcaa0375fb9b33f7b321709c3f1d3e03"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Materials/Wall.mat",
+      "blob": "1904a1d37bc2f7bbc9fa41a1c19730c85ae7e06b"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Materials/Wall.mat.meta",
+      "blob": "48268e98fa922df6c6506d76364c8b8deb00031d"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Prefabs/DynamicObstacle.prefab",
+      "blob": "09cdc3d90b4b5a2571013e7e1735725d3f8cadab"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Prefabs/DynamicObstacle.prefab.meta",
+      "blob": "8bcc8f758ef6f47996ba41863ca1025d95ed38c9"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/Materials/mine_bot-01 - Default.mat",
+      "blob": "97c95d4cd2ad5d9389df443d9b2ef8c90b3edbdf"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/Materials/mine_bot-01 - Default.mat.meta",
+      "blob": "8facd35a3c77e73c64df1979c38c2ea48dc3df4f"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/Materials/mine_bot-minebot.mat",
+      "blob": "51a6224e8261264236bf4dff00c76ae678b9e5ed"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/Materials/mine_bot-minebot.mat.meta",
+      "blob": "09a277410428617aa382817a16cc77f71a152aea"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/Materials/mine_bot@awake-01 - Default.mat",
+      "blob": "829c69afbe4784c5f23c29a783b4486c90b6ed8b"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/Materials/mine_bot@awake-01 - Default.mat.meta",
+      "blob": "0f1177d85a1500b07e771f3f30a22e13b3dcc150"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/Materials/mine_bot@back-01 - Default.mat",
+      "blob": "cff158edb12702a72852f13be0df7e1fcce198ea"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/Materials/mine_bot@back-01 - Default.mat.meta",
+      "blob": "f46053383dc178b105cc81d76a9a65e6eee00954"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/Materials/mine_bot@forward 1-01 - Default.mat",
+      "blob": "7646deaac571d328e59361ce0ff26dfc4c5f6fb8"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/Materials/mine_bot@forward 1-01 - Default.mat.meta",
+      "blob": "3b3b77b58b589b0b7f9476c45a6bd548d5caa7fe"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/Materials/mine_bot@forward-01 - Default.mat",
+      "blob": "0f9bcf572bc1aed20389ea19b6d8d6f445162ef1"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/Materials/mine_bot@forward-01 - Default.mat.meta",
+      "blob": "05eea841b56190255072587c971dda3cfad0f8b9"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/Materials/mine_bot@left-01 - Default.mat",
+      "blob": "07cb971d7902669e0e0ae1c8ac742265f329884d"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/Materials/mine_bot@left-01 - Default.mat.meta",
+      "blob": "f7fc248f5d8bb69e20788068d7bf8bd10aec82af"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/Materials/mine_bot@right-01 - Default.mat",
+      "blob": "99422f05f8fafe3754e3ad44c05da6d88c96df8e"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/Materials/mine_bot@right-01 - Default.mat.meta",
+      "blob": "d1c4de665d6795b3f317561c8c800719a2f40f03"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/idle.anim",
+      "blob": "eb9f142af2cdbdc6de22b81b053976978d82fdf1"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/idle.anim.meta",
+      "blob": "6afa87f33a9877b82a61c175c3c6a600cef18d52"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/mine_bot.controller",
+      "blob": "983101f4afd3ce81befbef3fb4fa219f3775b878"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/mine_bot.controller.meta",
+      "blob": "f91cb47410f6399539f6434f1856e11582f1f202"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/mine_bot_render.prefab",
+      "blob": "e5d2cd073888fae903fd99f8ebf4c27e0d5aaea6"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/mine_bot_render.prefab.meta",
+      "blob": "b9c4369852ab6061b9c9aa45d9e08751e501ea1c"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Prefabs/SomeBox.prefab",
+      "blob": "c432aa42b7bbb1cf09cc78810bebdfd1bd268701"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Prefabs/SomeBox.prefab.meta",
+      "blob": "f12b4b8a6c4131afc8d507334175a8b49aea3454"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Prefabs/TargetReachedEffect.prefab",
+      "blob": "b5e8771257189239d6b530e4d9da280ab64fe33f"
+    },
+    {
+      "path": "Assets/AstarPathfindingProject/ExampleScenes/Prefabs/TargetReachedEffect.prefab.meta",
+      "blob": "1f322aa9eee603266f5785e6c42e82bdce9d73de"
+    },
+    {
+      "path": "Assets/Scenes/SampleScene.unity",
+      "blob": "7b420f6ebd3ce91e13736fea44dc79263dcf2c94"
+    },
+    {
+      "path": "Assets/Scenes/SampleScene.unity.meta",
+      "blob": "963ff8e93e313df20c3b205dabb060c57ad969f9"
+    },
+    {
+      "path": "Assets/Settings/Renderer2D.asset",
+      "blob": "47cf6bdfa5275487759651db0d9e6a4b1754a5ec"
+    },
+    {
+      "path": "Assets/Settings/Renderer2D.asset.meta",
+      "blob": "99dc6c5772a99f6720e9665641a6a6ff6b7221f8"
+    },
+    {
+      "path": "Assets/Settings/Scenes/URP2DSceneTemplate.unity",
+      "blob": "10756afa1888bb0c9d59137208f93fb86bea7046"
+    },
+    {
+      "path": "Assets/Settings/Scenes/URP2DSceneTemplate.unity.meta",
+      "blob": "c1e3c88e1cf25569cfffa5347eb9289085ed7d63"
+    },
+    {
+      "path": "Assets/Settings/UniversalRP.asset",
+      "blob": "2d718638e8437c0ec1337332bc5cec2b00b6a055"
+    },
+    {
+      "path": "Assets/Settings/UniversalRP.asset.meta",
+      "blob": "6f92f2d98b9d714d7e50e76065f78e4b8775e04d"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Drop Shadow.mat",
+      "blob": "5bc142c4e916d7a391fc5a8f04ccd692d9a7223f"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Drop Shadow.mat.meta",
+      "blob": "fbd2cdb6037b5e1c8ba584d2ea6f118ac8862c3b"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset",
+      "blob": "0102f727dbbc1a01029d128aa8761e7000101536"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset.meta",
+      "blob": "42dd6acd8eb1f6e43b03cd63facb8956ab28f193"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Outline.mat",
+      "blob": "cca8ce8933c86f8dfcef4c8cc18b3136e53256ef"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Outline.mat.meta",
+      "blob": "88d6334880161f080fd50571d52a178f59767a34"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF.asset",
+      "blob": "c7b0771e686032fb792b91a9b80aaf4d36dd5c0b"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF.asset.meta",
+      "blob": "66e69d18806eae35d607f2c5227c6050ffa34914"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Resources/Sprite Assets/EmojiOne.asset",
+      "blob": "98e6d277137da9513b245b50488ce5d6e2a1ca7e"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Resources/Sprite Assets/EmojiOne.asset.meta",
+      "blob": "c7ac83f4d2f6a0bbf1da585f4715effdfa912518"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Resources/Style Sheets/Default Style Sheet.asset",
+      "blob": "ceb609b29afea00251b1938f51831a4955292a36"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Resources/Style Sheets/Default Style Sheet.asset.meta",
+      "blob": "95fd96ed4c11ca5aa4c10e0269f3cbfcb16ab142"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Resources/TMP Settings.asset",
+      "blob": "c09a92f1ce9becb8430db87bd2ab28ef563a377f"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Resources/TMP Settings.asset.meta",
+      "blob": "32db3845d82999d8fe313b2d95e70795a11b1f19"
+    },
+    {
+      "path": "Assets/UniversalRenderPipelineGlobalSettings.asset",
+      "blob": "2db3acb3bbf5602910efee5dfe8455e42414286d"
+    },
+    {
+      "path": "Assets/UniversalRenderPipelineGlobalSettings.asset.meta",
+      "blob": "46b340a0c6d0d33b1b3dbaaf106e9f05b8269233"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Death/Hivetyrant_Death_D.anim",
+      "blob": "351cfa88f0e7fac2a83f17d24ece5aefeec74305"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Death/Hivetyrant_Death_D.anim.meta",
+      "blob": "26dd28ff69ff39cf627237185021f916f075e3b3"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Death/Hivetyrant_Death_DL.anim",
+      "blob": "ca1ac14caa7d52c760e789eea45cd080cf5cd913"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Death/Hivetyrant_Death_DL.anim.meta",
+      "blob": "150b988398cd5f599612a21c3fc914eb1dd7108d"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Death/Hivetyrant_Death_DR.anim",
+      "blob": "afe633809f6c9b23e67e4e78442b0833b7c65469"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Death/Hivetyrant_Death_DR.anim.meta",
+      "blob": "4dfcb75ba3bb4df43f4a57f7de58228b868099ee"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Death/Hivetyrant_Death_L.anim",
+      "blob": "5a7bc414da02fac04b91fbcea90b86982b1a2ad2"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Death/Hivetyrant_Death_L.anim.meta",
+      "blob": "1a2979239a342cc919866a23dc84a9e48364a773"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Death/Hivetyrant_Death_R.anim",
+      "blob": "77a4e4df34e990d4134a4d5826b12388aa229644"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Death/Hivetyrant_Death_R.anim.meta",
+      "blob": "52495e58f019ef9d4bb363739cac132f526dab49"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Death/Hivetyrant_Death_U.anim",
+      "blob": "3bf0fc9d3b49d7134376b444de61b73861daf627"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Death/Hivetyrant_Death_U.anim.meta",
+      "blob": "6cd71e2622379c5935c805671bde42ff7965f632"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Death/Hivetyrant_Death_UL.anim",
+      "blob": "9eaede29b5bb054a93b24ca85008dd55794a1818"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Death/Hivetyrant_Death_UL.anim.meta",
+      "blob": "a48ff3935fee27cc14328ff7636ebc8bf1abcc30"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Death/Hivetyrant_Death_UR.anim",
+      "blob": "f24d08c5b2fbd25eb54c0ac3b8ecc476fb984ecc"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Death/Hivetyrant_Death_UR.anim.meta",
+      "blob": "635411b75e5fd4a907c8e3a7a68f502169b1fe88"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Hit/HiveTyrant_Hit_D.anim",
+      "blob": "f884413abcf6765119f8552357fc2b57e53801c5"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Hit/HiveTyrant_Hit_D.anim.meta",
+      "blob": "764ab1353b1b7c187abb1281c59a71b5c1afd7f3"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Hit/HiveTyrant_Hit_DL.anim",
+      "blob": "405ba80a3a63245f15ddc16e19d8740af627b62f"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Hit/HiveTyrant_Hit_DL.anim.meta",
+      "blob": "7c7a010c980ea1cf2223c23db47e26d534182695"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Hit/HiveTyrant_Hit_DR.anim",
+      "blob": "da3431cdc6d369a86f5971671e2958b64385e633"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Hit/HiveTyrant_Hit_DR.anim.meta",
+      "blob": "9ec5d6552cb92d384334f53285e6aa28c0829cb4"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Hit/HiveTyrant_Hit_L.anim",
+      "blob": "2d27f06459a97897d3031cadf08d2b0a6d751aa1"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Hit/HiveTyrant_Hit_L.anim.meta",
+      "blob": "53d940099ca5e35ba6fa511afbc4bde7c19f49ad"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Hit/HiveTyrant_Hit_R.anim",
+      "blob": "7a952c9f34e51badac3f4dc1071a8de43d5d508f"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Hit/HiveTyrant_Hit_R.anim.meta",
+      "blob": "042c74e20c0a090f579dd6fb2426b56b59135061"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Hit/HiveTyrant_Hit_U.anim",
+      "blob": "be9ed85d2f628948edaad66e73c07d667162bde7"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Hit/HiveTyrant_Hit_U.anim.meta",
+      "blob": "7950202f806577e13687cb093afe5f06f1dc34fa"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Hit/HiveTyrant_Hit_UL.anim",
+      "blob": "092bb6c1e633ed54de4f2a025883d5b16334477c"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Hit/HiveTyrant_Hit_UL.anim.meta",
+      "blob": "c9d112ad31f48bd69f3171b497ddd38435912efb"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Hit/HiveTyrant_Hit_UR.anim",
+      "blob": "da7245819aa78c3a5d53631733d39bc683549fe5"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Hit/HiveTyrant_Hit_UR.anim.meta",
+      "blob": "27323af1a99d4ffc703dca17a8838051dc77ac3f"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Idle/HiveTyrant_Idle_D.anim",
+      "blob": "125bf0a0d418c3cbc250411475e99c9b8921fe79"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Idle/HiveTyrant_Idle_D.anim.meta",
+      "blob": "669a1b941d239eff3acb442f6f63644919eb5c75"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Idle/HiveTyrant_Idle_DL.anim",
+      "blob": "78b0329ac03903343cacd5bbff2745a4a7666ab7"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Idle/HiveTyrant_Idle_DL.anim.meta",
+      "blob": "482477351e63720aa6468f8d5071385677513c59"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Idle/HiveTyrant_Idle_DR.anim",
+      "blob": "9dbc466644fbe195d30cbe2224bbd71e3340a70c"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Idle/HiveTyrant_Idle_DR.anim.meta",
+      "blob": "b2580213419ef33397efecbdedfe14406c8abcf2"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Idle/HiveTyrant_Idle_L.anim",
+      "blob": "8b97d295b80ff6d90c23c50e4907210a2b21c899"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Idle/HiveTyrant_Idle_L.anim.meta",
+      "blob": "406a77f79e4d261843082894996b15a05a2fe18b"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Idle/HiveTyrant_Idle_R.anim",
+      "blob": "25d13a835a7f2650b1267c77e866d123ad83359e"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Idle/HiveTyrant_Idle_R.anim.meta",
+      "blob": "f946205cb3500ddc2b3a66e9a03adf4b96f5776f"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Idle/HiveTyrant_Idle_U.anim",
+      "blob": "26e76181fd22a8e1505b8e5fe95aeb71ffee97c9"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Idle/HiveTyrant_Idle_U.anim.meta",
+      "blob": "6780d9502cafbad64b06f0a6ab990c5e8653bc9d"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Idle/HiveTyrant_Idle_UL.anim",
+      "blob": "3be2f9f5293c336debd903c20efe12e9924cc4df"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Idle/HiveTyrant_Idle_UL.anim.meta",
+      "blob": "e3f70556b2a075a937715eeb1010af701a46f78d"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Idle/HiveTyrant_Idle_UR.anim",
+      "blob": "43661fef2122f4f1d77f708e09060bf56e318c43"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Idle/HiveTyrant_Idle_UR.anim.meta",
+      "blob": "66002e635541e1344aced4c0f1342b81ab2cabcd"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Idle_Phase2/HiveTyrant_Idle_Phase2_D.anim",
+      "blob": "853918359a1e5742f181d503f92e9decf2e07772"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Idle_Phase2/HiveTyrant_Idle_Phase2_D.anim.meta",
+      "blob": "e662bc3a34f5e3ab80815847abcd28952c022256"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Idle_Phase2/HiveTyrant_Idle_Phase2_DL.anim",
+      "blob": "5d5451973b501fcc791c27029cca7a8c582e5ebe"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Idle_Phase2/HiveTyrant_Idle_Phase2_DL.anim.meta",
+      "blob": "26c0e484c9c471f44202d38afa0207dd69a07f3b"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Idle_Phase2/HiveTyrant_Idle_Phase2_DR.anim",
+      "blob": "60bc5697be164620825f99ce979f6902c1c3d395"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Idle_Phase2/HiveTyrant_Idle_Phase2_DR.anim.meta",
+      "blob": "79fce981c43678139d4b30d49718101740a9a0f7"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Idle_Phase2/HiveTyrant_Idle_Phase2_L.anim",
+      "blob": "0b04da0ff4a98a875fd320c86b2744aa5774ca47"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Idle_Phase2/HiveTyrant_Idle_Phase2_L.anim.meta",
+      "blob": "4b9293750f58f96799965caafabf6da10b305cc8"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Idle_Phase2/HiveTyrant_Idle_Phase2_R.anim",
+      "blob": "61d6c3cf0025a3e3f1cf8c251cbad6ae51e58d9f"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Idle_Phase2/HiveTyrant_Idle_Phase2_R.anim.meta",
+      "blob": "91970b9dceac9afa645e6078b309cc08e9268e4d"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Idle_Phase2/HiveTyrant_Idle_Phase2_U.anim",
+      "blob": "15bb9eb7a468223ca2408a8f6088f8598ef2dfec"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Idle_Phase2/HiveTyrant_Idle_Phase2_U.anim.meta",
+      "blob": "3a2e2ec13d34bad1808b551ac823e7e59da1b409"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Idle_Phase2/HiveTyrant_Idle_Phase2_UL.anim",
+      "blob": "80d541516ce10c2feb2b2a10d408ec26b39503de"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Idle_Phase2/HiveTyrant_Idle_Phase2_UL.anim.meta",
+      "blob": "cfdbe976db18bde2e5cdd61db7ba2a2398c04435"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Idle_Phase2/HiveTyrant_Idle_Phase2_UR.anim",
+      "blob": "ef2abb07283e9e0995bc50896ca6209b8e7f7181"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Idle_Phase2/HiveTyrant_Idle_Phase2_UR.anim.meta",
+      "blob": "951aed2f25d079b4cd615be1c64b0a14b073ae32"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Idle_Phase2_RiftWing/HiveTyrant_Idle_Phase2(1)_D.anim",
+      "blob": "5fe9276a784a9b6a52b164fbc8fece120ff7fbfc"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Idle_Phase2_RiftWing/HiveTyrant_Idle_Phase2(1)_D.anim.meta",
+      "blob": "7df5f79191fe38d9ea21b6b00fa94506090eb405"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Idle_Phase2_RiftWing/HiveTyrant_Idle_Phase2(1)_DL.anim",
+      "blob": "87c176cdf1b490b489685ad66cd502bf045b1988"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Idle_Phase2_RiftWing/HiveTyrant_Idle_Phase2(1)_DL.anim.meta",
+      "blob": "758c4d43f0efacb8d0c33f042c1936091eefcaa2"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Idle_Phase2_RiftWing/HiveTyrant_Idle_Phase2(1)_DR.anim",
+      "blob": "234ca8a7530e72b6357ef26f29f4fe352a966bab"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Idle_Phase2_RiftWing/HiveTyrant_Idle_Phase2(1)_DR.anim.meta",
+      "blob": "41c74bc62a197116a0af9e595072d1102e037418"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Idle_Phase2_RiftWing/HiveTyrant_Idle_Phase2(1)_L.anim",
+      "blob": "f1f155e0cc8ace49f28888db387d37bac6ba9eee"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Idle_Phase2_RiftWing/HiveTyrant_Idle_Phase2(1)_L.anim.meta",
+      "blob": "f4e08cc96434cc6f2c162c521be02041b0e9032f"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Idle_Phase2_RiftWing/HiveTyrant_Idle_Phase2(1)_R.anim",
+      "blob": "31cd6f8bf8f52e3f4c50e9e726a6b916d7531360"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Idle_Phase2_RiftWing/HiveTyrant_Idle_Phase2(1)_R.anim.meta",
+      "blob": "9a59a953a19a291e9b5eb3a67002ad745db923fd"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Idle_Phase2_RiftWing/HiveTyrant_Idle_Phase2(1)_U.anim",
+      "blob": "1ce15141c62ab5dacf0fa421609e160a4f103ac9"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Idle_Phase2_RiftWing/HiveTyrant_Idle_Phase2(1)_U.anim.meta",
+      "blob": "dab26df91dbee9cde7eb7ff950c5b6073e015fc7"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Idle_Phase2_RiftWing/HiveTyrant_Idle_Phase2(1)_UL.anim",
+      "blob": "45e68797c1acdd119ee81a242dd753a8b332d994"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Idle_Phase2_RiftWing/HiveTyrant_Idle_Phase2(1)_UL.anim.meta",
+      "blob": "8044e4f9b11e983b11a0cbfe7011a465d9a68736"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Idle_Phase2_RiftWing/HiveTyrant_Idle_Phase2(1)_UR.anim",
+      "blob": "af07587e0626c11502cf7ec27559ad68d413710f"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Idle_Phase2_RiftWing/HiveTyrant_Idle_Phase2(1)_UR.anim.meta",
+      "blob": "961d2602776755429fa69a135b0d44852a032ac3"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Move/HiveTyrant_Move_D.anim",
+      "blob": "ab73f30dcc5f3c2dcea63f1cd713b78a4dffa4aa"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Move/HiveTyrant_Move_D.anim.meta",
+      "blob": "a53e47b3e3608bd1b59f4b29aa3248735b655ced"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Move/HiveTyrant_Move_DL.anim",
+      "blob": "4ffc870498d781397c9b07cf90f4e5751a7853aa"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Move/HiveTyrant_Move_DL.anim.meta",
+      "blob": "6582996f96a69c897341c3f15250e72e907e6c6f"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Move/HiveTyrant_Move_DR.anim",
+      "blob": "62fca40ffd3bbbc93814af4826bae880dc419ca8"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Move/HiveTyrant_Move_DR.anim.meta",
+      "blob": "5f5068d24487a96ae6a11971c01651ec629e4139"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Move/HiveTyrant_Move_L.anim",
+      "blob": "a472fbf84694e29ad1762f1e968ad31b48edd58c"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Move/HiveTyrant_Move_L.anim.meta",
+      "blob": "90a23acec0bbb738d45258c4698da5c530944ef0"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Move/HiveTyrant_Move_R.anim",
+      "blob": "3570a5c2a397e36a75277a4c4d6a39609673388e"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Move/HiveTyrant_Move_R.anim.meta",
+      "blob": "99c12e0bca387c9316af4cbb4535259bf862020c"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Move/HiveTyrant_Move_U.anim",
+      "blob": "6546d63114f81ea92c001f1489643f6f0fede115"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Move/HiveTyrant_Move_U.anim.meta",
+      "blob": "681274bf6800a0ca489b9f161cdccc211fc93b5e"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Move/HiveTyrant_Move_UL.anim",
+      "blob": "d28eefa154340c4fda0b88a74dee68b28f0ba55b"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Move/HiveTyrant_Move_UL.anim.meta",
+      "blob": "198e47fd5b435c2529bc6b595213d5e1809364d8"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Move/HiveTyrant_Move_UR.anim",
+      "blob": "7cc10621900f1fb90c41cf0015d9dd004ebe66a3"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Move/HiveTyrant_Move_UR.anim.meta",
+      "blob": "be93d60ab18c2ee7cb98d5887fca655d9b90b6ce"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Move_Phase2/HiveTyrant_Boss.controller",
+      "blob": "0af7616c8acabab4550d28c4307fc757faf55fe1"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Move_Phase2/HiveTyrant_Boss.controller.meta",
+      "blob": "7717b8f697814e8fe8c0ac19e369f9b6228c67f2"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Move_Phase2/HiveTyrant_Move_Phase2_D.anim",
+      "blob": "d33c07d026868f709c9e9cde2889f55b36291b9b"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Move_Phase2/HiveTyrant_Move_Phase2_D.anim.meta",
+      "blob": "1451e7b84a9dbc9e9c3d65beb95bac11d047415a"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Move_Phase2/HiveTyrant_Move_Phase2_DL.anim",
+      "blob": "b6d8604a0cb48052ee198193912839697028ecfe"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Move_Phase2/HiveTyrant_Move_Phase2_DL.anim.meta",
+      "blob": "abacd6eeb13787bd8c430eb3ade44bbb3d983184"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Move_Phase2/HiveTyrant_Move_Phase2_DR.anim",
+      "blob": "552bf02c41763452d9e3d2159f659321ec6702ef"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Move_Phase2/HiveTyrant_Move_Phase2_DR.anim.meta",
+      "blob": "cb326b926c1fcc811045bb02937a11353ea0c11e"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Move_Phase2/HiveTyrant_Move_Phase2_L.anim",
+      "blob": "e1465cfc3b7456c494ded5e39aee9e9cb7ebfb67"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Move_Phase2/HiveTyrant_Move_Phase2_L.anim.meta",
+      "blob": "3d64ca6e200f6d7aa577b687ffe760b563eb7610"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Move_Phase2/HiveTyrant_Move_Phase2_R.anim",
+      "blob": "92bc247e94808971886628df5d7e4de8f22818d0"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Move_Phase2/HiveTyrant_Move_Phase2_R.anim.meta",
+      "blob": "13ee9947ceef183ab59f03985c188c040ba8fcdf"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Move_Phase2/HiveTyrant_Move_Phase2_U.anim",
+      "blob": "a2b645d04a6080c4db250b441cbce47bc9fad4c2"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Move_Phase2/HiveTyrant_Move_Phase2_U.anim.meta",
+      "blob": "38f32a8ad6bde99dc08b53c8572db3d87605582a"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Move_Phase2/HiveTyrant_Move_Phase2_UL.anim",
+      "blob": "7a9fe4a41e668f3ecaef2acc66854d94fbbc88fa"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Move_Phase2/HiveTyrant_Move_Phase2_UL.anim.meta",
+      "blob": "d362f9e6e61d98d86ea4c03f41dcc60f1b270385"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Move_Phase2/HiveTyrant_Move_Phase2_UR.anim",
+      "blob": "cea96973de0e0526573d016aab39efa5297b4f2f"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Clips/Move_Phase2/HiveTyrant_Move_Phase2_UR.anim.meta",
+      "blob": "6daa422273ae619fbcfa4e8412bfcf81dd0b9305"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Controller/HiveTyrant_AnimPreview.controller",
+      "blob": "cd07d62a4a67f0725c6e741f39fdc119e2640588"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Controller/HiveTyrant_AnimPreview.controller.meta",
+      "blob": "4e56597fa67e9ad8cb4f59b92c34668798127c39"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Controller/HiveTyrant_Boss_Animator.controller",
+      "blob": "c40dae1e606c0ae8c9842df6ea2e22d2f98896b1"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Controller/HiveTyrant_Boss_Animator.controller.meta",
+      "blob": "977fce63dda433b648ea85d8327b4ecaf050dd63"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Controller/HiveTyrant_Boss_Animator_Phase2.controller",
+      "blob": "fa70cf67c2af40f9acdd879001f5510f60c6164d"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/Controller/HiveTyrant_Boss_Animator_Phase2.controller.meta",
+      "blob": "eb45eb80a0af3a83c7997d4fb69e057f20fd6f6b"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/HiveTyrant_PoseLibrary.asset",
+      "blob": "917df9ee3fa63a7f684c2edc7288c5f8fa99c661"
+    },
+    {
+      "path": "Assets/_Project/Animations/Boss/HiveTyrant/HiveTyrant_PoseLibrary.asset.meta",
+      "blob": "54054701d8296253cb730b0aeb58ba6e7ef79461"
+    },
+    {
+      "path": "Assets/_Project/Animations/Player/Clips/Idle/Player_Idle_Down.anim",
+      "blob": "3273a8c285e9d72ff86eb288c8c409b8ee72101b"
+    },
+    {
+      "path": "Assets/_Project/Animations/Player/Clips/Idle/Player_Idle_Down.anim.meta",
+      "blob": "62012723170d4ad69ece25680d00f948bdee4724"
+    },
+    {
+      "path": "Assets/_Project/Animations/Player/Clips/Idle/Player_Idle_DownLeft.anim",
+      "blob": "f7428613bdfed556be9ae05f4b1713b4be27bbd5"
+    },
+    {
+      "path": "Assets/_Project/Animations/Player/Clips/Idle/Player_Idle_DownLeft.anim.meta",
+      "blob": "4d4be4d27ce3363ffb4d2f03aeec1731d509e54d"
+    },
+    {
+      "path": "Assets/_Project/Animations/Player/Clips/Idle/Player_Idle_DownRight.anim",
+      "blob": "850c99f2ba2478feea044aac46b05bfa02036515"
+    },
+    {
+      "path": "Assets/_Project/Animations/Player/Clips/Idle/Player_Idle_DownRight.anim.meta",
+      "blob": "0447c86a377ec343f6c6d9d94906eb60b6862dd7"
+    },
+    {
+      "path": "Assets/_Project/Animations/Player/Clips/Idle/Player_Idle_Left.anim",
+      "blob": "e851c901941f0215f41fd01394aab93ee99972ec"
+    },
+    {
+      "path": "Assets/_Project/Animations/Player/Clips/Idle/Player_Idle_Left.anim.meta",
+      "blob": "a1d8e49941a0321d067552b131b0027ed949cc51"
+    },
+    {
+      "path": "Assets/_Project/Animations/Player/Clips/Idle/Player_Idle_Right.anim",
+      "blob": "ff696e8df0b3b163c68895091ab1e6fada555092"
+    },
+    {
+      "path": "Assets/_Project/Animations/Player/Clips/Idle/Player_Idle_Right.anim.meta",
+      "blob": "062cce5b8bf4b47bee02b0881ef4159991f0b1a3"
+    },
+    {
+      "path": "Assets/_Project/Animations/Player/Clips/Idle/Player_Idle_Up.anim",
+      "blob": "eaca225e53e48656e5c2fc84e8fb67214b98a22f"
+    },
+    {
+      "path": "Assets/_Project/Animations/Player/Clips/Idle/Player_Idle_Up.anim.meta",
+      "blob": "e218faa85cac4e7219a0e1c3226e3c44dfe7c433"
+    },
+    {
+      "path": "Assets/_Project/Animations/Player/Clips/Idle/Player_Idle_UpLeft.anim",
+      "blob": "bac86677486faf8be0d4d04e95ed363bd86361e1"
+    },
+    {
+      "path": "Assets/_Project/Animations/Player/Clips/Idle/Player_Idle_UpLeft.anim.meta",
+      "blob": "331d1cb26c4010a3b50731eadfe795ca7b4d0af0"
+    },
+    {
+      "path": "Assets/_Project/Animations/Player/Clips/Idle/Player_Idle_UpRight.anim",
+      "blob": "ea72bad6aa1bddecaa12eeba35fac1950e1291be"
+    },
+    {
+      "path": "Assets/_Project/Animations/Player/Clips/Idle/Player_Idle_UpRight.anim.meta",
+      "blob": "9634b0cfaa2f1cf4105d41324e83ff5e1416df96"
+    },
+    {
+      "path": "Assets/_Project/Animations/Player/Clips/Walk/Player_Walk_Down.anim",
+      "blob": "f8c60014af5b4dde0a785c7deaec3bd498cca91e"
+    },
+    {
+      "path": "Assets/_Project/Animations/Player/Clips/Walk/Player_Walk_Down.anim.meta",
+      "blob": "8900de7e5fad7978f61ba366f8d088ad29baea11"
+    },
+    {
+      "path": "Assets/_Project/Animations/Player/Clips/Walk/Player_Walk_DownLeft.anim",
+      "blob": "edb5afd023accfdcfde854af034a3b7acb872bc7"
+    },
+    {
+      "path": "Assets/_Project/Animations/Player/Clips/Walk/Player_Walk_DownLeft.anim.meta",
+      "blob": "fa93995936665ddada8430031f0ced758f3fe8db"
+    },
+    {
+      "path": "Assets/_Project/Animations/Player/Clips/Walk/Player_Walk_DownRight.anim",
+      "blob": "854fe06fe0f7130ab1bd491a0de2f7b10efbe74a"
+    },
+    {
+      "path": "Assets/_Project/Animations/Player/Clips/Walk/Player_Walk_DownRight.anim.meta",
+      "blob": "73110a4a4468f0537d7f1f8025c977bad5b55079"
+    },
+    {
+      "path": "Assets/_Project/Animations/Player/Clips/Walk/Player_Walk_Left.anim",
+      "blob": "9c80a959149ab248b4aef824ca3b0fbb99781467"
+    },
+    {
+      "path": "Assets/_Project/Animations/Player/Clips/Walk/Player_Walk_Left.anim.meta",
+      "blob": "96930f9dc1256ce69c6837dabdd6f29cca58721b"
+    },
+    {
+      "path": "Assets/_Project/Animations/Player/Clips/Walk/Player_Walk_Right.anim",
+      "blob": "183237784fb333e2df4b815964a8815b1f0d15fc"
+    },
+    {
+      "path": "Assets/_Project/Animations/Player/Clips/Walk/Player_Walk_Right.anim.meta",
+      "blob": "3f0013ff53e0c04af3a9b7305d1d7f609d5ad1ee"
+    },
+    {
+      "path": "Assets/_Project/Animations/Player/Clips/Walk/Player_Walk_UP.anim",
+      "blob": "c0d81eedf24c94e74a37c24f051c5deda9246f47"
+    },
+    {
+      "path": "Assets/_Project/Animations/Player/Clips/Walk/Player_Walk_UP.anim.meta",
+      "blob": "402cdcd22a05a93ddce6521cd5adb49d05f5aab3"
+    },
+    {
+      "path": "Assets/_Project/Animations/Player/Clips/Walk/Player_Walk_UpLeft.anim",
+      "blob": "a530a7089c0c4cbdc4a27c5d82a8a932129e3a8d"
+    },
+    {
+      "path": "Assets/_Project/Animations/Player/Clips/Walk/Player_Walk_UpLeft.anim.meta",
+      "blob": "edc48caddf887b3f839d1c4412c89518573e1b7e"
+    },
+    {
+      "path": "Assets/_Project/Animations/Player/Clips/Walk/Player_Walk_UpRight.anim",
+      "blob": "e4b4a675961a59a9068b5b0129e57d419be99053"
+    },
+    {
+      "path": "Assets/_Project/Animations/Player/Clips/Walk/Player_Walk_UpRight.anim.meta",
+      "blob": "2edf79cf9a06f62fb26817c5784fe36381530076"
+    },
+    {
+      "path": "Assets/_Project/Animations/Player/Controller/Player_Body.controller",
+      "blob": "09440c31b92e3cebb9815e39e76877f92c407e46"
+    },
+    {
+      "path": "Assets/_Project/Animations/Player/Controller/Player_Body.controller.meta",
+      "blob": "219ecf4ea6129a8be0902cd07800134dbd18397d"
+    },
+    {
+      "path": "Assets/_Project/Animations/Rusher/Rusher_Animator.controller",
+      "blob": "717dbb9ea74af3f993ba433094a8b03a97409814"
+    },
+    {
+      "path": "Assets/_Project/Animations/Rusher/Rusher_Animator.controller.meta",
+      "blob": "d04ef8b7402c7dc5514b0ce8b0d03c55ff7b4d75"
+    },
+    {
+      "path": "Assets/_Project/Animations/Rusher/Rusher_Move_D.anim",
+      "blob": "385a2fd215f9579e43c31478d366224c52327723"
+    },
+    {
+      "path": "Assets/_Project/Animations/Rusher/Rusher_Move_D.anim.meta",
+      "blob": "972eaee7fa039862cd00ce01ed99860746fc1a3d"
+    },
+    {
+      "path": "Assets/_Project/Animations/Rusher/Rusher_Move_DL.anim",
+      "blob": "bbf3cefb47e5a9d9b01af556fd8f7f236934bdb0"
+    },
+    {
+      "path": "Assets/_Project/Animations/Rusher/Rusher_Move_DL.anim.meta",
+      "blob": "3f956a766de4160ef4e1efdf0a574c21fc01b600"
+    },
+    {
+      "path": "Assets/_Project/Animations/Rusher/Rusher_Move_DR.anim",
+      "blob": "b220289c7a7e4817b353d8ca77be4478fc9c3629"
+    },
+    {
+      "path": "Assets/_Project/Animations/Rusher/Rusher_Move_DR.anim.meta",
+      "blob": "bda58b7febc0926472c57aa6acad562217b51e29"
+    },
+    {
+      "path": "Assets/_Project/Animations/Rusher/Rusher_Move_L.anim",
+      "blob": "413b806b24807b2c77b8ebaa3449c894a50f39e6"
+    },
+    {
+      "path": "Assets/_Project/Animations/Rusher/Rusher_Move_L.anim.meta",
+      "blob": "aa46a5f6e6407ce17f1880a4bedcae6e76134472"
+    },
+    {
+      "path": "Assets/_Project/Animations/Rusher/Rusher_Move_R.anim",
+      "blob": "2eb0c2fd131170325105ece885241795bfbe908b"
+    },
+    {
+      "path": "Assets/_Project/Animations/Rusher/Rusher_Move_R.anim.meta",
+      "blob": "3842706bb6689874e81210b82cfe1050e1061ad5"
+    },
+    {
+      "path": "Assets/_Project/Animations/Rusher/Rusher_Move_U.anim",
+      "blob": "1a3e704d934d96cae9346f6cf65b2e2aefffa8da"
+    },
+    {
+      "path": "Assets/_Project/Animations/Rusher/Rusher_Move_U.anim.meta",
+      "blob": "1f16b06c3bc337fc42573bfafb3403ed8c28d1e3"
+    },
+    {
+      "path": "Assets/_Project/Animations/Rusher/Rusher_Move_UL.anim",
+      "blob": "9e3facb5a10401a62eec24dcaf231890e78b7c61"
+    },
+    {
+      "path": "Assets/_Project/Animations/Rusher/Rusher_Move_UL.anim.meta",
+      "blob": "0aeb93eee45d59268ef6e412aa9ae21c0f06757d"
+    },
+    {
+      "path": "Assets/_Project/Animations/Rusher/Rusher_Move_UR.anim",
+      "blob": "fd23febaf7a89f6c0f1e3a7d826cd4ced8769a57"
+    },
+    {
+      "path": "Assets/_Project/Animations/Rusher/Rusher_Move_UR.anim.meta",
+      "blob": "166fb4883d5cc631bfe8be007ac1859aba016283"
+    },
+    {
+      "path": "Assets/_Project/Animations/Spitter/Spitter_Animator.controller",
+      "blob": "a33aaf828959614bfb099699edada75ee0ce4324"
+    },
+    {
+      "path": "Assets/_Project/Animations/Spitter/Spitter_Animator.controller.meta",
+      "blob": "cb0089c8be4d81ce95445915fb5d7fb1f3d42470"
+    },
+    {
+      "path": "Assets/_Project/Animations/Spitter/Spitter_Move_D.anim",
+      "blob": "0f345c5fb040eae12f9257d9adc97edeabae439a"
+    },
+    {
+      "path": "Assets/_Project/Animations/Spitter/Spitter_Move_D.anim.meta",
+      "blob": "fd54346d736cdf0d44f8eb57f7179739131df28e"
+    },
+    {
+      "path": "Assets/_Project/Animations/Spitter/Spitter_Move_DL.anim",
+      "blob": "a5c057bef8d8c27b7a166a44c2860e8384822982"
+    },
+    {
+      "path": "Assets/_Project/Animations/Spitter/Spitter_Move_DL.anim.meta",
+      "blob": "ce70b994962824da3173124525d5576779305b73"
+    },
+    {
+      "path": "Assets/_Project/Animations/Spitter/Spitter_Move_Dr.anim",
+      "blob": "100f9f1bf6f8d3f362616886f9ea5c16ea31c868"
+    },
+    {
+      "path": "Assets/_Project/Animations/Spitter/Spitter_Move_Dr.anim.meta",
+      "blob": "bfe0190301aa1dac97053afb6afef5d1cd9c5ed0"
+    },
+    {
+      "path": "Assets/_Project/Animations/Spitter/Spitter_Move_L.anim",
+      "blob": "aab1e5b0171067b32671100e793f02d754d73c0a"
+    },
+    {
+      "path": "Assets/_Project/Animations/Spitter/Spitter_Move_L.anim.meta",
+      "blob": "0321850490e2e09a9fe7d9b8fcbb00b2f5b07bc9"
+    },
+    {
+      "path": "Assets/_Project/Animations/Spitter/Spitter_Move_R.anim",
+      "blob": "c0f3beb1e23298bf44a44fc3491f31745adea769"
+    },
+    {
+      "path": "Assets/_Project/Animations/Spitter/Spitter_Move_R.anim.meta",
+      "blob": "8503efc3c70311106d48edbc64ddd5d541079d36"
+    },
+    {
+      "path": "Assets/_Project/Animations/Spitter/Spitter_Move_U.anim",
+      "blob": "cc41734fc8210c78e920fb59837d88738626b8fd"
+    },
+    {
+      "path": "Assets/_Project/Animations/Spitter/Spitter_Move_U.anim.meta",
+      "blob": "69733d9a238fa0765a65ce8f84bbc46ac9ef1a22"
+    },
+    {
+      "path": "Assets/_Project/Animations/Spitter/Spitter_Move_UL.anim",
+      "blob": "38c3a74fa22be2edba4bab49b11d3ac0bc271329"
+    },
+    {
+      "path": "Assets/_Project/Animations/Spitter/Spitter_Move_UL.anim.meta",
+      "blob": "f5cd92ccfae0bed23043ec6b0e64b2f1449ad184"
+    },
+    {
+      "path": "Assets/_Project/Animations/Spitter/Spitter_Move_UR.anim",
+      "blob": "4b291daeec696f0dc4dc32b2f2d7cc0c385ce1c6"
+    },
+    {
+      "path": "Assets/_Project/Animations/Spitter/Spitter_Move_UR.anim.meta",
+      "blob": "c9e86c948b137c7cd14c7ee554a1ea379e83cf75"
+    },
+    {
+      "path": "Assets/_Project/Animations/Swarmer/Clips/Swarmer_Animator.controller",
+      "blob": "3f88031f3e14b47280f0bff7f57501fb34f88cbb"
+    },
+    {
+      "path": "Assets/_Project/Animations/Swarmer/Clips/Swarmer_Animator.controller.meta",
+      "blob": "27647f92098bb0b780db7b543349e0e7ba2f00d9"
+    },
+    {
+      "path": "Assets/_Project/Animations/Swarmer/Clips/Swarmer_Move_D.anim",
+      "blob": "b12e52b4cb8c3420352fdd904604aec019a6824d"
+    },
+    {
+      "path": "Assets/_Project/Animations/Swarmer/Clips/Swarmer_Move_D.anim.meta",
+      "blob": "c6e83f11f7048e72654fa5dae7ba224a1caf8197"
+    },
+    {
+      "path": "Assets/_Project/Animations/Swarmer/Clips/Swarmer_Move_DL.anim",
+      "blob": "38923d55b5a70ec3015c17ab20dab8a9abc9c6a1"
+    },
+    {
+      "path": "Assets/_Project/Animations/Swarmer/Clips/Swarmer_Move_DL.anim.meta",
+      "blob": "755805cd4d8bfc551b6f342f183a6af5b23c9032"
+    },
+    {
+      "path": "Assets/_Project/Animations/Swarmer/Clips/Swarmer_Move_DR.anim",
+      "blob": "9de900857dcbc3e8b251a8b93ed61a59f123cc33"
+    },
+    {
+      "path": "Assets/_Project/Animations/Swarmer/Clips/Swarmer_Move_DR.anim.meta",
+      "blob": "e15947d6ec3f6216fe7fb66d9f6187306c536981"
+    },
+    {
+      "path": "Assets/_Project/Animations/Swarmer/Clips/Swarmer_Move_L.anim",
+      "blob": "352c95f2df97ab5060ac5e677d64f35110e7c50c"
+    },
+    {
+      "path": "Assets/_Project/Animations/Swarmer/Clips/Swarmer_Move_L.anim.meta",
+      "blob": "4ce4485ef5ea3fd53e16ac9b6b01af21ba57f694"
+    },
+    {
+      "path": "Assets/_Project/Animations/Swarmer/Clips/Swarmer_Move_R.anim",
+      "blob": "6a7cfa0d08774f9d543009e7644be980425d9035"
+    },
+    {
+      "path": "Assets/_Project/Animations/Swarmer/Clips/Swarmer_Move_R.anim.meta",
+      "blob": "451a8ed322b3be4be7207455456ea2c9eac682c3"
+    },
+    {
+      "path": "Assets/_Project/Animations/Swarmer/Clips/Swarmer_Move_U.anim",
+      "blob": "240190199165d90d1537495b9e78c8a18b1ab377"
+    },
+    {
+      "path": "Assets/_Project/Animations/Swarmer/Clips/Swarmer_Move_U.anim.meta",
+      "blob": "e8ed77054df2320234beb93c14dde239449693d8"
+    },
+    {
+      "path": "Assets/_Project/Animations/Swarmer/Clips/Swarmer_Move_UL.anim",
+      "blob": "c7306979a8632528b3a92aa0ae5491ad5c1896ba"
+    },
+    {
+      "path": "Assets/_Project/Animations/Swarmer/Clips/Swarmer_Move_UL.anim.meta",
+      "blob": "534e6cbb5b01c9220a4062ef966e545204b6c2e0"
+    },
+    {
+      "path": "Assets/_Project/Animations/Swarmer/Clips/Swarmer_Move_UR.anim",
+      "blob": "ed2ddf64478bbb9e0ed45c9a423c0d0734669984"
+    },
+    {
+      "path": "Assets/_Project/Animations/Swarmer/Clips/Swarmer_Move_UR.anim.meta",
+      "blob": "b089b556043615db6e7baf2f4984cf6037929f1e"
+    },
+    {
+      "path": "Assets/_Project/Animations/Tank/Tank_Animator.controller",
+      "blob": "1d2e5c43baa40c50ab98a20b1871ba0a61d6f86a"
+    },
+    {
+      "path": "Assets/_Project/Animations/Tank/Tank_Animator.controller.meta",
+      "blob": "4f865964db5e3158c6142f23dfc5002a7232ae51"
+    },
+    {
+      "path": "Assets/_Project/Animations/Tank/Tank_Move_D.anim",
+      "blob": "c08151723886a8021f1e9590ae30b71ea3a89d4d"
+    },
+    {
+      "path": "Assets/_Project/Animations/Tank/Tank_Move_D.anim.meta",
+      "blob": "82fc29acee7b125bef80866530e00bb078b71fde"
+    },
+    {
+      "path": "Assets/_Project/Animations/Tank/Tank_Move_DL.anim",
+      "blob": "3c91bd93ae9c7359346b98fa5700e64f2fed9d92"
+    },
+    {
+      "path": "Assets/_Project/Animations/Tank/Tank_Move_DL.anim.meta",
+      "blob": "d7ec34cf82a3f9efe0095d9aacd88122d3bbf6c1"
+    },
+    {
+      "path": "Assets/_Project/Animations/Tank/Tank_Move_DR.anim",
+      "blob": "327416aa7968f1d7e14fcaacc08db708063b58de"
+    },
+    {
+      "path": "Assets/_Project/Animations/Tank/Tank_Move_DR.anim.meta",
+      "blob": "8dcabbf80e8a55d13e132ea375ce52ee9d4e7624"
+    },
+    {
+      "path": "Assets/_Project/Animations/Tank/Tank_Move_L.anim",
+      "blob": "fbd889a2c2efd28664733bd415b1ab28296d8011"
+    },
+    {
+      "path": "Assets/_Project/Animations/Tank/Tank_Move_L.anim.meta",
+      "blob": "894154a454dcf7efe504b5f6a6db94c52a981622"
+    },
+    {
+      "path": "Assets/_Project/Animations/Tank/Tank_Move_R.anim",
+      "blob": "166f0bcd83fae1ce7f14216eb7474ddd356fda01"
+    },
+    {
+      "path": "Assets/_Project/Animations/Tank/Tank_Move_R.anim.meta",
+      "blob": "4e9fce7fa5b6ccd4333872de70b1366a97b91094"
+    },
+    {
+      "path": "Assets/_Project/Animations/Tank/Tank_Move_U.anim",
+      "blob": "87f286717c5393355e3a015b39e9ccec951228f3"
+    },
+    {
+      "path": "Assets/_Project/Animations/Tank/Tank_Move_U.anim.meta",
+      "blob": "a7f52ec596a1e8c6ba6a3635608a94a441bf9844"
+    },
+    {
+      "path": "Assets/_Project/Animations/Tank/Tank_Move_UL.anim",
+      "blob": "d083ed6b28f893da0d2624b6e7bd293966daaf47"
+    },
+    {
+      "path": "Assets/_Project/Animations/Tank/Tank_Move_UL.anim.meta",
+      "blob": "91dacc02626c9ba4ea0b62fac10447ea6215ff30"
+    },
+    {
+      "path": "Assets/_Project/Animations/Tank/Tank_Move_UR.anim",
+      "blob": "24156bff85e9cdef9aee705cdee303b61725cfcd"
+    },
+    {
+      "path": "Assets/_Project/Animations/Tank/Tank_Move_UR.anim.meta",
+      "blob": "c416b738b2a9ccb92015d1d1a27dfc5f05459646"
+    },
+    {
+      "path": "Assets/_Project/Art/Boss/HiveTyrant/FX/HiveTyrant_VertexTint.mat",
+      "blob": "7beda5b50a98819c9422365196f41e088e546c9b"
+    },
+    {
+      "path": "Assets/_Project/Art/Boss/HiveTyrant/FX/HiveTyrant_VertexTint.mat.meta",
+      "blob": "d6854e45fd7ba9f10962482b236f12a46eea9d68"
+    },
+    {
+      "path": "Assets/_Project/Art/Effects/Materials/MAT_ChainLightning.mat",
+      "blob": "23dae05b782223d9c7c8efe2b47b9eec7ca8eae2"
+    },
+    {
+      "path": "Assets/_Project/Art/Effects/Materials/MAT_ChainLightning.mat.meta",
+      "blob": "75e9c6b7edba79631cc017b04d827b31ee395892"
+    },
+    {
+      "path": "Assets/_Project/Art/Effects/Materials/MAT_SafeZoneRing.mat",
+      "blob": "7d817c7e0f386d7deb67dc52734234985d5e31f0"
+    },
+    {
+      "path": "Assets/_Project/Art/Effects/Materials/MAT_SafeZoneRing.mat.meta",
+      "blob": "9128920f8c7a0e3c2aea26d1d3d52760b7b13e0d"
+    },
+    {
+      "path": "Assets/_Project/Art/Effects/Materials/M_PlayerDashTrail.mat",
+      "blob": "731ce7860438bbc9292134223ca418e3f2d6ddce"
+    },
+    {
+      "path": "Assets/_Project/Art/Effects/Materials/M_PlayerDashTrail.mat.meta",
+      "blob": "02f9f403dca74f0d8283f8b4903f9fef00e7e490"
+    },
+    {
+      "path": "Assets/_Project/Art/Resources/Persistence/ItemCatalog.asset",
+      "blob": "39a65dbc578651f687062e44bf14f7ede17919ad"
+    },
+    {
+      "path": "Assets/_Project/Art/Resources/Persistence/ItemCatalog.asset.meta",
+      "blob": "b8951a0310a4d63f696b1172f74cabd674be52cd"
+    },
+    {
+      "path": "Assets/_Project/Data/Boss/HiveTyrant_Combat.asset",
+      "blob": "b1ca58ae99f6ae487e2801aeb17dbee4683f7f77"
+    },
+    {
+      "path": "Assets/_Project/Data/Boss/HiveTyrant_Combat.asset.meta",
+      "blob": "a06934d0f16069506c418a393897718d74c2df11"
+    },
+    {
+      "path": "Assets/_Project/Data/Enemies/Enemy_Fast_Data.asset",
+      "blob": "d9c63a53ca104eed3fe4775e5cf8cb905a841470"
+    },
+    {
+      "path": "Assets/_Project/Data/Enemies/Enemy_Fast_Data.asset.meta",
+      "blob": "d0d7fe44bdad3e691ee3eb975a75940705cc189a"
+    },
+    {
+      "path": "Assets/_Project/Data/Enemies/Enemy_Heavy_Data.asset",
+      "blob": "bf62eb5d5035cee9fcd7ac739a0eb359bc6a3260"
+    },
+    {
+      "path": "Assets/_Project/Data/Enemies/Enemy_Heavy_Data.asset.meta",
+      "blob": "aaca911018246215a5807ca69e06218d084dd044"
+    },
+    {
+      "path": "Assets/_Project/Data/Enemies/Enemy_Normal_Data.asset",
+      "blob": "e30dd42dfd521602583b27d4f3d43dc2cfc20092"
+    },
+    {
+      "path": "Assets/_Project/Data/Enemies/Enemy_Normal_Data.asset.meta",
+      "blob": "598b47676b2418ac46a2951fd57ac861c1cf9299"
+    },
+    {
+      "path": "Assets/_Project/Data/Enemies/Enemy_Ranged_Data.asset",
+      "blob": "390d1046cece54e8c7e8f9c8efd05f7ac6c2a788"
+    },
+    {
+      "path": "Assets/_Project/Data/Enemies/Enemy_Ranged_Data.asset.meta",
+      "blob": "7395127f4e9572bc4f70b32dd92f564b36669d77"
+    },
+    {
+      "path": "Assets/_Project/Data/Items/Item_AdvancedCircuit.asset",
+      "blob": "cfecaad28c69b45b17d2691b6be19c5dd095d5dc"
+    },
+    {
+      "path": "Assets/_Project/Data/Items/Item_AdvancedCircuit.asset.meta",
+      "blob": "c8818ac3f6d760f14d63a915558253097e7b0df4"
+    },
+    {
+      "path": "Assets/_Project/Data/Items/Item_AlienReblic.asset",
+      "blob": "b6ca343bbec25f26a92d59d9e3ad3f20e0ee062c"
+    },
+    {
+      "path": "Assets/_Project/Data/Items/Item_AlienReblic.asset.meta",
+      "blob": "dca56793f300f120663d616262c611eb320a2a11"
+    },
+    {
+      "path": "Assets/_Project/Data/Items/Item_AlienTissue.asset",
+      "blob": "e55db3e147ce364025cdfba71784c06952a064ec"
+    },
+    {
+      "path": "Assets/_Project/Data/Items/Item_AlienTissue.asset.meta",
+      "blob": "fc483ef7f7b483374c84455492dbbb05600c4280"
+    },
+    {
+      "path": "Assets/_Project/Data/Items/Item_EncryptedResearchDrive.asset",
+      "blob": "b9620fe687fb5d6bb95838bf16b24fc578ccbfa0"
+    },
+    {
+      "path": "Assets/_Project/Data/Items/Item_EncryptedResearchDrive.asset.meta",
+      "blob": "eaee527e899c4b6446ceb05476470e3eb8b1fb90"
+    },
+    {
+      "path": "Assets/_Project/Data/Items/Item_EnergyCell.asset",
+      "blob": "bafba70ce9685a647af522088ebb4ec953173022"
+    },
+    {
+      "path": "Assets/_Project/Data/Items/Item_EnergyCell.asset.meta",
+      "blob": "c5af4df7389e032fbdec03eb86e5344a3ed01d99"
+    },
+    {
+      "path": "Assets/_Project/Data/Items/Item_EnergyCrystal.asset",
+      "blob": "30060c426d1375019471ed0cd459b3f03c234263"
+    },
+    {
+      "path": "Assets/_Project/Data/Items/Item_EnergyCrystal.asset.meta",
+      "blob": "0b1c1f4382bfeebf60c57be59bae191c92888466"
+    },
+    {
+      "path": "Assets/_Project/Data/Items/Item_EvoutionCatalyst.asset",
+      "blob": "f926af6b86b5ec75ece2b63fbfd6c8376081603e"
+    },
+    {
+      "path": "Assets/_Project/Data/Items/Item_EvoutionCatalyst.asset.meta",
+      "blob": "68a523477fb4f36d078c3b8767d43143e9ddb307"
+    },
+    {
+      "path": "Assets/_Project/Data/Items/Item_FieldBandage.asset",
+      "blob": "00ed2bff26e9105141cc57aa39f52a66ba252009"
+    },
+    {
+      "path": "Assets/_Project/Data/Items/Item_FieldBandage.asset.meta",
+      "blob": "41148f1a23e59637db23190da502484da492cba8"
+    },
+    {
+      "path": "Assets/_Project/Data/Items/Item_MedInjector.asset",
+      "blob": "e1a29d9a375cdd24ad6736300d8060438fd23dcb"
+    },
+    {
+      "path": "Assets/_Project/Data/Items/Item_MedInjector.asset.meta",
+      "blob": "17d5add35b332ad157565c28486dc9207f3aea9d"
+    },
+    {
+      "path": "Assets/_Project/Data/Items/Item_PrototypeCapacitor.asset",
+      "blob": "3ef7a7edd3405f5b6d94b53fc96b5daaf6691c79"
+    },
+    {
+      "path": "Assets/_Project/Data/Items/Item_PrototypeCapacitor.asset.meta",
+      "blob": "89de54390cf6006b316586046a112c823ab32203"
+    },
+    {
+      "path": "Assets/_Project/Data/Items/Item_ReinforcedFiber.asset",
+      "blob": "7c0833b4d95a40a07e0bca96681e1bf48f3c31ff"
+    },
+    {
+      "path": "Assets/_Project/Data/Items/Item_ReinforcedFiber.asset.meta",
+      "blob": "a550b2ca55de0f17818491965deb335429a3c888"
+    },
+    {
+      "path": "Assets/_Project/Data/Items/Item_ScrapAlloy.asset",
+      "blob": "e2e751df532342f87328113f094a84f8454ddbef"
+    },
+    {
+      "path": "Assets/_Project/Data/Items/Item_ScrapAlloy.asset.meta",
+      "blob": "8bef3d3cf0db383389c235d54c147a1d0c1f189f"
+    },
+    {
+      "path": "Assets/_Project/Data/Loot/LootTable_FieldSupplyCrate.asset",
+      "blob": "f75387896029c859fbde2f42aa55f79719ef599f"
+    },
+    {
+      "path": "Assets/_Project/Data/Loot/LootTable_FieldSupplyCrate.asset.meta",
+      "blob": "b67f41b9e28885f76a0e157b8f13d02bf22a0bf3"
+    },
+    {
+      "path": "Assets/_Project/Data/Loot/LootTable_HighRiskCase.asset",
+      "blob": "a1fc4b30ffff6126f1daa1810d95e93e0189cd5e"
+    },
+    {
+      "path": "Assets/_Project/Data/Loot/LootTable_HighRiskCase.asset.meta",
+      "blob": "21a52ef50e730f9d3390f4c14d73b0a793d51171"
+    },
+    {
+      "path": "Assets/_Project/Data/Loot/LootTable_MediaclCache.asset",
+      "blob": "29916abb5ee5b8646f73e69ee12c39c3dd8ccbce"
+    },
+    {
+      "path": "Assets/_Project/Data/Loot/LootTable_MediaclCache.asset.meta",
+      "blob": "1e452a6c2864246d22ac187e5805245ea294e8cb"
+    },
+    {
+      "path": "Assets/_Project/Data/Loot/LootTable_ResearchCase.asset",
+      "blob": "137cea915e50838278648d125a673bbc35ab2da6"
+    },
+    {
+      "path": "Assets/_Project/Data/Loot/LootTable_ResearchCase.asset.meta",
+      "blob": "f2902b84c7e9f39ea9d7c54fb16c8f5795482fbe"
+    },
+    {
+      "path": "Assets/_Project/Data/Trader/TeaderShopCatalog_Default.asset",
+      "blob": "4c71f03697142ce86b637269625a9538e3db3a22"
+    },
+    {
+      "path": "Assets/_Project/Data/Trader/TeaderShopCatalog_Default.asset.meta",
+      "blob": "a3ad5a83d1022316af18ccaa4d2bdaf1713b8019"
+    },
+    {
+      "path": "Assets/_Project/Data/WeaponEvolutions/Evolution_ClusterBurst.asset",
+      "blob": "da560829ad9daf6e185cdb91d57431b3f2010eaa"
+    },
+    {
+      "path": "Assets/_Project/Data/WeaponEvolutions/Evolution_ClusterBurst.asset.meta",
+      "blob": "2e8d0b881af3179ee1c85d15d694bbb045c130a6"
+    },
+    {
+      "path": "Assets/_Project/Data/WeaponEvolutions/Evolution_ThunderPiercer.asset",
+      "blob": "bafbd84c06f803189069d8605dbc03de1d6f734f"
+    },
+    {
+      "path": "Assets/_Project/Data/WeaponEvolutions/Evolution_ThunderPiercer.asset.meta",
+      "blob": "c166a5c48b47ae3043de53b8c62b270ff9f62855"
+    },
+    {
+      "path": "Assets/_Project/Data/Weapons/Weapon_PalsmaRifle.asset",
+      "blob": "b54ec7c78c2ee16e4ddb526fa5cd099761059ec8"
+    },
+    {
+      "path": "Assets/_Project/Data/Weapons/Weapon_PalsmaRifle.asset.meta",
+      "blob": "e8d457f569d4f1b7c68190b3248cec8728250331"
+    },
+    {
+      "path": "Assets/_Project/Fonts/TMP_Chinese_Font.asset",
+      "blob": "6ff65bd2c8cb6d6b0d72d6e96eca1c5a27e52d31"
+    },
+    {
+      "path": "Assets/_Project/Fonts/TMP_Chinese_Font.asset.meta",
+      "blob": "b1cc5caaa2a41897d013fb0202753eef88f9b06e"
+    },
+    {
+      "path": "Assets/_Project/Material/Environment/MAT_ToxicFog_Front.mat",
+      "blob": "aeb3320b2a12b488656a8a94a1ba2fa10f202aa9"
+    },
+    {
+      "path": "Assets/_Project/Material/Environment/MAT_ToxicFog_Front.mat.meta",
+      "blob": "5a1632351f935a754c318b08f13b0cdb06c698ff"
+    },
+    {
+      "path": "Assets/_Project/Material/Environment/MAT_ToxicFog_Ground.mat",
+      "blob": "4226d2ecc885bb7e070f0d91e857a47b74a81cbe"
+    },
+    {
+      "path": "Assets/_Project/Material/Environment/MAT_ToxicFog_Ground.mat.meta",
+      "blob": "456d35b2bd0793308fa89209ab110987f8b3e6a0"
+    },
+    {
+      "path": "Assets/_Project/Material/Environment/MAT_ToxicFog_Mist.mat",
+      "blob": "5419bb420a79b843fa26a0ea15753e74017af2b1"
+    },
+    {
+      "path": "Assets/_Project/Material/Environment/MAT_ToxicFog_Mist.mat.meta",
+      "blob": "e0954ce1681212d9b750b3e1d160bdb26108e076"
+    },
+    {
+      "path": "Assets/_Project/Material/M_Spitter_AcidTrail.mat",
+      "blob": "2ea8cae745361ce44270b8036514091510b85f79"
+    },
+    {
+      "path": "Assets/_Project/Material/M_Spitter_AcidTrail.mat.meta",
+      "blob": "e484ec70662a186ff5d3f366f9095e5a9ae7f005"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Bullets/Bullet.prefab",
+      "blob": "4e2638c1081498956164182d001e5e495c8911dd"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Bullets/Bullet.prefab.meta",
+      "blob": "dbd089a9373cb36566fb4aeb89e4a38d2936e45f"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Effects/ChainLightningEffect.prefab",
+      "blob": "a71dc32cb882f82b6da3f94180b4b25cd707a833"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Effects/ChainLightningEffect.prefab.meta",
+      "blob": "2e625164f8b45164fd9176e01d020a8ea8825b19"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Effects/HitEffect.prefab",
+      "blob": "ae7e3759f945641112d3bcc2c753a9c186a584cf"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Effects/HitEffect.prefab.meta",
+      "blob": "0ed9dca10969753ae03fce9dc845d90ac3414336"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Enemies/Animated/Enemy_Fast_Rusher.prefab",
+      "blob": "4cc3d26e2c4589c034575ca3f70ed3c7f704ab36"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Enemies/Animated/Enemy_Fast_Rusher.prefab.meta",
+      "blob": "976ff284e07e7104a9901c5e158a88b7d395a6b7"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Enemies/Animated/Enemy_Heavy_Tank.prefab",
+      "blob": "54bf57caed48f52c2981a4b9521ef31a4e85a679"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Enemies/Animated/Enemy_Heavy_Tank.prefab.meta",
+      "blob": "95968b32dc54457932af3572ab720494ec85ecc4"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Enemies/Animated/Enemy_Normal_Swarmer.prefab",
+      "blob": "b27830fec59f91daeef1d288c51316c3307400ac"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Enemies/Animated/Enemy_Normal_Swarmer.prefab.meta",
+      "blob": "3389081bd0edf0388812971b5b5ec2a18e1082f0"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Enemies/Animated/Enemy_Ranged_Spitter.prefab",
+      "blob": "19016f34d0b1f5eb85ba2d2e5b53aa715cc7e69a"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Enemies/Animated/Enemy_Ranged_Spitter.prefab.meta",
+      "blob": "b16d02c9dc12cf6553c754b5bed929302f0e4868"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Enemies/Boss/HiveTyrant.prefab",
+      "blob": "d6189b262ce36bf6f935e1ce03436c949f3a6bed"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Enemies/Boss/HiveTyrant.prefab.meta",
+      "blob": "913de62e9921bd2a13982eb77e6477835e5f026e"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Enemies/Enemy.prefab",
+      "blob": "821e7ad4a7e8786b862c6015c862b491d4c58246"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Enemies/Enemy.prefab.meta",
+      "blob": "fa6573b0b3e10ea5656a5cbd51787f74fd91ed08"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Enemies/Enemy_Fast.prefab",
+      "blob": "72c6200315eba1a552e281710505db1d796c4cd1"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Enemies/Enemy_Fast.prefab.meta",
+      "blob": "c2c371e62a8e2f0be7d2e048d2ced710bf61dac1"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Enemies/Enemy_Heavy.prefab",
+      "blob": "fa72fd75feadfb8882fde3ef103bdcac235c87b5"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Enemies/Enemy_Heavy.prefab.meta",
+      "blob": "5158342ba7e803a682fd0f7cc6aa6d131c23cece"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Enemies/Enemy_Normal.prefab",
+      "blob": "f6092f0c87e1f0f2a0ecfc7c7267d2382c13b4fa"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Enemies/Enemy_Normal.prefab.meta",
+      "blob": "8be249365948b01940d3dd57c7108943531d840d"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Enemies/Enemy_Ranged.prefab",
+      "blob": "2600f2bb6455ad3745355a2146c28705790c7ec4"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Enemies/Enemy_Ranged.prefab.meta",
+      "blob": "27aef26f486781fa263c8d918d73bc2c04be7a72"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Enemies/Phase40/Enemy_Fast_Nav.prefab",
+      "blob": "4c5dcf292fd415642c6953fb0e676a48a9ace552"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Enemies/Phase40/Enemy_Fast_Nav.prefab.meta",
+      "blob": "74737b6d7faaf223cf292486a2e37bb13b155fa7"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Enemies/Phase40/Enemy_Heavy_Nav.prefab",
+      "blob": "449a3845aa00867953be33482d26acc112128482"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Enemies/Phase40/Enemy_Heavy_Nav.prefab.meta",
+      "blob": "487dc30a8dff1e20dede7a5f874f5858d88c9bdf"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Enemies/Phase40/Enemy_Normal_Nav.prefab",
+      "blob": "7f923a975d9084b3e2ee1865b9517a7738d530cc"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Enemies/Phase40/Enemy_Normal_Nav.prefab.meta",
+      "blob": "d1ef1a2054e22d48cf69d45fc4e9702d0968280b"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Enemies/Phase40/Enemy_Ranged_Nav.prefab",
+      "blob": "51f95255cdaada254793450cbb816f98b67ddcd3"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Enemies/Phase40/Enemy_Ranged_Nav.prefab.meta",
+      "blob": "3116d3516f520ab9057d2b91125f241e7cb9eff3"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Environment/ArenaRoot_Continuous_V03_1.prefab",
+      "blob": "1a346d55003684bc2fc3ee0d140f703151a98de6"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Environment/ArenaRoot_Continuous_V03_1.prefab.meta",
+      "blob": "54827cc6b8976a1cd9d812b069708faa82a639a0"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Environment/Ground_Debris.prefab",
+      "blob": "2e04eaa3b97d58595437398b1396445472a4e9a6"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Environment/Ground_Debris.prefab.meta",
+      "blob": "fc4912db76cc19a02a821e1386a797ccc7f8dcad"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Environment/Ground_Device.prefab",
+      "blob": "6a66c1d602bea590c482feb886556a8c0a0af2e8"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Environment/Ground_Device.prefab.meta",
+      "blob": "9ccfaf9741aa8cb22b57ab50fd8dcb2b31d2175a"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Extraction/CargoYard.prefab",
+      "blob": "e63655fdc554df1d092984785ea7e50e6368ba72"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Extraction/CargoYard.prefab.meta",
+      "blob": "a11490295fb23bb9c23bdbbb2799e05c387f0c22"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Extraction/ExtractionZone.prefab",
+      "blob": "7b28188914ddc2c006b9a3b18fe5dec998581ddd"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Extraction/ExtractionZone.prefab.meta",
+      "blob": "c7f4dff08d5b0d3461e75d0400a84fae4c5a6e27"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Loot/LootContainer_FieldSupply.prefab",
+      "blob": "6a3a74f4d700f1e15e66758b8b10dfc8ff2dd010"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Loot/LootContainer_FieldSupply.prefab.meta",
+      "blob": "bc051d968bae6eeccd104aa2c21090a0870d4cfb"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Loot/LootContainer_HighRiskCase.prefab",
+      "blob": "4062edbaf653403646351e4441539c1fab978b35"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Loot/LootContainer_HighRiskCase.prefab.meta",
+      "blob": "0791e0db04da91ce685d7d858cafcbba5bd60ccc"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Loot/LootContainer_MedicalCache.prefab",
+      "blob": "df3f2aa6b3b5eef4363066baec0390194bdde27b"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Loot/LootContainer_MedicalCache.prefab.meta",
+      "blob": "2e2630ef1c15e8055aa76ad87ce11ca11d0add2e"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Loot/LootContainer_ResearchCase 1.prefab",
+      "blob": "3f61d32e0d5659cc24d7ce326e3e4b5c592902e5"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Loot/LootContainer_ResearchCase 1.prefab.meta",
+      "blob": "4559b9246d3b21d31318c1b1d97f5d1c1b385e5b"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Managers/AudioManager.prefab",
+      "blob": "4083d3aedbe2babf22eff255c44ee759ad994c44"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Managers/AudioManager.prefab.meta",
+      "blob": "e6f48892702e0b769d730322720a491a220f7f5d"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Managers/GameManager.prefab",
+      "blob": "0e5510c513dceac7e4d44ac2be6029818bf338ef"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Managers/GameManager.prefab.meta",
+      "blob": "f89ccddd9d2f4af0265cbd1707ce809a35933fb9"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Missions/Mission_AlienCore.prefab",
+      "blob": "62314ada3e44bd1b0048737205c1502b94e07040"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Missions/Mission_AlienCore.prefab.meta",
+      "blob": "a93327b2ce8e6d01a5c672fceb2b76b87c26222e"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Missions/Mission_Beacon.prefab",
+      "blob": "dc57bd19f4b94c94489fb7113b0ed2d87bd03040"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Missions/Mission_Beacon.prefab.meta",
+      "blob": "264c559f967fca190d734f649f241c1102041db5"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Persistence/PF_PendingRecoveryItemView_V2.prefab",
+      "blob": "11d36e4c6264567444f97b2fcbebfdc86918554b"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Persistence/PF_PendingRecoveryItemView_V2.prefab.meta",
+      "blob": "eb3a628d1ae4b55534efadb85ea626d8e330480c"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Persistence/PendingRecoveryItemView.prefab",
+      "blob": "d4be411535c873963036ad8d23bef7bdb98d6e53"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Persistence/PendingRecoveryItemView.prefab.meta",
+      "blob": "4b88a3a7f6961ce6fae3e99900e86cec65c4d740"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Pickups/ExperienceOrb.prefab",
+      "blob": "3da10c25c503483d5471c803d1980ef9b1f23b4c"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Pickups/ExperienceOrb.prefab.meta",
+      "blob": "1e0217cc01cf49f58b935ced6abf94d3f2ed90d1"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Player/Player.prefab",
+      "blob": "e558bbab522f91d893731fde7c83aa9ea7bf21f7"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Player/Player.prefab.meta",
+      "blob": "8f93605311f5462e1f44f11a94b7607484cedd29"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Projectiles/Spitter_AcidProjectile.prefab",
+      "blob": "49faba012ad7cfeaf70d834c0bdd204aba440786"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/Projectiles/Spitter_AcidProjectile.prefab.meta",
+      "blob": "947a312a4ab03ed75751d941a877baffb2fe453e"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/UI/Inventory/InventoryCell.prefab",
+      "blob": "6584da539e54dda2296d23e10a1e78ed50c260b1"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/UI/Inventory/InventoryCell.prefab.meta",
+      "blob": "91a8ce7b679745578ad704e28a0d709693e09896"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/UI/Inventory/InventoryItemView.prefab",
+      "blob": "844934240bb5fa09bfd827c812cf502640c08413"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/UI/Inventory/InventoryItemView.prefab.meta",
+      "blob": "35cd73ef5b04a974e226fd1799ff411df205b226"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/UI/Inventory/LootSearchItemView.prefab",
+      "blob": "1e98c181db33e468a67918d23f3858ac3c7bf52a"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/UI/Inventory/LootSearchItemView.prefab.meta",
+      "blob": "5bac763af99a3d54054db0123e07210a32b3deaf"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/UI/Inventory/PF_BackpackCell_V2.prefab",
+      "blob": "37c5c53579110875c20621b1958856677e871b07"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/UI/Inventory/PF_BackpackCell_V2.prefab.meta",
+      "blob": "a4c47f29ca9ddea351b095a91cdba0892347749e"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/UI/Inventory/PF_BackpackItemView_V2.prefab",
+      "blob": "dc4b9512a28f6e6b67526d27e2c79a86eb7a3b6d"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/UI/Inventory/PF_BackpackItemView_V2.prefab.meta",
+      "blob": "b19a0bab59f3e44d6e0dab841b627469a27ce62c"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/UI/Inventory/PF_LootSearchItemView_V2.prefab",
+      "blob": "6a26996c72742f8254fef55cd8f825849e6df26e"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/UI/Inventory/PF_LootSearchItemView_V2.prefab.meta",
+      "blob": "9c630f04e11e97d489e45cb17c8213e255ba922e"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/UI/Trader/PF_TraderOfferItemView.prefab",
+      "blob": "50242f92d0857e3d5c96ff118bc671e2414ec0c3"
+    },
+    {
+      "path": "Assets/_Project/Prefabs/UI/Trader/PF_TraderOfferItemView.prefab.meta",
+      "blob": "e954f46a16b55c244fb83d6e3742044470b391ea"
+    },
+    {
+      "path": "Assets/_Project/Scenes/ArtTests/CargoYard_2D_VisualPrototype.unity",
+      "blob": "76d984f6c55ffc8e6e813271c66536f14a148c28"
+    },
+    {
+      "path": "Assets/_Project/Scenes/ArtTests/CargoYard_2D_VisualPrototype.unity.meta",
+      "blob": "a3998d574b4d2f7938a61535cdf8305c3465acf7"
+    },
+    {
+      "path": "Assets/_Project/Scenes/ArtTests/Level01_3DArt_Test.unity",
+      "blob": "53a7554989113d24af1d362ede85b0466b2c1a19"
+    },
+    {
+      "path": "Assets/_Project/Scenes/ArtTests/Level01_3DArt_Test.unity.meta",
+      "blob": "447378ab5242c05b6051436ae0f9009fe92ce531"
+    },
+    {
+      "path": "Assets/_Project/Scenes/ArtTests/Level01_FullWorld.unity",
+      "blob": "6815a89af61c06e06bec2271b16475044ceb9fa3"
+    },
+    {
+      "path": "Assets/_Project/Scenes/ArtTests/Level01_FullWorld.unity.meta",
+      "blob": "b1a3ba1ade3227c5a03d6e681b777d8854a540d5"
+    },
+    {
+      "path": "Assets/_Project/Scenes/ArtTests/Level01_Gameplay_Integration_Test.unity",
+      "blob": "dce3165b99dc1c0dd62a359f21bcc41363abad9b"
+    },
+    {
+      "path": "Assets/_Project/Scenes/ArtTests/Level01_Gameplay_Integration_Test.unity.meta",
+      "blob": "6a656ff647a40bd7d037a2efb99e876a4f20a306"
+    },
+    {
+      "path": "Assets/_Project/Scenes/ArtTests/Level01_Integration_Test.unity",
+      "blob": "a212f8ae3370500b42df786793c6583f09c15e01"
+    },
+    {
+      "path": "Assets/_Project/Scenes/ArtTests/Level01_Integration_Test.unity.meta",
+      "blob": "3fb55f5dc6345a7ca6b0e1a643f8985fdd1b55c5"
+    },
+    {
+      "path": "Assets/_Project/Scenes/Day01_TestGround.unity",
+      "blob": "90323d80b9eaa832ad12160e397f947c12f5b7f4"
+    },
+    {
+      "path": "Assets/_Project/Scenes/Day01_TestGround.unity.meta",
+      "blob": "a33dda174304e421be34739d17d742437eb2f540"
+    },
+    {
+      "path": "Assets/_Project/Scenes/HiveTyrant_Arena.unity",
+      "blob": "d1b3e74fbeff8b184fe571e9181fb31e97f5b4cd"
+    },
+    {
+      "path": "Assets/_Project/Scenes/HiveTyrant_Arena.unity.meta",
+      "blob": "4824332410831907fc0e99ff763b92d1a590d6fa"
+    },
+    {
+      "path": "Assets/_Project/Scenes/HiveTyrant_CombatTest.unity",
+      "blob": "6e5deb16777c764faaedf885fe5092f02ccf8da9"
+    },
+    {
+      "path": "Assets/_Project/Scenes/HiveTyrant_CombatTest.unity.meta",
+      "blob": "8376d0c3d9afeba5ac72b0cc44d450027f74ea28"
+    },
+    {
+      "path": "Assets/_Project/Scenes/MainMenu 1.unity",
+      "blob": "22c1934bff2965751014133f0454615e4c153c49"
+    },
+    {
+      "path": "Assets/_Project/Scenes/MainMenu 1.unity.meta",
+      "blob": "921c9b079e26006c279daa1c3d2f4f195c4f1a3f"
+    },
+    {
+      "path": "Assets/_Project/Scenes/MainMenu.unity",
+      "blob": "1c072d5d03bd171ef81ab4622add4f23ac03dd76"
+    },
+    {
+      "path": "Assets/_Project/Scenes/MainMenu.unity.meta",
+      "blob": "3e10c13febf1fe429f92d2aeb47d3a4363b904ae"
+    },
+    {
+      "path": "Assets/_Project/Scenes/MainMenu_DeskV1.unity",
+      "blob": "ade630fe127e8818ef6048fec8ba7a52de84fff3"
+    },
+    {
+      "path": "Assets/_Project/Scenes/MainMenu_DeskV1.unity.meta",
+      "blob": "d52cdf6e5d09db97e2be5474928fd2c0c7c4e08b"
+    },
+    {
+      "path": "Assets/_Project/Scenes/Swarmer_Art_Test.unity",
+      "blob": "ad186ca2d0fdc25b44a813420b019f435855a5e9"
+    },
+    {
+      "path": "Assets/_Project/Scenes/Swarmer_Art_Test.unity.meta",
+      "blob": "13697a8f247a00de3091f4922af5c8186ea8f430"
+    },
+    {
+      "path": "Assets/_Project/Scripts/MuzzleFlash.prefab",
+      "blob": "089501e264f35ab8785b4123df5892905ee4fb85"
+    },
+    {
+      "path": "Assets/_Project/Scripts/MuzzleFlash.prefab.meta",
+      "blob": "a2a31db322066118a3b0e2c6d5c3fcb26641dbf8"
+    },
+    {
+      "path": "Assets/_Project/Tiles/Details/Ground_Hatch.asset",
+      "blob": "641b96a33292ba4eeb62418b703a6a61ed65cafc"
+    },
+    {
+      "path": "Assets/_Project/Tiles/Details/Ground_Hatch.asset.meta",
+      "blob": "b5b9896d7aadb411e9d7f9c372cb377a77a43d0b"
+    },
+    {
+      "path": "Assets/_Project/Tiles/Details/Ground_WarningMark.asset",
+      "blob": "22521467c2c5b0374f883d151f0c15328a6b486e"
+    },
+    {
+      "path": "Assets/_Project/Tiles/Details/Ground_WarningMark.asset.meta",
+      "blob": "ef18a577baa2c0f8902929dfac76d63f02782dd7"
+    },
+    {
+      "path": "Assets/_Project/Tiles/Ground_Base.asset",
+      "blob": "1bdaad937e64a2ddab198279a7e03580be5c9089"
+    },
+    {
+      "path": "Assets/_Project/Tiles/Ground_Base.asset.meta",
+      "blob": "c17467bf17c4194661bcf4b61355cd12fd5d8cb5"
+    },
+    {
+      "path": "Assets/_Project/Tiles/Palettes/AlienPurge_Environment.prefab",
+      "blob": "dfb70cf996c8cb750e9dab7f21d807e48d12b1e7"
+    },
+    {
+      "path": "Assets/_Project/Tiles/Palettes/AlienPurge_Environment.prefab.meta",
+      "blob": "456a887c9f798bee00ff8472f5ab68d29cbf5b7d"
+    }
+  ]
+}

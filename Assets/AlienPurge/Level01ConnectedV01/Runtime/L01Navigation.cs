@@ -19,7 +19,7 @@ namespace AlienPurge.Level01ConnectedV01
             if(scanOnStart)astar.Scan();
             ready=true;
         }
-        void ConfigureGrid()
+        public void ConfigureGrid()
         {
             if(world==null||world.Data==null)return;
             GridGraph graph=EnsureGrid(astar);

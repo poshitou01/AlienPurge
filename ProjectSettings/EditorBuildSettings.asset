@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Project/Scenes/Day01_TestGround.unity
     guid: 9054ddcf319c57c4a9249acbc60d89d7
+  - enabled: 1
+    path: Assets/_Project/Scenes/ArtTests/Level01_FullWorld_GameplayV01.unity
+    guid: e681381dbf6e8fa469b8472240b1e20a
   m_configObjects: {}

@@ -17,6 +17,8 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class ToxicFogRouteController : MonoBehaviour
 {
+    [Tooltip("Scene-owned region scheduling; default false preserves legacy scenes.")] public bool regionDriven;
+
     public enum FogRouteState
     {
         Waiting,
@@ -151,6 +153,8 @@ public class ToxicFogRouteController : MonoBehaviour
 
     private void Update()
     {
+        if (regionDriven) return;
+
         if (!routeIsValid)
         {
             return;

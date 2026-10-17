@@ -1,0 +1,14 @@
+RUNNING: Editor install/idempotence passed. Play Mode results follow.
+FAIL
+PASS: Copied scene owns explicit region mode
+PASS: G1-G3 closed before missions
+PASS: Arrival cannot bypass living garrison
+PASS: 380 seconds in entry never unlocks late enemy types
+PASS: 45/150/240 second module/evolution schedule suppressed
+PASS: Storm/fog/315-360 second events remain dormant
+PASS: Patrol budget is finite across a long stay
+PASS: Pool return is not a death or kill
+PASS: Pool reuse restores run ownership and surviving health
+PASS: Temporary disable does not complete a required guard
+FAIL: System.InvalidOperationException: Editor unexpectedly paused.
+  at AlienPurge.Level01.Editor.RegionLoopVerification.Update () [0x0001c] in D:\AlienPurge_RegionLoopV01\Assets\_Project\Editor\Level01\RegionLoopVerification.cs:79 

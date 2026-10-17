@@ -1,0 +1,49 @@
+PASS
+Unity 2022.3.62f3c1 | 2026-10-17 14:09:36Z
+PASS: Repeat install preserves scene GUID
+PASS: Repeat install creates no duplicate objects
+PASS: Repeat install retains a deliberately edited anchor position
+PASS: Repeat install retains deliberately edited enemy attributes and wave counts
+PASS: Copied scene owns explicit region mode
+PASS: Native enemy definitions initialized for attack behavior
+PASS: G1-G3 closed before missions
+PASS: Arrival cannot bypass living garrison
+PASS: 380 seconds in entry never unlocks late enemy types
+PASS: 45/150/240 second module/evolution schedule suppressed
+PASS: Storm/fog/315-360 second events remain dormant
+PASS: Patrol budget is finite across a long stay
+PASS: Pool return is not a death or kill
+PASS: Pool reuse restores run ownership and surviving health
+PASS: Temporary disable does not complete a required guard
+PASS: External disable safely retires the ActiveSet slot on the next frame
+PASS: Repeated damage/death notification counts one actual kill and one guard completion
+PASS: Entry first-clear reward delivered
+PASS: Arrival completes after actual required deaths
+PASS: G1 opens and duplicate Arrival interaction is rejected
+PASS: Entering Cargo does not auto-start/complete Beacon
+PASS: Player can explicitly start Beacon
+PASS: Paused simulation does not advance device defense
+PASS: Active device cannot move across regions
+PASS: Failure retires all old wave tickets without granting completion
+PASS: Beacon recovery begins a real new defense attempt
+PASS: Retry does not bypass guards or open G2
+PASS: Optional patrols are excluded from completion
+PASS: Module entitlement remains pending until a real choice is applied
+PASS: Beacon grants module slot 1 exactly once
+PASS: Repeated Beacon interaction cannot grant another module
+PASS: Returning to a cleared region preserves encounter and reward state
+PASS: Power device starts finite defense waves
+PASS: Power includes an actually spawned required Tank guard
+PASS: Power grants module slot 2 exactly once
+PASS: G3 opens and later progression stays locked
+PASS: Legacy terminal completion cannot bypass region authority
+PASS: Existing result service sees three completed regional missions
+PASS: Every level in a multi-level grant queues one choice
+PASS: Pending rewards respect the existing pause menu
+PASS: Choice panel owns pause
+PASS: Region HUD never covers the open reward cards
+PASS: Death clears pending choices, subscriptions and owned enemies
+PASS: Restart creates a clean run and clears region/module state
+PASS: Loading original scene restores default legacy scheduling; no mode leakage
+PASS: Original scene still executes timed first-module selection
+Scope: accelerated Play Mode with real pooled deaths and real selection buttons; device-loss injected; player travel teleported. Human aiming, feel and balance are not certified.

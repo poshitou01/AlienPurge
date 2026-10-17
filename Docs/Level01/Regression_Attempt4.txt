@@ -1,0 +1,24 @@
+RUNNING: Editor install/idempotence passed. Play Mode results follow.
+FAIL
+PASS: Copied scene owns explicit region mode
+PASS: Native enemy definitions initialized for attack behavior
+PASS: G1-G3 closed before missions
+PASS: Arrival cannot bypass living garrison
+PASS: 380 seconds in entry never unlocks late enemy types
+PASS: 45/150/240 second module/evolution schedule suppressed
+PASS: Storm/fog/315-360 second events remain dormant
+PASS: Patrol budget is finite across a long stay
+PASS: Pool return is not a death or kill
+PASS: Pool reuse restores run ownership and surviving health
+PASS: Temporary disable does not complete a required guard
+FAIL: System.InvalidOperationException: Runtime error(s):
+GameObject is already being activated or deactivated.
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+EnemyPool:ReturnEnemy (PooledEnemy) (at Assets/_Project/Scripts/Pooling/EnemyPool.cs:705)
+PooledEnemy:ReturnToPool () (at Assets/_Project/Scripts/Enemy/PooledEnemy.cs:185)
+AlienPurge.Level01.RegionLoop.RegionEnemyLease:OnDisable () (at Assets/_Project/Scripts/Level01/RegionLoop/RegionEnemyLease.cs:102)
+AlienPurge.Level01.Editor.RegionLoopVerification/<Exercise>d__16:MoveNext () (at Assets/_Project/Editor/Level01/RegionLoopVerification.cs:161)
+AlienPurge.Level01.Editor.RegionLoopVerification:Update () (at Assets/_Project/Editor/Level01/RegionLoopVerification.cs:113)
+UnityEditor.EditorApplication:Internal_CallUpdateFunctions ()
+
+  at AlienPurge.Level01.Editor.RegionLoopVerification.Update () [0x00022] in D:\AlienPurge_RegionLoopV01\Assets\_Project\Editor\Level01\RegionLoopVerification.cs:90 

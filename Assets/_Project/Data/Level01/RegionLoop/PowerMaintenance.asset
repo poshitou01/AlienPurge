@@ -1,0 +1,98 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 265637d07c69f684f96ff42dfab38b60, type: 3}
+  m_Name: PowerMaintenance
+  m_EditorClassIdentifier: 
+  regionId: PowerMaintenance
+  missionId: Power
+  encounterId: PowerMaintenance/garrison
+  exitGateId: G3
+  prerequisite: Beacon
+  enemies:
+  - archetypeId: Swarmer
+    type: 0
+    health: 5
+    damage: 1
+    experience: 2
+    speed: 2.2
+    clearance: 0.65
+    special: 0
+  - archetypeId: Rusher
+    type: 1
+    health: 5
+    damage: 1
+    experience: 3
+    speed: 3.3
+    clearance: 0.65
+    special: 1
+  - archetypeId: Tank
+    type: 2
+    health: 20
+    damage: 2
+    experience: 7
+    speed: 1.35
+    clearance: 1.1
+    special: 1
+  reservedEnemyIds:
+  - Spitter
+  - Exploder
+  - Support
+  residents:
+  - type: 0
+    count: 5
+    keyGuard: 0
+  - type: 1
+    count: 2
+    keyGuard: 0
+  - type: 2
+    count: 1
+    keyGuard: 0
+  waves:
+  - id: wave-1
+    delay: 0
+    groups:
+    - type: 0
+      count: 3
+      keyGuard: 0
+    - type: 1
+      count: 1
+      keyGuard: 0
+  - id: wave-2
+    delay: 12
+    groups:
+    - type: 0
+      count: 3
+      keyGuard: 0
+    - type: 2
+      count: 1
+      keyGuard: 1
+  aliveLimit: 12
+  specialLimit: 4
+  patrolBudget: 3
+  patrolType: 0
+  patrolInterval: 35
+  recoverySeconds: 40
+  spawnInterval: 0.8
+  warningSeconds: 1.2
+  spawnRetryLimit: 8
+  minimumPlayerDistance: 5
+  perceptionRadius: 13
+  leashRadius: 26
+  deviceSeconds: 28
+  deviceRadius: 6
+  missionDeadline: 150
+  deviceIntegrity: 100
+  contestedDamagePerSecond: 6
+  contestRadius: 2.5
+  encounterExperience: 10
+  missionExperience: 26
+  moduleSlot: 2

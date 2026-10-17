@@ -7,6 +7,8 @@ using UnityEngine.Serialization;
 public class ExtractionController :
     MonoBehaviour
 {
+    [Tooltip("Scene-owned region scheduling; default false preserves legacy scenes.")] public bool regionDriven;
+
     // =========================================================
     // Timeline
     // =========================================================
@@ -441,6 +443,8 @@ public class ExtractionController :
 
     private void Update()
     {
+        if (regionDriven) return;
+
         if (GameManager.Instance ==
             null)
         {
@@ -819,6 +823,8 @@ public class ExtractionController :
         ExtractionZone zone
     )
     {
+        if (regionDriven) return false;
+
         if (zone == null)
         {
             return false;

@@ -11,6 +11,8 @@ public enum StormPhase
 [DisallowMultipleComponent]
 public class PlanetStormController : MonoBehaviour
 {
+    [Tooltip("Scene-owned region scheduling; default false preserves legacy scenes.")] public bool regionDriven;
+
     public static PlanetStormController Instance
     {
         get;
@@ -146,6 +148,8 @@ public class PlanetStormController : MonoBehaviour
 
     private void Update()
     {
+        if (regionDriven) return;
+
         if (!CanUpdateStorm())
         {
             return;

@@ -6,6 +6,24 @@ using UnityEngine.UI;
 [DisallowMultipleComponent]
 public class WeaponModuleSelectionManager : MonoBehaviour
 {
+    public AlienPurge.Level01.RegionLoop.RegionRewardQueue regionRewards;
+    public bool regionDriven;
+    private bool regionChoiceApplied;
+    public bool TryShowRegionModule(int slot)
+    {
+        if (!regionDriven || IsChoosingModule || UpgradeManager.IsChoosingUpgrade ||
+            moduleSelectionPanel == null || moduleButtons == null || moduleButtons.Length != 3 ||
+            System.Array.Exists(moduleButtons, button => button == null)) return false;
+        BeginTimedModuleSelection(slot, GameManager.Instance != null ? GameManager.Instance.SurvivalTime : 0);
+        return IsChoosingModule;
+    }
+    public void CancelRegionChoice()
+    {
+        if (moduleSelectionPanel != null) moduleSelectionPanel.SetActive(false);
+        IsChoosingModule = false; currentSelectionMode = ModuleSelectionMode.None;
+        ClearDisplayedModules(); regionChoiceApplied = false;
+    }
+
     public static WeaponModuleSelectionManager Instance
     {
         get;
@@ -344,6 +362,8 @@ public class WeaponModuleSelectionManager : MonoBehaviour
 
     private void CheckTimedModuleSelections()
     {
+        if (regionDriven) return;
+
         if (GameManager.Instance == null)
         {
             return;
@@ -1230,6 +1250,7 @@ public class WeaponModuleSelectionManager : MonoBehaviour
         );
 
 
+        regionChoiceApplied = true;
         CloseModuleSelection();
     }
 
@@ -1326,6 +1347,8 @@ public class WeaponModuleSelectionManager : MonoBehaviour
         IsChoosingModule = false;
 
         ClearDisplayedModules();
+        if (regionRewards != null) { bool applied = regionChoiceApplied; regionChoiceApplied = false; regionRewards.ChoiceClosed(applied); return; }
+
 
 
         if (GameManager.Instance != null

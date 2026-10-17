@@ -1,0 +1,2 @@
+RUNNING: Editor install/idempotence passed. Play Mode results follow.
+Interrupted after the batch Editor stopped advancing. Attempt 2 identified an Editor pause with no runtime error in the log; runner now monitors error events explicitly.
