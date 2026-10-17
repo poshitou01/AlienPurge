@@ -4,7 +4,7 @@ using UnityEngine.Serialization;
 
 
 [DisallowMultipleComponent]
-public class ExtractionController :
+public partial class ExtractionController :
     MonoBehaviour
 {
     [Tooltip("Scene-owned region scheduling; default false preserves legacy scenes.")] public bool regionDriven;

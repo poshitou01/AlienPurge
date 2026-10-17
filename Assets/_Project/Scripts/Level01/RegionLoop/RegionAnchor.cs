@@ -7,6 +7,7 @@ namespace AlienPurge.Level01.RegionLoop
     {
         public string stableId, regionId;
         public float radius = 1.5f;
+        public bool residentSlot;
         public LineRenderer warning;
         public void ShowWarning(bool visible) { if (warning != null) warning.enabled = visible; }
         void OnDrawGizmosSelected()

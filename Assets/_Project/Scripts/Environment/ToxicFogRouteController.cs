@@ -15,7 +15,7 @@ using UnityEngine;
 /// 暂时不包含毒雾伤害、区域覆盖和视觉特效。
 /// </summary>
 [DisallowMultipleComponent]
-public class ToxicFogRouteController : MonoBehaviour
+public partial class ToxicFogRouteController : MonoBehaviour
 {
     [Tooltip("Scene-owned region scheduling; default false preserves legacy scenes.")] public bool regionDriven;
 

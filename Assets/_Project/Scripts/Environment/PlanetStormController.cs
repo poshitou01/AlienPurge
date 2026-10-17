@@ -9,7 +9,7 @@ public enum StormPhase
 }
 
 [DisallowMultipleComponent]
-public class PlanetStormController : MonoBehaviour
+public partial class PlanetStormController : MonoBehaviour
 {
     [Tooltip("Scene-owned region scheduling; default false preserves legacy scenes.")] public bool regionDriven;
 
@@ -148,7 +148,7 @@ public class PlanetStormController : MonoBehaviour
 
     private void Update()
     {
-        if (regionDriven) return;
+        if (regionDriven) { if (CanUpdateStorm() && currentPhase != StormPhase.Calm) UpdateCurrentPhase(); return; }
 
         if (!CanUpdateStorm())
         {

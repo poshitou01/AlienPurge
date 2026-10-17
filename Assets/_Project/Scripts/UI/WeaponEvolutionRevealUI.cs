@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 
 [DisallowMultipleComponent]
-public class WeaponEvolutionRevealUI : MonoBehaviour
+public partial class WeaponEvolutionRevealUI : MonoBehaviour
 {
     // =========================================================
     // References
@@ -241,6 +241,7 @@ public class WeaponEvolutionRevealUI : MonoBehaviour
 
     private void DetectEvolutionChange()
     {
+        if (deferRegionFeedback && (UpgradeManager.IsChoosingUpgrade || WeaponModuleSelectionManager.IsChoosingModule || PauseMenuController.IsPaused)) return;
         if (evolutionController == null)
         {
             return;

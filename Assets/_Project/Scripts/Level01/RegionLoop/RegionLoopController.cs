@@ -7,7 +7,7 @@ using UnityEngine;
 namespace AlienPurge.Level01.RegionLoop
 {
     [DefaultExecutionOrder(-20000), DisallowMultipleComponent]
-    public sealed class RegionLoopController : MonoBehaviour
+    public sealed partial class RegionLoopController : MonoBehaviour
     {
         public const string OwnerId = "AlienPurge.Level01.RegionLoop.V01";
         [HideInInspector] public string installationId = OwnerId, sourceSceneGuid, sourceSceneHash;
@@ -73,6 +73,7 @@ namespace AlienPurge.Level01.RegionLoop
         }
         public bool CanActivate(string region)
         {
+            if (v02Enabled) return CanActivateV02(region);
             var state = State(region);
             if (ShuttingDown || state == null || !HasMilestone(state.config.prerequisite) || activeMission != null ||
                 !state.initialized || state.objective == RegionObjectiveState.Completed) return false;
@@ -81,6 +82,7 @@ namespace AlienPurge.Level01.RegionLoop
         }
         public bool TryActivate(string region)
         {
+            if (v02Enabled) return TryActivateV02(region);
             if (!CanActivate(region) || GameManager.Instance == null || !GameManager.Instance.IsPlaying) return false;
             var state = State(region);
             if (!string.IsNullOrEmpty(state.diagnostic))
@@ -109,6 +111,7 @@ namespace AlienPurge.Level01.RegionLoop
             if (GameManager.Instance == null) return;
             if (!GameManager.Instance.IsPlaying) { StopRun(); return; }
             if (Time.timeScale <= 0) return;
+            if (v02Enabled) { TickV02(); return; }
             if (Time.time >= nextObserve)
             {
                 nextObserve = Time.time + .25f;
@@ -123,7 +126,7 @@ namespace AlienPurge.Level01.RegionLoop
         {
             // The scene's choice cards occupy the same screen space as the region HUD.
             // Keep modal content unobstructed, including frames where scaled time is paused.
-            if (hudCanvas != null) hudCanvas.enabled = !ShuttingDown &&
+            if (hudCanvas != null) hudCanvas.enabled = !v02Enabled && !ShuttingDown &&
                 !UpgradeManager.IsChoosingUpgrade && !WeaponModuleSelectionManager.IsChoosingModule &&
                 !PauseMenuController.IsPaused && !BackpackPanelController.IsOpen && !LootSearchPanelController.IsOpen;
         }
@@ -230,14 +233,18 @@ namespace AlienPurge.Level01.RegionLoop
             if (pool == null || !pool.IsInitialized) return;
             if (pendingTicket != null)
             {
-                if (pendingRegion.config.regionId != CurrentRegion && pendingRegion != activeMission) { CancelWarning(); return; }
+                if (v02Enabled ? !ShouldRunV02(pendingRegion) : pendingRegion.config.regionId != CurrentRegion && pendingRegion != activeMission) { CancelWarning(); return; }
                 if (Time.time < warningUntil) return;
                 var ticket = pendingTicket; var state = pendingRegion;
                 var profile = state.config.Profile(ticket.type);
+                if (v02Enabled && (!MaySpawnV02(state, ticket) || CountAlive(state) >= state.config.aliveLimit ||
+                    profile.special && CountAlive(state, true) >= state.config.specialLimit || !IsIngressClearV02(pendingPosition)))
+                { CancelWarning(); ticket.due = Time.time + 1; return; }
                 if (Vector2.Distance(pendingPosition, world.PlayerFeet) < state.config.minimumPlayerDistance ||
                     !RegionSpawnSpace.Valid(world, state.config.regionId, pendingPosition, Terminal(state.config.regionId).transform.position,
                         profile.clearance, true, out _))
                 { CancelWarning(); SpawnFailed(state, ticket, "warning position became occupied or unreachable"); nextSpawn = Time.time + 1; return; }
+                if (pool.ActiveCount >= globalAliveLimit) { CancelWarning(); ticket.due = Time.time + 1; return; }
                 var enemy = pool.GetEnemy(ticket.type, pendingPosition, Quaternion.identity);
                 CancelWarning(); nextSpawn = Time.time + state.config.spawnInterval;
                 if (enemy == null) { SpawnFailed(state, ticket, "enemy pool unavailable"); return; }
@@ -249,10 +256,11 @@ namespace AlienPurge.Level01.RegionLoop
             if (Time.time < nextSpawn || pool.ActiveCount >= globalAliveLimit) return;
             foreach (var state in states)
             {
-                if (!state.initialized || (state.config.regionId != CurrentRegion && state != activeMission) || CountAlive(state) >= state.config.aliveLimit) continue;
-                foreach (var ticket in state.enemies)
+                if (!state.initialized || (v02Enabled ? !ShouldRunV02(state) : state.config.regionId != CurrentRegion && state != activeMission) || CountAlive(state) >= state.config.aliveLimit) continue;
+                foreach (var ticket in SpawnOrder(state))
                 {
                     if (ticket.dead || ticket.lease != null || ticket.due > Time.time || ticket.failedSpawns >= state.config.spawnRetryLimit) continue;
+                    if (v02Enabled && !MaySpawnV02(state, ticket)) continue;
                     var profile = state.config.Profile(ticket.type);
                     if (profile.special && CountAlive(state, true) >= state.config.specialLimit) continue;
                     if (TryPosition(state, profile, out var anchor, out var position, out var reason))
@@ -274,11 +282,12 @@ namespace AlienPurge.Level01.RegionLoop
             for (int i = 0; i < anchors.Length; i++)
             {
                 var anchor = anchors[(start + i) % anchors.Length];
-                if (anchor == null || anchor.regionId != state.config.regionId) continue;
+                if (anchor == null || anchor.regionId != state.config.regionId || (v02Enabled && anchor.residentSlot)) continue;
                 for (int trial = 0; trial < 4; trial++)
                 {
                     position = anchor.transform.position + (trial == 0 ? Vector3.zero : (Vector3)(UnityEngine.Random.insideUnitCircle * anchor.radius));
                     if (Vector2.Distance(position, world.PlayerFeet) < state.config.minimumPlayerDistance) continue;
+                    if (v02Enabled && !IsIngressClearV02(position)) continue;
                     if (!RegionSpawnSpace.Valid(world, state.config.regionId, position, Terminal(state.config.regionId).transform.position,
                         profile.clearance, true, out reason)) continue;
                     bool occupied = false;
@@ -295,6 +304,7 @@ namespace AlienPurge.Level01.RegionLoop
             if (ticket.failedSpawns < state.config.spawnRetryLimit) return;
             string message = "Spawn blocked: " + ticket.id + " / " + reason + ". Move away from ingress and interact to retry.";
             Debug.LogWarning("[RegionLoop] " + message, this);
+            if (v02Enabled && ticket.role == RegionEnemyRole.Mission) { missionView.CancelRegionTask(message); return; }
             if (ticket.role == RegionEnemyRole.Mission) Fail(state, message);
             else if (ticket.role == RegionEnemyRole.Resident) state.diagnostic = message;
             // A failed optional patrol consumes budget, but never holds a mission open.
@@ -329,6 +339,7 @@ namespace AlienPurge.Level01.RegionLoop
         {
             if (ShuttingDown) return;
             ShuttingDown = true; CancelWarning(); FlushPoolReturns();
+            if (v02Enabled) StopV02();
             foreach (var state in states) foreach (var ticket in state.enemies) if (ticket.lease != null) ticket.lease.Release();
             if (rewards != null) rewards.CancelRun();
         }

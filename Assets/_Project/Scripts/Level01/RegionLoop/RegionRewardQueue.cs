@@ -26,6 +26,10 @@ namespace AlienPurge.Level01.RegionLoop
         {
             if (!shuttingDown) choices.Enqueue(new Choice { id = "level/" + (++upgradeSequence) });
         }
+        public void EnqueuePowerSpike()
+        {
+            if (!shuttingDown && earned.Add("power-spike")) choices.Enqueue(new Choice { id = "power-spike", moduleSlot = -1 });
+        }
         public bool GrantOnce(string id, int xp, int moduleSlot)
         {
             if (shuttingDown || earned.Contains(id) || experience == null || upgrades == null || modules == null) return false;
@@ -48,13 +52,16 @@ namespace AlienPurge.Level01.RegionLoop
                 GameManager.Instance == null || !GameManager.Instance.IsPlaying ||
                 PauseMenuController.IsPaused || BackpackPanelController.IsOpen || LootSearchPanelController.IsOpen) return;
             var next = choices.Peek();
-            bool shown = next.moduleSlot == 0 ? upgrades.TryShowQueuedUpgrade() : modules.TryShowRegionModule(next.moduleSlot);
+            bool immediate = false;
+            bool shown = next.moduleSlot < 0 ? modules.TryShowRegionOverclock(out immediate) :
+                next.moduleSlot == 0 ? upgrades.TryShowQueuedUpgrade() : modules.TryShowRegionModule(next.moduleSlot);
             if (!shown)
             {
                 if (!reportedFailure) Debug.LogError("[RegionLoop] Pending choice could not open: " + next.id + ". Check panel references and legal options.", this);
                 reportedFailure = true; return;
             }
             reportedFailure = false; active = choices.Dequeue();
+            if (immediate) ChoiceClosed(true);
         }
         public void ChoiceClosed(bool success)
         {

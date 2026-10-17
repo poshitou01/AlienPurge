@@ -2,7 +2,7 @@ using UnityEngine;
 
 [DisallowMultipleComponent]
 [RequireComponent(typeof(Collider2D))]
-public class BeaconMissionObjective :
+public partial class BeaconMissionObjective :
     InteractableBase
 {
     // =========================================================
@@ -111,6 +111,7 @@ public class BeaconMissionObjective :
 
     private void Update()
     {
+        if (regionSite != null) { TickRegionBeacon(); return; }
         if (!initialized)
         {
             return;
@@ -302,6 +303,7 @@ public class BeaconMissionObjective :
         PlayerInteractor interactor
     )
     {
+        if (regionSite != null) return base.CanInteract(interactor) && regionSite.CanInteract();
         if (!base.CanInteract(interactor))
         {
             return false;
@@ -343,6 +345,7 @@ public class BeaconMissionObjective :
         PlayerInteractor interactor
     )
     {
+        if (regionSite != null) { regionSite.Interact(); return; }
         if (!CanInteract(interactor))
         {
             return;

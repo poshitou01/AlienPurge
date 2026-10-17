@@ -1,0 +1,147 @@
+PASS | Unity 2022.3.62f3c1 | 2026-10-17 17:18:21Z
+PASS: Independent test profile active from initialization: C:/Users/Yang/AppData/LocalLow/DefaultCompany/AlienPurge_RegionLoopV02_Regression
+PASS: Cargo residents exist before first entry; entry clock untouched
+PASS: Death never directly duplicates orb XP
+PASS: Repeated damage drops and credits exactly one native orb
+PASS: Pool return is not a death, XP or garrison completion
+PASS: Pool reuse restores survivor HP and current ownership
+PASS: Reused enemy produces exactly one correctly valued experience orb
+PASS: G1 opens once through main authority
+MEASURE: ColonyEntry level=3 cumulativeXP=22 ambientWaves=3
+PASS: G2 opens once through main authority
+MEASURE: CargoYard level=5 cumulativeXP=71 ambientWaves=3
+PASS: G3 opens once through main authority
+MEASURE: PowerMaintenance level=7 cumulativeXP=132 ambientWaves=3
+PASS: Cargo and Power each deliver exactly one core choice
+PASS: Immediate actual evolution: ThunderPiercer
+PASS: Signature evolution excludes the Overclock entitlement
+PASS: Native weapon fires after choice closes
+PASS: Fired bullet receives native evolution visual data
+PASS: Fired projectile carries evolved damage-mechanism snapshot
+PASS: Real projectile collision and secondary damage affect both targets; HP=98,98 direct=1 chain=1
+PASS: Native evolved chain / explosion and split behavior actually fires
+PASS: Skipping all optional tasks still produces real ordinary level choices
+PASS: After G3, native task arrow stops pointing back into Power
+PASS: Restart resets milestones, modules and run identity
+PASS: G1 opens once through main authority
+MEASURE: ColonyEntry level=2 cumulativeXP=12 ambientWaves=0
+PASS: Real main XP crosses a level threshold and queues both level and core rewards
+PASS: Core never applies or overlays before the level choice
+PASS: G2 opens once through main authority
+MEASURE: CargoYard level=5 cumulativeXP=53 ambientWaves=2
+PASS: G3 opens once through main authority
+MEASURE: PowerMaintenance level=6 cumulativeXP=85 ambientWaves=0
+PASS: Cargo and Power each deliver exactly one core choice
+PASS: Two event rewards obtained at 46s, before 240 seconds: Piercing + ChainLightning
+PASS: Immediate actual evolution: ThunderPiercer
+PASS: Signature evolution excludes the Overclock entitlement
+PASS: Native weapon fires after choice closes
+PASS: Fired bullet receives native evolution visual data
+PASS: Fired projectile carries evolved damage-mechanism snapshot
+PASS: Real projectile collision and secondary damage affect both targets; HP=98,98 direct=1 chain=1
+PASS: Native evolved chain / explosion and split behavior actually fires
+PASS: Restart resets milestones, modules and run identity
+PASS: G1 opens once through main authority
+MEASURE: ColonyEntry level=2 cumulativeXP=12 ambientWaves=0
+PASS: G2 opens once through main authority
+MEASURE: CargoYard level=4 cumulativeXP=37 ambientWaves=0
+PASS: G3 opens once through main authority
+MEASURE: PowerMaintenance level=5 cumulativeXP=69 ambientWaves=0
+PASS: Cargo and Power each deliver exactly one core choice
+PASS: Two event rewards obtained at 8s, before 240 seconds: ChainLightning + Piercing
+PASS: Immediate actual evolution: ThunderPiercer
+PASS: Signature evolution excludes the Overclock entitlement
+PASS: Native weapon fires after choice closes
+PASS: Fired bullet receives native evolution visual data
+PASS: Fired projectile carries evolved damage-mechanism snapshot
+PASS: Real projectile collision and secondary damage affect both targets; HP=96,98 direct=1 chain=1
+PASS: Native evolved chain / explosion and split behavior actually fires
+PASS: Restart resets milestones, modules and run identity
+PASS: G1 opens once through main authority
+MEASURE: ColonyEntry level=2 cumulativeXP=12 ambientWaves=0
+PASS: G2 opens once through main authority
+MEASURE: CargoYard level=4 cumulativeXP=37 ambientWaves=0
+PASS: G3 opens once through main authority
+MEASURE: PowerMaintenance level=5 cumulativeXP=69 ambientWaves=0
+PASS: Cargo and Power each deliver exactly one core choice
+PASS: Two event rewards obtained at 7s, before 240 seconds: Explosive + SplitShot
+PASS: Immediate actual evolution: ClusterBurst
+PASS: Signature evolution excludes the Overclock entitlement
+PASS: Native weapon fires after choice closes
+PASS: Fired bullet receives native evolution visual data
+PASS: Fired projectile carries evolved damage-mechanism snapshot
+PASS: Real projectile collision and secondary damage affect both targets; HP=97,99 direct=1 chain=0
+PASS: Native evolved chain / explosion and split behavior actually fires
+PASS: Restart resets milestones, modules and run identity
+PASS: G1 opens once through main authority
+MEASURE: ColonyEntry level=2 cumulativeXP=12 ambientWaves=0
+PASS: G2 opens once through main authority
+MEASURE: CargoYard level=4 cumulativeXP=37 ambientWaves=0
+PASS: G3 opens once through main authority
+MEASURE: PowerMaintenance level=5 cumulativeXP=69 ambientWaves=0
+PASS: Cargo and Power each deliver exactly one core choice
+PASS: Two event rewards obtained at 8s, before 240 seconds: SplitShot + Explosive
+PASS: Immediate actual evolution: ClusterBurst
+PASS: Signature evolution excludes the Overclock entitlement
+PASS: Native weapon fires after choice closes
+PASS: Fired bullet receives native evolution visual data
+PASS: Fired projectile carries evolved damage-mechanism snapshot
+PASS: Real projectile collision and secondary damage affect both targets; HP=94,98 direct=1 chain=0
+PASS: Native evolved chain / explosion and split behavior actually fires
+PASS: Restart resets milestones, modules and run identity
+PASS: G1 opens once through main authority
+MEASURE: ColonyEntry level=2 cumulativeXP=12 ambientWaves=0
+PASS: G2 opens once through main authority
+MEASURE: CargoYard level=4 cumulativeXP=37 ambientWaves=0
+PASS: G3 opens once through main authority
+MEASURE: PowerMaintenance level=5 cumulativeXP=69 ambientWaves=0
+PASS: Cargo and Power each deliver exactly one core choice
+PASS: Two event rewards obtained at 8s, before 240 seconds: Piercing + Explosive
+PASS: Non-signature pair receives one native Overclock
+PASS: Restart resets milestones, modules and run identity
+PASS: Existing public module unlock entry remains valid
+PASS: Second public module unlock queues non-signature reward after real write
+PASS: Native maxed-module fallback resolves once without an empty panel
+PASS: Restart resets milestones, modules and run identity
+PASS: Ordinary population fills all non-reserved global slots
+PASS: Optional task can start with all ordinary capacity occupied
+PASS: Necessary mission guards use reserved capacity, optional success leaves main gate closed
+PASS: Capacity-fixture release creates no fake kills
+PASS: A real ordinary container is fully searched inside the configured low-pressure window
+PASS: Ordinary search window yields usable backpack loot
+PASS: Native optional Beacon occupies its own slot and does not open G2
+PASS: Leaving radius pauses defense while deadline keeps advancing
+PASS: Pause freezes task and accumulated fog consistently
+PASS: Failed optional has no reward/gate effect and respects attempt limit
+PASS: High-risk cache locked until task success
+PASS: Accepted optional target does not move with region mission-point updates
+PASS: Finite mixed task guards spawn and complete while ambient waves are held
+PASS: High-risk success unlocks native cache without Cargo main completion
+PASS: High-risk generated contents include minimum rare guarantee
+PASS: Closing/reopening never rerolls generated cache entries
+PASS: Identified high-risk item enters native backpack using normal grid rules
+PASS: Successful high-risk instance cannot reward twice
+PASS: Cargo main remains completable after optional failure/success
+FIXTURE: rerolled native legal card candidates to cover Piercing; used the original selection button.
+PASS: Full storm disk and current-player A* route validate:  travel=5.6
+PASS: Storm safety zone stays fixed across a region change
+PASS: Native safe-zone protection prevents storm damage
+PASS: Native active storm damages an exposed player
+PASS: Recovery clears the completed native safety zone
+PASS: Returning never resets first-entry fog clock
+PASS: Fog advances at controlled speed without a survival-time catch-up jump
+PASS: Passing 240 seconds with one module does not force evolution/overclock
+PASS: Native fog reclaims entry room and retires its population
+PASS: Native fog covers representative walkable room area: ColonyEntry samples=20
+PASS: Native fog covers representative walkable room area: CargoYard samples=48
+PASS: Bent-road edge reclaimed: (-159.60, 20.00)
+PASS: Bent-road edge reclaimed: (-154.40, 20.00)
+PASS: Bent-road edge reclaimed: (-151.00, -4.60)
+PASS: Bent-road edge reclaimed: (-151.00, 0.60)
+PASS: Native toxic-fog damage applies inside reclaimed space
+PASS: Death clears regional enemies, task and pending choices
+PASS: Restart resets milestones, modules and run identity
+PASS: Fresh optional task starts for deadline test
+PASS: Deadline failure pays no success reward and clears its task instance
+PASS: Main gate remains usable after an actual optional timeout
+LIMITS: accelerated simulation; direct lethal combat input, teleported travel, controlled native legal card rolls. No direct AddExperience or forced evolution used. Public module API/maxed fallback is a separate boundary fixture. Human balance, aiming and audiovisual feel require playtest.

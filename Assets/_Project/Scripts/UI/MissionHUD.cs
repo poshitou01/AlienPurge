@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [DisallowMultipleComponent]
-public class MissionHUD :
+public partial class MissionHUD :
     MonoBehaviour
 {
     // =========================================================
@@ -106,6 +106,7 @@ public class MissionHUD :
 
     private void Update()
     {
+        if (RefreshRegionPresentation()) return;
         ResolveReferences();
 
 

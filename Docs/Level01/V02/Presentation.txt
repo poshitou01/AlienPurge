@@ -1,0 +1,15 @@
+PASS | Unity 2022.3.62f3c1 | 2026-10-17 17:32:43Z
+PASS: Presentation check uses independent profile from initialization
+PASS: Native fog mesh generated from reclaimed geometry
+PASS: Native fog boundary renderer active
+PASS: Native soft-mist texture connected
+RENDER: ground=AlienPurge/Level01ConnectedV01/Atlas layer=Ground order=30000 vertices=12 bounds=Center: (-213.19, -17.00, -0.05), Extents: (27.00, 29.00, 0.00)
+RENDER: mist=Universal Render Pipeline/2D/Sprite-Unlit-Default texture=ToxicFog_SoftMist_128
+PASS: Presentation route opens G2 through normal main reward
+PASS: Presentation route opens G3 through normal main reward
+PASS: Native fog covers representative walkable room area: ColonyEntry samples=20
+PASS: Native fog covers representative walkable room area: CargoYard samples=48
+PASS: Native fog covers representative walkable room area: PowerMaintenance samples=54
+PASS: Final G3 approach edge reclaimed: (-103.70, 0.00)
+PASS: Final G3 approach edge reclaimed: (-97.80, 0.00)
+LIMITS: focused native renderer assertions and saved screenshots; manual image review recorded in Delivery.md.

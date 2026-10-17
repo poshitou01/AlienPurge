@@ -12,6 +12,7 @@ public abstract  class InteractableBase : MonoBehaviour//³éÏóÀà
     [SerializeField] private string interactionPrompt = "½»»¥";
 
     public string InteractionPrompt=>interactionPrompt;
+    public void SetInteractionPrompt(string value) { interactionPrompt = value; }
 
     public Vector2 WorldPosition=>transform.position;
 

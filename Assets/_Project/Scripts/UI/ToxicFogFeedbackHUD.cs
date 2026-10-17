@@ -10,7 +10,7 @@ using UnityEngine.UI;
 /// </summary>
 [DisallowMultipleComponent]
 [RequireComponent(typeof(CanvasGroup))]
-public sealed class ToxicFogFeedbackHUD : MonoBehaviour
+public sealed partial class ToxicFogFeedbackHUD : MonoBehaviour
 {
     private enum FogHudState
     {
@@ -122,6 +122,7 @@ public sealed class ToxicFogFeedbackHUD : MonoBehaviour
 
     private void Update()
     {
+        if (RefreshRegionWarning()) return;
         GameManager manager = GameManager.Instance;
 
         // Avoid obstructing pause, upgrade, module choice and result UI.

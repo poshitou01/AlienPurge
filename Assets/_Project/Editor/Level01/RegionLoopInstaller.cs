@@ -305,9 +305,9 @@ namespace AlienPurge.Level01.Editor
             for (int i = 0; i < line.positionCount; i++) { float angle = i * Mathf.PI * 2 / line.positionCount; line.SetPosition(i, new Vector3(Mathf.Cos(angle), Mathf.Sin(angle)) * radius); }
             return line;
         }
-        static void CloneSceneFonts(Scene scene)
+        internal static void CloneSceneFonts(Scene scene, string targetFolder = null)
         {
-            string folder = DataFolder + "/Fonts";
+            string folder = targetFolder ?? DataFolder + "/Fonts";
             Directory.CreateDirectory(folder); AssetDatabase.Refresh();
             var copies = new Dictionary<TMP_FontAsset, TMP_FontAsset>();
             Func<TMP_FontAsset, TMP_FontAsset> clone = null;

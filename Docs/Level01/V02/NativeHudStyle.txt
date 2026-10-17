@@ -1,0 +1,26 @@
+MissionPanel sibling=3 anchor=(1, 1):(1, 1) pos=(1696, -89) size=(360, 260) pivot=(1, 1) scale=(1, 1, 1) rotation=(0, 0, 0, 1)
+image-style RGBA(0.030, 0.080, 0.120, 0.800) Simple sprite=
+MissionPanel/DirectionArrow sibling=0 anchor=(1, 0):(1, 0) pos=(-30, 64) size=(40, 40) pivot=(0.5, 0.5) scale=(1, 1, 1) rotation=(0, 0, 0, 1)
+image-style RGBA(1.000, 1.000, 1.000, 1.000) Simple sprite=222e002f57f64e64398cecaa553e4c3a
+MissionPanel/TitleText sibling=1 anchor=(0, 1):(0, 1) pos=(180, -20) size=(310, 30) pivot=(0.5, 0.5) scale=(1, 1, 1) rotation=(0, 0, 0, 1)
+text-style 22.3 RGBA(1.000, 1.000, 1.000, 1.000) Normal Left (0.00, 0.00, 0.00, 0.00) auto=True font=Microsoft YaHei/Regular
+MissionPanel/ObjectiveText sibling=2 anchor=(0.5, 0.5):(0.5, 0.5) pos=(1, 71) size=(310, 28) pivot=(0.5, 0.5) scale=(1, 1, 1) rotation=(0, 0, 0, 1)
+text-style 20.7 RGBA(1.000, 1.000, 1.000, 1.000) Normal TopLeft (0.00, 0.00, 0.00, 0.00) auto=True font=Microsoft YaHei/Regular
+MissionPanel/TimerText sibling=3 anchor=(0.5, 0.5):(0.5, 0.5) pos=(-78, 4) size=(145, 25) pivot=(0.5, 0.5) scale=(1, 1, 1) rotation=(0, 0, 0, 1)
+text-style 22.35 RGBA(1.000, 1.000, 1.000, 1.000) Normal TopLeft (0.00, 0.00, 0.00, 0.00) auto=True font=Liberation Sans/Regular
+MissionPanel/DistanceText sibling=4 anchor=(0.5, 0.5):(0.5, 0.5) pos=(97, 5) size=(150, 25) pivot=(0.5, 0.5) scale=(1, 1, 1) rotation=(0, 0, 0, 1)
+text-style 20 RGBA(1.000, 1.000, 1.000, 1.000) Normal TopLeft (0.00, 0.00, 0.00, 0.00) auto=True font=Liberation Sans/Regular
+MissionPanel/RewardText sibling=5 anchor=(0.5, 0.5):(0.5, 0.5) pos=(5, -30) size=(310, 25) pivot=(0.5, 0.5) scale=(1, 1, 1) rotation=(0, 0, 0, 1)
+text-style 22.35 RGBA(1.000, 1.000, 1.000, 1.000) Normal TopLeft (0.00, 0.00, 0.00, 0.00) auto=True font=Liberation Sans/Regular
+MissionPanel/RiskText sibling=6 anchor=(0.5, 0.5):(0.5, 0.5) pos=(5, -65) size=(310, 25) pivot=(0.5, 0.5) scale=(1, 1, 1) rotation=(0, 0, 0, 1)
+text-style 22.35 RGBA(1.000, 1.000, 1.000, 1.000) Normal TopLeft (0.00, 0.00, 0.00, 0.00) auto=True font=Liberation Sans/Regular
+MissionPanel/ProgressRoot sibling=7 anchor=(0, 0):(1, 0) pos=(4, 29) size=(-40, 34) pivot=(0.5, 0.5) scale=(1, 1, 1) rotation=(0, 0, 0, 1)
+MissionPanel/ProgressRoot/ProgressSlider sibling=0 anchor=(0.5, 0.5):(0.5, 0.5) pos=(-25, 0) size=(260, 18) pivot=(0.5, 0.5) scale=(1, 1, 1) rotation=(0, 0, 0, 1)
+slider-style 0 1 LeftToRight
+MissionPanel/ProgressRoot/ProgressSlider/Background sibling=0 anchor=(0, 0.25):(1, 0.75) pos=(0, 0) size=(0, 0) pivot=(0.5, 0.5) scale=(1, 1, 1) rotation=(0, 0, 0, 1)
+image-style RGBA(1.000, 1.000, 1.000, 1.000) Sliced sprite=0000000000000000f000000000000000
+MissionPanel/ProgressRoot/ProgressSlider/Fill Area sibling=1 anchor=(0, 0.25):(1, 0.75) pos=(-5, 0) size=(-20, 0) pivot=(0.5, 0.5) scale=(1, 1, 1) rotation=(0, 0, 0, 1)
+MissionPanel/ProgressRoot/ProgressSlider/Fill Area/Fill sibling=0 anchor=(0, 0):(0, 1) pos=(0, 0) size=(10, 0) pivot=(0.5, 0.5) scale=(1, 1, 1) rotation=(0, 0, 0, 1)
+image-style RGBA(1.000, 1.000, 1.000, 1.000) Sliced sprite=0000000000000000f000000000000000
+MissionPanel/ProgressRoot/ProgressText sibling=1 anchor=(0.5, 0.5):(0.5, 0.5) pos=(135, 0) size=(55, 25) pivot=(0.5, 0.5) scale=(1, 1, 1) rotation=(0, 0, 0, 1)
+text-style 20 RGBA(1.000, 1.000, 1.000, 1.000) Normal Right (0.00, 0.00, 0.00, 0.00) auto=False font=Liberation Sans/Regular

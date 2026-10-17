@@ -57,9 +57,10 @@ namespace AlienPurge.Level01.RegionLoop
         {
             if (owner == null || Health.IsDead) return;
             float distance = Vector2.Distance(transform.position, owner.world.PlayerFeet);
-            if (Health.CurrentHealth < Health.MaxHealth || distance <= Region.config.perceptionRadius) engaged = true;
+            if (Health.CurrentHealth < Health.MaxHealth || distance <= Region.config.perceptionRadius && owner.CanSenseV02(Region, transform.position)) engaged = true;
             bool chase = engaged && distance <= Region.config.leashRadius &&
-                (Vector2.Distance(origin, transform.position) <= Region.config.leashRadius);
+                (Vector2.Distance(origin, transform.position) <= Region.config.leashRadius) &&
+                (!owner.v02Enabled || owner.CurrentRegion == Region.config.regionId);
             if (gateInitialized && lastChase == chase) return;
             gateInitialized = true; lastChase = chase;
             // Only change the lease's movement gate on transitions. Native windups own their lock while engaged.

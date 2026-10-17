@@ -21,6 +21,7 @@ namespace AlienPurge.Level01ConnectedV01
         }
         void LateUpdate()
         {
+            if(PlanetStormController.Instance!=null&&PlanetStormController.Instance.RegionZoneLocked)return;
             if(world==null||safeZone==null||world.player==null||PlanetStormController.Instance==null||!PlanetStormController.Instance.IsWarning)return;
             if(!L01ProjectAccess.Bool(safeZone,"HasActiveZone"))return;
             object centerValue=L01ProjectAccess.Get(safeZone,"CurrentCenter");if(!(centerValue is Vector2))return;

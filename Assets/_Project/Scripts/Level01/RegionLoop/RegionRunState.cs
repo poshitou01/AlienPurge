@@ -26,6 +26,9 @@ namespace AlienPurge.Level01.RegionLoop
         public float nextPatrol, missionElapsed, deviceProgress, integrity, quietUntil;
         public Vector3 lockedDevicePosition;
         public string diagnostic;
+        public float firstEntered = -1, lowPressureSince = -1, environmentDue, fogBuffer;
+        public int environmentWave;
+        public bool retired, stormStarted;
         public RegionRunState(RegionDefinition definition) { config = definition; }
 
         public int Remaining(RegionEnemyRole role)

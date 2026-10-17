@@ -7,7 +7,7 @@ using UnityEngine;
 /// any complete Safe Zone circle intersecting the predicted fog ribbon.
 /// </summary>
 [DisallowMultipleComponent]
-public class SafeZoneController : MonoBehaviour
+public partial class SafeZoneController : MonoBehaviour
 {
     // =========================================================
     // Original References and Settings (serialized names preserved)

@@ -28,7 +28,9 @@ namespace AlienPurge.Level01.RegionLoop
             if (status != null) status.text = state.config.missionId.ToUpperInvariant() + "\n" +
                 (state.objective == RegionObjectiveState.Completed ? "ONLINE" :
                  state.objective == RegionObjectiveState.Active ? Mathf.RoundToInt(state.deviceProgress * 100) + "% / " + Mathf.CeilToInt(state.integrity) + " HP" :
-                 CanInteract(null) ? "[E] START / RETRY" : "CLEAR ENTRY GUARDS");
+                 CanInteract(null) ? controller.v02Enabled ?
+                    (string.IsNullOrEmpty(state.diagnostic) ? "[E] OPEN " + state.config.exitGateId : "[E] RETRY") :
+                    "[E] START / RETRY" : "CLEAR ENTRY GUARDS");
             if (deviceRange != null) deviceRange.startColor = deviceRange.endColor =
                 state.objective == RegionObjectiveState.Failed ? new Color(1,.3f,.2f) :
                 state.objective == RegionObjectiveState.Completed ? Color.green : Color.cyan;

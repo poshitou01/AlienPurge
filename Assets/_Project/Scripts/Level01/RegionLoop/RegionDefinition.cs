@@ -15,6 +15,8 @@ namespace AlienPurge.Level01.RegionLoop
         [Min(.1f)] public float speed = 2f;
         [Min(.2f)] public float clearance = .65f;
         public bool special;
+        [Min(0), Tooltip("0 uses only the region total; V02 can cap each archetype separately.")]
+        public int simultaneousLimit;
     }
 
     [Serializable]
@@ -60,6 +62,8 @@ namespace AlienPurge.Level01.RegionLoop
         [Header("One-time progression rewards")]
         [Min(0)] public int encounterExperience = 4, missionExperience = 12;
         [Range(0, 2)] public int moduleSlot;
+        [Header("V02 opt-in settings (used only by a V02 scene)")]
+        public RegionV02Settings v02;
 
         public RegionEnemyProfile Profile(EnemyType type)
         {

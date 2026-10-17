@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 [DisallowMultipleComponent]
-public class WeaponModuleSelectionManager : MonoBehaviour
+public partial class WeaponModuleSelectionManager : MonoBehaviour
 {
     public AlienPurge.Level01.RegionLoop.RegionRewardQueue regionRewards;
     public bool regionDriven;
@@ -332,6 +332,7 @@ public class WeaponModuleSelectionManager : MonoBehaviour
         FindPlayerRuntimeSystems();
 
         SetupButtons();
+        SubscribeRegionBuild();
 
         RefreshDebugState();
     }
@@ -347,6 +348,7 @@ public class WeaponModuleSelectionManager : MonoBehaviour
 
     private void OnDestroy()
     {
+        UnsubscribeRegionBuild();
         if (Instance == this)
         {
             Instance = null;

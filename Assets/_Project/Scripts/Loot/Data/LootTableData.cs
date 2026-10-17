@@ -84,7 +84,7 @@ public class LootTableEntry
     fileName = "LootTable_",
     menuName = "AlienPurge/Loot/Loot Table"
 )]
-public class LootTableData :
+public partial class LootTableData :
     ScriptableObject
 {
     // =========================================================

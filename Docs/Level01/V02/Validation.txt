@@ -1,0 +1,1 @@
+PASS: unique services, V02 asset isolation, native HUD, scheduler flags, mission/gate IDs, reserved population capacity, reachable garrisons and storm disks, fog geometry, reward IDs, protected assets. Editor validation only.

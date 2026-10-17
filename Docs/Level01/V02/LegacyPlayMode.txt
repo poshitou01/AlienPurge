@@ -1,0 +1,4 @@
+PASS: independent profile, old scene files are never saved.
+PASS: V01 at 380 seconds retains finite patrol budget, dormant storm/fog and event-only module rewards.
+PASS: original FullWorld retains native 45-second first-module choice with V02 flags off. Boss scene/assets protected; Boss combat was not modified or simulated.
+PASS: all 806 protected assets/metas retain their V01 baseline hashes.

@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 [DisallowMultipleComponent]
-public class LootContainer :
+public partial class LootContainer :
     InteractableBase
 {
     // =========================================================
@@ -767,6 +767,7 @@ public class LootContainer :
             >();
 
 
+        AddGuaranteedRegionLoot(generated, lookup);
         int rollCount =
             lootTable
                 .GetRandomRollCount();
@@ -1044,6 +1045,9 @@ public class LootContainer :
                 second
             ) =>
             {
+                // Guaranteed region rewards must fit before weighted extras.
+                if ((first.FirstRollOrder < 0) != (second.FirstRollOrder < 0))
+                    return first.FirstRollOrder < 0 ? -1 : 1;
                 int firstArea =
                     first.Item.GridArea;
 

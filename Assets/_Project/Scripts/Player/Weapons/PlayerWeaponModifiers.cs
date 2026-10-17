@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [DisallowMultipleComponent]
-public class PlayerWeaponModifiers : MonoBehaviour
+public partial class PlayerWeaponModifiers : MonoBehaviour
 {
     [Header("Mechanic Upgrade Levels")]
     [Tooltip("穿透升级当前等级，0 表示尚未获得")]
@@ -328,6 +328,7 @@ public class PlayerWeaponModifiers : MonoBehaviour
             MaxPiercingLevel,
             piercingLevel + 1
         );
+        ModulesChanged?.Invoke();
 
         Debug.Log(
             "Piercing upgraded to Lv"
@@ -360,6 +361,7 @@ public class PlayerWeaponModifiers : MonoBehaviour
             MaxExplosiveLevel,
             explosiveLevel + 1
         );
+        ModulesChanged?.Invoke();
 
         Debug.Log(
             "Explosive upgraded to Lv"
@@ -394,6 +396,7 @@ public class PlayerWeaponModifiers : MonoBehaviour
             MaxChainLightningLevel,
             chainLightningLevel + 1
         );
+        ModulesChanged?.Invoke();
 
         Debug.Log(
             "Chain Lightning upgraded to Lv"
@@ -426,6 +429,7 @@ public class PlayerWeaponModifiers : MonoBehaviour
             MaxSplitShotLevel,
             splitShotLevel + 1
         );
+        ModulesChanged?.Invoke();
 
         Debug.Log(
             "Split Shot upgraded to Lv"

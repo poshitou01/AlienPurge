@@ -1,0 +1,8 @@
+V01 real death / pickup baseline audit
+Profile: C:/Users/Yang/AppData/LocalLow/DefaultCompany/AlienPurge_RegionLoopV02_Audit
+XP curve: {"MonoBehaviour":{"m_Enabled":true,"m_EditorHideFlags":0,"m_Name":"","m_EditorClassIdentifier":"","currentExperience":0,"currentLevel":1,"experienceToNextLevel":5,"experienceIncreasePerLevel":5}}
+Player colliders: Player: Center: (-213.19, -32.36, 0.00), Extents: (0.36, 0.36, 0.00) tag=Player | Arena_EnvironmentFeet_V031: Center: (-213.19, -32.97, 0.00), Extents: (0.16, 0.03, 0.00) tag=Untagged
+Death XP expected: 2
+Orb: (-222.14, -28.04, 0.00) exp=2
+After pickup: xp=2 level=1 queue=0 orbActive=False
+PASS: native death/drop/physics pickup/AddExperience chain

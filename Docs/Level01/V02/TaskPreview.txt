@@ -1,0 +1,3 @@
+PASS | Unity 2022.3.62f3c1 | 2026-10-17 17:36:38Z
+PASS: Task preview uses independent profile from initialization
+RENDER: acceptance timer, labelled hold/limit, risk and reward use original MissionHUD rows; no layout edits.

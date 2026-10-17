@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [DisallowMultipleComponent]
-public class MissionManager : MonoBehaviour
+public partial class MissionManager : MonoBehaviour
 {
     private string regionViewId;
     private readonly HashSet<string> regionCompletedIds = new HashSet<string>();
@@ -358,7 +358,7 @@ public class MissionManager : MonoBehaviour
 
     private void Update()
     {
-        if (regionDriven) return;
+        if (regionDriven) { TickRegionTask(); return; }
 
         if (GameManager.Instance == null)
         {
