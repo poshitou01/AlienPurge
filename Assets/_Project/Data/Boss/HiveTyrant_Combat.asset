@@ -18,18 +18,28 @@ MonoBehaviour:
   deathTime: 1.6
   engageDistance: 18
   globalRecovery: 1.1
-  sweepRadius: 6
-  sweepAngle: 110
-  sweepDamage: 12
+  sweepRadius: 7
+  sweepAngle: 120
+  sweepDamage: 1
   sweepWindup: 1
   sweepRecovery: 0.75
   sweepCooldown: 4.5
   phase2SecondSweepWarning: 0.85
+  contentVersion: 3
   slamRadius: 7
-  slamDamage: 18
+  slamDamage: 2
   slamWindup: 1.55
   slamRecovery: 1
   slamCooldown: 8
+  waveSpeed: 8
+  waveDistance: 14
+  waveSegmentWidth: 3
+  waveThickness: 1
+  waveStartOffset: 3.3
+  waveGapBodyMultiplier: 1.8
+  waveGapMargin: 0.35
+  waveMinimumGap: 1.65
+  waveRouteReactionMargin: 0.25
   summonWaveSize: 3
   summonAliveCap: 5
   summonBudget: 12
@@ -44,6 +54,33 @@ MonoBehaviour:
   summonHealth: 4
   summonSpeed: 2
   summonDamage: 5
+  summonChoices:
+  - type: 0
+    weight: 45
+    aliveCap: 5
+    healthMultiplier: 1
+    speedMultiplier: 1
+    damageMultiplier: 1
+  - type: 1
+    weight: 25
+    aliveCap: 3
+    healthMultiplier: 1
+    speedMultiplier: 1
+    damageMultiplier: 1
+  - type: 2
+    weight: 10
+    aliveCap: 1
+    healthMultiplier: 1
+    speedMultiplier: 1
+    damageMultiplier: 1
+  - type: 3
+    weight: 20
+    aliveCap: 2
+    healthMultiplier: 1
+    speedMultiplier: 1
+    damageMultiplier: 1
+  effectFragmentCount: 16
+  effectLifetime: 0.45
   environmentLayers:
     serializedVersion: 2
     m_Bits: 128

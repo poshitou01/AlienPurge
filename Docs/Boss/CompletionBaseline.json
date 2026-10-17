@@ -1,0 +1,24 @@
+{
+  "project": "D:\\AlienPurge\\AlienPurge",
+  "snapshot": "D:\\AlienPurge\\AlienPurge_Snapshot_HiveTyrant_Completion_20261017_172335",
+  "head": "7190c330e9cb543d587e775a44568c244da74715",
+  "branch": "codex/hivetyrant-combat",
+  "status": [],
+  "unityRunning": false,
+  "fileCount": 1968,
+  "bytes": 378287565.0,
+  "verified": "All copied files matched SHA256",
+  "originalBackup": "D:\\AlienPurge\\AlienPurge_Backup_PreHiveTyrant_20261017_152640",
+  "scopes": [
+    "Assets/_Project/Scripts",
+    "Assets/_Project/Editor",
+    "Assets/_Project/Data",
+    "Assets/_Project/Prefabs",
+    "Assets/_Project/Scenes",
+    "Assets/_Project/Art/Boss/HiveTyrant",
+    "Assets/_Project/Animations/Boss/HiveTyrant",
+    "Docs/Boss",
+    "Packages",
+    "ProjectSettings"
+  ]
+}

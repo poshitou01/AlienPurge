@@ -1,0 +1,6 @@
+PASSED - Unity 2022.3.62f3c1 actual Editor Play Mode; Direct3D11
+RESUMED existing A* Editor update-check pause; diagnostic retained below.
+PASS DR actual sweep starts for visual review
+Captured 25 actual Play Mode frames at 0.08-second sample spacing; visual acceptance requires image inspection.
+Automated checks are distinct from visual review and long-term balance acceptance.
+Existing unrelated A* Editor update checker diagnostics (also present before changes): InvalidOperationException: Insecure connection not allowed

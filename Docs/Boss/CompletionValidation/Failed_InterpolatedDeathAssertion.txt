@@ -1,0 +1,177 @@
+FAILED - Unity 2022.3.62f3c1 actual Editor Play Mode; Direct3D11
+RESUMED existing A* Editor update-check pause; diagnostic retained below.
+PASS Dedicated scene has usable Boss, Player and config
+PASS Boss uses EnemyHealth at configured initial HP
+PASS Enlarged 7 / 120 sector includes new range, excludes outside/rear
+PASS Eight-direction mapping/gait preserved: 0
+PASS Eight-direction mapping/gait preserved: 1
+PASS Eight-direction mapping/gait preserved: 2
+PASS Eight-direction mapping/gait preserved: 3
+PASS Eight-direction mapping/gait preserved: 4
+PASS Eight-direction mapping/gait preserved: 5
+PASS Eight-direction mapping/gait preserved: 6
+PASS Eight-direction mapping/gait preserved: 7
+PASS Sweep starts with explicit action ownership
+PASS Sweep warning causes no early damage; boss stops moving
+PASS Sweep hits once despite multiple player colliders
+PASS Action releases ownership after recovery
+PASS Second sweep can start after recovery
+PASS Locked sweep can be dodged behind the boss without an untelegraphed rear hit
+PASS Action releases ownership after recovery
+PASS Wave has a reachable route at distance 5
+PASS Gap 0 accommodates actual collider and clear walking route
+PASS Action releases ownership after recovery
+PASS Native walking speed 5 safely reaches gap 0 from 5 (no damage/invulnerability)
+PASS Gap trial includes real player physics displacement
+PASS Wave has a reachable route at distance 5
+PASS Gap 1 accommodates actual collider and clear walking route
+PASS Action releases ownership after recovery
+PASS Native walking speed 5 safely reaches gap 1 from 5 (no damage/invulnerability)
+PASS Gap trial includes real player physics displacement
+PASS Wave has a reachable route at distance 9
+PASS Gap 0 accommodates actual collider and clear walking route
+PASS Action releases ownership after recovery
+PASS Native walking speed 5 safely reaches gap 0 from 9 (no damage/invulnerability)
+PASS Gap trial includes real player physics displacement
+PASS Wave has a reachable route at distance 9
+PASS Gap 1 accommodates actual collider and clear walking route
+PASS Action releases ownership after recovery
+PASS Native walking speed 5 safely reaches gap 1 from 9 (no damage/invulnerability)
+PASS Gap trial includes real player physics displacement
+PASS Wave has a reachable route at distance 14
+PASS Gap 0 accommodates actual collider and clear walking route
+PASS Action releases ownership after recovery
+PASS Native walking speed 5 safely reaches gap 0 from 14 (no damage/invulnerability)
+PASS Gap trial includes real player physics displacement
+PASS Wave has a reachable route at distance 14
+PASS Gap 1 accommodates actual collider and clear walking route
+PASS Action releases ownership after recovery
+PASS Native walking speed 5 safely reaches gap 1 from 14 (no damage/invulnerability)
+PASS Gap trial includes real player physics displacement
+PASS Central travelling wave starts at extended targeting range
+PASS No damage before the moving front arrives
+PASS Moving dangerous segment hits exactly once on arrival
+PASS Action releases ownership after recovery
+PASS Wave survives body release and recovery instead of using old 0.22-second lifetime
+PASS Passed front leaves no lingering damage
+PASS Boundary fixture creates valid shared geometry
+PASS Swept 2-second step: gap 0 edge -1 full collider fits safely
+PASS Boundary fixture creates valid shared geometry
+PASS Swept 2-second step: gap 0 edge -1 exposed collider enters real danger
+PASS Boundary fixture creates valid shared geometry
+PASS Swept 2-second step: gap 0 edge 1 full collider fits safely
+PASS Boundary fixture creates valid shared geometry
+PASS Swept 2-second step: gap 0 edge 1 exposed collider enters real danger
+PASS Boundary fixture creates valid shared geometry
+PASS Swept 2-second step: gap 1 edge -1 full collider fits safely
+PASS Boundary fixture creates valid shared geometry
+PASS Swept 2-second step: gap 1 edge -1 exposed collider enters real danger
+PASS Boundary fixture creates valid shared geometry
+PASS Swept 2-second step: gap 1 edge 1 full collider fits safely
+PASS Boundary fixture creates valid shared geometry
+PASS Swept 2-second step: gap 1 edge 1 exposed collider enters real danger
+PASS Continuous crossing fixture plan
+PASS Relative sweep detects player/front crossing between frames without duplicate damage
+PASS Wall allows a near safe escape and clips all downstream segments
+PASS Wall-clipped geometry cannot damage player behind wall
+PASS Blocked launch / all sealed routes cancels wave planning
+PASS Cancellation fixture starts warning
+PASS Disable clears warning/travelling geometry and damage
+PASS Cancellation fixture starts travel
+PASS Disable clears warning/travelling geometry and damage
+PASS Dedicated scene has scanned native A* navigation
+PASS Integrated native candidate Normal
+PASS Clean native stats/locks/physics on Normal cycle 0
+STATS Normal HP=3 speed=1.5 contact=1 clearance=0.51
+PASS Native navigation moves Normal cycle 0 by 8.31 units
+PASS Native Normal cycle 0 attacks player
+PASS Native Normal death returns pool, clears owner and grants original kill/XP reward
+PASS Exact pooled instance recycled for Normal
+PASS Clean native stats/locks/physics on Normal cycle 1
+STATS Normal HP=3 speed=1.5 contact=1 clearance=0.51
+PASS Native navigation moves Normal cycle 1 by 8.31 units
+PASS Native Normal cycle 1 attacks player
+PASS Native Normal death returns pool, clears owner and grants original kill/XP reward
+PASS Integrated native candidate Fast
+PASS Clean native stats/locks/physics on Fast cycle 0
+STATS Fast HP=2 speed=2.25 contact=1 clearance=0.3825
+PASS Native navigation moves Fast cycle 0 by 8.51 units
+PASS Native Fast cycle 0 attacks player
+PASS Native Fast death returns pool, clears owner and grants original kill/XP reward
+PASS Exact pooled instance recycled for Fast
+PASS Clean native stats/locks/physics on Fast cycle 1
+STATS Fast HP=2 speed=2.25 contact=1 clearance=0.3825
+PASS Native navigation moves Fast cycle 1 by 8.51 units
+PASS Native Fast cycle 1 attacks player
+PASS Native Fast death returns pool, clears owner and grants original kill/XP reward
+PASS Integrated native candidate Heavy
+PASS Clean native stats/locks/physics on Heavy cycle 0
+STATS Heavy HP=11 speed=0.975 contact=2 clearance=0.668
+PASS Native navigation moves Heavy cycle 0 by 6.61 units
+PASS Native Heavy cycle 0 attacks player
+PASS Native Heavy death returns pool, clears owner and grants original kill/XP reward
+PASS Exact pooled instance recycled for Heavy
+PASS Clean native stats/locks/physics on Heavy cycle 1
+STATS Heavy HP=11 speed=0.975 contact=2 clearance=0.668
+PASS Native navigation moves Heavy cycle 1 by 6.61 units
+PASS Native Heavy cycle 1 attacks player
+PASS Native Heavy death returns pool, clears owner and grants original kill/XP reward
+PASS Integrated native candidate Ranged
+PASS Clean native stats/locks/physics on Ranged cycle 0
+STATS Ranged HP=3 speed=1.35 contact=1 clearance=0.65
+PASS Native navigation moves Ranged cycle 0 by 2.62 units
+PASS Native Ranged cycle 0 attacks player with a real projectile
+PASS Native Ranged death returns pool, clears owner and grants original kill/XP reward
+PASS Exact pooled instance recycled for Ranged
+PASS Clean native stats/locks/physics on Ranged cycle 1
+STATS Ranged HP=3 speed=1.35 contact=1 clearance=0.65
+PASS Native navigation moves Ranged cycle 1 by 2.62 units
+PASS Native Ranged cycle 1 attacks player with a real projectile
+PASS Native Ranged death returns pool, clears owner and grants original kill/XP reward
+PASS Existing Player weapon fires using its configured BulletPool
+PASS Actual weapon projectile damages the original Boss EnemyHealth
+PASS Physical piercing bullet damages Boss once while crossing its collider
+PASS Physical explosive projectile applies original direct and explosion damage to Boss
+PASS Physical hit on ordinary enemy chains through the existing lightning path to Boss
+PASS Two real split child projectiles damage Boss through original Bullet collision path
+PASS Summon starts through the existing EnemyPool
+PASS Summon selects finite warned valid positions
+PASS Summons spawned within wave/budget limits
+PASS Action releases ownership after recovery
+PASS Natural summon request respects minimum interval
+PASS Debug second wave exercises hard alive cap independently of cooldown
+PASS Two waves fill the alive cap without exceeding it
+PASS Action releases ownership after recovery
+PASS Unrelated ordinary enemy obtained from existing pool
+PASS Disable cancels only Boss warnings/pending/owned summons; unrelated enemy survives
+PASS Ordinary EnemyHealth death still returns to pool and registers exactly one kill
+PASS Ordinary death still drops one experience orb through the existing pool
+PASS Ordinary pooled re-spawn restores health and colliders
+PASS Fully blocked spawn search skips every invalid point
+PASS Action releases ownership after recovery
+PASS No-valid-point summon completes without spending budget or stalling
+PASS Additional budgeted summon starts
+PASS Summon progresses without exceeding alive cap
+PASS Additional budgeted summon starts
+PASS Summon progresses without exceeding alive cap
+PASS Additional budgeted summon starts
+PASS Summon progresses without exceeding alive cap
+PASS Exhausted encounter budget blocks further summons
+PASS Pre-Phase2 sweep starts
+PASS Threshold enters Phase2 once and interrupts pending skill
+PASS Action releases ownership after recovery
+PASS Phase2 preserves damaged health and cancels old release
+PASS Further low-health hits do not repeat Phase2 transition
+PASS Phase2 double sweep starts
+PASS Phase2 first sweep resolves normally
+PASS Phase2 second sweep has its own visible reaction window
+PASS Action releases ownership after recovery
+PASS Phase2 double sweep hits once per separately warned sweep
+PASS Death-interrupt slam starts
+PASS Lethal damage immediately cancels warnings and locks death action
+FAIL System.InvalidOperationException: Full death presentation is retained, without postmortem movement or attack
+  at HiveTyrantCombatVerification.Check (System.Boolean condition, System.String message) [0x0002f] in D:\AlienPurge\AlienPurge\Assets\_Project\Editor\HiveTyrantCombatVerification.cs:130 
+  at HiveTyrantCombatVerification+<Verify>d__29.MoveNext () [0x01349] in D:\AlienPurge\AlienPurge\Assets\_Project\Editor\HiveTyrantCombatVerification.cs:300 
+  at HiveTyrantCombatVerification.Tick () [0x000e0] in D:\AlienPurge\AlienPurge\Assets\_Project\Editor\HiveTyrantCombatVerification.cs:91 
+Automated checks are distinct from visual review and long-term balance acceptance.
+Existing unrelated A* Editor update checker diagnostics (also present before changes): InvalidOperationException: Insecure connection not allowed

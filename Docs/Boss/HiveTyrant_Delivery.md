@@ -1,87 +1,114 @@
-# Hive Tyrant 本轮交付
+# Hive Tyrant 本轮交付与验收
 
-状态：**首版逻辑完成；工程接入完成；实际 Editor Play Mode 自动检查通过；正式动作素材未完成，因此不标记 Boss 正式完成。** 首轮数值仅用于测试。没有制作 Exploder / Support，也没有修改撤离、Storm、毒雾、背包或普通敌人 AI。
+2026-10-17；工程 D:\AlienPurge\AlienPurge；Unity 2022.3.62f3c1 / URP 2D。
 
-## 1. 备份与分支
+**已交付可试玩、可检查的战斗版本；正式动作尚未完全达到要求，因此不宣称 Hive Tyrant 本轮制作完成。** 两阶段真实关节动作已接入，但部分方向的遮挡接缝仍不合格。所有 72 项素材需求保留，未以更改完成标记代替视觉验收。
 
-- 修改前已确认 Unity 处于 Edit Mode，保存并正常退出。
-- 备份绝对路径：`D:\AlienPurge\AlienPurge_Backup_PreHiveTyrant_20261017_152640`。
-- 6260 个源文件，2,591,856,316 字节；每个文件的大小和 SHA256 全部匹配，包括源素材、全部 `.meta`、Git 元数据与未入库文件。仅排除工程根级 Library / Temp / Logs / obj；清单和原始校验报告位于备份目录。
-- 原分支 `feat/level01-integration`，原 HEAD `e2ea18910c7cf3a04d8bd7b1c3494cafa9dff1fd`，原工作区干净；本轮分支 `codex/hivetyrant-combat`。
-- 未推送、未合并 main，未移动远端备份分支。项目内保存校验副本 `HiveTyrant_Backup_Verification.json`。
-
-## 2. 文件位置与用途
-
-以下路径相对实际项目根目录 `D:\AlienPurge\AlienPurge`，完整改动文件清单见 `HiveTyrant_ChangedFiles.txt`。
-
-| 位置 | 作用 |
+| 项目 | 状态 |
 | --- | --- |
-| `Assets/_Project/Scripts/Boss/HiveTyrantBossMotor.cs` | 原位完善八方向、步态延续、动作控制权、碰撞检测与死亡优先级；保留已有外部接口 |
-| 同目录 `HiveTyrantCombat.cs` / `HiveTyrantCombatConfig.cs` | 单一战斗调度、技能、阶段、召唤归属、重置和可调配置 |
-| 同目录 `HiveTyrantTelegraph.cs` / `HiveTyrantSummonOwner.cs` | 临时填充区域预警及对象池召唤归属 |
-| 同目录 `HiveTyrantCombatDebug.cs` / `HiveTyrantHealthBar.cs` / `IEnemyDeathPresentation.cs` | 测试控制、读取原 EnemyHealth 的血条和死亡表现接口 |
-| `Assets/_Project/Scripts/Enemy/EnemyHealth.cs` | 最小可选接口接入：Boss 同步中断并等待完整死亡表现；普通敌人保留原奖励与回池流程 |
-| `Assets/_Project/Data/Boss/HiveTyrant_Combat.asset` | 集中配置生命、技能、阶段和召唤测试数值 |
-| `Assets/_Project/Editor/HiveTyrantCombatSetup.cs` | 可重复配置导入参数、现有 Clip / Animator、Prefab、测试场景及正式场景引用 |
-| `Assets/_Project/Editor/HiveTyrantCombatVerification.cs` | 真实 Unity Editor Play Mode 集成检查和截图；不引入测试插件 |
-| `Assets/_Project/Prefabs/Enemies/Boss/HiveTyrant.prefab` | 原 Prefab 接入战斗、配置、血条；保留 GUID |
-| `Assets/_Project/Animations/Boss/HiveTyrant/Clips/Death/` 与 `Clips/Hit/` | 原片段保留身份；死亡改为 8fps，受击元数据统一 12fps |
-| `Assets/_Project/Scenes/HiveTyrant_CombatTest.unity` | 现有 Player、场地、Boss、相机、管理器及真实对象池的专用测试场景 |
-| `Assets/_Project/Scenes/ArtTests/Level01_FullWorld.unity` | 只配置原 `L01World.boss` 指向的活动 Boss 和战斗边界，继续使用现有关卡桥接 |
-| `Docs/Boss/` | 备份、配置、素材缺口、测试结果、截图及本报告 |
+| 技能逻辑 | F1 扩大范围、F2 前向三段波/真实缺口、F3 四类型原生 AI 已实现并实测 |
+| 正式动作 | **部分完成，最终视觉验收未通过**：已有实际肢体运动；遮挡切口、小片脱离、死亡倒伏仍需完善 |
+| 技能特效 | 斩击弧/碎屑、分段地面波、落点生成及核心转换反馈已实际接入 |
+| 工程接入 | 原 Prefab、测试场景和原 Level01 桥接可运行；UI、身份和布局保护校验通过 |
+| 实际验证 | 216 项完整 Editor 检查、正式关卡入口/三技能/击杀/镜头恢复通过；Windows 构建及独立两阶段战斗通过 |
+| 平衡状态 | 完成首轮原玩家条件下可打调整；不是长期平衡或人工手感验收 |
 
-原 `HiveTyrant_Arena.unity` 内容保持不变；正式场景原有 739 个 Transform 的位置、旋转、缩放全部保持不变；没有改动已有 `.meta`。原先未激活的 `HiveTyrant_Boss` 预览对象继续保持未激活。参见 `HiveTyrant_PreservationCheck.json`。
+## 1. 起点、保护、改动与恢复
 
-## 3. 最终行为与测试参数
+实查起点为 codex/hivetyrant-combat / 7190c330e9cb543d587e775a44568c244da74715，工作区干净，无运行中的 Unity。没有回退对齐旧记录。
 
-| 项目 | 当前行为 / 配置初值 |
+原完整备份 D:\AlienPurge\AlienPurge_Backup_PreHiveTyrant_20261017_152640 已核实：6260 文件、2,591,856,316 字节，原 SHA256 校验记录保留。本轮修改前快照 D:\AlienPurge\AlienPurge_Snapshot_HiveTyrant_Completion_20261017_172335：1968 文件、378,287,565 字节，逐文件 SHA256 全部匹配，含涉及文件及 .meta。工程内基线副本为 CompletionBaseline.json。
+
+Unity 配置、保存、Play Mode 和构建顺序执行；未并行写场景/资源，未执行 reset/clean、main 合并或远端推送，未制作 Exploder / Support。主要变更见 HiveTyrant_ChangedFiles.txt：
+
+- Boss Combat / Config / Motor / Telegraph，新增 WavePlan / GroundWave / Geometry / Summoning / Effects / Presentation / PoseLibrary / ArenaCamera / TestNavigation。
+- 现有 Setup / Verification 扩展，新增 PoseAuthoring / SkinAuthoring / BuildVerification。
+- Boss Prefab、战斗配置、关节资产、URP 材质、测试场景和正式场景 Boss 专用相机引用。
+- 共享代码仅增加 PlayerMovement.MoveSpeed 只读访问及 EnemyPool.TryGetConfiguredPrefab 只读查询。未改原玩家操控、原 Player Prefab、共享 EnemyData、撤离、Storm、毒雾、背包或普通敌人的全局行为。
+
+CompletionValidation/Preservation.json：Boss Prefab 的 10 个、测试场景 20 个、正式场景 1363 个原 Transform/RectTransform/Canvas/CanvasRenderer 序列化块未改变；1045 个快照范围内原 .meta 不变；血条脚本和原 Player Prefab SHA256 不变。Setup 不创建或重设用户 UI。CompletionValidation/RepeatSetup_Result.txt：对全部 4751 个 Assets 文件重复配置前后 SHA256 比较，零变化、零新增/删除。
+
+恢复时先保存退出 Unity、另存本轮之后的新工作，再按快照清单逐文件恢复所需文件和配套 .meta；新增文件按本轮清单识别。快照不包含后来工作，不能直接覆盖之后修改。不要全工程 reset/clean。更早完整备份仅用于明确要回到初始状态的情况。
+
+## 2. F1 / F2 / F3 行为与测试参数
+
+集中配置：Assets/_Project/Data/Boss/HiveTyrant_Combat.asset。Boss HP 600，50% 且仍存活时一次进入 Phase2，不回血；转换 1.8 秒，死亡表现 1.6 秒，全局技能恢复间隔 1.1 秒。
+
+| 技能 | 当前参数 |
 | --- | --- |
-| 追踪与技能选择 | 速度 1.7，停止距离 4.2，接战距离 18；实际碰撞体 Cast 阻挡墙壁并尝试局部绕行；遵守已有场地 footprint；轮换可用技能，受距离和冷却约束 |
-| 扫击 | 半径 6、110° 填充扇形，前摇开始即锁定方向和位置；1 秒预警后一次扣 12，释放显示 0.18 秒，收招 0.75 秒，冷却 4.5 秒；多个玩家碰撞体不重复计伤，墙壁阻挡伤害 |
-| 震地 | 半径 7 的填充圆盘；1.55 秒预警后一次扣 18，释放 0.22 秒，收招 1 秒，冷却 8 秒；保留原相机震动反馈 |
-| 召唤 | 使用现有 Normal / Swarmer 对象池；每波 3、同时活着最多 5、本场最多 12、最小间隔 14 秒；1.4 秒落点预警，收招 0.8 秒 |
-| 召唤落点 | 距 Boss 5～10，距玩家至少 3，净空半径 0.6，最多尝试 32 次；须在原场地内，有通向 Boss 的净空走廊，并避开墙、敌人及玩家；释放时再次校验，无落点则跳过且不消费预算 |
-| 召唤属性 | HP 4、移动速度 2、接触伤害 5；只清理本 Boss 持有归属的召唤物，池中归属释放后不误删其他系统复用的对象 |
-| Phase2 | 原 EnemyHealth 降到 50% 且仍存活时只进入一次；取消未释放技能，切换已确认 RiftWing；转换 1.8 秒，无回血；扫击新增第二段，间隔收招 0.75 秒，第二段独立重新锁方向并预警 0.85 秒 |
-| 技能衔接 | 技能独占动作与移动，统一额外恢复间隔 1.1 秒；普通受击保留原闪白反馈，不反复打断技能 |
-| 生命与死亡 | HP 600；继续使用同一个 EnemyHealth，原子弹/穿透/爆炸/连锁/分裂链路直接生效；致死同步停止移动、取消预警和待召唤、清理本场召唤物，Death 动作不会被 Idle 覆盖；至少保留 1.6 秒且不短于死亡 Clip 后清理 |
-| 血条与关卡 | 血条读取同一生命和阶段，复用现有头像/框素材；正式场景继续由原 L01ArenaBridge 入口激活与观察击杀完成，不切换胜利场景 |
+| F1 Sweep | 半径 7、扇形 120°、伤害 1、前摇 1 秒、释放 0.18 秒、收招 0.75 秒、冷却 4.5 秒 |
+| F2 Ground wave | 三段各宽 3 / 厚 1；脚前 3.3 起步、速度 8、距离 14、前摇 1.55 秒、伤害 2、身体释放 0.22 秒、收招 1 秒、冷却 8 秒 |
+| F2 缺口 | max(1.65, 玩家真实碰撞体横向投影宽 × 1.8 + 0.35)；两条空通道；包含 0.25 秒反应余量，至少一条可走路线，否则取消 |
+| F3 Summon | 每波最多 3、存活上限 5、预算 12、间隔 14 秒；预警 1.4 秒、释放 0.2 秒、收招 0.8 秒 |
+| F3 候选 | Normal/Fast/Heavy/Ranged；权重 45/25/10/20；逐类型上限 5/3/1/2；各类专属倍率均为 1 |
 
-生命、范围、伤害、时长、冷却、召唤等在配置资产中调整；Motor 的移动速度和停止距离保留在原组件中。当前绕行是保守局部避障，复杂凹障碍的全局寻路不在本轮范围。
+伤害从建议起点 12/18 改为 1/2 的依据：原 Player Prefab 和正式场景实查只有 **5 HP**，原伤害起点会单击秒杀；测试场景此前的 100 HP 覆写掩盖了差异。本轮只移除已知测试覆写，恢复原 5 HP / 速度 5，没有通过加玩家生命、作弊移速或额外无敌完成正常战斗验证。
 
-## 4. 正式素材、临时表现与缺口
+F1 整段预警锁方向、隔墙无伤、按 PlayerHealth 去重。Phase2 第二段重新瞄准，独立 0.85 秒预警。
 
-复用现有 Phase1 Idle / Move / Hit / Death 片段与八方向资源，以及已导入并实际查看的 RiftWing Phase2 Idle / Move。保留现有画布、中心 pivot、256 PPU、视觉层位置、阴影与身体比例。移动方向切换延续当前 normalized gait，不重回第 1 帧。受击主要使用原 EnemyHealth 闪白；正式技能期间不插播受击片段。
+F2 由同一 WavePlan 驱动预警、特效和实际几何，相对扫掠覆盖玩家与波面整个物理步，每波最多一次命中。墙体裁切有效长度、墙后无伤、经过后无持续伤害；释放后不追踪玩家，传播生命周期独立于身体收招。沿用 PlayerHealth 无敌规则，并遵循原腾空状态对地面攻击的豁免。死亡、禁用和重开清除实际伤害几何。旧圆盘字段仅保留序列化兼容，已不参与伤害或选技。
 
-**临时表现：**三个技能和转换期间冻结当前阶段对应的中性身体姿势，配合真实填充扇形/圆盘、释放变色及震地反馈；不将此称为爪击、抬手、砸地的正式身体动作。Phase2 暂时沿用 Phase1 的受击/死亡资源，缺少 RiftWing 对应片段。预警 Mesh 是逻辑验证表现，尚未完成正式 FX 的统一绑定。
+Phase2 保留 RiftWing，F2 不堆波数，F3 使用同一预算；转换取消未释放攻击/波面/待召唤，致死优先跳过转换。生命仍是原 EnemyHealth，原穿透、爆炸、连锁、分裂链路通过真实 Bullet 回归。
 
-已基于实际母版生成一次 DR 扫击六姿势样例并做视觉检查。结果存在不透明背景、跨格和落脚点/比例不一致，已拒收，未导入 Assets、未批量扩展或替代正式 Animator。记录见 `ArtReview/README.md` 和拒收图。
+## 3. 召唤物不行动的根因与修复
 
-`HiveTyrant_ArtGaps.csv` 按动作、阶段和八方向记录 72 项缺口，包括已有参考路径、缺少姿势、循环规则、分动作帧数/时长、1024 RGBA 画布、固定锚点、释放时刻与 FX/阴影分层。主要缺口：两阶段扫击/震地/召唤，Phase2 转换、受击和死亡。正式动作全部到位前，比例一致性、攻击姿势连贯性和 RiftWing 死亡衔接仍不能宣称完成。
+先复现再修复，见 CompletionValidation/Summon_Before.txt：四类型目标已绑定、移动启用、锁解除、速度为正、刚体 simulated=true、导航组件存在，但 AstarPath.active=False、path=False，两秒内移动全部 0。**专用场景缺少 A* 导航图**是此次复现的根因，并非漏绑目标。
 
-## 5. 实际验证与限制
+Setup 保存有效图配置，HiveTyrantTestNavigation 按真实 Environment 扫描；正式场景继续使用原 L01Navigation。召唤按各 Prefab 基础属性与原 EnemyData 调用原初始化接口，保留移动、特色攻击、奖励、池化，不每帧改 Transform 掩盖导航问题。
 
-使用本机 Unity **2022.3.62f3c1** 完成实际导入、编译与配置；使用 **Direct3D11 的真实 Editor Play Mode** 执行集成验证，结果见 `Validation/PlayMode_Result.txt`，不是把编译通过当作战斗通过。
+| 类型 | 实测 HP / 速度 / 接触伤害 | 首次与同一实例回池再生 |
+| --- | --- | --- |
+| Normal / Swarmer | 3 / 1.5 / 1 | 两轮各移动约 8.31，近身伤害、死亡、原击杀/经验奖励、回池通过 |
+| Fast / Rusher | 2 / 2.25 / 1 | 两轮各移动约 8.51，原冲锋状态和伤害通过 |
+| Heavy / Tank | 11 / 0.975 / 2 | 两轮各移动约 6.61，原重击状态和伤害通过 |
+| Ranged / Spitter | 3 / 1.35 / 1 | 两轮各移动约 2.62，进入射程后实际发射原投射物并命中 |
 
-最终一轮通过 **86 项断言**：八方向映射和步态延续、技能动作锁、前摇不提前扣血、扫击多碰撞体单次扣血、锁方向后绕后闪避、震地圆盘内/外判定、收招归还控制权、原武器及物理穿透/爆炸/连锁/分裂子弹、召唤波次/间隔/硬上限/总预算/无落点退出、禁用清理归属、普通敌人死亡/经验/回池再生、Phase2 中断/只进入一次/不回血/二段独立提示、致死跳过转换、死亡中断与完整延迟清理、新实例状态干净、F9 实际场景重开、真实追踪刚体被墙阻挡、隔墙扫击无伤害、重置回到原位置，以及正式 Level01 原入口激活、边界绑定、实际技能与原击杀完成桥接。
+按真实碰撞体和原视觉缩放计算净空，当前约 0.51 / 0.3825 / 0.668 / 0.65。先选类型再选点，检查场地、墙、玩家、敌人、待落点和 A* 连通性；释放时复检，失败不花成功召唤预算。候选选择有界。回池清归属，清理前复核 Owner，避免删除其他刷怪器复用的实例。
 
-重复运行配置工具后，对 4719 个 Assets 文件逐一比较 SHA256，零变化、零新增，结果见 `Validation/RepeatSetup_Result.json`。原资源与布局保护记录见 `HiveTyrant_PreservationCheck.json`。
+完整结果见 CompletionPass_Result.txt；最终逐类型上限、候选退让、释放时复检、旧归属复用及重开资源测试见 PolicyAndStress_Result.txt，均位于 CompletionValidation。
 
-实际渲染截图位于 `Validation/`：Sweep_Warning、Slam_Warning、Summon_Warning、Phase2_RiftWing、Death、Level01_BossFight。已查看预警、RiftWing 与正式场景截图。相机截图不包含 IMGUI 血条；HUD 已接线，但尚未进行逐像素 UI 验收。
+## 4. 动作与特效制作、来源和接入
 
-已知既有诊断：原 A* Editor HTTP 更新检查器报告 `InvalidOperationException: Insecure connection not allowed`，会触发 Console Error Pause。验证器保留该诊断，仅恢复这个明确的 Editor 检查导致的暂停；其他运行时 Error / Exception / Assert 均使结果失败。未修改该第三方插件或项目网络安全设置。
+复用原 1024 RGBA / 中心 pivot / 256 PPU 母版，保留八方向 Idle/Move Clip、Animator、步态延续、VisualRoot 比例和静态阴影。每阶段每方向独立关节/分区，共 16 份视角配置，不旋转单张图替代八方向。
 
-未完成/未验证：正式攻击与转换动画、Phase2 独立受击/死亡、最终战斗平衡、长时间人工完整关卡游玩、全部分辨率的相机构图与 HUD、独立打包版本。当前近距离镜头可能裁切 Boss 上部外轮廓；未改动原正式关卡相机规则，需要后续专门视觉验收。
+关节数据为 Assets/_Project/Animations/Boss/HiveTyrant/HiveTyrant_PoseLibrary.asset；制作源为 Editor/HiveTyrantPoseAuthoring.cs、HiveTyrantSkinAuthoring.cs，运行时为 Scripts/Boss/HiveTyrantPresentation.cs。当前采用局部刚性三角片、软肩部权重及源 PNG 透明连通分区；临时读取 PNG，不改变源图/导入身份。交付源图引用、网格分区、关节与代码，没有虚构未导出的逐帧 PNG。
 
-## 6. 最少试玩步骤
+两阶段 Cue6/7/8 为扫击/地面波/召唤；Cue9 转换、Cue2 受击、Cue3 死亡使用 RiftWing 源图。Combat 统一控制 Motor 与表现所有权，接触关键点对齐调度释放时刻；原静态 Sprite 在关节动作期间隐藏，受击不抢占正在执行的技能，死亡优先且不闪回 Phase1。
 
-1. 打开 `Assets/_Project/Scenes/HiveTyrant_CombatTest.unity`，按 Play。配置已保存，无须逐项挂脚本或补引用。
-2. 测试场景默认关闭自动技能；原 Player 保持可移动/射击。走到 Boss 附近，用 F1 扫击、F2 震地、F3 召唤，观察前摇后躲避；F4 扣血到 Phase2 阈值，F5 致死，F6 切换自动技能，F9 或 Restart 按钮完整重开场景。忙碌、玩家死亡或召唤预算耗尽时，相应操作会按规则被拒绝。
-3. 退出 Play 后，可运行菜单 `AlienPurge > Hive Tyrant > Configure and Validate Combat` 重新配置，或 `Run Play Mode Verification` 重跑自动检查。自动检查会切换场景并写入结果，运行前先保存其他工作。
-4. 正式场景仍打开 `Assets/_Project/Scenes/ArtTests/Level01_FullWorld.unity`，沿原 Research → Boss 入口流程试玩；正式场景没有新增调试快捷键。
+特效在 HiveTyrantEffects.cs / HiveTyrantTelegraph.cs，材质为 Art/Boss/HiveTyrant/FX/HiveTyrant_VertexTint.mat：F1 局部蓄力亮色、短弧和碎片；F2 独立亮边、石块和薄尘，限制在危险段内；F3 紫灰落点预警与生成反馈；转换有核心/翼缘局部变化。一个 Boss 预建 10 个释放面、3 个波面、12 个预警面及 1 个身体网格，独立拥有并释放资源。未全局改 Bloom、曝光、相机规则或 UI。
 
-批处理入口保存在项目外 `D:\AlienPurge\Run-HiveTyrantUnity.ps1`；Setup / Verify 均拒绝并发 Unity 工程写入。现有场景和组件引用已实际保存。
+新生成 DR 单姿势样例因角色比例/肢体一致性失败而拒收，存于 ArtReview/REJECTED_DR_Anticipation_20261017.png，未接入业务资源；上一轮被拒六格图亦未使用。官方参考提炼及出处见 CompletionReferences.md，没有复制角色/贴图。
 
-## 7. 进入 Exploder / Support 的条件
+## 5. 素材缺口与完成依据
 
-应先补齐并验收单方向攻击样例，再扩展对应八方向与 RiftWing 片段；将释放时刻与现有逻辑预警对齐，完成比例/锚点/阴影/相机构图及血条人工验收，再跑回归并做完整战斗数值试玩。逻辑、正式素材、工程接入、实际验证四项全部满足后，才能将 Hive Tyrant 标为正式完成并进入 Exploder / Support。当前代码与接入可继续使用，剩余主要门槛是正式动作素材和视觉/平衡验收。
+HiveTyrant_ArtGaps.csv 原 72 个 Action/Phase/Direction 标识和顺序保留，增加 Method / Source / ExportResource / RuntimeState / ReleaseSeconds / AcceptanceEvidence；源文件均存在，保存后重新读取验证 72 项。旧 Slam 圆盘需求已替换为前向分段波。
+
+**正式动作仍未通过。** D 后臂、R 后拳、UR 拳/翼交界、UL 后臂/髋部、L/DL 前肢遮挡在较大动作中存在切口或小片脱离；死亡保持正确阶段并完整播放，但倒伏力度和接缝仍需修整。U/DR 主轮廓较稳定，不由此推定全部连续帧合格。CSV 逐项标为 PARTIAL，具体图集与检查见 CompletionValidation/VisualReview.md。
+
+当前输入是单层合成 PNG，原前臂后方的身体内容没有保存在这些像素中；权重和连通分区不能替代干净遮挡层补绘。生成样例也未通过一致性验收。需补完整躯干、前臂、后肢遮挡层，再沿现有时序/接口做逐方向完整播放验收。此次运行接入不能冒充该美术缺口已补齐。
+
+## 6. Play Mode、场景、性能、构建与风险
+
+- **Editor：** CompletionValidation/CompletionPass_Result.txt 有 216 个 PASS。覆盖扩大扫击、锁定/墙/去重、二段独立预警；F2 近/中/远两缺口正常走位（原速度、0.25 秒反应）、完整碰撞体边缘、到达前/经过后安全、两秒大跨步和相对跨越、全封路线取消、腾空和禁用清理；原武器链路、各类原生攻击/奖励/回池。
+- **正式场景：** 实际加载 Level01_FullWorld，原 Research/入口激活既有 Boss，运行 F1/F2/F3，原 BossDefeated 桥接完成；未激活预览保持原样。Boss 上部完整入镜，死亡后恢复原相机尺寸/释放构图。这不是从开局到撤离的人手全关卡通关。
+- **正常自动战斗：** 输入自动化仅驱动原移动和 WeaponManager.TryFire，未加速、加无敌、治疗或直接给 Boss 调试伤害。首轮 101.6 秒胜出剩 1 HP；完整回归轮 102.1 秒胜出剩 5 HP、658 次射击、1 次转换、12 只总召唤、31 次释放。出生组合会影响压力，尚未做广泛玩家样本/武器 Build 平衡。
+- **Editor 性能：** i7-14700HX / RTX 4070 Laptop GPU，DX11；完整回归 10751 帧含截图，中位 9.18ms / P95 11.73ms（该轮为较早关节网格版本）。三轮重开资源维持 26 个 Boss 网格、3 个匹配材质条目（含资产/实例），无本 Boss 预警、波面、召唤、释放残留。GC 后托管 585.30 → 584.16 → 584.16 MB；Unity 总分配 1048.01 → 1049.38 → 1049.89 MB，包含编辑器/场景，不是单 Boss 内存。最终网格资源检查另见 PolicyAndStress_Result.txt。
+- **Windows 构建：** WindowsBuild_Result.txt：Development Windows64 成功，0 Error，2 个项目原有 CS0414 未使用字段警告，52.08 秒，约 1.79 GB。只打专用测试场景，原 Build Scenes 未改。产物 D:\AlienPurge\Builds\HiveTyrantCompletion\AlienPurge.exe，包含最终关节候选版本。
+- **独立运行：** CompletionValidation/Standalone/Standalone_Result.txt 为 PASSED。原 5 HP / 速度 5，106.6 秒（含结束等待）胜出剩 5 HP，647 次射击、1 次转换、12 只总召唤、32 次释放，零运行错误，死亡后 EncounterEffects 根对象为 0。隐藏窗口帧时间中位 0.28ms / P95 26.36ms，受窗口调度影响，不能换算成前台正常 FPS；含采图帧，未验证低配/其他平台。
+- **视觉：** PoseAtlases 是受控运行姿态采样；DR_Sweep_PlayMode.gif 是一次实际扫击每约 0.08 秒的连续采帧；Battle 是完整自动战斗每约 10 秒截图；Standalone 是独立程序截图。主相机 RenderTexture 不包含 Overlay UI，不据此声称人工验收用户血条外观。视觉失败项明确保留。
+- **诊断：** 原 A* Editor HTTP 更新检查器仍会报 Insecure connection not allowed；只识别该精确旧堆栈并恢复 Error Pause，保留日志，没有关闭全局网络安全或忽略其他运行/退出错误。独立程序没有该 Editor 诊断。修复过程中的 Failed_*.txt 是历史失败证据，不是当前通过结果。
+
+最终关节版本的 PolicyAndStress_Result.txt 再次通过 35 项检查：逐类型上限、失效候选、预算/释放复检、归属复用、致死清召唤以及三轮重开，Boss 网格/材质计数仍是 26/3。托管内存约 583.71 → 583.53 → 583.59 MB；Unity 总分配约 393.15 → 412.60 → 429.40 MB。冷启动后三轮原生分配增加约 36.25 MB，尚未进一步区分场景/引擎缓存；因此只确认 Boss 对象计数稳定，**不宣称零内存增长或长期无泄漏**。
+
+构建过程自动清空了 TMP 动态后备字体的缓存数据，结束后已将该非任务变更精确恢复至本轮起点；原字体资产不包含在交付变更中。
+
+未完成/未测：正式动画遮挡与倒伏，长期战斗平衡、真人手感、从头到尾的正式关卡流程、低配与长时间压力测试。可运行、可战胜不等于上述验收已完成。
+
+## 7. 最少试玩步骤
+
+1. 打开 Assets/_Project/Scenes/HiveTyrant_CombatTest.unity，按 Play，组件/配置/材质/导航均已保存，不需手动接线。
+2. 使用原移动和鼠标左键射击；按 F6 开启自动选技，开始完整战斗。测试场景初始自动选技关闭。
+3. F1 扫击、F2 前向三段波、F3 召唤、F4 Phase2、F5 击杀、F6 切换自动、F9 重载。死亡后可直接 F9。
+4. 正式场景使用原 Research/竞技场入口流程，没有添加作弊键。Windows 产物双击可试玩；只有显式传入 -hivetyrant-smoke 才会启动 Development 输入自动化。
+
+复验菜单：AlienPurge/Hive Tyrant/Configure and Validate Combat、Run Play Mode Verification。完整批处理入口 HiveTyrantCombatVerification.RunCompletionPass；最终资源/策略入口 RunPolicyAndStress；构建 HiveTyrantBuildVerification.BuildWindows。批处理前正常保存退出交互 Unity，避免同时写同一工程。

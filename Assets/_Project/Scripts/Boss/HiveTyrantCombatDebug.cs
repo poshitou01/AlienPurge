@@ -35,8 +35,8 @@ public sealed class HiveTyrantCombatDebug : MonoBehaviour
     }
     private void OnGUI()
     {
-        GUI.Box(new Rect(12, 92, 620, 100), "Hive Tyrant combat test - TEMP attack poses / filled warnings");
-        GUI.Label(new Rect(24, 116, 600, 24), "F1 Sweep | F2 Slam | F3 Summon | F4 Phase2 | F5 Kill | F6 Auto AI | F9 Restart");
+        GUI.Box(new Rect(12, 92, 620, 100), "Hive Tyrant combat test - directional joint animation / native enemy AI");
+        GUI.Label(new Rect(24, 116, 600, 24), "F1 Sweep | F2 Ground wave | F3 Summon | F4 Phase2 | F5 Kill | F6 Auto AI | F9 Restart");
         if (boss != null)
             GUI.Label(new Rect(24, 144, 600, 32), boss.State + " | Auto: " + boss.AutomaticSkills + " | Summons: " + boss.LivingSummons + "/" + boss.Config.summonAliveCap + " | Budget used: " + boss.TotalSummoned);
         if (GUI.Button(new Rect(12, 200, 130, 28), "Restart (F9)")) RestartScene();

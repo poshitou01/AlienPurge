@@ -1,0 +1,44 @@
+FAILED - Unity 2022.3.62f3c1 actual Editor Play Mode; Direct3D11
+FAIL System.InvalidOperationException: Editor paused during verification; inspect startup/runtime errors.
+  at HiveTyrantCombatVerification.Tick () [0x0008f] in D:\AlienPurge\AlienPurge\Assets\_Project\Editor\HiveTyrantCombatVerification.cs:70 
+RUNTIME ERRORS:
+Caught exception when loading from zip
+Pathfinding.Ionic.Zip.ZipException: Cannot read that as a ZipFile ---> Pathfinding.Ionic.Zip.BadReadException: Could not read block - no data!  (position 0x00000000)
+  at Pathfinding.Ionic.Zip.SharedUtilities._ReadFourBytes (System.IO.Stream s, System.String message) [0x00034] in <99f15b4793f0442da95084e2e79a92c8>:0 
+  at Pathfinding.Ionic.Zip.SharedUtilities.ReadInt (System.IO.Stream s) [0x00000] in <99f15b4793f0442da95084e2e79a92c8>:0 
+  at Pathfinding.Ionic.Zip.ZipFile.ReadFirstFourBytes (System.IO.Stream s) [0x00000] in <99f15b4793f0442da95084e2e79a92c8>:0 
+  at Pathfinding.Ionic.Zip.ZipFile.ReadIntoInstance (Pathfinding.Ionic.Zip.ZipFile zf) [0x0002f] in <99f15b4793f0442da95084e2e79a92c8>:0 
+   --- End of inner exception stack trace ---
+  at Pathfinding.Ionic.Zip.ZipFile.ReadIntoInstance (Pathfinding.Ionic.Zip.ZipFile zf) [0x001c4] in <99f15b4793f0442da95084e2e79a92c8>:0 
+  at Pathfinding.Ionic.Zip.ZipFile.Read (System.IO.Stream zipStream, System.IO.TextWriter statusMessageWriter, System.Text.Encoding encoding, System.EventHandler`1[TEventArgs] readProgress) [0x00086] in <99f15b4793f0442da95084e2e79a92c8>:0 
+  at Pathfinding.Ionic.Zip.ZipFile.Read (System.IO.Stream zipStream) [0x00000] in <99f15b4793f0442da95084e2e79a92c8>:0 
+  at Pathfinding.Serialization.AstarSerializer.OpenDeserialize (System.Byte[] bytes) [0x00028] in D:\AlienPurge\AlienPurge\Assets\AstarPathfindingProject\Core\Serialization\JsonSerializer.cs:507 
+UnityEngine.Debug:LogError (object)
+Pathfinding.Serialization.AstarSerializer:OpenDeserialize (byte[]) (at Assets/AstarPathfindingProject/Core/Serialization/JsonSerializer.cs:511)
+Pathfinding.AstarData:DeserializeGraphsAdditive (byte[]) (at Assets/AstarPathfindingProject/Core/AstarData.cs:352)
+Pathfinding.AstarData:DeserializeGraphs (byte[]) (at Assets/AstarPathfindingProject/Core/AstarData.cs:336)
+Pathfinding.AstarData:DeserializeGraphs () (at Assets/AstarPathfindingProject/Core/AstarData.cs:307)
+Pathfinding.AstarData:Awake () (at Assets/AstarPathfindingProject/Core/AstarData.cs:163)
+AstarPath:InitializeAstarData () (at Assets/AstarPathfindingProject/Core/AstarPath.cs:1362)
+AstarPath:Awake () (at Assets/AstarPathfindingProject/Core/AstarPath.cs:1249)
+
+Caught exception when loading from zip
+Pathfinding.Ionic.Zip.ZipException: Cannot read that as a ZipFile ---> Pathfinding.Ionic.Zip.BadReadException: Could not read block - no data!  (position 0x00000000)
+  at Pathfinding.Ionic.Zip.SharedUtilities._ReadFourBytes (System.IO.Stream s, System.String message) [0x00034] in <99f15b4793f0442da95084e2e79a92c8>:0 
+  at Pathfinding.Ionic.Zip.SharedUtilities.ReadInt (System.IO.Stream s) [0x00000] in <99f15b4793f0442da95084e2e79a92c8>:0 
+  at Pathfinding.Ionic.Zip.ZipFile.ReadFirstFourBytes (System.IO.Stream s) [0x00000] in <99f15b4793f0442da95084e2e79a92c8>:0 
+  at Pathfinding.Ionic.Zip.ZipFile.ReadIntoInstance (Pathfinding.Ionic.Zip.ZipFile zf) [0x0002f] in <99f15b4793f0442da95084e2e79a92c8>:0 
+   --- End of inner exception stack trace ---
+  at Pathfinding.Ionic.Zip.ZipFile.ReadIntoInstance (Pathfinding.Ionic.Zip.ZipFile zf) [0x001c4] in <99f15b4793f0442da95084e2e79a92c8>:0 
+  at Pathfinding.Ionic.Zip.ZipFile.Read (System.IO.Stream zipStream, System.IO.TextWriter statusMessageWriter, System.Text.Encoding encoding, System.EventHandler`1[TEventArgs] readProgress) [0x00086] in <99f15b4793f0442da95084e2e79a92c8>:0 
+  at Pathfinding.Ionic.Zip.ZipFile.Read (System.IO.Stream zipStream) [0x00000] in <99f15b4793f0442da95084e2e79a92c8>:0 
+  at Pathfinding.Serialization.AstarSerializer.OpenDeserialize (System.Byte[] bytes) [0x00028] in D:\AlienPurge\AlienPurge\Assets\AstarPathfindingProject\Core\Serialization\JsonSerializer.cs:507 
+UnityEngine.Debug:LogError (object)
+Pathfinding.Serialization.AstarSerializer:OpenDeserialize (byte[]) (at Assets/AstarPathfindingProject/Core/Serialization/JsonSerializer.cs:511)
+Pathfinding.AstarData:DeserializeGraphsAdditive (byte[]) (at Assets/AstarPathfindingProject/Core/AstarData.cs:352)
+Pathfinding.AstarData:DeserializeGraphs (byte[]) (at Assets/AstarPathfindingProject/Core/AstarData.cs:336)
+Pathfinding.AstarData:DeserializeGraphs () (at Assets/AstarPathfindingProject/Core/AstarData.cs:307)
+AlienPurge.Level01ConnectedV01.L01Navigation:EnsureGrid (AstarPath) (at Assets/AlienPurge/Level01ConnectedV01/Runtime/L01Navigation.cs:46)
+HiveTyrantTestNavigation:Start () (at Assets/_Project/Scripts/Boss/HiveTyrantTestNavigation.cs:13)
+
+Automated checks are distinct from visual review and long-term balance acceptance.

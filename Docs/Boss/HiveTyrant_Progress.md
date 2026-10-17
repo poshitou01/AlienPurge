@@ -1,12 +1,11 @@
-# Hive Tyrant 进度检查点
+# Hive Tyrant 当前检查点
 
-- 修改前备份已逐文件校验：`D:\AlienPurge\AlienPurge_Backup_PreHiveTyrant_20261017_152640`；6260 文件、2,591,856,316 字节、全部 SHA256 一致。
-- 原分支 `feat/level01-integration`，原 HEAD `e2ea18910c7cf3a04d8bd7b1c3494cafa9dff1fd`，原工作区干净。本轮 `codex/hivetyrant-combat`，无推送或合并。
-- 本轮逻辑和工程接入完成，Unity 2022.3.62f3c1 实际编译及 Editor 配置成功；Direct3D11 真实 Play Mode 最终通过 86 项断言，包括原武器扩展伤害链、普通敌人奖励回池、三技能、Phase2、死亡、F9 重开、物理墙和正式关卡入口/完成桥接。
-- 重复配置验证：4719 个 Assets 文件逐一 SHA256 比较，零变化、零新增。
-- 测试场景：`Assets/_Project/Scenes/HiveTyrant_CombatTest.unity`。原 Arena 场景未改；正式场景使用原 `L01World.boss`，既有未激活预览保留，739 个原 Transform 全部保持原值，原 .meta 无改动。
-- 完整交付与试玩：`HiveTyrant_Delivery.md`；实际结果：`Validation/PlayMode_Result.txt`；重复配置：`Validation/RepeatSetup_Result.json`。
-- 正式素材未完成，不应将 Boss 标为正式完成。剩余八方向正式技能、转换和 RiftWing 受击/死亡详见 72 项 `HiveTyrant_ArtGaps.csv`。DR 单方向扫击生成样例因背景/锚点/比例失败被拒收，未扩展或接入 Animator。
-- 仍需正式素材视觉验收、近距离相机构图/HUD 人工验收、最终战斗平衡和完整关卡试玩；未验证独立打包版本。此前存在 A* Editor HTTP 更新检查器诊断，保留记录且未修改第三方代码。
-- 下一步先补齐 Hive Tyrant 的素材与上述验收，四项状态都完成后再开始 Exploder / Support。
-- 批处理复验工具：`D:\AlienPurge\Run-HiveTyrantUnity.ps1 -Mode Setup` 或 `-Mode Verify`，拒绝并发 Unity 写入。
+从 codex/hivetyrant-combat / 7190c33 干净状态继续；修改前快照 D:\AlienPurge\AlienPurge_Snapshot_HiveTyrant_Completion_20261017_172335 已校验。
+
+F1 7/120、F2 前向三段波/真实缺口、F3 四类型原生 AI 已实现。召唤不行动的实际原因是专用场景缺 A* 图，已补原导航初始化/扫描。原玩家 5 HP 下扫击 1、波面 2；原 UI、Player Prefab、资源身份、布局保持。
+
+完整 Editor 回归 216 项、正式关卡原入口/三技能/桥接/镜头恢复通过。Windows Development 构建及原参数两阶段自动战斗通过。打开测试场景按 Play / F6 可试玩。
+
+**正式动作部分完成、视觉未通过，不标记整个 Boss 完成。** 已接入真实关节动作和正确 RiftWing 受击/死亡；仍有遮挡切口，死亡倒伏需完善。72 项全部保留，逐项记录来源、时序、证据与 PARTIAL 状态。本轮未开始 Exploder / Support。
+
+完整交付与恢复见 HiveTyrant_Delivery.md，视觉缺口见 CompletionValidation/VisualReview.md；当前验收以 CompletionValidation 为准。Validation 保留上一轮历史结果，不代表本轮地面波与原生召唤实现。

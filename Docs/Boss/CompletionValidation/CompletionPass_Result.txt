@@ -1,0 +1,246 @@
+PASSED - Unity 2022.3.62f3c1 actual Editor Play Mode; Direct3D11
+RESUMED existing A* Editor update-check pause; diagnostic retained below.
+PASS Dedicated scene has usable Boss, Player and config
+PASS Boss uses EnemyHealth at configured initial HP
+PASS Enlarged 7 / 120 sector includes new range, excludes outside/rear
+PASS Eight-direction mapping/gait preserved: 0
+PASS Eight-direction mapping/gait preserved: 1
+PASS Eight-direction mapping/gait preserved: 2
+PASS Eight-direction mapping/gait preserved: 3
+PASS Eight-direction mapping/gait preserved: 4
+PASS Eight-direction mapping/gait preserved: 5
+PASS Eight-direction mapping/gait preserved: 6
+PASS Eight-direction mapping/gait preserved: 7
+PASS Sweep starts with explicit action ownership
+PASS Sweep warning causes no early damage; boss stops moving
+PASS Sweep hits once despite multiple player colliders
+PASS Action releases ownership after recovery
+PASS Second sweep can start after recovery
+PASS Locked sweep can be dodged behind the boss without an untelegraphed rear hit
+PASS Action releases ownership after recovery
+PASS Wave has a reachable route at distance 5
+PASS Gap 0 accommodates actual collider and clear walking route
+PASS Action releases ownership after recovery
+PASS Native walking speed 5 safely reaches gap 0 from 5 (no damage/invulnerability)
+PASS Gap trial includes real player physics displacement
+PASS Wave has a reachable route at distance 5
+PASS Gap 1 accommodates actual collider and clear walking route
+PASS Action releases ownership after recovery
+PASS Native walking speed 5 safely reaches gap 1 from 5 (no damage/invulnerability)
+PASS Gap trial includes real player physics displacement
+PASS Wave has a reachable route at distance 9
+PASS Gap 0 accommodates actual collider and clear walking route
+PASS Action releases ownership after recovery
+PASS Native walking speed 5 safely reaches gap 0 from 9 (no damage/invulnerability)
+PASS Gap trial includes real player physics displacement
+PASS Wave has a reachable route at distance 9
+PASS Gap 1 accommodates actual collider and clear walking route
+PASS Action releases ownership after recovery
+PASS Native walking speed 5 safely reaches gap 1 from 9 (no damage/invulnerability)
+PASS Gap trial includes real player physics displacement
+PASS Wave has a reachable route at distance 14
+PASS Gap 0 accommodates actual collider and clear walking route
+PASS Action releases ownership after recovery
+PASS Native walking speed 5 safely reaches gap 0 from 14 (no damage/invulnerability)
+PASS Gap trial includes real player physics displacement
+PASS Wave has a reachable route at distance 14
+PASS Gap 1 accommodates actual collider and clear walking route
+PASS Action releases ownership after recovery
+PASS Native walking speed 5 safely reaches gap 1 from 14 (no damage/invulnerability)
+PASS Gap trial includes real player physics displacement
+PASS Central travelling wave starts at extended targeting range
+PASS No damage before the moving front arrives
+PASS Moving dangerous segment hits exactly once on arrival
+PASS Action releases ownership after recovery
+PASS Wave survives body release and recovery instead of using old 0.22-second lifetime
+PASS Passed front leaves no lingering damage
+PASS Boundary fixture creates valid shared geometry
+PASS Swept 2-second step: gap 0 edge -1 full collider fits safely
+PASS Boundary fixture creates valid shared geometry
+PASS Swept 2-second step: gap 0 edge -1 exposed collider enters real danger
+PASS Boundary fixture creates valid shared geometry
+PASS Swept 2-second step: gap 0 edge 1 full collider fits safely
+PASS Boundary fixture creates valid shared geometry
+PASS Swept 2-second step: gap 0 edge 1 exposed collider enters real danger
+PASS Boundary fixture creates valid shared geometry
+PASS Swept 2-second step: gap 1 edge -1 full collider fits safely
+PASS Boundary fixture creates valid shared geometry
+PASS Swept 2-second step: gap 1 edge -1 exposed collider enters real danger
+PASS Boundary fixture creates valid shared geometry
+PASS Swept 2-second step: gap 1 edge 1 full collider fits safely
+PASS Boundary fixture creates valid shared geometry
+PASS Swept 2-second step: gap 1 edge 1 exposed collider enters real danger
+PASS Continuous crossing fixture plan
+PASS Relative sweep detects player/front crossing between frames without duplicate damage
+PASS Existing airborne-rule fixture plan
+PASS Native ability state accepts airborne mode
+PASS Ground wave honors the existing airborne exclusion without adding invulnerability
+PASS Wall allows a near safe escape and clips all downstream segments
+PASS Wall-clipped geometry cannot damage player behind wall
+PASS Blocked launch / all sealed routes cancels wave planning
+PASS Cancellation fixture starts warning
+PASS Disable clears warning/travelling geometry and damage
+PASS Cancellation fixture starts travel
+PASS Disable clears warning/travelling geometry and damage
+PASS Dedicated scene has scanned native A* navigation
+PASS Integrated native candidate Normal
+PASS Clean native stats/locks/physics on Normal cycle 0
+STATS Normal HP=3 speed=1.5 contact=1 clearance=0.51
+PASS Native navigation moves Normal cycle 0 by 8.31 units
+PASS Native Normal cycle 0 attacks player
+PASS Native Normal death returns pool, clears owner and grants original kill/XP reward
+PASS Exact pooled instance recycled for Normal
+PASS Clean native stats/locks/physics on Normal cycle 1
+STATS Normal HP=3 speed=1.5 contact=1 clearance=0.51
+PASS Native navigation moves Normal cycle 1 by 8.31 units
+PASS Native Normal cycle 1 attacks player
+PASS Native Normal death returns pool, clears owner and grants original kill/XP reward
+PASS Integrated native candidate Fast
+PASS Clean native stats/locks/physics on Fast cycle 0
+STATS Fast HP=2 speed=2.25 contact=1 clearance=0.3825
+PASS Native navigation moves Fast cycle 0 by 8.51 units
+PASS Native Fast cycle 0 attacks player
+PASS Native Fast death returns pool, clears owner and grants original kill/XP reward
+PASS Exact pooled instance recycled for Fast
+PASS Clean native stats/locks/physics on Fast cycle 1
+STATS Fast HP=2 speed=2.25 contact=1 clearance=0.3825
+PASS Native navigation moves Fast cycle 1 by 8.51 units
+PASS Native Fast cycle 1 attacks player
+PASS Native Fast death returns pool, clears owner and grants original kill/XP reward
+PASS Integrated native candidate Heavy
+PASS Clean native stats/locks/physics on Heavy cycle 0
+STATS Heavy HP=11 speed=0.975 contact=2 clearance=0.668
+PASS Native navigation moves Heavy cycle 0 by 6.61 units
+PASS Native Heavy cycle 0 attacks player
+PASS Native Heavy death returns pool, clears owner and grants original kill/XP reward
+PASS Exact pooled instance recycled for Heavy
+PASS Clean native stats/locks/physics on Heavy cycle 1
+STATS Heavy HP=11 speed=0.975 contact=2 clearance=0.668
+PASS Native navigation moves Heavy cycle 1 by 6.61 units
+PASS Native Heavy cycle 1 attacks player
+PASS Native Heavy death returns pool, clears owner and grants original kill/XP reward
+PASS Integrated native candidate Ranged
+PASS Clean native stats/locks/physics on Ranged cycle 0
+STATS Ranged HP=3 speed=1.35 contact=1 clearance=0.65
+PASS Native navigation moves Ranged cycle 0 by 2.62 units
+PASS Native Ranged cycle 0 attacks player with a real projectile
+PASS Native Ranged death returns pool, clears owner and grants original kill/XP reward
+PASS Exact pooled instance recycled for Ranged
+PASS Clean native stats/locks/physics on Ranged cycle 1
+STATS Ranged HP=3 speed=1.35 contact=1 clearance=0.65
+PASS Native navigation moves Ranged cycle 1 by 2.62 units
+PASS Native Ranged cycle 1 attacks player with a real projectile
+PASS Native Ranged death returns pool, clears owner and grants original kill/XP reward
+PASS Existing Player weapon fires using its configured BulletPool
+PASS Actual weapon projectile damages the original Boss EnemyHealth
+PASS Physical piercing bullet damages Boss once while crossing its collider
+PASS Physical explosive projectile applies original direct and explosion damage to Boss
+PASS Physical hit on ordinary enemy chains through the existing lightning path to Boss
+PASS Two real split child projectiles damage Boss through original Bullet collision path
+PASS Summon starts through the existing EnemyPool
+PASS Summon selects finite warned valid positions
+PASS Summons spawned within wave/budget limits
+PASS Action releases ownership after recovery
+PASS Natural summon request respects minimum interval
+PASS Debug second wave exercises hard alive cap independently of cooldown
+PASS Two waves fill the alive cap without exceeding it
+PASS Action releases ownership after recovery
+PASS Unrelated ordinary enemy obtained from existing pool
+PASS Disable cancels only Boss warnings/pending/owned summons; unrelated enemy survives
+PASS Ordinary EnemyHealth death still returns to pool and registers exactly one kill
+PASS Ordinary death still drops one experience orb through the existing pool
+PASS Ordinary pooled re-spawn restores health and colliders
+PASS Fully blocked spawn search skips every invalid point
+PASS Action releases ownership after recovery
+PASS No-valid-point summon completes without spending budget or stalling
+PASS Additional budgeted summon starts
+PASS Summon progresses without exceeding alive cap
+PASS Additional budgeted summon starts
+PASS Summon progresses without exceeding alive cap
+PASS Additional budgeted summon starts
+PASS Summon progresses without exceeding alive cap
+PASS Exhausted encounter budget blocks further summons
+PASS Pre-Phase2 sweep starts
+PASS Threshold enters Phase2 once and interrupts pending skill
+PASS Action releases ownership after recovery
+PASS Phase2 preserves damaged health and cancels old release
+PASS Further low-health hits do not repeat Phase2 transition
+PASS Phase2 double sweep starts
+PASS Phase2 first sweep resolves normally
+PASS Phase2 second sweep has its own visible reaction window
+PASS Action releases ownership after recovery
+PASS Phase2 double sweep hits once per separately warned sweep
+PASS Death-interrupt slam starts
+PASS Lethal damage immediately cancels warnings and locks death action
+PASS Full death presentation is retained, without postmortem movement or attack
+PASS Boss is cleaned up only after complete death duration
+PASS New encounter starts with clean health, phase and summon budget
+PASS Direct lethal Phase1 damage skips Phase2 conversion
+PASS Actual F9 scene-restart path restores the full encounter and pool dependencies
+PASS Actual chasing Rigidbody2D advances but cannot penetrate an Environment wall
+PASS Wall-occluded sweep starts with its real warning
+PASS Action releases ownership after recovery
+PASS Environment wall blocks the actual sweep damage linecast
+PASS Encounter reset restores home position and releases movement/action state
+PASS Actual Level01 scene loads its existing Boss and arena bridge
+PASS Level01 Boss remains dormant until existing encounter entrance conditions
+PASS Level01 existing Boss position lies inside the authored footprint
+PASS Level01 Boss starts clear of wall interiors with the original solid kinematic body
+PASS Existing Level01 research/entrance bridge activates Boss combat
+PASS Action releases ownership after recovery
+PASS Configured combat skill runs on the actual Level01 Boss instance
+PASS Action releases ownership after recovery
+PASS Forward segmented wave finds a reachable route in the actual Level01 arena
+PASS Boss-only framing contains full upper silhouette without changing camera-follow settings
+PASS Action releases ownership after recovery
+PASS Native summon placement works on existing Level01 navigation
+PASS Action releases ownership after recovery
+PASS Level01 summons actually spawn through the existing pool
+PASS Original Level01 completion bridge observes death without a new victory/scene switch
+PASS Boss death restores the original camera size and releases encounter framing
+PASS No runtime errors/exceptions in tested combat paths
+27 runtime-rendered pose atlases: 9 action/phase rows x 3 keys x 8 authored views. D DR R UR / U UL L DL. Controlled pose/camera review, distinct from real-time cast captures.
+PASS DR actual sweep starts for visual review
+Captured 25 actual Play Mode frames at 0.08-second sample spacing; visual acceptance requires image inspection.
+PASS Battle uses original 5 HP / speed 5 player and weapon, no healing/invulnerability/damage cheats
+BATTLE t=0.0 player=5 boss=600 phase=1 summons=0 releases=0
+BATTLE t=10.0 player=5 boss=542 phase=1 summons=2 releases=3
+BATTLE t=20.0 player=5 boss=478 phase=1 summons=2 releases=6
+BATTLE t=30.0 player=5 boss=426 phase=1 summons=5 releases=9
+BATTLE t=40.0 player=5 boss=377 phase=1 summons=8 releases=12
+BATTLE t=50.0 player=5 boss=316 phase=1 summons=8 releases=14
+BATTLE t=60.0 player=5 boss=263 phase=2 summons=10 releases=17
+BATTLE t=70.0 player=5 boss=198 phase=2 summons=10 releases=20
+BATTLE t=80.0 player=5 boss=142 phase=2 summons=12 releases=24
+BATTLE t=90.0 player=5 boss=77 phase=2 summons=12 releases=27
+BATTLE t=100.0 player=5 boss=13 phase=2 summons=12 releases=30
+MEASURED Intel(R) Core(TM) i7-14700HX; NVIDIA GeForce RTX 4070 Laptop GPU; batch DX11 1280x720 captures; frames=10751; median ms=9.18; p95 ms=11.73; managed bytes=631484416
+BATTLE outcome t=102.1 playerHP=5 shots=658 phases=1 summons=12 releases=31
+PASS Normal-parameter automated playthrough defeats Boss without healing or debug damage
+PASS Full automatic encounter exercises all skills and both phases
+PASS Repeated round 0 casts Sweep
+PASS Action releases ownership after recovery
+PASS Repeated round 0 casts Slam
+PASS Action releases ownership after recovery
+PASS Repeated round 0 casts Summon
+PASS Action releases ownership after recovery
+PASS Round 0 reset leaves stable meshes=26 materials=3, no summons/warnings/waves/bursts
+MEMORY round=0 managed=585297920 totalUnity=1048005241
+PASS Repeated round 1 casts Sweep
+PASS Action releases ownership after recovery
+PASS Repeated round 1 casts Slam
+PASS Action releases ownership after recovery
+PASS Repeated round 1 casts Summon
+PASS Action releases ownership after recovery
+PASS Round 1 reset leaves stable meshes=26 materials=3, no summons/warnings/waves/bursts
+MEMORY round=1 managed=584159232 totalUnity=1049375171
+PASS Repeated round 2 casts Sweep
+PASS Action releases ownership after recovery
+PASS Repeated round 2 casts Slam
+PASS Action releases ownership after recovery
+PASS Repeated round 2 casts Summon
+PASS Action releases ownership after recovery
+PASS Round 2 reset leaves stable meshes=26 materials=3, no summons/warnings/waves/bursts
+MEMORY round=2 managed=584163328 totalUnity=1049885592
+Automated checks are distinct from visual review and long-term balance acceptance.
+Existing unrelated A* Editor update checker diagnostics (also present before changes): InvalidOperationException: Insecure connection not allowed

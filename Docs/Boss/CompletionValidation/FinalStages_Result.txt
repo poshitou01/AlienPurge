@@ -1,0 +1,64 @@
+PASSED - Unity 2022.3.62f3c1 actual Editor Play Mode; Direct3D11
+RESUMED existing A* Editor update-check pause; diagnostic retained below.
+PASS Action releases ownership after recovery
+PASS Focused death-interrupt wave starts
+PASS RiftWing death keeps same phase, cancels pending physics movement/wave and retains full body animation
+PASS Death cleanup after full presentation
+PASS Actual F9 scene-restart path restores the full encounter and pool dependencies
+PASS Actual chasing Rigidbody2D advances but cannot penetrate an Environment wall
+PASS Wall-occluded sweep starts with its real warning
+PASS Action releases ownership after recovery
+PASS Environment wall blocks the actual sweep damage linecast
+PASS Encounter reset restores home position and releases movement/action state
+PASS Actual Level01 scene loads its existing Boss and arena bridge
+PASS Level01 Boss remains dormant until existing encounter entrance conditions
+PASS Level01 existing Boss position lies inside the authored footprint
+PASS Level01 Boss starts clear of wall interiors with the original solid kinematic body
+PASS Existing Level01 research/entrance bridge activates Boss combat
+PASS Action releases ownership after recovery
+PASS Configured combat skill runs on the actual Level01 Boss instance
+PASS Original Level01 completion bridge observes death without a new victory/scene switch
+27 runtime-rendered pose atlases: 9 action/phase rows x 3 keys x 8 authored views. D DR R UR / U UL L DL. Controlled pose/camera review, distinct from real-time cast captures.
+PASS Battle uses original 5 HP / speed 5 player and weapon, no healing/invulnerability/damage cheats
+BATTLE t=0.0 player=5 boss=600 phase=1 summons=0 releases=0
+BATTLE t=10.0 player=1 boss=546 phase=1 summons=3 releases=3
+BATTLE t=20.0 player=1 boss=490 phase=1 summons=3 releases=6
+BATTLE t=30.0 player=1 boss=436 phase=1 summons=6 releases=9
+BATTLE t=40.0 player=1 boss=377 phase=1 summons=8 releases=12
+BATTLE t=50.0 player=1 boss=317 phase=1 summons=8 releases=14
+BATTLE t=60.0 player=1 boss=260 phase=2 summons=10 releases=16
+BATTLE t=70.0 player=1 boss=195 phase=2 summons=12 releases=20
+BATTLE t=80.0 player=1 boss=139 phase=2 summons=12 releases=23
+BATTLE t=90.1 player=1 boss=75 phase=2 summons=12 releases=26
+BATTLE t=100.1 player=1 boss=10 phase=2 summons=12 releases=30
+MEASURED Intel(R) Core(TM) i7-14700HX; NVIDIA GeForce RTX 4070 Laptop GPU; batch DX11 1280x720 captures; frames=10775; median ms=9.23; p95 ms=11.56; managed bytes=626061312
+BATTLE outcome t=101.6 playerHP=1 shots=655 phases=1 summons=12 releases=31
+PASS Normal-parameter automated playthrough defeats Boss without healing or debug damage
+PASS Full automatic encounter exercises all skills and both phases
+PASS Repeated round 0 casts Sweep
+PASS Action releases ownership after recovery
+PASS Repeated round 0 casts Slam
+PASS Action releases ownership after recovery
+PASS Repeated round 0 casts Summon
+PASS Action releases ownership after recovery
+PASS Round 0 reset leaves stable meshes=14 materials=3, no summons/warnings/waves/bursts
+MEMORY round=0 managed=580370432 totalUnity=976410274
+PASS Repeated round 1 casts Sweep
+PASS Action releases ownership after recovery
+PASS Repeated round 1 casts Slam
+PASS Action releases ownership after recovery
+PASS Repeated round 1 casts Summon
+PASS Action releases ownership after recovery
+PASS Round 1 reset leaves stable meshes=14 materials=3, no summons/warnings/waves/bursts
+MEMORY round=1 managed=579452928 totalUnity=986524989
+PASS Repeated round 2 casts Sweep
+PASS Action releases ownership after recovery
+PASS Repeated round 2 casts Slam
+PASS Action releases ownership after recovery
+PASS Repeated round 2 casts Summon
+PASS Action releases ownership after recovery
+PASS Round 2 reset leaves stable meshes=14 materials=3, no summons/warnings/waves/bursts
+MEMORY round=2 managed=579588096 totalUnity=985295102
+PASS Final stages no runtime errors
+Automated checks are distinct from visual review and long-term balance acceptance.
+Existing unrelated A* Editor update checker diagnostics (also present before changes): InvalidOperationException: Insecure connection not allowed

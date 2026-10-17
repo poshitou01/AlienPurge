@@ -1,5 +1,5 @@
 Existing controller and clip GUIDs retained; 48 action/direction states checked. RiftWing idle linked. Death retimed to 8fps; locomotion 12fps, idle 6fps.
-Body attack/transform poses are TEMP neutral holds. No fabricated eight-view animation was installed.
+Eight original camera views feed the authored local-joint pose library. Existing locomotion/Animator identities retained; UI untouched.
 HiveTyrant_CombatTest: bound existing arena footprint Solid_Perimeter_And_Pods
 Dedicated test scene configured with existing Player, camera, arena, Boss, managers and pools; F1-F6/F9 debug controls. Auto AI starts OFF for isolated tests.
 Assets/_Project/Scenes/HiveTyrant_CombatTest.unity: Boss scripts/config/arena/Animator references valid.

@@ -45,14 +45,38 @@ public static class HiveTyrantCombatSetup
                 config = ScriptableObject.CreateInstance<HiveTyrantCombatConfig>();
                 AssetDatabase.CreateAsset(config, ConfigPath);
             }
+            if (config.contentVersion < 2)
+            {
+                if (Mathf.Approximately(config.sweepRadius, 6)) config.sweepRadius = 7;
+                if (Mathf.Approximately(config.sweepAngle, 110)) config.sweepAngle = 120;
+                config.contentVersion = 2; EditorUtility.SetDirty(config);
+            }
+            if (config.contentVersion < 3)
+            {
+                if (config.sweepDamage == 12) config.sweepDamage = 1;
+                if (config.slamDamage == 18) config.slamDamage = 2;
+                config.contentVersion = 3; EditorUtility.SetDirty(config);
+            }
+            var poseLibrary = HiveTyrantPoseAuthoring.GetOrCreate();
+            const string materialPath = "Assets/_Project/Art/Boss/HiveTyrant/FX/HiveTyrant_VertexTint.mat";
+            var material = AssetDatabase.LoadAssetAtPath<Material>(materialPath);
+            if (material == null)
+            {
+                material = new Material(Shader.Find("Universal Render Pipeline/2D/Sprite-Unlit-Default"));
+                AssetDatabase.CreateAsset(material, materialPath);
+            }
             string[] states = ConfigureAnimations();
             GameObject root = PrefabUtility.LoadPrefabContents(BossPath);
             try
             {
                 var combat = Ensure<HiveTyrantCombat>(root);
                 Set(combat, "config", config);
-                Ensure<HiveTyrantHealthBar>(root);
-                ConfigureHUD(root.GetComponent<HiveTyrantHealthBar>());
+                // User owns all HUD components and references. Never add or configure UI here.
+                Set(Ensure<HiveTyrantEffects>(root), "materialTemplate", material); Ensure<HiveTyrantGroundWave>(root); Ensure<HiveTyrantSummoning>(root);
+                var presentation = Ensure<HiveTyrantPresentation>(root);
+                Set(presentation, "library", poseLibrary);
+                Set(presentation, "materialTemplate", material);
+                Set(presentation, "body", root.GetComponentInChildren<Animator>().GetComponent<SpriteRenderer>());
                 var motor = root.GetComponent<HiveTyrantBossMotor>();
                 var motorData = new SerializedObject(motor);
                 motorData.FindProperty("solidBody").objectReferenceValue = root.GetComponent<Collider2D>();
@@ -127,7 +151,7 @@ public static class HiveTyrantCombatSetup
         for (int i = 0; i < 48; i++) if (string.IsNullOrEmpty(names[i])) throw new InvalidOperationException("Missing Action/Direction transition " + i / 8 + "/" + Directions[i % 8]);
         EditorUtility.SetDirty(controller);
         report.Add("Existing controller and clip GUIDs retained; 48 action/direction states checked. RiftWing idle linked. Death retimed to 8fps; locomotion 12fps, idle 6fps.");
-        report.Add("Body attack/transform poses are TEMP neutral holds. No fabricated eight-view animation was installed.");
+        report.Add("Eight original camera views feed the authored local-joint pose library. Existing locomotion/Animator identities retained; UI untouched.");
         return names;
     }
     private static void Retiming(AnimationClip clip, float fps, bool loop)
@@ -176,7 +200,9 @@ public static class HiveTyrantCombatSetup
         Set(playerTransform.GetComponent<WeaponManager>(), "bulletPool", SceneComponents<BulletPool>(test).Single());
         Set(SceneComponents<ExplosionEffectPool>(test).Single(), "effectPrefab", SceneComponents<ExplosionEffect>(test).Single());
         var playerHealthData = new SerializedObject(playerTransform.GetComponent<PlayerHealth>());
-        playerHealthData.FindProperty("maxHealth").intValue = 100;
+        // Remove only the previous prototype's 100-HP override. Keep subsequent user tuning.
+        if (playerHealthData.FindProperty("maxHealth").intValue == 100)
+            playerHealthData.FindProperty("maxHealth").intValue = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/_Project/Prefabs/Player/Player.prefab").GetComponent<PlayerHealth>().MaxHealth;
         playerHealthData.ApplyModifiedPropertiesWithoutUndo();
         Set(boss.Motor != null ? boss.Motor : boss.GetComponent<HiveTyrantBossMotor>(), "target", playerTransform);
         Set(boss, "automaticSkills", false);
@@ -193,6 +219,16 @@ public static class HiveTyrantCombatSetup
         var follow = Ensure<CameraFollow>(camera.gameObject);
         Set(follow, "target", playerTransform); Set(follow, "limitToMapBounds", false);
         BindArena(test, boss);
+        Set(Ensure<HiveTyrantArenaCamera>(camera.gameObject), "boss", boss);
+        var navigation = test.GetRootGameObjects().FirstOrDefault(go => go.name == "HiveTyrantTestNavigation");
+        if (navigation == null) navigation = new GameObject("HiveTyrantTestNavigation");
+        var astar = Ensure<AstarPath>(navigation); astar.scanOnStartup = false;
+        astar.ConfigureReferencesInternal();
+        if (astar.data.GetData() != null && astar.data.GetData().Length == 0) astar.data.SetData(null);
+        AlienPurge.Level01ConnectedV01.L01Navigation.EnsureGrid(astar);
+        astar.data.SetData(astar.data.SerializeGraphs());
+        EditorUtility.SetDirty(astar);
+        Set(Ensure<HiveTyrantTestNavigation>(navigation), "astar", astar);
         // A dedicated pool uses the already integrated Swarmer. No global prefab changes.
         var pool = SceneComponents<EnemyPool>(test).Single();
         var poolData = new SerializedObject(pool);
@@ -218,6 +254,7 @@ public static class HiveTyrantCombatSetup
         if (boss == null || !boss.gameObject.activeInHierarchy) throw new InvalidOperationException("Level01 L01World.boss does not reference an active HiveTyrant.");
         BindArena(world, boss);
         Set(boss, "automaticSkills", true);
+        Set(Ensure<HiveTyrantArenaCamera>(SceneComponents<Camera>(world).First(camera => camera.CompareTag("MainCamera")).gameObject), "boss", boss);
         report.Add("Selected L01World.boss: " + boss.name + "; existing inactive HiveTyrant_Boss preview retained.");
         // Existing L01ArenaBridge already observes EnemyHealth.IsDead and unlocks progression.
         // Never wire a new win/scene transition or change map transforms.
@@ -231,12 +268,6 @@ public static class HiveTyrantCombatSetup
         if (nearest == null) throw new InvalidOperationException(scene.path + ": no existing ArenaV03Boundary footprint for HiveTyrant");
         Set(boss, "arenaBoundary", nearest);
         report.Add(scene.name + ": bound existing arena footprint " + nearest.name);
-    }
-    private static void ConfigureHUD(HiveTyrantHealthBar hud)
-    {
-        Set(hud, "boss", hud.GetComponent<HiveTyrantCombat>());
-        Set(hud, "frame", AssetDatabase.LoadAssetAtPath<Texture2D>("Assets/_Project/Art/Boss/HiveTyrant/UI/BossHPFrame/HiveTyrant_BossHPFrame_01.png"));
-        Set(hud, "portrait", AssetDatabase.LoadAssetAtPath<Texture2D>("Assets/_Project/Art/Boss/HiveTyrant/UI/Portrait/HiveTyrant_Portrait_01.png"));
     }
     public static T[] SceneComponents<T>(Scene scene) where T : Component
     { return scene.GetRootGameObjects().SelectMany(root => root.GetComponentsInChildren<T>(true)).ToArray(); }

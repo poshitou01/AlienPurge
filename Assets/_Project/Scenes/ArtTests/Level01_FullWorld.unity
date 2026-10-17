@@ -37329,6 +37329,7 @@ GameObject:
   - component: {fileID: 761563372}
   - component: {fileID: 761563375}
   - component: {fileID: 761563376}
+  - component: {fileID: 761563377}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -37479,6 +37480,20 @@ MonoBehaviour:
   mediumShakeDuration: 0.16
   heavyShakeStrength: 0.16
   heavyShakeDuration: 0.22
+--- !u!114 &761563377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 761563371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84101d6d7998d5c409a9b5a19020d584, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boss: {fileID: 914525896}
+  margin: 2
 --- !u!1 &761868756
 GameObject:
   m_ObjectHideFlags: 0
@@ -47255,6 +47270,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7575083927689973241, guid: 58e55fbdfa60a904394c9dff63b56f45, type: 3}
   m_PrefabInstance: {fileID: 914525894}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &914525896 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9200017826575157812, guid: 58e55fbdfa60a904394c9dff63b56f45, type: 3}
+  m_PrefabInstance: {fileID: 914525894}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914525895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc57a7cd56e0fdf40a6a587f0f268978, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &916935773
 GameObject:
   m_ObjectHideFlags: 0

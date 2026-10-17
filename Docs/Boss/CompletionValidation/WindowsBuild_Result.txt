@@ -1,0 +1,7 @@
+Succeeded
+Unity 2022.3.62f3c1
+Output=D:/AlienPurge/Builds/HiveTyrantCompletion/AlienPurge.exe
+Scene=Assets/_Project/Scenes/HiveTyrant_CombatTest.unity
+Errors=0 Warnings=2
+Bytes=1791467567 Duration=00:00:52.0755823
+Development Windows64 build. Original project build-scene settings unchanged. Runtime smoke has a separate report.

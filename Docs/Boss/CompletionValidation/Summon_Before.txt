@@ -1,0 +1,5 @@
+AstarPath.active present: False
+Normal: distance moved=0.000, target=True, movement enabled=True, locked=False, speed=2, rb.simulated=True, navigator=True, path=False
+Fast: distance moved=0.000, target=True, movement enabled=True, locked=False, speed=3, rb.simulated=True, navigator=True, path=False
+Heavy: distance moved=0.000, target=True, movement enabled=True, locked=False, speed=1.3, rb.simulated=True, navigator=True, path=False
+Ranged: distance moved=0.000, target=True, movement enabled=True, locked=False, speed=1.8, rb.simulated=True, navigator=True, path=False

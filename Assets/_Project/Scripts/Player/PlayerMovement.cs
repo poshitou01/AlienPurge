@@ -14,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
 
     private bool canMove = true;
 
+    public float MoveSpeed => moveSpeed;
+
     /// <summary>
     /// 当前帧读取到的归一化移动方向。
     /// 没有输入或移动被锁定时为 Vector2.zero。

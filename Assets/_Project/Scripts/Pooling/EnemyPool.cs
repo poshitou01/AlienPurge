@@ -100,6 +100,17 @@ public class EnemyPool :
     public int AvailableCount =>
         availableEnemyCount;
 
+    // Read-only type availability for bounded callers such as boss summons.
+    public bool TryGetConfiguredPrefab(EnemyType type, out GameObject prefab)
+    {
+        prefab = null;
+        if (poolEntries == null) return false;
+        foreach (EnemyPoolEntry entry in poolEntries)
+            if (entry != null && entry.Type == type && entry.Prefab != null)
+            { prefab = entry.Prefab; return true; }
+        return false;
+    }
+
     private void Awake()
     {
         if (Instance != null

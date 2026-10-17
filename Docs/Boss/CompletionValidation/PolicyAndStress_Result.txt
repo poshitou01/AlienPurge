@@ -1,0 +1,42 @@
+PASSED - Unity 2022.3.62f3c1 actual Editor Play Mode; Direct3D11
+RESUMED existing A* Editor update-check pause; diagnostic retained below.
+PASS Isolated candidate Normal reaches configured per-type cap 5 and exits selection
+PASS Boss disable clears every owned Normal through native pool return
+PASS Isolated candidate Fast reaches configured per-type cap 3 and exits selection
+PASS Boss disable clears every owned Fast through native pool return
+PASS Isolated candidate Heavy reaches configured per-type cap 1 and exits selection
+PASS Boss disable clears every owned Heavy through native pool return
+PASS Isolated candidate Ranged reaches configured per-type cap 2 and exits selection
+PASS Boss disable clears every owned Ranged through native pool return
+PASS Capped high-weight Tank falls back to available Normal candidate without resampling loop
+PASS Unavailable prefab candidate exits without spawning or consuming budget
+PASS Every telegraphed point is rechecked at release; newly blocked points spend no budget
+PASS A different spawner can reuse the exact former Boss-owned instance with its lease cleared
+PASS Boss cleanup cannot reclaim the instance after another spawner reuses it
+PASS Lethal Boss damage immediately returns its live summons
+PASS Repeated round 0 casts Sweep
+PASS Action releases ownership after recovery
+PASS Repeated round 0 casts Slam
+PASS Action releases ownership after recovery
+PASS Repeated round 0 casts Summon
+PASS Action releases ownership after recovery
+PASS Round 0 reset leaves stable meshes=26 materials=3, no summons/warnings/waves/bursts
+MEMORY round=0 managed=583712768 totalUnity=393150083
+PASS Repeated round 1 casts Sweep
+PASS Action releases ownership after recovery
+PASS Repeated round 1 casts Slam
+PASS Action releases ownership after recovery
+PASS Repeated round 1 casts Summon
+PASS Action releases ownership after recovery
+PASS Round 1 reset leaves stable meshes=26 materials=3, no summons/warnings/waves/bursts
+MEMORY round=1 managed=583532544 totalUnity=412597689
+PASS Repeated round 2 casts Sweep
+PASS Action releases ownership after recovery
+PASS Repeated round 2 casts Slam
+PASS Action releases ownership after recovery
+PASS Repeated round 2 casts Summon
+PASS Action releases ownership after recovery
+PASS Round 2 reset leaves stable meshes=26 materials=3, no summons/warnings/waves/bursts
+MEMORY round=2 managed=583593984 totalUnity=429398694
+Automated checks are distinct from visual review and long-term balance acceptance.
+Existing unrelated A* Editor update checker diagnostics (also present before changes): InvalidOperationException: Insecure connection not allowed

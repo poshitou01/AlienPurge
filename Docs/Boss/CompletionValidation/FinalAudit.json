@@ -1,0 +1,18 @@
+{
+  "branch": "codex/hivetyrant-combat",
+  "baseline": "7190c330e9cb543d587e775a44568c244da74715",
+  "changed_files": 165,
+  "art_rows": 72,
+  "identities_and_order_preserved": true,
+  "phase_sources_and_exports_exist": true,
+  "art_status": "72 partial entries; no false formal-animation completion",
+  "original_TMP_font_restored": true,
+  "source_check": "git diff --check for .cs/.md/.csv passed; normal Unity YAML empty-field whitespace retained",
+  "verification": {
+    "CompletionPass": 216,
+    "PolicyAndStress": 35,
+    "WindowsBuild": "Succeeded; 0 errors; 2 existing warnings",
+    "Standalone": "PASSED; 0 errors; original 5 HP / speed 5, no healing"
+  },
+  "overall": "Playable checkpoint; formal animation occlusion acceptance incomplete"
+}

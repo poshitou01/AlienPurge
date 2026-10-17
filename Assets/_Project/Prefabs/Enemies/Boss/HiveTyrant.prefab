@@ -482,6 +482,10 @@ GameObject:
   - component: {fileID: -7497074032584655436}
   - component: {fileID: 9200017826575157812}
   - component: {fileID: 6513643606423520480}
+  - component: {fileID: 4185677653588777834}
+  - component: {fileID: 5896438860359251079}
+  - component: {fileID: 7679916396637862183}
+  - component: {fileID: 1738335942026465649}
   m_Layer: 0
   m_Name: HiveTyrant
   m_TagString: Enemy
@@ -735,6 +739,58 @@ MonoBehaviour:
   boss: {fileID: 9200017826575157812}
   frame: {fileID: 2800000, guid: 9370f61bf9920034b8cde177d749b1c2, type: 3}
   portrait: {fileID: 2800000, guid: 9ec35428f167fd242a3d101dd0fdfdbc, type: 3}
+--- !u!114 &4185677653588777834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7575083927689973241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3204c5a28ee7f347a3c705d607ca271, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materialTemplate: {fileID: 2100000, guid: cac1b5edfbe41004b9f482d0746ae1d9, type: 2}
+--- !u!114 &5896438860359251079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7575083927689973241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7a6d03e531da9349817c60a7619dcc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7679916396637862183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7575083927689973241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 491881364a6b6ac408c24a8402c035ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1738335942026465649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7575083927689973241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b64d088e0759c74428d858e2694ca31c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  library: {fileID: 11400000, guid: 6e435e5f73c546b42833472704a21e98, type: 2}
+  body: {fileID: 1998033760814602931}
+  materialTemplate: {fileID: 2100000, guid: cac1b5edfbe41004b9f482d0746ae1d9, type: 2}
 --- !u!1 &8487762094662640954
 GameObject:
   m_ObjectHideFlags: 0

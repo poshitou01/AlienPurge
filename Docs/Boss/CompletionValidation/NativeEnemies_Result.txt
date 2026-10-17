@@ -1,0 +1,53 @@
+PASSED - Unity 2022.3.62f3c1 actual Editor Play Mode; Direct3D11
+RESUMED existing A* Editor update-check pause; diagnostic retained below.
+PASS Dedicated scene has scanned native A* navigation
+PASS Integrated native candidate Normal
+PASS Clean native stats/locks/physics on Normal cycle 0
+STATS Normal HP=3 speed=1.5 contact=1 clearance=0.51
+PASS Native navigation moves Normal cycle 0 by 8.31 units
+PASS Native Normal cycle 0 attacks player
+PASS Native Normal death returns pool, clears owner and grants original kill/XP reward
+PASS Exact pooled instance recycled for Normal
+PASS Clean native stats/locks/physics on Normal cycle 1
+STATS Normal HP=3 speed=1.5 contact=1 clearance=0.51
+PASS Native navigation moves Normal cycle 1 by 8.31 units
+PASS Native Normal cycle 1 attacks player
+PASS Native Normal death returns pool, clears owner and grants original kill/XP reward
+PASS Integrated native candidate Fast
+PASS Clean native stats/locks/physics on Fast cycle 0
+STATS Fast HP=2 speed=2.25 contact=1 clearance=0.3825
+PASS Native navigation moves Fast cycle 0 by 8.51 units
+PASS Native Fast cycle 0 attacks player
+PASS Native Fast death returns pool, clears owner and grants original kill/XP reward
+PASS Exact pooled instance recycled for Fast
+PASS Clean native stats/locks/physics on Fast cycle 1
+STATS Fast HP=2 speed=2.25 contact=1 clearance=0.3825
+PASS Native navigation moves Fast cycle 1 by 8.51 units
+PASS Native Fast cycle 1 attacks player
+PASS Native Fast death returns pool, clears owner and grants original kill/XP reward
+PASS Integrated native candidate Heavy
+PASS Clean native stats/locks/physics on Heavy cycle 0
+STATS Heavy HP=11 speed=0.975 contact=2 clearance=0.668
+PASS Native navigation moves Heavy cycle 0 by 6.61 units
+PASS Native Heavy cycle 0 attacks player
+PASS Native Heavy death returns pool, clears owner and grants original kill/XP reward
+PASS Exact pooled instance recycled for Heavy
+PASS Clean native stats/locks/physics on Heavy cycle 1
+STATS Heavy HP=11 speed=0.975 contact=2 clearance=0.668
+PASS Native navigation moves Heavy cycle 1 by 6.61 units
+PASS Native Heavy cycle 1 attacks player
+PASS Native Heavy death returns pool, clears owner and grants original kill/XP reward
+PASS Integrated native candidate Ranged
+PASS Clean native stats/locks/physics on Ranged cycle 0
+STATS Ranged HP=3 speed=1.35 contact=1 clearance=0.65
+PASS Native navigation moves Ranged cycle 0 by 2.65 units
+PASS Native Ranged cycle 0 attacks player with a real projectile
+PASS Native Ranged death returns pool, clears owner and grants original kill/XP reward
+PASS Exact pooled instance recycled for Ranged
+PASS Clean native stats/locks/physics on Ranged cycle 1
+STATS Ranged HP=3 speed=1.35 contact=1 clearance=0.65
+PASS Native navigation moves Ranged cycle 1 by 2.62 units
+PASS Native Ranged cycle 1 attacks player with a real projectile
+PASS Native Ranged death returns pool, clears owner and grants original kill/XP reward
+Automated checks are distinct from visual review and long-term balance acceptance.
+Existing unrelated A* Editor update checker diagnostics (also present before changes): InvalidOperationException: Insecure connection not allowed

@@ -1,0 +1,32 @@
+{
+  "Assets/_Project/Prefabs/Enemies/Boss/HiveTyrant.prefab": {
+    "original_transform_canvas_recttransform_canvasrenderer_blocks": 10,
+    "changed_original_layout_blocks": [],
+    "new_blocks": 4
+  },
+  "Assets/_Project/Scenes/HiveTyrant_CombatTest.unity": {
+    "original_transform_canvas_recttransform_canvasrenderer_blocks": 20,
+    "changed_original_layout_blocks": [],
+    "new_blocks": 5
+  },
+  "Assets/_Project/Scenes/ArtTests/Level01_FullWorld.unity": {
+    "original_transform_canvas_recttransform_canvasrenderer_blocks": 1363,
+    "changed_original_layout_blocks": [],
+    "new_blocks": 2
+  },
+  "existing_meta": {
+    "checked": 1045,
+    "changed": []
+  },
+  "original_boss_png": {
+    "checked": 569,
+    "changed": []
+  },
+  "Assets/_Project/Scripts/Boss/HiveTyrantHealthBar.cs": {
+    "same_sha256": true
+  },
+  "Assets/_Project/Prefabs/Player/Player.prefab": {
+    "same_sha256": true
+  },
+  "note": "Dedicated test player prototype HP override migrated from 100 to existing prefab 5. Formal player prefab/UI untouched. Existing transforms and Canvas blocks compared by stable serialized file ID."
+}

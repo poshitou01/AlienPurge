@@ -22,7 +22,7 @@ public class HiveTyrantBossMotor : MonoBehaviour
     [SerializeField] private string actionParam = "Action";
     [Tooltip("Action-major, eight directions each. Filled by the existing-controller setup.")]
     [SerializeField] private string[] stateNames = new string[80];
-    [Tooltip("Missing attack poses: hold neutral pose; never speed up idle to fake an attack.")]
+    [Tooltip("The articulated presentation owns combat poses; Animator holds only the hidden base sprite.")]
     [SerializeField] private bool temporaryCombatPoses = true;
     [Header("Runtime")]
     [SerializeField] private bool movementLocked;
@@ -101,6 +101,9 @@ public class HiveTyrantBossMotor : MonoBehaviour
     {
         if (rb == null) return;
         rb.velocity = Vector2.zero; rb.angularVelocity = 0;
+        // A cast/death may begin after FixedUpdate queued movement for this step.
+        // Cancel that pending target as well as the current velocity.
+        rb.MovePosition(rb.position);
     }
     public void Face(Vector2 direction)
     {

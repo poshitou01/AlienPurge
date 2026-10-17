@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 116342254}
   - component: {fileID: 116342257}
   - component: {fileID: 116342258}
+  - component: {fileID: 116342259}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -285,6 +286,20 @@ MonoBehaviour:
   mediumShakeDuration: 0.16
   heavyShakeStrength: 0.16
   heavyShakeDuration: 0.22
+--- !u!114 &116342259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116342253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84101d6d7998d5c409a9b5a19020d584, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boss: {fileID: 914525895}
+  margin: 2
 --- !u!1 &184063244
 GameObject:
   m_ObjectHideFlags: 0
@@ -1272,6 +1287,107 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1745225897
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1745225900}
+  - component: {fileID: 1745225899}
+  - component: {fileID: 1745225898}
+  m_Layer: 0
+  m_Name: HiveTyrantTestNavigation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1745225898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1745225897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82f4bdff37cf9654da305e04a375ea69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  astar: {fileID: 1745225899}
+--- !u!114 &1745225899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1745225897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78396926cbbfc4ac3b48fc5fc34a87d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  data:
+    dataString: UEsDBBQAAAgIAABAIezzmMJA/gEAAKcEAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGFU02PmzAQ/SsR526VrHppby3JZnvIJlpa7dmBAUYxY+SPJmSV/96xcQJhpZYL8N6b8ZsPvydIpoXcKr3WWGxUAcm3WeK/k0+zgXyGk6gUZXiGq+YNC1t7kQiaV2FRMb7wYUY1YDXm36mSXjxn0BGWSjerooJUGWsYLoU0wJRW1kcTQ++z5BQDuvg++/fswl85kAX9P5WjXIqmhcK7HcSLq3rRy4jriArvOVdSookmEtu1ochUtMZxCSwoUHBR4XivrwGr2vLP4zh4W5YGbLSkRbdEzb3psyY/VN+wRphD7+uPkA5uxvuUmw/swyLQpVbN8/XUxdyfYGvMD6+iy4Wxo36O4eW9bUdHIQ9iL+GtBnpRa60cFUxa7XyoM/C4HKW6VZbWkB8GXe91Arr2n7O5hNpPqcRm75HPX3ogkyp0+6vXgua5/GTDYSNMzMCoN/HbwC9RjVcnEk+ojWUqVkne3V457aXJKvTMF+NsqjRBgKPnFkhI2+04jZ0OcMKNjp0wT8Jfknh45K67PwkJ8KCfzyfUTh1vwzK1Om7A1FtnJRIMpj3xwn1KFVG/X+OeXMMyp0uRj8Iqh8X9aiXzyfMwBZKwe0hcp5C73mhsD09t3BPiReNfclL666LFcY3nRo16jVSqLNcAtL0PNaA5O1/GYlUgdyYDa5HCoH26y19QSwMEFAAACAgAAEAh7EJGoGBSAAAAeAAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGrVipLLSrOzM9TslIw0TPSMzTXUVBKL0osyCgGihiCOKWZKSB2tJIBGtBFF1CKBaovqSxI9UvMTYXoCUgsyUjLzEvJzEvXcy/KTHEHGa0UWwsAUEsBAi0AFAAACAgAAEAh7POYwkD+AQAApwQAAAsAJAAAAAAAAAAAAAAAAAAAAGdyYXBoMC5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAAEAh7EJGoGBSAAAAeAAAAAkAJAAAAAAAAAAAAAAASwIAAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLBQYAAAAAAgACALgAAADoAgAAAAA=
+    upgradeData: 
+    file_cachedStartup: {fileID: 0}
+    data_cachedStartup: 
+    cacheStartup: 0
+  showNavGraphs: 1
+  showUnwalkableNodes: 1
+  debugMode: 0
+  debugFloor: 0
+  debugRoof: 20000
+  manualDebugFloorRoof: 0
+  showSearchTree: 0
+  unwalkableNodeDebugSize: 0.3
+  logPathResults: 1
+  maxNearestNodeDistance: 100
+  scanOnStartup: 0
+  fullGetNearestSearch: 0
+  prioritizeGraphs: 0
+  prioritizeGraphsLimit: 1
+  colorSettings:
+    _SolidColor: {r: 0.11764706, g: 0.4, b: 0.7882353, a: 0.9}
+    _UnwalkableNode: {r: 1, g: 0, b: 0, a: 0.5}
+    _BoundsHandles: {r: 0.29, g: 0.454, b: 0.741, a: 0.9}
+    _ConnectionLowLerp: {r: 0, g: 1, b: 0, a: 0.5}
+    _ConnectionHighLerp: {r: 1, g: 0, b: 0, a: 0.5}
+    _MeshEdgeColor: {r: 0, g: 0, b: 0, a: 0.5}
+    _AreaColors:
+    - {r: 0, g: 0, b: 0, a: 0}
+  tagNames: []
+  heuristic: 2
+  heuristicScale: 1
+  threadCount: 1
+  maxFrameTime: 1
+  batchGraphUpdates: 0
+  graphUpdateBatchingInterval: 0.2
+  euclideanEmbedding:
+    mode: 0
+    seed: 0
+    pivotPointRoot: {fileID: 0}
+    spreadOutCount: 1
+  showGraphs: 0
+--- !u!4 &1745225900
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1745225897}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1840464630
 GameObject:
   m_ObjectHideFlags: 0
@@ -1617,7 +1733,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3483164996455582016, guid: ee4c9669def6d2149857876b48124061, type: 3}
       propertyPath: maxHealth
-      value: 100
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8020351645158268819, guid: ee4c9669def6d2149857876b48124061, type: 3}
       propertyPath: bulletPool
@@ -1913,3 +2029,4 @@ SceneRoots:
   - {fileID: 934305105}
   - {fileID: 2110953619}
   - {fileID: 1862584014}
+  - {fileID: 1745225900}
