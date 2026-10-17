@@ -8,7 +8,7 @@ public sealed class HiveTyrantSummoning : MonoBehaviour
     public struct SpawnPlan { public Vector2 point; public float clearance; public HiveTyrantSummonChoice choice; public GameObject prefab; }
     private HiveTyrantCombat boss;
     private readonly List<PooledEnemy> owned = new List<PooledEnemy>(16);
-    private readonly List<SpawnPlan> pending = new List<SpawnPlan>(8);
+    private readonly List<SpawnPlan> pending = new List<SpawnPlan>(12);
     private readonly Collider2D[] overlaps = new Collider2D[64];
     public int Total { get; private set; }
     public int PendingCount => pending.Count;
@@ -67,7 +67,7 @@ public sealed class HiveTyrantSummoning : MonoBehaviour
         int count = Mathf.Min(WaveSize, AliveCap - Living, c.summonBudget - Total);
         for (int i = 0; i < count; i++)
         {
-            if (!Select(out HiveTyrantSummonChoice choice, out GameObject prefab)) break;
+            if (!SelectRole(i, out HiveTyrantSummonChoice choice, out GameObject prefab)) break;
             float clearance = Clearance(prefab);
             for (int attempt = 0; attempt < c.summonAttempts; attempt++)
             {
@@ -78,6 +78,18 @@ public sealed class HiveTyrantSummoning : MonoBehaviour
             }
         }
     }
+    private bool SelectRole(int index, out HiveTyrantSummonChoice selected, out GameObject prefab)
+    {
+        // Reserve a frontline anchor and a ranged threat when their caps and spawn space allow it.
+        // Remaining slots retain the authored weighted mix and native enemy behavior.
+        if (index < 2)
+        {
+            EnemyType preferred = index == 0 ? EnemyType.Heavy : EnemyType.Ranged;
+            foreach (var choice in boss.Config.summonChoices)
+                if (choice != null && choice.type == preferred && Eligible(choice, out prefab)) { selected = choice; return true; }
+        }
+        return Select(out selected, out prefab);
+    }
     public void Release()
     {
         foreach (var plan in pending)
@@ -87,7 +99,7 @@ public sealed class HiveTyrantSummoning : MonoBehaviour
             var enemy = EnemyPool.Instance.GetEnemy(plan.choice.type, plan.point, Quaternion.identity);
             if (enemy == null) continue;
             var definition = enemy.GetComponent<EnemyDefinition>();
-            InitializeNative(enemy, plan.prefab, plan.choice);
+            InitializeNative(enemy, plan.prefab, plan.choice, boss.SummonHealthScale);
             if (!definition.HasBeenInitialized) { enemy.ReturnToPool(); continue; }
             var lease = enemy.GetComponent<HiveTyrantSummonOwner>();
             if (lease == null) lease = enemy.gameObject.AddComponent<HiveTyrantSummonOwner>();
@@ -96,12 +108,12 @@ public sealed class HiveTyrantSummoning : MonoBehaviour
         }
         pending.Clear();
     }
-    public static void InitializeNative(PooledEnemy enemy, GameObject prefab, HiveTyrantSummonChoice choice)
+    public static void InitializeNative(PooledEnemy enemy, GameObject prefab, HiveTyrantSummonChoice choice, float encounterHealthScale = 1)
     {
         // Preserve each prefab's base stats, EnemyData multipliers and native attack components.
         // Do not write EnemyData or use the former universal Swarmer override.
         enemy.GetComponent<EnemyDefinition>().InitializeFromGlobalDifficulty(
-            Mathf.Max(1, Mathf.RoundToInt(prefab.GetComponent<EnemyHealth>().MaxHealth * choice.healthMultiplier)),
+            Mathf.Max(1, Mathf.RoundToInt(prefab.GetComponent<EnemyHealth>().MaxHealth * choice.healthMultiplier * encounterHealthScale)),
             prefab.GetComponent<EnemyMovement>().MoveSpeed * choice.speedMultiplier,
             Mathf.Max(1, Mathf.RoundToInt(prefab.GetComponent<EnemyContactDamage>().Damage * choice.damageMultiplier)));
     }

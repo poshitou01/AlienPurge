@@ -12,23 +12,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaa4d9d50bb984b45b36809a90003418, type: 3}
   m_Name: HiveTyrant_Combat
   m_EditorClassIdentifier: 
-  maxHealth: 600
+  maxHealth: 1200
+  scaleHealthWithEntryLoadout: 1
+  entryPowerExponent: 0.7
+  maximumHealthScale: 18
+  maximumSummonHealthScale: 3
+  phase2GlobalRecovery: 0.35
+  sweepTravelDistance: 14
+  sweepTravelSpeed: 8.5
+  sweepThickness: 0.55
+  phase2SweepSpacing: 2.9
+  sporeCount: 3
+  phase2SporeCount: 4
+  sporeWarning: 1.3
+  sporeInterval: 0.75
+  sporeRadius: 1.7
+  sporeResidueTime: 2.2
+  sporeDamage: 2
+  sporeCooldown: 11
+  phase2SummonInterval: 10
   phase2HealthRatio: 0.5
   phaseTransitionTime: 3
   deathTime: 1.6
   engageDistance: 18
-  globalRecovery: 1.1
+  globalRecovery: 0.55
   openingDelay: 2.2
   decisionInterval: 0.25
-  firstSummonDelay: 8
+  firstSummonDelay: 5
   sweepRadius: 7
   sweepAngle: 120
-  sweepDamage: 1
-  sweepWindup: 1
+  sweepDamage: 2
+  sweepWindup: 1.15
   sweepRecovery: 0.75
   sweepCooldown: 4.5
-  phase2SecondSweepWarning: 0.85
-  contentVersion: 3
+  phase2SecondSweepWarning: 1.1
+  contentVersion: 4
   slamRadius: 7
   slamDamage: 2
   slamWindup: 1.55
@@ -43,12 +61,12 @@ MonoBehaviour:
   waveGapMargin: 0.35
   waveMinimumGap: 1.65
   waveRouteReactionMargin: 0.25
-  summonWaveSize: 4
-  summonAliveCap: 6
-  phase2SummonWaveSize: 5
-  phase2SummonAliveCap: 8
-  summonBudget: 20
-  summonInterval: 16
+  summonWaveSize: 7
+  summonAliveCap: 12
+  phase2SummonWaveSize: 10
+  phase2SummonAliveCap: 16
+  summonBudget: 64
+  summonInterval: 12
   summonWarning: 1.4
   summonRecovery: 0.8
   summonMinRadius: 5
@@ -61,26 +79,26 @@ MonoBehaviour:
   summonDamage: 5
   summonChoices:
   - type: 0
-    weight: 45
-    aliveCap: 5
+    weight: 40
+    aliveCap: 10
     healthMultiplier: 1
     speedMultiplier: 1
     damageMultiplier: 1
   - type: 1
     weight: 25
-    aliveCap: 3
+    aliveCap: 6
     healthMultiplier: 1
     speedMultiplier: 1
     damageMultiplier: 1
   - type: 2
-    weight: 10
-    aliveCap: 1
+    weight: 15
+    aliveCap: 2
     healthMultiplier: 1
     speedMultiplier: 1
     damageMultiplier: 1
   - type: 3
     weight: 20
-    aliveCap: 2
+    aliveCap: 4
     healthMultiplier: 1
     speedMultiplier: 1
     damageMultiplier: 1

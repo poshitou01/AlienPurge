@@ -1,0 +1,29 @@
+FAILED actual Unity Play Mode 2022.3.62f3c1; Direct3D11
+PASS Saved scene starts autonomous AI without debug input
+PASS Original sweep radius and angle preserved
+PASS Second sweep spacing exceeds native jump cooldown
+PASS Entry scaling is sublinear: upgrades retain an offensive advantage
+PASS Endurance has a hard upper cap
+PASS Mid-fight upgrades never resize or heal the Boss
+PASS Outside original 7m sector: no instant remote hit on release
+PASS Travelling crescent hits a grounded player beyond the original range, including a large simulation step
+PASS Multiple arc segments and body colliders cannot multiply one cast's damage
+PASS Native jump input enters Airborne without editing invulnerability
+PASS Native jump clears the moving crescent
+PASS Flanking the travelling crescent remains a valid escape
+PASS Crescent clips against Environment walls and cannot hit through cover
+PASS Actual Game View capture Advancing_Crescent
+PASS Spore mark accepts a legal arena point
+PASS Spore warning does no damage
+PASS Spore locks once; walking out escapes rather than dragging the mark
+PASS Standing on the expired warning takes a spore hit
+PASS Lingering spore residue has at most one hit per player per patch
+PASS Actual Game View capture Spore_Barrage
+PASS Disable cancels pressure hazards and owned summons
+PASS P1 summon request accepted
+PASS P1 summons a larger legal wave: 7
+PASS P1 native enemies released within population cap: 7
+FAIL System.InvalidOperationException: Phase transition remains a single readable reveal
+  at HiveTyrantPressureVerification.Check (System.Boolean ok, System.String message) [0x0001f] in D:\AlienPurge\AlienPurge\Assets\_Project\Editor\HiveTyrantPressureVerification.cs:100
+  at HiveTyrantPressureVerification+<Verify>d__30.MoveNext () [0x00a84] in D:\AlienPurge\AlienPurge\Assets\_Project\Editor\HiveTyrantPressureVerification.cs:193
+  at HiveTyrantPressureVerification.Tick () [0x00072] in D:\AlienPurge\AlienPurge\Assets\_Project\Editor\HiveTyrantPressureVerification.cs:87

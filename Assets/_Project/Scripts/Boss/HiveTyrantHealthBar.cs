@@ -13,7 +13,7 @@ public sealed class HiveTyrantHealthBar : MonoBehaviour
     private RectTransform panel, fill, trail, announcement;
     private CanvasGroup announcementGroup;
     private Image fillImage;
-    private Text healthText, phaseText, subtitle;
+    private Text healthText, phaseText, subtitle, attackHint;
     private Sprite frameSprite;
     private int lastHealth = -1, lastMaximum = -1, observedTransitions;
     private bool lastPhase;
@@ -56,6 +56,8 @@ public sealed class HiveTyrantHealthBar : MonoBehaviour
         phaseText = HiveTyrantHudLayout.Label(panel, "Phase", new Rect(76, 101, 220, 18), "PHASE I", 11, Gold, TextAnchor.MiddleLeft, true);
         healthText = HiveTyrantHudLayout.Label(panel, "Health", new Rect(505, 101, 180, 18), "", 12, new Color(1, .9f, .73f), TextAnchor.MiddleRight);
         AddShadow(phaseText); AddShadow(healthText);
+        attackHint = HiveTyrantHudLayout.Label(panel, "AttackHint", new Rect(60, 124, 640, 22), "", 12, Gold, TextAnchor.MiddleCenter, true);
+        AddShadow(attackHint);
         BuildAnnouncement();
     }
     private static void AddShadow(Text text)
@@ -99,6 +101,11 @@ public sealed class HiveTyrantHealthBar : MonoBehaviour
             trailRatio = Mathf.MoveTowards(trailRatio, ratio, Time.unscaledDeltaTime * .55f);
         trail.sizeDelta = new Vector2(BarWidth * trailRatio, BarHeight);
         bool phase2 = boss.Phase2Entered;
+        bool sweep = boss.State == HiveTyrantState.SweepWindup || boss.Pressure.HasCrescent;
+        bool spores = boss.State == HiveTyrantState.SporeWindup || boss.Pressure.HasSpores;
+        attackHint.text = sweep ? "RIFT CLEAVE  /  SPACE TO JUMP OR FLANK" : spores ? "SPORE BARRAGE  /  KEEP MOVING" :
+            boss.Wave.IsWarning || boss.Wave.IsTravelling ? "FAULTLINE  /  FIND THE OPEN LANE" : "";
+        attackHint.color = spores ? new Color(.94f, .73f, 1) : Gold;
         if (lastPhase != phase2)
         {
             lastPhase = phase2; fillImage.color = phase2 ? new Color(1, .34f, .055f) : Ember;

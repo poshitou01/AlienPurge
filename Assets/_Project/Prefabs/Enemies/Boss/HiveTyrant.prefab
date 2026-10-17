@@ -587,7 +587,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb9d5fa72a721354b9d666c1c4872a3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 600
+  maxHealth: 1200
   currentHealth: 0
   hitColor: {r: 1, g: 0.9, b: 0.78, a: 1}
   hitFlashDuration: 0.055

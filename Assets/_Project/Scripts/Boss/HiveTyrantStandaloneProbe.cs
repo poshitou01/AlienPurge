@@ -28,6 +28,10 @@ public sealed class HiveTyrantStandaloneProbe : MonoBehaviour
         Application.runInBackground = true; Application.logMessageReceived += RecordError;
         yield return new WaitForSeconds(1.5f);
         var boss = FindObjectOfType<HiveTyrantCombat>(); var player = FindObjectOfType<PlayerHealth>();
+        int testTier = Environment.GetCommandLineArgs().Contains("-hivetyrant-thunder") ? 3 :
+            Environment.GetCommandLineArgs().Contains("-hivetyrant-cluster") ? 2 : Environment.GetCommandLineArgs().Contains("-hivetyrant-upgraded") ? 1 : 0;
+        if (testTier > 0) { HiveTyrantTestLoadouts.Apply(player, testTier); boss.RestartEncounter(); boss.CaptureEntryLoadout(); }
+        HiveTyrantCombatDebug.RequestedTestTier = testTier;
         if (Environment.GetCommandLineArgs().Contains("-hivetyrant-visual"))
         {
             // A separate visual fixture, never counted as an unaided full battle.
@@ -49,7 +53,8 @@ public sealed class HiveTyrantStandaloneProbe : MonoBehaviour
         bool authoredAuto = boss.AutomaticSkills;
         report.Add("Windows standalone actual runtime; " + Application.unityVersion + "; " + SystemInfo.graphicsDeviceName);
         report.Add("Default automatic AI=" + authoredAuto + "; no skill/debug keys or AI override.");
-        report.Add("Initial player HP=" + player.CurrentHealth + "/" + player.MaxHealth + ", speed=" + player.GetComponent<PlayerMovement>().MoveSpeed + "; original weapon and native movement; input automation only.");
+        report.Add("Loadout tier=" + testTier + "; " + HiveTyrantTestLoadouts.Describe(player) + "; native weapon/movement, input automation only; no battle healing.");
+        report.Add("Boss starting HP=" + boss.Health.MaxHealth + "; entry power=" + boss.EntryPower);
         float began = Time.time, deadline = Time.realtimeSinceStartup + 240, next = 0;
         int phases = 0, summons = 0, releases = 0;
         while (boss != null && !boss.Health.IsDead && !player.IsDead && Time.realtimeSinceStartup < deadline)
@@ -67,8 +72,8 @@ public sealed class HiveTyrantStandaloneProbe : MonoBehaviour
         if (boss != null && boss.Health.IsDead) { yield return new WaitForSeconds(.4f); Capture("Death"); }
         yield return new WaitForSecondsRealtime(2);
         frames.Sort();
-        report.Add("Outcome won=" + won + ", playerHP=" + player.CurrentHealth + ", elapsed=" + (Time.time - began).ToString("F1") + ", phases=" + phases + ", summons=" + summons + ", releases=" + releases + ", shots=" + pilot.Shots);
-        report.Add("Median frame ms=" + frames[frames.Count / 2].ToString("F2") + "; P95=" + frames[(int)(frames.Count * .95f)].ToString("F2") + "; screenshot frames included; no hardware-wide performance claim.");
+        report.Add("Outcome won=" + won + ", playerHP=" + player.CurrentHealth + ", elapsed=" + (Time.time - began).ToString("F1") + ", phases=" + phases + ", summons=" + summons + ", releases=" + releases + ", shots=" + pilot.Shots + ", jumps=" + pilot.Jumps);
+        report.Add("Hidden-window simulation timing median=" + frames[frames.Count / 2].ToString("F2") + "; P95=" + frames[(int)(frames.Count * .95f)].ToString("F2") + " ms. Not rendering FPS; only explicit captures render camera+UI.");
         report.Add("Errors=" + errors + "; encounter FX roots remaining=" + FindObjectsOfType<Transform>().Count(t => t.name == "HiveTyrant_EncounterEffects"));
         bool success = authoredAuto && won && phases == 1 && errors == 0;
         report.Insert(0, success ? "PASSED" : "FAILED"); File.WriteAllLines(Path.Combine(directory, "Standalone_Result.txt"), report);

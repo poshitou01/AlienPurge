@@ -1,0 +1,40 @@
+FAILED - Unity 2022.3.62f3c1 actual Editor Play Mode; Direct3D11
+PASS Wave has a reachable route at distance 5
+PASS Gap 0 accommodates actual collider and clear walking route
+PASS Action releases ownership and travelling hazards finish after recovery
+PASS Native walking speed 5 safely reaches gap 0 from 5 (no damage/invulnerability)
+PASS Gap trial includes real player physics displacement
+PASS Wave has a reachable route at distance 5
+PASS Gap 1 accommodates actual collider and clear walking route
+PASS Action releases ownership and travelling hazards finish after recovery
+PASS Native walking speed 5 safely reaches gap 1 from 5 (no damage/invulnerability)
+PASS Gap trial includes real player physics displacement
+PASS Wave has a reachable route at distance 9
+PASS Gap 0 accommodates actual collider and clear walking route
+PASS Action releases ownership and travelling hazards finish after recovery
+PASS Native walking speed 5 safely reaches gap 0 from 9 (no damage/invulnerability)
+PASS Gap trial includes real player physics displacement
+PASS Wave has a reachable route at distance 9
+PASS Gap 1 accommodates actual collider and clear walking route
+PASS Action releases ownership and travelling hazards finish after recovery
+PASS Native walking speed 5 safely reaches gap 1 from 9 (no damage/invulnerability)
+PASS Gap trial includes real player physics displacement
+PASS Wave has a reachable route at distance 14
+PASS Gap 0 accommodates actual collider and clear walking route
+PASS Action releases ownership and travelling hazards finish after recovery
+PASS Native walking speed 5 safely reaches gap 0 from 14 (no damage/invulnerability)
+PASS Gap trial includes real player physics displacement
+PASS Wave has a reachable route at distance 14
+PASS Gap 1 accommodates actual collider and clear walking route
+PASS Action releases ownership and travelling hazards finish after recovery
+PASS Native walking speed 5 safely reaches gap 1 from 14 (no damage/invulnerability)
+PASS Gap trial includes real player physics displacement
+PASS Central travelling wave starts at extended targeting range
+PASS No damage before the moving front arrives
+PASS Moving dangerous segment hits exactly once on arrival
+PASS Action releases ownership and travelling hazards finish after recovery
+FAIL System.InvalidOperationException: Wave survives body release and recovery instead of using old 0.22-second lifetime
+  at HiveTyrantCombatVerification.Check (System.Boolean condition, System.String message) [0x0002f] in D:\AlienPurge\AlienPurge\Assets\_Project\Editor\HiveTyrantCombatVerification.cs:138
+  at HiveTyrantCombatVerification+<WaveRules>d__37.MoveNext () [0x005d6] in D:\AlienPurge\AlienPurge\Assets\_Project\Editor\HiveTyrantCombatVerification.cs:401
+  at HiveTyrantCombatVerification.Tick () [0x000e0] in D:\AlienPurge\AlienPurge\Assets\_Project\Editor\HiveTyrantCombatVerification.cs:98
+Automated checks are distinct from visual review and long-term balance acceptance.

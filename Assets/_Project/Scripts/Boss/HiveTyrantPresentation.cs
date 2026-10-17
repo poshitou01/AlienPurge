@@ -165,6 +165,14 @@ public sealed class HiveTyrantPresentation : MonoBehaviour
             a = -24 * prepare * (1 - settle); b = 25 * prepare * (1 - settle);
             lift = .025f * prepare * (1 - settle); fold = -6 * prepare * (1 - settle);
         }
+        else if (action == 10)
+        {
+            // Raise the crown and alternate the two arms as each spore is cast.
+            float pulse = Mathf.Sin(t * Mathf.PI * 4) * .5f + .5f;
+            a = (-20 - 5 * pulse) * prepare * (1 - settle);
+            b = (20 + 5 * (1 - pulse)) * prepare * (1 - settle);
+            fold = -9 * prepare * (1 - settle); lift = .025f * prepare * (1 - settle);
+        }
         else if (action == 9)
         {
             a = -18 * Mathf.Sin(t * Mathf.PI * .5f); b = -a; lift = .035f * Mathf.Sin(t * Mathf.PI * .5f);
@@ -184,7 +192,7 @@ public sealed class HiveTyrantPresentation : MonoBehaviour
         Quaternion leftWing = Quaternion.Euler(0, 0, -fold), rightWing = Quaternion.Euler(0, 0, fold);
         Vector3 hinge = PixelToLocal(rig.wingHinge);
         Color bodyColor = body.color;
-        float coreGlow = (action == 8 || action == 9) ? .3f * Mathf.Sin(Mathf.Min(t, 1) * Mathf.PI * .5f) : 0;
+        float coreGlow = (action == 8 || action == 9 || action == 10) ? .3f * Mathf.Sin(Mathf.Min(t, 1) * Mathf.PI * .5f) : 0;
         float armGlow = action == 6 ? .45f * prepare * (1 - snap) : 0;
         float maxDisplacementSquared = 0;
         for (int i = 0; i < Count; i++)
