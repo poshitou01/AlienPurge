@@ -1,0 +1,12 @@
+{
+  "Baseline": "a4605aa",
+  "Snapshot": "D:\\AlienPurge\\AlienPurge_Snapshot_HiveTyrant_Repair_20261017_1958",
+  "ExistingMetaChecked": 27,
+  "ExistingMetaChanged": 0,
+  "ChangedOriginalScenesPrefabsAssetsImagesMeta": [],
+  "TargetedChecks": 29,
+  "CombatRegressionChecks": 215,
+  "WindowsBuild": "Succeeded",
+  "Standalone": "PASSED",
+  "KnownFirstRegressionFailure": "Regression/FirstAttempt_Result.txt; unchanged gameplay rerun passed; initial preconditions not fully logged"
+}

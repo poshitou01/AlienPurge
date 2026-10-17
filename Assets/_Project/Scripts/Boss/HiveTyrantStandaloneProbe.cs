@@ -46,7 +46,7 @@ public sealed class HiveTyrantStandaloneProbe : MonoBehaviour
         }
         bool won = !player.IsDead && (boss == null || boss.Health.IsDead);
         if (boss != null && boss.Health.IsDead) { yield return new WaitForSeconds(.4f); Capture("Death"); }
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSecondsRealtime(2);
         frames.Sort();
         report.Add("Outcome won=" + won + ", playerHP=" + player.CurrentHealth + ", elapsed=" + (Time.time - began).ToString("F1") + ", phases=" + phases + ", summons=" + summons + ", releases=" + releases + ", shots=" + pilot.Shots);
         report.Add("Median frame ms=" + frames[frames.Count / 2].ToString("F2") + "; P95=" + frames[(int)(frames.Count * .95f)].ToString("F2") + "; screenshot frames included; no hardware-wide performance claim.");

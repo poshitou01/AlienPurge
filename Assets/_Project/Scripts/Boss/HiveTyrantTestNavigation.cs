@@ -10,6 +10,7 @@ public sealed class HiveTyrantTestNavigation : MonoBehaviour
     private void Start()
     {
         if (astar == null) astar = GetComponent<AstarPath>();
+        astar.logPathResults = PathLog.OnlyErrors;
         GridGraph graph = L01Navigation.EnsureGrid(astar);
         graph.center = Vector3.zero; graph.rotation = new Vector3(90, 0, 0);
         graph.SetDimensions(120, 100, .5f);

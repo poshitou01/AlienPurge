@@ -1,0 +1,11 @@
+PASSED actual Unity Editor Play Mode 2022.3.62f3c1; Direct3D11
+Existing A* Editor update-check diagnostic: InvalidOperationException: Insecure connection not allowed
+PASS Original test scene loaded
+PASS F2 accepted from existing world positions
+F2 request CPU milliseconds: 53.079
+Frame samples=559; max camera world step=5.1692; max player world step=0.0000; max stationary-player viewport step=0.1854; max ortho-size step=0.2141
+Frame ms median=8.66; p95=28.34; max=252.25; screenshot frames included.
+PASS F2 never teleports the stationary player
+GameManager gameOverPanel assigned=False
+PASS Death still follows the original GameManager result/pause flow
+PASS Restart restores time, original HP and gameplay

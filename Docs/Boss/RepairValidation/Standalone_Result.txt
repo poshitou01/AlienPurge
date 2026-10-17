@@ -1,0 +1,17 @@
+PASSED
+Windows standalone actual runtime; 2022.3.62f3c1; NVIDIA GeForce RTX 4070 Laptop GPU
+Initial player HP=5/5, speed=5; original weapon and native movement; input automation only.
+t=0.0 Player=5 Boss=600 summons=0
+t=10.0 Player=5 Boss=538 summons=2
+t=20.0 Player=5 Boss=481 summons=2
+t=30.0 Player=5 Boss=425 summons=4
+t=40.0 Player=5 Boss=374 summons=7
+t=50.0 Player=5 Boss=308 summons=7
+t=60.0 Player=5 Boss=248 summons=8
+t=70.0 Player=5 Boss=183 summons=8
+t=80.0 Player=5 Boss=126 summons=10
+t=90.0 Player=5 Boss=62 summons=10
+t=100.0 Player=5 Boss=1 summons=11
+Outcome won=True, playerHP=5, elapsed=102.6, phases=1, summons=11, releases=31, shots=650
+Median frame ms=0.33; P95=7.67; screenshot frames included; no hardware-wide performance claim.
+Errors=0; encounter FX roots remaining=0

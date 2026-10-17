@@ -223,6 +223,7 @@ public static class HiveTyrantCombatSetup
         var navigation = test.GetRootGameObjects().FirstOrDefault(go => go.name == "HiveTyrantTestNavigation");
         if (navigation == null) navigation = new GameObject("HiveTyrantTestNavigation");
         var astar = Ensure<AstarPath>(navigation); astar.scanOnStartup = false;
+        astar.logPathResults = Pathfinding.PathLog.OnlyErrors;
         astar.ConfigureReferencesInternal();
         if (astar.data.GetData() != null && astar.data.GetData().Length == 0) astar.data.SetData(null);
         AlienPurge.Level01ConnectedV01.L01Navigation.EnsureGrid(astar);

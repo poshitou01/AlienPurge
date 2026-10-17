@@ -13,11 +13,13 @@ public sealed class HiveTyrantPresentation : MonoBehaviour
     private MeshRenderer view;
     private Material material;
     private GameObject surface;
-    private const int Resolution = 96, Count = Resolution * Resolution * 6;
+    // Four corners per rigid cell. The previous six repeated two identical deformations.
+    private const int Resolution = 96, Count = Resolution * Resolution * 4;
     private readonly Vector3[] rest = new Vector3[Count], vertices = new Vector3[Count];
     private readonly Color[] colors = new Color[Count];
     private readonly Vector2[] pixels = new Vector2[Count];
     private readonly float[][] scytheWeights = new float[16][], fistWeights = new float[16][];
+    private readonly float[][] torsoWeights = new float[16][], wingWeights = new float[16][], coreWeights = new float[16][];
     private float started, windup, release, recovery, nextHit;
     private int action = -1, profile, lastHealth;
     public bool IsArticulated => action >= 0 && view != null && view.enabled;
@@ -25,6 +27,19 @@ public sealed class HiveTyrantPresentation : MonoBehaviour
     public int CurrentProfile => profile;
     public float MaximumDisplacement { get; private set; }
     public Bounds VisualBounds => IsArticulated ? view.bounds : body != null ? body.bounds : new Bounds(transform.position, Vector3.one);
+    // Use the fixed source canvas, not an animated mesh/trimmed sprite, for camera composition.
+    public Bounds FramingBounds
+    {
+        get
+        {
+            if (body == null || body.sprite == null) return new Bounds(transform.position, Vector3.one * 12);
+            var sprite = body.sprite; Vector2 size = sprite.rect.size / sprite.pixelsPerUnit;
+            Vector2 center = (sprite.rect.size * .5f - sprite.pivot) / sprite.pixelsPerUnit;
+            Vector3 x = body.transform.TransformVector(new Vector3(size.x, 0, 0));
+            Vector3 y = body.transform.TransformVector(new Vector3(0, size.y, 0));
+            return new Bounds(body.transform.TransformPoint(center), new Vector3(Mathf.Abs(x.x) + Mathf.Abs(y.x), Mathf.Abs(x.y) + Mathf.Abs(y.y), .1f));
+        }
+    }
     private void Awake()
     {
         boss = GetComponent<HiveTyrantCombat>();
@@ -35,34 +50,41 @@ public sealed class HiveTyrantPresentation : MonoBehaviour
         surface.AddComponent<MeshFilter>().sharedMesh = mesh; view = surface.AddComponent<MeshRenderer>();
         material = materialTemplate != null ? new Material(materialTemplate) : new Material(Shader.Find("Universal Render Pipeline/2D/Sprite-Unlit-Default")); material.name = "HiveTyrant_ArticulatedBody";
         view.sharedMaterial = material; view.sortingLayerID = body.sortingLayerID; view.sortingOrder = body.sortingOrder;
-        var uv = new Vector2[Count]; var triangles = new int[Count];
+        var uv = new Vector2[Count]; var triangles = new int[Resolution * Resolution * 6];
         int vertex = 0;
         for (int y = 0; y < Resolution; y++) for (int x = 0; x < Resolution; x++)
         {
-            for (int k = 0; k < 6; k++)
+            int cell = y * Resolution + x, first = vertex;
+            int ti = cell * 6;
+            triangles[ti] = first; triangles[ti + 1] = first + 1; triangles[ti + 2] = first + 2;
+            triangles[ti + 3] = first + 2; triangles[ti + 4] = first + 1; triangles[ti + 5] = first + 3;
+            for (int k = 0; k < 4; k++)
             {
-                int vx = x + (k == 2 || k == 3 || k == 5 ? 1 : 0), vy = y + (k == 1 || k == 4 || k == 5 ? 1 : 0);
+                int vx = x + (k >= 2 ? 1 : 0), vy = y + (k % 2);
                 pixels[vertex] = new Vector2(vx * 1024f / Resolution, vy * 1024f / Resolution);
                 rest[vertex] = PixelToLocal(pixels[vertex]); uv[vertex] = new Vector2(vx / (float)Resolution, 1 - vy / (float)Resolution);
-                triangles[vertex] = vertex; vertex++;
+                colors[vertex] = Color.white; vertex++;
             }
         }
-        mesh.vertices = rest; mesh.uv = uv; mesh.triangles = triangles;
+        mesh.vertices = rest; mesh.uv = uv; mesh.triangles = triangles; mesh.colors = colors;
         for (int p = 0; p < 16; p++)
         {
             var rig = library.directions[p]; scytheWeights[p] = new float[Count]; fistWeights[p] = new float[Count];
-            for (int i = 0; i < Count; i += 3)
+            torsoWeights[p] = new float[Count]; wingWeights[p] = new float[Count]; coreWeights[p] = new float[Count];
+            if (rig.skinCells == null || rig.skinCells.Length != Resolution * Resolution) throw new System.InvalidOperationException("HiveTyrant source topology needs authoring bake");
+            for (int i = 0; i < Count; i++)
             {
-                if (rig.skinCells == null || rig.skinCells.Length != Resolution * Resolution) throw new System.InvalidOperationException("HiveTyrant source topology needs authoring bake");
-                bool scythe = rig.skinCells[i / 6] == 1;
-                bool fist = rig.skinCells[i / 6] == 2;
-                for (int k = 0; k < 3; k++)
-                {
-                    scytheWeights[p][i+k] = scythe ? AlongJoint(pixels[i+k], rig.scytheJoint, rig.scytheTip) : 0;
-                    fistWeights[p][i+k] = fist ? AlongJoint(pixels[i+k], rig.fistJoint, rig.fistTip) : 0;
-                }
+                float sw = rig.skinCells[i / 4] == 1 ? AlongJoint(pixels[i], rig.scytheJoint, rig.scytheTip) : 0;
+                float fw = rig.skinCells[i / 4] == 2 ? AlongJoint(pixels[i], rig.fistJoint, rig.fistTip) * (1 - sw) : 0;
+                scytheWeights[p][i] = sw; fistWeights[p][i] = fw;
+                float upper = Mathf.SmoothStep(0, 1, Mathf.InverseLerp(rig.torsoAnchorY, rig.chestPivot.y - 70, pixels[i].y));
+                torsoWeights[p][i] = Mathf.Max(upper, Mathf.Max(sw, fw) * .65f);
+                wingWeights[p][i] = p < 8 ? 0 : Mathf.SmoothStep(0, 1, Mathf.InverseLerp(520, 350, pixels[i].y)) * Mathf.SmoothStep(0, 1, Mathf.InverseLerp(55, 180, Mathf.Abs(pixels[i].x - rig.wingHinge.x)));
+                coreWeights[p][i] = Mathf.Clamp01(1 - Vector2.Distance(pixels[i], new Vector2(rig.chestPivot.x, rig.chestPivot.y - 180)) / 95);
             }
         }
+        // Prewarm the upload/deformation path at spawn, not at the first player-triggered attack.
+        Evaluate(0);
         view.enabled = false;
     }
     private static Vector3 PixelToLocal(Vector2 p) => new Vector3((p.x - 512) / 256f, (512 - p.y) / 256f, 0);
@@ -91,7 +113,8 @@ public sealed class HiveTyrantPresentation : MonoBehaviour
         action = cue; started = Time.time; windup = Mathf.Max(.01f, anticipation); release = Mathf.Max(.01f, strike); recovery = Mathf.Max(.01f, settle);
         profile = (boss.Phase2Entered ? 8 : 0) + boss.Motor.GetCurrentDirection();
         material.mainTexture = library.directions[profile].source.texture;
-        body.enabled = false; view.enabled = true; Evaluate(0);
+        // LateUpdate evaluates once before rendering; no duplicate full mesh pass in RequestSkill.
+        body.enabled = false; view.enabled = true;
     }
     public void StopAction()
     {
@@ -155,32 +178,30 @@ public sealed class HiveTyrantPresentation : MonoBehaviour
         Vector3 scytheJoint = PixelToLocal(rig.scytheJoint), fistJoint = PixelToLocal(rig.fistJoint), chestPivot = PixelToLocal(rig.chestPivot);
         Quaternion scytheRotation = Quaternion.Euler(0, 0, a), fistRotation = Quaternion.Euler(0, 0, b), chestRotation = Quaternion.Euler(0, 0, chest);
         Quaternion leftWing = Quaternion.Euler(0, 0, -fold), rightWing = Quaternion.Euler(0, 0, fold);
-        MaximumDisplacement = 0;
+        Vector3 hinge = PixelToLocal(rig.wingHinge);
+        Color bodyColor = body.color;
+        float coreGlow = (action == 8 || action == 9) ? .3f * Mathf.Sin(Mathf.Min(t, 1) * Mathf.PI * .5f) : 0;
+        float armGlow = action == 6 ? .45f * prepare * (1 - snap) : 0;
+        float maxDisplacementSquared = 0;
         for (int i = 0; i < Count; i++)
         {
             Vector3 p = rest[i];
             float sw = scytheWeights[profile][i], fw = fistWeights[profile][i];
-            // The visible scythe occludes the rear fist in overlapping source regions.
-            // Continuous residual weighting avoids flipping a shared vertex between bones.
-            fw *= 1 - sw;
-            p += (scytheJoint + scytheRotation * (rest[i] - scytheJoint) - rest[i]) * sw;
-            p += (fistJoint + fistRotation * (rest[i] - fistJoint) - rest[i]) * fw;
-            float upper = Mathf.SmoothStep(0, 1, Mathf.InverseLerp(rig.torsoAnchorY, rig.chestPivot.y - 70, pixels[i].y));
+            if (sw > 0) p += (scytheJoint + scytheRotation * (rest[i] - scytheJoint) - rest[i]) * sw;
+            if (fw > 0) p += (fistJoint + fistRotation * (rest[i] - fistJoint) - rest[i]) * fw;
             // Forearms inherit torso power; supporting feet remain pinned in their original coordinates.
-            float torso = Mathf.Max(upper, Mathf.Max(sw, fw) * .65f);
+            float torso = torsoWeights[profile][i];
             p = Vector3.Lerp(p, chestPivot + chestRotation * (p - chestPivot) + Vector3.up * lift * 4, torso);
             if (profile >= 8 && fold != 0)
             {
-                float wing = Mathf.SmoothStep(0, 1, Mathf.InverseLerp(520, 350, pixels[i].y)) * Mathf.SmoothStep(0, 1, Mathf.InverseLerp(55, 180, Mathf.Abs(pixels[i].x - rig.wingHinge.x)));
-                Vector3 hinge = PixelToLocal(rig.wingHinge);
+                float wing = wingWeights[profile][i];
                 p = Vector3.Lerp(p, hinge + (pixels[i].x < rig.wingHinge.x ? leftWing : rightWing) * (p - hinge), wing);
             }
-            vertices[i] = p; MaximumDisplacement = Mathf.Max(MaximumDisplacement, Vector3.Distance(p, rest[i]));
-            float core = Mathf.Clamp01(1 - Vector2.Distance(pixels[i], new Vector2(rig.chestPivot.x, rig.chestPivot.y - 180)) / 95);
-            float glow = (action == 8 || action == 9) ? .3f * Mathf.Sin(Mathf.Min(t, 1) * Mathf.PI * .5f) * core : 0;
-            if (action == 6) glow += .45f * sw * prepare * (1 - snap);
-            colors[i] = new Color(1 + glow, 1 + glow * .6f, 1, opacity) * body.color;
+            vertices[i] = p; maxDisplacementSquared = Mathf.Max(maxDisplacementSquared, (p - rest[i]).sqrMagnitude);
+            float glow = coreGlow * coreWeights[profile][i] + armGlow * sw;
+            colors[i] = new Color(1 + glow, 1 + glow * .6f, 1, opacity) * bodyColor;
         }
+        MaximumDisplacement = Mathf.Sqrt(maxDisplacementSquared);
         mesh.vertices = vertices; mesh.colors = colors; mesh.RecalculateBounds();
         view.sortingLayerID = body.sortingLayerID; view.sortingOrder = body.sortingOrder;
     }

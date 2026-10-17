@@ -29,6 +29,8 @@ public static class HiveTyrantCombatVerification
     [MenuItem("AlienPurge/Hive Tyrant/Run Play Mode Verification")]
     public static void RunInteractive() { Begin(false); }
     public static void RunBatch() { Begin(true); }
+    public static void RunRepairRegression() { SessionState.SetString("HiveTyrant.VerificationMode", "RepairRegression"); Begin(true); }
+    private static string OutputFolder(string mode) => mode.StartsWith("Repair") ? "Docs/Boss/RepairValidation/Regression" : "Docs/Boss/CompletionValidation";
     public static void RunVisualSample() { SessionState.SetString("HiveTyrant.VerificationMode", "VisualSample"); Begin(true); }
     public static void ConfigureAndRunVisualSample() { HiveTyrantCombatSetup.ConfigureAndValidate(); RunVisualSample(); }
     public static void RunPoseAtlas() { SessionState.SetString("HiveTyrant.VerificationMode", "PoseAtlas"); Begin(true); }
@@ -64,7 +66,7 @@ public static class HiveTyrantCombatVerification
             {
                 SessionState.SetInt("HiveTyrant.VerificationExitCode", 1);
                 string mode = SessionState.GetString("HiveTyrant.CompletedMode", "PlayMode");
-                File.AppendAllText("Docs/Boss/CompletionValidation/" + mode + "_Result.txt", "\nFAILED: runtime/teardown errors:\n" + string.Join("\n", runtimeErrors));
+                File.AppendAllText(OutputFolder(mode) + "/" + mode + "_Result.txt", "\nFAILED: runtime/teardown errors:\n" + string.Join("\n", runtimeErrors));
             }
             SessionState.SetBool(RunningKey, false);
             if (SessionState.GetBool(BatchKey, false)) EditorApplication.Exit(SessionState.GetInt("HiveTyrant.VerificationExitCode", 1));
@@ -119,7 +121,8 @@ public static class HiveTyrantCombatVerification
         Directory.CreateDirectory("Docs/Boss/CompletionValidation");
         string mode = SessionState.GetString("HiveTyrant.VerificationMode", "PlayMode");
         SessionState.SetString("HiveTyrant.CompletedMode", mode);
-        File.WriteAllLines("Docs/Boss/CompletionValidation/" + mode + "_Result.txt", results);
+        Directory.CreateDirectory(OutputFolder(mode));
+        File.WriteAllLines(OutputFolder(mode) + "/" + mode + "_Result.txt", results);
         SessionState.SetString("HiveTyrant.VerificationMode", "PlayMode");
         exitCode = success ? 0 : 1;
         SessionState.SetInt("HiveTyrant.VerificationExitCode", exitCode);
@@ -261,7 +264,11 @@ public static class HiveTyrantCombatVerification
         var blocker = new GameObject("Verification_AllSummonPointsBlocked"); blocker.layer = LayerMask.NameToLayer("Environment");
         blocker.transform.position = boss.Motor.CombatOrigin; blocker.AddComponent<CircleCollider2D>().radius = 14;
         Physics2D.SyncTransforms();
-        Check(boss.RequestSkill(HiveTyrantSkill.Summon, true) && boss.PendingSpawnCount == 0, "Fully blocked spawn search skips every invalid point");
+        bool blockedRequest = boss.RequestSkill(HiveTyrantSkill.Summon, true);
+        results.Add("Blocked-spawn fixture: request=" + blockedRequest + " pending=" + boss.PendingSpawnCount + " state=" + boss.State +
+            " owner=" + boss.Motor.HasActionOwner + " locked=" + boss.Motor.IsMovementLocked + " inArena=" + boss.TargetInArena +
+            " boss=" + boss.Motor.CombatOrigin + " player=" + player.transform.position + " alive=" + boss.LivingSummons + " budget=" + boss.TotalSummoned + " playerHP=" + player.CurrentHealth);
+        Check(blockedRequest && boss.PendingSpawnCount == 0, "Fully blocked spawn search skips every invalid point");
         blocker.SetActive(false); UnityEngine.Object.Destroy(blocker); Physics2D.SyncTransforms();
         yield return Idle(boss);
         Check(boss.TotalSummoned == total, "No-valid-point summon completes without spending budget or stalling");
@@ -328,6 +335,11 @@ public static class HiveTyrantCombatVerification
             HiveTyrantCombatDebug.RestartScene(); yield return Delay(1.5f); yield return VisualSample();
             HiveTyrantCombatDebug.RestartScene(); yield return Delay(1.5f); yield return Battle();
             yield return RepeatStress();
+        }
+        if (SessionState.GetString("HiveTyrant.VerificationMode", "PlayMode") == "RepairRegression")
+        {
+            EditorSceneManager.LoadSceneInPlayMode(HiveTyrantCombatSetup.TestScene, new UnityEngine.SceneManagement.LoadSceneParameters(UnityEngine.SceneManagement.LoadSceneMode.Single));
+            yield return Delay(1.5f); yield return Battle(); yield return RepeatStress();
         }
     }
     private static IEnumerator WaveRules(HiveTyrantCombat boss, PlayerHealth player)
@@ -755,9 +767,11 @@ public static class HiveTyrantCombatVerification
             "Level01 Boss starts clear of wall interiors with the original solid kinematic body");
         // Use the existing progression API to unlock only the research prerequisite in this runtime fixture.
         world.progression.Complete("Research");
+        framing.enabled = false;
         player.GetComponent<PlayerMovement>().SetCanMove(false);
         Place(player, world.World(new Vector2(0, -10)));
-        yield return Delay(.3f);
+        // Test-only entrance placement skips the approach walk; allow normal follow to settle first.
+        yield return Delay(1.2f); framing.enabled = true;
         Check(world.arenaBridge.encounterStarted && !boss.Motor.IsMovementLocked, "Existing Level01 research/entrance bridge activates Boss combat");
         boss.AutomaticSkills = false;
         yield return Idle(boss);
@@ -787,7 +801,7 @@ public static class HiveTyrantCombatVerification
         if (SystemInfo.graphicsDeviceType == UnityEngine.Rendering.GraphicsDeviceType.Null) { results.Add("UNVERIFIED screenshot " + name + ": null graphics device"); return; }
         Camera camera = Camera.main;
         if (camera == null) return;
-        string file = "Docs/Boss/CompletionValidation/" + name + ".png";
+        string file = OutputFolder(SessionState.GetString("HiveTyrant.VerificationMode", "PlayMode")) + "/" + name + ".png";
         Directory.CreateDirectory(Path.GetDirectoryName(file));
         var render = new RenderTexture(1280, 720, 24);
         var texture = new Texture2D(1280, 720, TextureFormat.RGB24, false);

@@ -1,0 +1,35 @@
+PASSED actual Unity Editor Play Mode 2022.3.62f3c1; Direct3D11
+PASS Original test scene loaded
+PASS Large debug panel is hidden by default
+PASS F8 control action opens the panel
+PASS F8 control action closes the panel
+PASS Native pathfinding keeps errors without per-path Console spam
+PASS Rendered screenshot saved: HUD
+PASS F2 accepted from existing world positions
+F2 request CPU milliseconds: 13.993
+PASS Rendered screenshot saved: WaveWarning
+Frame samples=687; max camera world step=0.0091; max player world step=0.0000; max stationary-player viewport step=0.0003; max ortho-size step=0.0000
+Frame ms median=9.33; p95=11.11; max=235.81; screenshot frames included.
+PASS F2 never teleports the stationary player
+PASS F2 warning/release/end have no camera cut
+GameManager gameOverPanel assigned=False
+PASS Death still follows the original GameManager result/pause flow
+PASS Rendered screenshot saved: Death
+PASS Dedicated test death overlay visible while timeScale is zero
+PASS Retry button is available after death
+PASS Visible retry button receives UI raycasts above the death shade
+PASS Restart restores time, original HP and gameplay
+PASS Retry leaves one Boss HUD, test HUD and input event system
+PASS HUD displays authoritative health and Riftwing phase
+PASS Rendered screenshot saved: Phase2HUD
+PASS Rendered screenshot saved: Controls
+PASS HUD safe margins at (1280.00, 720.00)
+PASS HUD safe margins at (1920.00, 1080.00)
+PASS HUD safe margins at (1024.00, 768.00)
+PASS Formal Level01 has no debug panel, test hint or test-only result UI
+PASS Formal scene retains its original configured game-over interface
+PASS Formal entrance activates the same F2 at its existing arena position
+PASS Rendered screenshot saved: Level01Wave
+PASS Formal F2 keeps the full Boss silhouette on screen
+Formal F2 max stationary-player viewport step=0.0042; player world step=0.0000
+PASS Formal F2 also preserves player position and continuous framing

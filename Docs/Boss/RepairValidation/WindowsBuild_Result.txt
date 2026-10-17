@@ -1,0 +1,4 @@
+Succeeded
+Output=D:/AlienPurge/Builds/HiveTyrantRepair/AlienPurge.exe
+Errors=0 Warnings=2
+Duration=00:00:49.0536361
