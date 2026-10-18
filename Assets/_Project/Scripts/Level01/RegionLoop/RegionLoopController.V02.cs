@@ -111,6 +111,12 @@ namespace AlienPurge.Level01.RegionLoop
                 if (state.config.regionId == CurrentRegion && state.firstEntered < 0)
                 {
                     state.firstEntered = Time.time;
+                    foreach(var resident in state.enemies.Where(t=>t.role==RegionEnemyRole.Resident&&!t.dead))
+                    {
+                        if(resident.lease!=null)resident.lease.PrepareFirstRegionEntry();
+                        else if(combatGrowth&&resident.combatStats!=null&&(resident.savedHealth<0||resident.savedHealth>=resident.combatStats.health))
+                        {resident.combatStats=null;resident.savedHealth=-1;} // Unengaged preload locks strength on actual entry.
+                    }
                     if (state.config.v02.mechanismSource == MechanismRewardSource.FirstEntry) GrantMechanism(state);
                 }
                 PreloadResidents(state);
@@ -167,7 +173,7 @@ namespace AlienPurge.Level01.RegionLoop
             if (choices.Length == 0) return;
             var wave = choices[state.environmentWave % choices.Length];
             int pending = state.enemies.Count(t => t.role == RegionEnemyRole.Patrol && !t.dead && t.lease == null);
-            int target = search ? 4 : Mathf.Max(6, settings.ambientTarget - (ActiveOptional != null ? 3 : 0) - (storm.CurrentPhase == StormPhase.Active ? 2 : 0));
+            int target = search ? 4 : Mathf.Max(6, settings.ambientTarget + GrowthPopulationBonus(state) - (ActiveOptional != null ? 3 : 0) - (storm.CurrentPhase == StormPhase.Active ? 2 : 0));
             int capacity = Mathf.Min(target - CountAlive(state) - pending,
                 state.config.aliveLimit - settings.missionCapacityReserve - CountAlive(state) - pending,
                 globalAliveLimit - settings.missionCapacityReserve - pool.ActiveCount - pending, 6 - pending);

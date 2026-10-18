@@ -14,6 +14,8 @@ namespace AlienPurge.Level01.RegionLoop
         public int attempt, failedSpawns, savedHealth = -1;
         public float due;
         public RegionEnemyLease lease;
+        // Reinforcements freeze on spawn; untouched preloads lock on entry. Retained across pool release/re-entry.
+        public RegionCombatStats combatStats;
     }
 
     public sealed class RegionRunState

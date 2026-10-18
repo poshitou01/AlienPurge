@@ -78,9 +78,14 @@ namespace AlienPurge.Level01.Editor
             Check(Vector2.Distance(loop.safeZone.CurrentCenter,high.transform.position)<high.Config.radius+loop.safeZone.Radius-2,"Storm safety has a usable overlap with the chosen defense terminal");
             yield return Until(()=>cargo.enemies.Any(t=>t.role==RegionEnemyRole.Mission&&t.lease!=null),"Task guards enter");
             var contest=cargo.enemies.First(t=>t.role==RegionEnemyRole.Mission&&t.lease!=null);
+            contest.lease.GetComponent<EnemyMovement>().SetMovementLocked(true);
+            contest.lease.GetComponent<EnemyPathNavigator>().enabled=false;
+            var contestBody=contest.lease.GetComponent<Rigidbody2D>();bool simulated=contestBody!=null&&contestBody.simulated;
+            if(contestBody!=null)contestBody.simulated=false; // Hold the occupation fixture steady against physics separation.
             contest.lease.transform.position=high.transform.position+Vector3.right;Physics2D.SyncTransforms();
             yield return Seconds(.3f);float beforeProgress=high.beacon.RegionDefendedSeconds;yield return Seconds(1.2f);
             Check(high.Contested&&high.beacon.RegionDefendedSeconds<=beforeProgress+.05f,"Enemy occupation interrupts defense progress");
+            if(contestBody!=null)contestBody.simulated=simulated;
             contest.lease.Health.TakeDamage(int.MaxValue);
             Move(high.transform.position+Vector3.right*8);yield return Seconds(.4f);beforeProgress=high.beacon.RegionDefendedSeconds;float deadlineBefore=loop.missionView.RegionTaskRemaining;
             yield return Seconds(1.2f);Check(high.beacon.RegionDefendedSeconds<=beforeProgress+.05f&&loop.missionView.RegionTaskRemaining<deadlineBefore,"Leaving pauses hold progress but not the deadline");
@@ -135,8 +140,17 @@ namespace AlienPurge.Level01.Editor
                 results.Add("MEASURE ingress "+point+" region="+loop.world.ResolveRegion(point)+" valid="+valid+" clear="+clear+" reason="+args[3]);
             }
             Check(loop.State("Extraction").enemies.Any(t=>t.lease!=null),"Extraction remains defended by active enemies");
-            yield return Until(()=>loop.extraction.CurrentState==ExtractionState.Succeeded,"Successful native extraction",70);
+            double extractionDeadline=EditorApplication.timeSinceStartup+70;
+            while(loop.extraction.CurrentState!=ExtractionState.Succeeded)
+            {
+                if(EditorApplication.timeSinceStartup>extractionDeadline)throw new TimeoutException("Successful native extraction");
+                // Simulate active defense: remove close attackers and re-enter after native charge knockback.
+                KillLive(loop.State("Extraction"),t=>Vector2.Distance(t.lease.transform.position,loop.extraction.CurrentExtractionPosition)<4);
+                Move(loop.extraction.CurrentExtractionPosition);
+                yield return null;
+            }
             Check(!GameManager.Instance.IsPlaying,"Extraction reaches actual run result, not a dead-end label");
+            if(SessionState.GetBool(Key+".polish",false))yield return CheckResultScreen(true);
             yield return Fresh();
             yield return FeedbackHazardsAndFailure();
             results.Add("LIMITS: teleported travel, accelerated simulation and deterministic damage inputs; real native movement, XP pickups, reward buttons, projectiles, storm/fog damage and extraction run. This verifies behavior, not human difficulty balance.");
@@ -175,6 +189,7 @@ namespace AlienPurge.Level01.Editor
             yield return Seconds(2.5f);Check(hp.CurrentHealth<health,"Native fog damage remains active");
             hp.CancelTemporaryInvulnerability();hp.TakeDamage(int.MaxValue);yield return null;yield return null;
             Check(loop.ShuttingDown&&loop.rewards.PendingCount==0&&!loop.missionView.RegionTaskActive,"Death releases enemies and task/reward ownership");
+            if(SessionState.GetBool(Key+".polish",false))yield return CheckResultScreen(false);
             invulnerable=true;yield return Fresh();
             Check(!loop.extraction.RegionExtractionStarted&&loop.Regions.All(s=>!s.retired),"Restart resets extraction and reclaimed-region state");
             RegionLoopV02Installer.ValidateProtected();Check(true,"Protected original assets remain byte-identical");

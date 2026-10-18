@@ -69,8 +69,8 @@ MonoBehaviour:
     - type: 2
       count: 1
       keyGuard: 1
-  aliveLimit: 20
-  specialLimit: 4
+  aliveLimit: 26
+  specialLimit: 5
   patrolBudget: 0
   patrolType: 0
   patrolInterval: 35
@@ -112,6 +112,15 @@ MonoBehaviour:
       groups:
       - type: 0
         count: 5
+        keyGuard: 0
+    - id: pursuit
+      delay: 0
+      groups:
+      - type: 0
+        count: 3
+        keyGuard: 0
+      - type: 1
+        count: 2
         keyGuard: 0
     extractionRegion: 1
     environmentInterval: 4

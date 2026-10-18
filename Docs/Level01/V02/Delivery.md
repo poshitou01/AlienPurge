@@ -1,5 +1,7 @@
 # Level01 Region Loop V02 — 试玩反馈修订
 
+最新升级：后期敌人成长、技能栏、任务面板与结算界面已经继续修订，见 [CombatUI.md](CombatUI.md) 和 `CombatUIChecks.txt`。下文保留上一轮的交付记录；其中 UI 外观限制及后段人口上限由新修订替代。
+
 工程：`D:\AlienPurge_RegionLoopV01`；分支：`feature/level01-region-loop-v02`；Unity 2022.3.62f3c1。本轮继续修改现有 V02，没有创建第二套玩法系统。
 
 ## 运行入口

@@ -120,7 +120,7 @@ public partial class MissionHUD
         if (progressSlider != null) progressSlider.value = missionManager.MissionProgress01;
         if (progressText != null) progressText.text = missionManager.RegionProgressText;
         if (rewardText != null) { rewardText.text = missionManager.RegionReward; rewardText.color = normalColor; }
-        if (riskText != null) { riskText.text = missionManager.RegionRisk; riskText.color = normalColor; }
+        if (riskText != null) { riskText.text = missionManager.RegionRisk; riskText.color = riskColor; }
         return true;
     }
 }

@@ -40,10 +40,11 @@ namespace AlienPurge.Level01.RegionLoop
             priorHealth = Health.MaxHealth; priorExp = Health.ExperienceAmount;
             priorSpeed = movement.MoveSpeed; priorDamage = contact.Damage;
             var profile = region.config.Profile(ticket.type);
-            definition.InitializeInstanceAttributes(profile.health, profile.speed, profile.damage, profile.experience);
+            var stats = controller.CombatStats(region, ticket);
+            definition.InitializeInstanceAttributes(stats.health, stats.speed, stats.damage, profile.experience);
             // Restore surviving enemies without re-awarding anything or healing on region return.
-            if (ticket.savedHealth > 0 && ticket.savedHealth < profile.health)
-                Health.TakeDamage(profile.health - ticket.savedHealth);
+            if (ticket.savedHealth > 0 && ticket.savedHealth < stats.health)
+                Health.TakeDamage(stats.health - ticket.savedHealth);
             reported = false; engaged = ticket.role == RegionEnemyRole.Mission || controller.v02Enabled && ticket.role == RegionEnemyRole.Patrol;
             enabled = true; ticket.lease = this; nextSense = 0; gateInitialized = false;
             bool showGuard = controller.v02Enabled && ticket.role == RegionEnemyRole.Resident && ticket.keyGuard;
@@ -66,6 +67,15 @@ namespace AlienPurge.Level01.RegionLoop
             if (owner == null || reported) return;
             if (Health.IsDead) { Report(true); return; }
             if (Time.time >= nextSense) { nextSense = Time.time + .3f; Sense(); }
+        }
+        public void PrepareFirstRegionEntry()
+        {
+            if(owner==null||!owner.combatGrowth||engaged||Ticket.role!=RegionEnemyRole.Resident||Health.CurrentHealth!=Health.MaxHealth)return;
+            var profile=Region.config.Profile(Ticket.type);
+            Ticket.combatStats=owner.PreviewCombatStats(Region,profile,owner.rewards.experience.CurrentLevel,Ticket.keyGuard);
+            Ticket.savedHealth=-1;
+            var stats=Ticket.combatStats;
+            definition.InitializeInstanceAttributes(stats.health,stats.speed,stats.damage,profile.experience);
         }
         void Sense()
         {

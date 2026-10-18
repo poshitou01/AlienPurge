@@ -39,6 +39,7 @@ namespace AlienPurge.Level01.Editor
             else if (value is int i) p.intValue = i;
             else if (value is float f) p.floatValue = f;
             else if (value is string s) p.stringValue = s;
+            else if (value is Color color) p.colorValue = color;
             else p.objectReferenceValue = value as Object;
             so.ApplyModifiedPropertiesWithoutUndo();
         }
@@ -166,6 +167,7 @@ namespace AlienPurge.Level01.Editor
             ConfigureWorldSignals(scene, loop);
             IsolateExperience(scene);
             RegionLoopInstaller.CloneSceneFonts(scene, DataFolder + "/Fonts");
+            ConfigurePolish(scene, loop);
             PrepareChineseFonts(scene);
             loop.feedbackRevision = 3;
             EditorSceneManager.MarkSceneDirty(scene);
@@ -428,7 +430,8 @@ namespace AlienPurge.Level01.Editor
         {
             var c=One<RegionLoopController>(scene);One<GameManager>(scene);One<MissionManager>(scene);One<EnemyPool>(scene);One<UpgradeManager>(scene);One<WeaponModuleSelectionManager>(scene);
             var errors=new List<string>();
-            if (File.ReadAllText(Reports + "/NativeHudStyle.txt") != HudStyle(scene)) errors.Add("Native MissionHUD appearance/layout differs from V01 source");
+            if (c.polishRevision < 1 && File.ReadAllText(Reports + "/NativeHudStyle.txt") != HudStyle(scene)) errors.Add("Native MissionHUD appearance/layout differs from V01 source");
+            ValidatePolish(scene,errors);
             foreach(var t in All<Transform>(scene))if(GameObjectUtility.GetMonoBehavioursWithMissingScriptCount(t.gameObject)>0)errors.Add("Missing script "+t.name);
             if(!c.v02Enabled||c.v02InstallationId!=Owner||c.world.progression.regionLoop!=c)errors.Add("V02 authority missing");
             if(!c.storm.regionDriven||!c.fog.regionDriven||!c.extraction.regionDriven||!c.missionView.regionDriven||!c.rewards.modules.eventDrivenEvolution||!c.rewards.modules.regionDriven||All<EnemySpawner>(scene).Any(s=>!s.regionDriven))errors.Add("Double/legacy scheduling");

@@ -1,0 +1,98 @@
+PASS | Unity 2022.3.62f3c1 | 2026-10-18 07:24:29Z
+PASS: Isolated profile selected before initialization
+PASS: Five exploration regions and a playable extraction phase installed
+PASS: Cargo already populated before player entry; no premature fog clock
+PASS: Blue pads, floating markers and permanent terminal circles removed
+PASS: Entering region actually activates native enemy movement
+PASS: Real pooled death awards one physical XP pickup and one kill
+PASS: A surviving patrol no longer blocks later reinforcements; new arrivals=12
+PASS: Ambient ticket queue remains bounded
+PASS: Main opens G1 exactly once
+PASS: Repeated main activation cannot pay again: ColonyEntry
+PASS: Main opens G2 exactly once
+PASS: Repeated main activation cannot pay again: CargoYard
+PASS: High-risk challenge offered through the existing cargo terminal
+PASS: Accepting high-risk defense triggers a real storm warning
+PASS: Storm safety has a usable overlap with the chosen defense terminal
+PASS: Enemy occupation interrupts defense progress
+PASS: Leaving pauses hold progress but not the deadline
+PASS: Storm spatial overlay active with native safety hole
+PASS: Combined storm defense completes and unlocks rare cache
+PASS: Ambient enemies keep spawning DURING active storm and optional defense; arrivals=8
+PASS: Task reward applied once
+PASS: Main opens G3 exactly once
+PASS: Repeated main activation cannot pay again: PowerMaintenance
+PASS: Immediate actual evolution: ThunderPiercer
+PASS: Signature evolution excludes the Overclock entitlement
+PASS: Native weapon fires after choice closes
+PASS: Fired bullet receives native evolution visual data
+PASS: Fired projectile carries evolved damage-mechanism snapshot
+PASS: Real projectile collision and secondary damage affect both targets; HP=92,96 direct=1 chain=1
+PASS: Native evolved chain / explosion and split behavior actually fires
+PASS: After G3, Chinese HUD gives an active isolation objective
+PASS: Main opens G4 exactly once
+PASS: Repeated main activation cannot pay again: QuarantineCommons
+PASS: Main opens G5 exactly once
+PASS: Repeated main activation cannot pay again: InfectedResearch
+PASS: Research completion points forward to extraction
+PASS: Repeated main activation cannot pay again: Extraction
+PASS: Existing native extraction defense starts from terminal interaction
+PASS: Leaving extraction pauses native progress
+MEASURE extraction t=98.21841 current=Extraction wave=3 due=100.7051 quiet=0 retired=False global=9 camera=(47.00, -56.43, -10.00) size=10 player=(47.00, -57.07, 0.00) tickets=Normal:0:True,Normal:0:True,Normal:0:True,Normal:0:True,Normal:0:True,Normal:0:True,Normal:0:True,Fast:0:True,Normal:0:True,Normal:0:False,Normal:0:False,Normal:0:False,Normal:0:False
+MEASURE ingress (27.00, -56.48) region= valid=True clear=False reason=
+MEASURE ingress (23.00, -56.48) region= valid=True clear=True reason=
+MEASURE ingress (16.00, -50.00) region= valid=True clear=True reason=
+MEASURE ingress (16.00, -36.00) region= valid=True clear=True reason=
+PASS: Extraction remains defended by active enemies
+PASS: Extraction reaches actual run result, not a dead-end label
+PASS: Native result opens localized victory panel
+PASS: Result stats come from actual immutable run snapshot
+PASS: Result actions retain native restart/base callbacks and settlement availability
+PASS: Existing inventory button skins include hover/pressed/disabled states
+PASS: Result button receives pointer raycasts above the backdrop
+PASS: Restart resets milestones, modules and run identity
+PASS: Main opens G1 exactly once
+PASS: Repeated main activation cannot pay again: ColonyEntry
+PASS: Normal terminal defense starts
+PASS: Ignoring optional combat fails without rewards; main remains open
+PASS: Native hazard fixture publishes warning
+PASS: Safety hole corresponds to native storm protection
+PASS: Exposed player takes native storm damage
+PASS: Storm mask clears after event
+PASS: Re-entering cannot reset fog deadline
+PASS: Fog advances continuously rather than jumping on elapsed time
+PASS: Native fog covers representative walkable room area: ColonyEntry samples=20
+PASS: Native fog covers representative walkable room area: CargoYard samples=48
+PASS: Native fog covers representative walkable room area: PowerMaintenance samples=54
+PASS: Native fog covers representative walkable room area: QuarantineCommons samples=42
+PASS: Native fog covers representative walkable room area: InfectedResearch samples=43
+PASS: Research exit corridor reclaimed: (16.54, 36.00)
+PASS: Research exit corridor reclaimed: (32.00, 33.00)
+PASS: Research exit corridor reclaimed: (48.00, 29.00)
+PASS: Reclaimed combat regions retire; forward extraction stays usable
+PASS: Native fog damage remains active
+PASS: Death releases enemies and task/reward ownership
+PASS: Native result opens localized defeat panel
+PASS: Result stats come from actual immutable run snapshot
+PASS: Result actions retain native restart/base callbacks and settlement availability
+PASS: Existing inventory button skins include hover/pressed/disabled states
+PASS: Result button receives pointer raycasts above the backdrop
+PASS: Restart resets milestones, modules and run identity
+PASS: Restart resets extraction and reclaimed-region state
+PASS: Protected original assets remain byte-identical
+LIMITS: teleported travel, accelerated simulation and deterministic damage inputs; real native movement, XP pickups, reward buttons, projectiles, storm/fog damage and extraction run. This verifies behavior, not human difficulty balance.
+PASS: Late health grows through level 15/25 and stops at configured level cap
+PASS: Movement and contact damage growth remain bounded
+MEASURE Quarantine Normal HP: base=7 L15=23 L25=40 cap=49
+PASS: Unengaged preloaded garrison locks strength to first-entry level
+PASS: Actual pooled enemies receive level-scaled attributes
+PASS: Pool reuse after a level increase neither heals nor rescales existing enemies
+PASS: New reinforcements remain threatening after further leveling
+PASS: Styled ability slot reflects real native cooldown
+PASS: Mission panel stays fully inside upper-right screen quadrant
+PASS: Upgraded native weapon fires against late scaled enemy
+PASS: Late normal enemy survives one upgraded direct hit but takes real damage
+PASS: Scaled enemy remains killable through normal upgraded shooting
+PASS: True arrow points right without projectile sprite
+PASS: True arrow rotates up toward target
+LIMITS: level 15/25 combat fixtures set level and add native weapon damage directly, separately from the full real-XP/choice regression; these test scaling and shooting, not a claim of human-balanced difficulty.

@@ -20,7 +20,7 @@ namespace AlienPurge.Level01.Editor
     public static partial class RegionLoopV02Regression
     {
         const string Key="RegionV02.Regression";
-        static string Report=>RegionLoopV02Installer.Reports+(SessionState.GetBool(Key+".feedback",false)?"/FeedbackChecks.txt":SessionState.GetBool(Key+".preview",false)?"/TaskPreview.txt":SessionState.GetBool(Key+".presentation",false)?"/Presentation.txt":"/PlayMode.txt");
+        static string Report=>RegionLoopV02Installer.Reports+(SessionState.GetBool(Key+".polish",false)?"/CombatUIChecks.txt":SessionState.GetBool(Key+".feedback",false)?"/FeedbackChecks.txt":SessionState.GetBool(Key+".preview",false)?"/TaskPreview.txt":SessionState.GetBool(Key+".presentation",false)?"/Presentation.txt":"/PlayMode.txt");
         static readonly Stack<IEnumerator> routines=new Stack<IEnumerator>();
         static readonly List<string> results=new List<string>(), errors=new List<string>();
         static RegionLoopController loop;
@@ -40,12 +40,13 @@ namespace AlienPurge.Level01.Editor
         // Focused rerender after scene-only presentation repairs; retains the full behavior report.
         public static void RunPresentation()=>Start(true);
         public static void RunPreview()=>Start(true,true);
-        static void Start(bool presentation,bool preview=false,bool feedback=false)
+        static void Start(bool presentation,bool preview=false,bool feedback=false,bool polish=false)
         {
             if(Application.isPlaying)throw new InvalidOperationException("Exit Play first.");
             SessionState.SetBool(Key+".presentation",presentation);
             SessionState.SetBool(Key+".preview",preview);
             SessionState.SetBool(Key+".feedback",feedback);
+            SessionState.SetBool(Key+".polish",polish);
             RegionLoopV02Installer.Install();
             string guid=AssetDatabase.AssetPathToGUID(RegionLoopV02Installer.Target);
             int objects=RegionLoopInstaller.All<Transform>(SceneManager.GetActiveScene()).Length;
@@ -69,7 +70,7 @@ namespace AlienPurge.Level01.Editor
                 deadline=EditorApplication.timeSinceStartup+1200;
                 Application.runInBackground=true;
                 var view=EditorWindow.GetWindow(Type.GetType("UnityEditor.GameView,UnityEditor"));view.Show();view.Focus();
-                routines.Push(SessionState.GetBool(Key+".feedback",false)?Feedback():SessionState.GetBool(Key+".preview",false)?Preview():SessionState.GetBool(Key+".presentation",false)?Presentation():Exercise());
+                routines.Push(SessionState.GetBool(Key+".polish",false)?Polish():SessionState.GetBool(Key+".feedback",false)?Feedback():SessionState.GetBool(Key+".preview",false)?Preview():SessionState.GetBool(Key+".presentation",false)?Presentation():Exercise());
             }
             if(mode==PlayModeStateChange.EnteredEditMode)
             {
