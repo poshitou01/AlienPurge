@@ -324,8 +324,11 @@ public class EnemyHealth : MonoBehaviour
         EnemyType enemyType =
             GetCurrentEnemyType();
 
-        PlayDeathAudioFeedback(enemyType);
-        PlayDeathCameraShake(enemyType);
+        if (!CombatImpactFeedback.OwnsDeath(this))
+        {
+            PlayDeathAudioFeedback(enemyType);
+            PlayDeathCameraShake(enemyType);
+        }
 
         if (!hasRegisteredKill)
         {

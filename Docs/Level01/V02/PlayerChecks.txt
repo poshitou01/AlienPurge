@@ -1,4 +1,4 @@
-PASS | Unity 2022.3.62f3c1 | 2026-10-18 10:34:21Z
+PASS | Unity 2022.3.62f3c1 | 2026-10-18 11:11:02Z
 PASS: Player checks use an isolated profile
 PASS: V02 installs a single aim-facing presentation driver
 PASS: All eight held poses and the continuous stride material are assigned

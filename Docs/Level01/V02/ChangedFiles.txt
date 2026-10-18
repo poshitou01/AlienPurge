@@ -1,71 +1,74 @@
 Level01 Region Loop V02 - files relative to D:\AlienPurge_RegionLoopV01
 Protected baseline: 35775fbfaa9a64671c4556811fe6ae37061508f1
-Player / HUD refinement based on: 1e73b8c
-Current refinement delta: 54 files
+Combat impact refinement based on: 50c1e85
+Current refinement delta: 46 files
 Authorized protected-asset exception retained: MainMenu_DeskV1.unity StartGame destination only.
 
 Current refinement:
-Assets/_Project/Data/Level01/RegionLoopV02/Fonts/4f5aafd1a68bbe647b1590a00fb56992.asset
-Assets/_Project/Data/Level01/RegionLoopV02/PlayerHeldStride.mat
-Assets/_Project/Data/Level01/RegionLoopV02/PlayerHeldStride.mat.meta
+Assets/_Project/Audio/SFX/Combat/ImpactV02.meta
+Assets/_Project/Audio/SFX/Combat/ImpactV02/SFX_HeavyKill.wav
+Assets/_Project/Audio/SFX/Combat/ImpactV02/SFX_HeavyKill.wav.meta
+Assets/_Project/Audio/SFX/Combat/ImpactV02/SFX_Hit.wav
+Assets/_Project/Audio/SFX/Combat/ImpactV02/SFX_Hit.wav.meta
+Assets/_Project/Audio/SFX/Combat/ImpactV02/SFX_Kill.wav
+Assets/_Project/Audio/SFX/Combat/ImpactV02/SFX_Kill.wav.meta
+Assets/_Project/Audio/SFX/Combat/ImpactV02/SFX_StrongHit.wav
+Assets/_Project/Audio/SFX/Combat/ImpactV02/SFX_StrongHit.wav.meta
+Assets/_Project/Data/Level01/RegionLoopV02/CombatImpactFlash.mat
+Assets/_Project/Data/Level01/RegionLoopV02/CombatImpactFlash.mat.meta
+Assets/_Project/Editor/Level01/CombatImpactAudioAuthoring.cs
+Assets/_Project/Editor/Level01/CombatImpactAudioAuthoring.cs.meta
 Assets/_Project/Editor/Level01/RegionLoopV02Installer.cs
 Assets/_Project/Editor/Level01/RegionLoopV02Installer.Feedback.cs
-Assets/_Project/Editor/Level01/RegionLoopV02Installer.Player.cs
-Assets/_Project/Editor/Level01/RegionLoopV02Installer.Player.cs.meta
+Assets/_Project/Editor/Level01/RegionLoopV02Installer.Impact.cs
+Assets/_Project/Editor/Level01/RegionLoopV02Installer.Impact.cs.meta
 Assets/_Project/Editor/Level01/RegionLoopV02Regression.cs
-Assets/_Project/Editor/Level01/RegionLoopV02Regression.Player.cs
-Assets/_Project/Editor/Level01/RegionLoopV02Regression.Player.cs.meta
+Assets/_Project/Editor/Level01/RegionLoopV02Regression.Impact.cs
+Assets/_Project/Editor/Level01/RegionLoopV02Regression.Impact.cs.meta
 Assets/_Project/Scenes/ArtTests/Level01_FullWorld_GameplayV02.unity
-Assets/_Project/Scripts/Level01/RegionLoop/PlayerStatusPanel.cs
-Assets/_Project/Scripts/Level01/RegionLoop/PlayerStatusPanel.cs.meta
-Assets/_Project/Scripts/Player/PlayerMovement.cs
-Assets/_Project/Scripts/Player/PlayerMovement.Tactical.cs
-Assets/_Project/Scripts/Player/PlayerMovement.Tactical.cs.meta
-Assets/_Project/Scripts/Player/Visual/PlayerCombatPresentation.cs
-Assets/_Project/Scripts/Player/Visual/PlayerCombatPresentation.cs.meta
-Assets/_Project/Scripts/Player/Visual/PlayerCombatPresentation.Hands.cs
-Assets/_Project/Scripts/Player/Visual/PlayerCombatPresentation.Hands.cs.meta
-Assets/_Project/Scripts/Player/Visual/PlayerCombatPresentation.Stride.cs
-Assets/_Project/Scripts/Player/Visual/PlayerCombatPresentation.Stride.cs.meta
-Assets/_Project/Scripts/Player/Visual/PlayerHeldStride.shader
-Assets/_Project/Scripts/Player/Visual/PlayerHeldStride.shader.meta
-Assets/_Project/Scripts/UI/HUDManager.cs
-Assets/_Project/Scripts/Weapons/WeaponController.cs
-Assets/_Project/Scripts/Weapons/WeaponManager.cs
-Docs/Level01/V02/Abilities_Dash.png
-Docs/Level01/V02/Abilities_Jump.png
-Docs/Level01/V02/Abilities_Pulse.png
+Assets/_Project/Scripts/Combat/Bullet.cs
+Assets/_Project/Scripts/Combat/CombatImpactFeedback.Audio.cs
+Assets/_Project/Scripts/Combat/CombatImpactFeedback.Audio.cs.meta
+Assets/_Project/Scripts/Combat/CombatImpactFeedback.cs
+Assets/_Project/Scripts/Combat/CombatImpactFeedback.cs.meta
+Assets/_Project/Scripts/Combat/CombatImpactFeedback.Visuals.cs
+Assets/_Project/Scripts/Combat/CombatImpactFeedback.Visuals.cs.meta
+Assets/_Project/Scripts/Combat/CombatImpactSilhouette.shader
+Assets/_Project/Scripts/Combat/CombatImpactSilhouette.shader.meta
+Assets/_Project/Scripts/Combat/EnemyImpactReaction.cs
+Assets/_Project/Scripts/Combat/EnemyImpactReaction.cs.meta
+Assets/_Project/Scripts/Enemy/EnemyHealth.cs
+Assets/_Project/Scripts/Player/Abilities/PlayerAbilityFeel.cs
+Assets/_Project/Scripts/Player/Abilities/PlayerPulseSkill.cs
 Docs/Level01/V02/AbilityChecks.txt
 Docs/Level01/V02/ChangedFiles.txt
+Docs/Level01/V02/CombatImpact.md
 Docs/Level01/V02/CombatUIChecks.txt
 Docs/Level01/V02/Delivery.md
-Docs/Level01/V02/Evolution_ThunderPiercer.png
-Docs/Level01/V02/Feedback_Extraction.png
-Docs/Level01/V02/Feedback_Quarantine.png
-Docs/Level01/V02/Feedback_StormDefense.png
-Docs/Level01/V02/Player_Pose_E.png
-Docs/Level01/V02/Player_Pose_N.png
-Docs/Level01/V02/Player_Pose_NE.png
-Docs/Level01/V02/Player_Pose_NW.png
-Docs/Level01/V02/Player_Pose_S.png
-Docs/Level01/V02/Player_Pose_SE.png
-Docs/Level01/V02/Player_Pose_SW.png
-Docs/Level01/V02/Player_Pose_W.png
-Docs/Level01/V02/Player_StatusHUD.png
-Docs/Level01/V02/Player_Walking_E.png
-Docs/Level01/V02/Player_Walking_S.png
+Docs/Level01/V02/Impact_HeavyKill.png
+Docs/Level01/V02/Impact_KillConfirmation.png
+Docs/Level01/V02/Impact_SoundPalette.wav
+Docs/Level01/V02/Impact_StrongHit.png
+Docs/Level01/V02/ImpactChecks.txt
 Docs/Level01/V02/PlayerChecks.txt
-Docs/Level01/V02/PlayerHandling.md
-Docs/Level01/V02/Polish_CombatHUD.png
-Docs/Level01/V02/Polish_Defeat.png
-Docs/Level01/V02/Polish_Victory.png
 
-Cumulative changed / added files relative to protected baseline:
+Cumulative V02 changes: 247 files
+Assets/_Project/Audio/SFX/Combat/ImpactV02.meta
+Assets/_Project/Audio/SFX/Combat/ImpactV02/SFX_HeavyKill.wav
+Assets/_Project/Audio/SFX/Combat/ImpactV02/SFX_HeavyKill.wav.meta
+Assets/_Project/Audio/SFX/Combat/ImpactV02/SFX_Hit.wav
+Assets/_Project/Audio/SFX/Combat/ImpactV02/SFX_Hit.wav.meta
+Assets/_Project/Audio/SFX/Combat/ImpactV02/SFX_Kill.wav
+Assets/_Project/Audio/SFX/Combat/ImpactV02/SFX_Kill.wav.meta
+Assets/_Project/Audio/SFX/Combat/ImpactV02/SFX_StrongHit.wav
+Assets/_Project/Audio/SFX/Combat/ImpactV02/SFX_StrongHit.wav.meta
 Assets/_Project/Data/Level01/RegionLoopV02.meta
 Assets/_Project/Data/Level01/RegionLoopV02/CargoYard.asset
 Assets/_Project/Data/Level01/RegionLoopV02/CargoYard.asset.meta
 Assets/_Project/Data/Level01/RegionLoopV02/ColonyEntry.asset
 Assets/_Project/Data/Level01/RegionLoopV02/ColonyEntry.asset.meta
+Assets/_Project/Data/Level01/RegionLoopV02/CombatImpactFlash.mat
+Assets/_Project/Data/Level01/RegionLoopV02/CombatImpactFlash.mat.meta
 Assets/_Project/Data/Level01/RegionLoopV02/ExperienceOrb_V02.prefab
 Assets/_Project/Data/Level01/RegionLoopV02/ExperienceOrb_V02.prefab.meta
 Assets/_Project/Data/Level01/RegionLoopV02/Extraction.asset
@@ -110,6 +113,8 @@ Assets/_Project/Data/Level01/RegionLoopV02/PowerMaintenance.asset
 Assets/_Project/Data/Level01/RegionLoopV02/PowerMaintenance.asset.meta
 Assets/_Project/Data/Level01/RegionLoopV02/QuarantineCommons.asset
 Assets/_Project/Data/Level01/RegionLoopV02/QuarantineCommons.asset.meta
+Assets/_Project/Editor/Level01/CombatImpactAudioAuthoring.cs
+Assets/_Project/Editor/Level01/CombatImpactAudioAuthoring.cs.meta
 Assets/_Project/Editor/Level01/RegionLoopInstaller.cs
 Assets/_Project/Editor/Level01/RegionLoopV02Audit.cs
 Assets/_Project/Editor/Level01/RegionLoopV02Audit.cs.meta
@@ -119,6 +124,8 @@ Assets/_Project/Editor/Level01/RegionLoopV02Installer.cs
 Assets/_Project/Editor/Level01/RegionLoopV02Installer.cs.meta
 Assets/_Project/Editor/Level01/RegionLoopV02Installer.Feedback.cs
 Assets/_Project/Editor/Level01/RegionLoopV02Installer.Feedback.cs.meta
+Assets/_Project/Editor/Level01/RegionLoopV02Installer.Impact.cs
+Assets/_Project/Editor/Level01/RegionLoopV02Installer.Impact.cs.meta
 Assets/_Project/Editor/Level01/RegionLoopV02Installer.Player.cs
 Assets/_Project/Editor/Level01/RegionLoopV02Installer.Player.cs.meta
 Assets/_Project/Editor/Level01/RegionLoopV02Installer.Polish.cs
@@ -131,6 +138,8 @@ Assets/_Project/Editor/Level01/RegionLoopV02Regression.cs
 Assets/_Project/Editor/Level01/RegionLoopV02Regression.cs.meta
 Assets/_Project/Editor/Level01/RegionLoopV02Regression.Feedback.cs
 Assets/_Project/Editor/Level01/RegionLoopV02Regression.Feedback.cs.meta
+Assets/_Project/Editor/Level01/RegionLoopV02Regression.Impact.cs
+Assets/_Project/Editor/Level01/RegionLoopV02Regression.Impact.cs.meta
 Assets/_Project/Editor/Level01/RegionLoopV02Regression.Player.cs
 Assets/_Project/Editor/Level01/RegionLoopV02Regression.Player.cs.meta
 Assets/_Project/Editor/Level01/RegionLoopV02Regression.Polish.cs
@@ -139,7 +148,19 @@ Assets/_Project/Scenes/ArtTests/Level01_FullWorld_GameplayV02.unity
 Assets/_Project/Scenes/ArtTests/Level01_FullWorld_GameplayV02.unity.meta
 Assets/_Project/Scenes/MainMenu_DeskV1.unity
 Assets/_Project/Scripts/Audio/AudioManager.cs
+Assets/_Project/Scripts/Combat/Bullet.cs
+Assets/_Project/Scripts/Combat/CombatImpactFeedback.Audio.cs
+Assets/_Project/Scripts/Combat/CombatImpactFeedback.Audio.cs.meta
+Assets/_Project/Scripts/Combat/CombatImpactFeedback.cs
+Assets/_Project/Scripts/Combat/CombatImpactFeedback.cs.meta
+Assets/_Project/Scripts/Combat/CombatImpactFeedback.Visuals.cs
+Assets/_Project/Scripts/Combat/CombatImpactFeedback.Visuals.cs.meta
+Assets/_Project/Scripts/Combat/CombatImpactSilhouette.shader
+Assets/_Project/Scripts/Combat/CombatImpactSilhouette.shader.meta
+Assets/_Project/Scripts/Combat/EnemyImpactReaction.cs
+Assets/_Project/Scripts/Combat/EnemyImpactReaction.cs.meta
 Assets/_Project/Scripts/Enemy/EnemyContactDamage.cs
+Assets/_Project/Scripts/Enemy/EnemyHealth.cs
 Assets/_Project/Scripts/Enemy/FastChargeAttack.cs
 Assets/_Project/Scripts/Environment/PlanetStormController.cs
 Assets/_Project/Scripts/Environment/SafeZoneController.cs
@@ -221,6 +242,7 @@ Docs/Level01/V02/Abilities_Pulse.png
 Docs/Level01/V02/AbilityChecks.txt
 Docs/Level01/V02/AbilityFeel.md
 Docs/Level01/V02/ChangedFiles.txt
+Docs/Level01/V02/CombatImpact.md
 Docs/Level01/V02/CombatUI.md
 Docs/Level01/V02/CombatUIChecks.txt
 Docs/Level01/V02/Delivery.md
@@ -239,6 +261,11 @@ Docs/Level01/V02/G3_Complete.png
 Docs/Level01/V02/HighRisk_Defense.png
 Docs/Level01/V02/HighRisk_Preview.png
 Docs/Level01/V02/HighRisk_Search.png
+Docs/Level01/V02/Impact_HeavyKill.png
+Docs/Level01/V02/Impact_KillConfirmation.png
+Docs/Level01/V02/Impact_SoundPalette.wav
+Docs/Level01/V02/Impact_StrongHit.png
+Docs/Level01/V02/ImpactChecks.txt
 Docs/Level01/V02/Installation.txt
 Docs/Level01/V02/LegacyPlayMode.txt
 Docs/Level01/V02/NativeHudStyle.txt

@@ -473,14 +473,13 @@ public class Bullet : MonoBehaviour
         }
 
         directHitEnemyCount = hitEnemies.Count;
-        enemyHealth.TakeDamage(damage);
+        bool impactHandled = CombatImpactFeedback.ApplyDamage(enemyHealth, damage, transform.position, moveDirection, PlayerImpactSource.Projectile);
 
-        if (AudioManager.Instance != null)
+        if (!impactHandled)
         {
-            AudioManager.Instance.PlayEnemyHit();
+            if (AudioManager.Instance != null) AudioManager.Instance.PlayEnemyHit();
+            SpawnHitEffect();
         }
-
-        SpawnHitEffect();
         TriggerExplosion();
         TriggerChainLightning(enemyHealth);
         TriggerSplitShot(enemyHealth);
@@ -553,7 +552,7 @@ public class Bullet : MonoBehaviour
                 continue;
             }
 
-            target.TakeDamage(explosionDamage);
+            CombatImpactFeedback.ApplyDamage(target, explosionDamage, target.transform.position, (Vector2)(target.transform.position - transform.position), PlayerImpactSource.Explosion);
         }
 
         lastExplosionTargetCount = explosionHitEnemies.Count;
@@ -616,7 +615,7 @@ public class Bullet : MonoBehaviour
 
             Vector2 nextPosition = nextTarget.transform.position;
             chainVisitedEnemies.Add(nextTarget);
-            nextTarget.TakeDamage(lastChainDamage);
+            CombatImpactFeedback.ApplyDamage(nextTarget, lastChainDamage, nextPosition, nextPosition - currentOrigin, PlayerImpactSource.Chain);
             SpawnChainLightningEffect(currentOrigin, nextPosition);
             lastChainHitCount++;
             currentOrigin = nextPosition;

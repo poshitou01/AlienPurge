@@ -349,9 +349,7 @@ public partial class PlayerPulseSkill : MonoBehaviour
                 );
             }
 
-            enemyHealth.TakeDamage(
-                pulseDamage
-            );
+            CombatImpactFeedback.ApplyDamage(enemyHealth, pulseDamage, enemyHealth.transform.position, knockbackDirection, PlayerImpactSource.Pulse);
         }
 
         Debug.Log(

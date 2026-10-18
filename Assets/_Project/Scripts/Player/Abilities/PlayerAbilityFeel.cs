@@ -165,7 +165,7 @@ public sealed partial class PlayerAbilityFeel : MonoBehaviour
             float weight=enemy.GetComponent<HeavyShockwaveAttack>()!=null?.45f:1;
             if(movement!=null&&enemy.GetComponent<HiveTyrantCombat>()==null)
                 movement.ApplyKnockback(delta.sqrMagnitude>.001f?delta.normalized:Vector2.up,pulsePush*weight,pulsePushDuration);
-            enemy.TakeDamage(damage);LastPulseHits++;
+            CombatImpactFeedback.ApplyDamage(enemy,damage,enemy.transform.position,delta,PlayerImpactSource.Pulse);LastPulseHits++;
         }
     }
     public static bool AvoidsGroundHit(PlayerHealth target)
