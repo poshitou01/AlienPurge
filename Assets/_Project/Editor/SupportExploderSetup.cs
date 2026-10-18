@@ -26,6 +26,7 @@ public static class SupportExploderSetup
         if (EditorApplication.isPlayingOrWillChangePlaymode) throw new InvalidOperationException("Exit Play Mode first.");
         if (!Application.isBatchMode && !EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo()) return;
         EnsureFolder(ArtRoot);
+        SupportExploderArtSetup.PrepareImports();
         var material = AssetDatabase.LoadAssetAtPath<Material>(ArtRoot + "/EnemyAbility_VertexTint.mat");
         if (material == null)
         {
@@ -58,23 +59,22 @@ public static class SupportExploderSetup
             var data = prefab.GetComponent<EnemyDefinition>().Data;
             Require(prefab.GetComponent<PooledEnemy>().Type == data.Type, "Data / pooled identity");
             Require(prefab.GetComponent<EnemyPathNavigator>() != null && prefab.GetComponent<Pathfinding.Seeker>() != null, "Native A* navigation");
-            Require(prefab.GetComponent<EnemyAbilityPresentation>().TemporaryArt, "Temporary art clearly declared");
-            var controller = prefab.GetComponent<Animator>().runtimeAnimatorController;
-            Require(controller.animationClips.Length == 8, "Eight inherited gait clips");
-            foreach (var clip in controller.animationClips)
-            {
-                var bindings = AnimationUtility.GetObjectReferenceCurveBindings(clip);
-                Require(bindings.Length == 1, "Sprite-only animation");
-                var keys = AnimationUtility.GetObjectReferenceCurve(clip, bindings[0]); Require(keys.Length == 8, "Eight frames per view");
-                foreach (var key in keys) Require(key.value is Sprite && ((Sprite)key.value).pixelsPerUnit == 256, "Valid 256 PPU inherited sprite");
-            }
+            SupportExploderArtSetup.Validate(prefab);
         }
         var boss = AssetDatabase.LoadAssetAtPath<HiveTyrantCombatConfig>(HiveTyrantCombatSetup.ConfigPath);
         Require(boss.summonChoices.Length == 4 && boss.summonChoices.All(c => (int)c.type >= 0 && (int)c.type <= 3), "Boss explicit original four-type whitelist");
         Directory.CreateDirectory("Docs/Enemies/SupportExploder");
         AuditExistingEnemies();
-        File.WriteAllText("Docs/Enemies/SupportExploder/AssetValidation.txt", "PASS: enum identities, data/prefab types, native A*, 16 temporary clips / 128 inherited frames / PPU 256, Boss whitelist.\nArt remains TEMP; this does not certify final enemy art.\n");
-        Debug.Log("Support + Exploder asset validation PASSED. Final art is pending.");
+        File.WriteAllText("Docs/Enemies/SupportExploder/AssetValidation.txt", "PASS: enum identities, data/prefab types, native A*, 96 authored directional state clips, own sprites / 512 canvas / PPU 256 / center pivot, no Animation Events, Boss original whitelist.\n424 authored PNG frames (416 body + 8 radial VFX); existing prefab/data identities retained.\n");
+        Debug.Log("Support + Exploder authored-art asset validation PASSED.");
+    }
+    [MenuItem("AlienPurge/Support + Exploder/5 Play Animation Preview")]
+    public static void Preview()
+    {
+        Open();
+        var lab = UnityEngine.Object.FindObjectOfType<EnemyAbilityTestLab>();
+        lab.previewOnStart = true; lab.spawnOnStart = false; // Unsaved inspection fixture.
+        EditorApplication.isPlaying = true;
     }
     private static void AuditExistingEnemies()
     {
@@ -120,23 +120,7 @@ public static class SupportExploderSetup
     }
     private static AnimatorController MakeController(string name)
     {
-        string folder = "Assets/_Project/Animations/" + name; EnsureFolder(folder);
-        string path = folder + "/" + name + "_TEMP_Animator.controller";
-        var existing = AssetDatabase.LoadAssetAtPath<AnimatorController>(path); if (existing != null) return existing;
-        var controller = AnimatorController.CreateAnimatorControllerAtPath(path);
-        controller.AddParameter("Direction", AnimatorControllerParameterType.Int);
-        var machine = controller.layers[0].stateMachine;
-        for (int i = 0; i < Directions.Length; i++)
-        {
-            string clipPath = folder + "/" + name + "_TEMP_SharedSwarmer_Move_" + Directions[i] + ".anim";
-            if (!File.Exists(clipPath)) AssetDatabase.CopyAsset("Assets/_Project/Animations/Swarmer/Clips/Swarmer_Move_" + Directions[i] + ".anim", clipPath);
-            var clip = AssetDatabase.LoadAssetAtPath<AnimationClip>(clipPath); clip.name = name + "_TEMP_SharedSwarmer_Move_" + Directions[i]; EditorUtility.SetDirty(clip);
-            var state = machine.AddState("Move_" + Directions[i]); state.motion = clip;
-            if (i == 1) machine.defaultState = state;
-            var transition = machine.AddAnyStateTransition(state); transition.hasExitTime = false; transition.duration = 0; transition.canTransitionToSelf = false;
-            transition.AddCondition(AnimatorConditionMode.Equals, i, "Direction");
-        }
-        return controller;
+        return SupportExploderArtSetup.MakeController(name);
     }
     private static void MakePrefab(string path, string dataPath, AnimatorController controller, Material material, SupportEnemyConfig support, ExploderEnemyConfig exploder)
     {
@@ -157,6 +141,15 @@ public static class SupportExploderSetup
             var contact = new SerializedObject(root.GetComponent<EnemyContactDamage>());
             contact.FindProperty("canDealContactDamage").boolValue = false; contact.ApplyModifiedPropertiesWithoutUndo();
             root.GetComponent<Animator>().runtimeAnimatorController = controller;
+            root.GetComponent<Animator>().cullingMode = AnimatorCullingMode.AlwaysAnimate;
+            root.GetComponent<Animator>().updateMode = AnimatorUpdateMode.Normal;
+            root.GetComponent<SpriteRenderer>().sprite = SupportExploderArtSetup.Frame(support != null ? "Support" : "Exploder", "Idle", "DR", 1);
+            var healthVisual = new SerializedObject(root.GetComponent<EnemyHealth>());
+            // Native white-on-white tint is invisible on white-tinted source art.
+            // A brief HDR multiplier makes the existing .08s hit flash readable.
+            healthVisual.FindProperty("hitColor").colorValue = new Color(2, 2, 2, 1);
+            healthVisual.ApplyModifiedPropertiesWithoutUndo();
+            Ensure<SupportExploderAnimation>(root);
             var movement = new SerializedObject(root.GetComponent<EnemyMovement>());
             movement.FindProperty("preventEnvironmentPenetration").boolValue = true;
             movement.FindProperty("stoppingDistance").floatValue = support != null ? .45f : .8f;
@@ -165,6 +158,12 @@ public static class SupportExploderSetup
             if (support != null) Set(Ensure<SupportEnemyAbility>(root), "config", support);
             if (exploder != null) Set(Ensure<ExploderEnemyAbility>(root), "config", exploder);
             Set(Ensure<EnemyAbilityPresentation>(root), "materialTemplate", material);
+            var visual = new SerializedObject(root.GetComponent<EnemyAbilityPresentation>());
+            visual.FindProperty("temporaryArt").boolValue = false;
+            var frames = visual.FindProperty("explosionFrames"); frames.arraySize = exploder != null ? 8 : 0;
+            for (int i = 0; i < frames.arraySize; i++)
+                frames.GetArrayElementAtIndex(i).objectReferenceValue = AssetDatabase.LoadAssetAtPath<Sprite>(SupportExploderArtSetup.Art + "Exploder/Explosion/Exploder_Explosion_" + (i + 1).ToString("00") + ".png");
+            visual.ApplyModifiedPropertiesWithoutUndo();
             PrefabUtility.SaveAsPrefabAsset(root, path);
         }
         finally { if (exists) PrefabUtility.UnloadPrefabContents(root); else UnityEngine.Object.DestroyImmediate(root); }

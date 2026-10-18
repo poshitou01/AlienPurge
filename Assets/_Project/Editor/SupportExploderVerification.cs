@@ -11,7 +11,7 @@ using Object = UnityEngine.Object;
 
 // Runs the real scene, pool, physics, A*, native abilities and reward systems in Editor Play Mode.
 [InitializeOnLoad]
-public static class SupportExploderVerification
+public static partial class SupportExploderVerification
 {
     const string Key = "SupportExploder.Verification";
     const string Folder = "Docs/Enemies/SupportExploder/Validation";
@@ -99,6 +99,7 @@ public static class SupportExploderVerification
         yield return SupportCases();
         yield return ExploderCases();
         yield return MovementAndWeapons();
+        yield return AuthoredArtCases();
         yield return BossWhitelist();
         lab.RecycleAll(); Place(player, new Vector2(0, -6));
         Spawn(EnemyType.Support, new Vector2(-7, 5), false); Spawn(EnemyType.Normal, new Vector2(-6, 3), false);
@@ -121,7 +122,7 @@ public static class SupportExploderVerification
         Check(support.TargetCount == 3, "Support hard target cap is three");
         var affected = allies.Where(a => a.GetComponent<EnemyContactDamage>().Damage == 2).ToArray();
         Check(affected.Length == 3, "Exactly three base-damage-one allies receive +1");
-        Capture("Support_Links_TEMP_Art");
+        Capture("Support_Links_Authored_Art");
         var second = Spawn(EnemyType.Support, new Vector2(-9, 5)); yield return Wait(.3f);
         Check(allies.All(a => a.GetComponent<EnemyContactDamage>().Damage <= 2), "Two Supports never stack past strongest +1");
         Check(first.GetComponent<EnemyContactDamage>().Damage == 1 && second.GetComponent<EnemyContactDamage>().Damage == 1, "Supports cannot buff one another");
@@ -176,8 +177,8 @@ public static class SupportExploderVerification
         Check(ability.BlastCenter == locked && (Vector2)enemy.transform.position == locked && !enemy.GetComponent<EnemyMovement>().enabled, "Warning locks position and stops chase/knockback movement");
         var presentation = enemy.GetComponent<EnemyAbilityPresentation>();
         Check(presentation.WarningVisible && Mathf.Approximately(presentation.DisplayedRadius, ability.BlastRadius), "Displayed world radius equals damage query radius");
-        Capture("Exploder_Warning_TEMP_Art"); kills = GameManager.Instance.KillCount; drops = ExperienceOrbPool.Instance.ActiveCount; hp = player.CurrentHealth;
-        yield return Wait(1.9f);
+        Capture("Exploder_Warning_Authored_Art"); kills = GameManager.Instance.KillCount; drops = ExperienceOrbPool.Instance.ActiveCount; hp = player.CurrentHealth;
+        yield return Wait(2.4f);
         Check(ability.ExplosionCount == 1 && player.CurrentHealth == hp && enemy.IsReturned, "Moving out avoids one committed blast and automatic pool return");
         Check(GameManager.Instance.KillCount == kills + 1 && ExperienceOrbPool.Instance.ActiveCount == drops + 1, "Active self-destruction grants exactly one native kill / XP orb");
         Check(!presentation.WarningVisible, "Return hides all warning geometry");
@@ -225,6 +226,7 @@ public static class SupportExploderVerification
     static PooledEnemy currentExploder;
     static IEnumerator ArmedCase(PooledEnemy expected, Vector2 origin)
     {
+        while (!expected.IsReturned) yield return null; // Authored death/rupture finishes before pool reuse.
         Place(player, origin + Vector2.right * 7); currentExploder = Spawn(EnemyType.Exploder, origin);
         Check(currentExploder == expected, "Guaranteed same-instance Exploder pool reuse");
         var ability = currentExploder.GetComponent<ExploderEnemyAbility>();
@@ -250,7 +252,7 @@ public static class SupportExploderVerification
         }
         Check(supportPath && exploderPath, "Both specialists obtain native A* paths around cover");
         Check(Vector2.Distance(s, support.transform.position) > .5f && Vector2.Distance(e, exploder.transform.position) > 1, "Both specialists physically move using native motor");
-        Check(supportFrames.Count > 2 && exploderFrames.Count > 2 && support.transform.rotation == Quaternion.identity && exploder.transform.rotation == Quaternion.identity, "Native Animator swaps actual inherited frames without rotating the body");
+        Check(supportFrames.Count > 2 && exploderFrames.Count > 2 && support.transform.rotation == Quaternion.identity && exploder.transform.rotation == Quaternion.identity, "Native Animator swaps independent authored frames without rotating the body");
         Check(Physics2D.OverlapCircle(support.transform.position, .3f, 1 << 7) == null && Physics2D.OverlapCircle(exploder.transform.position, .3f, 1 << 7) == null, "Native collision guard keeps enemies out of environment");
         lab.RecycleAll(); Place(player, new Vector2(0, -6));
         foreach (var type in new[] { EnemyType.Support, EnemyType.Exploder })

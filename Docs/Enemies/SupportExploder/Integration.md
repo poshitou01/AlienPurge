@@ -6,18 +6,34 @@
 
 - 基线是实际本地 Boss 提交 `609c7ff523b8f6a04db9e978bbd994eb6d155655`，不是较旧的 `origin/main`。
 - 开发目录：`D:\AlienPurge_SupportExploder`；分支：`feature/enemies-support-exploder`。
-- 核对时区域分支 `feature/level01-region-loop-v02` 与本分支的公共祖先是 `5c8e0cef9449aa722e6f32c35c3269aa7f0d1f67`，不是 `609c7ff`。区域任务需另行保留/整合 `5c8e0ce` 之后的 Boss 验收改进；单独挑选本任务的新敌人提交不会顺带包含那些 Boss 提交。
+- 原型提交为 `23114de4866261ceb0e540fabaeb4b423e1a8135`，本轮在此基础上升级正式美术与动画。区域分支仍在独立推进，整合时重新核对公共祖先和 Boss 依赖；仅引入本轮美术增量不能代替原型行为提交，也不能代替 Boss 验收提交。
 - 不复制整个 Assets，不覆盖已有 .meta。通过交付提交进行审查与合入；合入操作由区域任务统一执行，本任务没有自动合并或推送。
 - 既有枚举值保持 Normal=0、Fast=1、Heavy=2、Ranged=3；新增 Support=4、Exploder=5。检查区域分支是否也新增了 4/5，发生冲突时先统一序列化编号，不按数组索引猜类型。
 
-## 正式行为配置与临时美术
+## 正式资产与身份
 
 | 类型 | EnemyData | Prefab | 能力配置 |
 |---|---|---|---|
 | Support | `Assets/_Project/Data/Enemies/Enemy_Support_Data.asset` | `Assets/_Project/Prefabs/Enemies/Animated/Enemy_Support.prefab` | `Assets/_Project/Data/Enemies/Support_Ability.asset` |
 | Exploder | `Assets/_Project/Data/Enemies/Enemy_Exploder_Data.asset` | `Assets/_Project/Prefabs/Enemies/Animated/Enemy_Exploder.prefab` | `Assets/_Project/Data/Enemies/Exploder_Ability.asset` |
 
-行为和数据可以供区域试接入；**美术仍为 TEMP**。两个 Prefab 有独立 GUID，使用独立临时 Animator/clip 资产，借用现有 Swarmer 八方向步行帧，叠加程序绘制器官。它们不是已经完成的新敌人八方向动画。美术缺项与替换规范见 [Delivery.md](Delivery.md)。
+两个 Prefab 已使用独立正式身体帧和 Animator，不再引用 Swarmer 帧或临时器官覆盖层。共 424 张 PNG、96 个八方向状态 clip；规格、预览及验收边界见 [Delivery.md](Delivery.md)。正式地图整合仍需等待用户明确指令。
+
+| 资产 | 保持的 GUID |
+|---|---|
+| Support Prefab | `f063a784dc396c940b9d1ec89e4b4ac9` |
+| Exploder Prefab | `1fd5a341d9a84cb4c9943f9d7a38b05c` |
+| Support EnemyData | `65a169995ee7bdb44bcf2ae6d9e9a1d9` |
+| Exploder EnemyData | `2d89d9fe0c0a16b4fac0888f6d2e980e` |
+
+必要依赖：
+
+- 美术：`Assets/_Project/Art/Enemies/Animated/Support/`、`Exploder/`，含所有 `.meta`。
+- 动画：`Assets/_Project/Animations/Support/Support_Animator.controller` 和 `Assets/_Project/Animations/Exploder/Exploder_Animator.controller`，以及同目录正式 clip。原型 `TEMP` 资产保留历史身份，但当前 Prefab 不引用它们。
+- 专用运行脚本：`SupportEnemyAbility`、`ExploderEnemyAbility`、`EnemySupportBuff`、`SupportExploderAnimation`、`EnemyAbilityPresentation`，以及 `SupportEnemyConfig`、`ExploderEnemyConfig`；均在 `Assets/_Project/Scripts/Enemy/`。
+- 范围/连接/爆炸材质沿用 `Assets/_Project/Art/Enemies/Animated/AbilityTest/EnemyAbility_VertexTint.mat`；此路径名称是原型留下的稳定依赖，不应因名称含 Test 而遗漏。身体继续用原生 URP Sprite-Lit-Default。
+- 保留原有 `EnemyDefinition`、`EnemyHealth` / `IEnemyDeathPresentation`、`EnemyMovement`、`EnemyPathNavigator` / A* Seeker、`EnemyAnimationController`、`EnemyYSorting`、经验池和音效系统依赖。新动画驱动只选择现有 Animator 的 Sprite clip，无 Animation Event 伤害入口。
+- `EnemyAbilityTestLab` 与 `SupportExploder*Setup` / `SupportExploder*Verification` 仅为测试入口；不需要添加到正式场景。
 
 ## 注册与生成
 
@@ -45,9 +61,11 @@
 
 **Support**：半径 4.5 米，最多 3 个目标，伤害 +1。整数伤害原本为 1 时变为 2，并非百分比微增。多个来源取最大值。首版只强化 Normal/Fast/Heavy/Ranged，不强化 Support、Exploder 或 Boss。优先靠近友军后方，玩家 5 米内尝试退让；没有友军时保持距离。目标切换每 0.2 秒，伤害读取时另外即时校验距离、生命和池生命周期。已有 Spitter 子弹按发射时伤害快照继续飞行；撤销增益不会追溯改写已经发射的子弹。
 
-**Exploder**：距离玩家 2.4 米内启动 1.5 秒预警；固定爆点，停止原生移动，冻结步行动画。实际爆炸半径 3 米，与地面圈一致；按碰撞体是否与圆相交判命中，每个 PlayerHealth 最多结算一次。基础伤害取本次生成后的接触伤害 ×2；仅命中带 Player Tag 的 PlayerHealth，普通敌人和 Boss 都不受伤。地面爆炸可由原生 Jet Jump 躲避；Dash 保留原生位移/无敌规则。当前 Player Prefab 的 Dash 默认没有无敌帧，需朝圈外冲刺。V1 为完整圆形范围，不做墙体遮蔽，因此墙后仍在圈内也会受伤。不要把墙当作该技能的避伤条件。
+**Exploder**：距离玩家 2.4 米内启动 1.5 秒预警；固定爆点，停止原生移动，按真实倒计时进度采样蓄爆身体帧。实际爆炸半径 3 米，与地面圈一致；按碰撞体是否与圆相交判命中，每个 PlayerHealth 最多结算一次。基础伤害取本次生成后的接触伤害 ×2；仅命中带 Player Tag 的 PlayerHealth，普通敌人和 Boss 都不受伤。地面爆炸可由原生 Jet Jump 躲避；Dash 保留原生位移/无敌规则。当前 Player Prefab 的 Dash 默认没有无敌帧，需朝圈外冲刺。V1 为完整圆形范围，不做墙体遮蔽，因此墙后仍在圈内也会受伤。不要把墙当作该技能的避伤条件。
 
 主动自爆走 `EnemyHealth.TakeDamage(CurrentHealth)` 的原生死亡链，计一次击杀、掉一次经验；预警中被击杀取消爆炸，也按原生死亡奖励。纯回收不爆炸、不掉落、不计击杀。禁用和再次出生清空旧倒计时、特效和目标；Support 的租约以目标启用代次校验，目标复用不继承旧增益。
+
+本轮只把死亡展示等待改为普通倒伏 0.55 秒、主动破裂 0.75 秒；伤害/经验/击杀仍在原生入口即时结算一次。池活跃数量在这段展示期内仍包含死亡实例。两个 Prefab 的原生受击亮色倍率设为 2，持续 0.08 秒；旧敌人配置不变。暂停/变速沿用 Time.timeScale；只缩放独立爆炸视觉对象，不缩放碰撞根。
 
 回收仍调用 `PooledEnemy.ReturnToPool()`，不要只 SetActive(false) 绕过池集合。换局/Restart 应卸载旧场景，或先通过池回收所有敌人。两个能力也会在 GameManager 离开 Playing 时撤销增益/取消未完成预警。
 
@@ -55,13 +73,13 @@
 
 `HiveTyrantCombatConfig.summonChoices` 保持原有四项；`HiveTyrantSummoning` 按此名单选取，而不是遍历池注册。不要把新的区域候选池反写进 Boss 名单。
 
-现有公共文件仅修改三处：
+本轮美术升级没有进一步修改任何旧敌人共用运行脚本。原型提交相对 Boss 基线的公共文件改动仍为三处，后续整合必须保留：
 
 - `Assets/_Project/Scripts/Enemy/EnemyType.cs`：在末尾添加 4/5。
 - `Assets/_Project/Scripts/Enemy/EnemyMovement.cs`：新增 `SetNavigationTarget(Transform)`，供 Support 提供导航目标；位移、碰撞和寻路算法保持原路径。
 - `Assets/_Project/Scripts/Enemy/EnemyContactDamage.cs`：`Damage` 返回基础值加运行时增益，接触伤害使用该读取口；新增默认开启的 `canDealContactDamage`，仅新 Prefab 配置为关闭（Unity 的物理消息也可能发给禁用组件，单独禁用不足以禁止接触伤害）。旧 Prefab 行为保持原样。Fast 冲锋、Heavy 冲击和 Spitter 发射本来就读取 `Damage`。
 
-新 `EnemySupportBuff` 只在被支援的实例上按需添加，没有修改旧敌人 Prefab。EnemyData、EnemyPool、PooledEnemy、EnemyHealth、EnemyPathNavigator、EnemyAnimationController、EnemyYSorting、Boss 脚本均保留原文件。
+`EnemySupportBuff` 只在被支援的实例上按需添加，没有修改旧敌人 Prefab。EnemyData 类、EnemyPool、PooledEnemy、EnemyHealth、EnemyPathNavigator、EnemyAnimationController、EnemyYSorting、Boss 脚本均保留原文件。Support/Exploder 的四个数据/能力资产在本轮美术升级中内容未变，已有 `.meta` 全部保留。
 
 ## 接入后复测
 

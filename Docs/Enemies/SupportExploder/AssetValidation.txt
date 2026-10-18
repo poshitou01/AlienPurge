@@ -1,2 +1,2 @@
-PASS: enum identities, data/prefab types, native A*, 16 temporary clips / 128 inherited frames / PPU 256, Boss whitelist.
-Art remains TEMP; this does not certify final enemy art.
+PASS: enum identities, data/prefab types, native A*, 96 authored directional state clips, own sprites / 512 canvas / PPU 256 / center pivot, no Animation Events, Boss original whitelist.
+424 authored PNG frames (416 body + 8 radial VFX); existing prefab/data identities retained.

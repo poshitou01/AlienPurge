@@ -1,0 +1,6597 @@
+[
+  {
+    "enemy": "Support",
+    "direction": "D",
+    "source": "Support_D.png",
+    "sourceSize": [
+      1122,
+      1402
+    ],
+    "scale": 1.3068181818181819,
+    "sourceCuts": [
+      [
+        35,
+        16,
+        259,
+        275
+      ],
+      [
+        298,
+        17,
+        535,
+        275
+      ],
+      [
+        581,
+        16,
+        817,
+        287
+      ],
+      [
+        875,
+        16,
+        1105,
+        275
+      ],
+      [
+        22,
+        295,
+        264,
+        566
+      ],
+      [
+        295,
+        295,
+        540,
+        566
+      ],
+      [
+        577,
+        295,
+        816,
+        566
+      ],
+      [
+        869,
+        294,
+        1101,
+        555
+      ],
+      [
+        22,
+        576,
+        270,
+        840
+      ],
+      [
+        298,
+        579,
+        546,
+        840
+      ],
+      [
+        575,
+        576,
+        824,
+        840
+      ],
+      [
+        857,
+        576,
+        1107,
+        840
+      ],
+      [
+        23,
+        860,
+        270,
+        1120
+      ],
+      [
+        297,
+        860,
+        546,
+        1120
+      ],
+      [
+        576,
+        857,
+        827,
+        1120
+      ],
+      [
+        862,
+        855,
+        1117,
+        1120
+      ],
+      [
+        28,
+        1141,
+        265,
+        1384
+      ],
+      [
+        283,
+        1165,
+        557,
+        1385
+      ],
+      [
+        566,
+        1194,
+        830,
+        1382
+      ],
+      [
+        843,
+        1233,
+        1113,
+        1369
+      ]
+    ],
+    "warnings": [],
+    "frames": [
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/D/Support_Move_D_01.png",
+        "sha256": "2d6b13adba042a725ffebcdaf86bced60e6932e8f53889b5d264d3d62bb8a177",
+        "alphaBounds": [
+          110,
+          64,
+          403,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/D/Support_Move_D_02.png",
+        "sha256": "918084524120b446189fa4b61fc0b001aa96a8fed70046d54ec43b3bcc20c197",
+        "alphaBounds": [
+          101,
+          65,
+          411,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/D/Support_Move_D_03.png",
+        "sha256": "3adfcc8f7e51a66b91060d3b4be7702cf80e2b101901b8c552fee9a3d4719457",
+        "alphaBounds": [
+          102,
+          48,
+          410,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/D/Support_Move_D_04.png",
+        "sha256": "fab261fc54d6ddfb825485ac509a83c8e5dcede89df871caff0b1dac085cd8f3",
+        "alphaBounds": [
+          106,
+          64,
+          407,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/D/Support_Move_D_05.png",
+        "sha256": "3ec5e2096285420de25386bdabac1802c0bf4fa71ff3a4b340bce39e37775295",
+        "alphaBounds": [
+          98,
+          48,
+          414,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/D/Support_Move_D_06.png",
+        "sha256": "517526ad7f841834339040dcd60fd76c2e5235bf6ab203c9ed4ab1ae9e2301b3",
+        "alphaBounds": [
+          96,
+          48,
+          416,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/D/Support_Move_D_07.png",
+        "sha256": "2624196955f958c0d1a63a6b7a0dfc5f567207157f8f9122d9c55c1bbf542476",
+        "alphaBounds": [
+          100,
+          48,
+          412,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/D/Support_Move_D_08.png",
+        "sha256": "de98322b71af7dc0bf4e2414be9b85f89d30f323dde268c544f31d820b1bc818",
+        "alphaBounds": [
+          104,
+          61,
+          407,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/D/Support_Idle_D_01.png",
+        "sha256": "7fbbfd42d66b3d9b9fc05209cafb1ab25b37db610b1a522ebfd408ca5b345aae",
+        "alphaBounds": [
+          94,
+          57,
+          418,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/D/Support_Idle_D_02.png",
+        "sha256": "327d868cabe726e49f3194cc64169307f0cb92505d3dad3e3138e406e55d68ad",
+        "alphaBounds": [
+          94,
+          61,
+          418,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/D/Support_Idle_D_03.png",
+        "sha256": "aff1b07c1351c1a09e8354fd67b526500b384b5720ef86ab8eb02e834ec0aa96",
+        "alphaBounds": [
+          94,
+          57,
+          419,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/D/Support_Idle_D_04.png",
+        "sha256": "7716cea1243112bb0c1eb2d446002c4514f4aec1bb9fcfed460feeccc0ba7679",
+        "alphaBounds": [
+          92,
+          57,
+          419,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/D/Support_SupportStart_D_01.png",
+        "sha256": "0cef726a344c6b17f8293e1426e1de61dbee2b78377e2edf652f614914c8b748",
+        "alphaBounds": [
+          94,
+          62,
+          417,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/D/Support_SupportStart_D_02.png",
+        "sha256": "80d9a1dd447ddc194445de42408bb9ce0f275b693d1de29f87822f9a6e9cd849",
+        "alphaBounds": [
+          94,
+          62,
+          419,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/D/Support_SupportStart_D_03.png",
+        "sha256": "0a34add9520dbf0186710b3738cb1df7436c1b8f479ee799c54a8a7dc7394810",
+        "alphaBounds": [
+          92,
+          58,
+          420,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/D/Support_SupportStart_D_04.png",
+        "sha256": "2961ab8c85232f6feae6159ff9040fbc5926b09d874ac8d03d69d2e26e471fb5",
+        "alphaBounds": [
+          90,
+          56,
+          423,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/D/Support_Death_D_01.png",
+        "sha256": "89782fc0f29099742e89ae65faf1bca48bee8f1890c04e4113ff3087234f4fa1",
+        "alphaBounds": [
+          101,
+          84,
+          411,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/D/Support_Death_D_02.png",
+        "sha256": "1d6f2aa9ee19b8025b1513ed8d1f85417f152f54ac4f2c2b144d00116d4eb46d",
+        "alphaBounds": [
+          77,
+          114,
+          435,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/D/Support_Death_D_03.png",
+        "sha256": "6b41325d8f45fa30aab23621f15eafe4a3d43b9ae0fdd9cf9a230b124cbe9834",
+        "alphaBounds": [
+          84,
+          156,
+          429,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/D/Support_Death_D_04.png",
+        "sha256": "417779fce149df32d6a09686af1f8b898daae5a9ff5c9ce560211e5b9ecee95c",
+        "alphaBounds": [
+          80,
+          224,
+          433,
+          402
+        ]
+      }
+    ]
+  },
+  {
+    "enemy": "Support",
+    "direction": "DR",
+    "source": "Support_DR.png",
+    "sourceSize": [
+      1122,
+      1402
+    ],
+    "scale": 1.2637362637362637,
+    "sourceCuts": [
+      [
+        12,
+        15,
+        267,
+        286
+      ],
+      [
+        298,
+        13,
+        574,
+        291
+      ],
+      [
+        588,
+        17,
+        853,
+        289
+      ],
+      [
+        870,
+        8,
+        1105,
+        278
+      ],
+      [
+        6,
+        295,
+        292,
+        577
+      ],
+      [
+        303,
+        308,
+        589,
+        575
+      ],
+      [
+        579,
+        299,
+        862,
+        576
+      ],
+      [
+        859,
+        299,
+        1117,
+        577
+      ],
+      [
+        29,
+        583,
+        280,
+        855
+      ],
+      [
+        306,
+        579,
+        562,
+        854
+      ],
+      [
+        585,
+        581,
+        840,
+        855
+      ],
+      [
+        865,
+        581,
+        1117,
+        853
+      ],
+      [
+        25,
+        855,
+        286,
+        1132
+      ],
+      [
+        304,
+        858,
+        564,
+        1132
+      ],
+      [
+        584,
+        856,
+        843,
+        1130
+      ],
+      [
+        861,
+        852,
+        1121,
+        1130
+      ],
+      [
+        11,
+        1141,
+        293,
+        1386
+      ],
+      [
+        287,
+        1161,
+        562,
+        1384
+      ],
+      [
+        568,
+        1195,
+        843,
+        1373
+      ],
+      [
+        841,
+        1223,
+        1118,
+        1368
+      ]
+    ],
+    "warnings": [],
+    "frames": [
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/DR/Support_Move_DR_01.png",
+        "sha256": "e69319506f63eba96730123f9956c6c611104577aa5d212efe9c6b48975d9556",
+        "alphaBounds": [
+          95,
+          60,
+          417,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/DR/Support_Move_DR_02.png",
+        "sha256": "d8f3c8a302c4ab88ae089fa8d237a9bc4a6e123e42c048aeebeaebc87afa9c76",
+        "alphaBounds": [
+          82,
+          51,
+          431,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/DR/Support_Move_DR_03.png",
+        "sha256": "daae11318d6da2886cf7e0306c81c34b9c860550306626a9f5c117d23e76a64c",
+        "alphaBounds": [
+          88,
+          58,
+          423,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/DR/Support_Move_DR_04.png",
+        "sha256": "d63eaf67c24325868ecbb9eed0f840a6a816b1e511bdce6fbb804e1813003187",
+        "alphaBounds": [
+          108,
+          61,
+          405,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/DR/Support_Move_DR_05.png",
+        "sha256": "0af202c86d47cbee874cba1cc7d6c9acd3b8bfd51e8ac88d222591e8d0dedf6d",
+        "alphaBounds": [
+          76,
+          46,
+          437,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/DR/Support_Move_DR_06.png",
+        "sha256": "997b859ff7c8e7d632752351b040bb6267eea5c3d7234d3ca9c5031341c14a3c",
+        "alphaBounds": [
+          76,
+          65,
+          437,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/DR/Support_Move_DR_07.png",
+        "sha256": "7168f365ab917af43e580ba83b7bcbed30253efcbcd055f7ef628b2dec6adeda",
+        "alphaBounds": [
+          77,
+          52,
+          435,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/DR/Support_Move_DR_08.png",
+        "sha256": "ce6bfaa236bf4afa55c3dfbdf942c8a2d6b3cab28320e30debdba7b0b87f2bc4",
+        "alphaBounds": [
+          93,
+          51,
+          419,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/DR/Support_Idle_DR_01.png",
+        "sha256": "f5513224c0862b80fff553b76d0b49714e1cd492031d0de5bb0b75d18e28f9e4",
+        "alphaBounds": [
+          98,
+          58,
+          415,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/DR/Support_Idle_DR_02.png",
+        "sha256": "581f836241c6e76b5c1e4d850b3ed78c0a91e01e57eb1cea1fab9f228ebf3113",
+        "alphaBounds": [
+          94,
+          54,
+          418,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/DR/Support_Idle_DR_03.png",
+        "sha256": "b2e9dd84bbc8beeaf2deebd555b42fe790e02093fd8fe6cec5b8a70061872af9",
+        "alphaBounds": [
+          95,
+          56,
+          417,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/DR/Support_Idle_DR_04.png",
+        "sha256": "5ce6f1d51cf797ec33c8f39f89bbb638a8110054ed202219050c1b1792762a42",
+        "alphaBounds": [
+          97,
+          58,
+          415,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/DR/Support_SupportStart_DR_01.png",
+        "sha256": "e8ffb66283508ce2c8165580dae4672c9240ad83d4e093d7d252e55376bda081",
+        "alphaBounds": [
+          91,
+          52,
+          421,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/DR/Support_SupportStart_DR_02.png",
+        "sha256": "435b45ec6c8862101561d32dc472ef3a154c839dc793531413bba0cf0093f9a7",
+        "alphaBounds": [
+          92,
+          56,
+          421,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/DR/Support_SupportStart_DR_03.png",
+        "sha256": "cd407f049ee0e8990084530d1a656d5505bb3e531c49c153cd9172306aaf5f1d",
+        "alphaBounds": [
+          92,
+          56,
+          419,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/DR/Support_SupportStart_DR_04.png",
+        "sha256": "e0e03a764ceb323dc28604583d43a423688e8fe6e784c819dfbb7a21884a7bda",
+        "alphaBounds": [
+          92,
+          51,
+          421,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/DR/Support_Death_DR_01.png",
+        "sha256": "ef5db222aef66b99b0a6f28213b95cd82dddf10215645e1c0b57fceba4ecdf96",
+        "alphaBounds": [
+          78,
+          92,
+          434,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/DR/Support_Death_DR_02.png",
+        "sha256": "5483c71071ca0554cc9a88f367edd3768c0cd68e5a4d8ce7da132c150b8af895",
+        "alphaBounds": [
+          82,
+          120,
+          430,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/DR/Support_Death_DR_03.png",
+        "sha256": "a427c54d417a703fb035cbf732f2cd88374b99c12ac146a44b3a306336d0a647",
+        "alphaBounds": [
+          82,
+          177,
+          430,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/DR/Support_Death_DR_04.png",
+        "sha256": "d2d9af9dc28fb2f8f2a431e18f25bd3134f14ff2a85035baa71ee230288852a1",
+        "alphaBounds": [
+          81,
+          219,
+          431,
+          402
+        ]
+      }
+    ]
+  },
+  {
+    "enemy": "Support",
+    "direction": "R",
+    "source": "Support_R.png",
+    "sourceSize": [
+      1122,
+      1402
+    ],
+    "scale": 1.2545454545454546,
+    "sourceCuts": [
+      [
+        6,
+        8,
+        300,
+        284
+      ],
+      [
+        296,
+        15,
+        570,
+        285
+      ],
+      [
+        576,
+        14,
+        852,
+        283
+      ],
+      [
+        859,
+        17,
+        1122,
+        286
+      ],
+      [
+        7,
+        292,
+        301,
+        560
+      ],
+      [
+        296,
+        297,
+        581,
+        571
+      ],
+      [
+        591,
+        296,
+        844,
+        564
+      ],
+      [
+        860,
+        297,
+        1122,
+        571
+      ],
+      [
+        22,
+        576,
+        285,
+        852
+      ],
+      [
+        297,
+        579,
+        565,
+        852
+      ],
+      [
+        573,
+        577,
+        840,
+        852
+      ],
+      [
+        853,
+        578,
+        1121,
+        853
+      ],
+      [
+        13,
+        859,
+        286,
+        1135
+      ],
+      [
+        298,
+        864,
+        569,
+        1135
+      ],
+      [
+        566,
+        861,
+        838,
+        1137
+      ],
+      [
+        852,
+        858,
+        1119,
+        1137
+      ],
+      [
+        3,
+        1140,
+        281,
+        1391
+      ],
+      [
+        280,
+        1182,
+        558,
+        1383
+      ],
+      [
+        555,
+        1222,
+        836,
+        1378
+      ],
+      [
+        832,
+        1233,
+        1116,
+        1376
+      ]
+    ],
+    "warnings": [
+      "Support_R.png frame 4: inspect source canvas edge (861, 19, 1122, 284)",
+      "Support_R.png frame 8: inspect source canvas edge (862, 299, 1122, 569)"
+    ],
+    "frames": [
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/R/Support_Move_R_01.png",
+        "sha256": "65748dbd3eb194b2e78e6f7642366a0438d4bd74b9283d64f6a1b53029108639",
+        "alphaBounds": [
+          72,
+          56,
+          441,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/R/Support_Move_R_02.png",
+        "sha256": "abbe0aadf4ce3dd608480d01dac11aee3bf28b7b3b9c955ad6dc4ae656fdf7cd",
+        "alphaBounds": [
+          84,
+          63,
+          428,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/R/Support_Move_R_03.png",
+        "sha256": "949dd652569755a24ad99db2b2bdafd36c9f5b144388aa97eba11ca7696dea29",
+        "alphaBounds": [
+          83,
+          65,
+          429,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/R/Support_Move_R_04.png",
+        "sha256": "9b886fd025f03224e9d63390bb6d87657e8246c847702392250d8c83517caa3d",
+        "alphaBounds": [
+          91,
+          65,
+          421,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/R/Support_Move_R_05.png",
+        "sha256": "7e1a2b876f2f9c0f6ba8950881fbc9a3cd0e1b5a97b4c955e06e06d2b4ffa46d",
+        "alphaBounds": [
+          72,
+          66,
+          441,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/R/Support_Move_R_06.png",
+        "sha256": "2c443b25ac534cf073754aed82ab58b88749ab6f20513feb64a0e5a3f73c02de",
+        "alphaBounds": [
+          77,
+          58,
+          435,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/R/Support_Move_R_07.png",
+        "sha256": "4856629987cb294b99ea44aacf801763eb45a2df1134c942576a7a30b04819a7",
+        "alphaBounds": [
+          98,
+          66,
+          415,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/R/Support_Move_R_08.png",
+        "sha256": "17a7ea346d72d043f793ba0d7c1c8a1fe63167fe291b2a2c5c048a291280b8c8",
+        "alphaBounds": [
+          92,
+          58,
+          421,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/R/Support_Idle_R_01.png",
+        "sha256": "2bba92f595b952bc8206d18b32b14ff241b60de7edc0d44156dbf4bb10e66444",
+        "alphaBounds": [
+          91,
+          56,
+          421,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/R/Support_Idle_R_02.png",
+        "sha256": "cfae4c716ee4a017ca5aaed0025d4fc94b97f689bf3feb07fca86e5e4a2981cc",
+        "alphaBounds": [
+          88,
+          60,
+          424,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/R/Support_Idle_R_03.png",
+        "sha256": "5923b611a395e0072211c0869d24e96da749e9d9b24330966309a8a3a3fc4dc2",
+        "alphaBounds": [
+          88,
+          57,
+          423,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/R/Support_Idle_R_04.png",
+        "sha256": "0e15d1cd4fc2bda34ca1ed2fe5f9e7dab335381a40037dbc547d9cf65847fb12",
+        "alphaBounds": [
+          88,
+          57,
+          424,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/R/Support_SupportStart_R_01.png",
+        "sha256": "37caa6ffaed1405eb7f686e78805cad4e5a7055d5232d509c5e6cf7b617ec6ff",
+        "alphaBounds": [
+          85,
+          56,
+          427,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/R/Support_SupportStart_R_02.png",
+        "sha256": "b7f455af5d0173e0c5dff7a2f932e5233fbe3e6794d27c087de1e9b7086756e3",
+        "alphaBounds": [
+          86,
+          62,
+          426,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/R/Support_SupportStart_R_03.png",
+        "sha256": "5849d5a0bc88e3e43499f4c2aef7e44a9da60195c9fd07601bd1281230915498",
+        "alphaBounds": [
+          86,
+          56,
+          427,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/R/Support_SupportStart_R_04.png",
+        "sha256": "f2399dd17f1c904cfbb8fb35d8d38a25342b7349de71dafda7de4942b07254e9",
+        "alphaBounds": [
+          88,
+          52,
+          423,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/R/Support_Death_R_01.png",
+        "sha256": "25e3bb476ae6146a80a002bd7921e6910c6b8f84392b0333ec4c4cbf85dd1791",
+        "alphaBounds": [
+          82,
+          87,
+          431,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/R/Support_Death_R_02.png",
+        "sha256": "b61db839a8333cc73ba70d04d8936a4673797ec3368e17fb40b6964e9e65c80b",
+        "alphaBounds": [
+          82,
+          150,
+          431,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/R/Support_Death_R_03.png",
+        "sha256": "da17b44c9dcfdb4001b8356a0e68398cf84743ae54a4255881e41ccc0113f223",
+        "alphaBounds": [
+          80,
+          206,
+          433,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/R/Support_Death_R_04.png",
+        "sha256": "d2166ddb40480bad70e20bbb47db20be6ee7e3aa508bfed32cb5ae6b3bb29e85",
+        "alphaBounds": [
+          78,
+          223,
+          434,
+          402
+        ]
+      }
+    ]
+  },
+  {
+    "enemy": "Support",
+    "direction": "UR",
+    "source": "Support_UR.png",
+    "sourceSize": [
+      1122,
+      1402
+    ],
+    "scale": 1.3346228239845261,
+    "sourceCuts": [
+      [
+        23,
+        28,
+        272,
+        287
+      ],
+      [
+        299,
+        29,
+        546,
+        287
+      ],
+      [
+        583,
+        34,
+        829,
+        294
+      ],
+      [
+        867,
+        35,
+        1104,
+        278
+      ],
+      [
+        32,
+        306,
+        278,
+        566
+      ],
+      [
+        296,
+        312,
+        553,
+        569
+      ],
+      [
+        584,
+        313,
+        830,
+        561
+      ],
+      [
+        871,
+        309,
+        1102,
+        569
+      ],
+      [
+        30,
+        595,
+        267,
+        853
+      ],
+      [
+        310,
+        595,
+        546,
+        853
+      ],
+      [
+        589,
+        594,
+        825,
+        853
+      ],
+      [
+        870,
+        591,
+        1108,
+        854
+      ],
+      [
+        28,
+        876,
+        265,
+        1135
+      ],
+      [
+        306,
+        873,
+        555,
+        1134
+      ],
+      [
+        588,
+        872,
+        830,
+        1133
+      ],
+      [
+        869,
+        873,
+        1105,
+        1137
+      ],
+      [
+        24,
+        1157,
+        266,
+        1379
+      ],
+      [
+        284,
+        1184,
+        546,
+        1381
+      ],
+      [
+        566,
+        1199,
+        838,
+        1378
+      ],
+      [
+        854,
+        1201,
+        1112,
+        1370
+      ]
+    ],
+    "warnings": [],
+    "frames": [
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/UR/Support_Move_UR_01.png",
+        "sha256": "e835e1e51b39982c290aef2b37b52c563c792755c61c3c1a7a26741370c606b6",
+        "alphaBounds": [
+          90,
+          56,
+          422,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/UR/Support_Move_UR_02.png",
+        "sha256": "f3a7d71d632da829a0903eb4cc335bd0b75524bc66aefe067e32fe8d0854eb5d",
+        "alphaBounds": [
+          91,
+          58,
+          421,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/UR/Support_Move_UR_03.png",
+        "sha256": "6b4e36c48ba4f43c82635aadf8bbf3316b21d4fb7adc8d88bc6f3a980e74e723",
+        "alphaBounds": [
+          92,
+          55,
+          420,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/UR/Support_Move_UR_04.png",
+        "sha256": "a56f8e408d8e1628872de513c497d11b2e7e86510243b86e423f4c7fac574023",
+        "alphaBounds": [
+          98,
+          78,
+          414,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/UR/Support_Move_UR_05.png",
+        "sha256": "e3d2114bec732e731f6547ff4ee74ae40b327b95d9b6899bd0dcd385c30d374a",
+        "alphaBounds": [
+          92,
+          55,
+          420,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/UR/Support_Move_UR_06.png",
+        "sha256": "773590d9f8681a40744b43934f4442d37a1d39726ca4eb88fad5773efa39a864",
+        "alphaBounds": [
+          84,
+          59,
+          427,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/UR/Support_Move_UR_07.png",
+        "sha256": "2883ba4b16a34fc8a230f8a5f7885b23bb41d8c0fd92b3862889bc6793fbfc35",
+        "alphaBounds": [
+          92,
+          71,
+          420,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/UR/Support_Move_UR_08.png",
+        "sha256": "3389783bf8d44d2ff69f2fe2e1d796547e4ea6118e5c2fe612db50b0b51abb82",
+        "alphaBounds": [
+          102,
+          55,
+          410,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/UR/Support_Idle_UR_01.png",
+        "sha256": "72f36f7c6a1becf810feb39edd0f7321d9e811b0128d9a5c4c31a6c471d3825e",
+        "alphaBounds": [
+          98,
+          58,
+          414,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/UR/Support_Idle_UR_02.png",
+        "sha256": "97b00e0251917f577fe487df218d192786f18d674c14fa5d2d61905855d23c41",
+        "alphaBounds": [
+          98,
+          58,
+          413,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/UR/Support_Idle_UR_03.png",
+        "sha256": "34edebd2740f2f2826e7b777b752fb208b5ee77720dfd1ac3d865442c9ec8199",
+        "alphaBounds": [
+          98,
+          56,
+          413,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/UR/Support_Idle_UR_04.png",
+        "sha256": "0cc735e34db7dca0f2092d19e988a8da2e97ee4aebefceb8c503a70893558f4e",
+        "alphaBounds": [
+          97,
+          51,
+          415,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/UR/Support_SupportStart_UR_01.png",
+        "sha256": "3384abf1186c76be4476af4b7c1c6552ca9ae47c2c77abd448bc67368abbcb7e",
+        "alphaBounds": [
+          98,
+          56,
+          414,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/UR/Support_SupportStart_UR_02.png",
+        "sha256": "a47f5fdf5a4cf9083316a0707a6f5af2ee21e52bad769d9440250d7f938c2f30",
+        "alphaBounds": [
+          90,
+          54,
+          422,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/UR/Support_SupportStart_UR_03.png",
+        "sha256": "f6ef1f15cd6a5d67e36d9b890197e700d0bc42d436bd9c5cc757a88a8be8e6e8",
+        "alphaBounds": [
+          94,
+          54,
+          417,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/UR/Support_SupportStart_UR_04.png",
+        "sha256": "e776eb28271e9b52d6ae8a6b593363d7f64f6662bcc51da7290094c508514582",
+        "alphaBounds": [
+          98,
+          50,
+          413,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/UR/Support_Death_UR_01.png",
+        "sha256": "036fa39c19ee3253451ad73544fe89258d3c6012be336fb5f4ac903308d3dd16",
+        "alphaBounds": [
+          94,
+          106,
+          417,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/UR/Support_Death_UR_02.png",
+        "sha256": "a24a3105d3955bee3637db64caad2d4db94aa9c6e31895ca515f58ff8728b7b8",
+        "alphaBounds": [
+          81,
+          139,
+          431,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/UR/Support_Death_UR_03.png",
+        "sha256": "85aad8a11bc742547629fba5ede5b17cf6606e39c9de866e3c11c24d7961a194",
+        "alphaBounds": [
+          74,
+          163,
+          437,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/UR/Support_Death_UR_04.png",
+        "sha256": "4167e01874dc67538d24a9a41a7b3af30d3391ecef1bb32971057da1131be54e",
+        "alphaBounds": [
+          84,
+          176,
+          428,
+          402
+        ]
+      }
+    ]
+  },
+  {
+    "enemy": "Support",
+    "direction": "U",
+    "source": "Support_U.png",
+    "sourceSize": [
+      1122,
+      1402
+    ],
+    "scale": 1.4110429447852761,
+    "sourceCuts": [
+      [
+        34,
+        32,
+        245,
+        276
+      ],
+      [
+        317,
+        31,
+        540,
+        277
+      ],
+      [
+        588,
+        31,
+        806,
+        276
+      ],
+      [
+        869,
+        31,
+        1093,
+        277
+      ],
+      [
+        44,
+        309,
+        250,
+        555
+      ],
+      [
+        308,
+        310,
+        530,
+        560
+      ],
+      [
+        586,
+        308,
+        813,
+        555
+      ],
+      [
+        875,
+        309,
+        1077,
+        555
+      ],
+      [
+        45,
+        591,
+        253,
+        836
+      ],
+      [
+        321,
+        591,
+        527,
+        835
+      ],
+      [
+        598,
+        590,
+        805,
+        835
+      ],
+      [
+        877,
+        591,
+        1082,
+        835
+      ],
+      [
+        45,
+        871,
+        252,
+        1117
+      ],
+      [
+        321,
+        870,
+        528,
+        1117
+      ],
+      [
+        599,
+        863,
+        805,
+        1117
+      ],
+      [
+        877,
+        868,
+        1083,
+        1117
+      ],
+      [
+        32,
+        1154,
+        255,
+        1370
+      ],
+      [
+        302,
+        1168,
+        536,
+        1368
+      ],
+      [
+        574,
+        1188,
+        820,
+        1369
+      ],
+      [
+        847,
+        1206,
+        1101,
+        1370
+      ]
+    ],
+    "warnings": [],
+    "frames": [
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/U/Support_Move_U_01.png",
+        "sha256": "94b05aa5de8d3023fd06e9da31a9cbf17461c06638b1b239ae6003fe0c8199ac",
+        "alphaBounds": [
+          107,
+          58,
+          405,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/U/Support_Move_U_02.png",
+        "sha256": "0e62b14a7d9fec3f680e120b2b66337df470d1f3278f23cfac439b415a9dac64",
+        "alphaBounds": [
+          98,
+          55,
+          413,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/U/Support_Move_U_03.png",
+        "sha256": "e4c6807578edcfcc8de88264d1c4ce725acf35aa8593e854ed5b6fb4803a3d98",
+        "alphaBounds": [
+          102,
+          56,
+          410,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/U/Support_Move_U_04.png",
+        "sha256": "d97e6e88f89ad33415eee69408811ac8ed51cdd133bc68a5f5f10e85ca7aef88",
+        "alphaBounds": [
+          98,
+          55,
+          414,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/U/Support_Move_U_05.png",
+        "sha256": "2c182e214ef436ff678e446ea5f5905ad49998dffd9e6ce5d22e823810e52fa5",
+        "alphaBounds": [
+          110,
+          55,
+          401,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/U/Support_Move_U_06.png",
+        "sha256": "740c8b6a2045df90efde425cf5b77029f5b48a76e0f037c45173b0156d4548c3",
+        "alphaBounds": [
+          100,
+          49,
+          413,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/U/Support_Move_U_07.png",
+        "sha256": "9c48d34310a1c3ba11952e45fee9fa8606c2c3a52edfaf7de551b6a23efa2681",
+        "alphaBounds": [
+          96,
+          53,
+          416,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/U/Support_Move_U_08.png",
+        "sha256": "2bae88dc29dc985fcc0a3ed48c46f0acb527f3b6339711d0fc08a32bce3be21a",
+        "alphaBounds": [
+          114,
+          55,
+          399,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/U/Support_Idle_U_01.png",
+        "sha256": "d431d9c69df518ba2185ffc6d48fff50ca9f6e040999353c2cfd36f87f4f85a0",
+        "alphaBounds": [
+          110,
+          56,
+          403,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/U/Support_Idle_U_02.png",
+        "sha256": "53dcc0ffc64ba179763c40ad8f3db8786b1004072e02dfa7589daf64bf2ea9b4",
+        "alphaBounds": [
+          110,
+          58,
+          401,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/U/Support_Idle_U_03.png",
+        "sha256": "0292413df4e20add89b98528e7686e0e52b9b2ee2f0c31317cfecc1ac0e06499",
+        "alphaBounds": [
+          110,
+          56,
+          402,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/U/Support_Idle_U_04.png",
+        "sha256": "597e09679c751f74ae0fb118aaa0de24f1068df837e37d578dacb2e2dfb77b36",
+        "alphaBounds": [
+          112,
+          58,
+          401,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/U/Support_SupportStart_U_01.png",
+        "sha256": "ea09f28135178bfec47c4ddeb5f8aadd6be2e334ea087ffdfc7a7cb12efd0081",
+        "alphaBounds": [
+          110,
+          55,
+          402,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/U/Support_SupportStart_U_02.png",
+        "sha256": "dd51be93a42ee3ea1921c531b37970e197a607eafa0afd456f7b0151a0ca12e3",
+        "alphaBounds": [
+          110,
+          53,
+          402,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/U/Support_SupportStart_U_03.png",
+        "sha256": "6bf35aa3ca830e54178c617a76047f56794d357f771df9b45350740a99d254f8",
+        "alphaBounds": [
+          110,
+          44,
+          401,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/U/Support_SupportStart_U_04.png",
+        "sha256": "e1a78e5f56f5a0cfae2616600ad7ea514a84b4997697855d6a8b171897f92736",
+        "alphaBounds": [
+          110,
+          51,
+          401,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/U/Support_Death_U_01.png",
+        "sha256": "4bf6a10dde751357519de529212d61817a9bfe6e03f77487f25e938517f7c4e3",
+        "alphaBounds": [
+          98,
+          97,
+          413,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/U/Support_Death_U_02.png",
+        "sha256": "22e240a42a4f30398865e2199f2b7aeef8ad2cd2b5a50313324f1c0172b8a8ce",
+        "alphaBounds": [
+          91,
+          120,
+          421,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/U/Support_Death_U_03.png",
+        "sha256": "71a2012a5bdaf1dfdd446a6393f9ec0b0410fefb5560b77c72db58f6a4150db8",
+        "alphaBounds": [
+          82,
+          147,
+          429,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/U/Support_Death_U_04.png",
+        "sha256": "cd093d1b465c6691b9a87869a82afe1f5242f6fade6b507c337f139e49be6cc7",
+        "alphaBounds": [
+          77,
+          171,
+          435,
+          402
+        ]
+      }
+    ]
+  },
+  {
+    "enemy": "Support",
+    "direction": "UL",
+    "source": "Support_UL.png",
+    "sourceSize": [
+      1122,
+      1402
+    ],
+    "scale": 1.3555992141453832,
+    "sourceCuts": [
+      [
+        29,
+        29,
+        274,
+        288
+      ],
+      [
+        320,
+        48,
+        553,
+        292
+      ],
+      [
+        612,
+        50,
+        839,
+        292
+      ],
+      [
+        876,
+        57,
+        1105,
+        288
+      ],
+      [
+        40,
+        327,
+        265,
+        568
+      ],
+      [
+        327,
+        322,
+        561,
+        566
+      ],
+      [
+        593,
+        322,
+        833,
+        568
+      ],
+      [
+        878,
+        316,
+        1107,
+        568
+      ],
+      [
+        42,
+        595,
+        271,
+        850
+      ],
+      [
+        324,
+        600,
+        557,
+        849
+      ],
+      [
+        601,
+        593,
+        834,
+        850
+      ],
+      [
+        870,
+        596,
+        1102,
+        850
+      ],
+      [
+        42,
+        883,
+        270,
+        1131
+      ],
+      [
+        324,
+        885,
+        562,
+        1131
+      ],
+      [
+        603,
+        875,
+        836,
+        1132
+      ],
+      [
+        876,
+        874,
+        1107,
+        1133
+      ],
+      [
+        46,
+        1148,
+        263,
+        1374
+      ],
+      [
+        313,
+        1182,
+        558,
+        1362
+      ],
+      [
+        593,
+        1200,
+        827,
+        1356
+      ],
+      [
+        850,
+        1208,
+        1102,
+        1348
+      ]
+    ],
+    "warnings": [],
+    "frames": [
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/UL/Support_Move_UL_01.png",
+        "sha256": "d59f088ee43673724fb80cca07b62a79eb96bf50d51d0d1d4c88db228b2214e2",
+        "alphaBounds": [
+          90,
+          51,
+          422,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/UL/Support_Move_UL_02.png",
+        "sha256": "75345393660456a4537112382e96dd1803d494b3eabea30e979bb65d2ff030da",
+        "alphaBounds": [
+          98,
+          71,
+          414,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/UL/Support_Move_UL_03.png",
+        "sha256": "b348062087e58743b2ba8f490d6f25c1eecbf47c4ff0151cbaa89c029ac00f70",
+        "alphaBounds": [
+          102,
+          74,
+          410,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/UL/Support_Move_UL_04.png",
+        "sha256": "8785ee80f28dd4582f20ac96a37077806d543fe99dfe7e05f394bfb9f416b764",
+        "alphaBounds": [
+          101,
+          89,
+          411,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/UL/Support_Move_UL_05.png",
+        "sha256": "0a9c3b40a80f8ef6c5fb0f8475caa5a55e886c472157b1186d4cf7ef7514419c",
+        "alphaBounds": [
+          104,
+          75,
+          409,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/UL/Support_Move_UL_06.png",
+        "sha256": "3b4c79d5ee3e8089637db8e6f078ee0c300b6cdcfe333589ef3d1adb6bc8b91d",
+        "alphaBounds": [
+          98,
+          71,
+          415,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/UL/Support_Move_UL_07.png",
+        "sha256": "4907f282a6b26da58377fc1465d3f2ac19fc8879ada406e9a93aaad8cf468429",
+        "alphaBounds": [
+          94,
+          69,
+          419,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/UL/Support_Move_UL_08.png",
+        "sha256": "b326f80d014fc8c8a3aee32ad50b25e76ebbe5bf4bdbdf572a1fd42a07c86010",
+        "alphaBounds": [
+          101,
+          60,
+          411,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/UL/Support_Idle_UL_01.png",
+        "sha256": "9386557fa83c7f8a0ab5df2567babe7a095b3104ded82dda7810dacd3debe5e0",
+        "alphaBounds": [
+          101,
+          56,
+          411,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/UL/Support_Idle_UL_02.png",
+        "sha256": "63fa5c91accc51605178e22f7d8c5218a8a5ee86f423c61ecf340e1e789c2be1",
+        "alphaBounds": [
+          98,
+          64,
+          414,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/UL/Support_Idle_UL_03.png",
+        "sha256": "05ef504ccf2666dd9387bf72832c4ff79f4247c0baabcd76bea1a3fdfcefcf1a",
+        "alphaBounds": [
+          98,
+          54,
+          414,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/UL/Support_Idle_UL_04.png",
+        "sha256": "0797e49f24b7c1bec52c2fe28ae76b8e6a702f18fbbc38e0fd292722e77df19a",
+        "alphaBounds": [
+          99,
+          58,
+          413,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/UL/Support_SupportStart_UL_01.png",
+        "sha256": "4ebefc7ec57e77337882c98540615884a2fc9ba20d70d292d1f92ac977e60331",
+        "alphaBounds": [
+          102,
+          66,
+          411,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/UL/Support_SupportStart_UL_02.png",
+        "sha256": "6d900a1f173d264e33785d6ed06122ddb9b208980df8a2b8d3a1488140bd30f8",
+        "alphaBounds": [
+          94,
+          69,
+          417,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/UL/Support_SupportStart_UL_03.png",
+        "sha256": "b1085eb5a182477e7ff8caab03a26213a7f964460d1bdca5bf70c1a5466d512c",
+        "alphaBounds": [
+          98,
+          54,
+          414,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/UL/Support_SupportStart_UL_04.png",
+        "sha256": "6ff3b9d65a8857738f164c4eca2f593d354f6ffbf9e6e17d4f0a6fd37dce3117",
+        "alphaBounds": [
+          100,
+          51,
+          413,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/UL/Support_Death_UL_01.png",
+        "sha256": "1206df3d32ea3c30d0639593c41c99a5d0e9a4501770e45969318abe7ba32b27",
+        "alphaBounds": [
+          109,
+          96,
+          403,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/UL/Support_Death_UL_02.png",
+        "sha256": "5d1a1e8661c6ccf8b7b25bfbfb470cbf5ba5a6d84d9d47ef9155d14813157cf4",
+        "alphaBounds": [
+          90,
+          158,
+          422,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/UL/Support_Death_UL_03.png",
+        "sha256": "96f51e29a7753e939e275ebfb02075caf8913f9c393eb2afb6256042c143b242",
+        "alphaBounds": [
+          98,
+          191,
+          415,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/UL/Support_Death_UL_04.png",
+        "sha256": "23238bfc9ff5718defe2d295455d64924326dd6b044bdaf81417eacdead6cfba",
+        "alphaBounds": [
+          85,
+          212,
+          427,
+          402
+        ]
+      }
+    ]
+  },
+  {
+    "enemy": "Support",
+    "direction": "L",
+    "source": "Support_L.png",
+    "sourceSize": [
+      1122,
+      1402
+    ],
+    "scale": 1.4081632653061225,
+    "sourceCuts": [
+      [
+        25,
+        55,
+        270,
+        287
+      ],
+      [
+        309,
+        53,
+        557,
+        287
+      ],
+      [
+        590,
+        56,
+        837,
+        277
+      ],
+      [
+        874,
+        54,
+        1110,
+        285
+      ],
+      [
+        31,
+        319,
+        269,
+        549
+      ],
+      [
+        309,
+        322,
+        546,
+        551
+      ],
+      [
+        590,
+        323,
+        836,
+        550
+      ],
+      [
+        870,
+        320,
+        1104,
+        553
+      ],
+      [
+        29,
+        599,
+        276,
+        844
+      ],
+      [
+        315,
+        597,
+        552,
+        842
+      ],
+      [
+        587,
+        600,
+        831,
+        843
+      ],
+      [
+        871,
+        597,
+        1110,
+        844
+      ],
+      [
+        26,
+        880,
+        283,
+        1124
+      ],
+      [
+        310,
+        871,
+        563,
+        1123
+      ],
+      [
+        590,
+        871,
+        841,
+        1111
+      ],
+      [
+        875,
+        856,
+        1110,
+        1115
+      ],
+      [
+        27,
+        1157,
+        287,
+        1370
+      ],
+      [
+        305,
+        1178,
+        562,
+        1365
+      ],
+      [
+        573,
+        1196,
+        841,
+        1363
+      ],
+      [
+        851,
+        1228,
+        1104,
+        1363
+      ]
+    ],
+    "warnings": [],
+    "frames": [
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/L/Support_Move_L_01.png",
+        "sha256": "d3ca707e6c3d90c0bcc140f1c931af0f44c99d9963551fdc05306c8fdebd089f",
+        "alphaBounds": [
+          84,
+          75,
+          429,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/L/Support_Move_L_02.png",
+        "sha256": "b6c9a5739453c2b27daf240a99f77b9a1ecc0e611b56a8db1d1746c82e098e58",
+        "alphaBounds": [
+          82,
+          72,
+          431,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/L/Support_Move_L_03.png",
+        "sha256": "c3b8339c29c874b186e16692cce823bf769f854393f649cb7b1ce6df0ae67455",
+        "alphaBounds": [
+          82,
+          91,
+          430,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/L/Support_Move_L_04.png",
+        "sha256": "eb198683b1d1e0d7c393b7e643503e011aec55df32e24bd68fddf3b9394e627a",
+        "alphaBounds": [
+          90,
+          77,
+          422,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/L/Support_Move_L_05.png",
+        "sha256": "040f7fdcf340f18d7dfbf7959590153f886dcdfb5938da8534967251a0e675c3",
+        "alphaBounds": [
+          88,
+          78,
+          423,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/L/Support_Move_L_06.png",
+        "sha256": "1cf05cb40a872103e438b7a1b8dd5805aa0e0bdc26a5f0b11fdcef52592eab2a",
+        "alphaBounds": [
+          89,
+          80,
+          423,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/L/Support_Move_L_07.png",
+        "sha256": "6fa8af1f3168d7865602001cb30a7bfeac4cadbce8a7e084f64769dec4c558c0",
+        "alphaBounds": [
+          83,
+          82,
+          429,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/L/Support_Move_L_08.png",
+        "sha256": "47f050f825ec7b1243e576fc697970944ddc77f484811362d31696256a86c18e",
+        "alphaBounds": [
+          91,
+          74,
+          421,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/L/Support_Idle_L_01.png",
+        "sha256": "44c99def7f637ff6541856842d061b95402c892f05d8e1ca1f26070f82f9666a",
+        "alphaBounds": [
+          82,
+          57,
+          430,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/L/Support_Idle_L_02.png",
+        "sha256": "be8961ea2174596cccbe4cc2a32e569ec70997309b3cb8f981fee8a9bb8c510a",
+        "alphaBounds": [
+          89,
+          57,
+          423,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/L/Support_Idle_L_03.png",
+        "sha256": "6f3199c58a68f1eab8f302560c1a25ab07f7f65186355c13a82f0c4533d9da3b",
+        "alphaBounds": [
+          84,
+          60,
+          428,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/L/Support_Idle_L_04.png",
+        "sha256": "e08782892ee81c8dc108b64f2d0767cdd63cc002958a705b32ff51e0bd6af007",
+        "alphaBounds": [
+          88,
+          54,
+          425,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/L/Support_SupportStart_L_01.png",
+        "sha256": "6aaffc817b87925436f81aa055776a24e7ea609a2e899b3b4c0e9c665147e1ae",
+        "alphaBounds": [
+          75,
+          58,
+          437,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/L/Support_SupportStart_L_02.png",
+        "sha256": "dec8ba99c38b8e4c5dff465274ec496e682cc1ce5505dc196a1b6342d843fa05",
+        "alphaBounds": [
+          78,
+          47,
+          434,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/L/Support_SupportStart_L_03.png",
+        "sha256": "3d65f6994789b0d53e515ebd96688e8e52529b2ea91be18f5bd75d2d3ecaed25",
+        "alphaBounds": [
+          80,
+          64,
+          433,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/L/Support_SupportStart_L_04.png",
+        "sha256": "59209f5e0821d1adbd5ab983f2a516c690f5139db8f311e7da8fd7c658488090",
+        "alphaBounds": [
+          90,
+          37,
+          421,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/L/Support_Death_L_01.png",
+        "sha256": "12c0ca775537acbe5cd6604c3ea26f6347c3775269db4b65265142d5ffa1aefa",
+        "alphaBounds": [
+          73,
+          102,
+          439,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/L/Support_Death_L_02.png",
+        "sha256": "27a21ffbf372ec10e34e59522ed2ce7804ec86ea2d563f6592db0b11cda60563",
+        "alphaBounds": [
+          75,
+          139,
+          437,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/L/Support_Death_L_03.png",
+        "sha256": "3f694006f7ef2528e7240c484fdffa43a98b6d771827fb2c45db8d55644861ba",
+        "alphaBounds": [
+          68,
+          167,
+          445,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/L/Support_Death_L_04.png",
+        "sha256": "e301e0183e7e6d930ae033a0b37fa462d488a0c042f9b47c97742a6f37098fa1",
+        "alphaBounds": [
+          78,
+          212,
+          434,
+          402
+        ]
+      }
+    ]
+  },
+  {
+    "enemy": "Support",
+    "direction": "DL",
+    "source": "Support_DL.png",
+    "sourceSize": [
+      1122,
+      1402
+    ],
+    "scale": 1.3745019920318724,
+    "sourceCuts": [
+      [
+        33,
+        38,
+        265,
+        284
+      ],
+      [
+        333,
+        39,
+        547,
+        286
+      ],
+      [
+        568,
+        38,
+        814,
+        285
+      ],
+      [
+        857,
+        41,
+        1090,
+        282
+      ],
+      [
+        37,
+        316,
+        280,
+        564
+      ],
+      [
+        328,
+        318,
+        544,
+        566
+      ],
+      [
+        605,
+        318,
+        832,
+        566
+      ],
+      [
+        864,
+        314,
+        1093,
+        565
+      ],
+      [
+        33,
+        595,
+        268,
+        846
+      ],
+      [
+        307,
+        596,
+        540,
+        847
+      ],
+      [
+        584,
+        595,
+        816,
+        846
+      ],
+      [
+        862,
+        594,
+        1094,
+        847
+      ],
+      [
+        33,
+        882,
+        273,
+        1131
+      ],
+      [
+        309,
+        878,
+        548,
+        1131
+      ],
+      [
+        588,
+        876,
+        828,
+        1131
+      ],
+      [
+        865,
+        876,
+        1099,
+        1130
+      ],
+      [
+        40,
+        1169,
+        273,
+        1379
+      ],
+      [
+        307,
+        1186,
+        567,
+        1373
+      ],
+      [
+        577,
+        1191,
+        835,
+        1375
+      ],
+      [
+        827,
+        1211,
+        1101,
+        1363
+      ]
+    ],
+    "warnings": [],
+    "frames": [
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/DL/Support_Move_DL_01.png",
+        "sha256": "bb3dc888fe73098f10fb874efd83d55b0eecf2c076450fb0f6676f4947b29642",
+        "alphaBounds": [
+          96,
+          64,
+          415,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/DL/Support_Move_DL_02.png",
+        "sha256": "14930799c31595e54901a98e52261fe65ff481916f4aec5f6ba9fe0b12eac4f3",
+        "alphaBounds": [
+          109,
+          62,
+          403,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/DL/Support_Move_DL_03.png",
+        "sha256": "507b039e27990b86c7548648fda817077bf65a0443bf112d1ed4a6a39b7bacf5",
+        "alphaBounds": [
+          87,
+          62,
+          425,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/DL/Support_Move_DL_04.png",
+        "sha256": "2e66bccd5994d6b643343335b1b55fdffff9482783062956790f03e19b16a0f0",
+        "alphaBounds": [
+          96,
+          71,
+          416,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/DL/Support_Move_DL_05.png",
+        "sha256": "0f30744bad51f9a1308c09447c0d9941f01addd719ecc20d06d5ea23671f015b",
+        "alphaBounds": [
+          89,
+          61,
+          423,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/DL/Support_Move_DL_06.png",
+        "sha256": "a56136a9024cc2d9cf701a8d5f6cf7cded89d2985c68db9dc0d0403ae1adabe2",
+        "alphaBounds": [
+          108,
+          61,
+          405,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/DL/Support_Move_DL_07.png",
+        "sha256": "d3478954dbc50100292d127741843d6b3ba7e0acebf3b5424ec0bc8ec4f21022",
+        "alphaBounds": [
+          100,
+          61,
+          412,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/DL/Support_Move_DL_08.png",
+        "sha256": "8669a6b01a4cfb47bbef822cf4596ff3252f24cc80483881c162d15b0e801fc4",
+        "alphaBounds": [
+          98,
+          57,
+          413,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/DL/Support_Idle_DL_01.png",
+        "sha256": "ecce2a1a7a9f8c986cd0fe20a88507316a2507be56b21dfe24bf97c0c525b4ee",
+        "alphaBounds": [
+          94,
+          57,
+          417,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/DL/Support_Idle_DL_02.png",
+        "sha256": "5b8daa7ab371a9dfc7bf4fdd0da15473a1d6d648bc6c31e85d0892bfb4f37c8c",
+        "alphaBounds": [
+          96,
+          57,
+          416,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/DL/Support_Idle_DL_03.png",
+        "sha256": "6c709cd1d517d495f8cd48ee9b7c6581ef4cffb9ea9f5baca3146329d2debca7",
+        "alphaBounds": [
+          96,
+          57,
+          415,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/DL/Support_Idle_DL_04.png",
+        "sha256": "08563708d4d7c17518b8c39f4d766069ead7339a190f14900a0a16b23a44c340",
+        "alphaBounds": [
+          96,
+          54,
+          415,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/DL/Support_SupportStart_DL_01.png",
+        "sha256": "49eacc1ab880a400ee71701569ba85827d828b1b510bade1870d0485e2713435",
+        "alphaBounds": [
+          91,
+          60,
+          421,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/DL/Support_SupportStart_DL_02.png",
+        "sha256": "fa8a1df8fec9ee3459d554a9881719730d403a0d68d6a79a95402b3b949ee48a",
+        "alphaBounds": [
+          92,
+          54,
+          421,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/DL/Support_SupportStart_DL_03.png",
+        "sha256": "bf93d5dad6db5241c8a310185bc835deafb45bd1e11de9a3a6465d8316414f95",
+        "alphaBounds": [
+          91,
+          52,
+          421,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/DL/Support_SupportStart_DL_04.png",
+        "sha256": "d32147489498f7f9b9e71051665a8f9d0d05a48030c6c017bf087be4398b2aee",
+        "alphaBounds": [
+          95,
+          53,
+          417,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/DL/Support_Death_DL_01.png",
+        "sha256": "7cdd6ea971357a8f685f17e1197fb0a2ae895d4ace58769a75b7823dfeb107e1",
+        "alphaBounds": [
+          96,
+          113,
+          416,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/DL/Support_Death_DL_02.png",
+        "sha256": "a37924273b1fc7928cab68e709060a51db5c83ff83ef569ce1f18fa6a5332d4a",
+        "alphaBounds": [
+          78,
+          145,
+          435,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/DL/Support_Death_DL_03.png",
+        "sha256": "b3c4fa0aa411947295edbda8e4a8e4ec44888ec3fe473419e465f0246d8c216b",
+        "alphaBounds": [
+          78,
+          149,
+          433,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/DL/Support_Death_DL_04.png",
+        "sha256": "28468359cd55a4cc1b0a8b62a368dc74de1eb5abf1cd74b3ef56f6bd587534a0",
+        "alphaBounds": [
+          68,
+          193,
+          445,
+          402
+        ]
+      }
+    ]
+  },
+  {
+    "enemy": "Exploder",
+    "direction": "D",
+    "source": "Exploder_D.png",
+    "sourceSize": [
+      1024,
+      1536
+    ],
+    "scale": 1.4163090128755365,
+    "sourceCuts": [
+      [
+        21,
+        28,
+        226,
+        263
+      ],
+      [
+        278,
+        28,
+        476,
+        265
+      ],
+      [
+        545,
+        26,
+        737,
+        265
+      ],
+      [
+        785,
+        26,
+        997,
+        263
+      ],
+      [
+        18,
+        285,
+        231,
+        518
+      ],
+      [
+        274,
+        283,
+        485,
+        519
+      ],
+      [
+        532,
+        282,
+        743,
+        520
+      ],
+      [
+        783,
+        283,
+        999,
+        520
+      ],
+      [
+        20,
+        541,
+        230,
+        775
+      ],
+      [
+        276,
+        541,
+        487,
+        774
+      ],
+      [
+        533,
+        543,
+        742,
+        775
+      ],
+      [
+        788,
+        541,
+        998,
+        774
+      ],
+      [
+        15,
+        804,
+        240,
+        1036
+      ],
+      [
+        266,
+        801,
+        497,
+        1035
+      ],
+      [
+        522,
+        791,
+        763,
+        1035
+      ],
+      [
+        774,
+        784,
+        1014,
+        1041
+      ],
+      [
+        13,
+        1056,
+        249,
+        1270
+      ],
+      [
+        267,
+        1069,
+        504,
+        1268
+      ],
+      [
+        519,
+        1081,
+        762,
+        1260
+      ],
+      [
+        775,
+        1094,
+        1016,
+        1260
+      ],
+      [
+        18,
+        1271,
+        240,
+        1520
+      ],
+      [
+        268,
+        1270,
+        503,
+        1519
+      ],
+      [
+        526,
+        1264,
+        750,
+        1519
+      ],
+      [
+        782,
+        1303,
+        1005,
+        1516
+      ]
+    ],
+    "warnings": [],
+    "frames": [
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/D/Exploder_Move_D_01.png",
+        "sha256": "a9aca78d0cc5c50aab0addca1970410f74d44dae7a9ebe736fa7d2c28eddda56",
+        "alphaBounds": [
+          111,
+          69,
+          401,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/D/Exploder_Move_D_02.png",
+        "sha256": "bb9757823636cab04dbca19b6596191c97eed24b54f5efade13329e3bd822269",
+        "alphaBounds": [
+          116,
+          66,
+          396,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/D/Exploder_Move_D_03.png",
+        "sha256": "8f7aa974affd2f350e8458b25e0b4bfddbfa3df517bef449355f266f5625b2a7",
+        "alphaBounds": [
+          120,
+          64,
+          392,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/D/Exploder_Move_D_04.png",
+        "sha256": "dd0f2213bb69727f2388631d3839fa10f4fc0e6f5621b8f66434e8b664090f24",
+        "alphaBounds": [
+          106,
+          66,
+          406,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/D/Exploder_Move_D_05.png",
+        "sha256": "faa238f07a00a009ea06a9cb4805ce49b16caef43f12652c41c5a5b630f659be",
+        "alphaBounds": [
+          105,
+          72,
+          407,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/D/Exploder_Move_D_06.png",
+        "sha256": "227aede6c9d9827eb785c68cf9fdeea3a86c0c764915cb14a73598fdf97c7b06",
+        "alphaBounds": [
+          106,
+          68,
+          405,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/D/Exploder_Move_D_07.png",
+        "sha256": "075aac0f7ab0e13b856a5992672faaf480ff49cebaf916767700b040f2327d4e",
+        "alphaBounds": [
+          106,
+          65,
+          405,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/D/Exploder_Move_D_08.png",
+        "sha256": "9d173bf1f4d063d88353ba750e2e6cd928edc5ff390e33e4a748477756e4ead3",
+        "alphaBounds": [
+          103,
+          66,
+          409,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/D/Exploder_Idle_D_01.png",
+        "sha256": "5f59b5d2997d0132caa1aa1774d7f7f982b7145519b6439d52b2398b9028daa7",
+        "alphaBounds": [
+          108,
+          71,
+          405,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/D/Exploder_Idle_D_02.png",
+        "sha256": "29f4c56bb4361c33c26965a86d50b63a152bb420bcf40257c60e0fce5d73c063",
+        "alphaBounds": [
+          106,
+          72,
+          405,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/D/Exploder_Idle_D_03.png",
+        "sha256": "f32f2cbf7bb4a38815f53ca98eb9151753acd193328480dcb722c9ff32117cdd",
+        "alphaBounds": [
+          108,
+          73,
+          404,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/D/Exploder_Idle_D_04.png",
+        "sha256": "06a6544b59d2748754140b2f49f21f12b5f8fe6954e33d45092eea0b1afc25a1",
+        "alphaBounds": [
+          108,
+          72,
+          405,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/D/Exploder_Warning_D_01.png",
+        "sha256": "9c4b7cffb2aaaa3d7de29f470ac4851a7ecd4c09a885df53a51779af579a9f3b",
+        "alphaBounds": [
+          96,
+          73,
+          415,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/D/Exploder_Warning_D_02.png",
+        "sha256": "11beda32429d90daa6f7f84f477ebe7567e89e2d2c84be9b84af3dfe6cc93e86",
+        "alphaBounds": [
+          92,
+          71,
+          419,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/D/Exploder_Warning_D_03.png",
+        "sha256": "af2463983f3a5c5fd5d3883638459082bd227ead4c852f7ca35f4db6d78cf8d8",
+        "alphaBounds": [
+          86,
+          56,
+          427,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/D/Exploder_Warning_D_04.png",
+        "sha256": "8a1823ef1a9751846be0ffde79bfbe087ce6b19847848e9cc3327b2dff056e5d",
+        "alphaBounds": [
+          86,
+          38,
+          426,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/D/Exploder_Death_D_01.png",
+        "sha256": "34e919585d60afd17404fe317863605e9529189ed26231cacfca816965457006",
+        "alphaBounds": [
+          89,
+          99,
+          423,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/D/Exploder_Death_D_02.png",
+        "sha256": "354002a2d5d4ff2873949059a5e6e1edd30a4e9bd8f50ead371055049013d5e2",
+        "alphaBounds": [
+          88,
+          120,
+          424,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/D/Exploder_Death_D_03.png",
+        "sha256": "ad539bbee5e0c9e0222aff33e8520d519e7139c795df806ea6229eb1d62ac591",
+        "alphaBounds": [
+          84,
+          148,
+          428,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/D/Exploder_Death_D_04.png",
+        "sha256": "29b0a50ff9924bee836103f338638cedae593cd9af5a6e2478c14ea4f87e151c",
+        "alphaBounds": [
+          86,
+          167,
+          427,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/D/Exploder_Burst_D_01.png",
+        "sha256": "a92ced27ad69630d703f1dec75483faaa37bc57f3aa0476d5b15779b55edeb0e",
+        "alphaBounds": [
+          99,
+          49,
+          413,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/D/Exploder_Burst_D_02.png",
+        "sha256": "ebbeff7969a48d63ebb887669e13a4038bd433019404e8436412efdabacdde1f",
+        "alphaBounds": [
+          90,
+          49,
+          423,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/D/Exploder_Burst_D_03.png",
+        "sha256": "d660d87e868b6b7b299a3715b38e7ba1b8a1d40d05b3aba70bfff3258593e2ae",
+        "alphaBounds": [
+          98,
+          41,
+          415,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/D/Exploder_Burst_D_04.png",
+        "sha256": "00f28de13cf74fa30e458823260840458cbc7de3746c6f6c43e5578486633584",
+        "alphaBounds": [
+          98,
+          100,
+          414,
+          402
+        ]
+      }
+    ]
+  },
+  {
+    "enemy": "Exploder",
+    "direction": "DR",
+    "source": "Exploder_DR.png",
+    "sourceSize": [
+      1024,
+      1536
+    ],
+    "scale": 1.4163090128755365,
+    "sourceCuts": [
+      [
+        29,
+        23,
+        254,
+        243
+      ],
+      [
+        284,
+        22,
+        490,
+        244
+      ],
+      [
+        543,
+        25,
+        741,
+        244
+      ],
+      [
+        792,
+        22,
+        1000,
+        244
+      ],
+      [
+        34,
+        268,
+        237,
+        498
+      ],
+      [
+        280,
+        270,
+        495,
+        497
+      ],
+      [
+        539,
+        267,
+        744,
+        498
+      ],
+      [
+        799,
+        269,
+        1004,
+        496
+      ],
+      [
+        31,
+        523,
+        254,
+        753
+      ],
+      [
+        286,
+        525,
+        508,
+        757
+      ],
+      [
+        534,
+        523,
+        759,
+        757
+      ],
+      [
+        796,
+        523,
+        1004,
+        758
+      ],
+      [
+        23,
+        781,
+        252,
+        1006
+      ],
+      [
+        274,
+        777,
+        506,
+        1007
+      ],
+      [
+        522,
+        769,
+        767,
+        1014
+      ],
+      [
+        780,
+        766,
+        1008,
+        1014
+      ],
+      [
+        28,
+        1025,
+        238,
+        1251
+      ],
+      [
+        272,
+        1041,
+        515,
+        1249
+      ],
+      [
+        533,
+        1065,
+        760,
+        1237
+      ],
+      [
+        784,
+        1092,
+        1007,
+        1238
+      ],
+      [
+        21,
+        1267,
+        251,
+        1509
+      ],
+      [
+        278,
+        1264,
+        513,
+        1502
+      ],
+      [
+        539,
+        1275,
+        778,
+        1508
+      ],
+      [
+        798,
+        1285,
+        1001,
+        1496
+      ]
+    ],
+    "warnings": [],
+    "frames": [
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/DR/Exploder_Move_DR_01.png",
+        "sha256": "a544ae1e7e68af82a41270eb82fda0d471cd20ef3f61001c7e62cb1b0dd83b6b",
+        "alphaBounds": [
+          96,
+          90,
+          415,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/DR/Exploder_Move_DR_02.png",
+        "sha256": "9c1384de18c8a78dfd8e36c926f5a47ffb28946262559d586b18660027b739b1",
+        "alphaBounds": [
+          110,
+          88,
+          402,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/DR/Exploder_Move_DR_03.png",
+        "sha256": "1ca927c86fe3dc7eeba19c5447bcc00e3834c865058d1395a5037888c90b6956",
+        "alphaBounds": [
+          116,
+          92,
+          396,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/DR/Exploder_Move_DR_04.png",
+        "sha256": "a3fa34ce67a814c8d0daa390528c1b27546ebef63be7b94c804917122b0ce5a6",
+        "alphaBounds": [
+          108,
+          88,
+          403,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/DR/Exploder_Move_DR_05.png",
+        "sha256": "2ab9c4ce1f97d0a0095326e11cc3012c01aaee5ad2af136d092b4ea420e89cde",
+        "alphaBounds": [
+          112,
+          76,
+          400,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/DR/Exploder_Move_DR_06.png",
+        "sha256": "5329c71a4f6a093a0c1a3649f4d648663ac0f6f91620f5d4cbcef4e303b26eae",
+        "alphaBounds": [
+          104,
+          80,
+          409,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/DR/Exploder_Move_DR_07.png",
+        "sha256": "7e843ced050c4950b9153642b08df03112b9bda58f0c5b36168c6830515ab852",
+        "alphaBounds": [
+          111,
+          75,
+          401,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/DR/Exploder_Move_DR_08.png",
+        "sha256": "4f5ad5f87488386fa05fa6f571265e63dd77f351da234e6c2d4c0583e9a1448f",
+        "alphaBounds": [
+          111,
+          80,
+          401,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/DR/Exploder_Idle_DR_01.png",
+        "sha256": "74df875b51dadc66cde465f92e6bccebb71209539d2104dc36412ba17bad530e",
+        "alphaBounds": [
+          98,
+          76,
+          414,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/DR/Exploder_Idle_DR_02.png",
+        "sha256": "adf41de29d4a63838036330dd65ade1ac573aeced52c99d5662eb0c0167a0e56",
+        "alphaBounds": [
+          99,
+          73,
+          413,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/DR/Exploder_Idle_DR_03.png",
+        "sha256": "bdcbb421ff5428b2de06cb3265234acc3cac94ed6a817816c52881efe1d11b4b",
+        "alphaBounds": [
+          96,
+          71,
+          415,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/DR/Exploder_Idle_DR_04.png",
+        "sha256": "7f4f501fc011ce185e8e4ccccbd89cadead652a3a5c23dbe2d914843ff19e267",
+        "alphaBounds": [
+          108,
+          69,
+          403,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/DR/Exploder_Warning_DR_01.png",
+        "sha256": "b384421552e3d801527c8e402278ef0a4cbedad0a74a8dd203f494e50d7e8599",
+        "alphaBounds": [
+          94,
+          83,
+          418,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/DR/Exploder_Warning_DR_02.png",
+        "sha256": "65d7a323e4b74b3afbb92fd76ed7531868899232246c404adb31e7bdd29aafa7",
+        "alphaBounds": [
+          92,
+          76,
+          421,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/DR/Exploder_Warning_DR_03.png",
+        "sha256": "337c6b43611b93a861fbed96e93be6c1a1c61139d98808b25abacbd892002635",
+        "alphaBounds": [
+          82,
+          55,
+          429,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/DR/Exploder_Warning_DR_04.png",
+        "sha256": "e00558f2dd9aa31e897dbcb89241553f8f3489f224aabe511e0d339088fbb002",
+        "alphaBounds": [
+          94,
+          51,
+          417,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/DR/Exploder_Death_DR_01.png",
+        "sha256": "054bf73ed34d6fbfebaffaeff4569698f8962388fbbb2d6b11432fc962b299a9",
+        "alphaBounds": [
+          108,
+          82,
+          405,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/DR/Exploder_Death_DR_02.png",
+        "sha256": "82dfa54cd6854ddcd13d1033e134ef4de3e7b139b2217b7a6477dd4888951683",
+        "alphaBounds": [
+          84,
+          107,
+          428,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/DR/Exploder_Death_DR_03.png",
+        "sha256": "b3b61f4fc9b8ef4504eef5d6e303aa0f56d6dc7bcd15420af2b3078c5086cea3",
+        "alphaBounds": [
+          95,
+          158,
+          417,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/DR/Exploder_Death_DR_04.png",
+        "sha256": "c5c6af33db3705ff845e0aca191c4c703d20f394d30ad5343296aadacb95e1b9",
+        "alphaBounds": [
+          98,
+          195,
+          414,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/DR/Exploder_Burst_DR_01.png",
+        "sha256": "1d2fb550f1c656c705cdb4a790b99b9520519b57a0b53847edecb636909a06d2",
+        "alphaBounds": [
+          93,
+          59,
+          419,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/DR/Exploder_Burst_DR_02.png",
+        "sha256": "b4cc5f8deb777f3dbe7f5a632751b4d13d0dfc40ac3a9c0addf7351123b7130f",
+        "alphaBounds": [
+          90,
+          65,
+          423,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/DR/Exploder_Burst_DR_03.png",
+        "sha256": "effcb1eaa87027836dc245b043e4ebd5e37685459bd5bf3de2783bc0a13ed6d1",
+        "alphaBounds": [
+          87,
+          72,
+          425,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/DR/Exploder_Burst_DR_04.png",
+        "sha256": "3aa8985f92c43ed86e0bf6682423b00546e7e4c96e7df4573b96a39f1fc0d2bc",
+        "alphaBounds": [
+          112,
+          103,
+          400,
+          402
+        ]
+      }
+    ]
+  },
+  {
+    "enemy": "Exploder",
+    "direction": "R",
+    "source": "Exploder_R.png",
+    "sourceSize": [
+      1024,
+      1536
+    ],
+    "scale": 1.6019417475728155,
+    "sourceCuts": [
+      [
+        26,
+        34,
+        264,
+        236
+      ],
+      [
+        296,
+        36,
+        521,
+        233
+      ],
+      [
+        537,
+        38,
+        772,
+        234
+      ],
+      [
+        787,
+        36,
+        1021,
+        239
+      ],
+      [
+        31,
+        279,
+        269,
+        486
+      ],
+      [
+        297,
+        274,
+        510,
+        486
+      ],
+      [
+        528,
+        276,
+        768,
+        483
+      ],
+      [
+        779,
+        274,
+        1013,
+        485
+      ],
+      [
+        32,
+        537,
+        265,
+        738
+      ],
+      [
+        287,
+        532,
+        518,
+        738
+      ],
+      [
+        536,
+        530,
+        774,
+        738
+      ],
+      [
+        797,
+        532,
+        1018,
+        738
+      ],
+      [
+        31,
+        809,
+        272,
+        1007
+      ],
+      [
+        285,
+        799,
+        522,
+        1002
+      ],
+      [
+        531,
+        777,
+        779,
+        1004
+      ],
+      [
+        786,
+        776,
+        1013,
+        1004
+      ],
+      [
+        27,
+        1038,
+        258,
+        1235
+      ],
+      [
+        278,
+        1055,
+        508,
+        1236
+      ],
+      [
+        527,
+        1090,
+        764,
+        1237
+      ],
+      [
+        784,
+        1116,
+        1010,
+        1234
+      ],
+      [
+        27,
+        1270,
+        264,
+        1492
+      ],
+      [
+        250,
+        1261,
+        514,
+        1494
+      ],
+      [
+        524,
+        1259,
+        779,
+        1502
+      ],
+      [
+        803,
+        1327,
+        1014,
+        1496
+      ]
+    ],
+    "warnings": [],
+    "frames": [
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/R/Exploder_Move_R_01.png",
+        "sha256": "55e5ff6ba977208c4d01c61437b4696e029ac307966af7e55ce950d0d93085ae",
+        "alphaBounds": [
+          66,
+          78,
+          447,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/R/Exploder_Move_R_02.png",
+        "sha256": "e52d3a807c26af9ff7037dd8331bf98249c36d1bc84610900350c764fcebaaec",
+        "alphaBounds": [
+          76,
+          86,
+          436,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/R/Exploder_Move_R_03.png",
+        "sha256": "80d17170415b28a2acb3c792161adc69d714abec3909fc626a44fe609d6bd18f",
+        "alphaBounds": [
+          68,
+          88,
+          444,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/R/Exploder_Move_R_04.png",
+        "sha256": "d0ff70072e11f613b0ddef4c4782db826f1bfe28add4b204616e68db5034cff0",
+        "alphaBounds": [
+          68,
+          77,
+          443,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/R/Exploder_Move_R_05.png",
+        "sha256": "c502fd9fe37b026900ff15359640cf048b4ecfda96d70f40b542a424d3f2de1a",
+        "alphaBounds": [
+          66,
+          70,
+          447,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/R/Exploder_Move_R_06.png",
+        "sha256": "eb6bdd733e3123b67d1b9d09d6948c41dee088cc32f9992af12dd2e9564aa939",
+        "alphaBounds": [
+          86,
+          62,
+          427,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/R/Exploder_Move_R_07.png",
+        "sha256": "822d7ffa72ede35ab89550134fab2692280ce3ea25fbfa3763dbce5df6c97e71",
+        "alphaBounds": [
+          64,
+          70,
+          448,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/R/Exploder_Move_R_08.png",
+        "sha256": "ffc6e30b233be5efd5f5d3c31f24433e77817773a22a37a729d5988dc8caa2da",
+        "alphaBounds": [
+          68,
+          64,
+          443,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/R/Exploder_Idle_R_01.png",
+        "sha256": "29176a970bca5e192d911b22927a3674ca0309c158d96bf7f4e1650a1823e91b",
+        "alphaBounds": [
+          70,
+          80,
+          443,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/R/Exploder_Idle_R_02.png",
+        "sha256": "fd1107f1cea28a491276839c3ebe18874fd1e110dac5c4683b40f267b8327aac",
+        "alphaBounds": [
+          71,
+          72,
+          441,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/R/Exploder_Idle_R_03.png",
+        "sha256": "9fd552459cdb61894d36eaeda1585c5ca709be35376700065de45ab2c8166a4e",
+        "alphaBounds": [
+          66,
+          69,
+          447,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/R/Exploder_Idle_R_04.png",
+        "sha256": "376594a7df33bcbbe9676a1c943b9a1b21f60aa319391300ec9f625b5dc16aa9",
+        "alphaBounds": [
+          79,
+          72,
+          433,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/R/Exploder_Warning_R_01.png",
+        "sha256": "d4073397e680046aef13bdf0fffef09adeff7cf6894ec14f84fcde528c5ab20d",
+        "alphaBounds": [
+          63,
+          85,
+          449,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/R/Exploder_Warning_R_02.png",
+        "sha256": "97e27955839c6d85e5b4058ea48d6d6d1076f224541c8062424a7646c0b323b5",
+        "alphaBounds": [
+          66,
+          77,
+          446,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/R/Exploder_Warning_R_03.png",
+        "sha256": "93b2450a8e28801dd144d98afc95f04b69c4a03ef0ae2ee4fafa0ba379415abd",
+        "alphaBounds": [
+          58,
+          38,
+          455,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/R/Exploder_Warning_R_04.png",
+        "sha256": "653ae2661684a76995963cbda34c1a6d703ccb413a78d090ccab1d935c86a5fc",
+        "alphaBounds": [
+          74,
+          37,
+          438,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/R/Exploder_Death_R_01.png",
+        "sha256": "dfdb2f035b37eaf5e2ccb1891aa1094a6d8aeb858e23878fae617e216642f1a4",
+        "alphaBounds": [
+          71,
+          86,
+          441,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/R/Exploder_Death_R_02.png",
+        "sha256": "49e74746fccdfc3a957dbbbb2469ff829c5f0807eb261e870048f9305b704b13",
+        "alphaBounds": [
+          72,
+          112,
+          440,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/R/Exploder_Death_R_03.png",
+        "sha256": "522fac75d47cdc72f79cb41e72ceaa23d0428f291ec21f8a8e79c2144d4e44b2",
+        "alphaBounds": [
+          66,
+          167,
+          446,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/R/Exploder_Death_R_04.png",
+        "sha256": "a5da8132e5238fae2586fe6a753c3e9d5ed21231fae4b958ecdb4a33c8ef315c",
+        "alphaBounds": [
+          75,
+          213,
+          437,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/R/Exploder_Burst_R_01.png",
+        "sha256": "974707ab4a04efcf4735b5151215038bc5c0d97f00db0c481d2421fde3487cc7",
+        "alphaBounds": [
+          66,
+          46,
+          446,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/R/Exploder_Burst_R_02.png",
+        "sha256": "54072ae2e24a429423f5dd76f4c21f9a53f15670526f0cea17ef8bc33b783d09",
+        "alphaBounds": [
+          44,
+          29,
+          467,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/R/Exploder_Burst_R_03.png",
+        "sha256": "019339cdb135375bfd47f54d47e8fea7d1090a3bfd23e850c5ca318ccd14e694",
+        "alphaBounds": [
+          52,
+          13,
+          460,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/R/Exploder_Burst_R_04.png",
+        "sha256": "63b9f16ef9997efed3fc117d94bec4cb53658eac877ffaa9750756e9f0c4a0f7",
+        "alphaBounds": [
+          87,
+          131,
+          425,
+          402
+        ]
+      }
+    ]
+  },
+  {
+    "enemy": "Exploder",
+    "direction": "UR",
+    "source": "Exploder_UR.png",
+    "sourceSize": [
+      1024,
+      1536
+    ],
+    "scale": 1.4666666666666666,
+    "sourceCuts": [
+      [
+        19,
+        26,
+        244,
+        243
+      ],
+      [
+        286,
+        23,
+        504,
+        245
+      ],
+      [
+        558,
+        29,
+        741,
+        248
+      ],
+      [
+        787,
+        25,
+        1008,
+        245
+      ],
+      [
+        19,
+        280,
+        248,
+        501
+      ],
+      [
+        278,
+        281,
+        506,
+        497
+      ],
+      [
+        554,
+        280,
+        761,
+        498
+      ],
+      [
+        784,
+        281,
+        1008,
+        499
+      ],
+      [
+        19,
+        530,
+        241,
+        754
+      ],
+      [
+        278,
+        529,
+        498,
+        756
+      ],
+      [
+        535,
+        529,
+        754,
+        755
+      ],
+      [
+        788,
+        529,
+        1008,
+        749
+      ],
+      [
+        20,
+        791,
+        261,
+        1007
+      ],
+      [
+        269,
+        781,
+        510,
+        1007
+      ],
+      [
+        518,
+        777,
+        763,
+        1001
+      ],
+      [
+        773,
+        768,
+        1011,
+        1010
+      ],
+      [
+        18,
+        1050,
+        258,
+        1245
+      ],
+      [
+        261,
+        1076,
+        513,
+        1247
+      ],
+      [
+        516,
+        1088,
+        783,
+        1282
+      ],
+      [
+        771,
+        1106,
+        1014,
+        1239
+      ],
+      [
+        17,
+        1268,
+        248,
+        1505
+      ],
+      [
+        260,
+        1275,
+        510,
+        1514
+      ],
+      [
+        527,
+        1278,
+        772,
+        1513
+      ],
+      [
+        783,
+        1278,
+        1008,
+        1505
+      ]
+    ],
+    "warnings": [],
+    "frames": [
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/UR/Exploder_Move_UR_01.png",
+        "sha256": "b8929fbf6aed55ddbcc95d1ebd805d58a0b5e30567205f0441012194b6ed71e8",
+        "alphaBounds": [
+          91,
+          84,
+          421,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/UR/Exploder_Move_UR_02.png",
+        "sha256": "362a9f52e9d3da34aae358573f39a104edd3ddc8f2fb2ddced7a65374518b746",
+        "alphaBounds": [
+          96,
+          76,
+          416,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/UR/Exploder_Move_UR_03.png",
+        "sha256": "2eeab0020f840f6208c06b90057332d55bc1a07798eb351a48710417f3c8cf27",
+        "alphaBounds": [
+          122,
+          81,
+          390,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/UR/Exploder_Move_UR_04.png",
+        "sha256": "ee600fe0033b9554a2ded08ca066b2c245e1968a8387cd3cd9cd0d3d7a021b43",
+        "alphaBounds": [
+          94,
+          79,
+          418,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/UR/Exploder_Move_UR_05.png",
+        "sha256": "d12d460dfeeb45dac590812e643c9ed0c1eed1dae60a9975e27d138fb3b1a069",
+        "alphaBounds": [
+          88,
+          78,
+          424,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/UR/Exploder_Move_UR_06.png",
+        "sha256": "3ad8a6ee0363670d23b271187b8d19c84d7bfaf94d42920b33a0af0c37197b2b",
+        "alphaBounds": [
+          89,
+          85,
+          423,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/UR/Exploder_Move_UR_07.png",
+        "sha256": "246c921f20f1d4ba7eec3ee932535b045fa4b2a5a38de93fec8752e0abd5d20a",
+        "alphaBounds": [
+          104,
+          82,
+          408,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/UR/Exploder_Move_UR_08.png",
+        "sha256": "07fc654bbf15f9b843ff8c510d4538106be76e0007c8312a62c7f98f68369b3a",
+        "alphaBounds": [
+          92,
+          82,
+          421,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/UR/Exploder_Idle_UR_01.png",
+        "sha256": "9e8a625284b0139ecb593793c314bc070af9910498788be7a684c5fa372100bc",
+        "alphaBounds": [
+          93,
+          73,
+          419,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/UR/Exploder_Idle_UR_02.png",
+        "sha256": "b00179ceced6fc2f72cd5722c96282545ddc3fda8c2693658642b7f231e9a3c9",
+        "alphaBounds": [
+          94,
+          69,
+          417,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/UR/Exploder_Idle_UR_03.png",
+        "sha256": "4a44d2ddc8fc2f519c14ab37b401d2051a44c0033a7fdca5b7918aa8f8a31ccc",
+        "alphaBounds": [
+          96,
+          71,
+          417,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/UR/Exploder_Idle_UR_04.png",
+        "sha256": "6226df3d9f1e52fdd1197d6d498bf37d04b96c8420d49a2494bc8850f2c76c6a",
+        "alphaBounds": [
+          94,
+          79,
+          417,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/UR/Exploder_Warning_UR_01.png",
+        "sha256": "ca768f019e5479c72393581550f75ae9fcdadad3fa2654229fb48118ce788e3f",
+        "alphaBounds": [
+          80,
+          85,
+          433,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/UR/Exploder_Warning_UR_02.png",
+        "sha256": "5765becce063608c067f75d2ad9613b73a78ff3ba91076e6e5f80a4c71ba66d2",
+        "alphaBounds": [
+          80,
+          71,
+          433,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/UR/Exploder_Warning_UR_03.png",
+        "sha256": "f3feef503d5ac4a7dba6930df42488fbfee04d586051d1ffa7ae4bfa8829f7c6",
+        "alphaBounds": [
+          76,
+          73,
+          435,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/UR/Exploder_Warning_UR_04.png",
+        "sha256": "74bef0d309f335d45427490d83b8870de3823cabd9bfd3fdcbf6c430e7f7c77d",
+        "alphaBounds": [
+          82,
+          47,
+          431,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/UR/Exploder_Death_UR_01.png",
+        "sha256": "f410ac481162082b98de58fc32d833235d612efd300acb371400096c98fe89bb",
+        "alphaBounds": [
+          80,
+          116,
+          432,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/UR/Exploder_Death_UR_02.png",
+        "sha256": "e5a7412af86c1ef65de269c6185e805264f5d86a0ec5794d4bf927b7c4eabbb3",
+        "alphaBounds": [
+          71,
+          151,
+          441,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/UR/Exploder_Death_UR_03.png",
+        "sha256": "aecad0b966bfb86bd11410d0e9e8f84b98bebdafb230abb738ce69a2221ad318",
+        "alphaBounds": [
+          60,
+          117,
+          452,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/UR/Exploder_Death_UR_04.png",
+        "sha256": "c68522fa03f6908278171d624a9fe5006f5a4b9312596f3c3a93452b17bcd184",
+        "alphaBounds": [
+          78,
+          207,
+          434,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/UR/Exploder_Burst_UR_01.png",
+        "sha256": "bce6dde562975b7c2ebc10ea36698e059035453246a751fac5bc37639bacc896",
+        "alphaBounds": [
+          86,
+          54,
+          425,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/UR/Exploder_Burst_UR_02.png",
+        "sha256": "4e66604e1f191d5b55e8b6f593a3a92beb0a71526475f2e21e0a17b6e34be232",
+        "alphaBounds": [
+          72,
+          51,
+          439,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/UR/Exploder_Burst_UR_03.png",
+        "sha256": "0229070c8de2ed89e0af31b79c5d385a077f08fa3464e4dffa0fdc4f04202da7",
+        "alphaBounds": [
+          76,
+          57,
+          435,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/UR/Exploder_Burst_UR_04.png",
+        "sha256": "d73936a8a1652dc7f8098acc5ecbed728592ef52e50440fd53ebe7535235b2f6",
+        "alphaBounds": [
+          91,
+          69,
+          421,
+          402
+        ]
+      }
+    ]
+  },
+  {
+    "enemy": "Exploder",
+    "direction": "U",
+    "source": "Exploder_U.png",
+    "sourceSize": [
+      1024,
+      1536
+    ],
+    "scale": 1.5492957746478873,
+    "sourceCuts": [
+      [
+        44,
+        22,
+        224,
+        240
+      ],
+      [
+        306,
+        22,
+        481,
+        240
+      ],
+      [
+        559,
+        23,
+        741,
+        236
+      ],
+      [
+        800,
+        24,
+        992,
+        240
+      ],
+      [
+        34,
+        277,
+        223,
+        493
+      ],
+      [
+        290,
+        276,
+        475,
+        489
+      ],
+      [
+        547,
+        274,
+        738,
+        495
+      ],
+      [
+        809,
+        275,
+        994,
+        496
+      ],
+      [
+        40,
+        533,
+        226,
+        745
+      ],
+      [
+        294,
+        532,
+        481,
+        745
+      ],
+      [
+        550,
+        532,
+        736,
+        745
+      ],
+      [
+        805,
+        532,
+        992,
+        745
+      ],
+      [
+        25,
+        799,
+        232,
+        996
+      ],
+      [
+        278,
+        793,
+        490,
+        995
+      ],
+      [
+        528,
+        779,
+        743,
+        999
+      ],
+      [
+        787,
+        773,
+        1007,
+        1004
+      ],
+      [
+        36,
+        1046,
+        236,
+        1250
+      ],
+      [
+        281,
+        1058,
+        501,
+        1238
+      ],
+      [
+        523,
+        1089,
+        762,
+        1249
+      ],
+      [
+        781,
+        1102,
+        1011,
+        1239
+      ],
+      [
+        30,
+        1291,
+        230,
+        1516
+      ],
+      [
+        273,
+        1290,
+        488,
+        1511
+      ],
+      [
+        528,
+        1292,
+        753,
+        1514
+      ],
+      [
+        805,
+        1311,
+        986,
+        1495
+      ]
+    ],
+    "warnings": [],
+    "frames": [
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/U/Exploder_Move_U_01.png",
+        "sha256": "82a6c967a38f43e6d0e6c9bd3cf83c67070546eb1d55bb7a41d1148d3b25cfe4",
+        "alphaBounds": [
+          116,
+          64,
+          395,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/U/Exploder_Move_U_02.png",
+        "sha256": "a468f8aee99097873ca3aee960782078af48b4b8046c0807caaa183dd38e0ea9",
+        "alphaBounds": [
+          120,
+          64,
+          391,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/U/Exploder_Move_U_03.png",
+        "sha256": "50ec1fbabb9633bf6f86199f6ca3dc1b1f9179d16d22ddbb1f9f43f460ebf495",
+        "alphaBounds": [
+          115,
+          72,
+          397,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/U/Exploder_Move_U_04.png",
+        "sha256": "defa5933a8a01d6f6186a49bdc5068e578e9544fe5e938ec59004a6e2d8b4aaf",
+        "alphaBounds": [
+          108,
+          67,
+          405,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/U/Exploder_Move_U_05.png",
+        "sha256": "d88a29f63d661437b6e4f196ec07a256d806ab4469e9051ca03a657d3a33ba4c",
+        "alphaBounds": [
+          110,
+          67,
+          403,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/U/Exploder_Move_U_06.png",
+        "sha256": "8a96d215d541d31edaa304f5fb4f07a73341638ccebecb08c1c43603ea6d73da",
+        "alphaBounds": [
+          112,
+          72,
+          399,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/U/Exploder_Move_U_07.png",
+        "sha256": "26fec087d3523a00f8d7434e8f4311815345f6633cb6c29c5b88866069ff2397",
+        "alphaBounds": [
+          108,
+          60,
+          404,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/U/Exploder_Move_U_08.png",
+        "sha256": "4fcdd6ed64ffc77a6b6e90b445de2c5a74fcde37d9a8afa6754f9155018a2c05",
+        "alphaBounds": [
+          112,
+          60,
+          399,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/U/Exploder_Idle_U_01.png",
+        "sha256": "0da118c32265ffeeffa0634b71baf0a27d7d285a0069c1cbc1c72f60af44b9f9",
+        "alphaBounds": [
+          112,
+          74,
+          400,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/U/Exploder_Idle_U_02.png",
+        "sha256": "9b022986570fc48d24f4f16082f1a59366bd22bf90686260bd2514d0e07f6158",
+        "alphaBounds": [
+          111,
+          72,
+          401,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/U/Exploder_Idle_U_03.png",
+        "sha256": "9ab01f643b5ee2a9b00a78fa952cf2d83afbd06d585709bfa9c597d97ed25d61",
+        "alphaBounds": [
+          112,
+          72,
+          400,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/U/Exploder_Idle_U_04.png",
+        "sha256": "70ffce208942b084bbc1e40077465e9328b3dee167998be372a09f43407604f3",
+        "alphaBounds": [
+          111,
+          72,
+          401,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/U/Exploder_Warning_U_01.png",
+        "sha256": "3879c512f1fc48cdcc5db3f866826b15302e048545a0302a7205d6bbf3f456e8",
+        "alphaBounds": [
+          96,
+          97,
+          417,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/U/Exploder_Warning_U_02.png",
+        "sha256": "2cfa882054bb683167d08f98eca1b97677364f3869025d37a3cc0d4881647672",
+        "alphaBounds": [
+          92,
+          89,
+          420,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/U/Exploder_Warning_U_03.png",
+        "sha256": "6200c0801a4431b9e7069468de4ad0443eeb3a6c12278e6cca9fe04b83667449",
+        "alphaBounds": [
+          90,
+          61,
+          423,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/U/Exploder_Warning_U_04.png",
+        "sha256": "55b49c19ce6327f25a928b49db821e6c7a1965aaac3fbcbb82056fd9df5f7afe",
+        "alphaBounds": [
+          86,
+          44,
+          427,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/U/Exploder_Death_U_01.png",
+        "sha256": "d97d1f0e9522b0dae0a445c759b90e1eb9bfbfde98797966a3b6795f8862d9df",
+        "alphaBounds": [
+          101,
+          86,
+          411,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/U/Exploder_Death_U_02.png",
+        "sha256": "d893e6c0491b7921fca68e2b03ca5a80b149594e3d7bd4aa7c468507b50725cd",
+        "alphaBounds": [
+          86,
+          123,
+          427,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/U/Exploder_Death_U_03.png",
+        "sha256": "7feb5b6204f097f489dcebfeec1bf90690c93d782727391fbb1e6b82e321aceb",
+        "alphaBounds": [
+          71,
+          154,
+          441,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/U/Exploder_Death_U_04.png",
+        "sha256": "7ec9b9f91ce709514785b70642028998d56f12b040128f25d4b7614cdf8482b8",
+        "alphaBounds": [
+          78,
+          190,
+          434,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/U/Exploder_Burst_U_01.png",
+        "sha256": "9a61aaf5a3fb342469a579e5fb4bc4cb5729b8c8c37bc2bd41a7784d615e47b4",
+        "alphaBounds": [
+          101,
+          53,
+          411,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/U/Exploder_Burst_U_02.png",
+        "sha256": "707a2eb508fbb9f39418174207f3516b391edb995ed7db0097fb0cfcde054c35",
+        "alphaBounds": [
+          90,
+          60,
+          423,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/U/Exploder_Burst_U_03.png",
+        "sha256": "5425903c16a21851d20c077e3c347648a602eaf6bc3e8e5bfb4c7b9c88803044",
+        "alphaBounds": [
+          82,
+          58,
+          431,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/U/Exploder_Burst_U_04.png",
+        "sha256": "e4f0e55d3d71a6167489245af720b9a20b44254e3d4fe8080229247153c9df3a",
+        "alphaBounds": [
+          116,
+          117,
+          396,
+          402
+        ]
+      }
+    ]
+  },
+  {
+    "enemy": "Exploder",
+    "direction": "UL",
+    "source": "Exploder_UL.png",
+    "sourceSize": [
+      1024,
+      1536
+    ],
+    "scale": 1.4569536423841059,
+    "sourceCuts": [
+      [
+        41,
+        25,
+        220,
+        247
+      ],
+      [
+        284,
+        26,
+        495,
+        249
+      ],
+      [
+        537,
+        29,
+        744,
+        246
+      ],
+      [
+        817,
+        35,
+        997,
+        242
+      ],
+      [
+        43,
+        279,
+        234,
+        503
+      ],
+      [
+        296,
+        278,
+        491,
+        503
+      ],
+      [
+        545,
+        276,
+        748,
+        503
+      ],
+      [
+        788,
+        274,
+        986,
+        503
+      ],
+      [
+        36,
+        526,
+        227,
+        754
+      ],
+      [
+        291,
+        526,
+        490,
+        756
+      ],
+      [
+        548,
+        527,
+        740,
+        752
+      ],
+      [
+        807,
+        530,
+        1000,
+        752
+      ],
+      [
+        18,
+        799,
+        253,
+        1009
+      ],
+      [
+        277,
+        784,
+        513,
+        1009
+      ],
+      [
+        533,
+        777,
+        759,
+        1012
+      ],
+      [
+        784,
+        773,
+        1007,
+        1012
+      ],
+      [
+        25,
+        1049,
+        247,
+        1251
+      ],
+      [
+        264,
+        1066,
+        508,
+        1247
+      ],
+      [
+        513,
+        1076,
+        767,
+        1214
+      ],
+      [
+        776,
+        1098,
+        1005,
+        1224
+      ],
+      [
+        31,
+        1278,
+        243,
+        1514
+      ],
+      [
+        268,
+        1278,
+        513,
+        1514
+      ],
+      [
+        518,
+        1277,
+        765,
+        1515
+      ],
+      [
+        786,
+        1292,
+        1000,
+        1502
+      ]
+    ],
+    "warnings": [],
+    "frames": [
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/UL/Exploder_Move_UL_01.png",
+        "sha256": "97ca0dc8d3262ac7b64521c69f27414b9685ba5ea75a7ac77b21f5008f4e86e8",
+        "alphaBounds": [
+          126,
+          79,
+          387,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/UL/Exploder_Move_UL_02.png",
+        "sha256": "b42f3cc628d20de505cb649293a847b6380cfa41199f3b9bc7102d7d65951970",
+        "alphaBounds": [
+          102,
+          77,
+          409,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/UL/Exploder_Move_UL_03.png",
+        "sha256": "7a68d515aeb4e8535c4969eeae3c1de56856295b49a5e9ef0c7352dd8dd74863",
+        "alphaBounds": [
+          105,
+          86,
+          407,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/UL/Exploder_Move_UL_04.png",
+        "sha256": "b9b29c8eec7b9ca511487fc8220460bc7564abdf7fc018c25050ed0e386cc948",
+        "alphaBounds": [
+          125,
+          100,
+          387,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/UL/Exploder_Move_UL_05.png",
+        "sha256": "c3717171d7bd2e88e5434d420ca0fc725a4d9f33a750f06881f2523eedb145a0",
+        "alphaBounds": [
+          117,
+          76,
+          395,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/UL/Exploder_Move_UL_06.png",
+        "sha256": "9c51766611a0bac543572fade4c0a686eb409f1ad50f5eb4e89ebac6508ff1b4",
+        "alphaBounds": [
+          114,
+          74,
+          398,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/UL/Exploder_Move_UL_07.png",
+        "sha256": "39a3508588708da73e71f152dd2fc498106940ee3038d3e8e36834275ab9111f",
+        "alphaBounds": [
+          108,
+          71,
+          404,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/UL/Exploder_Move_UL_08.png",
+        "sha256": "db78793cdae1c55fc9cce54b30ba04f98a7b86ed03239adec360ec7fc02b9ebf",
+        "alphaBounds": [
+          112,
+          68,
+          400,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/UL/Exploder_Idle_UL_01.png",
+        "sha256": "dcced272fb9de4af4fdcac60f0e2905f96077aa85456290ab6199739313f768b",
+        "alphaBounds": [
+          117,
+          70,
+          395,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/UL/Exploder_Idle_UL_02.png",
+        "sha256": "6e3831f8b2a25fae50e1364817b219d2f761ab6a3b4a27bde39b2eac20bb9d2c",
+        "alphaBounds": [
+          111,
+          67,
+          401,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/UL/Exploder_Idle_UL_03.png",
+        "sha256": "611948d13ab87ce04c332ca8b1565f13f1961c4a108bb3295664f92b61f0185c",
+        "alphaBounds": [
+          116,
+          74,
+          396,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/UL/Exploder_Idle_UL_04.png",
+        "sha256": "b799a918a8c48818bcb4762ae34bb4e750afa6e57f068df2a98dab2674c98305",
+        "alphaBounds": [
+          116,
+          79,
+          397,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/UL/Exploder_Warning_UL_01.png",
+        "sha256": "4f48f2475fa8897376a3efd80c160bf8ea1436c712aaae8985506ae139263468",
+        "alphaBounds": [
+          85,
+          96,
+          427,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/UL/Exploder_Warning_UL_02.png",
+        "sha256": "3eeb5d389c67c6f155a7e2688c26bdbe5e0e688c4da192baa19c6705c64890bb",
+        "alphaBounds": [
+          84,
+          74,
+          428,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/UL/Exploder_Warning_UL_03.png",
+        "sha256": "3d640da31b4ffe2f5b9ccab217366966fee0c0fca2395439294b20c4f5b25210",
+        "alphaBounds": [
+          92,
+          60,
+          421,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/UL/Exploder_Warning_UL_04.png",
+        "sha256": "5c8c2719ebbbc23961d986e10aa389a81ce7ad1cdb13e57f692bc8318fad3d2f",
+        "alphaBounds": [
+          94,
+          54,
+          419,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/UL/Exploder_Death_UL_01.png",
+        "sha256": "2a94a14b6f283628643f9a9a483d9a837f0158384743bf2e5d0dce24ed6be38f",
+        "alphaBounds": [
+          94,
+          108,
+          417,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/UL/Exploder_Death_UL_02.png",
+        "sha256": "956ec1b04b6fa0c667dbb7bef351c4f5a4058a217913d2784c03123bcf2ac679",
+        "alphaBounds": [
+          78,
+          138,
+          433,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/UL/Exploder_Death_UL_03.png",
+        "sha256": "5a1276ceee184846c64e09973b24f3094765cd27f64433f4760e1753d652dd0c",
+        "alphaBounds": [
+          71,
+          201,
+          441,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/UL/Exploder_Death_UL_04.png",
+        "sha256": "959c22bbe37cc50c33684868f1f82c5865679a1201b77e40e99cd301005ab3ab",
+        "alphaBounds": [
+          89,
+          218,
+          423,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/UL/Exploder_Burst_UL_01.png",
+        "sha256": "3e0fe3f2bf61177015a919a093ce1722e986050bd49207414e7e288fd809a81b",
+        "alphaBounds": [
+          102,
+          58,
+          411,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/UL/Exploder_Burst_UL_02.png",
+        "sha256": "6c7a7115cffde8fff5355df1b19932240e813624db27c1457cd0d36c5f2840ac",
+        "alphaBounds": [
+          78,
+          58,
+          435,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/UL/Exploder_Burst_UL_03.png",
+        "sha256": "736ed4e9e12fd63a5bed768c2270528db328e568a97f11b5104e6a7c9e69c878",
+        "alphaBounds": [
+          76,
+          55,
+          436,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/UL/Exploder_Burst_UL_04.png",
+        "sha256": "42b80fc687ab20f3f4d52742c18c1e14f879f13f4d548585d87eedfe3f9d8786",
+        "alphaBounds": [
+          100,
+          96,
+          412,
+          402
+        ]
+      }
+    ]
+  },
+  {
+    "enemy": "Exploder",
+    "direction": "L",
+    "source": "Exploder_L.png",
+    "sourceSize": [
+      1024,
+      1536
+    ],
+    "scale": 1.778975741239892,
+    "sourceCuts": [
+      [
+        17,
+        47,
+        254,
+        226
+      ],
+      [
+        272,
+        41,
+        504,
+        234
+      ],
+      [
+        523,
+        42,
+        752,
+        231
+      ],
+      [
+        780,
+        44,
+        1007,
+        230
+      ],
+      [
+        14,
+        304,
+        227,
+        486
+      ],
+      [
+        268,
+        300,
+        509,
+        488
+      ],
+      [
+        518,
+        305,
+        763,
+        490
+      ],
+      [
+        779,
+        303,
+        1010,
+        487
+      ],
+      [
+        20,
+        550,
+        250,
+        738
+      ],
+      [
+        270,
+        550,
+        508,
+        737
+      ],
+      [
+        525,
+        553,
+        760,
+        737
+      ],
+      [
+        782,
+        553,
+        1011,
+        737
+      ],
+      [
+        18,
+        814,
+        252,
+        1008
+      ],
+      [
+        272,
+        805,
+        512,
+        1010
+      ],
+      [
+        523,
+        789,
+        763,
+        1010
+      ],
+      [
+        781,
+        793,
+        1010,
+        1010
+      ],
+      [
+        22,
+        1078,
+        254,
+        1246
+      ],
+      [
+        276,
+        1080,
+        503,
+        1235
+      ],
+      [
+        522,
+        1116,
+        764,
+        1248
+      ],
+      [
+        784,
+        1134,
+        1010,
+        1249
+      ],
+      [
+        19,
+        1313,
+        251,
+        1506
+      ],
+      [
+        269,
+        1287,
+        503,
+        1507
+      ],
+      [
+        524,
+        1295,
+        768,
+        1505
+      ],
+      [
+        782,
+        1326,
+        1009,
+        1503
+      ]
+    ],
+    "warnings": [],
+    "frames": [
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/L/Exploder_Move_L_01.png",
+        "sha256": "e17da0b0bb0d61d6e87aeb484e30327d0e2af8e18149029c357f74bc4ac7bb5f",
+        "alphaBounds": [
+          45,
+          84,
+          467,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/L/Exploder_Move_L_02.png",
+        "sha256": "1b97e93eac5c904b835932cebe806dd9a4334234b981f94f9025e0fab9d48115",
+        "alphaBounds": [
+          50,
+          59,
+          463,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/L/Exploder_Move_L_03.png",
+        "sha256": "92bb7f56dac59eb9907c36d6a2b343ffa2e92ae970299f276ace97cd247d9bb6",
+        "alphaBounds": [
+          52,
+          66,
+          459,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/L/Exploder_Move_L_04.png",
+        "sha256": "a4a381cde68dd3a5a6d4586812cc63129613a64eaee9b84d7c90ac5dc683831b",
+        "alphaBounds": [
+          54,
+          71,
+          458,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/L/Exploder_Move_L_05.png",
+        "sha256": "bd8ecb7be71fd7a10abe7409a1ca73c981203fc754c6b3d65e9d4cabd37ef3ec",
+        "alphaBounds": [
+          66,
+          78,
+          445,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/L/Exploder_Move_L_06.png",
+        "sha256": "e236159f97ac7e37ad1043067ec18fc4b492131d125afcfeddd98c20c20f3bdc",
+        "alphaBounds": [
+          42,
+          68,
+          471,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/L/Exploder_Move_L_07.png",
+        "sha256": "ac337e1f3521b85ea1d89720f2df3719dd50a14c219c659f77e8b445ddfe79b7",
+        "alphaBounds": [
+          38,
+          73,
+          474,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/L/Exploder_Move_L_08.png",
+        "sha256": "14b00a6acc4ad1eb773aceeaa4abdc1375f8ff733ddc7321b7f7a1e93e3f9ae3",
+        "alphaBounds": [
+          50,
+          75,
+          461,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/L/Exploder_Idle_L_01.png",
+        "sha256": "109d7a68c50d7543c609889d33a7ec2cc0039d655629c9032c91b4091e034920",
+        "alphaBounds": [
+          52,
+          68,
+          461,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/L/Exploder_Idle_L_02.png",
+        "sha256": "94739398fad606be77bb4757f74b61444e615534cc77241c4088a6442a30fb4b",
+        "alphaBounds": [
+          44,
+          69,
+          467,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/L/Exploder_Idle_L_03.png",
+        "sha256": "4c8bb05fa2cc8c082e76848d18f990a04611d01849100579d3cdd37da2cbaa4f",
+        "alphaBounds": [
+          47,
+          75,
+          465,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/L/Exploder_Idle_L_04.png",
+        "sha256": "8cd269c45a5967ea30d18d252d6c9d7ec42628ff9dfe50ef3e0310f4edd8ea7f",
+        "alphaBounds": [
+          52,
+          75,
+          459,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/L/Exploder_Warning_L_01.png",
+        "sha256": "6a525ba6973eeb460c8dc77a4be45dcb3e410b79ab24375b4812d01634d8cd5f",
+        "alphaBounds": [
+          48,
+          57,
+          464,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/L/Exploder_Warning_L_02.png",
+        "sha256": "cbfdf35014a87f9f06338c4f2ab9463e6d538eb273c6d5bd466088ac495bcf2d",
+        "alphaBounds": [
+          42,
+          37,
+          469,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/L/Exploder_Warning_L_03.png",
+        "sha256": "3624272db8f41700d3b4a297b3b0cfd2c702dc9eeb4f5e5ce7e145f65e7d7e9e",
+        "alphaBounds": [
+          42,
+          9,
+          469,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/L/Exploder_Warning_L_04.png",
+        "sha256": "2b1427d22c60a64a83d4081573c75a3a4aa962c0f74d68eda5b814d6e5956933",
+        "alphaBounds": [
+          52,
+          16,
+          459,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/L/Exploder_Death_L_01.png",
+        "sha256": "8705a18f7cf60a4706237c8f83700a83fd31bb3c72da294200b768d7413a62c7",
+        "alphaBounds": [
+          50,
+          103,
+          463,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/L/Exploder_Death_L_02.png",
+        "sha256": "005fd0dd48d89c1e0dedaadbc20fcdbc8a2b0bb33d2e282924775b990e4e27e8",
+        "alphaBounds": [
+          54,
+          126,
+          458,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/L/Exploder_Death_L_03.png",
+        "sha256": "bd472941b834dcde38eb787ea88dd19779a960f375cb9116869a6b4d1e86971e",
+        "alphaBounds": [
+          40,
+          167,
+          471,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/L/Exploder_Death_L_04.png",
+        "sha256": "738a83a7c9949462b32aa2e406de83a6ae7dfc1fb6f62496bccd565a79fab897",
+        "alphaBounds": [
+          55,
+          197,
+          457,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/L/Exploder_Burst_L_01.png",
+        "sha256": "c62653ab276280d56afe512cdb1da192eedd47bf883511174d57381ba84c9cd7",
+        "alphaBounds": [
+          50,
+          59,
+          463,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/L/Exploder_Burst_L_02.png",
+        "sha256": "648ddc82dbfad639349c484730eb499464c79ad8d74c116e8b435c8ebb7b65f7",
+        "alphaBounds": [
+          48,
+          11,
+          464,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/L/Exploder_Burst_L_03.png",
+        "sha256": "959cf08496ffe68546a9181315d6b874c53921eb7165abbd478454c8a0917518",
+        "alphaBounds": [
+          39,
+          28,
+          473,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/L/Exploder_Burst_L_04.png",
+        "sha256": "8e671301f0792fa80ae3b0c6cf1332f1add93ff65167bec903926d5fc1c236a1",
+        "alphaBounds": [
+          54,
+          87,
+          458,
+          402
+        ]
+      }
+    ]
+  },
+  {
+    "enemy": "Exploder",
+    "direction": "DL",
+    "source": "Exploder_DL.png",
+    "sourceSize": [
+      1024,
+      1536
+    ],
+    "scale": 1.5384615384615385,
+    "sourceCuts": [
+      [
+        28,
+        42,
+        237,
+        248
+      ],
+      [
+        285,
+        41,
+        502,
+        248
+      ],
+      [
+        539,
+        41,
+        757,
+        246
+      ],
+      [
+        793,
+        41,
+        996,
+        252
+      ],
+      [
+        31,
+        292,
+        251,
+        493
+      ],
+      [
+        294,
+        286,
+        501,
+        500
+      ],
+      [
+        530,
+        287,
+        761,
+        494
+      ],
+      [
+        791,
+        292,
+        1003,
+        499
+      ],
+      [
+        21,
+        541,
+        254,
+        756
+      ],
+      [
+        278,
+        540,
+        508,
+        756
+      ],
+      [
+        532,
+        542,
+        760,
+        756
+      ],
+      [
+        790,
+        542,
+        1007,
+        756
+      ],
+      [
+        11,
+        807,
+        260,
+        1009
+      ],
+      [
+        271,
+        796,
+        512,
+        1012
+      ],
+      [
+        519,
+        784,
+        768,
+        1019
+      ],
+      [
+        770,
+        778,
+        1022,
+        1020
+      ],
+      [
+        13,
+        1050,
+        246,
+        1254
+      ],
+      [
+        265,
+        1057,
+        500,
+        1242
+      ],
+      [
+        519,
+        1077,
+        754,
+        1276
+      ],
+      [
+        774,
+        1100,
+        1013,
+        1234
+      ],
+      [
+        24,
+        1270,
+        248,
+        1495
+      ],
+      [
+        275,
+        1274,
+        508,
+        1494
+      ],
+      [
+        521,
+        1280,
+        764,
+        1495
+      ],
+      [
+        765,
+        1281,
+        1004,
+        1491
+      ]
+    ],
+    "warnings": [],
+    "frames": [
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/DL/Exploder_Move_DL_01.png",
+        "sha256": "54d10add42e6a2405266a7562bdca4638afd4571135e54e322fe37d277d964d4",
+        "alphaBounds": [
+          95,
+          85,
+          417,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/DL/Exploder_Move_DL_02.png",
+        "sha256": "05c652dc6673cfcfe51314340c529e0109bfdbcc0d0b385445930d83b91b9ba9",
+        "alphaBounds": [
+          89,
+          84,
+          423,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/DL/Exploder_Move_DL_03.png",
+        "sha256": "9c1baf9c8ff7f959426f36a9bc7ed580c66e230288ccb659c33312cfd9b2b2cc",
+        "alphaBounds": [
+          88,
+          87,
+          423,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/DL/Exploder_Move_DL_04.png",
+        "sha256": "255e6e3ac7d572466416a0d5a97f79d6b75fa84c4ead85322def9da018e8ebbb",
+        "alphaBounds": [
+          100,
+          77,
+          412,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/DL/Exploder_Move_DL_05.png",
+        "sha256": "907fb542b31a9471caab185a199c2d8d9f999684bc2b99852fd6f2f118b845d5",
+        "alphaBounds": [
+          87,
+          93,
+          425,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/DL/Exploder_Move_DL_06.png",
+        "sha256": "3291516b8d6d93e8504c9df67ceba92806abfcfbe3072c7c5ccb8a19caed90e3",
+        "alphaBounds": [
+          97,
+          73,
+          415,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/DL/Exploder_Move_DL_07.png",
+        "sha256": "819074fab9a6f1e4ccbe90f36ad5a57cceb728518774220679293b33810f862c",
+        "alphaBounds": [
+          78,
+          84,
+          433,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/DL/Exploder_Move_DL_08.png",
+        "sha256": "5d06606983806da2c9640ad65f794e41589adecfb860a21962c06a7ba64f9d39",
+        "alphaBounds": [
+          93,
+          84,
+          419,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/DL/Exploder_Idle_DL_01.png",
+        "sha256": "1102545842ca0340126610b192ba3c7262905c5c8350cb54941bcffe2d6ee962",
+        "alphaBounds": [
+          77,
+          71,
+          435,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/DL/Exploder_Idle_DL_02.png",
+        "sha256": "e8f2bb381fba29819038582f35280cac62689b646a48fddb231707fc9377dbe8",
+        "alphaBounds": [
+          79,
+          70,
+          433,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/DL/Exploder_Idle_DL_03.png",
+        "sha256": "44b752d06fc500809df682f1304a9e6d03257dd601541800355a2b31abd25946",
+        "alphaBounds": [
+          80,
+          73,
+          431,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/DL/Exploder_Idle_DL_04.png",
+        "sha256": "3621216048ae149de09091a1d4c78c32b972051d89d56e9d27e9b969b66ecb67",
+        "alphaBounds": [
+          89,
+          73,
+          423,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/DL/Exploder_Warning_DL_01.png",
+        "sha256": "26595262dd0e253536c2fda3983fe2de11a38b92eeaba4776fe34ac88ab766f2",
+        "alphaBounds": [
+          64,
+          91,
+          447,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/DL/Exploder_Warning_DL_02.png",
+        "sha256": "35b14e41a6a74042dc86e120d6eda09028fedb6f3ce393bbd5b2b91a06950276",
+        "alphaBounds": [
+          70,
+          70,
+          441,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/DL/Exploder_Warning_DL_03.png",
+        "sha256": "ab8365e22268a0e413542ddd5eab819793859d47b554ec53560c4aa9915146f5",
+        "alphaBounds": [
+          64,
+          40,
+          447,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/DL/Exploder_Warning_DL_04.png",
+        "sha256": "1619bbd9dbf7f96ca4fcbe45d4f00f574dc4fd866fb2556dc9d08708690f266f",
+        "alphaBounds": [
+          62,
+          30,
+          450,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/DL/Exploder_Death_DL_01.png",
+        "sha256": "43a8cc1d6d47f11a72c47338cc70aa398fa04e4b6173456766882e8a139461fa",
+        "alphaBounds": [
+          77,
+          88,
+          435,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/DL/Exploder_Death_DL_02.png",
+        "sha256": "03d935d6e737a159a998361a3bf5807505b67e0ea5c433e5b8b105fb7858caf6",
+        "alphaBounds": [
+          75,
+          117,
+          437,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/DL/Exploder_Death_DL_03.png",
+        "sha256": "5416aeb8dde23c78837bcc5f4493c65872f1d974ecf99ca6784d7e808ca099d4",
+        "alphaBounds": [
+          75,
+          96,
+          437,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/DL/Exploder_Death_DL_04.png",
+        "sha256": "566ec6cbb4f3743e911dda64f60d1288e01c7d41ab90c8f755e0753f635d9157",
+        "alphaBounds": [
+          72,
+          196,
+          440,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/DL/Exploder_Burst_DL_01.png",
+        "sha256": "98eaf0da7571776776f19137083839b2711c80003f6cf8ca3097d3d1e0fe87bc",
+        "alphaBounds": [
+          84,
+          56,
+          429,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/DL/Exploder_Burst_DL_02.png",
+        "sha256": "50d566a5f1d2ad7f4a1989520c9b7a767d94cb9e046197f9e7068a7747f4dd1b",
+        "alphaBounds": [
+          77,
+          64,
+          435,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/DL/Exploder_Burst_DL_03.png",
+        "sha256": "bd0076f4f613236e6b3e3b92c7e77df5d868232afd3ad6be90ae14e89b19ee8f",
+        "alphaBounds": [
+          69,
+          71,
+          443,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/DL/Exploder_Burst_DL_04.png",
+        "sha256": "7d86cbea3eaf9cab29820b84499c2fd510dca8ddd0f64867461a34ce08305583",
+        "alphaBounds": [
+          72,
+          79,
+          440,
+          402
+        ]
+      }
+    ]
+  },
+  {
+    "enemy": "Support",
+    "direction": "D",
+    "source": "Support_Active_D_DR.png",
+    "state": "SupportMove",
+    "scale": 1.1839080459770115,
+    "warnings": [],
+    "frames": [
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/D/Support_SupportMove_D_01.png",
+        "sha256": "b3d3189c20ef71b78c4ca4650de267f50ef6be253486680ddc86efd49e312e8b",
+        "alphaBounds": [
+          107,
+          60,
+          405,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/D/Support_SupportMove_D_02.png",
+        "sha256": "19d6803bbdcc2cd2d427e2608d4d51c36cd6687204317485bfa424ae6791ff3b",
+        "alphaBounds": [
+          99,
+          55,
+          413,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/D/Support_SupportMove_D_03.png",
+        "sha256": "3dbe3a1f5465d25d0cb2e12bdb3fb3ac80aeb14abd940d814295be61e2ab53d1",
+        "alphaBounds": [
+          102,
+          57,
+          409,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/D/Support_SupportMove_D_04.png",
+        "sha256": "056492c9de6308f81c9d3a70424a4392bc599d57a5e3600bb0432eb0530396ed",
+        "alphaBounds": [
+          106,
+          67,
+          406,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/D/Support_SupportMove_D_05.png",
+        "sha256": "8fbd5b1085f2a2bd58a27f2e898351a836af3b654bc7cd359d607f4c2bfeaa55",
+        "alphaBounds": [
+          100,
+          62,
+          411,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/D/Support_SupportMove_D_06.png",
+        "sha256": "178c7aa62dff224c6024bb429f32f0415382af22da333d8216e0cd4e02a63001",
+        "alphaBounds": [
+          99,
+          61,
+          413,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/D/Support_SupportMove_D_07.png",
+        "sha256": "75a1b68e16bb8cd0e33b2e7dabe7ac1049c88e68b9f907047f0245ae6f63ed84",
+        "alphaBounds": [
+          105,
+          62,
+          407,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/D/Support_SupportMove_D_08.png",
+        "sha256": "3590ea443c631e6f1ba6735014b031bd0a6c5b990b5ec79c8c77b73b9ae08f63",
+        "alphaBounds": [
+          94,
+          66,
+          417,
+          402
+        ]
+      }
+    ]
+  },
+  {
+    "enemy": "Support",
+    "direction": "DR",
+    "source": "Support_Active_D_DR.png",
+    "state": "SupportMove",
+    "scale": 1.2596685082872927,
+    "warnings": [],
+    "frames": [
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DR/Support_SupportMove_DR_01.png",
+        "sha256": "1138263b51e95c7875ee126069c789cdd27710a1b1240fae3bfad200a7218aec",
+        "alphaBounds": [
+          86,
+          30,
+          426,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DR/Support_SupportMove_DR_02.png",
+        "sha256": "9b31b9d12c87314795e5cbf083168b8319a1faf4e97a9355b945239792132143",
+        "alphaBounds": [
+          82,
+          46,
+          431,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DR/Support_SupportMove_DR_03.png",
+        "sha256": "b422af064b013889093742966784b3ce2a4d43d389c4d9c529551ad1c847a02f",
+        "alphaBounds": [
+          91,
+          37,
+          421,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DR/Support_SupportMove_DR_04.png",
+        "sha256": "21802d5aca562a87b7ce95183cff67e3c008a9d274e3bd93fc7c24f6c5c2a8b5",
+        "alphaBounds": [
+          100,
+          32,
+          411,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DR/Support_SupportMove_DR_05.png",
+        "sha256": "5588422cfe2f6eb8f84814c9c42739dd35f6dc2c0ebd0a4103923f6e9d27732c",
+        "alphaBounds": [
+          75,
+          24,
+          437,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DR/Support_SupportMove_DR_06.png",
+        "sha256": "2edbe75d7069e09b0f0fdb338dacdb4a33d9a6eed98c08b23b9ce51d3910b9c8",
+        "alphaBounds": [
+          84,
+          30,
+          428,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DR/Support_SupportMove_DR_07.png",
+        "sha256": "e4292dca89fb2c512f10a2030f107140b9de1994b3236d092b97095f36565a01",
+        "alphaBounds": [
+          78,
+          24,
+          433,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DR/Support_SupportMove_DR_08.png",
+        "sha256": "ecc5f03fe74092c8316a6db580e20e0f73a12eb0be0be5f704189542d97091e0",
+        "alphaBounds": [
+          96,
+          42,
+          415,
+          402
+        ]
+      }
+    ]
+  },
+  {
+    "enemy": "Support",
+    "direction": "R",
+    "source": "Support_Active_R.png",
+    "state": "SupportMove",
+    "scale": 1.2387791741472172,
+    "warnings": [],
+    "frames": [
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/R/Support_SupportMove_R_01.png",
+        "sha256": "9c45844db87088f320c0be5366c6e21a471ab018e37c7a7d25a4a71403b16f99",
+        "alphaBounds": [
+          75,
+          81,
+          437,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/R/Support_SupportMove_R_02.png",
+        "sha256": "5685a854b66a26b3e43d80c91077240fa0840776617b629d583edb9d9533d3c2",
+        "alphaBounds": [
+          83,
+          80,
+          429,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/R/Support_SupportMove_R_03.png",
+        "sha256": "ef70030b315aaaf881102530c6f45df7e3c510faaa5b7bffd147eee2b311b79a",
+        "alphaBounds": [
+          84,
+          77,
+          428,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/R/Support_SupportMove_R_04.png",
+        "sha256": "c842717264bf513ac8ce2981b716197ef18148461cde6e7610b9d7d31c22a665",
+        "alphaBounds": [
+          90,
+          81,
+          423,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/R/Support_SupportMove_R_05.png",
+        "sha256": "e6b3bb3a3c2653efda8ca18c5850625ce01f3e2fe3213fcbe2849b9e1b08998b",
+        "alphaBounds": [
+          70,
+          76,
+          442,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/R/Support_SupportMove_R_06.png",
+        "sha256": "7b1f5215ad55c2e03e5d4b1c8003792e6aa3bca8e3659200ba4def44234d83c5",
+        "alphaBounds": [
+          89,
+          77,
+          423,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/R/Support_SupportMove_R_07.png",
+        "sha256": "6302c64919dc7ccf0dd9fd6cdca4b7a4fe54a4b582cd2fc612f7c636a7210eda",
+        "alphaBounds": [
+          78,
+          76,
+          435,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/R/Support_SupportMove_R_08.png",
+        "sha256": "fce2c2735d11bbe95cfb790c26df53a4d90477d616c856322d870f74d736d5a6",
+        "alphaBounds": [
+          90,
+          69,
+          422,
+          402
+        ]
+      }
+    ]
+  },
+  {
+    "enemy": "Support",
+    "direction": "UR",
+    "source": "Support_Active_UR.png",
+    "state": "SupportMove",
+    "scale": 0.8961748633879781,
+    "warnings": [],
+    "frames": [
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UR/Support_SupportMove_UR_01.png",
+        "sha256": "07a4648c216215a1ff1ff69d43d28021659af1a9a396b6ebd3a3628c2d106f13",
+        "alphaBounds": [
+          97,
+          61,
+          415,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UR/Support_SupportMove_UR_02.png",
+        "sha256": "20d177fad76c253cacf46ea550e95cf1954323e4d42441f8bef1c9fef58778e5",
+        "alphaBounds": [
+          101,
+          57,
+          411,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UR/Support_SupportMove_UR_03.png",
+        "sha256": "bb23247896f0ce5a24e6d8823e06b327d3b46838c2b4aa0721fb7e6e9b9dd7f1",
+        "alphaBounds": [
+          95,
+          52,
+          417,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UR/Support_SupportMove_UR_04.png",
+        "sha256": "00c7852f5845eb9c06e3c441ee2d309d2c20e09cdf4c6e39c8609b28c0839b8b",
+        "alphaBounds": [
+          89,
+          67,
+          423,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UR/Support_SupportMove_UR_05.png",
+        "sha256": "8f3fc6e0b2a826cdce50d85895d2f506c1906fe2fe673356f16b5400ca043fa0",
+        "alphaBounds": [
+          88,
+          53,
+          424,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UR/Support_SupportMove_UR_06.png",
+        "sha256": "434c160ab9e7d248e02f4895e24e391ae6093a603931d1651944e857ce0686c9",
+        "alphaBounds": [
+          84,
+          54,
+          428,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UR/Support_SupportMove_UR_07.png",
+        "sha256": "25544dec6f6b72e6c367ff5bfb2bed3de962da2696860f255a4d312ac1b0a3f9",
+        "alphaBounds": [
+          80,
+          62,
+          432,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UR/Support_SupportMove_UR_08.png",
+        "sha256": "e9dbec6b7cc94f546d7cb89ff0213c376cbfe5bfd4b5cdf360e6fa3d463a0f0d",
+        "alphaBounds": [
+          98,
+          56,
+          413,
+          402
+        ]
+      }
+    ]
+  },
+  {
+    "enemy": "Support",
+    "direction": "U",
+    "source": "Support_Active_U.png",
+    "state": "SupportMove",
+    "scale": 0.9409090909090909,
+    "warnings": [],
+    "frames": [
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/U/Support_SupportMove_U_01.png",
+        "sha256": "b6c455a55c28a5940deba45ce2b4df2ad3bfc71ee7d77f0b5a0af024029144ea",
+        "alphaBounds": [
+          94,
+          54,
+          417,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/U/Support_SupportMove_U_02.png",
+        "sha256": "795f85fd84a794a3766cd518525d42c84736b64734506a98ca4b16c5776dedf6",
+        "alphaBounds": [
+          102,
+          62,
+          409,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/U/Support_SupportMove_U_03.png",
+        "sha256": "7024a0b738a0646b3e33346efaf3b92e0b4b7ea09a7bef5d0a986224a52d8ec8",
+        "alphaBounds": [
+          106,
+          60,
+          405,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/U/Support_SupportMove_U_04.png",
+        "sha256": "82dd6224adc23e26663d512f21c6b51e7e37b8e85901fb17fbe133cc7cf70c18",
+        "alphaBounds": [
+          95,
+          50,
+          417,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/U/Support_SupportMove_U_05.png",
+        "sha256": "652b542a37fca3a0c687ee0f796d666ab91b3f539b5def8f61186ed16423f79d",
+        "alphaBounds": [
+          96,
+          54,
+          415,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/U/Support_SupportMove_U_06.png",
+        "sha256": "5994106e7c43694a18d1def98c335ca93cf85b5597b6c85a734b852fc520074b",
+        "alphaBounds": [
+          106,
+          50,
+          407,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/U/Support_SupportMove_U_07.png",
+        "sha256": "fcf3249b1c533955d331d1b087461c7e82f3c9baac762f66587d39e8092e0a8c",
+        "alphaBounds": [
+          103,
+          53,
+          409,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/U/Support_SupportMove_U_08.png",
+        "sha256": "c4acc1c76c952b4bd0e1ea46d9bcdd40e50494b8bdaf2e9ce1e707240e92c090",
+        "alphaBounds": [
+          99,
+          55,
+          413,
+          402
+        ]
+      }
+    ]
+  },
+  {
+    "enemy": "Support",
+    "direction": "UL",
+    "source": "Support_Active_UL.png",
+    "state": "SupportMove",
+    "scale": 0.8183006535947712,
+    "warnings": [],
+    "frames": [
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UL/Support_SupportMove_UL_01.png",
+        "sha256": "5a04bee69dc4910073e46c9ee53ed63766d48d384e6a0c1d259d9f878c38ab55",
+        "alphaBounds": [
+          100,
+          89,
+          413,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UL/Support_SupportMove_UL_02.png",
+        "sha256": "81e8c96eb19578ced50db7dbda7787e0976a2d22485bb99fbb4568859b6ef141",
+        "alphaBounds": [
+          100,
+          95,
+          413,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UL/Support_SupportMove_UL_03.png",
+        "sha256": "9db51ac1381ac2b7eeb1fcc056eccff34580b831308d99f342265c21605c5ba3",
+        "alphaBounds": [
+          106,
+          95,
+          405,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UL/Support_SupportMove_UL_04.png",
+        "sha256": "de2a07abc4353728a242ff8603caf82a84fa7565c1990380e37d91a12868a45f",
+        "alphaBounds": [
+          108,
+          102,
+          403,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UL/Support_SupportMove_UL_05.png",
+        "sha256": "ebda6d52b84a9150b1bfcfed12b579129481e590687e840aa22c9fb1354aca5f",
+        "alphaBounds": [
+          94,
+          96,
+          418,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UL/Support_SupportMove_UL_06.png",
+        "sha256": "699e1527dc34b5162ad681977ab0bfdaebdc432b797687818e8594bda3ad6861",
+        "alphaBounds": [
+          98,
+          108,
+          413,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UL/Support_SupportMove_UL_07.png",
+        "sha256": "f99083e52e51fe2f98b5a35a04c564b7df7a0b1a3f6da426575daba79769e284",
+        "alphaBounds": [
+          100,
+          103,
+          413,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UL/Support_SupportMove_UL_08.png",
+        "sha256": "6c8be0d980ecde1cd3dc0c013d14419155e4a8daa100203dbfe8de3c13c181e7",
+        "alphaBounds": [
+          101,
+          94,
+          411,
+          402
+        ]
+      }
+    ]
+  },
+  {
+    "enemy": "Support",
+    "direction": "L",
+    "source": "Support_Active_L.png",
+    "state": "SupportMove",
+    "scale": 0.8865710560625815,
+    "warnings": [],
+    "frames": [
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/L/Support_SupportMove_L_01.png",
+        "sha256": "072bad90ee4bddca64142e488544e3ebe5533a94c76df1f0456101cb946baf6b",
+        "alphaBounds": [
+          86,
+          91,
+          427,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/L/Support_SupportMove_L_02.png",
+        "sha256": "3cacbe330480c138af57fc50eef4adcb61d0781a3f6c43ca15751f1cddc2d95d",
+        "alphaBounds": [
+          82,
+          94,
+          431,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/L/Support_SupportMove_L_03.png",
+        "sha256": "80865a67aa2ac638598c499905b0dd4062c2ca57c8e90ae30d99d1b63260582e",
+        "alphaBounds": [
+          83,
+          93,
+          429,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/L/Support_SupportMove_L_04.png",
+        "sha256": "9a2005d76301eddd5798d766d6d30e447f47bb7bd0af97f07e200935ffdd9823",
+        "alphaBounds": [
+          90,
+          86,
+          422,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/L/Support_SupportMove_L_05.png",
+        "sha256": "461dae19c4b673bad058a1f7ce4c8419dc57c9de02a697a2580cb0246df6a390",
+        "alphaBounds": [
+          86,
+          95,
+          425,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/L/Support_SupportMove_L_06.png",
+        "sha256": "85185c79950bc71b5f10c4e05a478dba3a77713113c88acf11c9397b5d2b77a1",
+        "alphaBounds": [
+          79,
+          98,
+          433,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/L/Support_SupportMove_L_07.png",
+        "sha256": "e16e24a4d5ecdaddd3659b92a412e922236c9f2467599a90211489f613b64c66",
+        "alphaBounds": [
+          90,
+          90,
+          423,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/L/Support_SupportMove_L_08.png",
+        "sha256": "804572bff997526a82ecb22d3e7d8f2b20a45a282c33612f684538ed3be72ef1",
+        "alphaBounds": [
+          90,
+          90,
+          423,
+          402
+        ]
+      }
+    ]
+  },
+  {
+    "enemy": "Support",
+    "direction": "DL",
+    "source": "Support_Active_DL.png",
+    "state": "SupportMove",
+    "scale": 0.8649386084583902,
+    "warnings": [],
+    "frames": [
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DL/Support_SupportMove_DL_01.png",
+        "sha256": "07ff9ecb85498945c77627a1bbdf6bdbe8200e3b96c600428d54c5842fc20e3f",
+        "alphaBounds": [
+          91,
+          79,
+          421,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DL/Support_SupportMove_DL_02.png",
+        "sha256": "cecc32ee308f69d6d9306ed547b14ede95c67ccc2a47f38d6da959ba36c40278",
+        "alphaBounds": [
+          106,
+          83,
+          407,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DL/Support_SupportMove_DL_03.png",
+        "sha256": "308fec738b3ab744838db882dfa01b841e9f3f68aa230ac3aaba291036a67a71",
+        "alphaBounds": [
+          90,
+          81,
+          421,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DL/Support_SupportMove_DL_04.png",
+        "sha256": "c6dee0efbbaa2b25a33496200c38bef6a0c977a83d7e10c2070f49d6734c607c",
+        "alphaBounds": [
+          94,
+          80,
+          417,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DL/Support_SupportMove_DL_05.png",
+        "sha256": "7c39c97b7c9441b51dc3cf69e371abd270ab5315ee42e325a3c333f8fd935bff",
+        "alphaBounds": [
+          108,
+          82,
+          404,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DL/Support_SupportMove_DL_06.png",
+        "sha256": "2d89e24c9d98a006dfec1dcffcc34b0b3b0bf8a6e79552e2725a37803004e1e1",
+        "alphaBounds": [
+          100,
+          85,
+          411,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DL/Support_SupportMove_DL_07.png",
+        "sha256": "7ed8222c5caaf4af78bb81c4e40d9a31bc8302a944048886fb7ec424c91543be",
+        "alphaBounds": [
+          106,
+          81,
+          407,
+          402
+        ]
+      },
+      {
+        "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DL/Support_SupportMove_DL_08.png",
+        "sha256": "f98badc98d31732b85a0207e6ebe2f71aef94ab6b6d691491f4a7febc6ef79d8",
+        "alphaBounds": [
+          94,
+          82,
+          417,
+          402
+        ]
+      }
+    ]
+  }
+]

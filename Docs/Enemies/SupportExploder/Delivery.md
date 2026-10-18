@@ -1,54 +1,93 @@
-# Support / Exploder 首版交付
+# Support / Exploder 正式美术与动画交付
 
-交付目标：两种敌人在独立测试场景可用。正式地图由 Region Loop V02 对话统一接入。
+本轮在 `D:\AlienPurge_SupportExploder`、`feature/enemies-support-exploder` 中完成正式外观、动画和独立测试场景升级，等待用户验收。没有接入正式区域，没有合并、rebase、cherry-pick 或推送。
 
-工程：Unity 2022.3.62f3c1，URP 14.0.12，A* Pathfinding Project Free 4.2.17。起点为本地 Boss 验收分支 `codex/hivetyrant-combat` 的 `609c7ff523b8f6a04db9e978bbd994eb6d155655`。检查时原工程干净。开发仅发生于 `D:\AlienPurge_SupportExploder` / `feature/enemies-support-exploder`；未 reset、clean、合并、推送或更改区域任务工作目录。
+本轮起点：`23114de4866261ceb0e540fabaeb4b423e1a8135`。该原型基于已验收 Boss 提交 `609c7ff523b8f6a04db9e978bbd994eb6d155655`。最终交付 SHA 由本轮提交及最终回复提供。
 
 ## 直接试玩
 
-用相同 Unity 版本打开上述独立 worktree。
+用 Unity **2022.3.62f3c1** 打开本独立目录。场景：
+`Assets/_Project/Scenes/SupportExploder_Test.unity`。
 
-1. `AlienPurge/Support + Exploder/1 Configure and Validate`：创建/修复本交付资产及测试场景，重复执行不叠加管理器或测试根节点，已有生成资产保留 GUID。
-2. `AlienPurge/Support + Exploder/2 Open Test Scene`，按 Play。
-3. WASD 移动、鼠标左键射击、左 Shift Dash、Space Jet Jump；F1 补充组合、F2 生成 Exploder、F3 直接回收、F4 击杀两类新敌人、F9 Restart。
-4. `AlienPurge/Support + Exploder/3 Validate Assets` 检查配置；`4 Run Play Mode Verification` 自动进入真实 Play Mode，结束后回到测试场景。
+沿用菜单 `AlienPurge/Support + Exploder/`：
 
-场景路径：`Assets/_Project/Scenes/SupportExploder_Test.unity`。使用现有玩家、武器、伤害、经验池、敌人池和 A*，加入有实体阻挡的独立试验场。不会将测试场景插入正式 Build Settings。
+1. **1 Configure and Validate**：配置正式资源并校验；可重复运行。
+2. **2 Open Test Scene**：打开独立场景，按 Play 试玩。
+3. **3 Validate Assets**：只校验资产。
+4. **4 Run Play Mode Verification**：运行真实场景、物理、对象池、寻路、武器与奖励回归。
+5. **5 Play Animation Preview**：直接进入身体动画预览。该模式也从现有敌人池取对象。
 
-## 代码与配置
+操作：WASD 移动、鼠标左键射击、Shift Dash、Space Jet Jump。F1 添加遭遇，F2 在安全距离生成 Exploder，F3 回收，F4 对两种新敌人施加致命伤害，F9 Restart。F5 切换身体预览/战斗；预览中 F6 切方向、F7 切状态、F10 切换实际镜头/放大；F8 暂停/恢复。
 
-准确 EnemyData / Prefab 路径、对象池注册、能力数值、三个公共脚本差异和区域接入约束见 [Integration.md](Integration.md)。测试场景 EnemyPool 显式配置六个类型，新增容量为 Support 2 / Exploder 3，禁止这两类自动扩容；没有给正式刷怪器追加任何权重。
+预览只检查身体动画，禁用能力和碰撞；退出时恢复真实能力。实际支援、预警、范围伤害与打断用战斗模式检查。测试场景没有加入正式 Build Settings。
 
-能力配置独立于 EnemyData。所有临时增益、计时器和目标属于实例，不写共享数据。Support 的增益带来源与目标代次；Exploder 的警告中心、半径、持续时间在预警开始时锁定。
+## 正式资产
 
-## 美术完成状态：临时，未完成正式美术
+| 类型 | EnemyData（路径和 GUID 保留） | Prefab（路径和 GUID 保留） |
+|---|---|---|
+| Support | `Assets/_Project/Data/Enemies/Enemy_Support_Data.asset` | `Assets/_Project/Prefabs/Enemies/Animated/Enemy_Support.prefab` |
+| Exploder | `Assets/_Project/Data/Enemies/Enemy_Exploder_Data.asset` | `Assets/_Project/Prefabs/Enemies/Animated/Enemy_Exploder.prefab` |
 
-检索原工程的已跟踪资产，没有 Support/Exploder 的独立 Sprite 或动画。用户概念图只作为外形参考，没有导入为游戏 Sprite，也没有把整张概念图裁切后冒充动画。
+Sprite 位于 `Assets/_Project/Art/Enemies/Animated/Support/` 与 `Exploder/`，按 `动作/方向/类型_动作_方向_帧号.png` 组织。共 **424 张独立透明 PNG**：Support 224、Exploder 身体 192、圆形爆炸 8。
 
-当前使用现有 Swarmer 四足岩甲步行图作为临时身体，加上程序绘制的紫色三瓣器官／橙红囊体。新 Animator 和 16 个 clip 使用独立 GUID；它们引用原始 Sprite，并以 `TEMP_SharedSwarmer` 命名。动画使用真实的原八方向帧，不是旋转单张图片，但**不能算作这两个新敌人的正式八方向动画**。每个方向 8 帧，12 fps，Direction 为 D=0、DR=1、R=2、UR=3、U=4、UL=5、L=6、DL=7。
+Animator：`Assets/_Project/Animations/Support/Support_Animator.controller`、`Assets/_Project/Animations/Exploder/Exploder_Animator.controller`。共 **96 个方向/状态 clip**。原型的 TEMP 资源保留但已无正式 Prefab 引用；重新配置也不会回退到借用帧。
 
-动画目录：`Assets/_Project/Animations/Support/` 与 `Assets/_Project/Animations/Exploder/`。效果材质：`Assets/_Project/Art/Enemies/Animated/AbilityTest/EnemyAbility_VertexTint.mat`。临时器官和技能标识由 `EnemyAbilityPresentation` 生成 Mesh，并在回收时隐藏、销毁时释放。身体保持原 Sprite 材质和 EnemyYSorting；特效与器官分别使用现有排序层。
+身体和器官一同绘制在独立 Sprite 中。Support 使用紫色三瓣器官，Exploder 使用橙红双囊和较低的负重身体；没有借用 Swarmer 的 Sprite，没有通过旋转或整体缩放模拟步行，也没有用镜像补方向。
 
-现有导入实际参数为 PPU 256、512 像素画布、中心 Pivot，并非脚底 Pivot；脚底/阴影/碰撞体对齐沿用原 Prefab，没有修改旧 Sprite Pivot。四类原敌人的实际路径、材质、组件与导入参数记录在 [ExistingEnemyAudit.txt](ExistingEnemyAudit.txt)。
+## 动画状态与规格
 
-正式美术缺项：
+所有身体状态都有八方向，索引保持 **0 D、1 DR、2 R、3 UR、4 U、5 UL、6 L、7 DL**。
 
-- 两种敌人各自的八方向身体与器官组合 Sprite，以及各方向独立步行帧；需保持深棕岩甲、浅灰白筋膜和一致光照。
-- Support 的站立/支援循环、受击和死亡表现；紫色三瓣器官的八方向遮挡与随步态运动。
-- Exploder 的站立、预警膨胀、受击打断、主动爆破与受击死亡表现；橙红囊体的八方向遮挡。
-- 技能音效与最终 VFX 美术。当前可辨识范围圈、连线、强化箭头、填充计时环是行为测试表现，死亡音效沿用 AudioManager 的默认普通敌人分支。
+| 状态 | Support | Exploder | 播放规则 |
+|---|---|---|---|
+| Idle | 每方向 4 帧 | 每方向 4 帧 | 4 fps，1 秒循环 |
+| Move | 每方向 8 帧 | 每方向 8 帧 | 12 fps，2/3 秒循环，沿用原工程稳定标准 |
+| SupportStart | 每方向 4 帧 | — | 1/3 秒展开 |
+| SupportLoop | 使用已绘制器官展开帧组成 6 步脉冲 | — | 6 fps，1 秒循环 |
+| SupportMove | 每方向独立 8 帧 | — | 12 fps；持续支援时仍播放四足步态 |
+| SupportEnd | 反向播放对应展开帧 | — | 1/3 秒收拢 |
+| Warning | — | 每方向 4 个蓄爆姿态 | 按能力真实倒计时进度取样，当前为 1.5 秒 |
+| Death | 每方向 4 帧 | 每方向 4 帧 | 0.55 秒倒伏、熄灭并淡出 |
+| Burst | — | 每方向 4 帧 | 主动自爆专用，0.75 秒内完成破裂和回收 |
+| Explosion | — | 共用 8 帧 | 12 fps，约 0.7 秒内消散；仅视觉子对象按伤害半径缩放 |
 
-后续正式 Sprite 放到 `Assets/_Project/Art/Enemies/Animated/Support/`、`Exploder/`，按既有 `Move/<方向>/` 组织。替换独立 clip 中的 Sprite 引用，保持 Direction 参数、PPU、视觉对齐及 Collider 规则。正式器官已经烘焙进 Sprite 时关闭 `EnemyAbilityPresentation.temporaryArt`，保留范围/状态提示。不得覆盖旧敌人 .meta。
+循环 clip 的末尾回到首帧；末尾闭合 key 不算新的绘制帧。支援开始/结束与持续光环保持同一玩法，没有改成主动施法。移动支援使用单独步态，站立时使用器官开合与脉冲。
 
-## 验证证据
+导入沿用现有规范：**512×512、PPU 256、中心 Pivot (0.5,0.5)、Bilinear、Clamp、无 Mipmap、默认不压缩、sRGB、Alpha Is Transparency、Full Rect**。实际旧敌人也使用中心 Pivot；没有把它误写为脚底 Pivot。新帧以统一脚底基线注册到画布，保留原碰撞根与阴影结构。
 
-最终一轮 Unity 2022.3.62f3c1 / Direct3D11 的真实 Editor Play Mode **119 项检查通过，0 运行错误/异常**。覆盖出生、范围与目标上限、来源与目标回收复用、死亡撤销、原生寻路与动画换帧、预警中击杀、单次范围结算、碰撞体边界、Dash/Jet Jump、原生子弹、经验拾取、Restart，以及注册新类型后的 Boss 实际召唤。编译仅有基线原有的 SafeZoneController / ExtractionController 两条 CS0414 警告。
+身体沿用 URP `Sprite-Lit-Default`、`Enemies` Sorting Layer 和 `EnemyYSorting` 的根位置 Y 排序。动画只改 Sprite，不改碰撞根位置、缩放、旋转。特效沿用测试分支已有材质/排序方式；预警边界仍等于实际 OverlapCircle 半径。
 
-自动化通过原生能力入口启动 Dash/Jet Jump；Dash 测例设置最后移动输入朝圈外，保持原生速度、距离和默认关闭无敌帧的配置。它是可重复的行为检查，不等同于真人游玩验收。首轮发现的场景卸载特效清理问题已修复并由最终 Restart 用例验证。
+受击继续使用原生 EnemyHealth 的 0.08 秒反馈，仅在两个新 Prefab 配置可见的亮色倍率。没有新增专属音效包，音效继续使用已有系统。
 
-- [AssetValidation.txt](AssetValidation.txt)：资产身份、动画绑定、旧枚举值、Boss 名单。
-- [Validation/PlayMode_Result.txt](Validation/PlayMode_Result.txt)：本次实际 Unity Play Mode 检查结果，以文件中的最终 RESULT 为准。
-- `Validation/*.png`：实际摄像机截图，文件名标明临时美术；摄像机截图不包含 IMGUI 测试说明，试玩时 HUD 会显示 TEMP ART。
-- `Preservation.txt`：与 Boss 基线比较的旧资产、场景、.meta 保护检查。
+## 行为与复用
 
-这里的自动化仅验证首版行为与集成。未把它宣称为最终美术验收或完整地图平衡验收。
+范围、目标数、增益、预警时间、伤害和安全出生配置均未改变。Support 仍为 4.5 米内最多 3 个普通目标、伤害 +1、多个来源取最大值；不支援 Support、Exploder 或 Boss。Exploder 仍有出生保护，2.4 米内触发 1.5 秒固定位置预警，3 米范围伤害；预警中击杀取消主动爆炸。
+
+`SupportExploderAnimation` 读取现有方向和能力状态，只选择 Animator clip。**没有 Animation Event 结算入口**。生命、伤害、经验、击杀与回收仍由原生链路负责。仅死亡展示等待从原型的短暂延迟改为 0.55/0.75 秒，奖励仍在原生死亡入口结算一次。
+
+启用时重新绑定 Animator，恢复默认 DR、Idle、帧时钟、颜色与透明度；禁用/回收时清理展示状态。预警直接按能力进度采样，暂停和变速遵循 Time.timeScale。死亡和爆炸展示不创建跨生命的延迟伤害回调。
+
+测试场景继续显式注册六类对象池，Support 预热 2、Exploder 预热 3，禁止这两类扩容。注册不等于加入正式刷怪候选；Boss 四类召唤名单保持原样。
+
+## 预览与验证
+
+- [Support 八方向](ArtReview/Support_EightDirections.png)、[Exploder 八方向](ArtReview/Exploder_EightDirections.png)
+- [Support 八方向行走 GIF](ArtReview/Support_Move_AllDirections.gif)、[移动支援 GIF](ArtReview/Support_SupportMove_AllDirections.gif)
+- [Exploder 八方向行走 GIF](ArtReview/Exploder_Move_AllDirections.gif)
+- [Support 状态 GIF](ArtReview/Support_States_DR.gif)、[Exploder 状态 GIF](ArtReview/Exploder_States_DR.gif)
+- [Unity 实际镜头](Validation/Authored_Characters_Close.png)、[实际蓄爆与爆炸录制](ArtReview/Exploder_Unity_Runtime.gif)
+- [真实 Play Mode 结果](Validation/PlayMode_Result.txt)、[资产检查](AssetValidation.txt)、[保护范围检查](Preservation_ArtUpgrade.txt)
+
+最终 Play Mode 运行 **296 项 PASS，RESULT: PASS**。测试涵盖原有玩法、八方向真正换帧、全部方向状态引用、移动支援、受击恢复、暂停/半速、死亡打断、同一池实例连续三轮复用、效果清理、Boss 真实召唤和 Restart。最后的右向后甲图像修订另经 Unity 资产校验通过。Unity 编译仅有基线既存的 SafeZoneController / ExtractionController 两条 CS0414 警告。
+
+这些是实际 Windows Unity Editor / D3D11 自动化和摄像机检查；没有把静态检查当作真人试玩。尚未进行用户美术/操作验收、独立播放器及其他平台构建、正式区域平衡验收。
+
+## 文件与后续交接
+
+完整新增/修改路径及用途见 [FileManifest.tsv](FileManifest.tsv)，状态清单与制作来源见 [ArtProduction.md](ArtProduction.md)，区域接入依赖和限制见 [Integration.md](Integration.md)。
+
+本轮修改的运行脚本均为本任务已有或新增的专用脚本：SupportEnemyAbility、ExploderEnemyAbility、EnemyAbilityPresentation、EnemyAbilityTestLab，以及新增 SupportExploderAnimation。编辑器配置/验证工具随之更新。
+
+**本轮未修改任何旧敌人共用运行脚本。** 原型提交曾增加的 EnemyType、EnemyMovement、EnemyContactDamage 三处兼容改动仍保留；本轮没有进一步修改它们，也没有修改 EnemyHealth、EnemyPool、PooledEnemy、EnemyAnimationController 或 EnemyYSorting。
+
+本阶段停在独立场景可验收。后续正式地图整合须等待用户明确指令，由区域适配任务统一负责。

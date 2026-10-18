@@ -1,0 +1,23 @@
+{
+  "tool": "Codex built-in imagegen",
+  "mode": "Transparent raster generation and localized editing",
+  "portable_inputs": "Source/*.png; export_frames.py reads these included files, not cache paths",
+  "body_prompts": "sheets.json",
+  "active_gait_prompts": "active_sheets.json",
+  "radial_effect_prompt": "blast_prompt.txt",
+  "support_right_final_revision": "support_R_refinement.txt",
+  "turnaround_references": {
+    "Support": "Source/Support_Turnaround.png",
+    "Exploder": "Source/Exploder_Turnaround.png"
+  },
+  "turnaround_original_cache_files": {
+    "Support": "exec-279cd6e7-95e9-4215-b289-dd2a95843347.png",
+    "Exploder": "exec-652ac7d5-8f95-4e3d-acc6-66be5abcceeb.png"
+  },
+  "notes": [
+    "Turnarounds are references only; they are not runtime sprites.",
+    "The Support UR and UL source sheets were separately generated using corrected view descriptions.",
+    "Support_Active_R.png contains only the accepted upper eight frames of its original mixed sheet; rejected UR rows are excluded.",
+    "No frame rotation, mirroring, duplicated still gait, or procedural anatomy deformation is used."
+  ]
+}

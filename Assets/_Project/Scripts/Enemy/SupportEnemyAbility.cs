@@ -17,7 +17,7 @@ public sealed class SupportEnemyAbility : MonoBehaviour, IEnemyDeathPresentation
     private Vector2 desiredGoal;
     private float nextRefresh;
     public SupportEnemyConfig Config => config;
-    public float DeathPresentationDuration => .2f;
+    public float DeathPresentationDuration => SupportExploderAnimation.DeathSeconds;
     public int TargetCount { get { int n = 0; foreach (var lease in leases) if (HasValidLease(lease.target)) n++; return n; } }
     public EnemySupportBuff TargetAt(int index) => index < leases.Count ? leases[index].target : null;
     private bool Alive => config != null && isActiveAndEnabled && health != null && !health.IsDead &&
@@ -93,7 +93,11 @@ public sealed class SupportEnemyAbility : MonoBehaviour, IEnemyDeathPresentation
         }
         else desiredGoal = position; // No allies: hold distance rather than becoming a melee pursuer.
     }
-    public void BeginDeathPresentation() { ReleaseAll(); }
+    public void BeginDeathPresentation()
+    {
+        ReleaseAll();
+        if (TryGetComponent<SupportExploderAnimation>(out var animation)) animation.BeginDeath(false);
+    }
     private void ReleaseAll()
     {
         foreach (var lease in leases) if (lease.target != null) lease.target.Revoke(this, lease.generation);

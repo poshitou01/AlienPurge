@@ -26,7 +26,7 @@ public sealed class ExploderEnemyAbility : MonoBehaviour, IEnemyDeathPresentatio
     public float WarningProgress => State == ExploderState.Warning ? Mathf.Clamp01(warningElapsed / lockedDuration) : 0;
     public int ExplosionCount { get; private set; }
     public int DamageApplications { get; private set; }
-    public float DeathPresentationDuration => .3f;
+    public float DeathPresentationDuration => State == ExploderState.Detonated ? SupportExploderAnimation.BurstSeconds : SupportExploderAnimation.DeathSeconds;
     private void Awake()
     {
         movement = GetComponent<EnemyMovement>(); health = GetComponent<EnemyHealth>();
@@ -91,6 +91,7 @@ public sealed class ExploderEnemyAbility : MonoBehaviour, IEnemyDeathPresentatio
     public void BeginDeathPresentation()
     {
         if (State != ExploderState.Detonated) Cancel();
+        if (TryGetComponent<SupportExploderAnimation>(out var animation)) animation.BeginDeath(State == ExploderState.Detonated);
     }
     private void Cancel()
     {

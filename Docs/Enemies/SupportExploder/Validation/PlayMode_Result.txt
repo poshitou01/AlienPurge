@@ -90,7 +90,7 @@ PASS: Pool spawn Normal
 PASS: Pool spawn Exploder
 PASS: Both specialists obtain native A* paths around cover
 PASS: Both specialists physically move using native motor
-PASS: Native Animator swaps actual inherited frames without rotating the body
+PASS: Native Animator swaps independent authored frames without rotating the body
 PASS: Native collision guard keeps enemies out of environment
 PASS: Pool spawn Support
 PASS: Native weapon fires toward Support
@@ -100,6 +100,183 @@ PASS: Pool spawn Exploder
 PASS: Native weapon fires toward Exploder
 PASS: Real pooled bullet / physics damages Exploder
 PASS: Native XP pickup collects reward for Exploder
+PASS: Pool spawn Support
+PASS: Support has no placeholder organ overlay
+PASS: Support native hit feedback visibly brightens own Sprite material
+PASS: Support native hit flash restores authored tint
+PASS: Support native movement selects authored D
+PASS: Support native movement selects authored DR
+PASS: Support native movement selects authored R
+PASS: Support native movement selects authored UR
+PASS: Support native movement selects authored U
+PASS: Support native movement selects authored UL
+PASS: Support native movement selects authored L
+PASS: Support native movement selects authored DL
+PASS: Support D plays all 8 unique own walk frames
+PASS: Support D Idle resolves a valid own sprite
+PASS: Support D SupportStart resolves a valid own sprite
+PASS: Support D SupportLoop resolves a valid own sprite
+PASS: Support D SupportMove resolves a valid own sprite
+PASS: Support D SupportEnd resolves a valid own sprite
+PASS: Support D Death resolves a valid own sprite
+PASS: Support DR plays all 8 unique own walk frames
+PASS: Support DR Idle resolves a valid own sprite
+PASS: Support DR SupportStart resolves a valid own sprite
+PASS: Support DR SupportLoop resolves a valid own sprite
+PASS: Support DR SupportMove resolves a valid own sprite
+PASS: Support DR SupportEnd resolves a valid own sprite
+PASS: Support DR Death resolves a valid own sprite
+PASS: Support R plays all 8 unique own walk frames
+PASS: Support R Idle resolves a valid own sprite
+PASS: Support R SupportStart resolves a valid own sprite
+PASS: Support R SupportLoop resolves a valid own sprite
+PASS: Support R SupportMove resolves a valid own sprite
+PASS: Support R SupportEnd resolves a valid own sprite
+PASS: Support R Death resolves a valid own sprite
+PASS: Support UR plays all 8 unique own walk frames
+PASS: Support UR Idle resolves a valid own sprite
+PASS: Support UR SupportStart resolves a valid own sprite
+PASS: Support UR SupportLoop resolves a valid own sprite
+PASS: Support UR SupportMove resolves a valid own sprite
+PASS: Support UR SupportEnd resolves a valid own sprite
+PASS: Support UR Death resolves a valid own sprite
+PASS: Support U plays all 8 unique own walk frames
+PASS: Support U Idle resolves a valid own sprite
+PASS: Support U SupportStart resolves a valid own sprite
+PASS: Support U SupportLoop resolves a valid own sprite
+PASS: Support U SupportMove resolves a valid own sprite
+PASS: Support U SupportEnd resolves a valid own sprite
+PASS: Support U Death resolves a valid own sprite
+PASS: Support UL plays all 8 unique own walk frames
+PASS: Support UL Idle resolves a valid own sprite
+PASS: Support UL SupportStart resolves a valid own sprite
+PASS: Support UL SupportLoop resolves a valid own sprite
+PASS: Support UL SupportMove resolves a valid own sprite
+PASS: Support UL SupportEnd resolves a valid own sprite
+PASS: Support UL Death resolves a valid own sprite
+PASS: Support L plays all 8 unique own walk frames
+PASS: Support L Idle resolves a valid own sprite
+PASS: Support L SupportStart resolves a valid own sprite
+PASS: Support L SupportLoop resolves a valid own sprite
+PASS: Support L SupportMove resolves a valid own sprite
+PASS: Support L SupportEnd resolves a valid own sprite
+PASS: Support L Death resolves a valid own sprite
+PASS: Support DL plays all 8 unique own walk frames
+PASS: Support DL Idle resolves a valid own sprite
+PASS: Support DL SupportStart resolves a valid own sprite
+PASS: Support DL SupportLoop resolves a valid own sprite
+PASS: Support DL SupportMove resolves a valid own sprite
+PASS: Support DL SupportEnd resolves a valid own sprite
+PASS: Support DL Death resolves a valid own sprite
+PASS: Support all visual states preserve collision root scale / rotation / collider
+PASS: Pool spawn Support
+PASS: Pool spawn Support
+PASS: Support hit death selects collapse, never rupture
+PASS: Support collapse fades while alive in pool accounting, without explosion VFX
+PASS: Support pause freezes collapse and pool-return timer together
+PASS: Pool spawn Support
+PASS: Support same-instance reuse clears pose/frame/direction/tint/fade/speed cycle 0
+PASS: Support old death callback cannot affect next life cycle 0
+PASS: Support hit death selects collapse, never rupture
+PASS: Support collapse fades while alive in pool accounting, without explosion VFX
+PASS: Pool spawn Support
+PASS: Support same-instance reuse clears pose/frame/direction/tint/fade/speed cycle 1
+PASS: Support old death callback cannot affect next life cycle 1
+PASS: Support hit death selects collapse, never rupture
+PASS: Support collapse fades while alive in pool accounting, without explosion VFX
+PASS: Pool spawn Support
+PASS: Support same-instance reuse clears pose/frame/direction/tint/fade/speed cycle 2
+PASS: Support old death callback cannot affect next life cycle 2
+PASS: Pool spawn Exploder
+PASS: Exploder has no placeholder organ overlay
+PASS: Exploder native hit feedback visibly brightens own Sprite material
+PASS: Exploder native hit flash restores authored tint
+PASS: Exploder native movement selects authored D
+PASS: Exploder native movement selects authored DR
+PASS: Exploder native movement selects authored R
+PASS: Exploder native movement selects authored UR
+PASS: Exploder native movement selects authored U
+PASS: Exploder native movement selects authored UL
+PASS: Exploder native movement selects authored L
+PASS: Exploder native movement selects authored DL
+PASS: Exploder D plays all 8 unique own walk frames
+PASS: Exploder D Idle resolves a valid own sprite
+PASS: Exploder D Warning resolves a valid own sprite
+PASS: Exploder D Death resolves a valid own sprite
+PASS: Exploder D Burst resolves a valid own sprite
+PASS: Exploder DR plays all 8 unique own walk frames
+PASS: Exploder DR Idle resolves a valid own sprite
+PASS: Exploder DR Warning resolves a valid own sprite
+PASS: Exploder DR Death resolves a valid own sprite
+PASS: Exploder DR Burst resolves a valid own sprite
+PASS: Exploder R plays all 8 unique own walk frames
+PASS: Exploder R Idle resolves a valid own sprite
+PASS: Exploder R Warning resolves a valid own sprite
+PASS: Exploder R Death resolves a valid own sprite
+PASS: Exploder R Burst resolves a valid own sprite
+PASS: Exploder UR plays all 8 unique own walk frames
+PASS: Exploder UR Idle resolves a valid own sprite
+PASS: Exploder UR Warning resolves a valid own sprite
+PASS: Exploder UR Death resolves a valid own sprite
+PASS: Exploder UR Burst resolves a valid own sprite
+PASS: Exploder U plays all 8 unique own walk frames
+PASS: Exploder U Idle resolves a valid own sprite
+PASS: Exploder U Warning resolves a valid own sprite
+PASS: Exploder U Death resolves a valid own sprite
+PASS: Exploder U Burst resolves a valid own sprite
+PASS: Exploder UL plays all 8 unique own walk frames
+PASS: Exploder UL Idle resolves a valid own sprite
+PASS: Exploder UL Warning resolves a valid own sprite
+PASS: Exploder UL Death resolves a valid own sprite
+PASS: Exploder UL Burst resolves a valid own sprite
+PASS: Exploder L plays all 8 unique own walk frames
+PASS: Exploder L Idle resolves a valid own sprite
+PASS: Exploder L Warning resolves a valid own sprite
+PASS: Exploder L Death resolves a valid own sprite
+PASS: Exploder L Burst resolves a valid own sprite
+PASS: Exploder DL plays all 8 unique own walk frames
+PASS: Exploder DL Idle resolves a valid own sprite
+PASS: Exploder DL Warning resolves a valid own sprite
+PASS: Exploder DL Death resolves a valid own sprite
+PASS: Exploder DL Burst resolves a valid own sprite
+PASS: Exploder all visual states preserve collision root scale / rotation / collider
+PASS: Pool spawn Exploder
+PASS: Pool spawn Exploder
+PASS: Pool spawn Exploder
+PASS: Exploder hit death selects collapse, never rupture
+PASS: Exploder collapse fades while alive in pool accounting, without explosion VFX
+PASS: Exploder pause freezes collapse and pool-return timer together
+PASS: Pool spawn Exploder
+PASS: Exploder same-instance reuse clears pose/frame/direction/tint/fade/speed cycle 0
+PASS: Exploder old death callback cannot affect next life cycle 0
+PASS: Exploder hit death selects collapse, never rupture
+PASS: Exploder collapse fades while alive in pool accounting, without explosion VFX
+PASS: Pool spawn Exploder
+PASS: Exploder same-instance reuse clears pose/frame/direction/tint/fade/speed cycle 1
+PASS: Exploder old death callback cannot affect next life cycle 1
+PASS: Exploder hit death selects collapse, never rupture
+PASS: Exploder collapse fades while alive in pool accounting, without explosion VFX
+PASS: Pool spawn Exploder
+PASS: Exploder same-instance reuse clears pose/frame/direction/tint/fade/speed cycle 2
+PASS: Exploder old death callback cannot affect next life cycle 2
+PASS: Pool spawn Support
+PASS: Pool spawn Normal
+PASS: Real aura acquisition opens authored organs
+PASS: Stationary aura sustains authored pulse without changing gameplay
+PASS: Moving aura uses active four-foot gait instead of sliding cast pose
+PASS: Lost target immediately clears lease and plays closing organs
+PASS: Closing returns to idle
+PASS: Pool spawn Exploder
+PASS: Real warning selects charge art and visible damage circle only
+PASS: Pause freezes warning countdown and authored charge frame together
+PASS: Half speed advances warning and sampled charge by scaled time
+PASS: Killing a charging enemy closes warning and plays nonexplosive collapse
+PASS: Pool spawn Exploder
+PASS: Committed detonation plays directional rupture and bounded radial VFX together
+PASS: Recorded real warning/rupture/disappearance grants one reward and clears every effect
+PASS: Animation preview uses the real bounded enemy pool
+PASS: Disabled abilities leave no range or explosion in body preview
+PASS: Leaving preview restores real abilities on reused pooled objects
 PASS: Boss probe uses a pool with both new types registered
 PASS: Boss prepares an actual native summon plan
 PASS: Boss plan retains original four-type whitelist
