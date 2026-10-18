@@ -26,6 +26,7 @@ public class WeaponManager : MonoBehaviour
 
 
     private PlayerWeaponModifiers weaponModifiers;
+    private PlayerCombatPresentation combatPresentation;
 
 
     // =========================================================
@@ -59,6 +60,7 @@ public class WeaponManager : MonoBehaviour
 
     private void Awake()
     {
+        combatPresentation = GetComponent<PlayerCombatPresentation>();
         weaponModifiers =
             GetComponent<PlayerWeaponModifiers>();
 
@@ -91,6 +93,11 @@ public class WeaponManager : MonoBehaviour
             return;
         }
 
+        if (combatPresentation != null && combatPresentation.isActiveAndEnabled)
+        {
+            combatPresentation.PrepareAim(currentWeapon, worldPosition);
+            return;
+        }
         currentWeapon.AimAt(
             worldPosition
         );

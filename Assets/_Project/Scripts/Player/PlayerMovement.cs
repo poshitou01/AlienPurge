@@ -2,7 +2,7 @@ using UnityEngine;
 
 [DisallowMultipleComponent]
 [RequireComponent(typeof(Rigidbody2D))]
-public class PlayerMovement : MonoBehaviour
+public partial class PlayerMovement : MonoBehaviour
 {
     [Header("Movement Settings")]
     [SerializeField] private float moveSpeed = 5f;
@@ -43,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        if (tacticalLocomotion) { ReadTacticalInput(); return; }
         if (!canMove
             || UpgradeManager.IsChoosingUpgrade)
         {
@@ -74,6 +75,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (tacticalLocomotion) { StepTacticalMovement(); return; }
         if (!canMove
             || UpgradeManager.IsChoosingUpgrade)
         {
@@ -97,6 +99,7 @@ public class PlayerMovement : MonoBehaviour
     public void SetCanMove(bool value)
     {
         canMove = value;
+        if (tacticalLocomotion && !value) ResetMotor();
 
         if (!canMove)
         {

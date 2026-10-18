@@ -160,7 +160,8 @@ namespace AlienPurge.Level01.Editor
             if(faceResult!=UnityEngine.TextCore.LowLevel.FontEngineError.Success)
                 throw new InvalidOperationException("Chinese source font load failed: "+faceResult+" source="+(chinese.sourceFontFile==null?"null":chinese.sourceFontFile.name));
             string characters=string.Concat(Directory.GetFiles("Assets/_Project/Scripts/Level01/RegionLoop","*.cs").Select(File.ReadAllText))+
-                File.ReadAllText("Assets/_Project/Editor/Level01/RegionLoopV02Installer.Polish.cs");
+                File.ReadAllText("Assets/_Project/Editor/Level01/RegionLoopV02Installer.Polish.cs")+
+                File.ReadAllText("Assets/_Project/Editor/Level01/RegionLoopV02Installer.Player.cs")+"生命经验等级剩余用时击杀";
             characters=new string(characters.Where(c=>c>127).Distinct().ToArray());
             // TMP 3.0.7 returns false when the entire requested set is already present.
             string pending=new string(characters.Where(c=>!chinese.HasCharacter(c)).ToArray());

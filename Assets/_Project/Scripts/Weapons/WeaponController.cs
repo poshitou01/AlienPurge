@@ -238,6 +238,9 @@ public class WeaponController : MonoBehaviour
     // Unity Lifecycle
     // =========================================================
 
+    [SerializeField] private bool useScaledFeedbackTime;
+    private float FeedbackTime => useScaledFeedbackTime ? Time.time : Time.unscaledTime;
+
     private void Awake()
     {
         baseLocalPosition =
@@ -1122,7 +1125,7 @@ public class WeaponController : MonoBehaviour
 
 
         muzzleFlashHideTime =
-            Time.unscaledTime
+            FeedbackTime
             + muzzleFlashDuration;
     }
 
@@ -1158,7 +1161,7 @@ public class WeaponController : MonoBehaviour
         }
 
 
-        if (Time.unscaledTime
+        if (FeedbackTime
             < muzzleFlashHideTime)
         {
             return;
@@ -1180,7 +1183,7 @@ public class WeaponController : MonoBehaviour
 
 
         recoilElapsed +=
-            Time.unscaledDeltaTime;
+            (useScaledFeedbackTime ? Time.deltaTime : Time.unscaledDeltaTime);
 
 
         float t =

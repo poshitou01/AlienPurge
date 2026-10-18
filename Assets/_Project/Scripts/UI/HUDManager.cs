@@ -23,6 +23,8 @@ public class HUDManager : MonoBehaviour
     [Header("Kill Count UI")]
     [SerializeField] private TMP_Text killCountText;
 
+    [SerializeField] private bool tacticalLabels;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -38,7 +40,7 @@ public class HUDManager : MonoBehaviour
     {
         if (hpText != null)
         {
-            hpText.text = "HP: " + currentHealth + " / " + maxHealth;
+            hpText.text = (tacticalLabels ? "\u751f\u547d  " : "HP: ") + currentHealth + " / " + maxHealth;
         }
 
         if (hpSlider != null)
@@ -52,7 +54,7 @@ public class HUDManager : MonoBehaviour
     {
         if (expText != null)
         {
-            expText.text = "EXP: " + currentExperience + " / " + experienceToNextLevel;
+            expText.text = (tacticalLabels ? "\u7ecf\u9a8c  " : "EXP: ") + currentExperience + " / " + experienceToNextLevel;
         }
 
         if (expSlider != null)
@@ -66,7 +68,7 @@ public class HUDManager : MonoBehaviour
     {
         if (levelText != null)
         {
-            levelText.text = "Level: " + currentLevel;
+            levelText.text = (tacticalLabels ? "\u7b49\u7ea7  " : "Level: ") + currentLevel;
         }
     }
 
@@ -80,11 +82,11 @@ public class HUDManager : MonoBehaviour
         if (showRemainingTime)
         {
             float remainingTime = Mathf.Max(0f, targetSurvivalTime - survivalTime);
-            timeText.text = "Time Left: " + FormatTime(remainingTime);
+            timeText.text = (tacticalLabels ? "\u5269\u4f59  " : "Time Left: ") + FormatTime(remainingTime);
         }
         else
         {
-            timeText.text = "Time: " + FormatTime(survivalTime);
+            timeText.text = (tacticalLabels ? "\u7528\u65f6  " : "Time: ") + FormatTime(survivalTime);
         }
     }
 
@@ -92,7 +94,7 @@ public class HUDManager : MonoBehaviour
     {
         if (killCountText != null)
         {
-            killCountText.text = "Kills: " + killCount;
+            killCountText.text = (tacticalLabels ? "\u51fb\u6740  " : "Kills: ") + killCount;
         }
     }
 

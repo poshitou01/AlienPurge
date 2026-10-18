@@ -1,6 +1,6 @@
 # Level01 Region Loop V02 — 试玩反馈修订
 
-最新升级：冲刺、跳跃、Q 脉冲及 `MainMenu_DeskV1` 往返已继续修订，见 [AbilityFeel.md](AbilityFeel.md) 和 `AbilityChecks.txt`。后期敌人成长、技能栏、任务面板与结算界面的说明见 [CombatUI.md](CombatUI.md) 和 `CombatUIChecks.txt`。下文保留早期交付记录；其中 UI 外观、后段人口上限及菜单入口由新修订替代。
+最新升级：左上状态栏、玩家移动与八方向持枪已安装，见 [PlayerHandling.md](PlayerHandling.md) 和 `PlayerChecks.txt`。冲刺、跳跃、Q 脉冲及 `MainMenu_DeskV1` 往返见 [AbilityFeel.md](AbilityFeel.md)；后期敌人成长、技能栏、任务面板与结算界面见 [CombatUI.md](CombatUI.md)。下文保留早期交付记录；UI 外观、后段人口上限及菜单入口以这些修订为准。
 
 工程：`D:\AlienPurge_RegionLoopV01`；分支：`feature/level01-region-loop-v02`；Unity 2022.3.62f3c1。本轮继续修改现有 V02，没有创建第二套玩法系统。
 

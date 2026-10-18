@@ -1,0 +1,50 @@
+PASS | Unity 2022.3.62f3c1 | 2026-10-18 10:34:21Z
+PASS: Player checks use an isolated profile
+PASS: V02 installs a single aim-facing presentation driver
+PASS: All eight held poses and the continuous stride material are assigned
+PASS: A held stance is initialized before the first mouse aim
+PASS: Movement responds in the first physics steps
+PASS: Short acceleration reaches the original upgradeable top speed
+PASS: Strafing keeps the body facing the aim direction
+PASS: Reversing direction does not wait for inertia to turn
+PASS: Diagonal movement cannot exceed straight-line top speed
+PASS: Releasing movement stops within a short bounded distance
+PASS: Ability movement locks clear the motor without coasting
+PASS: Pause clears pending movement and motor state
+PASS: Walking respects thin Environment walls and slides along them
+PASS: Status labels use scene-local Chinese formatting
+PASS: The restyled health bar and text follow real damage
+PASS: Status presentation cannot block aiming or clicking
+PASS: Status uses the same inventory panel art as the mission and ability HUD
+PASS: Aim chooses the correct body direction E
+PASS: Neutral weapon grip stays at the palm E
+PASS: Aim chooses the correct body direction NE
+PASS: Neutral weapon grip stays at the palm NE
+PASS: Aim chooses the correct body direction N
+PASS: Neutral weapon grip stays at the palm N
+PASS: Aim chooses the correct body direction NW
+PASS: Neutral weapon grip stays at the palm NW
+PASS: Aim chooses the correct body direction W
+PASS: Neutral weapon grip stays at the palm W
+PASS: Aim chooses the correct body direction SW
+PASS: Neutral weapon grip stays at the palm SW
+PASS: Aim chooses the correct body direction S
+PASS: Neutral weapon grip stays at the palm S
+PASS: Aim chooses the correct body direction SE
+PASS: Neutral weapon grip stays at the palm SE
+PASS: Physical walking drives a continuous leg gait while the upper body holds the gun
+PASS: Direction hysteresis prevents flicker at an eight-way boundary
+PASS: Cursor inside the body does not snap the stance
+PASS: Held weapon fires through the native pool
+PASS: The muzzle remains ahead of the hand after rescaling
+PASS: Pause freezes the held gun's native recoil
+PASS: A native bullet from the attached gun hits and damages its target
+PASS: Evolution keeps its own calibrated grip: ThunderPiercer
+PASS: Evolution keeps its own calibrated grip: ClusterBurst
+PASS: Dash starts directly from the new walking motor
+PASS: Walking resumes after Dash releases its movement lock
+PASS: Jump still responds immediately while strafing
+PASS: Airborne movement and the entire held weapon lift together
+PASS: Disabling movement clears drift
+PASS: Death clears movement while native defeat UI remains available
+LIMITS: deterministic native Play Mode inputs, collision/aim/HUD assertions and eight close-up renders; not a substitute for subjective mouse-and-keyboard feel testing.

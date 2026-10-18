@@ -169,6 +169,7 @@ namespace AlienPurge.Level01.Editor
             RegionLoopInstaller.CloneSceneFonts(scene, DataFolder + "/Fonts");
             ConfigurePolish(scene, loop);
             ConfigureAbilities(scene);
+            ConfigurePlayer(scene);
             PrepareChineseFonts(scene);
             loop.feedbackRevision = 3;
             EditorSceneManager.MarkSceneDirty(scene);
@@ -435,6 +436,7 @@ namespace AlienPurge.Level01.Editor
             if (c.polishRevision < 1 && File.ReadAllText(Reports + "/NativeHudStyle.txt") != HudStyle(scene)) errors.Add("Native MissionHUD appearance/layout differs from V01 source");
             ValidatePolish(scene,errors);
             ValidateAbilities(scene,errors);
+            ValidatePlayer(scene,errors);
             foreach(var t in All<Transform>(scene))if(GameObjectUtility.GetMonoBehavioursWithMissingScriptCount(t.gameObject)>0)errors.Add("Missing script "+t.name);
             if(!c.v02Enabled||c.v02InstallationId!=Owner||c.world.progression.regionLoop!=c)errors.Add("V02 authority missing");
             if(!c.storm.regionDriven||!c.fog.regionDriven||!c.extraction.regionDriven||!c.missionView.regionDriven||!c.rewards.modules.eventDrivenEvolution||!c.rewards.modules.regionDriven||All<EnemySpawner>(scene).Any(s=>!s.regionDriven))errors.Add("Double/legacy scheduling");

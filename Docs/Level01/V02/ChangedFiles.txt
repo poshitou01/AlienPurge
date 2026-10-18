@@ -1,38 +1,41 @@
 Level01 Region Loop V02 - files relative to D:\AlienPurge_RegionLoopV01
 Protected baseline: 35775fbfaa9a64671c4556811fe6ae37061508f1
-Ability / menu refinement based on: d0a7689
-Current refinement delta: 39 files
-Authorized protected-asset exception: MainMenu_DeskV1.unity StartGame destination only.
+Player / HUD refinement based on: 1e73b8c
+Current refinement delta: 54 files
+Authorized protected-asset exception retained: MainMenu_DeskV1.unity StartGame destination only.
 
 Current refinement:
-Assets/_Project/Data/Level01/RegionLoopV02/PlayerAbilityFeedback.mat
-Assets/_Project/Data/Level01/RegionLoopV02/PlayerAbilityFeedback.mat.meta
-Assets/_Project/Editor/Level01/RegionLoopV02Installer.Abilities.cs
-Assets/_Project/Editor/Level01/RegionLoopV02Installer.Abilities.cs.meta
+Assets/_Project/Data/Level01/RegionLoopV02/Fonts/4f5aafd1a68bbe647b1590a00fb56992.asset
+Assets/_Project/Data/Level01/RegionLoopV02/PlayerHeldStride.mat
+Assets/_Project/Data/Level01/RegionLoopV02/PlayerHeldStride.mat.meta
 Assets/_Project/Editor/Level01/RegionLoopV02Installer.cs
-Assets/_Project/Editor/Level01/RegionLoopV02Regression.Abilities.cs
-Assets/_Project/Editor/Level01/RegionLoopV02Regression.Abilities.cs.meta
+Assets/_Project/Editor/Level01/RegionLoopV02Installer.Feedback.cs
+Assets/_Project/Editor/Level01/RegionLoopV02Installer.Player.cs
+Assets/_Project/Editor/Level01/RegionLoopV02Installer.Player.cs.meta
 Assets/_Project/Editor/Level01/RegionLoopV02Regression.cs
+Assets/_Project/Editor/Level01/RegionLoopV02Regression.Player.cs
+Assets/_Project/Editor/Level01/RegionLoopV02Regression.Player.cs.meta
 Assets/_Project/Scenes/ArtTests/Level01_FullWorld_GameplayV02.unity
-Assets/_Project/Scenes/MainMenu_DeskV1.unity
-Assets/_Project/Scripts/Audio/AudioManager.cs
-Assets/_Project/Scripts/Enemy/EnemyContactDamage.cs
-Assets/_Project/Scripts/Enemy/FastChargeAttack.cs
-Assets/_Project/Scripts/Player/Abilities/PlayerAbilities.Responsive.cs
-Assets/_Project/Scripts/Player/Abilities/PlayerAbilities.Responsive.cs.meta
-Assets/_Project/Scripts/Player/Abilities/PlayerAbilityFeel.cs
-Assets/_Project/Scripts/Player/Abilities/PlayerAbilityFeel.cs.meta
-Assets/_Project/Scripts/Player/Abilities/PlayerAbilityFeel.Feedback.cs
-Assets/_Project/Scripts/Player/Abilities/PlayerAbilityFeel.Feedback.cs.meta
-Assets/_Project/Scripts/Player/Abilities/PlayerDash.cs
-Assets/_Project/Scripts/Player/Abilities/PlayerJetJump.cs
-Assets/_Project/Scripts/Player/Abilities/PlayerPulseSkill.cs
-Assets/_Project/Scripts/Player/PlayerHealth.cs
+Assets/_Project/Scripts/Level01/RegionLoop/PlayerStatusPanel.cs
+Assets/_Project/Scripts/Level01/RegionLoop/PlayerStatusPanel.cs.meta
+Assets/_Project/Scripts/Player/PlayerMovement.cs
+Assets/_Project/Scripts/Player/PlayerMovement.Tactical.cs
+Assets/_Project/Scripts/Player/PlayerMovement.Tactical.cs.meta
+Assets/_Project/Scripts/Player/Visual/PlayerCombatPresentation.cs
+Assets/_Project/Scripts/Player/Visual/PlayerCombatPresentation.cs.meta
+Assets/_Project/Scripts/Player/Visual/PlayerCombatPresentation.Hands.cs
+Assets/_Project/Scripts/Player/Visual/PlayerCombatPresentation.Hands.cs.meta
+Assets/_Project/Scripts/Player/Visual/PlayerCombatPresentation.Stride.cs
+Assets/_Project/Scripts/Player/Visual/PlayerCombatPresentation.Stride.cs.meta
+Assets/_Project/Scripts/Player/Visual/PlayerHeldStride.shader
+Assets/_Project/Scripts/Player/Visual/PlayerHeldStride.shader.meta
+Assets/_Project/Scripts/UI/HUDManager.cs
+Assets/_Project/Scripts/Weapons/WeaponController.cs
+Assets/_Project/Scripts/Weapons/WeaponManager.cs
 Docs/Level01/V02/Abilities_Dash.png
 Docs/Level01/V02/Abilities_Jump.png
 Docs/Level01/V02/Abilities_Pulse.png
 Docs/Level01/V02/AbilityChecks.txt
-Docs/Level01/V02/AbilityFeel.md
 Docs/Level01/V02/ChangedFiles.txt
 Docs/Level01/V02/CombatUIChecks.txt
 Docs/Level01/V02/Delivery.md
@@ -40,13 +43,24 @@ Docs/Level01/V02/Evolution_ThunderPiercer.png
 Docs/Level01/V02/Feedback_Extraction.png
 Docs/Level01/V02/Feedback_Quarantine.png
 Docs/Level01/V02/Feedback_StormDefense.png
+Docs/Level01/V02/Player_Pose_E.png
+Docs/Level01/V02/Player_Pose_N.png
+Docs/Level01/V02/Player_Pose_NE.png
+Docs/Level01/V02/Player_Pose_NW.png
+Docs/Level01/V02/Player_Pose_S.png
+Docs/Level01/V02/Player_Pose_SE.png
+Docs/Level01/V02/Player_Pose_SW.png
+Docs/Level01/V02/Player_Pose_W.png
+Docs/Level01/V02/Player_StatusHUD.png
+Docs/Level01/V02/Player_Walking_E.png
+Docs/Level01/V02/Player_Walking_S.png
+Docs/Level01/V02/PlayerChecks.txt
+Docs/Level01/V02/PlayerHandling.md
 Docs/Level01/V02/Polish_CombatHUD.png
 Docs/Level01/V02/Polish_Defeat.png
 Docs/Level01/V02/Polish_Victory.png
-ProjectSettings/EditorBuildSettings.asset
 
-Cumulative V02 delta from original protected baseline: 177 files
-
+Cumulative changed / added files relative to protected baseline:
 Assets/_Project/Data/Level01/RegionLoopV02.meta
 Assets/_Project/Data/Level01/RegionLoopV02/CargoYard.asset
 Assets/_Project/Data/Level01/RegionLoopV02/CargoYard.asset.meta
@@ -90,6 +104,8 @@ Assets/_Project/Data/Level01/RegionLoopV02/MAT_ToxicFog_Mist_V02.mat
 Assets/_Project/Data/Level01/RegionLoopV02/MAT_ToxicFog_Mist_V02.mat.meta
 Assets/_Project/Data/Level01/RegionLoopV02/PlayerAbilityFeedback.mat
 Assets/_Project/Data/Level01/RegionLoopV02/PlayerAbilityFeedback.mat.meta
+Assets/_Project/Data/Level01/RegionLoopV02/PlayerHeldStride.mat
+Assets/_Project/Data/Level01/RegionLoopV02/PlayerHeldStride.mat.meta
 Assets/_Project/Data/Level01/RegionLoopV02/PowerMaintenance.asset
 Assets/_Project/Data/Level01/RegionLoopV02/PowerMaintenance.asset.meta
 Assets/_Project/Data/Level01/RegionLoopV02/QuarantineCommons.asset
@@ -103,6 +119,8 @@ Assets/_Project/Editor/Level01/RegionLoopV02Installer.cs
 Assets/_Project/Editor/Level01/RegionLoopV02Installer.cs.meta
 Assets/_Project/Editor/Level01/RegionLoopV02Installer.Feedback.cs
 Assets/_Project/Editor/Level01/RegionLoopV02Installer.Feedback.cs.meta
+Assets/_Project/Editor/Level01/RegionLoopV02Installer.Player.cs
+Assets/_Project/Editor/Level01/RegionLoopV02Installer.Player.cs.meta
 Assets/_Project/Editor/Level01/RegionLoopV02Installer.Polish.cs
 Assets/_Project/Editor/Level01/RegionLoopV02Installer.Polish.cs.meta
 Assets/_Project/Editor/Level01/RegionLoopV02LegacyAudit.cs
@@ -113,6 +131,8 @@ Assets/_Project/Editor/Level01/RegionLoopV02Regression.cs
 Assets/_Project/Editor/Level01/RegionLoopV02Regression.cs.meta
 Assets/_Project/Editor/Level01/RegionLoopV02Regression.Feedback.cs
 Assets/_Project/Editor/Level01/RegionLoopV02Regression.Feedback.cs.meta
+Assets/_Project/Editor/Level01/RegionLoopV02Regression.Player.cs
+Assets/_Project/Editor/Level01/RegionLoopV02Regression.Player.cs.meta
 Assets/_Project/Editor/Level01/RegionLoopV02Regression.Polish.cs
 Assets/_Project/Editor/Level01/RegionLoopV02Regression.Polish.cs.meta
 Assets/_Project/Scenes/ArtTests/Level01_FullWorld_GameplayV02.unity
@@ -126,6 +146,8 @@ Assets/_Project/Scripts/Environment/SafeZoneController.cs
 Assets/_Project/Scripts/Environment/ToxicFogRouteController.cs
 Assets/_Project/Scripts/Extraction/ExtractionController.cs
 Assets/_Project/Scripts/Interaction/InteractableBase.cs
+Assets/_Project/Scripts/Level01/RegionLoop/PlayerStatusPanel.cs
+Assets/_Project/Scripts/Level01/RegionLoop/PlayerStatusPanel.cs.meta
 Assets/_Project/Scripts/Level01/RegionLoop/RegionAnchor.cs
 Assets/_Project/Scripts/Level01/RegionLoop/RegionDefinition.cs
 Assets/_Project/Scripts/Level01/RegionLoop/RegionEnemyLease.cs
@@ -173,11 +195,25 @@ Assets/_Project/Scripts/Player/Abilities/PlayerDash.cs
 Assets/_Project/Scripts/Player/Abilities/PlayerJetJump.cs
 Assets/_Project/Scripts/Player/Abilities/PlayerPulseSkill.cs
 Assets/_Project/Scripts/Player/PlayerHealth.cs
+Assets/_Project/Scripts/Player/PlayerMovement.cs
+Assets/_Project/Scripts/Player/PlayerMovement.Tactical.cs
+Assets/_Project/Scripts/Player/PlayerMovement.Tactical.cs.meta
+Assets/_Project/Scripts/Player/Visual/PlayerCombatPresentation.cs
+Assets/_Project/Scripts/Player/Visual/PlayerCombatPresentation.cs.meta
+Assets/_Project/Scripts/Player/Visual/PlayerCombatPresentation.Hands.cs
+Assets/_Project/Scripts/Player/Visual/PlayerCombatPresentation.Hands.cs.meta
+Assets/_Project/Scripts/Player/Visual/PlayerCombatPresentation.Stride.cs
+Assets/_Project/Scripts/Player/Visual/PlayerCombatPresentation.Stride.cs.meta
+Assets/_Project/Scripts/Player/Visual/PlayerHeldStride.shader
+Assets/_Project/Scripts/Player/Visual/PlayerHeldStride.shader.meta
 Assets/_Project/Scripts/Player/Weapons/PlayerWeaponModifiers.cs
+Assets/_Project/Scripts/UI/HUDManager.cs
 Assets/_Project/Scripts/UI/MissionHUD.cs
 Assets/_Project/Scripts/UI/ToxicFogFeedbackHUD.cs
 Assets/_Project/Scripts/UI/WeaponEvolutionRevealUI.cs
 Assets/_Project/Scripts/Upgrades/Modules/WeaponModuleSelectionManager.cs
+Assets/_Project/Scripts/Weapons/WeaponController.cs
+Assets/_Project/Scripts/Weapons/WeaponManager.cs
 Assets/AlienPurge/Level01ConnectedV01/Runtime/L01SafeZoneBridge.cs
 Docs/Level01/V02/Abilities_Dash.png
 Docs/Level01/V02/Abilities_Jump.png
@@ -208,6 +244,19 @@ Docs/Level01/V02/LegacyPlayMode.txt
 Docs/Level01/V02/NativeHudStyle.txt
 Docs/Level01/V02/Optional_Preview.png
 Docs/Level01/V02/Ordinary_Search_Window.png
+Docs/Level01/V02/Player_Pose_E.png
+Docs/Level01/V02/Player_Pose_N.png
+Docs/Level01/V02/Player_Pose_NE.png
+Docs/Level01/V02/Player_Pose_NW.png
+Docs/Level01/V02/Player_Pose_S.png
+Docs/Level01/V02/Player_Pose_SE.png
+Docs/Level01/V02/Player_Pose_SW.png
+Docs/Level01/V02/Player_Pose_W.png
+Docs/Level01/V02/Player_StatusHUD.png
+Docs/Level01/V02/Player_Walking_E.png
+Docs/Level01/V02/Player_Walking_S.png
+Docs/Level01/V02/PlayerChecks.txt
+Docs/Level01/V02/PlayerHandling.md
 Docs/Level01/V02/PlayMode.txt
 Docs/Level01/V02/Polish_CombatHUD.png
 Docs/Level01/V02/Polish_Defeat.png
