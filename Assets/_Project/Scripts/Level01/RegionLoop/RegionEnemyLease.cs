@@ -33,12 +33,12 @@ namespace AlienPurge.Level01.RegionLoop
             movement = GetComponent<EnemyMovement>(); contact = GetComponent<EnemyContactDamage>();
             navigator = GetComponent<EnemyPathNavigator>(); origin = transform.position;
             definition = GetComponent<EnemyDefinition>();
-            attacks = new Behaviour[] { GetComponent<FastChargeAttack>(), GetComponent<HeavyShockwaveAttack>(), GetComponent<RangedEnemyAttack>() };
+            attacks = new Behaviour[] { GetComponent<FastChargeAttack>(), GetComponent<HeavyShockwaveAttack>(), GetComponent<RangedEnemyAttack>(), GetComponent<SupportEnemyAbility>(), GetComponent<ExploderEnemyAbility>() };
             attackEnabled = new bool[attacks.Length];
             for (int i = 0; i < attacks.Length; i++) attackEnabled[i] = attacks[i] != null && attacks[i].enabled;
             bound = true; priorNavigatorEnabled = navigator != null && navigator.enabled;
             priorHealth = Health.MaxHealth; priorExp = Health.ExperienceAmount;
-            priorSpeed = movement.MoveSpeed; priorDamage = contact.Damage;
+            priorSpeed = movement.MoveSpeed; priorDamage = contact.BaseDamage;
             var profile = region.config.Profile(ticket.type);
             var stats = controller.CombatStats(region, ticket);
             definition.InitializeInstanceAttributes(stats.health, stats.speed, stats.damage, profile.experience);

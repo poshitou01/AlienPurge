@@ -1,0 +1,7 @@
+PASS
+Source=Assets/_Project/Scenes/ArtTests/Level01_FullWorld_GameplayV02.unity
+Source SHA256=c475656bffc79b20fb9254b1008b495a076c6c2ea5880d149d03f46ba737803d
+Target=Assets/_Project/Scenes/ArtTests/Level01_FullWorld_IntegratedV01.unity
+First install=False
+Original scene files unchanged=28
+Transforms/colliders/sorting unchanged. Reinstall preserves tuning and authored geometry.

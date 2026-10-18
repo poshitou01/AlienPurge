@@ -20,6 +20,7 @@ namespace AlienPurge.Level01.RegionLoop
     public sealed class RegionV02Settings
     {
         public RegionWave[] environmentSquads = Array.Empty<RegionWave>();
+        public bool weightedEnvironmentSquads;
         public bool extractionRegion;
         [Min(1)] public float environmentInterval = 12, searchSeconds = 12, preloadDistance = 32;
         [Min(0)] public int pressureLowWatermark = 2, missionCapacityReserve = 6;

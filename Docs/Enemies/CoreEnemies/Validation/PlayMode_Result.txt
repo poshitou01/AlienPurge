@@ -1,0 +1,413 @@
+Unity 2022.3.62f3c1 / real Editor Play Mode / Direct3D11
+PASS: Repeated configure leaves one native manager / pool / lab
+PASS: Independent lab excludes other test controllers and Boss encounter
+PASS: Native pool spawn Normal
+PASS: Swarmer native hit visibly brightens the authored sprite
+PASS: Swarmer native hit flash restores tint
+PASS: Swarmer native movement selects D
+PASS: Swarmer native movement selects DR
+PASS: Swarmer native movement selects R
+PASS: Swarmer native movement selects UR
+PASS: Swarmer native movement selects U
+PASS: Swarmer native movement selects UL
+PASS: Swarmer native movement selects L
+PASS: Swarmer native movement selects DL
+PASS: Swarmer stopped movement returns to idle and retains facing
+PASS: Swarmer D plays eight own walk frames
+PASS: Swarmer Idle D has own directional frames
+PASS: Swarmer Death D has own directional frames
+PASS: Swarmer DR plays eight own walk frames
+PASS: Swarmer Idle DR has own directional frames
+PASS: Swarmer Death DR has own directional frames
+PASS: Swarmer R plays eight own walk frames
+PASS: Swarmer Idle R has own directional frames
+PASS: Swarmer Death R has own directional frames
+PASS: Swarmer UR plays eight own walk frames
+PASS: Swarmer Idle UR has own directional frames
+PASS: Swarmer Death UR has own directional frames
+PASS: Swarmer U plays eight own walk frames
+PASS: Swarmer Idle U has own directional frames
+PASS: Swarmer Death U has own directional frames
+PASS: Swarmer UL plays eight own walk frames
+PASS: Swarmer Idle UL has own directional frames
+PASS: Swarmer Death UL has own directional frames
+PASS: Swarmer L plays eight own walk frames
+PASS: Swarmer Idle L has own directional frames
+PASS: Swarmer Death L has own directional frames
+PASS: Swarmer DL plays eight own walk frames
+PASS: Swarmer Idle DL has own directional frames
+PASS: Swarmer Death DL has own directional frames
+PASS: Swarmer all animations preserve root scale / rotation / collider
+PASS: Native pool spawn Normal
+PASS: Native pool spawn Normal
+PASS: Native pool spawn Normal
+PASS: Native pool spawn Normal
+PASS: Normal repeated lethal hit gives one kill and XP orb, cycle 0
+PASS: Normal collapse fades before native pool return, cycle 0
+PASS: Normal pause freezes collapse and return together
+PASS: Native pool spawn Normal
+PASS: Normal same instance resets pose / direction / alpha / speed, cycle 0
+PASS: Normal previous life cannot damage/recycle/reward next life, cycle 0
+PASS: Normal repeated lethal hit gives one kill and XP orb, cycle 1
+PASS: Normal collapse fades before native pool return, cycle 1
+PASS: Normal native death routine returns the object
+PASS: Native pool spawn Normal
+PASS: Normal same instance resets pose / direction / alpha / speed, cycle 1
+PASS: Normal previous life cannot damage/recycle/reward next life, cycle 1
+PASS: Normal repeated lethal hit gives one kill and XP orb, cycle 2
+PASS: Normal collapse fades before native pool return, cycle 2
+PASS: Normal native death routine returns the object
+PASS: Native pool spawn Normal
+PASS: Normal same instance resets pose / direction / alpha / speed, cycle 2
+PASS: Normal previous life cannot damage/recycle/reward next life, cycle 2
+PASS: Native pool spawn Normal
+PASS: Normal obtains a native A* path and physically moves around cover
+PASS: Normal collision guard keeps body outside environment
+PASS: Native pool spawn Normal
+PASS: Normal native weapon fires a pooled bullet
+PASS: Normal native bullet physics damages the existing collider
+PASS: Normal actual XP pickup collects death reward
+PASS: Native pool spawn Fast
+PASS: Rusher native hit visibly brightens the authored sprite
+PASS: Rusher native hit flash restores tint
+PASS: Rusher native movement selects D
+PASS: Rusher native movement selects DR
+PASS: Rusher native movement selects R
+PASS: Rusher native movement selects UR
+PASS: Rusher native movement selects U
+PASS: Rusher native movement selects UL
+PASS: Rusher native movement selects L
+PASS: Rusher native movement selects DL
+PASS: Rusher stopped movement returns to idle and retains facing
+PASS: Rusher D plays eight own walk frames
+PASS: Rusher Idle D has own directional frames
+PASS: Rusher Windup D has own directional frames
+PASS: Rusher Attack D has own directional frames
+PASS: Rusher Recover D has own directional frames
+PASS: Rusher Death D has own directional frames
+PASS: Rusher DR plays eight own walk frames
+PASS: Rusher Idle DR has own directional frames
+PASS: Rusher Windup DR has own directional frames
+PASS: Rusher Attack DR has own directional frames
+PASS: Rusher Recover DR has own directional frames
+PASS: Rusher Death DR has own directional frames
+PASS: Rusher R plays eight own walk frames
+PASS: Rusher Idle R has own directional frames
+PASS: Rusher Windup R has own directional frames
+PASS: Rusher Attack R has own directional frames
+PASS: Rusher Recover R has own directional frames
+PASS: Rusher Death R has own directional frames
+PASS: Rusher UR plays eight own walk frames
+PASS: Rusher Idle UR has own directional frames
+PASS: Rusher Windup UR has own directional frames
+PASS: Rusher Attack UR has own directional frames
+PASS: Rusher Recover UR has own directional frames
+PASS: Rusher Death UR has own directional frames
+PASS: Rusher U plays eight own walk frames
+PASS: Rusher Idle U has own directional frames
+PASS: Rusher Windup U has own directional frames
+PASS: Rusher Attack U has own directional frames
+PASS: Rusher Recover U has own directional frames
+PASS: Rusher Death U has own directional frames
+PASS: Rusher UL plays eight own walk frames
+PASS: Rusher Idle UL has own directional frames
+PASS: Rusher Windup UL has own directional frames
+PASS: Rusher Attack UL has own directional frames
+PASS: Rusher Recover UL has own directional frames
+PASS: Rusher Death UL has own directional frames
+PASS: Rusher L plays eight own walk frames
+PASS: Rusher Idle L has own directional frames
+PASS: Rusher Windup L has own directional frames
+PASS: Rusher Attack L has own directional frames
+PASS: Rusher Recover L has own directional frames
+PASS: Rusher Death L has own directional frames
+PASS: Rusher DL plays eight own walk frames
+PASS: Rusher Idle DL has own directional frames
+PASS: Rusher Windup DL has own directional frames
+PASS: Rusher Attack DL has own directional frames
+PASS: Rusher Recover DL has own directional frames
+PASS: Rusher Death DL has own directional frames
+PASS: Rusher all animations preserve root scale / rotation / collider
+PASS: Native pool spawn Fast
+PASS: Native pool spawn Fast
+PASS: Fast repeated lethal hit gives one kill and XP orb, cycle 0
+PASS: Fast collapse fades before native pool return, cycle 0
+PASS: Fast pause freezes collapse and return together
+PASS: Native pool spawn Fast
+PASS: Fast same instance resets pose / direction / alpha / speed, cycle 0
+PASS: Fast previous life cannot damage/recycle/reward next life, cycle 0
+PASS: Fast repeated lethal hit gives one kill and XP orb, cycle 1
+PASS: Fast collapse fades before native pool return, cycle 1
+PASS: Fast native death routine returns the object
+PASS: Native pool spawn Fast
+PASS: Fast same instance resets pose / direction / alpha / speed, cycle 1
+PASS: Fast previous life cannot damage/recycle/reward next life, cycle 1
+PASS: Fast repeated lethal hit gives one kill and XP orb, cycle 2
+PASS: Fast collapse fades before native pool return, cycle 2
+PASS: Fast native death routine returns the object
+PASS: Native pool spawn Fast
+PASS: Fast same instance resets pose / direction / alpha / speed, cycle 2
+PASS: Fast previous life cannot damage/recycle/reward next life, cycle 2
+PASS: Native pool spawn Fast
+PASS: Fast obtains a native A* path and physically moves around cover
+PASS: Fast collision guard keeps body outside environment
+PASS: Native pool spawn Fast
+PASS: Fast native weapon fires a pooled bullet
+PASS: Fast native bullet physics damages the existing collider
+PASS: Fast actual XP pickup collects death reward
+PASS: Native pool spawn Heavy
+PASS: Tank native hit visibly brightens the authored sprite
+PASS: Tank native hit flash restores tint
+PASS: Tank native movement selects D
+PASS: Tank native movement selects DR
+PASS: Tank native movement selects R
+PASS: Tank native movement selects UR
+PASS: Tank native movement selects U
+PASS: Tank native movement selects UL
+PASS: Tank native movement selects L
+PASS: Tank native movement selects DL
+PASS: Tank stopped movement returns to idle and retains facing
+PASS: Tank D plays eight own walk frames
+PASS: Tank Idle D has own directional frames
+PASS: Tank Windup D has own directional frames
+PASS: Tank Attack D has own directional frames
+PASS: Tank Recover D has own directional frames
+PASS: Tank Death D has own directional frames
+PASS: Tank DR plays eight own walk frames
+PASS: Tank Idle DR has own directional frames
+PASS: Tank Windup DR has own directional frames
+PASS: Tank Attack DR has own directional frames
+PASS: Tank Recover DR has own directional frames
+PASS: Tank Death DR has own directional frames
+PASS: Tank R plays eight own walk frames
+PASS: Tank Idle R has own directional frames
+PASS: Tank Windup R has own directional frames
+PASS: Tank Attack R has own directional frames
+PASS: Tank Recover R has own directional frames
+PASS: Tank Death R has own directional frames
+PASS: Tank UR plays eight own walk frames
+PASS: Tank Idle UR has own directional frames
+PASS: Tank Windup UR has own directional frames
+PASS: Tank Attack UR has own directional frames
+PASS: Tank Recover UR has own directional frames
+PASS: Tank Death UR has own directional frames
+PASS: Tank U plays eight own walk frames
+PASS: Tank Idle U has own directional frames
+PASS: Tank Windup U has own directional frames
+PASS: Tank Attack U has own directional frames
+PASS: Tank Recover U has own directional frames
+PASS: Tank Death U has own directional frames
+PASS: Tank UL plays eight own walk frames
+PASS: Tank Idle UL has own directional frames
+PASS: Tank Windup UL has own directional frames
+PASS: Tank Attack UL has own directional frames
+PASS: Tank Recover UL has own directional frames
+PASS: Tank Death UL has own directional frames
+PASS: Tank L plays eight own walk frames
+PASS: Tank Idle L has own directional frames
+PASS: Tank Windup L has own directional frames
+PASS: Tank Attack L has own directional frames
+PASS: Tank Recover L has own directional frames
+PASS: Tank Death L has own directional frames
+PASS: Tank DL plays eight own walk frames
+PASS: Tank Idle DL has own directional frames
+PASS: Tank Windup DL has own directional frames
+PASS: Tank Attack DL has own directional frames
+PASS: Tank Recover DL has own directional frames
+PASS: Tank Death DL has own directional frames
+PASS: Tank all animations preserve root scale / rotation / collider
+PASS: Native pool spawn Heavy
+PASS: Native pool spawn Heavy
+PASS: Heavy repeated lethal hit gives one kill and XP orb, cycle 0
+PASS: Heavy collapse fades before native pool return, cycle 0
+PASS: Heavy pause freezes collapse and return together
+PASS: Native pool spawn Heavy
+PASS: Heavy same instance resets pose / direction / alpha / speed, cycle 0
+PASS: Heavy previous life cannot damage/recycle/reward next life, cycle 0
+PASS: Heavy repeated lethal hit gives one kill and XP orb, cycle 1
+PASS: Heavy collapse fades before native pool return, cycle 1
+PASS: Heavy native death routine returns the object
+PASS: Native pool spawn Heavy
+PASS: Heavy same instance resets pose / direction / alpha / speed, cycle 1
+PASS: Heavy previous life cannot damage/recycle/reward next life, cycle 1
+PASS: Heavy repeated lethal hit gives one kill and XP orb, cycle 2
+PASS: Heavy collapse fades before native pool return, cycle 2
+PASS: Heavy native death routine returns the object
+PASS: Native pool spawn Heavy
+PASS: Heavy same instance resets pose / direction / alpha / speed, cycle 2
+PASS: Heavy previous life cannot damage/recycle/reward next life, cycle 2
+PASS: Native pool spawn Heavy
+PASS: Heavy obtains a native A* path and physically moves around cover
+PASS: Heavy collision guard keeps body outside environment
+PASS: Native pool spawn Heavy
+PASS: Heavy native weapon fires a pooled bullet
+PASS: Heavy native bullet physics damages the existing collider
+PASS: Heavy actual XP pickup collects death reward
+PASS: Native pool spawn Ranged
+PASS: Spitter native hit visibly brightens the authored sprite
+PASS: Spitter native hit flash restores tint
+PASS: Spitter native movement selects D
+PASS: Spitter native movement selects DR
+PASS: Spitter native movement selects R
+PASS: Spitter native movement selects UR
+PASS: Spitter native movement selects U
+PASS: Spitter native movement selects UL
+PASS: Spitter native movement selects L
+PASS: Spitter native movement selects DL
+PASS: Spitter stopped movement returns to idle and retains facing
+PASS: Spitter D plays eight own walk frames
+PASS: Spitter Idle D has own directional frames
+PASS: Spitter Windup D has own directional frames
+PASS: Spitter Attack D has own directional frames
+PASS: Spitter Recover D has own directional frames
+PASS: Spitter Death D has own directional frames
+PASS: Spitter DR plays eight own walk frames
+PASS: Spitter Idle DR has own directional frames
+PASS: Spitter Windup DR has own directional frames
+PASS: Spitter Attack DR has own directional frames
+PASS: Spitter Recover DR has own directional frames
+PASS: Spitter Death DR has own directional frames
+PASS: Spitter R plays eight own walk frames
+PASS: Spitter Idle R has own directional frames
+PASS: Spitter Windup R has own directional frames
+PASS: Spitter Attack R has own directional frames
+PASS: Spitter Recover R has own directional frames
+PASS: Spitter Death R has own directional frames
+PASS: Spitter UR plays eight own walk frames
+PASS: Spitter Idle UR has own directional frames
+PASS: Spitter Windup UR has own directional frames
+PASS: Spitter Attack UR has own directional frames
+PASS: Spitter Recover UR has own directional frames
+PASS: Spitter Death UR has own directional frames
+PASS: Spitter U plays eight own walk frames
+PASS: Spitter Idle U has own directional frames
+PASS: Spitter Windup U has own directional frames
+PASS: Spitter Attack U has own directional frames
+PASS: Spitter Recover U has own directional frames
+PASS: Spitter Death U has own directional frames
+PASS: Spitter UL plays eight own walk frames
+PASS: Spitter Idle UL has own directional frames
+PASS: Spitter Windup UL has own directional frames
+PASS: Spitter Attack UL has own directional frames
+PASS: Spitter Recover UL has own directional frames
+PASS: Spitter Death UL has own directional frames
+PASS: Spitter L plays eight own walk frames
+PASS: Spitter Idle L has own directional frames
+PASS: Spitter Windup L has own directional frames
+PASS: Spitter Attack L has own directional frames
+PASS: Spitter Recover L has own directional frames
+PASS: Spitter Death L has own directional frames
+PASS: Spitter DL plays eight own walk frames
+PASS: Spitter Idle DL has own directional frames
+PASS: Spitter Windup DL has own directional frames
+PASS: Spitter Attack DL has own directional frames
+PASS: Spitter Recover DL has own directional frames
+PASS: Spitter Death DL has own directional frames
+PASS: Spitter all animations preserve root scale / rotation / collider
+PASS: Native pool spawn Ranged
+PASS: Native pool spawn Ranged
+PASS: Ranged repeated lethal hit gives one kill and XP orb, cycle 0
+PASS: Ranged collapse fades before native pool return, cycle 0
+PASS: Ranged pause freezes collapse and return together
+PASS: Native pool spawn Ranged
+PASS: Ranged same instance resets pose / direction / alpha / speed, cycle 0
+PASS: Ranged previous life cannot damage/recycle/reward next life, cycle 0
+PASS: Ranged repeated lethal hit gives one kill and XP orb, cycle 1
+PASS: Ranged collapse fades before native pool return, cycle 1
+PASS: Ranged native death routine returns the object
+PASS: Native pool spawn Ranged
+PASS: Ranged same instance resets pose / direction / alpha / speed, cycle 1
+PASS: Ranged previous life cannot damage/recycle/reward next life, cycle 1
+PASS: Ranged repeated lethal hit gives one kill and XP orb, cycle 2
+PASS: Ranged collapse fades before native pool return, cycle 2
+PASS: Ranged native death routine returns the object
+PASS: Native pool spawn Ranged
+PASS: Ranged same instance resets pose / direction / alpha / speed, cycle 2
+PASS: Ranged previous life cannot damage/recycle/reward next life, cycle 2
+PASS: Native pool spawn Ranged
+PASS: Ranged obtains a native A* path and physically moves around cover
+PASS: Ranged collision guard keeps body outside environment
+PASS: Native pool spawn Ranged
+PASS: Ranged native weapon fires a pooled bullet
+PASS: Ranged native bullet physics damages the existing collider
+PASS: Ranged actual XP pickup collects death reward
+PASS: Native pool spawn Fast
+PASS: Fast native proximity starts windup
+PASS: Fast real windup selects authored body action
+PASS: Fast pause freezes real skill clock and sampled sprite
+PASS: Fast half speed samples the native scaled skill clock
+PASS: Fast native release passes through attack and recovery art
+PASS: Fast native ability damages player exactly once; no animation event damage
+PASS: Fast ability presentation grants no spurious kill reward
+PASS: Fast skill art never changes collision root
+PASS: Fast recycle cleans ability presentation without extra damage/reward
+PASS: Native pool spawn Fast
+PASS: Fast interrupt test enters native windup
+PASS: Fast death interrupts body/warning before native release
+PASS: Fast native warning hidden immediately on death
+PASS: Fast killed windup never fires late or duplicates XP/kill
+PASS: Native pool spawn Heavy
+PASS: Heavy native proximity starts windup
+PASS: Heavy real windup selects authored body action
+PASS: Heavy pause freezes real skill clock and sampled sprite
+PASS: Heavy half speed samples the native scaled skill clock
+PASS: Tank impact boundary matches native damage radius
+PASS: Heavy native release passes through attack and recovery art
+PASS: Heavy native ability damages player exactly once; no animation event damage
+PASS: Heavy ability presentation grants no spurious kill reward
+PASS: Heavy skill art never changes collision root
+PASS: Tank shows true-radius impact briefly and clears it
+PASS: Heavy recycle cleans ability presentation without extra damage/reward
+PASS: Native pool spawn Heavy
+PASS: Heavy interrupt test enters native windup
+PASS: Heavy death interrupts body/warning before native release
+PASS: Heavy native warning hidden immediately on death
+PASS: Heavy killed windup never fires late or duplicates XP/kill
+PASS: Native pool spawn Ranged
+PASS: Ranged native proximity starts windup
+PASS: Ranged real windup selects authored body action
+PASS: Ranged pause freezes real skill clock and sampled sprite
+PASS: Ranged half speed samples the native scaled skill clock
+PASS: Ranged native release passes through attack and recovery art
+PASS: Ranged native ability damages player exactly once; no animation event damage
+PASS: Ranged ability presentation grants no spurious kill reward
+PASS: Ranged skill art never changes collision root
+PASS: Spitter releases one native pooled projectile
+PASS: Ranged recycle cleans ability presentation without extra damage/reward
+PASS: Native pool spawn Ranged
+PASS: Ranged interrupt test enters native windup
+PASS: Ranged death interrupts body/warning before native release
+PASS: Ranged native warning hidden immediately on death
+PASS: Ranged killed windup never fires late or duplicates XP/kill
+PASS: Native pool spawn Normal
+PASS: Normal authored prefab still receives native Support buff
+PASS: Normal Support recycle revokes buff without altering shared data
+PASS: Native pool spawn Fast
+PASS: Fast authored prefab still receives native Support buff
+PASS: Fast Support recycle revokes buff without altering shared data
+PASS: Native pool spawn Heavy
+PASS: Heavy authored prefab still receives native Support buff
+PASS: Heavy Support recycle revokes buff without altering shared data
+PASS: Native pool spawn Ranged
+PASS: Ranged authored prefab still receives native Support buff
+PASS: Ranged Support recycle revokes buff without altering shared data
+PASS: Compatibility test includes all six registered enemy types
+PASS: Boss prepares a real native summon plan
+PASS: Boss plan retains original four-type whitelist
+PASS: Boss plan retains original four-type whitelist
+PASS: Boss plan retains original four-type whitelist
+PASS: Boss plan retains original four-type whitelist
+PASS: Boss plan retains original four-type whitelist
+PASS: Boss plan retains original four-type whitelist
+PASS: Boss plan retains original four-type whitelist
+PASS: Boss releases only original four roles with updated art
+PASS: Boss native summons resolve the updated existing prefabs
+PASS: Preview spawns all four through the real enemy pool
+PASS: Preview is explicitly visual with no active impact
+PASS: Leaving preview restores native combat on reused actors
+PASS: Preview exit restores all three native attacks
+PASS: Restart clears health/kill state
+PASS: Restart loads one lab / one pool / four native enemies
+PASS: Restart has no old preview / death fade
+PASS: No Unity errors, exceptions or assertions
+RESULT: PASS

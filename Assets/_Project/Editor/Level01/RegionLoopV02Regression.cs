@@ -20,7 +20,7 @@ namespace AlienPurge.Level01.Editor
     public static partial class RegionLoopV02Regression
     {
         const string Key="RegionV02.Regression";
-        static string Report=>RegionLoopV02Installer.Reports+(SessionState.GetBool(Key+".impact",false)?"/ImpactChecks.txt":SessionState.GetBool(Key+".player",false)?"/PlayerChecks.txt":SessionState.GetBool(Key+".abilities",false)?"/AbilityChecks.txt":SessionState.GetBool(Key+".polish",false)?"/CombatUIChecks.txt":SessionState.GetBool(Key+".feedback",false)?"/FeedbackChecks.txt":SessionState.GetBool(Key+".preview",false)?"/TaskPreview.txt":SessionState.GetBool(Key+".presentation",false)?"/Presentation.txt":"/PlayMode.txt");
+        static string Report=>IntegratedTest?IntegratedWorldInstaller.Reports+(SessionState.GetBool(Key+".lifecycle",false)?"/Lifecycle.txt":"/PlayMode.txt"):RegionLoopV02Installer.Reports+(SessionState.GetBool(Key+".impact",false)?"/ImpactChecks.txt":SessionState.GetBool(Key+".player",false)?"/PlayerChecks.txt":SessionState.GetBool(Key+".abilities",false)?"/AbilityChecks.txt":SessionState.GetBool(Key+".polish",false)?"/CombatUIChecks.txt":SessionState.GetBool(Key+".feedback",false)?"/FeedbackChecks.txt":SessionState.GetBool(Key+".preview",false)?"/TaskPreview.txt":SessionState.GetBool(Key+".presentation",false)?"/Presentation.txt":"/PlayMode.txt");
         static readonly Stack<IEnumerator> routines=new Stack<IEnumerator>();
         static readonly List<string> results=new List<string>(), errors=new List<string>();
         static RegionLoopController loop;
@@ -42,6 +42,7 @@ namespace AlienPurge.Level01.Editor
         public static void RunPreview()=>Start(true,true);
         static void Start(bool presentation,bool preview=false,bool feedback=false,bool polish=false,bool abilities=false,bool player=false,bool impact=false)
         {
+            SessionState.SetBool(Key+".integrated",false);
             if(Application.isPlaying)throw new InvalidOperationException("Exit Play first.");
             SessionState.SetBool(Key+".presentation",presentation);
             SessionState.SetBool(Key+".preview",preview);
@@ -79,12 +80,12 @@ namespace AlienPurge.Level01.Editor
                 deadline=EditorApplication.timeSinceStartup+1200;
                 Application.runInBackground=true;
                 var view=EditorWindow.GetWindow(Type.GetType("UnityEditor.GameView,UnityEditor"));view.Show();view.Focus();
-                routines.Push(SessionState.GetBool(Key+".impact",false)?ImpactChecks():SessionState.GetBool(Key+".player",false)?PlayerPresentation():SessionState.GetBool(Key+".abilities",false)?Abilities():SessionState.GetBool(Key+".polish",false)?Polish():SessionState.GetBool(Key+".feedback",false)?Feedback():SessionState.GetBool(Key+".preview",false)?Preview():SessionState.GetBool(Key+".presentation",false)?Presentation():Exercise());
+                routines.Push(IntegratedTest?(SessionState.GetBool(Key+".lifecycle",false)?IntegratedLifecycle():IntegratedSuite()):SessionState.GetBool(Key+".impact",false)?ImpactChecks():SessionState.GetBool(Key+".player",false)?PlayerPresentation():SessionState.GetBool(Key+".abilities",false)?Abilities():SessionState.GetBool(Key+".polish",false)?Polish():SessionState.GetBool(Key+".feedback",false)?Feedback():SessionState.GetBool(Key+".preview",false)?Preview():SessionState.GetBool(Key+".presentation",false)?Presentation():Exercise());
             }
             if(mode==PlayModeStateChange.EnteredEditMode)
             {
                 PlayerSettings.productName=SessionState.GetString(Key+".product","AlienPurge");SessionState.SetBool(Key,false);
-                try { RegionLoopV02Installer.ValidateProtected(); }
+                try { ValidateTestProtection(); }
                 catch(Exception e){File.AppendAllText(Report,"\nPROTECTION FAIL "+e);SessionState.SetBool(Key+".failed",true);}
                 if(SessionState.GetBool(Key+".batch",false))EditorApplication.Exit(SessionState.GetBool(Key+".failed",false)?1:0);
             }
@@ -104,6 +105,7 @@ namespace AlienPurge.Level01.Editor
                     if(invulnerable)loop.world.player.GetComponent<PlayerHealth>().BeginTemporaryInvulnerability(1000);
                     Check(!(UpgradeManager.IsChoosingUpgrade&&WeaponModuleSelectionManager.IsChoosingModule),"No overlapping choices",false);
                     Check(loop.pool.ActiveCount<=loop.globalAliveLimit,"Global active population bounded",false);
+                    if(IntegratedTest)ObserveIntegrated();
                     if(choose)ChooseCard();
                     if(accelerate&&Time.timeScale>0&&!UpgradeManager.IsChoosingUpgrade&&!WeaponModuleSelectionManager.IsChoosingModule)Time.timeScale=8;
                 }
@@ -133,7 +135,7 @@ namespace AlienPurge.Level01.Editor
         static void Capture(string name)
         {
             if (SystemInfo.graphicsDeviceType != UnityEngine.Rendering.GraphicsDeviceType.Null)
-                ScreenCapture.CaptureScreenshot(Path.GetFullPath(RegionLoopV02Installer.Reports + "/" + name + ".png"));
+                ScreenCapture.CaptureScreenshot(Path.GetFullPath((IntegratedTest?IntegratedWorldInstaller.Reports:RegionLoopV02Installer.Reports) + "/" + name + ".png"));
         }
         static T Read<T>(object obj,string field) => (T)obj.GetType().GetField(field,BindingFlags.Instance|BindingFlags.NonPublic|BindingFlags.Public).GetValue(obj);
         static IEnumerator Until(Func<bool> condition,string label,float timeout=90)

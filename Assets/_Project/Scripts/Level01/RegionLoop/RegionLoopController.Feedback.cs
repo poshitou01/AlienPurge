@@ -14,7 +14,7 @@ namespace AlienPurge.Level01.RegionLoop
             if (index + 1 >= states.Count) return Terminal(state.config.regionId).transform.position;
             if (Time.time < nextGuideRefresh && guideRegion == state.config.regionId) return guidePosition;
             nextGuideRefresh = Time.time + .75f; guideRegion = state.config.regionId;
-            var destination = Terminal(states[index + 1].config.regionId).transform.position;
+            var destination = IntegratedNeedsBoss(state) ? world.World(new Vector2(0, -8)) : Terminal(states[index + 1].config.regionId).transform.position;
             var path = ABPath.Construct(world.PlayerFeet, destination, null);
             AstarPath.StartPath(path); path.BlockUntilCalculated();
             guidePosition = exitApproaches[index].position;
@@ -148,6 +148,7 @@ namespace AlienPurge.Level01.RegionLoop
             var target = complete ? ForwardGuide(current,index) : Terminal(current.config.regionId).transform.position;
             string objective = guards > 0 ? "清除开门守卫：剩余 " + guards + " 名" : "靠近" + DeviceName(current.config.regionId) + "，按E";
             if (complete) objective = index + 1 < states.Count ? "通道已开启 → " + RegionName(states[index + 1].config.regionId) : "守住撤离信标，等待接应";
+            if (complete && IntegratedNeedsBoss(current)) objective = "研究已完成 → 进入虫巢竞技场，击败首领";
             float remaining = Mathf.Max(0, FogBeginsAt(current) - Time.time);
             string timer = current.config.v02.extractionRegion ? "" : "毒雾侵入";
             string reward = complete ? "沿箭头前进，附近仍有敌人" : "+" + current.config.missionExperience + " 经验" + (current.config.moduleSlot > 0 ? "＋核心选择" : "");

@@ -1,0 +1,5 @@
+PASS: independent profile, old scene files are never saved.
+PASS: V01 at 380 seconds retains finite patrol budget, dormant storm/fog and event-only module rewards.
+PASS: Level01_FullWorld retains native 45-second first-module choice with V02 flags off.
+PASS: Day01_TestGround retains native 45-second first-module choice with V02 flags off.
+PASS: protected original scene files retain the explicitly audited baseline hashes.

@@ -1,0 +1,5 @@
+PASSED actual Unity Play Mode 2022.3.62f3c1; Direct3D11
+Authored auto=False; shots=52; actual damage=52; full-body hit pose restarts=21; per-hit Console logs=52
+Rendered hit probe: frames=843; median_ms=9.835; p95_ms=11.461; max_ms=19.475; camera_step=0.00001; player_step=0.00000
+PASS Continuous native weapon hits reach original EnemyHealth
+PASS Actual Game View capture HUD

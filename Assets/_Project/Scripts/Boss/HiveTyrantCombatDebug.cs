@@ -17,6 +17,15 @@ public sealed class HiveTyrantCombatDebug : MonoBehaviour
     private CursorLockMode previousLock;
     private float nextStatusUpdate;
     public bool ControlsVisible => controls != null && controls.activeSelf;
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+    public static int RequestedTestTier;
+    private System.Collections.IEnumerator Start()
+    {
+        yield return null; // All native weapon Start initializers must finish first.
+        if (RequestedTestTier <= 0 || boss == null || player == null) yield break;
+        HiveTyrantTestLoadouts.Apply(player, RequestedTestTier); boss.RestartEncounter(); boss.CaptureEntryLoadout();
+    }
+#endif
     private void Awake()
     {
         player = FindObjectOfType<PlayerHealth>(); previousCursor = Cursor.visible; previousLock = Cursor.lockState;
@@ -24,13 +33,13 @@ public sealed class HiveTyrantCombatDebug : MonoBehaviour
         if (EventSystem.current == null) ownedEventSystem = new GameObject("HiveTyrant_TestEventSystem", typeof(EventSystem), typeof(StandaloneInputModule));
         var strip = HiveTyrantHudLayout.Root(canvas.transform, "TestHint", new Vector2(440, 30), Vector2.zero, Vector2.zero, new Vector2(24, 20));
         HiveTyrantHudLayout.Box(strip, "Background", new Rect(0, 0, 440, 30), new Color(.04f, .05f, .05f, .72f));
-        hint = HiveTyrantHudLayout.Label(strip, "Hint", new Rect(12, 0, 416, 30), "TEST ARENA    F6 AUTO: OFF    F8 CONTROLS", 12, HiveTyrantHudLayout.Paper);
+        hint = HiveTyrantHudLayout.Label(strip, "Hint", new Rect(12, 0, 416, 30), "TEST ARENA    AUTO AI    F8 CONTROLS", 12, HiveTyrantHudLayout.Paper);
         var panel = HiveTyrantHudLayout.Root(canvas.transform, "TestControls", new Vector2(440, 218), Vector2.zero, Vector2.zero, new Vector2(24, 62));
         controls = panel.gameObject;
         HiveTyrantHudLayout.Box(panel, "Border", new Rect(0, 0, 440, 218), HiveTyrantHudLayout.Line);
         HiveTyrantHudLayout.Box(panel, "Panel", new Rect(1, 1, 438, 216), HiveTyrantHudLayout.Ink);
         HiveTyrantHudLayout.Label(panel, "Title", new Rect(18, 12, 404, 26), "TEST CONTROLS", 16, HiveTyrantHudLayout.Paper, TextAnchor.MiddleLeft, true);
-        HiveTyrantHudLayout.Label(panel, "Keys", new Rect(18, 48, 404, 100), "F1  Sweep                 F2  Ground wave\nF3  Summon              F4  Riftwing phase\nF5  Defeat boss          F6  Toggle auto AI\nF8  Hide controls        F9  Restart fight", 14, HiveTyrantHudLayout.Muted);
+        HiveTyrantHudLayout.Label(panel, "Keys", new Rect(18, 48, 404, 100), "F1  Sweep                 F2  Ground wave\nF3  Summon              F4  Riftwing phase\nF5  Defeat boss          F6  Toggle auto AI\nF7  Spore barrage       F9  Restart fight\nF8  Hide controls        F10  Cycle loadout", 14, HiveTyrantHudLayout.Muted);
         status = HiveTyrantHudLayout.Label(panel, "Status", new Rect(18, 164, 404, 36), "", 12, HiveTyrantHudLayout.Brood);
         controls.SetActive(showControls);
         var overlay = HiveTyrantHudLayout.Root(canvas.transform, "HiveTyrant_TestResult", Vector2.zero, Vector2.zero, new Vector2(.5f, .5f), Vector2.zero);
@@ -51,6 +60,9 @@ public sealed class HiveTyrantCombatDebug : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F9)) { RestartScene(); return; }
         if (Input.GetKeyDown(KeyCode.F8)) ToggleControls();
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+        if (Input.GetKeyDown(KeyCode.F10)) { RequestedTestTier = (RequestedTestTier + 1) % 4; RestartScene(); return; }
+#endif
         bool lost = (player != null && player.IsDead) || (GameManager.Instance != null && GameManager.Instance.IsGameOver);
         if (lost && !defeated)
         {
@@ -63,6 +75,7 @@ public sealed class HiveTyrantCombatDebug : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F1)) boss.RequestSkill(HiveTyrantSkill.Sweep, true);
         if (Input.GetKeyDown(KeyCode.F2)) boss.RequestSkill(HiveTyrantSkill.Slam, true);
         if (Input.GetKeyDown(KeyCode.F3)) boss.RequestSkill(HiveTyrantSkill.Summon, true);
+        if (Input.GetKeyDown(KeyCode.F7)) boss.RequestSkill(HiveTyrantSkill.SporeBarrage, true);
         if (Input.GetKeyDown(KeyCode.F4)) TriggerPhase2();
         if (Input.GetKeyDown(KeyCode.F5)) boss.Health.TakeDamage(boss.Health.CurrentHealth);
         if (Input.GetKeyDown(KeyCode.F6)) boss.AutomaticSkills = !boss.AutomaticSkills;
@@ -70,7 +83,10 @@ public sealed class HiveTyrantCombatDebug : MonoBehaviour
         {
             nextStatusUpdate = Time.unscaledTime + .2f;
             hint.text = "TEST ARENA    F6 AUTO: " + (boss.AutomaticSkills ? "ON" : "OFF") + "    F8 CONTROLS";
-            if (controls.activeSelf) status.text = boss.State + "   /   Summons " + boss.LivingSummons + "/" + boss.Config.summonAliveCap + "\nSummon budget used: " + boss.TotalSummoned + "/" + boss.Config.summonBudget;
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+            hint.text = "TEST / " + (RequestedTestTier == 0 ? "BASE" : RequestedTestTier == 1 ? "UPGRADED" : RequestedTestTier == 2 ? "CLUSTER" : "THUNDER") + " / F10 LOADOUT / F8 HELP";
+#endif
+            if (controls.activeSelf) status.text = boss.State + "   /   Summons " + boss.LivingSummons + "/" + boss.Summoning.AliveCap + "\nSummon budget used: " + boss.TotalSummoned + "/" + boss.Config.summonBudget;
         }
     }
     public void ToggleControls() { showControls = !showControls; if (controls != null && !defeated) controls.SetActive(showControls); }

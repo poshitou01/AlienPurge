@@ -25,7 +25,7 @@ public static class HiveTyrantCombatSetup
         if (EditorApplication.isPlayingOrWillChangePlaymode) throw new InvalidOperationException("Exit Play Mode before opening the test scene.");
         if (!Application.isBatchMode && !EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo()) return;
         EditorSceneManager.OpenScene(TestScene);
-        Debug.Log("Hive Tyrant combat test scene opened in Edit mode; press Play to try F1-F6/F9.");
+        Debug.Log("Hive Tyrant combat scene opened in Edit mode. Press Play for automatic AI; F8 shows optional debug controls.");
     }
 
     [MenuItem("AlienPurge/Hive Tyrant/Configure and Validate Combat")]
@@ -205,7 +205,7 @@ public static class HiveTyrantCombatSetup
             playerHealthData.FindProperty("maxHealth").intValue = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/_Project/Prefabs/Player/Player.prefab").GetComponent<PlayerHealth>().MaxHealth;
         playerHealthData.ApplyModifiedPropertiesWithoutUndo();
         Set(boss.Motor != null ? boss.Motor : boss.GetComponent<HiveTyrantBossMotor>(), "target", playerTransform);
-        Set(boss, "automaticSkills", false);
+        Set(boss, "automaticSkills", true);
         var debugRoot = test.GetRootGameObjects().FirstOrDefault(go => go.name == "HiveTyrantCombatTest");
         if (debugRoot == null) debugRoot = new GameObject("HiveTyrantCombatTest");
         Set(Ensure<HiveTyrantCombatDebug>(debugRoot), "boss", boss);

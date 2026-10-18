@@ -1,0 +1,14 @@
+{
+  "baseline": "577e01a394a7c920b94e70af14531bef5f98c61d",
+  "changed_files": 1408,
+  "registered_pivots": 1152,
+  "original_guid_ppu_preserved": true,
+  "new_unique_guids": 6,
+  "prior_importer_edits_preserved_unstaged": 736,
+  "runtime_png_pixels_unchanged": true,
+  "production_scenes_and_boss_not_modified": true,
+  "core_playmode_passes": 496,
+  "specialist_playmode_passes": 296,
+  "repeated_setup_preserves_scene_ids": true,
+  "restart_spawns_all_six": true
+}

@@ -1,0 +1,37 @@
+PASSED actual Unity Play Mode 2022.3.62f3c1; Direct3D11
+Authored auto=True; shots=52; actual damage=52; full-body hit pose restarts=0; per-hit Console logs=0
+Rendered hit probe: frames=875; median_ms=8.981; p95_ms=10.742; max_ms=14.318; camera_step=0.00000; player_step=0.00000
+PASS Continuous native weapon hits reach original EnemyHealth
+PASS Ordinary bullets never restart full-body poses or spam Console
+PASS Actual Game View capture HUD
+PASS Saved test scene starts with automatic AI enabled
+PASS Encounter config: 4/5 per wave, 6/8 alive, 20 total; native type caps retained
+PASS Original frame artwork uses sliced rails and proportional caps
+PASS Phase 1 reserves four valid native summons
+PASS Transition cancels pending attacks and gathers energy before wings appear
+PASS Phase II announcement accompanies old-silhouette charge
+PASS Actual Game View capture Phase2_Charge
+PASS Wing reveal and phase title overlap at the authored cue
+PASS Actual Game View capture Phase2_Reveal
+PASS Transition completes once, with no healing, attack release or lingering title
+PASS Transition never teleports the player or pauses gameplay time
+PASS Phase 2 reserves five valid native summons
+PASS All five warned Phase 2 summons become live native enemies
+PASS Actual Game View capture Phase2_Summons
+PASS Autonomous close-range opening chooses sweep
+PASS Autonomous ranged opening chooses ground wave
+PASS Fresh scene: default autonomous AI, original 5 HP/speed 5 player, normal weapon; no F keys, healing or boss damage injection
+BATTLE t=0.0 player=5 boss=600 summons=0 alive=0 state=Chase
+BATTLE t=15.0 player=5 boss=513 summons=3 alive=1 state=SlamWindup
+BATTLE t=30.0 player=5 boss=430 summons=7 alive=2 state=Chase
+BATTLE t=45.0 player=5 boss=339 summons=7 alive=0 state=Chase
+PASS Actual Game View capture Battle_Phase2
+BATTLE t=60.0 player=5 boss=256 summons=11 alive=0 state=SweepRelease
+BATTLE t=75.0 player=5 boss=180 summons=16 alive=0 state=SweepWindup
+BATTLE t=90.0 player=5 boss=98 summons=19 alive=0 state=SweepWindup
+BATTLE t=105.0 player=5 boss=4 summons=20 alive=1 state=SweepWindup
+Battle result: playerHP=5; elapsed=107.2; shots=687; phases=1; totalSummons=20; maxAlive=5; releases=32
+PASS Complete autonomous battle is winnable with the unmodified player and native weapon
+PASS Full fight uses all three skills, both phases and the phase announcement
+PASS Defeat removes owned summons and transition effects
+PASS Actual Game View capture Battle_Clear

@@ -1,0 +1,122 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 265637d07c69f684f96ff42dfab38b60, type: 3}
+  m_Name: ColonyEntry
+  m_EditorClassIdentifier: 
+  regionId: ColonyEntry
+  missionId: Arrival
+  encounterId: ColonyEntry-garrison
+  exitGateId: G1
+  prerequisite: 
+  enemies:
+  - archetypeId: Swarmer
+    type: 0
+    health: 4
+    damage: 1
+    experience: 1
+    speed: 2.15
+    clearance: 0.65
+    special: 0
+    simultaneousLimit: 0
+  reservedEnemyIds:
+  - Spitter
+  - Exploder
+  - Support
+  residents:
+  - type: 0
+    count: 4
+    keyGuard: 1
+  - type: 0
+    count: 8
+    keyGuard: 0
+  waves: []
+  aliveLimit: 22
+  specialLimit: 4
+  patrolBudget: 0
+  patrolType: 0
+  patrolInterval: 35
+  recoverySeconds: 40
+  spawnInterval: 0.32
+  warningSeconds: 0.35
+  spawnRetryLimit: 8
+  minimumPlayerDistance: 9
+  perceptionRadius: 16
+  leashRadius: 90
+  deviceSeconds: 0
+  deviceRadius: 6
+  missionDeadline: 150
+  deviceIntegrity: 100
+  contestedDamagePerSecond: 6
+  contestRadius: 2.5
+  encounterExperience: 2
+  missionExperience: 2
+  moduleSlot: 0
+  v02:
+    environmentSquads:
+    - id: advance
+      delay: 0
+      groups:
+      - type: 0
+        count: 4
+        keyGuard: 0
+    - id: flank
+      delay: 0
+      groups:
+      - type: 0
+        count: 5
+        keyGuard: 0
+    extractionRegion: 0
+    environmentInterval: 5
+    searchSeconds: 8
+    preloadDistance: 42
+    pressureLowWatermark: 3
+    missionCapacityReserve: 8
+    ambientTarget: 12
+    mechanismSource: 0
+    optionalTasks:
+    - id: beacon-defense
+      highRisk: 0
+      triggersStorm: 0
+      acceptSeconds: 110
+      defendSeconds: 24
+      deadlineSeconds: 65
+      radius: 5
+      claimAndExitSeconds: 35
+      maxAttempts: 1
+      experience: 12
+      waves:
+      - id: defense-1
+        delay: 0
+        groups:
+        - type: 0
+          count: 4
+          keyGuard: 0
+      - id: defense-2
+        delay: 10
+        groups:
+        - type: 0
+          count: 3
+          keyGuard: 0
+        - type: 0
+          count: 1
+          keyGuard: 0
+    stormAfterEntry: 28
+    stormWarningMinimum: 12
+    stormActiveSeconds: 20
+    stormRecoverySeconds: 3
+    safeRadius: 4.5
+    explorationSeconds: 115
+    fogWarningSeconds: 25
+    fogAdvanceSeconds: 70
+    oneTimeExitBuffer: 15
+    fogStartDistance: 0
+    fogEndDistance: 58

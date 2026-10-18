@@ -1,0 +1,126 @@
+PASS | Unity 2022.3.62f3c1 | 2026-10-18 12:37:50Z
+PASS: Isolated profile selected before initialization
+PASS: Five exploration regions and a playable extraction phase installed
+PASS: Cargo already populated before player entry; no premature fog clock
+PASS: Blue pads, floating markers and permanent terminal circles removed
+PASS: Entering region actually activates native enemy movement
+PASS: Real pooled death awards one physical XP pickup and one kill
+PASS: A surviving patrol no longer blocks later reinforcements; new arrivals=12
+PASS: Ambient ticket queue remains bounded
+PASS: Main opens G1 exactly once
+PASS: Repeated main activation cannot pay again: ColonyEntry
+PASS: First Exploder is ordinary garrison, not an access guard
+PASS: Natural Exploder uses its formal Animator
+PASS: Pause freezes the live regional Exploder warning
+PASS: Killing warning Exploder cancels blast and records one native death
+PASS: Ordinary Exploder kill does not satisfy an access-guard objective
+PASS: Same pooled specialist is available for lifecycle reuse
+PASS: Region ownership detached before non-region pool reuse
+PASS: Same Exploder re-arms from Safe, with no old timer or blast
+PASS: Exploder deals one real player hit through native health
+PASS: Same pooled specialist is available for lifecycle reuse
+PASS: Region ownership detached before non-region pool reuse
+PASS: Third-life recycle cancels without an extra explosion
+PASS: Main opens G2 exactly once
+PASS: Repeated main activation cannot pay again: CargoYard
+PASS: High-risk challenge offered through the existing cargo terminal
+PASS: Accepting high-risk defense triggers a real storm warning
+PASS: Storm safety has a usable overlap with the chosen defense terminal
+PASS: Enemy occupation interrupts defense progress
+PASS: Leaving pauses hold progress but not the deadline
+PASS: Storm spatial overlay active with native safety hole
+PASS: Combined storm defense completes and unlocks rare cache
+PASS: Ambient enemies keep spawning DURING active storm and optional defense; arrivals=9
+PASS: Task reward applied once
+PASS: First Support is ordinary garrison, not an access guard
+PASS: Natural Support uses its formal Animator
+PASS: Support bonus reaches the shared damage getter
+PASS: Region unload revokes the aura without turning it into base damage
+PASS: Same pooled specialist is available for lifecycle reuse
+PASS: Region ownership detached before non-region pool reuse
+PASS: Support reuse starts with clean targets and base attributes
+PASS: Support recycle does not award a false kill
+PASS: Main opens G3 exactly once
+PASS: Repeated main activation cannot pay again: PowerMaintenance
+PASS: Immediate actual evolution: ThunderPiercer
+PASS: Signature evolution excludes the Overclock entitlement
+PASS: Native weapon fires after choice closes
+PASS: Fired bullet receives native evolution visual data
+PASS: Fired projectile carries evolved damage-mechanism snapshot
+PASS: Real projectile collision and secondary damage affect both targets; HP=94,96 direct=1 chain=1
+PASS: Native evolved chain / explosion and split behavior actually fires
+PASS: Power optional task starts with integrated enemy configuration
+PASS: Combined-load fixture starts native reachable Storm
+MEASURE combined Storm/task/specialists: frames=688 P50=11.35ms P95=13.84ms managed+native allocated delta=58358851 bytes; Windows Editor batch/D3D11, other source Editors remain open.
+PASS: Storm/task overlap does not leak an unbounded ticket queue
+PASS: After G3, Chinese HUD gives an active isolation objective
+PASS: Main opens G4 exactly once
+PASS: Repeated main activation cannot pay again: QuarantineCommons
+PASS: Main opens G5 exactly once
+PASS: Repeated main activation cannot pay again: InfectedResearch
+PASS: Research completion cannot skip Boss to unlock extraction
+PASS: Accepted Boss stays dormant before Arena entrance
+PASS: Boss handoff suspends only regional pressure and ends the previous Storm
+PASS: Real weapon fire defeats both Boss phases with native summons
+PASS: Region fog does not advance during the Boss encounter
+PASS: Boss death records regional milestone and opens onward extraction gate
+PASS: Duplicate victory callback is idempotent
+MEASURE integrated Boss shots=1013 summons=63 peak=10 phases=1
+PASS: Repeated main activation cannot pay again: Extraction
+PASS: Existing native extraction defense starts from terminal interaction
+PASS: Leaving extraction pauses native progress
+MEASURE extraction t=233.2605 current=Extraction wave=3 due=233.4588 quiet=0 retired=False global=8 camera=(14.61, -14.16, -10.00) size=10 player=(47.00, -57.07, 0.00) tickets=Normal:0:True,Normal:0:True,Normal:0:True,Fast:0:True,Normal:0:True,Normal:0:True,Normal:0:True,Normal:0:True,Normal:0:False,Fast:0:False
+MEASURE ingress (27.00, -56.48) region= valid=True clear=True reason=
+MEASURE ingress (23.00, -56.48) region= valid=True clear=True reason=
+MEASURE ingress (16.00, -50.00) region= valid=True clear=True reason=
+MEASURE ingress (16.00, -36.00) region= valid=True clear=True reason=
+PASS: Extraction remains defended by active enemies
+PASS: Extraction reaches actual run result, not a dead-end label
+PASS: Restart resets milestones, modules and run identity
+PASS: Main opens G1 exactly once
+PASS: Repeated main activation cannot pay again: ColonyEntry
+PASS: Normal terminal defense starts
+PASS: Ignoring optional combat fails without rewards; main remains open
+PASS: Native hazard fixture publishes warning
+PASS: Safety hole corresponds to native storm protection
+PASS: Exposed player takes native storm damage
+PASS: Storm mask clears after event
+PASS: Re-entering cannot reset fog deadline
+PASS: Fog advances continuously rather than jumping on elapsed time
+PASS: Native fog covers representative walkable room area: ColonyEntry samples=20
+PASS: Native fog covers representative walkable room area: CargoYard samples=48
+PASS: Native fog covers representative walkable room area: PowerMaintenance samples=54
+PASS: Native fog covers representative walkable room area: QuarantineCommons samples=42
+PASS: Native fog covers representative walkable room area: InfectedResearch samples=43
+PASS: Research exit corridor reclaimed: (16.54, 36.00)
+PASS: Research exit corridor reclaimed: (32.00, 33.00)
+PASS: Research exit corridor reclaimed: (48.00, 29.00)
+PASS: Reclaimed combat regions retire; forward extraction stays usable
+PASS: Native fog damage remains active
+PASS: Death releases enemies and task/reward ownership
+PASS: Restart resets milestones, modules and run identity
+PASS: Restart resets extraction and reclaimed-region state
+PASS: Protected original scenes remain byte-identical
+LIMITS: teleported travel, accelerated simulation and deterministic damage inputs; real native movement, XP pickups, reward buttons, projectiles, storm/fog damage and extraction run. This verifies behavior, not human difficulty balance.
+PASS: Main opens G1 exactly once
+PASS: Repeated main activation cannot pay again: ColonyEntry
+FIXTURE: rerolled native legal card candidates to cover Explosive; used the original selection button.
+PASS: Main opens G2 exactly once
+PASS: Repeated main activation cannot pay again: CargoYard
+PASS: Main opens G3 exactly once
+PASS: Repeated main activation cannot pay again: PowerMaintenance
+PASS: Immediate actual evolution: ClusterBurst
+PASS: Signature evolution excludes the Overclock entitlement
+PASS: Native weapon fires after choice closes
+PASS: Fired bullet receives native evolution visual data
+PASS: Fired projectile carries evolved damage-mechanism snapshot
+PASS: Real projectile collision and secondary damage affect both targets; HP=96,98 direct=1 chain=0
+PASS: Native evolved chain / explosion and split behavior actually fires
+PASS: Both mechanism combinations applied through native module buttons across fresh runs
+PASS: Restart resets milestones, modules and run identity
+PASS: Native Pause pauses integrated run
+PASS: Native Resume restores integrated run
+PASS: Restart stays in the fourth checkout's integrated scene
+PASS: Menu Start does not return to the old V02 scene
+MEASURE: overall peak active=39 Support=1 Exploder=1
+LIMITS: accelerated routes, teleported traversal and deterministic kill fixtures; Boss killed through real native weapon fire with invulnerability. Not human balance or a full hardware benchmark.

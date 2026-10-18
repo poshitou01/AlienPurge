@@ -1,0 +1,92 @@
+PASSED actual Unity Play Mode 2022.3.62f3c1; Direct3D11
+PASS Saved scene starts autonomous AI without debug input
+PASS Original sweep radius and angle preserved
+PASS Second sweep spacing exceeds native jump cooldown
+PASS Entry scaling is sublinear: upgrades retain an offensive advantage
+PASS Endurance has a hard upper cap
+PASS Mid-fight upgrades never resize or heal the Boss
+PASS Outside original 7m sector: no instant remote hit on release
+PASS Travelling crescent hits a grounded player beyond the original range, including a large simulation step
+PASS Multiple arc segments and body colliders cannot multiply one cast's damage
+PASS Native jump input enters Airborne without editing invulnerability
+PASS Native jump clears the moving crescent
+PASS Original close-range sector still deals its release hit
+PASS Flanking the travelling crescent remains a valid escape
+PASS Crescent clips against Environment walls and cannot hit through cover
+PASS Actual Game View capture Advancing_Crescent
+PASS Spore mark accepts a legal arena point
+PASS Spore warning does no damage
+PASS Spore locks once; walking out escapes rather than dragging the mark
+PASS Standing on the expired warning takes a spore hit
+PASS Lingering spore residue has at most one hit per player per patch
+PASS Actual Game View capture Spore_Barrage
+PASS Disable cancels pressure hazards and owned summons
+PASS P1 summon request accepted
+PASS P1 summons a larger legal wave: 7
+PASS P1 native enemies released within population cap: 7
+PASS Phase transition remains a single readable reveal
+PASS P2 summon request accepted
+PASS P2 wave grows to 8-10 legal spawns: 10
+PASS P2 paired sweep accepted
+PASS Actual P2 releases leave a full jump cooldown: 2.92s
+PASS AI cannot overlap barrage with a ground-wave pattern and block its safe lanes
+PASS Restart removes all hazards and resets pressure counters
+PASS Repeated casts/restarts reuse the same four pressure meshes
+PASS Phase reveal cancels active spore hazards before they can detonate
+PASS Lethal damage during phase reveal cancels every pending hazard
+BATTLE Tier1_Stationary HP=8/8, speed=5.8, bulletDamage=3, projectiles=3, fireCooldown=0.12, modules(P/E/C/S)=1/1/0/0, evolution=None; BossHP=7202; entryPower=12.9375; summonHealthScale=2.449896
+PASS Tier1_Stationary authored AI, native weapon/movement, no healing, no direct Boss damage
+Tier1_Stationary t=0.0 Player=8 Boss=7202 living=0
+Tier1_Stationary t=10.0 Player=4 Boss=6237 living=1
+OUTCOME Tier1_Stationary won=False playerHP=0 elapsed=13.5 BossStartHP=7202 shots=109 jumps=0 phases=0 totalSummons=7 peakAlive=7 sweepHits=2 sporeHits=1 releases=2,0,1,3
+FRAME Tier1_Stationary median=9.77 P95=12.12 ms; actual Editor Game View, captures included
+PASS Tier1_Stationary upgraded stand-and-fire strategy is punished
+BATTLE Tier1_Reactive HP=8/8, speed=5.8, bulletDamage=3, projectiles=3, fireCooldown=0.12, modules(P/E/C/S)=1/1/0/0, evolution=None; BossHP=7202; entryPower=12.9375; summonHealthScale=2.449896
+PASS Tier1_Reactive authored AI, native weapon/movement, no healing, no direct Boss damage
+Tier1_Reactive t=0.0 Player=8 Boss=7202 living=0
+PASS Actual Game View capture Battle_Spores
+Tier1_Reactive t=10.0 Player=8 Boss=6410 living=0
+Tier1_Reactive t=20.0 Player=8 Boss=5485 living=2
+PASS Actual Game View capture Battle_Crescent
+Tier1_Reactive t=30.0 Player=8 Boss=4580 living=0
+Tier1_Reactive t=40.0 Player=8 Boss=3765 living=0
+PASS Actual Game View capture Battle_Phase2
+Tier1_Reactive t=50.0 Player=8 Boss=2962 living=2
+Tier1_Reactive t=60.0 Player=8 Boss=2218 living=4
+Tier1_Reactive t=70.0 Player=8 Boss=1370 living=7
+Tier1_Reactive t=80.0 Player=8 Boss=517 living=0
+OUTCOME Tier1_Reactive won=True playerHP=8 elapsed=86.1 BossStartHP=7202 shots=683 jumps=6 phases=1 totalSummons=52 peakAlive=9 sweepHits=0 sporeHits=0 releases=6,8,7,13
+FRAME Tier1_Reactive median=10.06 P95=14.37 ms; actual Editor Game View, captures included
+PASS Tier1_Reactive wins both phases using normal play
+PASS Tier1_Reactive all four skills and native jump exercised
+BATTLE Tier2_Reactive HP=10/10, speed=6.6, bulletDamage=5, projectiles=5, fireCooldown=0.09900001, modules(P/E/C/S)=0/3/0/3, evolution=ClusterBurst; BossHP=21230; entryPower=60.60606; summonHealthScale=3
+PASS Tier2_Reactive authored AI, native weapon/movement, no healing, no direct Boss damage
+Tier2_Reactive t=0.0 Player=10 Boss=21230 living=0
+Tier2_Reactive t=10.0 Player=10 Boss=17258 living=0
+Tier2_Reactive t=20.0 Player=10 Boss=13113 living=1
+Tier2_Reactive t=30.0 Player=10 Boss=8837 living=0
+Tier2_Reactive t=40.0 Player=10 Boss=4873 living=0
+Tier2_Reactive t=50.0 Player=10 Boss=631 living=0
+OUTCOME Tier2_Reactive won=True playerHP=10 elapsed=51.6 BossStartHP=21230 shots=489 jumps=3 phases=1 totalSummons=25 peakAlive=9 sweepHits=0 sporeHits=0 releases=3,4,4,7
+FRAME Tier2_Reactive median=10.87 P95=15.89 ms; actual Editor Game View, captures included
+PASS Tier2_Reactive wins both phases using normal play
+PASS Tier2_Reactive all four skills and native jump exercised
+BATTLE Tier3_Reactive HP=10/10, speed=6.6, bulletDamage=5, projectiles=5, fireCooldown=0.09, modules(P/E/C/S)=3/0/3/0, evolution=ThunderPiercer; BossHP=17680; entryPower=46.66667; summonHealthScale=3
+PASS Tier3_Reactive authored AI, native weapon/movement, no healing, no direct Boss damage
+Tier3_Reactive t=0.0 Player=10 Boss=17680 living=0
+Tier3_Reactive t=10.0 Player=10 Boss=15330 living=0
+Tier3_Reactive t=20.0 Player=10 Boss=12680 living=2
+Tier3_Reactive t=30.0 Player=10 Boss=10030 living=0
+Tier3_Reactive t=40.0 Player=10 Boss=7585 living=0
+Tier3_Reactive t=50.0 Player=10 Boss=5455 living=0
+Tier3_Reactive t=60.0 Player=10 Boss=3105 living=0
+Tier3_Reactive t=70.0 Player=10 Boss=700 living=0
+OUTCOME Tier3_Reactive won=True playerHP=10 elapsed=72.8 BossStartHP=17680 shots=753 jumps=2 phases=1 totalSummons=41 peakAlive=10 sweepHits=0 sporeHits=0 releases=3,7,6,14
+FRAME Tier3_Reactive median=9.93 P95=13.25 ms; actual Editor Game View, captures included
+PASS Tier3_Reactive wins both phases using normal play
+PASS Tier3_Reactive all four skills and native jump exercised
+PASS F10 test-loadout restart applies a legal evolved build exactly once
+PASS Formal level leaves Boss dormant without taking a premature loadout snapshot
+PASS Existing arena bridge activates the encounter and captures the upgraded loadout on entry
+PASS Formal Boss defeat still clears hazards and completes the existing bridge
+PASS No Unity errors or exceptions across fixtures and full fights

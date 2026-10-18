@@ -1,0 +1,144 @@
+AlienPurge 集成 V01：交付与实际验收
+日期：2026-10-18（Asia/Shanghai）
+
+现在的试玩入口
+
+工程绝对路径：D:\AlienPurge_IntegratedV01
+分支：feature/level01-integrated-v01
+场景绝对路径：D:\AlienPurge_IntegratedV01\Assets\_Project\Scenes\ArtTests\Level01_FullWorld_IntegratedV01.unity
+Unity 版本：2022.3.62f3c1
+
+用 Unity Hub 添加以上第四个工程，打开上述场景，直接按 Play。
+场景已安装并保存，不必先运行任何安装器。按右上角既有任务提示推进；终端使用 E。
+可玩流程：Colony Entry → Cargo Yard → Power Maintenance → Quarantine Commons
+→ Infected Research → Hive Tyrant → 原有撤离防守与结果页面。
+Restart 留在集成场景；返回菜单使用独立 MainMenu_IntegratedV01，其 Start 返回集成场景。
+原有 Build Settings 条目和顺序保留，追加两个集成入口；本轮没有生成独立 Player 安装包。
+
+真实存在的 Unity 菜单
+
+AlienPurge/Gameplay/Level01/Install Integrated World V01
+AlienPurge/Gameplay/Level01/Validate Integrated World V01
+AlienPurge/Gameplay/Level01/Run Integrated World V01 Regression
+AlienPurge/Gameplay/Level01/Run Integrated Legacy Scene Checks
+
+前两项用于以后安全更新和检查。安装器只允许在 D:\AlienPurge_IntegratedV01 运行；
+发现未保存场景修改时拒绝继续，保留用户编辑；不会重建地图、重复添加管理器或池条目。
+已实测连续安装保持场景字节不变、GUID 不变、对象数量不变；可编辑的权重与有限并发配置不会被重置。
+回归菜单会使用独立测试存档，自动驾驶、移动测试玩家并触发各种情形；正常试玩无需运行它们。
+
+实际来源及 Git 关系
+
+三个来源都是同一个 Git 仓库的 worktree，共用 D:\AlienPurge\AlienPurge\.git。
+用户给出的 D:\AlienPurge 是外层目录，真正的原工程在 D:\AlienPurge\AlienPurge。
+
+1. Boss：D:\AlienPurge\AlienPurge
+   分支 codex/hivetyrant-combat
+   609c7ff523b8f6a04db9e978bbd994eb6d155655，标签 hivetyrant-accepted-20261018。
+   核查时干净，没有尚未提交的 Boss 文件被遗漏。
+2. 区域：D:\AlienPurge_RegionLoopV01
+   实际分支 feature/level01-region-loop-v02
+   89cab820f95bea19f47aa1b28c548f2466236599。
+   核查时干净。最终场景为 Assets/_Project/Scenes/ArtTests/Level01_FullWorld_GameplayV02.unity。
+   集成场景直接从这个最终 V02 场景复制，使用新 GUID；未从旧 FullWorld 重建。
+3. 新敌人：D:\AlienPurge_CoreEnemies
+   分支 feature/enemies-core-art-animation
+   051073378dab7a723b94d50d5c82f85d05a8ca78。
+   该分支已经包含全部上述 Boss 提交，所以只合入一次。
+   同时逐文件带入了当前工作区 829 个相关 Assets / Docs 文件，连同 .meta；
+   其中 738 个有实际 Git 内容差异，其余主要是换行状态。唯一未复制的 ProjectSettings
+   状态项没有实际内容差异。没有漏掉未提交的正式资源或测试场景调整。
+
+共同祖先为 5c8e0cef9449aa722e6f32c35c3269aa7f0d1f67。
+以区域 89cab82 建立第四个 worktree，合入敌人 0510733，再带入敌人未提交文件。
+合并提交只在集成分支本地保存；没有推送，也没有合入或改写 main。
+本地提交 SHA 见本轮回复或在本工程执行 git log -1。完整来源信息见 SourceVersions.txt。
+
+新敌人的区域配置
+
+Colony Entry：保留原入门组合。
+Cargo Yard：一只普通驻守 Exploder，非任务守卫；持续补充小队权重 12。
+Power Maintenance：一只普通驻守 Support，非任务守卫；Support 小队权重 10、Exploder 12。
+Quarantine Commons / Infected Research / Extraction：Support 小队权重 10、Exploder 12。
+所有参与区域原有三组普通持续补充小队的相对权重为 40 / 30 / 30。
+这里的权重是“小队抽取权重”，不是单只敌人占比；每个新小队为一只新敌人加四只 Swarmer。
+Support 区域并发 1、全局 2；Exploder 区域并发 2、全局 2。
+两个池各预热 2 且不扩容；总敌人数上限 56、原区域/特殊敌人上限和任务预留沿用。
+权重、区域/全局上限位于 Assets/_Project/Data/Level01/IntegratedV01 下的各区域资产；
+如提高全局上限，需要同时设置场景 EnemyPool 的对应有限容量，Validate 会检查一致性。
+沿用原驻守、补充、任务增援、离屏/距离/可达性检查，没有新增并行运行的 Spawner。
+任务计数由原 Ticket 的任务/守卫归属决定；普通新敌人不会因进入区域而变成开门必杀目标。
+EnemyData 和基础能力使用敌人来源最终版本；没有为了刷怪配置而修改能力或重做动画。
+
+合并与接线的关键处理
+
+唯一文本冲突在 EnemyContactDamage：保留 V02 地面伤害闪避判断，同时保留 Support 增益伤害。
+额外处理了语义交叉：RegionEnemyLease 保存基础伤害而非临时增益结果；区域休眠、释放、复用
+同步管理两个新能力，避免预加载区域启动技能、旧区域归属或 Support 增益残留。
+原 EnemyType 0—3 不变，Support / Exploder 使用来源已经新增的 4 / 5。
+Boss 仍只召唤 Normal / Fast / Heavy / Ranged，测试确认扩展池注册不会改变名单。
+Research 开 Arena；真实 Boss 死亡写入一次 BossDefeated，再开 G7 和原撤离终端。
+Boss 战中释放区域拥有的敌人、结束上一场 Storm，并暂停区域环境推进；核心管理器继续存在。
+未修改 Boss 技能时序、基础伤害、范围、阶段或召唤配置。
+死亡时不晚启动 Boss；胜利不重复奖励；战中 Restart 清除旧召唤、阶段和归属。
+上述接线通过 integratedWorld 显式启用，旧场景沿用原默认行为。
+
+实际验证（均在第四个工程中执行）
+
+编译/资产：Unity 2022.3.62f3c1 实际导入、编译成功；场景组件引用和正式动画帧有效，
+六种敌人各一个池注册，无额外测试 Spawner、无缺失脚本。依赖 GUID 审计见 StaticAudit.json。
+
+完整集成 Play Mode：114 项 PASS，见 PlayMode.txt。
+覆盖驻守/持续补充、Cargo Exploder 和 Power Support 自然出现、真实支援/解除、预警/爆炸/
+击杀中止、经验和任务统计、原任务和开门、可选任务成功与超时失败、奖励容器、Storm 安全区、
+毒雾伤害与回收、两种 Signature 通过机制卡解锁、实际武器击败 Boss 两阶段、原撤离成功、
+Pause、死亡、Restart 和独立菜单往返。Boss 测试开火 1013 次，实际召唤总数 63、峰值 10。
+
+新敌人完整原有回归：296 项 PASS，见 Specialists/PlayMode_Result.txt。
+这是在合并后的代码和正式资源上重跑，含各方向/状态动画、增益、爆炸、池复用、Boss 白名单和 Restart。
+
+Boss 中断回归：见 Lifecycle.txt，全部 PASS。
+含 Research 未完成时拒绝启动、玩家在入口死亡、召唤预警期间 Restart、召唤期间玩家死亡，
+以及重新开始后的桥接/阶段/召唤/进度/区域归属恢复。
+
+旧场景兼容：见 LegacyPlayMode.txt，全部 PASS。
+原 V01 在 380 模拟秒保留有限巡逻、关闭其未启用的 Storm/毒雾和事件机制奖励；
+原 Level01_FullWorld 与 Day01_TestGround 的首次 45 秒模块行为未退化。
+
+路线：见 RouteConnectivity.txt，8 项 PASS。
+使用实际 A* 图与 authored Collider 检查各区域、Research→Arena→撤离的连通，以及 G6/G7 未开时阻断。
+编辑器夹具明确复现原 L01ArenaBridge.Awake 移除 Approach_End_Stop 的既有行为；未修改场景文件。
+这是图连通性验证，不宣称人工逐步键盘走完整张地图。
+
+保护/安装：InstallerAndArena.txt 与 ArenaGeometryDifferences.txt。
+Arena 的 49 项相对位置、Collider 形状/层和遮挡排序与已验收 Arena 一致；G6 控制入口状态。
+重复安装保持场景字节一致，未保存编辑保护通过。28 张原有场景文件在集成测试前后保持原样。
+静态比对的 1416 个 Boss 脚本/美术/动画/Prefab/配置文件内容与已验收来源相同（忽略 Git 换行差异）。
+
+性能：Storm、任务增援、Support 和 Exploder 同时运行的 8 秒窗口，688 帧，
+P50 11.35 ms、P95 13.84 ms；全流程敌人峰值 39，低于 56 上限。未发现重复 Spawner 或队列无限增长。
+测量环境是此机 Windows Editor / D3D11，另外两个来源 Editor 保持打开。
+短窗口中总分配增加约 58 MB，包含资源/界面热身；不以这个数断言长期无内存泄漏。
+
+来源保护
+
+Sources.before.json / Sources.after.json 记录并核对了三个来源的 HEAD、分支、Git 状态，
+以及 19034 个受 Git 管理和非忽略源文件的 SHA256。三个目录全部未改变。
+未在来源执行整合、切分支、冲突处理、reset、clean 或覆盖 Assets。
+原 Day01_TestGround、Cargo Yard、HiveTyrant_Arena、FullWorld、最终区域场景及敌人测试场景均保留。
+Library、Temp 等 Unity 忽略缓存不属于源文件哈希保护范围。
+
+未验证及本轮范围外
+
+自动回归使用加速时间、移动夹具、确定性击杀输入；Boss 用真实武器和无敌测试驾驶完成。
+因此已验证组合运行和规则衔接，不代表人工手感、难度平衡或所有硬件上的帧率验收。
+未进行长时间连续压力测试、独立 Player 构建和人工全程通关。
+最短人工复核：直接 Play；完成 Colony 后到 Cargo 看 Exploder，再到 Power 看 Support；
+沿任务提示进入 Research、Boss 和撤离；Boss 战中用 Pause→Restart 检查新一局入口。
+
+全项目扫描存在 6 个继承的 A* 示例/编辑器素材未解析 GUID，均不在新集成场景依赖中，
+具体路径见 StaticAudit.json；本轮未改写无关示例资源。
+没有扩大到尚未制作的区域，没有追加新玩法或进行全局数值重平衡。
+
+截图证据在本目录的 Integrated_CombinedPressure.png、Integrated_BossPhase2.png、
+Integrated_Support.png、Integrated_Exploder.png、Feedback_Extraction.png 等文件。

@@ -17,6 +17,7 @@ namespace AlienPurge.Level01.RegionLoop
         public bool special;
         [Min(0), Tooltip("0 uses only the region total; V02 can cap each archetype separately.")]
         public int simultaneousLimit;
+        [Min(0)] public int globalSimultaneousLimit;
     }
 
     [Serializable]
@@ -31,6 +32,7 @@ namespace AlienPurge.Level01.RegionLoop
     public sealed class RegionWave
     {
         public string id;
+        [Min(0)] public float weight = 1;
         [Min(0)] public float delay;
         public RegionSpawnGroup[] groups = Array.Empty<RegionSpawnGroup>();
     }

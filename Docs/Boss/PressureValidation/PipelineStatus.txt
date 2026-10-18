@@ -1,0 +1,1 @@
+PASSED: compatibility, Windows build, upgraded standalone encounter.

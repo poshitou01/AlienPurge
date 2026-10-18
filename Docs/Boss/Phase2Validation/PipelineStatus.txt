@@ -1,0 +1,4 @@
+Waiting for actual Play Mode compatibility checks.
+Compatibility passed. Building Windows development player.
+Windows build passed. Running upgraded native-input full battle.
+PASSED: compatibility, Windows build and actual Windows battle.

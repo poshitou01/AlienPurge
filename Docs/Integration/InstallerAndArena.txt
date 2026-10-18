@@ -1,0 +1,3 @@
+PASS: Repeated installation retains identical integrated scene bytes
+PASS: Installer refuses to discard unsaved scene changes
+PASS: Accepted Arena relative layout, collision shapes and occlusion sorting match the integrated copy

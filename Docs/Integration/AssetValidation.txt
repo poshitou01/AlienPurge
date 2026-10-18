@@ -1,0 +1,3 @@
+PASS
+Unity=2022.3.62f3c1
+Six unique pool types; formal specialist frames present; isolated region configurations; original Boss whitelist; one set of managers; no missing scene scripts; restart/menu paths registered.

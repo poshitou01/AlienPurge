@@ -1,0 +1,18 @@
+PASSED
+Windows standalone actual runtime; 2022.3.62f3c1; NVIDIA GeForce RTX 4070 Laptop GPU
+Default automatic AI=True; no skill/debug keys or AI override.
+Loadout tier=1; HP=8/8, speed=5.8, bulletDamage=3, projectiles=3, fireCooldown=0.12, modules(P/E/C/S)=1/1/0/0, evolution=None; native weapon/movement, input automation only; no battle healing.
+Boss starting HP=7202; entry power=12.9375
+t=0.0 Player=8 Boss=7202 summons=0
+t=10.0 Player=8 Boss=6327 summons=5
+t=20.0 Player=8 Boss=5351 summons=11
+t=30.0 Player=8 Boss=4425 summons=11
+t=40.0 Player=8 Boss=3501 summons=16
+t=50.0 Player=6 Boss=2767 summons=26
+t=60.0 Player=6 Boss=1912 summons=35
+t=70.0 Player=4 Boss=1028 summons=44
+t=80.0 Player=4 Boss=164 summons=52
+Outcome won=True, playerHP=4, elapsed=84.1, phases=1, summons=61, releases=39, shots=663, jumps=5
+Phase II cascades=4; scheduled fronts actually launched=12; paired crossfire observed=True
+Hidden-window simulation timing median=0.24; P95=6.13 ms. Not rendering FPS; only explicit captures render camera+UI.
+Errors=0; encounter FX roots remaining=0

@@ -1,0 +1,73 @@
+[
+  {
+    "dirs": [
+      "D",
+      "DR"
+    ],
+    "rows": 4,
+    "file": "Support_Active_D_DR.png",
+    "prompt": "Use case: stylized-concept. Production SUPPORT ActiveMove sprite animation sheet. Use reference1 for exact anatomy and view directions. Reference2 shows same creature's opened/glowing support organs in its fourth row: use that ACTIVATED state consistently. Dark brown rocky pointed carapace, gray sinewy FOUR jointed legs, exactly THREE organically attached purple petal-sacs. While walking and supporting allies, lobes are moderately opened and their veins emit a restrained purple glow. Organs follow torso motion. Fixed topdown orthographic45degreecamera and top-left light. Crisp painted3Dgame style. A sheet of FOUR columns FOUR rows (16frames), 1536x1536, true transparent background, no text/grids/shadows/circles/beams. Every sprite inside central70percent of cell, generous empty gutters. TOP TWO rows are eight consecutive frames of one looping quadruped walk cycle facing DOWN toward viewer, symmetric FRONT view, pointed armored head below the sacs, matching row1 column1 reference. BOTTOM TWO rows are eight frames of a separate walk cycle facing DOWN-RIGHT front threequarter, head and nose pointing to lower-right, rear body upper-left, matching row1 column2 reference. Correctly re-render each perspective, never rotate or mirror a flat sprite. In each eight-frame cycle alternating diagonal limbs lift, swing, and plant; four jointed limbs, stable head/torso with small weight sway, no overall scaling, no duplicates. All eightframes lead continuously backtoframe1. Keep IDENTICAL anatomy/plate markings, organ count, proportions and scale to the reference. Only the real front head has the amber eye slit, rear armor has none. NO new dorsal plates or organs. No ambient glow outside silhouette, no background.",
+    "source": "C:\\Users\\Yang\\.codex\\generated_images\\01a14ab6-8e48-7643-bcb4-f7cfd6f10383\\exec-008c4a42-7ba1-41b5-a110-81e85d8b6940.png",
+    "cropTopHalf": false
+  },
+  {
+    "dirs": [
+      "R"
+    ],
+    "rows": 2,
+    "file": "Support_Active_R.png",
+    "prompt": "Use case: stylized-concept. Production SUPPORT ActiveMove sprite animation sheet. Use reference1 for exact anatomy and view directions. Reference2 shows same creature's opened/glowing support organs in its fourth row: use that ACTIVATED state consistently. Dark brown rocky pointed carapace, gray sinewy FOUR jointed legs, exactly THREE organically attached purple petal-sacs. While walking and supporting allies, lobes are moderately opened and their veins emit a restrained purple glow. Organs follow torso motion. Fixed topdown orthographic45degreecamera and top-left light. Crisp painted3Dgame style. A sheet of FOUR columns FOUR rows (16frames), 1536x1536, true transparent background, no text/grids/shadows/circles/beams. Every sprite inside central70percent of cell, generous empty gutters. TOP TWO rows are eight consecutive frames of one looping quadruped walk cycle facing RIGHT side profile, head/nose to screen RIGHT, rear body LEFT, all silhouettes upright, matching row1 column3 reference. BOTTOM TWO rows are eight frames of a separate walk cycle facing UP-RIGHT rear threequarter: VIEW ITS BACK and rear legs, its head peeks above the RIGHT shoulder at UPPER RIGHT; no face at lower left! Fixed camera, rotate creature in 3D to face away and right, rear torso foreground. This is northeast locomotion. In the original Support turnaround use row2column2 as the rear-right pose guide (its labels/layout had UR/UL reversed).. Correctly re-render each perspective, never rotate or mirror a flat sprite. In each eight-frame cycle alternating diagonal limbs lift, swing, and plant; four jointed limbs, stable head/torso with small weight sway, no overall scaling, no duplicates. All eightframes lead continuously backtoframe1. Keep IDENTICAL anatomy/plate markings, organ count, proportions and scale to the reference. Only the real front head has the amber eye slit, rear armor has none. NO new dorsal plates or organs. No ambient glow outside silhouette, no background.",
+    "source": "C:\\Users\\Yang\\.codex\\generated_images\\01a14ab6-8e48-7643-bcb4-f7cfd6f10383\\exec-fb8014bd-8d2e-4071-81ec-f05c920a7ae8.png",
+    "cropTopHalf": true
+  },
+  {
+    "dirs": [
+      "UR"
+    ],
+    "rows": 2,
+    "file": "Support_Active_UR.png",
+    "prompt": "Use case: precise-object-edit / animation. The reference is the EXACT SUPPORT rear-right view and its animation states. Produce EIGHT consecutive frames of its walk cycle while SUPPORTING allies: use the top two rows' same rear-right gait and anatomy, but its THREE purple petals are moderately opened with brighter purple inner veins like reference fourth row. Preserve exact head, feet, armor, markings, scale and perspective. This is UP-RIGHT rear view: only ONE head peeks at upper RIGHT behind the right shoulder, and lower body is rear armor, absolutely NO second head or eye slit on lower/front rump! All8frames same orientation. FOURcolumns TWOrows sheet1536x768. Real quadruped knee/foot walking movements, alternating diagonal leg pairs, modest lobe follow-through. Loop smoothly, stable ground anchor, do not scale or rotate whole image. True transparent background, no grid/text/shadows/circles/beams; big empty gutters so no body part touches a cell edge. Refine as a production game animation, identical creature across all frames.",
+    "source": "C:\\Users\\Yang\\.codex\\generated_images\\01a14ab6-8e48-7643-bcb4-f7cfd6f10383\\exec-9b130eac-1227-4eda-b242-43577c0fb144.png",
+    "cropTopHalf": false
+  },
+  {
+    "dirs": [
+      "U"
+    ],
+    "rows": 2,
+    "file": "Support_Active_U.png",
+    "prompt": "Use case: precise-object-edit / animation. The reference is the EXACT SUPPORT direct rear view and its animation states. Produce EIGHT consecutive frames of its walk cycle while SUPPORTING allies: use the top two rows' same direct rear gait and anatomy, but its THREE purple petals are moderately opened with brighter purple inner veins like reference fourth row. Preserve exact head, feet, armor, markings, scale and perspective. This is UP away from viewer, direct REAR view. The head is fully hidden behind the back. No eye slit, no face anywhere on the rump. Only rear armor and stalks visible. All8frames same orientation. FOURcolumns TWOrows sheet1536x768. Real quadruped knee/foot walking movements, alternating diagonal leg pairs, modest lobe follow-through. Loop smoothly, stable ground anchor, do not scale or rotate whole image. True transparent background, no grid/text/shadows/circles/beams; big empty gutters so no body part touches a cell edge. Refine as a production game animation, identical creature across all frames.",
+    "source": "C:\\Users\\Yang\\.codex\\generated_images\\01a14ab6-8e48-7643-bcb4-f7cfd6f10383\\exec-add8f0c9-7a64-4d38-915e-4db1b03da74d.png",
+    "cropTopHalf": false
+  },
+  {
+    "dirs": [
+      "UL"
+    ],
+    "rows": 2,
+    "file": "Support_Active_UL.png",
+    "prompt": "Use case: precise-object-edit / animation. The reference is the EXACT SUPPORT rear-left view and its animation states. Produce EIGHT consecutive frames of its walk cycle while SUPPORTING allies: use the top two rows' same rear-left gait and anatomy, but its THREE purple petals are moderately opened with brighter purple inner veins like reference fourth row. Preserve exact head, feet, armor, markings, scale and perspective. This is UP-LEFT rear view: the only head peeks at upper LEFT, rear armor faces foreground; no second face or eyes on lower/right rump. All8frames same orientation. FOURcolumns TWOrows sheet1536x768. Real quadruped knee/foot walking movements, alternating diagonal leg pairs, modest lobe follow-through. Loop smoothly, stable ground anchor, do not scale or rotate whole image. True transparent background, no grid/text/shadows/circles/beams; big empty gutters so no body part touches a cell edge. Refine as a production game animation, identical creature across all frames.",
+    "source": "C:\\Users\\Yang\\.codex\\generated_images\\01a14ab6-8e48-7643-bcb4-f7cfd6f10383\\exec-08d18c9f-ba9f-40eb-97b2-d023275ae9ec.png",
+    "cropTopHalf": false
+  },
+  {
+    "dirs": [
+      "L"
+    ],
+    "rows": 2,
+    "file": "Support_Active_L.png",
+    "prompt": "Use case: precise-object-edit / animation. The reference is the EXACT SUPPORT left side view and its animation states. Produce EIGHT consecutive frames of its walk cycle while SUPPORTING allies: use the top two rows' same left side gait and anatomy, but its THREE purple petals are moderately opened with brighter purple inner veins like reference fourth row. Preserve exact head, feet, armor, markings, scale and perspective. This is LEFT side profile, one head on LEFT side, rear armored body to RIGHT. No additional head on rump. Match reference's exact lateral silhouette. All8frames same orientation. FOURcolumns TWOrows sheet1536x768. Real quadruped knee/foot walking movements, alternating diagonal leg pairs, modest lobe follow-through. Loop smoothly, stable ground anchor, do not scale or rotate whole image. True transparent background, no grid/text/shadows/circles/beams; big empty gutters so no body part touches a cell edge. Refine as a production game animation, identical creature across all frames.",
+    "source": "C:\\Users\\Yang\\.codex\\generated_images\\01a14ab6-8e48-7643-bcb4-f7cfd6f10383\\exec-45822012-1ee2-48cb-9692-88eb1ae3130f.png",
+    "cropTopHalf": false
+  },
+  {
+    "dirs": [
+      "DL"
+    ],
+    "rows": 2,
+    "file": "Support_Active_DL.png",
+    "prompt": "Use case: precise-object-edit / animation. The reference is the EXACT SUPPORT front-left threequarter view and its animation states. Produce EIGHT consecutive frames of its walk cycle while SUPPORTING allies: use the top two rows' same front-left threequarter gait and anatomy, but its THREE purple petals are moderately opened with brighter purple inner veins like reference fourth row. Preserve exact head, feet, armor, markings, scale and perspective. This is DOWN-LEFT front threequarter, the one head points lower LEFT, body behind upper right. All8frames preserve this diagonal-facing orientation exactly. All8frames same orientation. FOURcolumns TWOrows sheet1536x768. Real quadruped knee/foot walking movements, alternating diagonal leg pairs, modest lobe follow-through. Loop smoothly, stable ground anchor, do not scale or rotate whole image. True transparent background, no grid/text/shadows/circles/beams; big empty gutters so no body part touches a cell edge. Refine as a production game animation, identical creature across all frames.",
+    "source": "C:\\Users\\Yang\\.codex\\generated_images\\01a14ab6-8e48-7643-bcb4-f7cfd6f10383\\exec-a6e7c3a8-9fd6-467f-b685-8ec68d398ad5.png",
+    "cropTopHalf": false
+  }
+]

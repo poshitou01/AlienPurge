@@ -30,7 +30,10 @@ public static class HiveTyrantCombatVerification
     public static void RunInteractive() { Begin(false); }
     public static void RunBatch() { Begin(true); }
     public static void RunRepairRegression() { SessionState.SetString("HiveTyrant.VerificationMode", "RepairRegression"); Begin(true); }
-    private static string OutputFolder(string mode) => mode.StartsWith("Repair") ? "Docs/Boss/RepairValidation/Regression" : "Docs/Boss/CompletionValidation";
+    public static void RunPolishRegression() { SessionState.SetString("HiveTyrant.VerificationMode", "PolishRegression"); Begin(true); }
+    public static void RunPressureCompatibility() { SessionState.SetString("HiveTyrant.VerificationMode", "PressureCompatibility"); Begin(true); }
+    public static void RunPhase2Compatibility() { SessionState.SetString("HiveTyrant.VerificationMode", "Phase2Compatibility"); Begin(true); }
+    private static string OutputFolder(string mode) => mode.StartsWith("Phase2") ? "Docs/Boss/Phase2Validation/Compatibility" : mode.StartsWith("Pressure") ? "Docs/Boss/PressureValidation/Compatibility" : mode.StartsWith("Polish") ? "Docs/Boss/CombatPolishValidation/Regression" : mode.StartsWith("Repair") ? "Docs/Boss/RepairValidation/Regression" : "Docs/Boss/CompletionValidation";
     public static void RunVisualSample() { SessionState.SetString("HiveTyrant.VerificationMode", "VisualSample"); Begin(true); }
     public static void ConfigureAndRunVisualSample() { HiveTyrantCombatSetup.ConfigureAndValidate(); RunVisualSample(); }
     public static void RunPoseAtlas() { SessionState.SetString("HiveTyrant.VerificationMode", "PoseAtlas"); Begin(true); }
@@ -148,6 +151,17 @@ public static class HiveTyrantCombatVerification
     private static IEnumerator Verify()
     {
         yield return Delay(1.5f);
+        if (SessionState.GetString("HiveTyrant.VerificationMode", "PlayMode") == "PressureCompatibility" || SessionState.GetString("HiveTyrant.VerificationMode", "PlayMode") == "Phase2Compatibility")
+        {
+            var encounter = UnityEngine.Object.FindObjectOfType<HiveTyrantCombat>();
+            var target = UnityEngine.Object.FindObjectOfType<PlayerHealth>();
+            encounter.AutomaticSkills = false; target.GetComponent<PlayerMovement>().SetCanMove(false);
+            yield return WaveRules(encounter, target);
+            yield return NativeEnemyReuse(encounter, target);
+            yield return DamageChains(encounter, target);
+            yield return MainSceneIntegration();
+            yield break;
+        }
         if (SessionState.GetString("HiveTyrant.VerificationMode", "PlayMode") == "PolicyAndStress")
         { yield return SummonPolicies(); yield return RepeatStress(); yield break; }
         if (SessionState.GetString("HiveTyrant.VerificationMode", "PlayMode") == "FinalStages")
@@ -261,6 +275,11 @@ public static class HiveTyrantCombatVerification
         Check(!reused.GetComponent<EnemyHealth>().IsDead && reused.GetComponent<Collider2D>().enabled, "Ordinary pooled re-spawn restores health and colliders");
         reused.ReturnToPool();
         // A real temporary obstacle rejects every candidate. Remove the fixture before physics advances.
+        // Native enemies can push this stationary test player out of engagement range.
+        // Restore the fixture precondition so this tests blocked spawns, not disengagement.
+        Place(player, boss.Motor.CombatOrigin + Vector2.down * 10);
+        Check(boss.TargetInArena && !player.IsDead && !boss.Motor.HasActionOwner,
+            "Blocked-spawn fixture starts with a living player inside engagement range");
         var blocker = new GameObject("Verification_AllSummonPointsBlocked"); blocker.layer = LayerMask.NameToLayer("Environment");
         blocker.transform.position = boss.Motor.CombatOrigin; blocker.AddComponent<CircleCollider2D>().radius = 14;
         Physics2D.SyncTransforms();
@@ -336,7 +355,7 @@ public static class HiveTyrantCombatVerification
             HiveTyrantCombatDebug.RestartScene(); yield return Delay(1.5f); yield return Battle();
             yield return RepeatStress();
         }
-        if (SessionState.GetString("HiveTyrant.VerificationMode", "PlayMode") == "RepairRegression")
+        if (SessionState.GetString("HiveTyrant.VerificationMode", "PlayMode").EndsWith("Regression"))
         {
             EditorSceneManager.LoadSceneInPlayMode(HiveTyrantCombatSetup.TestScene, new UnityEngine.SceneManagement.LoadSceneParameters(UnityEngine.SceneManagement.LoadSceneMode.Single));
             yield return Delay(1.5f); yield return Battle(); yield return RepeatStress();
@@ -779,6 +798,7 @@ public static class HiveTyrantCombatVerification
         Check(boss.RequestSkill(HiveTyrantSkill.Sweep, true), "Configured combat skill runs on the actual Level01 Boss instance");
         yield return Delay(.2f); Capture("Level01_BossFight");
         yield return Idle(boss);
+        while (boss.Pressure.Active) yield return null; // New crescent outlives its body animation.
         player.RestoreHealth(player.MaxHealth); Place(player, boss.Motor.CombatOrigin + Vector2.down * 10);
         Check(boss.RequestSkill(HiveTyrantSkill.Slam, true), "Forward segmented wave finds a reachable route in the actual Level01 arena");
         yield return Delay(1.1f);

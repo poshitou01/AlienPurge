@@ -1,0 +1,4 @@
+Succeeded
+Output=D:/AlienPurge/Builds/HiveTyrantPolish/AlienPurge.exe
+Errors=0 Warnings=2
+Duration=00:00:13.3682535

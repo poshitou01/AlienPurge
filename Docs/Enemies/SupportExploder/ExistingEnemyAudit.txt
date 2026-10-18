@@ -1,0 +1,44 @@
+Enemy_Normal_Swarmer
+Prefab=Assets/_Project/Prefabs/Enemies/Animated/Enemy_Normal_Swarmer.prefab
+Data=Assets/_Project/Data/Enemies/Enemy_Normal_Data.asset
+Animator=Assets/_Project/Animations/Swarmer/Authored/Swarmer_Animator.controller
+Material=Packages/com.unity.render-pipelines.universal/Runtime/Materials/Sprite-Lit-Default.mat
+Sprite=Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Idle/D/Swarmer_Idle_D_01.png
+PPU=256 Pivot=(256.00, 256.00) Rect=(x:0.00, y:0.00, width:512.00, height:512.00)
+Sorting=Enemies / 0
+Colliders=CircleCollider2D offset=(0.00, 0.00)
+Components=Transform,SpriteRenderer,Rigidbody2D,CircleCollider2D,EnemyMovement,EnemyHealth,EnemyContactDamage,EnemyDefinition,PooledEnemy,Animator,EnemyAnimationController,Seeker,EnemyPathNavigator,EnemyYSorting,CoreEnemyAnimation
+
+Enemy_Fast_Rusher
+Prefab=Assets/_Project/Prefabs/Enemies/Animated/Enemy_Fast_Rusher.prefab
+Data=Assets/_Project/Data/Enemies/Enemy_Fast_Data.asset
+Animator=Assets/_Project/Animations/Rusher/Authored/Rusher_Animator.controller
+Material=Packages/com.unity.render-pipelines.universal/Runtime/Materials/Sprite-Lit-Default.mat
+Sprite=Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Idle/D/Rusher_Idle_D_01.png
+PPU=256 Pivot=(256.00, 256.00) Rect=(x:0.00, y:0.00, width:512.00, height:512.00)
+Sorting=Enemies / 0
+Colliders=CircleCollider2D offset=(0.00, 0.00)
+Components=Transform,SpriteRenderer,Rigidbody2D,CircleCollider2D,EnemyMovement,EnemyHealth,EnemyContactDamage,EnemyDefinition,PooledEnemy,FastChargeAttack,Seeker,EnemyPathNavigator,EnemyYSorting,Animator,EnemyAnimationController,CoreEnemyAnimation
+
+Enemy_Heavy_Tank
+Prefab=Assets/_Project/Prefabs/Enemies/Animated/Enemy_Heavy_Tank.prefab
+Data=Assets/_Project/Data/Enemies/Enemy_Heavy_Data.asset
+Animator=Assets/_Project/Animations/Tank/Authored/Tank_Animator.controller
+Material=Packages/com.unity.render-pipelines.universal/Runtime/Materials/Sprite-Lit-Default.mat
+Sprite=Assets/_Project/Art/Enemies/Animated/Tank/Authored/Idle/D/Tank_Idle_D_01.png
+PPU=256 Pivot=(256.00, 256.00) Rect=(x:0.00, y:0.00, width:512.00, height:512.00)
+Sorting=Enemies / 0
+Colliders=CircleCollider2D offset=(0.00, 0.00)
+Components=Transform,SpriteRenderer,Rigidbody2D,CircleCollider2D,EnemyMovement,EnemyHealth,EnemyContactDamage,EnemyDefinition,PooledEnemy,HeavyShockwaveAttack,Seeker,EnemyPathNavigator,EnemyYSorting,Animator,EnemyAnimationController,CoreEnemyAnimation
+
+Enemy_Ranged_Spitter
+Prefab=Assets/_Project/Prefabs/Enemies/Animated/Enemy_Ranged_Spitter.prefab
+Data=Assets/_Project/Data/Enemies/Enemy_Ranged_Data.asset
+Animator=Assets/_Project/Animations/Spitter/Authored/Spitter_Animator.controller
+Material=Packages/com.unity.render-pipelines.universal/Runtime/Materials/Sprite-Lit-Default.mat
+Sprite=Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Idle/D/Spitter_Idle_D_01.png
+PPU=256 Pivot=(256.00, 256.00) Rect=(x:0.00, y:0.00, width:512.00, height:512.00)
+Sorting=Enemies / 0
+Colliders=CircleCollider2D offset=(0.00, 0.00)
+Components=Transform,SpriteRenderer,Rigidbody2D,CircleCollider2D,EnemyMovement,EnemyHealth,EnemyContactDamage,EnemyDefinition,PooledEnemy,RangedEnemyAttack,Seeker,EnemyPathNavigator,EnemyYSorting,Animator,EnemyAnimationController,CoreEnemyAnimation
+

@@ -1,0 +1,1208 @@
+change	path	purpose
+added	Assets/_Project/Animations/Exploder/Exploder_Animator.controller	Native Animator states referencing own authored clips
+added	Assets/_Project/Animations/Exploder/Exploder_Animator.controller.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Exploder/Exploder_Burst_D.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Exploder/Exploder_Burst_D.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Exploder/Exploder_Burst_DL.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Exploder/Exploder_Burst_DL.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Exploder/Exploder_Burst_DR.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Exploder/Exploder_Burst_DR.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Exploder/Exploder_Burst_L.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Exploder/Exploder_Burst_L.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Exploder/Exploder_Burst_R.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Exploder/Exploder_Burst_R.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Exploder/Exploder_Burst_U.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Exploder/Exploder_Burst_U.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Exploder/Exploder_Burst_UL.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Exploder/Exploder_Burst_UL.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Exploder/Exploder_Burst_UR.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Exploder/Exploder_Burst_UR.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Exploder/Exploder_Death_D.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Exploder/Exploder_Death_D.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Exploder/Exploder_Death_DL.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Exploder/Exploder_Death_DL.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Exploder/Exploder_Death_DR.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Exploder/Exploder_Death_DR.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Exploder/Exploder_Death_L.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Exploder/Exploder_Death_L.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Exploder/Exploder_Death_R.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Exploder/Exploder_Death_R.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Exploder/Exploder_Death_U.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Exploder/Exploder_Death_U.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Exploder/Exploder_Death_UL.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Exploder/Exploder_Death_UL.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Exploder/Exploder_Death_UR.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Exploder/Exploder_Death_UR.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Exploder/Exploder_Idle_D.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Exploder/Exploder_Idle_D.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Exploder/Exploder_Idle_DL.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Exploder/Exploder_Idle_DL.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Exploder/Exploder_Idle_DR.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Exploder/Exploder_Idle_DR.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Exploder/Exploder_Idle_L.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Exploder/Exploder_Idle_L.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Exploder/Exploder_Idle_R.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Exploder/Exploder_Idle_R.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Exploder/Exploder_Idle_U.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Exploder/Exploder_Idle_U.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Exploder/Exploder_Idle_UL.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Exploder/Exploder_Idle_UL.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Exploder/Exploder_Idle_UR.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Exploder/Exploder_Idle_UR.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Exploder/Exploder_Move_D.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Exploder/Exploder_Move_D.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Exploder/Exploder_Move_DL.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Exploder/Exploder_Move_DL.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Exploder/Exploder_Move_DR.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Exploder/Exploder_Move_DR.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Exploder/Exploder_Move_L.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Exploder/Exploder_Move_L.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Exploder/Exploder_Move_R.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Exploder/Exploder_Move_R.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Exploder/Exploder_Move_U.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Exploder/Exploder_Move_U.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Exploder/Exploder_Move_UL.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Exploder/Exploder_Move_UL.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Exploder/Exploder_Move_UR.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Exploder/Exploder_Move_UR.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Exploder/Exploder_Warning_D.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Exploder/Exploder_Warning_D.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Exploder/Exploder_Warning_DL.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Exploder/Exploder_Warning_DL.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Exploder/Exploder_Warning_DR.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Exploder/Exploder_Warning_DR.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Exploder/Exploder_Warning_L.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Exploder/Exploder_Warning_L.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Exploder/Exploder_Warning_R.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Exploder/Exploder_Warning_R.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Exploder/Exploder_Warning_U.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Exploder/Exploder_Warning_U.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Exploder/Exploder_Warning_UL.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Exploder/Exploder_Warning_UL.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Exploder/Exploder_Warning_UR.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Exploder/Exploder_Warning_UR.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Support/Support_Animator.controller	Native Animator states referencing own authored clips
+added	Assets/_Project/Animations/Support/Support_Animator.controller.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Support/Support_Death_D.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Support/Support_Death_D.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Support/Support_Death_DL.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Support/Support_Death_DL.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Support/Support_Death_DR.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Support/Support_Death_DR.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Support/Support_Death_L.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Support/Support_Death_L.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Support/Support_Death_R.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Support/Support_Death_R.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Support/Support_Death_U.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Support/Support_Death_U.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Support/Support_Death_UL.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Support/Support_Death_UL.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Support/Support_Death_UR.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Support/Support_Death_UR.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Support/Support_Idle_D.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Support/Support_Idle_D.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Support/Support_Idle_DL.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Support/Support_Idle_DL.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Support/Support_Idle_DR.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Support/Support_Idle_DR.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Support/Support_Idle_L.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Support/Support_Idle_L.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Support/Support_Idle_R.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Support/Support_Idle_R.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Support/Support_Idle_U.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Support/Support_Idle_U.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Support/Support_Idle_UL.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Support/Support_Idle_UL.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Support/Support_Idle_UR.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Support/Support_Idle_UR.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Support/Support_Move_D.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Support/Support_Move_D.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Support/Support_Move_DL.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Support/Support_Move_DL.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Support/Support_Move_DR.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Support/Support_Move_DR.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Support/Support_Move_L.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Support/Support_Move_L.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Support/Support_Move_R.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Support/Support_Move_R.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Support/Support_Move_U.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Support/Support_Move_U.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Support/Support_Move_UL.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Support/Support_Move_UL.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Support/Support_Move_UR.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Support/Support_Move_UR.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Support/Support_SupportEnd_D.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Support/Support_SupportEnd_D.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Support/Support_SupportEnd_DL.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Support/Support_SupportEnd_DL.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Support/Support_SupportEnd_DR.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Support/Support_SupportEnd_DR.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Support/Support_SupportEnd_L.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Support/Support_SupportEnd_L.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Support/Support_SupportEnd_R.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Support/Support_SupportEnd_R.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Support/Support_SupportEnd_U.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Support/Support_SupportEnd_U.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Support/Support_SupportEnd_UL.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Support/Support_SupportEnd_UL.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Support/Support_SupportEnd_UR.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Support/Support_SupportEnd_UR.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Support/Support_SupportLoop_D.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Support/Support_SupportLoop_D.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Support/Support_SupportLoop_DL.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Support/Support_SupportLoop_DL.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Support/Support_SupportLoop_DR.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Support/Support_SupportLoop_DR.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Support/Support_SupportLoop_L.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Support/Support_SupportLoop_L.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Support/Support_SupportLoop_R.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Support/Support_SupportLoop_R.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Support/Support_SupportLoop_U.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Support/Support_SupportLoop_U.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Support/Support_SupportLoop_UL.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Support/Support_SupportLoop_UL.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Support/Support_SupportLoop_UR.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Support/Support_SupportLoop_UR.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Support/Support_SupportMove_D.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Support/Support_SupportMove_D.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Support/Support_SupportMove_DL.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Support/Support_SupportMove_DL.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Support/Support_SupportMove_DR.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Support/Support_SupportMove_DR.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Support/Support_SupportMove_L.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Support/Support_SupportMove_L.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Support/Support_SupportMove_R.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Support/Support_SupportMove_R.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Support/Support_SupportMove_U.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Support/Support_SupportMove_U.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Support/Support_SupportMove_UL.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Support/Support_SupportMove_UL.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Support/Support_SupportMove_UR.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Support/Support_SupportMove_UR.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Support/Support_SupportStart_D.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Support/Support_SupportStart_D.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Support/Support_SupportStart_DL.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Support/Support_SupportStart_DL.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Support/Support_SupportStart_DR.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Support/Support_SupportStart_DR.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Support/Support_SupportStart_L.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Support/Support_SupportStart_L.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Support/Support_SupportStart_R.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Support/Support_SupportStart_R.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Support/Support_SupportStart_U.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Support/Support_SupportStart_U.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Support/Support_SupportStart_UL.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Support/Support_SupportStart_UL.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Animations/Support/Support_SupportStart_UR.anim	Directional Sprite-only animation; no gameplay events
+added	Assets/_Project/Animations/Support/Support_SupportStart_UR.anim.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/D.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/D/Exploder_Burst_D_01.png	Authored transparent Exploder Burst frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/D/Exploder_Burst_D_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/D/Exploder_Burst_D_02.png	Authored transparent Exploder Burst frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/D/Exploder_Burst_D_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/D/Exploder_Burst_D_03.png	Authored transparent Exploder Burst frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/D/Exploder_Burst_D_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/D/Exploder_Burst_D_04.png	Authored transparent Exploder Burst frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/D/Exploder_Burst_D_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/DL.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/DL/Exploder_Burst_DL_01.png	Authored transparent Exploder Burst frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/DL/Exploder_Burst_DL_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/DL/Exploder_Burst_DL_02.png	Authored transparent Exploder Burst frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/DL/Exploder_Burst_DL_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/DL/Exploder_Burst_DL_03.png	Authored transparent Exploder Burst frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/DL/Exploder_Burst_DL_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/DL/Exploder_Burst_DL_04.png	Authored transparent Exploder Burst frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/DL/Exploder_Burst_DL_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/DR.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/DR/Exploder_Burst_DR_01.png	Authored transparent Exploder Burst frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/DR/Exploder_Burst_DR_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/DR/Exploder_Burst_DR_02.png	Authored transparent Exploder Burst frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/DR/Exploder_Burst_DR_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/DR/Exploder_Burst_DR_03.png	Authored transparent Exploder Burst frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/DR/Exploder_Burst_DR_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/DR/Exploder_Burst_DR_04.png	Authored transparent Exploder Burst frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/DR/Exploder_Burst_DR_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/L.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/L/Exploder_Burst_L_01.png	Authored transparent Exploder Burst frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/L/Exploder_Burst_L_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/L/Exploder_Burst_L_02.png	Authored transparent Exploder Burst frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/L/Exploder_Burst_L_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/L/Exploder_Burst_L_03.png	Authored transparent Exploder Burst frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/L/Exploder_Burst_L_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/L/Exploder_Burst_L_04.png	Authored transparent Exploder Burst frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/L/Exploder_Burst_L_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/R.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/R/Exploder_Burst_R_01.png	Authored transparent Exploder Burst frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/R/Exploder_Burst_R_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/R/Exploder_Burst_R_02.png	Authored transparent Exploder Burst frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/R/Exploder_Burst_R_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/R/Exploder_Burst_R_03.png	Authored transparent Exploder Burst frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/R/Exploder_Burst_R_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/R/Exploder_Burst_R_04.png	Authored transparent Exploder Burst frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/R/Exploder_Burst_R_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/U.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/U/Exploder_Burst_U_01.png	Authored transparent Exploder Burst frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/U/Exploder_Burst_U_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/U/Exploder_Burst_U_02.png	Authored transparent Exploder Burst frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/U/Exploder_Burst_U_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/U/Exploder_Burst_U_03.png	Authored transparent Exploder Burst frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/U/Exploder_Burst_U_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/U/Exploder_Burst_U_04.png	Authored transparent Exploder Burst frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/U/Exploder_Burst_U_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/UL.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/UL/Exploder_Burst_UL_01.png	Authored transparent Exploder Burst frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/UL/Exploder_Burst_UL_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/UL/Exploder_Burst_UL_02.png	Authored transparent Exploder Burst frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/UL/Exploder_Burst_UL_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/UL/Exploder_Burst_UL_03.png	Authored transparent Exploder Burst frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/UL/Exploder_Burst_UL_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/UL/Exploder_Burst_UL_04.png	Authored transparent Exploder Burst frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/UL/Exploder_Burst_UL_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/UR.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/UR/Exploder_Burst_UR_01.png	Authored transparent Exploder Burst frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/UR/Exploder_Burst_UR_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/UR/Exploder_Burst_UR_02.png	Authored transparent Exploder Burst frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/UR/Exploder_Burst_UR_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/UR/Exploder_Burst_UR_03.png	Authored transparent Exploder Burst frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/UR/Exploder_Burst_UR_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/UR/Exploder_Burst_UR_04.png	Authored transparent Exploder Burst frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Burst/UR/Exploder_Burst_UR_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/D.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/D/Exploder_Death_D_01.png	Authored transparent Exploder Death frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/D/Exploder_Death_D_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/D/Exploder_Death_D_02.png	Authored transparent Exploder Death frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/D/Exploder_Death_D_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/D/Exploder_Death_D_03.png	Authored transparent Exploder Death frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/D/Exploder_Death_D_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/D/Exploder_Death_D_04.png	Authored transparent Exploder Death frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/D/Exploder_Death_D_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/DL.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/DL/Exploder_Death_DL_01.png	Authored transparent Exploder Death frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/DL/Exploder_Death_DL_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/DL/Exploder_Death_DL_02.png	Authored transparent Exploder Death frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/DL/Exploder_Death_DL_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/DL/Exploder_Death_DL_03.png	Authored transparent Exploder Death frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/DL/Exploder_Death_DL_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/DL/Exploder_Death_DL_04.png	Authored transparent Exploder Death frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/DL/Exploder_Death_DL_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/DR.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/DR/Exploder_Death_DR_01.png	Authored transparent Exploder Death frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/DR/Exploder_Death_DR_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/DR/Exploder_Death_DR_02.png	Authored transparent Exploder Death frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/DR/Exploder_Death_DR_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/DR/Exploder_Death_DR_03.png	Authored transparent Exploder Death frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/DR/Exploder_Death_DR_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/DR/Exploder_Death_DR_04.png	Authored transparent Exploder Death frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/DR/Exploder_Death_DR_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/L.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/L/Exploder_Death_L_01.png	Authored transparent Exploder Death frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/L/Exploder_Death_L_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/L/Exploder_Death_L_02.png	Authored transparent Exploder Death frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/L/Exploder_Death_L_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/L/Exploder_Death_L_03.png	Authored transparent Exploder Death frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/L/Exploder_Death_L_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/L/Exploder_Death_L_04.png	Authored transparent Exploder Death frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/L/Exploder_Death_L_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/R.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/R/Exploder_Death_R_01.png	Authored transparent Exploder Death frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/R/Exploder_Death_R_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/R/Exploder_Death_R_02.png	Authored transparent Exploder Death frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/R/Exploder_Death_R_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/R/Exploder_Death_R_03.png	Authored transparent Exploder Death frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/R/Exploder_Death_R_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/R/Exploder_Death_R_04.png	Authored transparent Exploder Death frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/R/Exploder_Death_R_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/U.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/U/Exploder_Death_U_01.png	Authored transparent Exploder Death frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/U/Exploder_Death_U_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/U/Exploder_Death_U_02.png	Authored transparent Exploder Death frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/U/Exploder_Death_U_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/U/Exploder_Death_U_03.png	Authored transparent Exploder Death frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/U/Exploder_Death_U_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/U/Exploder_Death_U_04.png	Authored transparent Exploder Death frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/U/Exploder_Death_U_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/UL.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/UL/Exploder_Death_UL_01.png	Authored transparent Exploder Death frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/UL/Exploder_Death_UL_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/UL/Exploder_Death_UL_02.png	Authored transparent Exploder Death frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/UL/Exploder_Death_UL_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/UL/Exploder_Death_UL_03.png	Authored transparent Exploder Death frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/UL/Exploder_Death_UL_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/UL/Exploder_Death_UL_04.png	Authored transparent Exploder Death frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/UL/Exploder_Death_UL_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/UR.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/UR/Exploder_Death_UR_01.png	Authored transparent Exploder Death frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/UR/Exploder_Death_UR_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/UR/Exploder_Death_UR_02.png	Authored transparent Exploder Death frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/UR/Exploder_Death_UR_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/UR/Exploder_Death_UR_03.png	Authored transparent Exploder Death frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/UR/Exploder_Death_UR_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/UR/Exploder_Death_UR_04.png	Authored transparent Exploder Death frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Death/UR/Exploder_Death_UR_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Explosion.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Explosion/Exploder_Explosion_01.png	Authored transparent Exploder Explosion frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Explosion/Exploder_Explosion_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Explosion/Exploder_Explosion_02.png	Authored transparent Exploder Explosion frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Explosion/Exploder_Explosion_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Explosion/Exploder_Explosion_03.png	Authored transparent Exploder Explosion frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Explosion/Exploder_Explosion_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Explosion/Exploder_Explosion_04.png	Authored transparent Exploder Explosion frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Explosion/Exploder_Explosion_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Explosion/Exploder_Explosion_05.png	Authored transparent Exploder Explosion frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Explosion/Exploder_Explosion_05.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Explosion/Exploder_Explosion_06.png	Authored transparent Exploder Explosion frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Explosion/Exploder_Explosion_06.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Explosion/Exploder_Explosion_07.png	Authored transparent Exploder Explosion frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Explosion/Exploder_Explosion_07.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Explosion/Exploder_Explosion_08.png	Authored transparent Exploder Explosion frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Explosion/Exploder_Explosion_08.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/D.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/D/Exploder_Idle_D_01.png	Authored transparent Exploder Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/D/Exploder_Idle_D_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/D/Exploder_Idle_D_02.png	Authored transparent Exploder Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/D/Exploder_Idle_D_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/D/Exploder_Idle_D_03.png	Authored transparent Exploder Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/D/Exploder_Idle_D_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/D/Exploder_Idle_D_04.png	Authored transparent Exploder Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/D/Exploder_Idle_D_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/DL.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/DL/Exploder_Idle_DL_01.png	Authored transparent Exploder Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/DL/Exploder_Idle_DL_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/DL/Exploder_Idle_DL_02.png	Authored transparent Exploder Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/DL/Exploder_Idle_DL_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/DL/Exploder_Idle_DL_03.png	Authored transparent Exploder Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/DL/Exploder_Idle_DL_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/DL/Exploder_Idle_DL_04.png	Authored transparent Exploder Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/DL/Exploder_Idle_DL_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/DR.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/DR/Exploder_Idle_DR_01.png	Authored transparent Exploder Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/DR/Exploder_Idle_DR_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/DR/Exploder_Idle_DR_02.png	Authored transparent Exploder Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/DR/Exploder_Idle_DR_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/DR/Exploder_Idle_DR_03.png	Authored transparent Exploder Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/DR/Exploder_Idle_DR_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/DR/Exploder_Idle_DR_04.png	Authored transparent Exploder Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/DR/Exploder_Idle_DR_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/L.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/L/Exploder_Idle_L_01.png	Authored transparent Exploder Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/L/Exploder_Idle_L_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/L/Exploder_Idle_L_02.png	Authored transparent Exploder Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/L/Exploder_Idle_L_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/L/Exploder_Idle_L_03.png	Authored transparent Exploder Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/L/Exploder_Idle_L_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/L/Exploder_Idle_L_04.png	Authored transparent Exploder Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/L/Exploder_Idle_L_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/R.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/R/Exploder_Idle_R_01.png	Authored transparent Exploder Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/R/Exploder_Idle_R_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/R/Exploder_Idle_R_02.png	Authored transparent Exploder Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/R/Exploder_Idle_R_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/R/Exploder_Idle_R_03.png	Authored transparent Exploder Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/R/Exploder_Idle_R_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/R/Exploder_Idle_R_04.png	Authored transparent Exploder Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/R/Exploder_Idle_R_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/U.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/U/Exploder_Idle_U_01.png	Authored transparent Exploder Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/U/Exploder_Idle_U_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/U/Exploder_Idle_U_02.png	Authored transparent Exploder Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/U/Exploder_Idle_U_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/U/Exploder_Idle_U_03.png	Authored transparent Exploder Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/U/Exploder_Idle_U_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/U/Exploder_Idle_U_04.png	Authored transparent Exploder Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/U/Exploder_Idle_U_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/UL.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/UL/Exploder_Idle_UL_01.png	Authored transparent Exploder Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/UL/Exploder_Idle_UL_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/UL/Exploder_Idle_UL_02.png	Authored transparent Exploder Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/UL/Exploder_Idle_UL_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/UL/Exploder_Idle_UL_03.png	Authored transparent Exploder Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/UL/Exploder_Idle_UL_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/UL/Exploder_Idle_UL_04.png	Authored transparent Exploder Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/UL/Exploder_Idle_UL_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/UR.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/UR/Exploder_Idle_UR_01.png	Authored transparent Exploder Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/UR/Exploder_Idle_UR_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/UR/Exploder_Idle_UR_02.png	Authored transparent Exploder Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/UR/Exploder_Idle_UR_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/UR/Exploder_Idle_UR_03.png	Authored transparent Exploder Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/UR/Exploder_Idle_UR_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/UR/Exploder_Idle_UR_04.png	Authored transparent Exploder Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Idle/UR/Exploder_Idle_UR_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/D.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/D/Exploder_Move_D_01.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/D/Exploder_Move_D_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/D/Exploder_Move_D_02.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/D/Exploder_Move_D_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/D/Exploder_Move_D_03.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/D/Exploder_Move_D_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/D/Exploder_Move_D_04.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/D/Exploder_Move_D_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/D/Exploder_Move_D_05.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/D/Exploder_Move_D_05.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/D/Exploder_Move_D_06.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/D/Exploder_Move_D_06.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/D/Exploder_Move_D_07.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/D/Exploder_Move_D_07.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/D/Exploder_Move_D_08.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/D/Exploder_Move_D_08.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/DL.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/DL/Exploder_Move_DL_01.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/DL/Exploder_Move_DL_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/DL/Exploder_Move_DL_02.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/DL/Exploder_Move_DL_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/DL/Exploder_Move_DL_03.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/DL/Exploder_Move_DL_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/DL/Exploder_Move_DL_04.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/DL/Exploder_Move_DL_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/DL/Exploder_Move_DL_05.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/DL/Exploder_Move_DL_05.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/DL/Exploder_Move_DL_06.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/DL/Exploder_Move_DL_06.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/DL/Exploder_Move_DL_07.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/DL/Exploder_Move_DL_07.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/DL/Exploder_Move_DL_08.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/DL/Exploder_Move_DL_08.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/DR.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/DR/Exploder_Move_DR_01.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/DR/Exploder_Move_DR_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/DR/Exploder_Move_DR_02.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/DR/Exploder_Move_DR_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/DR/Exploder_Move_DR_03.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/DR/Exploder_Move_DR_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/DR/Exploder_Move_DR_04.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/DR/Exploder_Move_DR_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/DR/Exploder_Move_DR_05.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/DR/Exploder_Move_DR_05.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/DR/Exploder_Move_DR_06.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/DR/Exploder_Move_DR_06.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/DR/Exploder_Move_DR_07.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/DR/Exploder_Move_DR_07.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/DR/Exploder_Move_DR_08.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/DR/Exploder_Move_DR_08.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/L.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/L/Exploder_Move_L_01.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/L/Exploder_Move_L_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/L/Exploder_Move_L_02.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/L/Exploder_Move_L_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/L/Exploder_Move_L_03.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/L/Exploder_Move_L_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/L/Exploder_Move_L_04.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/L/Exploder_Move_L_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/L/Exploder_Move_L_05.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/L/Exploder_Move_L_05.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/L/Exploder_Move_L_06.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/L/Exploder_Move_L_06.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/L/Exploder_Move_L_07.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/L/Exploder_Move_L_07.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/L/Exploder_Move_L_08.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/L/Exploder_Move_L_08.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/R.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/R/Exploder_Move_R_01.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/R/Exploder_Move_R_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/R/Exploder_Move_R_02.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/R/Exploder_Move_R_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/R/Exploder_Move_R_03.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/R/Exploder_Move_R_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/R/Exploder_Move_R_04.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/R/Exploder_Move_R_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/R/Exploder_Move_R_05.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/R/Exploder_Move_R_05.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/R/Exploder_Move_R_06.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/R/Exploder_Move_R_06.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/R/Exploder_Move_R_07.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/R/Exploder_Move_R_07.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/R/Exploder_Move_R_08.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/R/Exploder_Move_R_08.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/U.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/U/Exploder_Move_U_01.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/U/Exploder_Move_U_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/U/Exploder_Move_U_02.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/U/Exploder_Move_U_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/U/Exploder_Move_U_03.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/U/Exploder_Move_U_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/U/Exploder_Move_U_04.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/U/Exploder_Move_U_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/U/Exploder_Move_U_05.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/U/Exploder_Move_U_05.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/U/Exploder_Move_U_06.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/U/Exploder_Move_U_06.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/U/Exploder_Move_U_07.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/U/Exploder_Move_U_07.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/U/Exploder_Move_U_08.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/U/Exploder_Move_U_08.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/UL.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/UL/Exploder_Move_UL_01.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/UL/Exploder_Move_UL_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/UL/Exploder_Move_UL_02.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/UL/Exploder_Move_UL_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/UL/Exploder_Move_UL_03.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/UL/Exploder_Move_UL_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/UL/Exploder_Move_UL_04.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/UL/Exploder_Move_UL_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/UL/Exploder_Move_UL_05.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/UL/Exploder_Move_UL_05.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/UL/Exploder_Move_UL_06.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/UL/Exploder_Move_UL_06.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/UL/Exploder_Move_UL_07.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/UL/Exploder_Move_UL_07.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/UL/Exploder_Move_UL_08.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/UL/Exploder_Move_UL_08.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/UR.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/UR/Exploder_Move_UR_01.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/UR/Exploder_Move_UR_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/UR/Exploder_Move_UR_02.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/UR/Exploder_Move_UR_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/UR/Exploder_Move_UR_03.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/UR/Exploder_Move_UR_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/UR/Exploder_Move_UR_04.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/UR/Exploder_Move_UR_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/UR/Exploder_Move_UR_05.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/UR/Exploder_Move_UR_05.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/UR/Exploder_Move_UR_06.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/UR/Exploder_Move_UR_06.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/UR/Exploder_Move_UR_07.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/UR/Exploder_Move_UR_07.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/UR/Exploder_Move_UR_08.png	Authored transparent Exploder Move frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Move/UR/Exploder_Move_UR_08.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/D.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/D/Exploder_Warning_D_01.png	Authored transparent Exploder Warning frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/D/Exploder_Warning_D_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/D/Exploder_Warning_D_02.png	Authored transparent Exploder Warning frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/D/Exploder_Warning_D_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/D/Exploder_Warning_D_03.png	Authored transparent Exploder Warning frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/D/Exploder_Warning_D_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/D/Exploder_Warning_D_04.png	Authored transparent Exploder Warning frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/D/Exploder_Warning_D_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/DL.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/DL/Exploder_Warning_DL_01.png	Authored transparent Exploder Warning frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/DL/Exploder_Warning_DL_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/DL/Exploder_Warning_DL_02.png	Authored transparent Exploder Warning frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/DL/Exploder_Warning_DL_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/DL/Exploder_Warning_DL_03.png	Authored transparent Exploder Warning frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/DL/Exploder_Warning_DL_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/DL/Exploder_Warning_DL_04.png	Authored transparent Exploder Warning frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/DL/Exploder_Warning_DL_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/DR.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/DR/Exploder_Warning_DR_01.png	Authored transparent Exploder Warning frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/DR/Exploder_Warning_DR_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/DR/Exploder_Warning_DR_02.png	Authored transparent Exploder Warning frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/DR/Exploder_Warning_DR_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/DR/Exploder_Warning_DR_03.png	Authored transparent Exploder Warning frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/DR/Exploder_Warning_DR_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/DR/Exploder_Warning_DR_04.png	Authored transparent Exploder Warning frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/DR/Exploder_Warning_DR_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/L.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/L/Exploder_Warning_L_01.png	Authored transparent Exploder Warning frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/L/Exploder_Warning_L_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/L/Exploder_Warning_L_02.png	Authored transparent Exploder Warning frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/L/Exploder_Warning_L_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/L/Exploder_Warning_L_03.png	Authored transparent Exploder Warning frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/L/Exploder_Warning_L_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/L/Exploder_Warning_L_04.png	Authored transparent Exploder Warning frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/L/Exploder_Warning_L_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/R.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/R/Exploder_Warning_R_01.png	Authored transparent Exploder Warning frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/R/Exploder_Warning_R_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/R/Exploder_Warning_R_02.png	Authored transparent Exploder Warning frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/R/Exploder_Warning_R_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/R/Exploder_Warning_R_03.png	Authored transparent Exploder Warning frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/R/Exploder_Warning_R_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/R/Exploder_Warning_R_04.png	Authored transparent Exploder Warning frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/R/Exploder_Warning_R_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/U.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/U/Exploder_Warning_U_01.png	Authored transparent Exploder Warning frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/U/Exploder_Warning_U_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/U/Exploder_Warning_U_02.png	Authored transparent Exploder Warning frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/U/Exploder_Warning_U_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/U/Exploder_Warning_U_03.png	Authored transparent Exploder Warning frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/U/Exploder_Warning_U_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/U/Exploder_Warning_U_04.png	Authored transparent Exploder Warning frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/U/Exploder_Warning_U_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/UL.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/UL/Exploder_Warning_UL_01.png	Authored transparent Exploder Warning frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/UL/Exploder_Warning_UL_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/UL/Exploder_Warning_UL_02.png	Authored transparent Exploder Warning frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/UL/Exploder_Warning_UL_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/UL/Exploder_Warning_UL_03.png	Authored transparent Exploder Warning frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/UL/Exploder_Warning_UL_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/UL/Exploder_Warning_UL_04.png	Authored transparent Exploder Warning frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/UL/Exploder_Warning_UL_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/UR.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/UR/Exploder_Warning_UR_01.png	Authored transparent Exploder Warning frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/UR/Exploder_Warning_UR_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/UR/Exploder_Warning_UR_02.png	Authored transparent Exploder Warning frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/UR/Exploder_Warning_UR_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/UR/Exploder_Warning_UR_03.png	Authored transparent Exploder Warning frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/UR/Exploder_Warning_UR_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/UR/Exploder_Warning_UR_04.png	Authored transparent Exploder Warning frame
+added	Assets/_Project/Art/Enemies/Animated/Exploder/Warning/UR/Exploder_Warning_UR_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Death.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/D.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/D/Support_Death_D_01.png	Authored transparent Support Death frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/D/Support_Death_D_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/D/Support_Death_D_02.png	Authored transparent Support Death frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/D/Support_Death_D_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/D/Support_Death_D_03.png	Authored transparent Support Death frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/D/Support_Death_D_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/D/Support_Death_D_04.png	Authored transparent Support Death frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/D/Support_Death_D_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/DL.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/DL/Support_Death_DL_01.png	Authored transparent Support Death frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/DL/Support_Death_DL_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/DL/Support_Death_DL_02.png	Authored transparent Support Death frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/DL/Support_Death_DL_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/DL/Support_Death_DL_03.png	Authored transparent Support Death frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/DL/Support_Death_DL_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/DL/Support_Death_DL_04.png	Authored transparent Support Death frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/DL/Support_Death_DL_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/DR.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/DR/Support_Death_DR_01.png	Authored transparent Support Death frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/DR/Support_Death_DR_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/DR/Support_Death_DR_02.png	Authored transparent Support Death frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/DR/Support_Death_DR_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/DR/Support_Death_DR_03.png	Authored transparent Support Death frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/DR/Support_Death_DR_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/DR/Support_Death_DR_04.png	Authored transparent Support Death frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/DR/Support_Death_DR_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/L.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/L/Support_Death_L_01.png	Authored transparent Support Death frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/L/Support_Death_L_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/L/Support_Death_L_02.png	Authored transparent Support Death frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/L/Support_Death_L_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/L/Support_Death_L_03.png	Authored transparent Support Death frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/L/Support_Death_L_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/L/Support_Death_L_04.png	Authored transparent Support Death frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/L/Support_Death_L_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/R.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/R/Support_Death_R_01.png	Authored transparent Support Death frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/R/Support_Death_R_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/R/Support_Death_R_02.png	Authored transparent Support Death frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/R/Support_Death_R_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/R/Support_Death_R_03.png	Authored transparent Support Death frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/R/Support_Death_R_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/R/Support_Death_R_04.png	Authored transparent Support Death frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/R/Support_Death_R_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/U.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/U/Support_Death_U_01.png	Authored transparent Support Death frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/U/Support_Death_U_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/U/Support_Death_U_02.png	Authored transparent Support Death frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/U/Support_Death_U_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/U/Support_Death_U_03.png	Authored transparent Support Death frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/U/Support_Death_U_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/U/Support_Death_U_04.png	Authored transparent Support Death frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/U/Support_Death_U_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/UL.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/UL/Support_Death_UL_01.png	Authored transparent Support Death frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/UL/Support_Death_UL_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/UL/Support_Death_UL_02.png	Authored transparent Support Death frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/UL/Support_Death_UL_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/UL/Support_Death_UL_03.png	Authored transparent Support Death frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/UL/Support_Death_UL_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/UL/Support_Death_UL_04.png	Authored transparent Support Death frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/UL/Support_Death_UL_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/UR.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/UR/Support_Death_UR_01.png	Authored transparent Support Death frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/UR/Support_Death_UR_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/UR/Support_Death_UR_02.png	Authored transparent Support Death frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/UR/Support_Death_UR_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/UR/Support_Death_UR_03.png	Authored transparent Support Death frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/UR/Support_Death_UR_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/UR/Support_Death_UR_04.png	Authored transparent Support Death frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Death/UR/Support_Death_UR_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/D.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/D/Support_Idle_D_01.png	Authored transparent Support Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/D/Support_Idle_D_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/D/Support_Idle_D_02.png	Authored transparent Support Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/D/Support_Idle_D_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/D/Support_Idle_D_03.png	Authored transparent Support Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/D/Support_Idle_D_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/D/Support_Idle_D_04.png	Authored transparent Support Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/D/Support_Idle_D_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/DL.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/DL/Support_Idle_DL_01.png	Authored transparent Support Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/DL/Support_Idle_DL_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/DL/Support_Idle_DL_02.png	Authored transparent Support Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/DL/Support_Idle_DL_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/DL/Support_Idle_DL_03.png	Authored transparent Support Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/DL/Support_Idle_DL_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/DL/Support_Idle_DL_04.png	Authored transparent Support Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/DL/Support_Idle_DL_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/DR.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/DR/Support_Idle_DR_01.png	Authored transparent Support Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/DR/Support_Idle_DR_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/DR/Support_Idle_DR_02.png	Authored transparent Support Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/DR/Support_Idle_DR_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/DR/Support_Idle_DR_03.png	Authored transparent Support Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/DR/Support_Idle_DR_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/DR/Support_Idle_DR_04.png	Authored transparent Support Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/DR/Support_Idle_DR_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/L.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/L/Support_Idle_L_01.png	Authored transparent Support Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/L/Support_Idle_L_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/L/Support_Idle_L_02.png	Authored transparent Support Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/L/Support_Idle_L_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/L/Support_Idle_L_03.png	Authored transparent Support Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/L/Support_Idle_L_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/L/Support_Idle_L_04.png	Authored transparent Support Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/L/Support_Idle_L_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/R.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/R/Support_Idle_R_01.png	Authored transparent Support Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/R/Support_Idle_R_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/R/Support_Idle_R_02.png	Authored transparent Support Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/R/Support_Idle_R_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/R/Support_Idle_R_03.png	Authored transparent Support Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/R/Support_Idle_R_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/R/Support_Idle_R_04.png	Authored transparent Support Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/R/Support_Idle_R_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/U.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/U/Support_Idle_U_01.png	Authored transparent Support Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/U/Support_Idle_U_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/U/Support_Idle_U_02.png	Authored transparent Support Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/U/Support_Idle_U_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/U/Support_Idle_U_03.png	Authored transparent Support Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/U/Support_Idle_U_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/U/Support_Idle_U_04.png	Authored transparent Support Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/U/Support_Idle_U_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/UL.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/UL/Support_Idle_UL_01.png	Authored transparent Support Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/UL/Support_Idle_UL_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/UL/Support_Idle_UL_02.png	Authored transparent Support Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/UL/Support_Idle_UL_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/UL/Support_Idle_UL_03.png	Authored transparent Support Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/UL/Support_Idle_UL_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/UL/Support_Idle_UL_04.png	Authored transparent Support Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/UL/Support_Idle_UL_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/UR.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/UR/Support_Idle_UR_01.png	Authored transparent Support Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/UR/Support_Idle_UR_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/UR/Support_Idle_UR_02.png	Authored transparent Support Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/UR/Support_Idle_UR_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/UR/Support_Idle_UR_03.png	Authored transparent Support Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/UR/Support_Idle_UR_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/UR/Support_Idle_UR_04.png	Authored transparent Support Idle frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Idle/UR/Support_Idle_UR_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/D.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/D/Support_Move_D_01.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/D/Support_Move_D_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/D/Support_Move_D_02.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/D/Support_Move_D_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/D/Support_Move_D_03.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/D/Support_Move_D_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/D/Support_Move_D_04.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/D/Support_Move_D_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/D/Support_Move_D_05.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/D/Support_Move_D_05.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/D/Support_Move_D_06.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/D/Support_Move_D_06.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/D/Support_Move_D_07.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/D/Support_Move_D_07.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/D/Support_Move_D_08.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/D/Support_Move_D_08.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/DL.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/DL/Support_Move_DL_01.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/DL/Support_Move_DL_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/DL/Support_Move_DL_02.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/DL/Support_Move_DL_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/DL/Support_Move_DL_03.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/DL/Support_Move_DL_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/DL/Support_Move_DL_04.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/DL/Support_Move_DL_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/DL/Support_Move_DL_05.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/DL/Support_Move_DL_05.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/DL/Support_Move_DL_06.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/DL/Support_Move_DL_06.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/DL/Support_Move_DL_07.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/DL/Support_Move_DL_07.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/DL/Support_Move_DL_08.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/DL/Support_Move_DL_08.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/DR.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/DR/Support_Move_DR_01.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/DR/Support_Move_DR_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/DR/Support_Move_DR_02.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/DR/Support_Move_DR_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/DR/Support_Move_DR_03.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/DR/Support_Move_DR_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/DR/Support_Move_DR_04.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/DR/Support_Move_DR_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/DR/Support_Move_DR_05.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/DR/Support_Move_DR_05.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/DR/Support_Move_DR_06.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/DR/Support_Move_DR_06.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/DR/Support_Move_DR_07.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/DR/Support_Move_DR_07.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/DR/Support_Move_DR_08.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/DR/Support_Move_DR_08.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/L.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/L/Support_Move_L_01.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/L/Support_Move_L_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/L/Support_Move_L_02.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/L/Support_Move_L_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/L/Support_Move_L_03.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/L/Support_Move_L_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/L/Support_Move_L_04.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/L/Support_Move_L_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/L/Support_Move_L_05.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/L/Support_Move_L_05.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/L/Support_Move_L_06.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/L/Support_Move_L_06.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/L/Support_Move_L_07.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/L/Support_Move_L_07.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/L/Support_Move_L_08.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/L/Support_Move_L_08.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/R.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/R/Support_Move_R_01.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/R/Support_Move_R_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/R/Support_Move_R_02.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/R/Support_Move_R_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/R/Support_Move_R_03.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/R/Support_Move_R_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/R/Support_Move_R_04.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/R/Support_Move_R_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/R/Support_Move_R_05.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/R/Support_Move_R_05.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/R/Support_Move_R_06.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/R/Support_Move_R_06.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/R/Support_Move_R_07.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/R/Support_Move_R_07.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/R/Support_Move_R_08.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/R/Support_Move_R_08.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/U.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/U/Support_Move_U_01.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/U/Support_Move_U_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/U/Support_Move_U_02.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/U/Support_Move_U_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/U/Support_Move_U_03.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/U/Support_Move_U_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/U/Support_Move_U_04.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/U/Support_Move_U_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/U/Support_Move_U_05.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/U/Support_Move_U_05.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/U/Support_Move_U_06.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/U/Support_Move_U_06.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/U/Support_Move_U_07.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/U/Support_Move_U_07.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/U/Support_Move_U_08.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/U/Support_Move_U_08.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/UL.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/UL/Support_Move_UL_01.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/UL/Support_Move_UL_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/UL/Support_Move_UL_02.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/UL/Support_Move_UL_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/UL/Support_Move_UL_03.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/UL/Support_Move_UL_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/UL/Support_Move_UL_04.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/UL/Support_Move_UL_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/UL/Support_Move_UL_05.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/UL/Support_Move_UL_05.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/UL/Support_Move_UL_06.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/UL/Support_Move_UL_06.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/UL/Support_Move_UL_07.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/UL/Support_Move_UL_07.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/UL/Support_Move_UL_08.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/UL/Support_Move_UL_08.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/UR.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/UR/Support_Move_UR_01.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/UR/Support_Move_UR_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/UR/Support_Move_UR_02.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/UR/Support_Move_UR_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/UR/Support_Move_UR_03.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/UR/Support_Move_UR_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/UR/Support_Move_UR_04.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/UR/Support_Move_UR_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/UR/Support_Move_UR_05.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/UR/Support_Move_UR_05.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/UR/Support_Move_UR_06.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/UR/Support_Move_UR_06.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/UR/Support_Move_UR_07.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/UR/Support_Move_UR_07.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/UR/Support_Move_UR_08.png	Authored transparent Support Move frame
+added	Assets/_Project/Art/Enemies/Animated/Support/Move/UR/Support_Move_UR_08.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/D.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/D/Support_SupportMove_D_01.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/D/Support_SupportMove_D_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/D/Support_SupportMove_D_02.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/D/Support_SupportMove_D_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/D/Support_SupportMove_D_03.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/D/Support_SupportMove_D_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/D/Support_SupportMove_D_04.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/D/Support_SupportMove_D_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/D/Support_SupportMove_D_05.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/D/Support_SupportMove_D_05.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/D/Support_SupportMove_D_06.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/D/Support_SupportMove_D_06.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/D/Support_SupportMove_D_07.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/D/Support_SupportMove_D_07.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/D/Support_SupportMove_D_08.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/D/Support_SupportMove_D_08.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DL.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DL/Support_SupportMove_DL_01.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DL/Support_SupportMove_DL_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DL/Support_SupportMove_DL_02.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DL/Support_SupportMove_DL_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DL/Support_SupportMove_DL_03.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DL/Support_SupportMove_DL_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DL/Support_SupportMove_DL_04.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DL/Support_SupportMove_DL_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DL/Support_SupportMove_DL_05.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DL/Support_SupportMove_DL_05.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DL/Support_SupportMove_DL_06.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DL/Support_SupportMove_DL_06.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DL/Support_SupportMove_DL_07.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DL/Support_SupportMove_DL_07.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DL/Support_SupportMove_DL_08.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DL/Support_SupportMove_DL_08.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DR.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DR/Support_SupportMove_DR_01.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DR/Support_SupportMove_DR_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DR/Support_SupportMove_DR_02.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DR/Support_SupportMove_DR_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DR/Support_SupportMove_DR_03.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DR/Support_SupportMove_DR_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DR/Support_SupportMove_DR_04.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DR/Support_SupportMove_DR_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DR/Support_SupportMove_DR_05.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DR/Support_SupportMove_DR_05.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DR/Support_SupportMove_DR_06.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DR/Support_SupportMove_DR_06.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DR/Support_SupportMove_DR_07.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DR/Support_SupportMove_DR_07.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DR/Support_SupportMove_DR_08.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DR/Support_SupportMove_DR_08.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/L.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/L/Support_SupportMove_L_01.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/L/Support_SupportMove_L_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/L/Support_SupportMove_L_02.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/L/Support_SupportMove_L_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/L/Support_SupportMove_L_03.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/L/Support_SupportMove_L_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/L/Support_SupportMove_L_04.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/L/Support_SupportMove_L_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/L/Support_SupportMove_L_05.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/L/Support_SupportMove_L_05.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/L/Support_SupportMove_L_06.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/L/Support_SupportMove_L_06.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/L/Support_SupportMove_L_07.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/L/Support_SupportMove_L_07.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/L/Support_SupportMove_L_08.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/L/Support_SupportMove_L_08.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/R.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/R/Support_SupportMove_R_01.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/R/Support_SupportMove_R_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/R/Support_SupportMove_R_02.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/R/Support_SupportMove_R_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/R/Support_SupportMove_R_03.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/R/Support_SupportMove_R_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/R/Support_SupportMove_R_04.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/R/Support_SupportMove_R_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/R/Support_SupportMove_R_05.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/R/Support_SupportMove_R_05.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/R/Support_SupportMove_R_06.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/R/Support_SupportMove_R_06.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/R/Support_SupportMove_R_07.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/R/Support_SupportMove_R_07.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/R/Support_SupportMove_R_08.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/R/Support_SupportMove_R_08.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/U.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/U/Support_SupportMove_U_01.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/U/Support_SupportMove_U_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/U/Support_SupportMove_U_02.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/U/Support_SupportMove_U_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/U/Support_SupportMove_U_03.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/U/Support_SupportMove_U_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/U/Support_SupportMove_U_04.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/U/Support_SupportMove_U_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/U/Support_SupportMove_U_05.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/U/Support_SupportMove_U_05.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/U/Support_SupportMove_U_06.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/U/Support_SupportMove_U_06.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/U/Support_SupportMove_U_07.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/U/Support_SupportMove_U_07.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/U/Support_SupportMove_U_08.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/U/Support_SupportMove_U_08.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UL.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UL/Support_SupportMove_UL_01.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UL/Support_SupportMove_UL_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UL/Support_SupportMove_UL_02.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UL/Support_SupportMove_UL_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UL/Support_SupportMove_UL_03.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UL/Support_SupportMove_UL_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UL/Support_SupportMove_UL_04.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UL/Support_SupportMove_UL_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UL/Support_SupportMove_UL_05.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UL/Support_SupportMove_UL_05.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UL/Support_SupportMove_UL_06.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UL/Support_SupportMove_UL_06.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UL/Support_SupportMove_UL_07.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UL/Support_SupportMove_UL_07.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UL/Support_SupportMove_UL_08.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UL/Support_SupportMove_UL_08.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UR.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UR/Support_SupportMove_UR_01.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UR/Support_SupportMove_UR_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UR/Support_SupportMove_UR_02.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UR/Support_SupportMove_UR_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UR/Support_SupportMove_UR_03.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UR/Support_SupportMove_UR_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UR/Support_SupportMove_UR_04.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UR/Support_SupportMove_UR_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UR/Support_SupportMove_UR_05.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UR/Support_SupportMove_UR_05.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UR/Support_SupportMove_UR_06.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UR/Support_SupportMove_UR_06.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UR/Support_SupportMove_UR_07.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UR/Support_SupportMove_UR_07.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UR/Support_SupportMove_UR_08.png	Authored transparent Support SupportMove frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UR/Support_SupportMove_UR_08.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/D.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/D/Support_SupportStart_D_01.png	Authored transparent Support SupportStart frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/D/Support_SupportStart_D_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/D/Support_SupportStart_D_02.png	Authored transparent Support SupportStart frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/D/Support_SupportStart_D_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/D/Support_SupportStart_D_03.png	Authored transparent Support SupportStart frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/D/Support_SupportStart_D_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/D/Support_SupportStart_D_04.png	Authored transparent Support SupportStart frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/D/Support_SupportStart_D_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/DL.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/DL/Support_SupportStart_DL_01.png	Authored transparent Support SupportStart frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/DL/Support_SupportStart_DL_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/DL/Support_SupportStart_DL_02.png	Authored transparent Support SupportStart frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/DL/Support_SupportStart_DL_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/DL/Support_SupportStart_DL_03.png	Authored transparent Support SupportStart frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/DL/Support_SupportStart_DL_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/DL/Support_SupportStart_DL_04.png	Authored transparent Support SupportStart frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/DL/Support_SupportStart_DL_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/DR.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/DR/Support_SupportStart_DR_01.png	Authored transparent Support SupportStart frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/DR/Support_SupportStart_DR_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/DR/Support_SupportStart_DR_02.png	Authored transparent Support SupportStart frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/DR/Support_SupportStart_DR_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/DR/Support_SupportStart_DR_03.png	Authored transparent Support SupportStart frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/DR/Support_SupportStart_DR_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/DR/Support_SupportStart_DR_04.png	Authored transparent Support SupportStart frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/DR/Support_SupportStart_DR_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/L.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/L/Support_SupportStart_L_01.png	Authored transparent Support SupportStart frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/L/Support_SupportStart_L_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/L/Support_SupportStart_L_02.png	Authored transparent Support SupportStart frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/L/Support_SupportStart_L_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/L/Support_SupportStart_L_03.png	Authored transparent Support SupportStart frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/L/Support_SupportStart_L_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/L/Support_SupportStart_L_04.png	Authored transparent Support SupportStart frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/L/Support_SupportStart_L_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/R.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/R/Support_SupportStart_R_01.png	Authored transparent Support SupportStart frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/R/Support_SupportStart_R_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/R/Support_SupportStart_R_02.png	Authored transparent Support SupportStart frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/R/Support_SupportStart_R_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/R/Support_SupportStart_R_03.png	Authored transparent Support SupportStart frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/R/Support_SupportStart_R_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/R/Support_SupportStart_R_04.png	Authored transparent Support SupportStart frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/R/Support_SupportStart_R_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/U.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/U/Support_SupportStart_U_01.png	Authored transparent Support SupportStart frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/U/Support_SupportStart_U_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/U/Support_SupportStart_U_02.png	Authored transparent Support SupportStart frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/U/Support_SupportStart_U_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/U/Support_SupportStart_U_03.png	Authored transparent Support SupportStart frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/U/Support_SupportStart_U_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/U/Support_SupportStart_U_04.png	Authored transparent Support SupportStart frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/U/Support_SupportStart_U_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/UL.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/UL/Support_SupportStart_UL_01.png	Authored transparent Support SupportStart frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/UL/Support_SupportStart_UL_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/UL/Support_SupportStart_UL_02.png	Authored transparent Support SupportStart frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/UL/Support_SupportStart_UL_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/UL/Support_SupportStart_UL_03.png	Authored transparent Support SupportStart frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/UL/Support_SupportStart_UL_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/UL/Support_SupportStart_UL_04.png	Authored transparent Support SupportStart frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/UL/Support_SupportStart_UL_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/UR.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/UR/Support_SupportStart_UR_01.png	Authored transparent Support SupportStart frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/UR/Support_SupportStart_UR_01.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/UR/Support_SupportStart_UR_02.png	Authored transparent Support SupportStart frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/UR/Support_SupportStart_UR_02.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/UR/Support_SupportStart_UR_03.png	Authored transparent Support SupportStart frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/UR/Support_SupportStart_UR_03.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/UR/Support_SupportStart_UR_04.png	Authored transparent Support SupportStart frame
+added	Assets/_Project/Art/Enemies/Animated/Support/SupportStart/UR/Support_SupportStart_UR_04.png.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Editor/SupportExploderArtSetup.cs	Own-sprite importer, 96 clip/controller creation, formal asset validation
+added	Assets/_Project/Editor/SupportExploderArtSetup.cs.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Assets/_Project/Editor/SupportExploderArtVerification.cs	Real animation/state/timing/reuse/preview Play Mode checks
+added	Assets/_Project/Editor/SupportExploderArtVerification.cs.meta	Stable independent Unity GUID/import settings; keep with asset
+modified	Assets/_Project/Editor/SupportExploderSetup.cs	Idempotent own Prefab/test-scene setup and existing-menu integration
+modified	Assets/_Project/Editor/SupportExploderVerification.cs	Retained gameplay suite with authored-art verification entry
+modified	Assets/_Project/Prefabs/Enemies/Animated/Enemy_Exploder.prefab	Existing specialist Prefab wired to formal sprites/controller; GUID retained
+modified	Assets/_Project/Prefabs/Enemies/Animated/Enemy_Support.prefab	Existing specialist Prefab wired to formal sprites/controller; GUID retained
+modified	Assets/_Project/Scenes/SupportExploder_Test.unity	Only the isolated specialist lab; original runtime/pools/navigation
+modified	Assets/_Project/Scripts/Enemy/EnemyAbilityPresentation.cs	Target links, exact warning radius, bounded radial VFX and cleanup
+modified	Assets/_Project/Scripts/Enemy/EnemyAbilityTestLab.cs	Pool-based encounter, direction/state preview, pause/recycle/restart controls
+modified	Assets/_Project/Scripts/Enemy/ExploderEnemyAbility.cs	Select collapse or rupture and native visual return delay
+modified	Assets/_Project/Scripts/Enemy/SupportEnemyAbility.cs	Release support and start authored death through native death hook
+added	Assets/_Project/Scripts/Enemy/SupportExploderAnimation.cs	Ability-driven Sprite-only Animator selection and pool reset
+added	Assets/_Project/Scripts/Enemy/SupportExploderAnimation.cs.meta	Stable independent Unity GUID/import settings; keep with asset
+added	Docs/Enemies/SupportExploder/ArtProduction.md	Delivery, preservation or later region-integration documentation
+added	Docs/Enemies/SupportExploder/ArtReview/Exploder_EightDirections.png	Review preview or final sprite audit; not runtime asset
+added	Docs/Enemies/SupportExploder/ArtReview/Exploder_Explosion.gif	Review preview or final sprite audit; not runtime asset
+added	Docs/Enemies/SupportExploder/ArtReview/Exploder_Move_AllDirections.gif	Review preview or final sprite audit; not runtime asset
+added	Docs/Enemies/SupportExploder/ArtReview/Exploder_States_DR.gif	Review preview or final sprite audit; not runtime asset
+added	Docs/Enemies/SupportExploder/ArtReview/Exploder_Unity_Runtime.gif	Review preview or final sprite audit; not runtime asset
+added	Docs/Enemies/SupportExploder/ArtReview/SpriteAudit.json	Review preview or final sprite audit; not runtime asset
+added	Docs/Enemies/SupportExploder/ArtReview/Support_EightDirections.png	Review preview or final sprite audit; not runtime asset
+added	Docs/Enemies/SupportExploder/ArtReview/Support_Move_AllDirections.gif	Review preview or final sprite audit; not runtime asset
+added	Docs/Enemies/SupportExploder/ArtReview/Support_States_DR.gif	Review preview or final sprite audit; not runtime asset
+added	Docs/Enemies/SupportExploder/ArtReview/Support_SupportMove_AllDirections.gif	Review preview or final sprite audit; not runtime asset
+modified	Docs/Enemies/SupportExploder/AssetValidation.txt	Delivery, preservation or later region-integration documentation
+modified	Docs/Enemies/SupportExploder/Delivery.md	Delivery, preservation or later region-integration documentation
+added	Docs/Enemies/SupportExploder/FileManifest.tsv	Delivery, preservation or later region-integration documentation
+modified	Docs/Enemies/SupportExploder/Integration.md	Delivery, preservation or later region-integration documentation
+added	Docs/Enemies/SupportExploder/Preservation_ArtUpgrade.txt	Delivery, preservation or later region-integration documentation
+added	Docs/Enemies/SupportExploder/Validation/Authored_Characters_Close.png	Actual Unity Play Mode evidence or camera capture
+added	Docs/Enemies/SupportExploder/Validation/Exploder_Warning_Authored_Art.png	Actual Unity Play Mode evidence or camera capture
+modified	Docs/Enemies/SupportExploder/Validation/PlayMode_Result.txt	Actual Unity Play Mode evidence or camera capture
+added	Docs/Enemies/SupportExploder/Validation/Support_Links_Authored_Art.png	Actual Unity Play Mode evidence or camera capture
+modified	Docs/Enemies/SupportExploder/Validation/TestScene_Overview.png	Actual Unity Play Mode evidence or camera capture
+added	Tools/EnemyArt/Source/Exploder_Blast.png	Included final imagegen source sheet or turnaround reference
+added	Tools/EnemyArt/Source/Exploder_D.png	Included final imagegen source sheet or turnaround reference
+added	Tools/EnemyArt/Source/Exploder_DL.png	Included final imagegen source sheet or turnaround reference
+added	Tools/EnemyArt/Source/Exploder_DR.png	Included final imagegen source sheet or turnaround reference
+added	Tools/EnemyArt/Source/Exploder_L.png	Included final imagegen source sheet or turnaround reference
+added	Tools/EnemyArt/Source/Exploder_R.png	Included final imagegen source sheet or turnaround reference
+added	Tools/EnemyArt/Source/Exploder_Turnaround.png	Included final imagegen source sheet or turnaround reference
+added	Tools/EnemyArt/Source/Exploder_U.png	Included final imagegen source sheet or turnaround reference
+added	Tools/EnemyArt/Source/Exploder_UL.png	Included final imagegen source sheet or turnaround reference
+added	Tools/EnemyArt/Source/Exploder_UR.png	Included final imagegen source sheet or turnaround reference
+added	Tools/EnemyArt/Source/Support_Active_DL.png	Included final imagegen source sheet or turnaround reference
+added	Tools/EnemyArt/Source/Support_Active_D_DR.png	Included final imagegen source sheet or turnaround reference
+added	Tools/EnemyArt/Source/Support_Active_L.png	Included final imagegen source sheet or turnaround reference
+added	Tools/EnemyArt/Source/Support_Active_R.png	Included final imagegen source sheet or turnaround reference
+added	Tools/EnemyArt/Source/Support_Active_U.png	Included final imagegen source sheet or turnaround reference
+added	Tools/EnemyArt/Source/Support_Active_UL.png	Included final imagegen source sheet or turnaround reference
+added	Tools/EnemyArt/Source/Support_Active_UR.png	Included final imagegen source sheet or turnaround reference
+added	Tools/EnemyArt/Source/Support_D.png	Included final imagegen source sheet or turnaround reference
+added	Tools/EnemyArt/Source/Support_DL.png	Included final imagegen source sheet or turnaround reference
+added	Tools/EnemyArt/Source/Support_DR.png	Included final imagegen source sheet or turnaround reference
+added	Tools/EnemyArt/Source/Support_L.png	Included final imagegen source sheet or turnaround reference
+added	Tools/EnemyArt/Source/Support_R.png	Included final imagegen source sheet or turnaround reference
+added	Tools/EnemyArt/Source/Support_Turnaround.png	Included final imagegen source sheet or turnaround reference
+added	Tools/EnemyArt/Source/Support_U.png	Included final imagegen source sheet or turnaround reference
+added	Tools/EnemyArt/Source/Support_UL.png	Included final imagegen source sheet or turnaround reference
+added	Tools/EnemyArt/Source/Support_UR.png	Included final imagegen source sheet or turnaround reference
+added	Tools/EnemyArt/active_sheets.json	Reproducible source provenance, mechanical export or audit utility
+added	Tools/EnemyArt/audit_delivery.py	Reproducible source provenance, mechanical export or audit utility
+added	Tools/EnemyArt/blast_prompt.txt	Reproducible source provenance, mechanical export or audit utility
+added	Tools/EnemyArt/capture_preview.py	Reproducible source provenance, mechanical export or audit utility
+added	Tools/EnemyArt/export_frames.py	Reproducible source provenance, mechanical export or audit utility
+added	Tools/EnemyArt/generation_sources.json	Reproducible source provenance, mechanical export or audit utility
+added	Tools/EnemyArt/sheets.json	Reproducible source provenance, mechanical export or audit utility
+added	Tools/EnemyArt/support_R_refinement.txt	Reproducible source provenance, mechanical export or audit utility

@@ -1,0 +1,2 @@
+PASS: 736 authored PNGs / 168 clips / 8 directions / 512 RGBA / PPU256 / center Pivot.
+Sprite-only curves, no Animation Events, native enemy identity and navigation, Boss original whitelist.

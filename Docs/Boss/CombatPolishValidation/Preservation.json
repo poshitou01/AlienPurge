@@ -1,0 +1,11 @@
+{
+  "baseline": "5c8e0ce",
+  "snapshot": "D:\\AlienPurge\\AlienPurge_Snapshot_HiveTyrant_CombatPolish_20261017_2050",
+  "snapshot_file_count": 59,
+  "original_meta_checked": 29,
+  "original_meta_changes": [],
+  "original_art_settings_or_world_scene_changes": [],
+  "shared_runtime_changes": [
+    "Assets/_Project/Scripts/Enemy/EnemyHealth.cs"
+  ]
+}

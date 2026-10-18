@@ -1,0 +1,5764 @@
+{
+  "entries": [
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Death/D/Swarmer_Death_D_01.png",
+      "x": 0.497957,
+      "y": 0.4598049
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Death/D/Swarmer_Death_D_02.png",
+      "x": 0.497957,
+      "y": 0.4598049
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Death/D/Swarmer_Death_D_03.png",
+      "x": 0.497957,
+      "y": 0.4598049
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Death/D/Swarmer_Death_D_04.png",
+      "x": 0.497957,
+      "y": 0.4598049
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Death/DL/Swarmer_Death_DL_01.png",
+      "x": 0.5175533,
+      "y": 0.5272414
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Death/DL/Swarmer_Death_DL_02.png",
+      "x": 0.5175533,
+      "y": 0.5272414
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Death/DL/Swarmer_Death_DL_03.png",
+      "x": 0.5175533,
+      "y": 0.5272414
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Death/DL/Swarmer_Death_DL_04.png",
+      "x": 0.5175533,
+      "y": 0.5272414
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Death/DR/Swarmer_Death_DR_01.png",
+      "x": 0.4841452,
+      "y": 0.5044183
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Death/DR/Swarmer_Death_DR_02.png",
+      "x": 0.4841452,
+      "y": 0.5044183
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Death/DR/Swarmer_Death_DR_03.png",
+      "x": 0.4841452,
+      "y": 0.5044183
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Death/DR/Swarmer_Death_DR_04.png",
+      "x": 0.4841452,
+      "y": 0.5044183
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Death/L/Swarmer_Death_L_01.png",
+      "x": 0.497072,
+      "y": 0.4639313
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Death/L/Swarmer_Death_L_02.png",
+      "x": 0.497072,
+      "y": 0.4639313
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Death/L/Swarmer_Death_L_03.png",
+      "x": 0.497072,
+      "y": 0.4639313
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Death/L/Swarmer_Death_L_04.png",
+      "x": 0.497072,
+      "y": 0.4639313
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Death/R/Swarmer_Death_R_01.png",
+      "x": 0.4975841,
+      "y": 0.4828001
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Death/R/Swarmer_Death_R_02.png",
+      "x": 0.4975841,
+      "y": 0.4828001
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Death/R/Swarmer_Death_R_03.png",
+      "x": 0.4975841,
+      "y": 0.4828001
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Death/R/Swarmer_Death_R_04.png",
+      "x": 0.4975841,
+      "y": 0.4828001
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Death/U/Swarmer_Death_U_01.png",
+      "x": 0.4970049,
+      "y": 0.4652365
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Death/U/Swarmer_Death_U_02.png",
+      "x": 0.4970049,
+      "y": 0.4652365
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Death/U/Swarmer_Death_U_03.png",
+      "x": 0.4970049,
+      "y": 0.4652365
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Death/U/Swarmer_Death_U_04.png",
+      "x": 0.4970049,
+      "y": 0.4652365
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Death/UL/Swarmer_Death_UL_01.png",
+      "x": 0.4881768,
+      "y": 0.4991376
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Death/UL/Swarmer_Death_UL_02.png",
+      "x": 0.4881768,
+      "y": 0.4991376
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Death/UL/Swarmer_Death_UL_03.png",
+      "x": 0.4881768,
+      "y": 0.4991376
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Death/UL/Swarmer_Death_UL_04.png",
+      "x": 0.4881768,
+      "y": 0.4991376
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Death/UR/Swarmer_Death_UR_01.png",
+      "x": 0.5061852,
+      "y": 0.5035785
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Death/UR/Swarmer_Death_UR_02.png",
+      "x": 0.5061852,
+      "y": 0.5035785
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Death/UR/Swarmer_Death_UR_03.png",
+      "x": 0.5061852,
+      "y": 0.5035785
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Death/UR/Swarmer_Death_UR_04.png",
+      "x": 0.5061852,
+      "y": 0.5035785
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Idle/D/Swarmer_Idle_D_01.png",
+      "x": 0.4961696,
+      "y": 0.4616552
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Idle/D/Swarmer_Idle_D_02.png",
+      "x": 0.5020749,
+      "y": 0.4595736
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Idle/D/Swarmer_Idle_D_03.png",
+      "x": 0.4958858,
+      "y": 0.4610001
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Idle/D/Swarmer_Idle_D_04.png",
+      "x": 0.4976977,
+      "y": 0.4569905
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Idle/DL/Swarmer_Idle_DL_01.png",
+      "x": 0.5226329,
+      "y": 0.5478982
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Idle/DL/Swarmer_Idle_DL_02.png",
+      "x": 0.5146384,
+      "y": 0.5256539
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Idle/DL/Swarmer_Idle_DL_03.png",
+      "x": 0.5220769,
+      "y": 0.5183052
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Idle/DL/Swarmer_Idle_DL_04.png",
+      "x": 0.510865,
+      "y": 0.5171082
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Idle/DR/Swarmer_Idle_DR_01.png",
+      "x": 0.4842065,
+      "y": 0.5139605
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Idle/DR/Swarmer_Idle_DR_02.png",
+      "x": 0.4825339,
+      "y": 0.5028221
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Idle/DR/Swarmer_Idle_DR_03.png",
+      "x": 0.4806663,
+      "y": 0.5017955
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Idle/DR/Swarmer_Idle_DR_04.png",
+      "x": 0.4891741,
+      "y": 0.499095
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Idle/L/Swarmer_Idle_L_01.png",
+      "x": 0.4974702,
+      "y": 0.4577114
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Idle/L/Swarmer_Idle_L_02.png",
+      "x": 0.4994441,
+      "y": 0.469337
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Idle/L/Swarmer_Idle_L_03.png",
+      "x": 0.4932228,
+      "y": 0.4704328
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Idle/L/Swarmer_Idle_L_04.png",
+      "x": 0.4981507,
+      "y": 0.4582438
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Idle/R/Swarmer_Idle_R_01.png",
+      "x": 0.501025,
+      "y": 0.4753537
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Idle/R/Swarmer_Idle_R_02.png",
+      "x": 0.4936866,
+      "y": 0.4968936
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Idle/R/Swarmer_Idle_R_03.png",
+      "x": 0.499606,
+      "y": 0.4739064
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Idle/R/Swarmer_Idle_R_04.png",
+      "x": 0.4960189,
+      "y": 0.4850468
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Idle/U/Swarmer_Idle_U_01.png",
+      "x": 0.4987445,
+      "y": 0.4615468
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Idle/U/Swarmer_Idle_U_02.png",
+      "x": 0.4969649,
+      "y": 0.4642898
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Idle/U/Swarmer_Idle_U_03.png",
+      "x": 0.4960448,
+      "y": 0.4708097
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Idle/U/Swarmer_Idle_U_04.png",
+      "x": 0.4962654,
+      "y": 0.4642996
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Idle/UL/Swarmer_Idle_UL_01.png",
+      "x": 0.4850653,
+      "y": 0.4931567
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Idle/UL/Swarmer_Idle_UL_02.png",
+      "x": 0.4855193,
+      "y": 0.5003468
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Idle/UL/Swarmer_Idle_UL_03.png",
+      "x": 0.4905743,
+      "y": 0.5090419
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Idle/UL/Swarmer_Idle_UL_04.png",
+      "x": 0.4915484,
+      "y": 0.494005
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Idle/UR/Swarmer_Idle_UR_01.png",
+      "x": 0.5166846,
+      "y": 0.5033453
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Idle/UR/Swarmer_Idle_UR_02.png",
+      "x": 0.5028378,
+      "y": 0.5062594
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Idle/UR/Swarmer_Idle_UR_03.png",
+      "x": 0.5002503,
+      "y": 0.5032946
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Idle/UR/Swarmer_Idle_UR_04.png",
+      "x": 0.5049682,
+      "y": 0.5014146
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/D/Swarmer_Move_D_01.png",
+      "x": 0.4979853,
+      "y": 0.4650085
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/D/Swarmer_Move_D_02.png",
+      "x": 0.510048,
+      "y": 0.5426483
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/D/Swarmer_Move_D_03.png",
+      "x": 0.4919017,
+      "y": 0.4743346
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/D/Swarmer_Move_D_04.png",
+      "x": 0.5013071,
+      "y": 0.4975327
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/D/Swarmer_Move_D_05.png",
+      "x": 0.4974399,
+      "y": 0.5284324
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/D/Swarmer_Move_D_06.png",
+      "x": 0.4987916,
+      "y": 0.4611693
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/D/Swarmer_Move_D_07.png",
+      "x": 0.4987143,
+      "y": 0.5358565
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/D/Swarmer_Move_D_08.png",
+      "x": 0.4940989,
+      "y": 0.4648141
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/DL/Swarmer_Move_DL_01.png",
+      "x": 0.5292596,
+      "y": 0.5358817
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/DL/Swarmer_Move_DL_02.png",
+      "x": 0.5513436,
+      "y": 0.5343617
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/DL/Swarmer_Move_DL_03.png",
+      "x": 0.5217723,
+      "y": 0.5283222
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/DL/Swarmer_Move_DL_04.png",
+      "x": 0.5179794,
+      "y": 0.5210716
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/DL/Swarmer_Move_DL_05.png",
+      "x": 0.5297557,
+      "y": 0.5378334
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/DL/Swarmer_Move_DL_06.png",
+      "x": 0.5346633,
+      "y": 0.5445484
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/DL/Swarmer_Move_DL_07.png",
+      "x": 0.5035066,
+      "y": 0.5471627
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/DL/Swarmer_Move_DL_08.png",
+      "x": 0.5281438,
+      "y": 0.5472448
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/DR/Swarmer_Move_DR_01.png",
+      "x": 0.4918419,
+      "y": 0.5189913
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/DR/Swarmer_Move_DR_02.png",
+      "x": 0.4777049,
+      "y": 0.5243564
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/DR/Swarmer_Move_DR_03.png",
+      "x": 0.4835344,
+      "y": 0.5316994
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/DR/Swarmer_Move_DR_04.png",
+      "x": 0.474736,
+      "y": 0.5281112
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/DR/Swarmer_Move_DR_05.png",
+      "x": 0.4882835,
+      "y": 0.5328021
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/DR/Swarmer_Move_DR_06.png",
+      "x": 0.4849088,
+      "y": 0.5288254
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/DR/Swarmer_Move_DR_07.png",
+      "x": 0.4871821,
+      "y": 0.5210619
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/DR/Swarmer_Move_DR_08.png",
+      "x": 0.4821941,
+      "y": 0.5211008
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/L/Swarmer_Move_L_01.png",
+      "x": 0.4982897,
+      "y": 0.4791621
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/L/Swarmer_Move_L_02.png",
+      "x": 0.4963967,
+      "y": 0.4808867
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/L/Swarmer_Move_L_03.png",
+      "x": 0.5069045,
+      "y": 0.4738121
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/L/Swarmer_Move_L_04.png",
+      "x": 0.4989797,
+      "y": 0.48386
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/L/Swarmer_Move_L_05.png",
+      "x": 0.5019043,
+      "y": 0.4789278
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/L/Swarmer_Move_L_06.png",
+      "x": 0.5134561,
+      "y": 0.4849765
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/L/Swarmer_Move_L_07.png",
+      "x": 0.49747,
+      "y": 0.4742334
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/L/Swarmer_Move_L_08.png",
+      "x": 0.4971567,
+      "y": 0.4792665
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/R/Swarmer_Move_R_01.png",
+      "x": 0.5144912,
+      "y": 0.501274
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/R/Swarmer_Move_R_02.png",
+      "x": 0.497721,
+      "y": 0.5093096
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/R/Swarmer_Move_R_03.png",
+      "x": 0.5067324,
+      "y": 0.4920796
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/R/Swarmer_Move_R_04.png",
+      "x": 0.5155992,
+      "y": 0.4895828
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/R/Swarmer_Move_R_05.png",
+      "x": 0.5184972,
+      "y": 0.5051838
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/R/Swarmer_Move_R_06.png",
+      "x": 0.5150127,
+      "y": 0.5202083
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/R/Swarmer_Move_R_07.png",
+      "x": 0.5144533,
+      "y": 0.4877363
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/R/Swarmer_Move_R_08.png",
+      "x": 0.4919578,
+      "y": 0.5046725
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/U/Swarmer_Move_U_01.png",
+      "x": 0.5009392,
+      "y": 0.4902012
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/U/Swarmer_Move_U_02.png",
+      "x": 0.4853105,
+      "y": 0.4851427
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/U/Swarmer_Move_U_03.png",
+      "x": 0.4857973,
+      "y": 0.494478
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/U/Swarmer_Move_U_04.png",
+      "x": 0.4967456,
+      "y": 0.4751945
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/U/Swarmer_Move_U_05.png",
+      "x": 0.4893133,
+      "y": 0.4920408
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/U/Swarmer_Move_U_06.png",
+      "x": 0.5050456,
+      "y": 0.4868646
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/U/Swarmer_Move_U_07.png",
+      "x": 0.4940655,
+      "y": 0.4898695
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/U/Swarmer_Move_U_08.png",
+      "x": 0.504881,
+      "y": 0.4857898
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/UL/Swarmer_Move_UL_01.png",
+      "x": 0.485554,
+      "y": 0.4951605
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/UL/Swarmer_Move_UL_02.png",
+      "x": 0.4842041,
+      "y": 0.5046122
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/UL/Swarmer_Move_UL_03.png",
+      "x": 0.4837376,
+      "y": 0.5041247
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/UL/Swarmer_Move_UL_04.png",
+      "x": 0.4897281,
+      "y": 0.5083062
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/UL/Swarmer_Move_UL_05.png",
+      "x": 0.4700614,
+      "y": 0.5296876
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/UL/Swarmer_Move_UL_06.png",
+      "x": 0.4864186,
+      "y": 0.5201203
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/UL/Swarmer_Move_UL_07.png",
+      "x": 0.4792072,
+      "y": 0.4827716
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/UL/Swarmer_Move_UL_08.png",
+      "x": 0.4883146,
+      "y": 0.5196218
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/UR/Swarmer_Move_UR_01.png",
+      "x": 0.5076695,
+      "y": 0.5181101
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/UR/Swarmer_Move_UR_02.png",
+      "x": 0.5139268,
+      "y": 0.5148712
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/UR/Swarmer_Move_UR_03.png",
+      "x": 0.5117652,
+      "y": 0.5018536
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/UR/Swarmer_Move_UR_04.png",
+      "x": 0.5204769,
+      "y": 0.4967407
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/UR/Swarmer_Move_UR_05.png",
+      "x": 0.5121278,
+      "y": 0.5349521
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/UR/Swarmer_Move_UR_06.png",
+      "x": 0.4826979,
+      "y": 0.5237239
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/UR/Swarmer_Move_UR_07.png",
+      "x": 0.5151178,
+      "y": 0.4697126
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Swarmer/Authored/Move/UR/Swarmer_Move_UR_08.png",
+      "x": 0.5020612,
+      "y": 0.5331123
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/D/Rusher_Attack_D_01.png",
+      "x": 0.4919492,
+      "y": 0.4810254
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/D/Rusher_Attack_D_02.png",
+      "x": 0.4919492,
+      "y": 0.4810254
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/D/Rusher_Attack_D_03.png",
+      "x": 0.4919492,
+      "y": 0.4810254
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/D/Rusher_Attack_D_04.png",
+      "x": 0.4919492,
+      "y": 0.4810254
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/D/Rusher_Attack_D_05.png",
+      "x": 0.4919492,
+      "y": 0.4810254
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/D/Rusher_Attack_D_06.png",
+      "x": 0.4919492,
+      "y": 0.4810254
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/D/Rusher_Attack_D_07.png",
+      "x": 0.4919492,
+      "y": 0.4810254
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/D/Rusher_Attack_D_08.png",
+      "x": 0.4919492,
+      "y": 0.4810254
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/DL/Rusher_Attack_DL_01.png",
+      "x": 0.533959,
+      "y": 0.5247188
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/DL/Rusher_Attack_DL_02.png",
+      "x": 0.533959,
+      "y": 0.5247188
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/DL/Rusher_Attack_DL_03.png",
+      "x": 0.533959,
+      "y": 0.5247188
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/DL/Rusher_Attack_DL_04.png",
+      "x": 0.533959,
+      "y": 0.5247188
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/DL/Rusher_Attack_DL_05.png",
+      "x": 0.533959,
+      "y": 0.5247188
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/DL/Rusher_Attack_DL_06.png",
+      "x": 0.533959,
+      "y": 0.5247188
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/DL/Rusher_Attack_DL_07.png",
+      "x": 0.533959,
+      "y": 0.5247188
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/DL/Rusher_Attack_DL_08.png",
+      "x": 0.533959,
+      "y": 0.5247188
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/DR/Rusher_Attack_DR_01.png",
+      "x": 0.5033958,
+      "y": 0.5469681
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/DR/Rusher_Attack_DR_02.png",
+      "x": 0.5033958,
+      "y": 0.5469681
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/DR/Rusher_Attack_DR_03.png",
+      "x": 0.5033958,
+      "y": 0.5469681
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/DR/Rusher_Attack_DR_04.png",
+      "x": 0.5033958,
+      "y": 0.5469681
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/DR/Rusher_Attack_DR_05.png",
+      "x": 0.5033958,
+      "y": 0.5469681
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/DR/Rusher_Attack_DR_06.png",
+      "x": 0.5033958,
+      "y": 0.5469681
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/DR/Rusher_Attack_DR_07.png",
+      "x": 0.5033958,
+      "y": 0.5469681
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/DR/Rusher_Attack_DR_08.png",
+      "x": 0.5033958,
+      "y": 0.5469681
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/L/Rusher_Attack_L_01.png",
+      "x": 0.5352924,
+      "y": 0.4509352
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/L/Rusher_Attack_L_02.png",
+      "x": 0.5352924,
+      "y": 0.4509352
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/L/Rusher_Attack_L_03.png",
+      "x": 0.5352924,
+      "y": 0.4509352
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/L/Rusher_Attack_L_04.png",
+      "x": 0.5352924,
+      "y": 0.4509352
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/L/Rusher_Attack_L_05.png",
+      "x": 0.5352924,
+      "y": 0.4509352
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/L/Rusher_Attack_L_06.png",
+      "x": 0.5352924,
+      "y": 0.4509352
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/L/Rusher_Attack_L_07.png",
+      "x": 0.5352924,
+      "y": 0.4509352
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/L/Rusher_Attack_L_08.png",
+      "x": 0.5352924,
+      "y": 0.4509352
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/R/Rusher_Attack_R_01.png",
+      "x": 0.4413285,
+      "y": 0.4696381
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/R/Rusher_Attack_R_02.png",
+      "x": 0.4413285,
+      "y": 0.4696381
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/R/Rusher_Attack_R_03.png",
+      "x": 0.4413285,
+      "y": 0.4696381
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/R/Rusher_Attack_R_04.png",
+      "x": 0.4413285,
+      "y": 0.4696381
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/R/Rusher_Attack_R_05.png",
+      "x": 0.4413285,
+      "y": 0.4696381
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/R/Rusher_Attack_R_06.png",
+      "x": 0.4413285,
+      "y": 0.4696381
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/R/Rusher_Attack_R_07.png",
+      "x": 0.4413285,
+      "y": 0.4696381
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/R/Rusher_Attack_R_08.png",
+      "x": 0.4413285,
+      "y": 0.4696381
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/U/Rusher_Attack_U_01.png",
+      "x": 0.4920485,
+      "y": 0.4778546
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/U/Rusher_Attack_U_02.png",
+      "x": 0.4920485,
+      "y": 0.4778546
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/U/Rusher_Attack_U_03.png",
+      "x": 0.4920485,
+      "y": 0.4778546
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/U/Rusher_Attack_U_04.png",
+      "x": 0.4920485,
+      "y": 0.4778546
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/U/Rusher_Attack_U_05.png",
+      "x": 0.4920485,
+      "y": 0.4778546
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/U/Rusher_Attack_U_06.png",
+      "x": 0.4920485,
+      "y": 0.4778546
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/U/Rusher_Attack_U_07.png",
+      "x": 0.4920485,
+      "y": 0.4778546
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/U/Rusher_Attack_U_08.png",
+      "x": 0.4920485,
+      "y": 0.4778546
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/UL/Rusher_Attack_UL_01.png",
+      "x": 0.493968,
+      "y": 0.5167678
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/UL/Rusher_Attack_UL_02.png",
+      "x": 0.493968,
+      "y": 0.5167678
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/UL/Rusher_Attack_UL_03.png",
+      "x": 0.493968,
+      "y": 0.5167678
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/UL/Rusher_Attack_UL_04.png",
+      "x": 0.493968,
+      "y": 0.5167678
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/UL/Rusher_Attack_UL_05.png",
+      "x": 0.493968,
+      "y": 0.5167678
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/UL/Rusher_Attack_UL_06.png",
+      "x": 0.493968,
+      "y": 0.5167678
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/UL/Rusher_Attack_UL_07.png",
+      "x": 0.493968,
+      "y": 0.5167678
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/UL/Rusher_Attack_UL_08.png",
+      "x": 0.493968,
+      "y": 0.5167678
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/UR/Rusher_Attack_UR_01.png",
+      "x": 0.5102599,
+      "y": 0.4975943
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/UR/Rusher_Attack_UR_02.png",
+      "x": 0.5102599,
+      "y": 0.4975943
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/UR/Rusher_Attack_UR_03.png",
+      "x": 0.5102599,
+      "y": 0.4975943
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/UR/Rusher_Attack_UR_04.png",
+      "x": 0.5102599,
+      "y": 0.4975943
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/UR/Rusher_Attack_UR_05.png",
+      "x": 0.5102599,
+      "y": 0.4975943
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/UR/Rusher_Attack_UR_06.png",
+      "x": 0.5102599,
+      "y": 0.4975943
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/UR/Rusher_Attack_UR_07.png",
+      "x": 0.5102599,
+      "y": 0.4975943
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Attack/UR/Rusher_Attack_UR_08.png",
+      "x": 0.5102599,
+      "y": 0.4975943
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Death/D/Rusher_Death_D_01.png",
+      "x": 0.4919492,
+      "y": 0.4810254
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Death/D/Rusher_Death_D_02.png",
+      "x": 0.4919492,
+      "y": 0.4810254
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Death/D/Rusher_Death_D_03.png",
+      "x": 0.4919492,
+      "y": 0.4810254
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Death/D/Rusher_Death_D_04.png",
+      "x": 0.4919492,
+      "y": 0.4810254
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Death/DL/Rusher_Death_DL_01.png",
+      "x": 0.533959,
+      "y": 0.5247188
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Death/DL/Rusher_Death_DL_02.png",
+      "x": 0.533959,
+      "y": 0.5247188
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Death/DL/Rusher_Death_DL_03.png",
+      "x": 0.533959,
+      "y": 0.5247188
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Death/DL/Rusher_Death_DL_04.png",
+      "x": 0.533959,
+      "y": 0.5247188
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Death/DR/Rusher_Death_DR_01.png",
+      "x": 0.5033958,
+      "y": 0.5469681
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Death/DR/Rusher_Death_DR_02.png",
+      "x": 0.5033958,
+      "y": 0.5469681
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Death/DR/Rusher_Death_DR_03.png",
+      "x": 0.5033958,
+      "y": 0.5469681
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Death/DR/Rusher_Death_DR_04.png",
+      "x": 0.5033958,
+      "y": 0.5469681
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Death/L/Rusher_Death_L_01.png",
+      "x": 0.5352924,
+      "y": 0.4509352
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Death/L/Rusher_Death_L_02.png",
+      "x": 0.5352924,
+      "y": 0.4509352
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Death/L/Rusher_Death_L_03.png",
+      "x": 0.5352924,
+      "y": 0.4509352
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Death/L/Rusher_Death_L_04.png",
+      "x": 0.5352924,
+      "y": 0.4509352
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Death/R/Rusher_Death_R_01.png",
+      "x": 0.4413285,
+      "y": 0.4696381
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Death/R/Rusher_Death_R_02.png",
+      "x": 0.4413285,
+      "y": 0.4696381
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Death/R/Rusher_Death_R_03.png",
+      "x": 0.4413285,
+      "y": 0.4696381
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Death/R/Rusher_Death_R_04.png",
+      "x": 0.4413285,
+      "y": 0.4696381
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Death/U/Rusher_Death_U_01.png",
+      "x": 0.4920485,
+      "y": 0.4778546
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Death/U/Rusher_Death_U_02.png",
+      "x": 0.4920485,
+      "y": 0.4778546
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Death/U/Rusher_Death_U_03.png",
+      "x": 0.4920485,
+      "y": 0.4778546
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Death/U/Rusher_Death_U_04.png",
+      "x": 0.4920485,
+      "y": 0.4778546
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Death/UL/Rusher_Death_UL_01.png",
+      "x": 0.493968,
+      "y": 0.5167678
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Death/UL/Rusher_Death_UL_02.png",
+      "x": 0.493968,
+      "y": 0.5167678
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Death/UL/Rusher_Death_UL_03.png",
+      "x": 0.493968,
+      "y": 0.5167678
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Death/UL/Rusher_Death_UL_04.png",
+      "x": 0.493968,
+      "y": 0.5167678
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Death/UR/Rusher_Death_UR_01.png",
+      "x": 0.5102599,
+      "y": 0.4975943
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Death/UR/Rusher_Death_UR_02.png",
+      "x": 0.5102599,
+      "y": 0.4975943
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Death/UR/Rusher_Death_UR_03.png",
+      "x": 0.5102599,
+      "y": 0.4975943
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Death/UR/Rusher_Death_UR_04.png",
+      "x": 0.5102599,
+      "y": 0.4975943
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Idle/D/Rusher_Idle_D_01.png",
+      "x": 0.4932473,
+      "y": 0.4883885
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Idle/D/Rusher_Idle_D_02.png",
+      "x": 0.493387,
+      "y": 0.4742218
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Idle/D/Rusher_Idle_D_03.png",
+      "x": 0.4920824,
+      "y": 0.4752976
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Idle/D/Rusher_Idle_D_04.png",
+      "x": 0.4890802,
+      "y": 0.4861937
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Idle/DL/Rusher_Idle_DL_01.png",
+      "x": 0.5208213,
+      "y": 0.5328192
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Idle/DL/Rusher_Idle_DL_02.png",
+      "x": 0.5310818,
+      "y": 0.5319342
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Idle/DL/Rusher_Idle_DL_03.png",
+      "x": 0.5426547,
+      "y": 0.5288876
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Idle/DL/Rusher_Idle_DL_04.png",
+      "x": 0.541278,
+      "y": 0.5052342
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Idle/DR/Rusher_Idle_DR_01.png",
+      "x": 0.5093065,
+      "y": 0.5513607
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Idle/DR/Rusher_Idle_DR_02.png",
+      "x": 0.5048232,
+      "y": 0.547754
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Idle/DR/Rusher_Idle_DR_03.png",
+      "x": 0.5007332,
+      "y": 0.5419024
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Idle/DR/Rusher_Idle_DR_04.png",
+      "x": 0.4987203,
+      "y": 0.5468552
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Idle/L/Rusher_Idle_L_01.png",
+      "x": 0.5355275,
+      "y": 0.4526452
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Idle/L/Rusher_Idle_L_02.png",
+      "x": 0.532668,
+      "y": 0.4546272
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Idle/L/Rusher_Idle_L_03.png",
+      "x": 0.539519,
+      "y": 0.4526821
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Idle/L/Rusher_Idle_L_04.png",
+      "x": 0.533455,
+      "y": 0.4437864
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Idle/R/Rusher_Idle_R_01.png",
+      "x": 0.4443065,
+      "y": 0.4726133
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Idle/R/Rusher_Idle_R_02.png",
+      "x": 0.4391391,
+      "y": 0.4684073
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Idle/R/Rusher_Idle_R_03.png",
+      "x": 0.4419196,
+      "y": 0.4726658
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Idle/R/Rusher_Idle_R_04.png",
+      "x": 0.4399487,
+      "y": 0.464866
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Idle/U/Rusher_Idle_U_01.png",
+      "x": 0.4865101,
+      "y": 0.4818993
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Idle/U/Rusher_Idle_U_02.png",
+      "x": 0.4955669,
+      "y": 0.4839334
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Idle/U/Rusher_Idle_U_03.png",
+      "x": 0.4970703,
+      "y": 0.4708036
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Idle/U/Rusher_Idle_U_04.png",
+      "x": 0.4890468,
+      "y": 0.4747821
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Idle/UL/Rusher_Idle_UL_01.png",
+      "x": 0.4916758,
+      "y": 0.5263211
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Idle/UL/Rusher_Idle_UL_02.png",
+      "x": 0.495343,
+      "y": 0.5099177
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Idle/UL/Rusher_Idle_UL_03.png",
+      "x": 0.4920494,
+      "y": 0.5209382
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Idle/UL/Rusher_Idle_UL_04.png",
+      "x": 0.4968039,
+      "y": 0.5098941
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Idle/UR/Rusher_Idle_UR_01.png",
+      "x": 0.5114799,
+      "y": 0.5025896
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Idle/UR/Rusher_Idle_UR_02.png",
+      "x": 0.5084348,
+      "y": 0.4864189
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Idle/UR/Rusher_Idle_UR_03.png",
+      "x": 0.5144531,
+      "y": 0.5038062
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Idle/UR/Rusher_Idle_UR_04.png",
+      "x": 0.506672,
+      "y": 0.4975627
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/D/Rusher_Move_D_01.png",
+      "x": 0.502782,
+      "y": 0.4911598
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/D/Rusher_Move_D_02.png",
+      "x": 0.4944898,
+      "y": 0.5031516
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/D/Rusher_Move_D_03.png",
+      "x": 0.4890894,
+      "y": 0.5069783
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/D/Rusher_Move_D_04.png",
+      "x": 0.4794571,
+      "y": 0.4900714
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/D/Rusher_Move_D_05.png",
+      "x": 0.4979981,
+      "y": 0.5150379
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/D/Rusher_Move_D_06.png",
+      "x": 0.4831826,
+      "y": 0.5310118
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/D/Rusher_Move_D_07.png",
+      "x": 0.5002733,
+      "y": 0.5234125
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/D/Rusher_Move_D_08.png",
+      "x": 0.4843351,
+      "y": 0.5138407
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/DL/Rusher_Move_DL_01.png",
+      "x": 0.5468674,
+      "y": 0.5193237
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/DL/Rusher_Move_DL_02.png",
+      "x": 0.5114206,
+      "y": 0.4956605
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/DL/Rusher_Move_DL_03.png",
+      "x": 0.5251444,
+      "y": 0.5187518
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/DL/Rusher_Move_DL_04.png",
+      "x": 0.5229886,
+      "y": 0.5001078
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/DL/Rusher_Move_DL_05.png",
+      "x": 0.494476,
+      "y": 0.515769
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/DL/Rusher_Move_DL_06.png",
+      "x": 0.5409282,
+      "y": 0.5131773
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/DL/Rusher_Move_DL_07.png",
+      "x": 0.5028782,
+      "y": 0.5191235
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/DL/Rusher_Move_DL_08.png",
+      "x": 0.5345977,
+      "y": 0.4842204
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/DR/Rusher_Move_DR_01.png",
+      "x": 0.5141731,
+      "y": 0.5630629
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/DR/Rusher_Move_DR_02.png",
+      "x": 0.5234323,
+      "y": 0.5564153
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/DR/Rusher_Move_DR_03.png",
+      "x": 0.5218806,
+      "y": 0.5665482
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/DR/Rusher_Move_DR_04.png",
+      "x": 0.5238788,
+      "y": 0.5491034
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/DR/Rusher_Move_DR_05.png",
+      "x": 0.5191597,
+      "y": 0.567518
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/DR/Rusher_Move_DR_06.png",
+      "x": 0.5285939,
+      "y": 0.5349197
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/DR/Rusher_Move_DR_07.png",
+      "x": 0.510356,
+      "y": 0.5629647
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/DR/Rusher_Move_DR_08.png",
+      "x": 0.5085441,
+      "y": 0.5594664
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/L/Rusher_Move_L_01.png",
+      "x": 0.5065644,
+      "y": 0.4580888
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/L/Rusher_Move_L_02.png",
+      "x": 0.4995713,
+      "y": 0.4670895
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/L/Rusher_Move_L_03.png",
+      "x": 0.5093542,
+      "y": 0.4667004
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/L/Rusher_Move_L_04.png",
+      "x": 0.5119799,
+      "y": 0.4653332
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/L/Rusher_Move_L_05.png",
+      "x": 0.5169581,
+      "y": 0.4656279
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/L/Rusher_Move_L_06.png",
+      "x": 0.5083962,
+      "y": 0.4542239
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/L/Rusher_Move_L_07.png",
+      "x": 0.5161481,
+      "y": 0.4656943
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/L/Rusher_Move_L_08.png",
+      "x": 0.5287731,
+      "y": 0.4625034
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/R/Rusher_Move_R_01.png",
+      "x": 0.4439985,
+      "y": 0.4673822
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/R/Rusher_Move_R_02.png",
+      "x": 0.4569069,
+      "y": 0.4731037
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/R/Rusher_Move_R_03.png",
+      "x": 0.4448636,
+      "y": 0.4791182
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/R/Rusher_Move_R_04.png",
+      "x": 0.4529774,
+      "y": 0.4691942
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/R/Rusher_Move_R_05.png",
+      "x": 0.4636308,
+      "y": 0.4637014
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/R/Rusher_Move_R_06.png",
+      "x": 0.4445038,
+      "y": 0.4629622
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/R/Rusher_Move_R_07.png",
+      "x": 0.4440494,
+      "y": 0.4711474
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/R/Rusher_Move_R_08.png",
+      "x": 0.4651773,
+      "y": 0.465417
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/U/Rusher_Move_U_01.png",
+      "x": 0.4736893,
+      "y": 0.4739414
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/U/Rusher_Move_U_02.png",
+      "x": 0.5008369,
+      "y": 0.4887588
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/U/Rusher_Move_U_03.png",
+      "x": 0.4862461,
+      "y": 0.4942855
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/U/Rusher_Move_U_04.png",
+      "x": 0.4876172,
+      "y": 0.4940624
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/U/Rusher_Move_U_05.png",
+      "x": 0.4956646,
+      "y": 0.4808012
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/U/Rusher_Move_U_06.png",
+      "x": 0.4981822,
+      "y": 0.4947865
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/U/Rusher_Move_U_07.png",
+      "x": 0.5025562,
+      "y": 0.4884999
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/U/Rusher_Move_U_08.png",
+      "x": 0.4783434,
+      "y": 0.4831941
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/UL/Rusher_Move_UL_01.png",
+      "x": 0.4948168,
+      "y": 0.4851109
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/UL/Rusher_Move_UL_02.png",
+      "x": 0.5090344,
+      "y": 0.5349664
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/UL/Rusher_Move_UL_03.png",
+      "x": 0.5016778,
+      "y": 0.5332206
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/UL/Rusher_Move_UL_04.png",
+      "x": 0.4839343,
+      "y": 0.5096301
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/UL/Rusher_Move_UL_05.png",
+      "x": 0.519941,
+      "y": 0.5136237
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/UL/Rusher_Move_UL_06.png",
+      "x": 0.5265232,
+      "y": 0.5354709
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/UL/Rusher_Move_UL_07.png",
+      "x": 0.5045645,
+      "y": 0.4977107
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/UL/Rusher_Move_UL_08.png",
+      "x": 0.5130138,
+      "y": 0.5134524
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/UR/Rusher_Move_UR_01.png",
+      "x": 0.5015898,
+      "y": 0.5198595
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/UR/Rusher_Move_UR_02.png",
+      "x": 0.530093,
+      "y": 0.4860325
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/UR/Rusher_Move_UR_03.png",
+      "x": 0.508913,
+      "y": 0.5212528
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/UR/Rusher_Move_UR_04.png",
+      "x": 0.5088687,
+      "y": 0.5237002
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/UR/Rusher_Move_UR_05.png",
+      "x": 0.4913105,
+      "y": 0.5066048
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/UR/Rusher_Move_UR_06.png",
+      "x": 0.4929591,
+      "y": 0.5023184
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/UR/Rusher_Move_UR_07.png",
+      "x": 0.4963124,
+      "y": 0.5070119
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Move/UR/Rusher_Move_UR_08.png",
+      "x": 0.5097265,
+      "y": 0.4916109
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Windup/D/Rusher_Windup_D_01.png",
+      "x": 0.4919492,
+      "y": 0.4810254
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Windup/D/Rusher_Windup_D_02.png",
+      "x": 0.4919492,
+      "y": 0.4810254
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Windup/D/Rusher_Windup_D_03.png",
+      "x": 0.4919492,
+      "y": 0.4810254
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Windup/D/Rusher_Windup_D_04.png",
+      "x": 0.4919492,
+      "y": 0.4810254
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Windup/DL/Rusher_Windup_DL_01.png",
+      "x": 0.533959,
+      "y": 0.5247188
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Windup/DL/Rusher_Windup_DL_02.png",
+      "x": 0.533959,
+      "y": 0.5247188
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Windup/DL/Rusher_Windup_DL_03.png",
+      "x": 0.533959,
+      "y": 0.5247188
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Windup/DL/Rusher_Windup_DL_04.png",
+      "x": 0.533959,
+      "y": 0.5247188
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Windup/DR/Rusher_Windup_DR_01.png",
+      "x": 0.5033958,
+      "y": 0.5469681
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Windup/DR/Rusher_Windup_DR_02.png",
+      "x": 0.5033958,
+      "y": 0.5469681
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Windup/DR/Rusher_Windup_DR_03.png",
+      "x": 0.5033958,
+      "y": 0.5469681
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Windup/DR/Rusher_Windup_DR_04.png",
+      "x": 0.5033958,
+      "y": 0.5469681
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Windup/L/Rusher_Windup_L_01.png",
+      "x": 0.5352924,
+      "y": 0.4509352
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Windup/L/Rusher_Windup_L_02.png",
+      "x": 0.5352924,
+      "y": 0.4509352
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Windup/L/Rusher_Windup_L_03.png",
+      "x": 0.5352924,
+      "y": 0.4509352
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Windup/L/Rusher_Windup_L_04.png",
+      "x": 0.5352924,
+      "y": 0.4509352
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Windup/R/Rusher_Windup_R_01.png",
+      "x": 0.4413285,
+      "y": 0.4696381
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Windup/R/Rusher_Windup_R_02.png",
+      "x": 0.4413285,
+      "y": 0.4696381
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Windup/R/Rusher_Windup_R_03.png",
+      "x": 0.4413285,
+      "y": 0.4696381
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Windup/R/Rusher_Windup_R_04.png",
+      "x": 0.4413285,
+      "y": 0.4696381
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Windup/U/Rusher_Windup_U_01.png",
+      "x": 0.4920485,
+      "y": 0.4778546
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Windup/U/Rusher_Windup_U_02.png",
+      "x": 0.4920485,
+      "y": 0.4778546
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Windup/U/Rusher_Windup_U_03.png",
+      "x": 0.4920485,
+      "y": 0.4778546
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Windup/U/Rusher_Windup_U_04.png",
+      "x": 0.4920485,
+      "y": 0.4778546
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Windup/UL/Rusher_Windup_UL_01.png",
+      "x": 0.493968,
+      "y": 0.5167678
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Windup/UL/Rusher_Windup_UL_02.png",
+      "x": 0.493968,
+      "y": 0.5167678
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Windup/UL/Rusher_Windup_UL_03.png",
+      "x": 0.493968,
+      "y": 0.5167678
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Windup/UL/Rusher_Windup_UL_04.png",
+      "x": 0.493968,
+      "y": 0.5167678
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Windup/UR/Rusher_Windup_UR_01.png",
+      "x": 0.5102599,
+      "y": 0.4975943
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Windup/UR/Rusher_Windup_UR_02.png",
+      "x": 0.5102599,
+      "y": 0.4975943
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Windup/UR/Rusher_Windup_UR_03.png",
+      "x": 0.5102599,
+      "y": 0.4975943
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Rusher/Authored/Windup/UR/Rusher_Windup_UR_04.png",
+      "x": 0.5102599,
+      "y": 0.4975943
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Attack/D/Tank_Attack_D_01.png",
+      "x": 0.5007909,
+      "y": 0.4827651
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Attack/D/Tank_Attack_D_02.png",
+      "x": 0.5007909,
+      "y": 0.4827651
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Attack/D/Tank_Attack_D_03.png",
+      "x": 0.5007909,
+      "y": 0.4827651
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Attack/D/Tank_Attack_D_04.png",
+      "x": 0.5007909,
+      "y": 0.4827651
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Attack/DL/Tank_Attack_DL_01.png",
+      "x": 0.5021823,
+      "y": 0.5041565
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Attack/DL/Tank_Attack_DL_02.png",
+      "x": 0.5021823,
+      "y": 0.5041565
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Attack/DL/Tank_Attack_DL_03.png",
+      "x": 0.5021823,
+      "y": 0.5041565
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Attack/DL/Tank_Attack_DL_04.png",
+      "x": 0.5021823,
+      "y": 0.5041565
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Attack/DR/Tank_Attack_DR_01.png",
+      "x": 0.4971242,
+      "y": 0.5278094
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Attack/DR/Tank_Attack_DR_02.png",
+      "x": 0.4971242,
+      "y": 0.5278094
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Attack/DR/Tank_Attack_DR_03.png",
+      "x": 0.4971242,
+      "y": 0.5278094
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Attack/DR/Tank_Attack_DR_04.png",
+      "x": 0.4971242,
+      "y": 0.5278094
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Attack/L/Tank_Attack_L_01.png",
+      "x": 0.4952354,
+      "y": 0.4881981
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Attack/L/Tank_Attack_L_02.png",
+      "x": 0.4952354,
+      "y": 0.4881981
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Attack/L/Tank_Attack_L_03.png",
+      "x": 0.4952354,
+      "y": 0.4881981
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Attack/L/Tank_Attack_L_04.png",
+      "x": 0.4952354,
+      "y": 0.4881981
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Attack/R/Tank_Attack_R_01.png",
+      "x": 0.502079,
+      "y": 0.4749345
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Attack/R/Tank_Attack_R_02.png",
+      "x": 0.502079,
+      "y": 0.4749345
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Attack/R/Tank_Attack_R_03.png",
+      "x": 0.502079,
+      "y": 0.4749345
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Attack/R/Tank_Attack_R_04.png",
+      "x": 0.502079,
+      "y": 0.4749345
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Attack/U/Tank_Attack_U_01.png",
+      "x": 0.4961852,
+      "y": 0.4650663
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Attack/U/Tank_Attack_U_02.png",
+      "x": 0.4961852,
+      "y": 0.4650663
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Attack/U/Tank_Attack_U_03.png",
+      "x": 0.4961852,
+      "y": 0.4650663
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Attack/U/Tank_Attack_U_04.png",
+      "x": 0.4961852,
+      "y": 0.4650663
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Attack/UL/Tank_Attack_UL_01.png",
+      "x": 0.4899334,
+      "y": 0.4934522
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Attack/UL/Tank_Attack_UL_02.png",
+      "x": 0.4899334,
+      "y": 0.4934522
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Attack/UL/Tank_Attack_UL_03.png",
+      "x": 0.4899334,
+      "y": 0.4934522
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Attack/UL/Tank_Attack_UL_04.png",
+      "x": 0.4899334,
+      "y": 0.4934522
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Attack/UR/Tank_Attack_UR_01.png",
+      "x": 0.5077005,
+      "y": 0.5325242
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Attack/UR/Tank_Attack_UR_02.png",
+      "x": 0.5077005,
+      "y": 0.5325242
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Attack/UR/Tank_Attack_UR_03.png",
+      "x": 0.5077005,
+      "y": 0.5325242
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Attack/UR/Tank_Attack_UR_04.png",
+      "x": 0.5077005,
+      "y": 0.5325242
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Death/D/Tank_Death_D_01.png",
+      "x": 0.5007909,
+      "y": 0.4827651
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Death/D/Tank_Death_D_02.png",
+      "x": 0.5007909,
+      "y": 0.4827651
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Death/D/Tank_Death_D_03.png",
+      "x": 0.5007909,
+      "y": 0.4827651
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Death/D/Tank_Death_D_04.png",
+      "x": 0.5007909,
+      "y": 0.4827651
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Death/DL/Tank_Death_DL_01.png",
+      "x": 0.5021823,
+      "y": 0.5041565
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Death/DL/Tank_Death_DL_02.png",
+      "x": 0.5021823,
+      "y": 0.5041565
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Death/DL/Tank_Death_DL_03.png",
+      "x": 0.5021823,
+      "y": 0.5041565
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Death/DL/Tank_Death_DL_04.png",
+      "x": 0.5021823,
+      "y": 0.5041565
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Death/DR/Tank_Death_DR_01.png",
+      "x": 0.4971242,
+      "y": 0.5278094
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Death/DR/Tank_Death_DR_02.png",
+      "x": 0.4971242,
+      "y": 0.5278094
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Death/DR/Tank_Death_DR_03.png",
+      "x": 0.4971242,
+      "y": 0.5278094
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Death/DR/Tank_Death_DR_04.png",
+      "x": 0.4971242,
+      "y": 0.5278094
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Death/L/Tank_Death_L_01.png",
+      "x": 0.4952354,
+      "y": 0.4881981
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Death/L/Tank_Death_L_02.png",
+      "x": 0.4952354,
+      "y": 0.4881981
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Death/L/Tank_Death_L_03.png",
+      "x": 0.4952354,
+      "y": 0.4881981
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Death/L/Tank_Death_L_04.png",
+      "x": 0.4952354,
+      "y": 0.4881981
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Death/R/Tank_Death_R_01.png",
+      "x": 0.502079,
+      "y": 0.4749345
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Death/R/Tank_Death_R_02.png",
+      "x": 0.502079,
+      "y": 0.4749345
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Death/R/Tank_Death_R_03.png",
+      "x": 0.502079,
+      "y": 0.4749345
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Death/R/Tank_Death_R_04.png",
+      "x": 0.502079,
+      "y": 0.4749345
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Death/U/Tank_Death_U_01.png",
+      "x": 0.4961852,
+      "y": 0.4650663
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Death/U/Tank_Death_U_02.png",
+      "x": 0.4961852,
+      "y": 0.4650663
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Death/U/Tank_Death_U_03.png",
+      "x": 0.4961852,
+      "y": 0.4650663
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Death/U/Tank_Death_U_04.png",
+      "x": 0.4961852,
+      "y": 0.4650663
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Death/UL/Tank_Death_UL_01.png",
+      "x": 0.4899334,
+      "y": 0.4934522
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Death/UL/Tank_Death_UL_02.png",
+      "x": 0.4899334,
+      "y": 0.4934522
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Death/UL/Tank_Death_UL_03.png",
+      "x": 0.4899334,
+      "y": 0.4934522
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Death/UL/Tank_Death_UL_04.png",
+      "x": 0.4899334,
+      "y": 0.4934522
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Death/UR/Tank_Death_UR_01.png",
+      "x": 0.5077005,
+      "y": 0.5325242
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Death/UR/Tank_Death_UR_02.png",
+      "x": 0.5077005,
+      "y": 0.5325242
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Death/UR/Tank_Death_UR_03.png",
+      "x": 0.5077005,
+      "y": 0.5325242
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Death/UR/Tank_Death_UR_04.png",
+      "x": 0.5077005,
+      "y": 0.5325242
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Idle/D/Tank_Idle_D_01.png",
+      "x": 0.5038085,
+      "y": 0.4895636
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Idle/D/Tank_Idle_D_02.png",
+      "x": 0.5008348,
+      "y": 0.4924709
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Idle/D/Tank_Idle_D_03.png",
+      "x": 0.4981431,
+      "y": 0.4774899
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Idle/D/Tank_Idle_D_04.png",
+      "x": 0.5003773,
+      "y": 0.4715359
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Idle/DL/Tank_Idle_DL_01.png",
+      "x": 0.5040255,
+      "y": 0.5017086
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Idle/DL/Tank_Idle_DL_02.png",
+      "x": 0.5059773,
+      "y": 0.5067617
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Idle/DL/Tank_Idle_DL_03.png",
+      "x": 0.4964275,
+      "y": 0.5090451
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Idle/DL/Tank_Idle_DL_04.png",
+      "x": 0.5022991,
+      "y": 0.4991108
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Idle/DR/Tank_Idle_DR_01.png",
+      "x": 0.4947532,
+      "y": 0.524223
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Idle/DR/Tank_Idle_DR_02.png",
+      "x": 0.4938394,
+      "y": 0.5267983
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Idle/DR/Tank_Idle_DR_03.png",
+      "x": 0.4967677,
+      "y": 0.5382225
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Idle/DR/Tank_Idle_DR_04.png",
+      "x": 0.5031365,
+      "y": 0.5219936
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Idle/L/Tank_Idle_L_01.png",
+      "x": 0.4925551,
+      "y": 0.4889505
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Idle/L/Tank_Idle_L_02.png",
+      "x": 0.4996374,
+      "y": 0.5029795
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Idle/L/Tank_Idle_L_03.png",
+      "x": 0.4957004,
+      "y": 0.4740643
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Idle/L/Tank_Idle_L_04.png",
+      "x": 0.4930486,
+      "y": 0.4867983
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Idle/R/Tank_Idle_R_01.png",
+      "x": 0.5016754,
+      "y": 0.4738598
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Idle/R/Tank_Idle_R_02.png",
+      "x": 0.5028038,
+      "y": 0.475651
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Idle/R/Tank_Idle_R_03.png",
+      "x": 0.5043785,
+      "y": 0.4757315
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Idle/R/Tank_Idle_R_04.png",
+      "x": 0.4994583,
+      "y": 0.4744957
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Idle/U/Tank_Idle_U_01.png",
+      "x": 0.4944076,
+      "y": 0.4641053
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Idle/U/Tank_Idle_U_02.png",
+      "x": 0.4957352,
+      "y": 0.4622492
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Idle/U/Tank_Idle_U_03.png",
+      "x": 0.5001592,
+      "y": 0.4615914
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Idle/U/Tank_Idle_U_04.png",
+      "x": 0.4944387,
+      "y": 0.4723192
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Idle/UL/Tank_Idle_UL_01.png",
+      "x": 0.4876006,
+      "y": 0.4920326
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Idle/UL/Tank_Idle_UL_02.png",
+      "x": 0.4881265,
+      "y": 0.4988517
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Idle/UL/Tank_Idle_UL_03.png",
+      "x": 0.4918403,
+      "y": 0.4915492
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Idle/UL/Tank_Idle_UL_04.png",
+      "x": 0.4921664,
+      "y": 0.4913754
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Idle/UR/Tank_Idle_UR_01.png",
+      "x": 0.5084721,
+      "y": 0.529206
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Idle/UR/Tank_Idle_UR_02.png",
+      "x": 0.5071643,
+      "y": 0.5294435
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Idle/UR/Tank_Idle_UR_03.png",
+      "x": 0.501561,
+      "y": 0.535646
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Idle/UR/Tank_Idle_UR_04.png",
+      "x": 0.5136047,
+      "y": 0.5358014
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/D/Tank_Move_D_01.png",
+      "x": 0.5021172,
+      "y": 0.5002981
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/D/Tank_Move_D_02.png",
+      "x": 0.5065046,
+      "y": 0.5124914
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/D/Tank_Move_D_03.png",
+      "x": 0.4989758,
+      "y": 0.5115723
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/D/Tank_Move_D_04.png",
+      "x": 0.507543,
+      "y": 0.5123122
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/D/Tank_Move_D_05.png",
+      "x": 0.5016379,
+      "y": 0.4950912
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/D/Tank_Move_D_06.png",
+      "x": 0.5035634,
+      "y": 0.5192597
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/D/Tank_Move_D_07.png",
+      "x": 0.508264,
+      "y": 0.4975999
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/D/Tank_Move_D_08.png",
+      "x": 0.5032741,
+      "y": 0.5035268
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/DL/Tank_Move_DL_01.png",
+      "x": 0.5050812,
+      "y": 0.5019936
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/DL/Tank_Move_DL_02.png",
+      "x": 0.5012572,
+      "y": 0.5113966
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/DL/Tank_Move_DL_03.png",
+      "x": 0.5041798,
+      "y": 0.5004843
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/DL/Tank_Move_DL_04.png",
+      "x": 0.5047579,
+      "y": 0.4805104
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/DL/Tank_Move_DL_05.png",
+      "x": 0.5001821,
+      "y": 0.498406
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/DL/Tank_Move_DL_06.png",
+      "x": 0.5055098,
+      "y": 0.5059505
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/DL/Tank_Move_DL_07.png",
+      "x": 0.4971228,
+      "y": 0.5099469
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/DL/Tank_Move_DL_08.png",
+      "x": 0.5111067,
+      "y": 0.5073999
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/DR/Tank_Move_DR_01.png",
+      "x": 0.4928487,
+      "y": 0.5070414
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/DR/Tank_Move_DR_02.png",
+      "x": 0.49773,
+      "y": 0.5258142
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/DR/Tank_Move_DR_03.png",
+      "x": 0.4967437,
+      "y": 0.5342366
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/DR/Tank_Move_DR_04.png",
+      "x": 0.4959064,
+      "y": 0.5336912
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/DR/Tank_Move_DR_05.png",
+      "x": 0.5008566,
+      "y": 0.5066216
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/DR/Tank_Move_DR_06.png",
+      "x": 0.5017453,
+      "y": 0.5071355
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/DR/Tank_Move_DR_07.png",
+      "x": 0.5059964,
+      "y": 0.5257447
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/DR/Tank_Move_DR_08.png",
+      "x": 0.4905569,
+      "y": 0.5335094
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/L/Tank_Move_L_01.png",
+      "x": 0.5006328,
+      "y": 0.4675692
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/L/Tank_Move_L_02.png",
+      "x": 0.492301,
+      "y": 0.4747995
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/L/Tank_Move_L_03.png",
+      "x": 0.4983609,
+      "y": 0.4872164
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/L/Tank_Move_L_04.png",
+      "x": 0.4952505,
+      "y": 0.4723466
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/L/Tank_Move_L_05.png",
+      "x": 0.5004705,
+      "y": 0.4653101
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/L/Tank_Move_L_06.png",
+      "x": 0.4965048,
+      "y": 0.4796453
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/L/Tank_Move_L_07.png",
+      "x": 0.5006326,
+      "y": 0.4830216
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/L/Tank_Move_L_08.png",
+      "x": 0.4993611,
+      "y": 0.4764169
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/R/Tank_Move_R_01.png",
+      "x": 0.4998209,
+      "y": 0.4652534
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/R/Tank_Move_R_02.png",
+      "x": 0.4947035,
+      "y": 0.4723026
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/R/Tank_Move_R_03.png",
+      "x": 0.5039865,
+      "y": 0.4798354
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/R/Tank_Move_R_04.png",
+      "x": 0.4944101,
+      "y": 0.4741556
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/R/Tank_Move_R_05.png",
+      "x": 0.4975308,
+      "y": 0.4818884
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/R/Tank_Move_R_06.png",
+      "x": 0.5104499,
+      "y": 0.4825949
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/R/Tank_Move_R_07.png",
+      "x": 0.5038583,
+      "y": 0.4855106
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/R/Tank_Move_R_08.png",
+      "x": 0.4965028,
+      "y": 0.4807926
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/U/Tank_Move_U_01.png",
+      "x": 0.4864901,
+      "y": 0.4614005
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/U/Tank_Move_U_02.png",
+      "x": 0.5053688,
+      "y": 0.4855153
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/U/Tank_Move_U_03.png",
+      "x": 0.497462,
+      "y": 0.4864232
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/U/Tank_Move_U_04.png",
+      "x": 0.4921328,
+      "y": 0.4686808
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/U/Tank_Move_U_05.png",
+      "x": 0.4935553,
+      "y": 0.4812061
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/U/Tank_Move_U_06.png",
+      "x": 0.5144298,
+      "y": 0.4941885
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/U/Tank_Move_U_07.png",
+      "x": 0.4870444,
+      "y": 0.4959944
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/U/Tank_Move_U_08.png",
+      "x": 0.4946859,
+      "y": 0.4886378
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/UL/Tank_Move_UL_01.png",
+      "x": 0.4914221,
+      "y": 0.5172838
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/UL/Tank_Move_UL_02.png",
+      "x": 0.4979424,
+      "y": 0.5052945
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/UL/Tank_Move_UL_03.png",
+      "x": 0.4877423,
+      "y": 0.5170503
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/UL/Tank_Move_UL_04.png",
+      "x": 0.4911214,
+      "y": 0.5208896
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/UL/Tank_Move_UL_05.png",
+      "x": 0.4955463,
+      "y": 0.5092762
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/UL/Tank_Move_UL_06.png",
+      "x": 0.4977404,
+      "y": 0.5088275
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/UL/Tank_Move_UL_07.png",
+      "x": 0.4987091,
+      "y": 0.5115971
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/UL/Tank_Move_UL_08.png",
+      "x": 0.4952062,
+      "y": 0.5130825
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/UR/Tank_Move_UR_01.png",
+      "x": 0.4971342,
+      "y": 0.5384498
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/UR/Tank_Move_UR_02.png",
+      "x": 0.5047917,
+      "y": 0.5513101
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/UR/Tank_Move_UR_03.png",
+      "x": 0.5112151,
+      "y": 0.5519503
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/UR/Tank_Move_UR_04.png",
+      "x": 0.5182398,
+      "y": 0.5317041
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/UR/Tank_Move_UR_05.png",
+      "x": 0.5131619,
+      "y": 0.534071
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/UR/Tank_Move_UR_06.png",
+      "x": 0.5250364,
+      "y": 0.5166654
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/UR/Tank_Move_UR_07.png",
+      "x": 0.5050869,
+      "y": 0.5432223
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Move/UR/Tank_Move_UR_08.png",
+      "x": 0.5055722,
+      "y": 0.5209604
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Windup/D/Tank_Windup_D_01.png",
+      "x": 0.5007909,
+      "y": 0.4827651
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Windup/D/Tank_Windup_D_02.png",
+      "x": 0.5007909,
+      "y": 0.4827651
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Windup/D/Tank_Windup_D_03.png",
+      "x": 0.5007909,
+      "y": 0.4827651
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Windup/D/Tank_Windup_D_04.png",
+      "x": 0.5007909,
+      "y": 0.4827651
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Windup/DL/Tank_Windup_DL_01.png",
+      "x": 0.5021823,
+      "y": 0.5041565
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Windup/DL/Tank_Windup_DL_02.png",
+      "x": 0.5021823,
+      "y": 0.5041565
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Windup/DL/Tank_Windup_DL_03.png",
+      "x": 0.5021823,
+      "y": 0.5041565
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Windup/DL/Tank_Windup_DL_04.png",
+      "x": 0.5021823,
+      "y": 0.5041565
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Windup/DR/Tank_Windup_DR_01.png",
+      "x": 0.4971242,
+      "y": 0.5278094
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Windup/DR/Tank_Windup_DR_02.png",
+      "x": 0.4971242,
+      "y": 0.5278094
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Windup/DR/Tank_Windup_DR_03.png",
+      "x": 0.4971242,
+      "y": 0.5278094
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Windup/DR/Tank_Windup_DR_04.png",
+      "x": 0.4971242,
+      "y": 0.5278094
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Windup/L/Tank_Windup_L_01.png",
+      "x": 0.4952354,
+      "y": 0.4881981
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Windup/L/Tank_Windup_L_02.png",
+      "x": 0.4952354,
+      "y": 0.4881981
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Windup/L/Tank_Windup_L_03.png",
+      "x": 0.4952354,
+      "y": 0.4881981
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Windup/L/Tank_Windup_L_04.png",
+      "x": 0.4952354,
+      "y": 0.4881981
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Windup/R/Tank_Windup_R_01.png",
+      "x": 0.502079,
+      "y": 0.4749345
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Windup/R/Tank_Windup_R_02.png",
+      "x": 0.502079,
+      "y": 0.4749345
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Windup/R/Tank_Windup_R_03.png",
+      "x": 0.502079,
+      "y": 0.4749345
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Windup/R/Tank_Windup_R_04.png",
+      "x": 0.502079,
+      "y": 0.4749345
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Windup/U/Tank_Windup_U_01.png",
+      "x": 0.4961852,
+      "y": 0.4650663
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Windup/U/Tank_Windup_U_02.png",
+      "x": 0.4961852,
+      "y": 0.4650663
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Windup/U/Tank_Windup_U_03.png",
+      "x": 0.4961852,
+      "y": 0.4650663
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Windup/U/Tank_Windup_U_04.png",
+      "x": 0.4961852,
+      "y": 0.4650663
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Windup/UL/Tank_Windup_UL_01.png",
+      "x": 0.4899334,
+      "y": 0.4934522
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Windup/UL/Tank_Windup_UL_02.png",
+      "x": 0.4899334,
+      "y": 0.4934522
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Windup/UL/Tank_Windup_UL_03.png",
+      "x": 0.4899334,
+      "y": 0.4934522
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Windup/UL/Tank_Windup_UL_04.png",
+      "x": 0.4899334,
+      "y": 0.4934522
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Windup/UR/Tank_Windup_UR_01.png",
+      "x": 0.5077005,
+      "y": 0.5325242
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Windup/UR/Tank_Windup_UR_02.png",
+      "x": 0.5077005,
+      "y": 0.5325242
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Windup/UR/Tank_Windup_UR_03.png",
+      "x": 0.5077005,
+      "y": 0.5325242
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Tank/Authored/Windup/UR/Tank_Windup_UR_04.png",
+      "x": 0.5077005,
+      "y": 0.5325242
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Attack/D/Spitter_Attack_D_01.png",
+      "x": 0.4954189,
+      "y": 0.4905383
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Attack/D/Spitter_Attack_D_02.png",
+      "x": 0.4954189,
+      "y": 0.4905383
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Attack/D/Spitter_Attack_D_03.png",
+      "x": 0.4954189,
+      "y": 0.4905383
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Attack/D/Spitter_Attack_D_04.png",
+      "x": 0.4954189,
+      "y": 0.4905383
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Attack/DL/Spitter_Attack_DL_01.png",
+      "x": 0.4986303,
+      "y": 0.4928847
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Attack/DL/Spitter_Attack_DL_02.png",
+      "x": 0.4986303,
+      "y": 0.4928847
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Attack/DL/Spitter_Attack_DL_03.png",
+      "x": 0.4986303,
+      "y": 0.4928847
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Attack/DL/Spitter_Attack_DL_04.png",
+      "x": 0.4986303,
+      "y": 0.4928847
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Attack/DR/Spitter_Attack_DR_01.png",
+      "x": 0.4950958,
+      "y": 0.4883145
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Attack/DR/Spitter_Attack_DR_02.png",
+      "x": 0.4950958,
+      "y": 0.4883145
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Attack/DR/Spitter_Attack_DR_03.png",
+      "x": 0.4950958,
+      "y": 0.4883145
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Attack/DR/Spitter_Attack_DR_04.png",
+      "x": 0.4950958,
+      "y": 0.4883145
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Attack/L/Spitter_Attack_L_01.png",
+      "x": 0.5211669,
+      "y": 0.520192
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Attack/L/Spitter_Attack_L_02.png",
+      "x": 0.5211669,
+      "y": 0.520192
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Attack/L/Spitter_Attack_L_03.png",
+      "x": 0.5211669,
+      "y": 0.520192
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Attack/L/Spitter_Attack_L_04.png",
+      "x": 0.5211669,
+      "y": 0.520192
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Attack/R/Spitter_Attack_R_01.png",
+      "x": 0.4980467,
+      "y": 0.5201866
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Attack/R/Spitter_Attack_R_02.png",
+      "x": 0.4980467,
+      "y": 0.5201866
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Attack/R/Spitter_Attack_R_03.png",
+      "x": 0.4980467,
+      "y": 0.5201866
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Attack/R/Spitter_Attack_R_04.png",
+      "x": 0.4980467,
+      "y": 0.5201866
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Attack/U/Spitter_Attack_U_01.png",
+      "x": 0.4928257,
+      "y": 0.5099209
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Attack/U/Spitter_Attack_U_02.png",
+      "x": 0.4928257,
+      "y": 0.5099209
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Attack/U/Spitter_Attack_U_03.png",
+      "x": 0.4928257,
+      "y": 0.5099209
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Attack/U/Spitter_Attack_U_04.png",
+      "x": 0.4928257,
+      "y": 0.5099209
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Attack/UL/Spitter_Attack_UL_01.png",
+      "x": 0.4873104,
+      "y": 0.4972253
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Attack/UL/Spitter_Attack_UL_02.png",
+      "x": 0.4873104,
+      "y": 0.4972253
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Attack/UL/Spitter_Attack_UL_03.png",
+      "x": 0.4873104,
+      "y": 0.4972253
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Attack/UL/Spitter_Attack_UL_04.png",
+      "x": 0.4873104,
+      "y": 0.4972253
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Attack/UR/Spitter_Attack_UR_01.png",
+      "x": 0.4919473,
+      "y": 0.5045484
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Attack/UR/Spitter_Attack_UR_02.png",
+      "x": 0.4919473,
+      "y": 0.5045484
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Attack/UR/Spitter_Attack_UR_03.png",
+      "x": 0.4919473,
+      "y": 0.5045484
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Attack/UR/Spitter_Attack_UR_04.png",
+      "x": 0.4919473,
+      "y": 0.5045484
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Death/D/Spitter_Death_D_01.png",
+      "x": 0.4954189,
+      "y": 0.4905383
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Death/D/Spitter_Death_D_02.png",
+      "x": 0.4954189,
+      "y": 0.4905383
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Death/D/Spitter_Death_D_03.png",
+      "x": 0.4954189,
+      "y": 0.4905383
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Death/D/Spitter_Death_D_04.png",
+      "x": 0.4954189,
+      "y": 0.4905383
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Death/DL/Spitter_Death_DL_01.png",
+      "x": 0.4986303,
+      "y": 0.4928847
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Death/DL/Spitter_Death_DL_02.png",
+      "x": 0.4986303,
+      "y": 0.4928847
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Death/DL/Spitter_Death_DL_03.png",
+      "x": 0.4986303,
+      "y": 0.4928847
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Death/DL/Spitter_Death_DL_04.png",
+      "x": 0.4986303,
+      "y": 0.4928847
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Death/DR/Spitter_Death_DR_01.png",
+      "x": 0.4950958,
+      "y": 0.4883145
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Death/DR/Spitter_Death_DR_02.png",
+      "x": 0.4950958,
+      "y": 0.4883145
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Death/DR/Spitter_Death_DR_03.png",
+      "x": 0.4950958,
+      "y": 0.4883145
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Death/DR/Spitter_Death_DR_04.png",
+      "x": 0.4950958,
+      "y": 0.4883145
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Death/L/Spitter_Death_L_01.png",
+      "x": 0.5211669,
+      "y": 0.520192
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Death/L/Spitter_Death_L_02.png",
+      "x": 0.5211669,
+      "y": 0.520192
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Death/L/Spitter_Death_L_03.png",
+      "x": 0.5211669,
+      "y": 0.520192
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Death/L/Spitter_Death_L_04.png",
+      "x": 0.5211669,
+      "y": 0.520192
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Death/R/Spitter_Death_R_01.png",
+      "x": 0.4980467,
+      "y": 0.5201866
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Death/R/Spitter_Death_R_02.png",
+      "x": 0.4980467,
+      "y": 0.5201866
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Death/R/Spitter_Death_R_03.png",
+      "x": 0.4980467,
+      "y": 0.5201866
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Death/R/Spitter_Death_R_04.png",
+      "x": 0.4980467,
+      "y": 0.5201866
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Death/U/Spitter_Death_U_01.png",
+      "x": 0.4928257,
+      "y": 0.5099209
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Death/U/Spitter_Death_U_02.png",
+      "x": 0.4928257,
+      "y": 0.5099209
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Death/U/Spitter_Death_U_03.png",
+      "x": 0.4928257,
+      "y": 0.5099209
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Death/U/Spitter_Death_U_04.png",
+      "x": 0.4928257,
+      "y": 0.5099209
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Death/UL/Spitter_Death_UL_01.png",
+      "x": 0.4873104,
+      "y": 0.4972253
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Death/UL/Spitter_Death_UL_02.png",
+      "x": 0.4873104,
+      "y": 0.4972253
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Death/UL/Spitter_Death_UL_03.png",
+      "x": 0.4873104,
+      "y": 0.4972253
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Death/UL/Spitter_Death_UL_04.png",
+      "x": 0.4873104,
+      "y": 0.4972253
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Death/UR/Spitter_Death_UR_01.png",
+      "x": 0.4919473,
+      "y": 0.5045484
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Death/UR/Spitter_Death_UR_02.png",
+      "x": 0.4919473,
+      "y": 0.5045484
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Death/UR/Spitter_Death_UR_03.png",
+      "x": 0.4919473,
+      "y": 0.5045484
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Death/UR/Spitter_Death_UR_04.png",
+      "x": 0.4919473,
+      "y": 0.5045484
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Idle/D/Spitter_Idle_D_01.png",
+      "x": 0.4923471,
+      "y": 0.4907904
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Idle/D/Spitter_Idle_D_02.png",
+      "x": 0.4906361,
+      "y": 0.4903938
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Idle/D/Spitter_Idle_D_03.png",
+      "x": 0.5008946,
+      "y": 0.4990807
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Idle/D/Spitter_Idle_D_04.png",
+      "x": 0.4977979,
+      "y": 0.4818882
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Idle/DL/Spitter_Idle_DL_01.png",
+      "x": 0.5028501,
+      "y": 0.489791
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Idle/DL/Spitter_Idle_DL_02.png",
+      "x": 0.4975908,
+      "y": 0.4940031
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Idle/DL/Spitter_Idle_DL_03.png",
+      "x": 0.5001302,
+      "y": 0.4938565
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Idle/DL/Spitter_Idle_DL_04.png",
+      "x": 0.49395,
+      "y": 0.4938883
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Idle/DR/Spitter_Idle_DR_01.png",
+      "x": 0.4950362,
+      "y": 0.4787736
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Idle/DR/Spitter_Idle_DR_02.png",
+      "x": 0.4898266,
+      "y": 0.4831337
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Idle/DR/Spitter_Idle_DR_03.png",
+      "x": 0.495257,
+      "y": 0.5024215
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Idle/DR/Spitter_Idle_DR_04.png",
+      "x": 0.5002632,
+      "y": 0.488929
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Idle/L/Spitter_Idle_L_01.png",
+      "x": 0.5210979,
+      "y": 0.521197
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Idle/L/Spitter_Idle_L_02.png",
+      "x": 0.5225377,
+      "y": 0.5235778
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Idle/L/Spitter_Idle_L_03.png",
+      "x": 0.5247294,
+      "y": 0.5196514
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Idle/L/Spitter_Idle_L_04.png",
+      "x": 0.5163025,
+      "y": 0.5163417
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Idle/R/Spitter_Idle_R_01.png",
+      "x": 0.5017328,
+      "y": 0.4990475
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Idle/R/Spitter_Idle_R_02.png",
+      "x": 0.4963903,
+      "y": 0.5241228
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Idle/R/Spitter_Idle_R_03.png",
+      "x": 0.4944109,
+      "y": 0.5393326
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Idle/R/Spitter_Idle_R_04.png",
+      "x": 0.4996528,
+      "y": 0.5182435
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Idle/U/Spitter_Idle_U_01.png",
+      "x": 0.491784,
+      "y": 0.5056765
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Idle/U/Spitter_Idle_U_02.png",
+      "x": 0.4990478,
+      "y": 0.5161711
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Idle/U/Spitter_Idle_U_03.png",
+      "x": 0.4906478,
+      "y": 0.5061658
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Idle/U/Spitter_Idle_U_04.png",
+      "x": 0.4898233,
+      "y": 0.5116703
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Idle/UL/Spitter_Idle_UL_01.png",
+      "x": 0.4759062,
+      "y": 0.4894575
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Idle/UL/Spitter_Idle_UL_02.png",
+      "x": 0.4858881,
+      "y": 0.4971698
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Idle/UL/Spitter_Idle_UL_03.png",
+      "x": 0.5000797,
+      "y": 0.501887
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Idle/UL/Spitter_Idle_UL_04.png",
+      "x": 0.4873676,
+      "y": 0.5003869
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Idle/UR/Spitter_Idle_UR_01.png",
+      "x": 0.4932995,
+      "y": 0.5067851
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Idle/UR/Spitter_Idle_UR_02.png",
+      "x": 0.4789302,
+      "y": 0.5146617
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Idle/UR/Spitter_Idle_UR_03.png",
+      "x": 0.4881059,
+      "y": 0.5006296
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Idle/UR/Spitter_Idle_UR_04.png",
+      "x": 0.5074537,
+      "y": 0.4961173
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/D/Spitter_Move_D_01.png",
+      "x": 0.5064557,
+      "y": 0.4816668
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/D/Spitter_Move_D_02.png",
+      "x": 0.5036305,
+      "y": 0.4809775
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/D/Spitter_Move_D_03.png",
+      "x": 0.5128592,
+      "y": 0.4974816
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/D/Spitter_Move_D_04.png",
+      "x": 0.492219,
+      "y": 0.4896834
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/D/Spitter_Move_D_05.png",
+      "x": 0.4943278,
+      "y": 0.4901961
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/D/Spitter_Move_D_06.png",
+      "x": 0.4998931,
+      "y": 0.488672
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/D/Spitter_Move_D_07.png",
+      "x": 0.4938322,
+      "y": 0.4907441
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/D/Spitter_Move_D_08.png",
+      "x": 0.5058378,
+      "y": 0.4792688
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/DL/Spitter_Move_DL_01.png",
+      "x": 0.5217398,
+      "y": 0.48274
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/DL/Spitter_Move_DL_02.png",
+      "x": 0.5087232,
+      "y": 0.499026
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/DL/Spitter_Move_DL_03.png",
+      "x": 0.5006221,
+      "y": 0.4894122
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/DL/Spitter_Move_DL_04.png",
+      "x": 0.5146123,
+      "y": 0.4895988
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/DL/Spitter_Move_DL_05.png",
+      "x": 0.5107351,
+      "y": 0.4979451
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/DL/Spitter_Move_DL_06.png",
+      "x": 0.5041467,
+      "y": 0.4946743
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/DL/Spitter_Move_DL_07.png",
+      "x": 0.5183578,
+      "y": 0.5032753
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/DL/Spitter_Move_DL_08.png",
+      "x": 0.5232012,
+      "y": 0.4918009
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/DR/Spitter_Move_DR_01.png",
+      "x": 0.5059304,
+      "y": 0.4646948
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/DR/Spitter_Move_DR_02.png",
+      "x": 0.5056351,
+      "y": 0.4659345
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/DR/Spitter_Move_DR_03.png",
+      "x": 0.5075697,
+      "y": 0.4573909
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/DR/Spitter_Move_DR_04.png",
+      "x": 0.4932396,
+      "y": 0.4620268
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/DR/Spitter_Move_DR_05.png",
+      "x": 0.5100194,
+      "y": 0.4704941
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/DR/Spitter_Move_DR_06.png",
+      "x": 0.5151068,
+      "y": 0.4692524
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/DR/Spitter_Move_DR_07.png",
+      "x": 0.4963784,
+      "y": 0.4760678
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/DR/Spitter_Move_DR_08.png",
+      "x": 0.5208711,
+      "y": 0.4629008
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/L/Spitter_Move_L_01.png",
+      "x": 0.5192303,
+      "y": 0.4810521
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/L/Spitter_Move_L_02.png",
+      "x": 0.5136569,
+      "y": 0.5225887
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/L/Spitter_Move_L_03.png",
+      "x": 0.5268538,
+      "y": 0.5131739
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/L/Spitter_Move_L_04.png",
+      "x": 0.5177374,
+      "y": 0.5164275
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/L/Spitter_Move_L_05.png",
+      "x": 0.5170464,
+      "y": 0.4959956
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/L/Spitter_Move_L_06.png",
+      "x": 0.5097376,
+      "y": 0.5055326
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/L/Spitter_Move_L_07.png",
+      "x": 0.5275549,
+      "y": 0.5146647
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/L/Spitter_Move_L_08.png",
+      "x": 0.5225911,
+      "y": 0.5220668
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/R/Spitter_Move_R_01.png",
+      "x": 0.4911393,
+      "y": 0.502673
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/R/Spitter_Move_R_02.png",
+      "x": 0.5025948,
+      "y": 0.5105062
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/R/Spitter_Move_R_03.png",
+      "x": 0.4861273,
+      "y": 0.5087186
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/R/Spitter_Move_R_04.png",
+      "x": 0.4945798,
+      "y": 0.506058
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/R/Spitter_Move_R_05.png",
+      "x": 0.497971,
+      "y": 0.4978631
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/R/Spitter_Move_R_06.png",
+      "x": 0.5047303,
+      "y": 0.528973
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/R/Spitter_Move_R_07.png",
+      "x": 0.5023489,
+      "y": 0.5249124
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/R/Spitter_Move_R_08.png",
+      "x": 0.4972358,
+      "y": 0.523323
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/U/Spitter_Move_U_01.png",
+      "x": 0.4842424,
+      "y": 0.505295
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/U/Spitter_Move_U_02.png",
+      "x": 0.4920843,
+      "y": 0.5007499
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/U/Spitter_Move_U_03.png",
+      "x": 0.5046618,
+      "y": 0.5113665
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/U/Spitter_Move_U_04.png",
+      "x": 0.4854192,
+      "y": 0.4981832
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/U/Spitter_Move_U_05.png",
+      "x": 0.500617,
+      "y": 0.5006849
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/U/Spitter_Move_U_06.png",
+      "x": 0.4890278,
+      "y": 0.5000181
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/U/Spitter_Move_U_07.png",
+      "x": 0.492519,
+      "y": 0.5042388
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/U/Spitter_Move_U_08.png",
+      "x": 0.4977421,
+      "y": 0.4927803
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/UL/Spitter_Move_UL_01.png",
+      "x": 0.4792535,
+      "y": 0.5001747
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/UL/Spitter_Move_UL_02.png",
+      "x": 0.4791187,
+      "y": 0.5177927
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/UL/Spitter_Move_UL_03.png",
+      "x": 0.4955239,
+      "y": 0.4935379
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/UL/Spitter_Move_UL_04.png",
+      "x": 0.4834598,
+      "y": 0.5152932
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/UL/Spitter_Move_UL_05.png",
+      "x": 0.4869083,
+      "y": 0.5064819
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/UL/Spitter_Move_UL_06.png",
+      "x": 0.4987842,
+      "y": 0.5305639
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/UL/Spitter_Move_UL_07.png",
+      "x": 0.4673531,
+      "y": 0.5033199
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/UL/Spitter_Move_UL_08.png",
+      "x": 0.4877105,
+      "y": 0.5018556
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/UR/Spitter_Move_UR_01.png",
+      "x": 0.4983818,
+      "y": 0.497574
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/UR/Spitter_Move_UR_02.png",
+      "x": 0.4999774,
+      "y": 0.5052949
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/UR/Spitter_Move_UR_03.png",
+      "x": 0.4859884,
+      "y": 0.5081393
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/UR/Spitter_Move_UR_04.png",
+      "x": 0.5066364,
+      "y": 0.497804
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/UR/Spitter_Move_UR_05.png",
+      "x": 0.4767788,
+      "y": 0.5190026
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/UR/Spitter_Move_UR_06.png",
+      "x": 0.496965,
+      "y": 0.5288105
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/UR/Spitter_Move_UR_07.png",
+      "x": 0.4892345,
+      "y": 0.5133666
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Move/UR/Spitter_Move_UR_08.png",
+      "x": 0.5027646,
+      "y": 0.5019747
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Windup/D/Spitter_Windup_D_01.png",
+      "x": 0.4954189,
+      "y": 0.4905383
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Windup/D/Spitter_Windup_D_02.png",
+      "x": 0.4954189,
+      "y": 0.4905383
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Windup/D/Spitter_Windup_D_03.png",
+      "x": 0.4954189,
+      "y": 0.4905383
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Windup/D/Spitter_Windup_D_04.png",
+      "x": 0.4954189,
+      "y": 0.4905383
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Windup/DL/Spitter_Windup_DL_01.png",
+      "x": 0.4986303,
+      "y": 0.4928847
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Windup/DL/Spitter_Windup_DL_02.png",
+      "x": 0.4986303,
+      "y": 0.4928847
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Windup/DL/Spitter_Windup_DL_03.png",
+      "x": 0.4986303,
+      "y": 0.4928847
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Windup/DL/Spitter_Windup_DL_04.png",
+      "x": 0.4986303,
+      "y": 0.4928847
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Windup/DR/Spitter_Windup_DR_01.png",
+      "x": 0.4950958,
+      "y": 0.4883145
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Windup/DR/Spitter_Windup_DR_02.png",
+      "x": 0.4950958,
+      "y": 0.4883145
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Windup/DR/Spitter_Windup_DR_03.png",
+      "x": 0.4950958,
+      "y": 0.4883145
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Windup/DR/Spitter_Windup_DR_04.png",
+      "x": 0.4950958,
+      "y": 0.4883145
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Windup/L/Spitter_Windup_L_01.png",
+      "x": 0.5211669,
+      "y": 0.520192
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Windup/L/Spitter_Windup_L_02.png",
+      "x": 0.5211669,
+      "y": 0.520192
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Windup/L/Spitter_Windup_L_03.png",
+      "x": 0.5211669,
+      "y": 0.520192
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Windup/L/Spitter_Windup_L_04.png",
+      "x": 0.5211669,
+      "y": 0.520192
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Windup/R/Spitter_Windup_R_01.png",
+      "x": 0.4980467,
+      "y": 0.5201866
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Windup/R/Spitter_Windup_R_02.png",
+      "x": 0.4980467,
+      "y": 0.5201866
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Windup/R/Spitter_Windup_R_03.png",
+      "x": 0.4980467,
+      "y": 0.5201866
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Windup/R/Spitter_Windup_R_04.png",
+      "x": 0.4980467,
+      "y": 0.5201866
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Windup/U/Spitter_Windup_U_01.png",
+      "x": 0.4928257,
+      "y": 0.5099209
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Windup/U/Spitter_Windup_U_02.png",
+      "x": 0.4928257,
+      "y": 0.5099209
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Windup/U/Spitter_Windup_U_03.png",
+      "x": 0.4928257,
+      "y": 0.5099209
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Windup/U/Spitter_Windup_U_04.png",
+      "x": 0.4928257,
+      "y": 0.5099209
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Windup/UL/Spitter_Windup_UL_01.png",
+      "x": 0.4873104,
+      "y": 0.4972253
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Windup/UL/Spitter_Windup_UL_02.png",
+      "x": 0.4873104,
+      "y": 0.4972253
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Windup/UL/Spitter_Windup_UL_03.png",
+      "x": 0.4873104,
+      "y": 0.4972253
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Windup/UL/Spitter_Windup_UL_04.png",
+      "x": 0.4873104,
+      "y": 0.4972253
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Windup/UR/Spitter_Windup_UR_01.png",
+      "x": 0.4919473,
+      "y": 0.5045484
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Windup/UR/Spitter_Windup_UR_02.png",
+      "x": 0.4919473,
+      "y": 0.5045484
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Windup/UR/Spitter_Windup_UR_03.png",
+      "x": 0.4919473,
+      "y": 0.5045484
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Spitter/Authored/Windup/UR/Spitter_Windup_UR_04.png",
+      "x": 0.4919473,
+      "y": 0.5045484
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/D/Support_Death_D_01.png",
+      "x": 0.4969664,
+      "y": 0.4914884
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/D/Support_Death_D_02.png",
+      "x": 0.4969664,
+      "y": 0.4914884
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/D/Support_Death_D_03.png",
+      "x": 0.4969664,
+      "y": 0.4914884
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/D/Support_Death_D_04.png",
+      "x": 0.4969664,
+      "y": 0.4914884
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/DL/Support_Death_DL_01.png",
+      "x": 0.4959887,
+      "y": 0.5004488
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/DL/Support_Death_DL_02.png",
+      "x": 0.4959887,
+      "y": 0.5004488
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/DL/Support_Death_DL_03.png",
+      "x": 0.4959887,
+      "y": 0.5004488
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/DL/Support_Death_DL_04.png",
+      "x": 0.4959887,
+      "y": 0.5004488
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/DR/Support_Death_DR_01.png",
+      "x": 0.4973866,
+      "y": 0.4932889
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/DR/Support_Death_DR_02.png",
+      "x": 0.4973866,
+      "y": 0.4932889
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/DR/Support_Death_DR_03.png",
+      "x": 0.4973866,
+      "y": 0.4932889
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/DR/Support_Death_DR_04.png",
+      "x": 0.4973866,
+      "y": 0.4932889
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/L/Support_Death_L_01.png",
+      "x": 0.4979683,
+      "y": 0.4999268
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/L/Support_Death_L_02.png",
+      "x": 0.4979683,
+      "y": 0.4999268
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/L/Support_Death_L_03.png",
+      "x": 0.4979683,
+      "y": 0.4999268
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/L/Support_Death_L_04.png",
+      "x": 0.4979683,
+      "y": 0.4999268
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/R/Support_Death_R_01.png",
+      "x": 0.5003948,
+      "y": 0.4990454
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/R/Support_Death_R_02.png",
+      "x": 0.5003948,
+      "y": 0.4990454
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/R/Support_Death_R_03.png",
+      "x": 0.5003948,
+      "y": 0.4990454
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/R/Support_Death_R_04.png",
+      "x": 0.5003948,
+      "y": 0.4990454
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/U/Support_Death_U_01.png",
+      "x": 0.4977335,
+      "y": 0.4989456
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/U/Support_Death_U_02.png",
+      "x": 0.4977335,
+      "y": 0.4989456
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/U/Support_Death_U_03.png",
+      "x": 0.4977335,
+      "y": 0.4989456
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/U/Support_Death_U_04.png",
+      "x": 0.4977335,
+      "y": 0.4989456
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/UL/Support_Death_UL_01.png",
+      "x": 0.5126746,
+      "y": 0.5024443
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/UL/Support_Death_UL_02.png",
+      "x": 0.5126746,
+      "y": 0.5024443
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/UL/Support_Death_UL_03.png",
+      "x": 0.5126746,
+      "y": 0.5024443
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/UL/Support_Death_UL_04.png",
+      "x": 0.5126746,
+      "y": 0.5024443
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/UR/Support_Death_UR_01.png",
+      "x": 0.4962033,
+      "y": 0.4993627
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/UR/Support_Death_UR_02.png",
+      "x": 0.4962033,
+      "y": 0.4993627
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/UR/Support_Death_UR_03.png",
+      "x": 0.4962033,
+      "y": 0.4993627
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Death/UR/Support_Death_UR_04.png",
+      "x": 0.4962033,
+      "y": 0.4993627
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/D/Support_Idle_D_01.png",
+      "x": 0.4969322,
+      "y": 0.4912612
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/D/Support_Idle_D_02.png",
+      "x": 0.4961319,
+      "y": 0.4917608
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/D/Support_Idle_D_03.png",
+      "x": 0.4971306,
+      "y": 0.4912967
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/D/Support_Idle_D_04.png",
+      "x": 0.4976709,
+      "y": 0.4916348
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/DL/Support_Idle_DL_01.png",
+      "x": 0.4935321,
+      "y": 0.5004583
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/DL/Support_Idle_DL_02.png",
+      "x": 0.4965847,
+      "y": 0.500016
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/DL/Support_Idle_DL_03.png",
+      "x": 0.494183,
+      "y": 0.4999285
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/DL/Support_Idle_DL_04.png",
+      "x": 0.4996549,
+      "y": 0.5013923
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/DR/Support_Idle_DR_01.png",
+      "x": 0.4952628,
+      "y": 0.4935621
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/DR/Support_Idle_DR_02.png",
+      "x": 0.4963934,
+      "y": 0.4932103
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/DR/Support_Idle_DR_03.png",
+      "x": 0.4972336,
+      "y": 0.4944387
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/DR/Support_Idle_DR_04.png",
+      "x": 0.5006567,
+      "y": 0.4919444
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/L/Support_Idle_L_01.png",
+      "x": 0.4946744,
+      "y": 0.5005839
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/L/Support_Idle_L_02.png",
+      "x": 0.5016957,
+      "y": 0.4984462
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/L/Support_Idle_L_03.png",
+      "x": 0.4977226,
+      "y": 0.5008777
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/L/Support_Idle_L_04.png",
+      "x": 0.4977805,
+      "y": 0.4997992
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/R/Support_Idle_R_01.png",
+      "x": 0.4965856,
+      "y": 0.4972715
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/R/Support_Idle_R_02.png",
+      "x": 0.5034021,
+      "y": 0.4979053
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/R/Support_Idle_R_03.png",
+      "x": 0.5004077,
+      "y": 0.5001914
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/R/Support_Idle_R_04.png",
+      "x": 0.5011839,
+      "y": 0.5008132
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/U/Support_Idle_U_01.png",
+      "x": 0.4982782,
+      "y": 0.5000086
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/U/Support_Idle_U_02.png",
+      "x": 0.4975747,
+      "y": 0.4984741
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/U/Support_Idle_U_03.png",
+      "x": 0.4963676,
+      "y": 0.498978
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/U/Support_Idle_U_04.png",
+      "x": 0.4987135,
+      "y": 0.4983217
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/UL/Support_Idle_UL_01.png",
+      "x": 0.515124,
+      "y": 0.5037751
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/UL/Support_Idle_UL_02.png",
+      "x": 0.5135024,
+      "y": 0.5017022
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/UL/Support_Idle_UL_03.png",
+      "x": 0.5049749,
+      "y": 0.5002554
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/UL/Support_Idle_UL_04.png",
+      "x": 0.517097,
+      "y": 0.5040444
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/UR/Support_Idle_UR_01.png",
+      "x": 0.4947246,
+      "y": 0.4992678
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/UR/Support_Idle_UR_02.png",
+      "x": 0.4976419,
+      "y": 0.4978863
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/UR/Support_Idle_UR_03.png",
+      "x": 0.4935115,
+      "y": 0.4999757
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Idle/UR/Support_Idle_UR_04.png",
+      "x": 0.4989352,
+      "y": 0.5003211
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/D/Support_Move_D_01.png",
+      "x": 0.496001,
+      "y": 0.493444
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/D/Support_Move_D_02.png",
+      "x": 0.5063045,
+      "y": 0.4966313
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/D/Support_Move_D_03.png",
+      "x": 0.4860392,
+      "y": 0.5056721
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/D/Support_Move_D_04.png",
+      "x": 0.4850355,
+      "y": 0.4967654
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/D/Support_Move_D_05.png",
+      "x": 0.4964596,
+      "y": 0.507333
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/D/Support_Move_D_06.png",
+      "x": 0.4904494,
+      "y": 0.5134115
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/D/Support_Move_D_07.png",
+      "x": 0.4970977,
+      "y": 0.5042575
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/D/Support_Move_D_08.png",
+      "x": 0.4978622,
+      "y": 0.4948005
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/DL/Support_Move_DL_01.png",
+      "x": 0.4985864,
+      "y": 0.4997465
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/DL/Support_Move_DL_02.png",
+      "x": 0.4523305,
+      "y": 0.5221414
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/DL/Support_Move_DL_03.png",
+      "x": 0.4916182,
+      "y": 0.5057056
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/DL/Support_Move_DL_04.png",
+      "x": 0.4845604,
+      "y": 0.5079785
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/DL/Support_Move_DL_05.png",
+      "x": 0.4760863,
+      "y": 0.51477
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/DL/Support_Move_DL_06.png",
+      "x": 0.489757,
+      "y": 0.5176286
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/DL/Support_Move_DL_07.png",
+      "x": 0.4547256,
+      "y": 0.5218746
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/DL/Support_Move_DL_08.png",
+      "x": 0.4965848,
+      "y": 0.5098741
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/DR/Support_Move_DR_01.png",
+      "x": 0.5134338,
+      "y": 0.4999045
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/DR/Support_Move_DR_02.png",
+      "x": 0.5068468,
+      "y": 0.5002096
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/DR/Support_Move_DR_03.png",
+      "x": 0.5070457,
+      "y": 0.4981327
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/DR/Support_Move_DR_04.png",
+      "x": 0.5187293,
+      "y": 0.4881715
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/DR/Support_Move_DR_05.png",
+      "x": 0.5278628,
+      "y": 0.515123
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/DR/Support_Move_DR_06.png",
+      "x": 0.5052115,
+      "y": 0.4936702
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/DR/Support_Move_DR_07.png",
+      "x": 0.507614,
+      "y": 0.5030549
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/DR/Support_Move_DR_08.png",
+      "x": 0.5145707,
+      "y": 0.5159581
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/L/Support_Move_L_01.png",
+      "x": 0.4878631,
+      "y": 0.4976893
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/L/Support_Move_L_02.png",
+      "x": 0.4757518,
+      "y": 0.4996991
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/L/Support_Move_L_03.png",
+      "x": 0.4794837,
+      "y": 0.4796583
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/L/Support_Move_L_04.png",
+      "x": 0.486828,
+      "y": 0.4900083
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/L/Support_Move_L_05.png",
+      "x": 0.4933307,
+      "y": 0.4874715
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/L/Support_Move_L_06.png",
+      "x": 0.4938901,
+      "y": 0.4895631
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/L/Support_Move_L_07.png",
+      "x": 0.4875287,
+      "y": 0.4836955
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/L/Support_Move_L_08.png",
+      "x": 0.5034814,
+      "y": 0.4912653
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/R/Support_Move_R_01.png",
+      "x": 0.5088383,
+      "y": 0.5041569
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/R/Support_Move_R_02.png",
+      "x": 0.5241332,
+      "y": 0.4934171
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/R/Support_Move_R_03.png",
+      "x": 0.4944325,
+      "y": 0.4954913
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/R/Support_Move_R_04.png",
+      "x": 0.5163464,
+      "y": 0.4999369
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/R/Support_Move_R_05.png",
+      "x": 0.5223049,
+      "y": 0.4956768
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/R/Support_Move_R_06.png",
+      "x": 0.5191419,
+      "y": 0.5066275
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/R/Support_Move_R_07.png",
+      "x": 0.4980484,
+      "y": 0.4939659
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/R/Support_Move_R_08.png",
+      "x": 0.5072722,
+      "y": 0.5058509
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/U/Support_Move_U_01.png",
+      "x": 0.5085412,
+      "y": 0.5076741
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/U/Support_Move_U_02.png",
+      "x": 0.5027935,
+      "y": 0.5145055
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/U/Support_Move_U_03.png",
+      "x": 0.491481,
+      "y": 0.5094291
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/U/Support_Move_U_04.png",
+      "x": 0.4946322,
+      "y": 0.5086599
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/U/Support_Move_U_05.png",
+      "x": 0.4996274,
+      "y": 0.5045163
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/U/Support_Move_U_06.png",
+      "x": 0.5015977,
+      "y": 0.5201579
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/U/Support_Move_U_07.png",
+      "x": 0.4943387,
+      "y": 0.5130423
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/U/Support_Move_U_08.png",
+      "x": 0.5015432,
+      "y": 0.5104296
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/UL/Support_Move_UL_01.png",
+      "x": 0.5279489,
+      "y": 0.5002543
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/UL/Support_Move_UL_02.png",
+      "x": 0.5299254,
+      "y": 0.5145968
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/UL/Support_Move_UL_03.png",
+      "x": 0.5062726,
+      "y": 0.5043066
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/UL/Support_Move_UL_04.png",
+      "x": 0.5241037,
+      "y": 0.5052778
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/UL/Support_Move_UL_05.png",
+      "x": 0.5319766,
+      "y": 0.5127259
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/UL/Support_Move_UL_06.png",
+      "x": 0.5057901,
+      "y": 0.5102908
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/UL/Support_Move_UL_07.png",
+      "x": 0.5330166,
+      "y": 0.5010808
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/UL/Support_Move_UL_08.png",
+      "x": 0.5244052,
+      "y": 0.5077368
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/UR/Support_Move_UR_01.png",
+      "x": 0.4921373,
+      "y": 0.5032072
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/UR/Support_Move_UR_02.png",
+      "x": 0.4812011,
+      "y": 0.5086438
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/UR/Support_Move_UR_03.png",
+      "x": 0.463961,
+      "y": 0.5211124
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/UR/Support_Move_UR_04.png",
+      "x": 0.4935775,
+      "y": 0.4912388
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/UR/Support_Move_UR_05.png",
+      "x": 0.4679813,
+      "y": 0.5118088
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/UR/Support_Move_UR_06.png",
+      "x": 0.4968206,
+      "y": 0.5116849
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/UR/Support_Move_UR_07.png",
+      "x": 0.4911513,
+      "y": 0.4946908
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/Move/UR/Support_Move_UR_08.png",
+      "x": 0.5140348,
+      "y": 0.505055
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/D/Support_SupportMove_D_01.png",
+      "x": 0.4941852,
+      "y": 0.4962901
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/D/Support_SupportMove_D_02.png",
+      "x": 0.4860559,
+      "y": 0.5039438
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/D/Support_SupportMove_D_03.png",
+      "x": 0.5051262,
+      "y": 0.5059291
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/D/Support_SupportMove_D_04.png",
+      "x": 0.490339,
+      "y": 0.4916518
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/D/Support_SupportMove_D_05.png",
+      "x": 0.5001172,
+      "y": 0.4955134
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/D/Support_SupportMove_D_06.png",
+      "x": 0.4836772,
+      "y": 0.5033939
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/D/Support_SupportMove_D_07.png",
+      "x": 0.493007,
+      "y": 0.496168
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/D/Support_SupportMove_D_08.png",
+      "x": 0.5030242,
+      "y": 0.4908703
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DL/Support_SupportMove_DL_01.png",
+      "x": 0.493248,
+      "y": 0.501574
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DL/Support_SupportMove_DL_02.png",
+      "x": 0.477057,
+      "y": 0.5106315
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DL/Support_SupportMove_DL_03.png",
+      "x": 0.4804208,
+      "y": 0.5085829
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DL/Support_SupportMove_DL_04.png",
+      "x": 0.4885678,
+      "y": 0.5075422
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DL/Support_SupportMove_DL_05.png",
+      "x": 0.4728767,
+      "y": 0.5081936
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DL/Support_SupportMove_DL_06.png",
+      "x": 0.4722254,
+      "y": 0.5074661
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DL/Support_SupportMove_DL_07.png",
+      "x": 0.4687775,
+      "y": 0.5062093
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DL/Support_SupportMove_DL_08.png",
+      "x": 0.4915745,
+      "y": 0.5005916
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DR/Support_SupportMove_DR_01.png",
+      "x": 0.5114681,
+      "y": 0.5226734
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DR/Support_SupportMove_DR_02.png",
+      "x": 0.5086034,
+      "y": 0.5008167
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DR/Support_SupportMove_DR_03.png",
+      "x": 0.51305,
+      "y": 0.5213956
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DR/Support_SupportMove_DR_04.png",
+      "x": 0.5070081,
+      "y": 0.5192074
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DR/Support_SupportMove_DR_05.png",
+      "x": 0.5064218,
+      "y": 0.5231811
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DR/Support_SupportMove_DR_06.png",
+      "x": 0.5173762,
+      "y": 0.5212374
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DR/Support_SupportMove_DR_07.png",
+      "x": 0.5302827,
+      "y": 0.5267478
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/DR/Support_SupportMove_DR_08.png",
+      "x": 0.5196866,
+      "y": 0.5185166
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/L/Support_SupportMove_L_01.png",
+      "x": 0.48226,
+      "y": 0.4825285
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/L/Support_SupportMove_L_02.png",
+      "x": 0.4757841,
+      "y": 0.4788436
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/L/Support_SupportMove_L_03.png",
+      "x": 0.4862825,
+      "y": 0.4781283
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/L/Support_SupportMove_L_04.png",
+      "x": 0.4863251,
+      "y": 0.4812017
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/L/Support_SupportMove_L_05.png",
+      "x": 0.4824747,
+      "y": 0.478003
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/L/Support_SupportMove_L_06.png",
+      "x": 0.475066,
+      "y": 0.4748713
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/L/Support_SupportMove_L_07.png",
+      "x": 0.4890372,
+      "y": 0.4740934
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/L/Support_SupportMove_L_08.png",
+      "x": 0.4873173,
+      "y": 0.4758044
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/R/Support_SupportMove_R_01.png",
+      "x": 0.5329933,
+      "y": 0.4833528
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/R/Support_SupportMove_R_02.png",
+      "x": 0.5315725,
+      "y": 0.4928309
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/R/Support_SupportMove_R_03.png",
+      "x": 0.5215405,
+      "y": 0.4887874
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/R/Support_SupportMove_R_04.png",
+      "x": 0.5312029,
+      "y": 0.4870937
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/R/Support_SupportMove_R_05.png",
+      "x": 0.5060167,
+      "y": 0.4848694
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/R/Support_SupportMove_R_06.png",
+      "x": 0.5184947,
+      "y": 0.4901786
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/R/Support_SupportMove_R_07.png",
+      "x": 0.5229027,
+      "y": 0.4945265
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/R/Support_SupportMove_R_08.png",
+      "x": 0.523162,
+      "y": 0.4987224
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/U/Support_SupportMove_U_01.png",
+      "x": 0.5015259,
+      "y": 0.4970731
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/U/Support_SupportMove_U_02.png",
+      "x": 0.5039359,
+      "y": 0.4957285
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/U/Support_SupportMove_U_03.png",
+      "x": 0.4998058,
+      "y": 0.4944023
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/U/Support_SupportMove_U_04.png",
+      "x": 0.4957858,
+      "y": 0.5015012
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/U/Support_SupportMove_U_05.png",
+      "x": 0.4970271,
+      "y": 0.4953367
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/U/Support_SupportMove_U_06.png",
+      "x": 0.4961056,
+      "y": 0.5082816
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/U/Support_SupportMove_U_07.png",
+      "x": 0.4946203,
+      "y": 0.4987649
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/U/Support_SupportMove_U_08.png",
+      "x": 0.5012521,
+      "y": 0.4956307
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UL/Support_SupportMove_UL_01.png",
+      "x": 0.5324646,
+      "y": 0.4809019
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UL/Support_SupportMove_UL_02.png",
+      "x": 0.5228064,
+      "y": 0.5003145
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UL/Support_SupportMove_UL_03.png",
+      "x": 0.5106542,
+      "y": 0.4926197
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UL/Support_SupportMove_UL_04.png",
+      "x": 0.5105478,
+      "y": 0.4924641
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UL/Support_SupportMove_UL_05.png",
+      "x": 0.5175579,
+      "y": 0.4919547
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UL/Support_SupportMove_UL_06.png",
+      "x": 0.517797,
+      "y": 0.4779384
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UL/Support_SupportMove_UL_07.png",
+      "x": 0.5132297,
+      "y": 0.489846
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UL/Support_SupportMove_UL_08.png",
+      "x": 0.5319726,
+      "y": 0.482328
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UR/Support_SupportMove_UR_01.png",
+      "x": 0.4925756,
+      "y": 0.4950996
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UR/Support_SupportMove_UR_02.png",
+      "x": 0.4898581,
+      "y": 0.5041843
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UR/Support_SupportMove_UR_03.png",
+      "x": 0.4681624,
+      "y": 0.5101565
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UR/Support_SupportMove_UR_04.png",
+      "x": 0.4932153,
+      "y": 0.4970861
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UR/Support_SupportMove_UR_05.png",
+      "x": 0.4868928,
+      "y": 0.4989524
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UR/Support_SupportMove_UR_06.png",
+      "x": 0.5020821,
+      "y": 0.5007046
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UR/Support_SupportMove_UR_07.png",
+      "x": 0.4996471,
+      "y": 0.4959476
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportMove/UR/Support_SupportMove_UR_08.png",
+      "x": 0.4942576,
+      "y": 0.4982579
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/D/Support_SupportStart_D_01.png",
+      "x": 0.4969664,
+      "y": 0.4914884
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/D/Support_SupportStart_D_02.png",
+      "x": 0.4969664,
+      "y": 0.4914884
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/D/Support_SupportStart_D_03.png",
+      "x": 0.4969664,
+      "y": 0.4914884
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/D/Support_SupportStart_D_04.png",
+      "x": 0.4969664,
+      "y": 0.4914884
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/DL/Support_SupportStart_DL_01.png",
+      "x": 0.4959887,
+      "y": 0.5004488
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/DL/Support_SupportStart_DL_02.png",
+      "x": 0.4959887,
+      "y": 0.5004488
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/DL/Support_SupportStart_DL_03.png",
+      "x": 0.4959887,
+      "y": 0.5004488
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/DL/Support_SupportStart_DL_04.png",
+      "x": 0.4959887,
+      "y": 0.5004488
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/DR/Support_SupportStart_DR_01.png",
+      "x": 0.4973866,
+      "y": 0.4932889
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/DR/Support_SupportStart_DR_02.png",
+      "x": 0.4973866,
+      "y": 0.4932889
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/DR/Support_SupportStart_DR_03.png",
+      "x": 0.4973866,
+      "y": 0.4932889
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/DR/Support_SupportStart_DR_04.png",
+      "x": 0.4973866,
+      "y": 0.4932889
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/L/Support_SupportStart_L_01.png",
+      "x": 0.4979683,
+      "y": 0.4999268
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/L/Support_SupportStart_L_02.png",
+      "x": 0.4979683,
+      "y": 0.4999268
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/L/Support_SupportStart_L_03.png",
+      "x": 0.4979683,
+      "y": 0.4999268
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/L/Support_SupportStart_L_04.png",
+      "x": 0.4979683,
+      "y": 0.4999268
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/R/Support_SupportStart_R_01.png",
+      "x": 0.5003948,
+      "y": 0.4990454
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/R/Support_SupportStart_R_02.png",
+      "x": 0.5003948,
+      "y": 0.4990454
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/R/Support_SupportStart_R_03.png",
+      "x": 0.5003948,
+      "y": 0.4990454
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/R/Support_SupportStart_R_04.png",
+      "x": 0.5003948,
+      "y": 0.4990454
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/U/Support_SupportStart_U_01.png",
+      "x": 0.4977335,
+      "y": 0.4989456
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/U/Support_SupportStart_U_02.png",
+      "x": 0.4977335,
+      "y": 0.4989456
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/U/Support_SupportStart_U_03.png",
+      "x": 0.4977335,
+      "y": 0.4989456
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/U/Support_SupportStart_U_04.png",
+      "x": 0.4977335,
+      "y": 0.4989456
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/UL/Support_SupportStart_UL_01.png",
+      "x": 0.5126746,
+      "y": 0.5024443
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/UL/Support_SupportStart_UL_02.png",
+      "x": 0.5126746,
+      "y": 0.5024443
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/UL/Support_SupportStart_UL_03.png",
+      "x": 0.5126746,
+      "y": 0.5024443
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/UL/Support_SupportStart_UL_04.png",
+      "x": 0.5126746,
+      "y": 0.5024443
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/UR/Support_SupportStart_UR_01.png",
+      "x": 0.4962033,
+      "y": 0.4993627
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/UR/Support_SupportStart_UR_02.png",
+      "x": 0.4962033,
+      "y": 0.4993627
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/UR/Support_SupportStart_UR_03.png",
+      "x": 0.4962033,
+      "y": 0.4993627
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Support/SupportStart/UR/Support_SupportStart_UR_04.png",
+      "x": 0.4962033,
+      "y": 0.4993627
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/D/Exploder_Burst_D_01.png",
+      "x": 0.5111752,
+      "y": 0.4814936
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/D/Exploder_Burst_D_02.png",
+      "x": 0.5111752,
+      "y": 0.4814936
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/D/Exploder_Burst_D_03.png",
+      "x": 0.5111752,
+      "y": 0.4814936
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/D/Exploder_Burst_D_04.png",
+      "x": 0.5111752,
+      "y": 0.4814936
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/DL/Exploder_Burst_DL_01.png",
+      "x": 0.4769583,
+      "y": 0.505693
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/DL/Exploder_Burst_DL_02.png",
+      "x": 0.4769583,
+      "y": 0.505693
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/DL/Exploder_Burst_DL_03.png",
+      "x": 0.4769583,
+      "y": 0.505693
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/DL/Exploder_Burst_DL_04.png",
+      "x": 0.4769583,
+      "y": 0.505693
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/DR/Exploder_Burst_DR_01.png",
+      "x": 0.5134983,
+      "y": 0.4807266
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/DR/Exploder_Burst_DR_02.png",
+      "x": 0.5134983,
+      "y": 0.4807266
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/DR/Exploder_Burst_DR_03.png",
+      "x": 0.5134983,
+      "y": 0.4807266
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/DR/Exploder_Burst_DR_04.png",
+      "x": 0.5134983,
+      "y": 0.4807266
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/L/Exploder_Burst_L_01.png",
+      "x": 0.4598917,
+      "y": 0.4940099
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/L/Exploder_Burst_L_02.png",
+      "x": 0.4598917,
+      "y": 0.4940099
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/L/Exploder_Burst_L_03.png",
+      "x": 0.4598917,
+      "y": 0.4940099
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/L/Exploder_Burst_L_04.png",
+      "x": 0.4598917,
+      "y": 0.4940099
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/R/Exploder_Burst_R_01.png",
+      "x": 0.5213743,
+      "y": 0.4878172
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/R/Exploder_Burst_R_02.png",
+      "x": 0.5213743,
+      "y": 0.4878172
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/R/Exploder_Burst_R_03.png",
+      "x": 0.5213743,
+      "y": 0.4878172
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/R/Exploder_Burst_R_04.png",
+      "x": 0.5213743,
+      "y": 0.4878172
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/U/Exploder_Burst_U_01.png",
+      "x": 0.4903196,
+      "y": 0.4675721
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/U/Exploder_Burst_U_02.png",
+      "x": 0.4903196,
+      "y": 0.4675721
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/U/Exploder_Burst_U_03.png",
+      "x": 0.4903196,
+      "y": 0.4675721
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/U/Exploder_Burst_U_04.png",
+      "x": 0.4903196,
+      "y": 0.4675721
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/UL/Exploder_Burst_UL_01.png",
+      "x": 0.488118,
+      "y": 0.5148103
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/UL/Exploder_Burst_UL_02.png",
+      "x": 0.488118,
+      "y": 0.5148103
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/UL/Exploder_Burst_UL_03.png",
+      "x": 0.488118,
+      "y": 0.5148103
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/UL/Exploder_Burst_UL_04.png",
+      "x": 0.488118,
+      "y": 0.5148103
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/UR/Exploder_Burst_UR_01.png",
+      "x": 0.5353439,
+      "y": 0.5123444
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/UR/Exploder_Burst_UR_02.png",
+      "x": 0.5353439,
+      "y": 0.5123444
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/UR/Exploder_Burst_UR_03.png",
+      "x": 0.5353439,
+      "y": 0.5123444
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Burst/UR/Exploder_Burst_UR_04.png",
+      "x": 0.5353439,
+      "y": 0.5123444
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/D/Exploder_Death_D_01.png",
+      "x": 0.5111752,
+      "y": 0.4814936
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/D/Exploder_Death_D_02.png",
+      "x": 0.5111752,
+      "y": 0.4814936
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/D/Exploder_Death_D_03.png",
+      "x": 0.5111752,
+      "y": 0.4814936
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/D/Exploder_Death_D_04.png",
+      "x": 0.5111752,
+      "y": 0.4814936
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/DL/Exploder_Death_DL_01.png",
+      "x": 0.4769583,
+      "y": 0.505693
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/DL/Exploder_Death_DL_02.png",
+      "x": 0.4769583,
+      "y": 0.505693
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/DL/Exploder_Death_DL_03.png",
+      "x": 0.4769583,
+      "y": 0.505693
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/DL/Exploder_Death_DL_04.png",
+      "x": 0.4769583,
+      "y": 0.505693
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/DR/Exploder_Death_DR_01.png",
+      "x": 0.5134983,
+      "y": 0.4807266
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/DR/Exploder_Death_DR_02.png",
+      "x": 0.5134983,
+      "y": 0.4807266
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/DR/Exploder_Death_DR_03.png",
+      "x": 0.5134983,
+      "y": 0.4807266
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/DR/Exploder_Death_DR_04.png",
+      "x": 0.5134983,
+      "y": 0.4807266
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/L/Exploder_Death_L_01.png",
+      "x": 0.4598917,
+      "y": 0.4940099
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/L/Exploder_Death_L_02.png",
+      "x": 0.4598917,
+      "y": 0.4940099
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/L/Exploder_Death_L_03.png",
+      "x": 0.4598917,
+      "y": 0.4940099
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/L/Exploder_Death_L_04.png",
+      "x": 0.4598917,
+      "y": 0.4940099
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/R/Exploder_Death_R_01.png",
+      "x": 0.5213743,
+      "y": 0.4878172
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/R/Exploder_Death_R_02.png",
+      "x": 0.5213743,
+      "y": 0.4878172
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/R/Exploder_Death_R_03.png",
+      "x": 0.5213743,
+      "y": 0.4878172
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/R/Exploder_Death_R_04.png",
+      "x": 0.5213743,
+      "y": 0.4878172
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/U/Exploder_Death_U_01.png",
+      "x": 0.4903196,
+      "y": 0.4675721
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/U/Exploder_Death_U_02.png",
+      "x": 0.4903196,
+      "y": 0.4675721
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/U/Exploder_Death_U_03.png",
+      "x": 0.4903196,
+      "y": 0.4675721
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/U/Exploder_Death_U_04.png",
+      "x": 0.4903196,
+      "y": 0.4675721
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/UL/Exploder_Death_UL_01.png",
+      "x": 0.488118,
+      "y": 0.5148103
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/UL/Exploder_Death_UL_02.png",
+      "x": 0.488118,
+      "y": 0.5148103
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/UL/Exploder_Death_UL_03.png",
+      "x": 0.488118,
+      "y": 0.5148103
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/UL/Exploder_Death_UL_04.png",
+      "x": 0.488118,
+      "y": 0.5148103
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/UR/Exploder_Death_UR_01.png",
+      "x": 0.5353439,
+      "y": 0.5123444
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/UR/Exploder_Death_UR_02.png",
+      "x": 0.5353439,
+      "y": 0.5123444
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/UR/Exploder_Death_UR_03.png",
+      "x": 0.5353439,
+      "y": 0.5123444
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Death/UR/Exploder_Death_UR_04.png",
+      "x": 0.5353439,
+      "y": 0.5123444
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/D/Exploder_Idle_D_01.png",
+      "x": 0.5136569,
+      "y": 0.4817351
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/D/Exploder_Idle_D_02.png",
+      "x": 0.5113857,
+      "y": 0.4809779
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/D/Exploder_Idle_D_03.png",
+      "x": 0.5060592,
+      "y": 0.4816427
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/D/Exploder_Idle_D_04.png",
+      "x": 0.513599,
+      "y": 0.4816186
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/DL/Exploder_Idle_DL_01.png",
+      "x": 0.4750908,
+      "y": 0.5077411
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/DL/Exploder_Idle_DL_02.png",
+      "x": 0.4756729,
+      "y": 0.5059999
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/DL/Exploder_Idle_DL_03.png",
+      "x": 0.4762944,
+      "y": 0.5050899
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/DL/Exploder_Idle_DL_04.png",
+      "x": 0.4807752,
+      "y": 0.5039411
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/DR/Exploder_Idle_DR_01.png",
+      "x": 0.5125191,
+      "y": 0.4787139
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/DR/Exploder_Idle_DR_02.png",
+      "x": 0.5138009,
+      "y": 0.4838193
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/DR/Exploder_Idle_DR_03.png",
+      "x": 0.5162148,
+      "y": 0.4746713
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/DR/Exploder_Idle_DR_04.png",
+      "x": 0.5114586,
+      "y": 0.4857019
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/L/Exploder_Idle_L_01.png",
+      "x": 0.4591923,
+      "y": 0.4946946
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/L/Exploder_Idle_L_02.png",
+      "x": 0.4538457,
+      "y": 0.4941113
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/L/Exploder_Idle_L_03.png",
+      "x": 0.4630302,
+      "y": 0.4936002
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/L/Exploder_Idle_L_04.png",
+      "x": 0.4634987,
+      "y": 0.4936334
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/R/Exploder_Idle_R_01.png",
+      "x": 0.5168709,
+      "y": 0.4904125
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/R/Exploder_Idle_R_02.png",
+      "x": 0.5214244,
+      "y": 0.48942
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/R/Exploder_Idle_R_03.png",
+      "x": 0.5250712,
+      "y": 0.4878728
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/R/Exploder_Idle_R_04.png",
+      "x": 0.5221307,
+      "y": 0.4835634
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/U/Exploder_Idle_U_01.png",
+      "x": 0.4888555,
+      "y": 0.4688763
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/U/Exploder_Idle_U_02.png",
+      "x": 0.4901283,
+      "y": 0.466425
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/U/Exploder_Idle_U_03.png",
+      "x": 0.4919086,
+      "y": 0.4673031
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/U/Exploder_Idle_U_04.png",
+      "x": 0.4903862,
+      "y": 0.467684
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/UL/Exploder_Idle_UL_01.png",
+      "x": 0.4880781,
+      "y": 0.517059
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/UL/Exploder_Idle_UL_02.png",
+      "x": 0.4899039,
+      "y": 0.5182828
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/UL/Exploder_Idle_UL_03.png",
+      "x": 0.4875983,
+      "y": 0.5126363
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/UL/Exploder_Idle_UL_04.png",
+      "x": 0.4868917,
+      "y": 0.5112629
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/UR/Exploder_Idle_UR_01.png",
+      "x": 0.5378824,
+      "y": 0.5134707
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/UR/Exploder_Idle_UR_02.png",
+      "x": 0.5378612,
+      "y": 0.5175157
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/UR/Exploder_Idle_UR_03.png",
+      "x": 0.5338989,
+      "y": 0.5137194
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Idle/UR/Exploder_Idle_UR_04.png",
+      "x": 0.5317333,
+      "y": 0.5046718
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/D/Exploder_Move_D_01.png",
+      "x": 0.5149649,
+      "y": 0.4916407
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/D/Exploder_Move_D_02.png",
+      "x": 0.5185322,
+      "y": 0.495353
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/D/Exploder_Move_D_03.png",
+      "x": 0.5049059,
+      "y": 0.4953024
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/D/Exploder_Move_D_04.png",
+      "x": 0.5119482,
+      "y": 0.4884535
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/D/Exploder_Move_D_05.png",
+      "x": 0.5157011,
+      "y": 0.4915914
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/D/Exploder_Move_D_06.png",
+      "x": 0.51118,
+      "y": 0.4885351
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/D/Exploder_Move_D_07.png",
+      "x": 0.508465,
+      "y": 0.4933671
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/D/Exploder_Move_D_08.png",
+      "x": 0.513488,
+      "y": 0.4915264
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/DL/Exploder_Move_DL_01.png",
+      "x": 0.4812597,
+      "y": 0.5045622
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/DL/Exploder_Move_DL_02.png",
+      "x": 0.4585682,
+      "y": 0.5014231
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/DL/Exploder_Move_DL_03.png",
+      "x": 0.4594782,
+      "y": 0.4937447
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/DL/Exploder_Move_DL_04.png",
+      "x": 0.4673638,
+      "y": 0.5130001
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/DL/Exploder_Move_DL_05.png",
+      "x": 0.4707364,
+      "y": 0.480759
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/DL/Exploder_Move_DL_06.png",
+      "x": 0.4547441,
+      "y": 0.5117659
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/DL/Exploder_Move_DL_07.png",
+      "x": 0.4820987,
+      "y": 0.4951902
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/DL/Exploder_Move_DL_08.png",
+      "x": 0.4785857,
+      "y": 0.5076203
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/DR/Exploder_Move_DR_01.png",
+      "x": 0.518259,
+      "y": 0.4813796
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/DR/Exploder_Move_DR_02.png",
+      "x": 0.5287738,
+      "y": 0.4979633
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/DR/Exploder_Move_DR_03.png",
+      "x": 0.5165284,
+      "y": 0.5011139
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/DR/Exploder_Move_DR_04.png",
+      "x": 0.5256778,
+      "y": 0.4919394
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/DR/Exploder_Move_DR_05.png",
+      "x": 0.5219247,
+      "y": 0.4998613
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/DR/Exploder_Move_DR_06.png",
+      "x": 0.5254864,
+      "y": 0.4891118
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/DR/Exploder_Move_DR_07.png",
+      "x": 0.5388343,
+      "y": 0.5093063
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/DR/Exploder_Move_DR_08.png",
+      "x": 0.5156614,
+      "y": 0.4917379
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/L/Exploder_Move_L_01.png",
+      "x": 0.4559862,
+      "y": 0.4902524
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/L/Exploder_Move_L_02.png",
+      "x": 0.4587527,
+      "y": 0.5208887
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/L/Exploder_Move_L_03.png",
+      "x": 0.4684144,
+      "y": 0.5119681
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/L/Exploder_Move_L_04.png",
+      "x": 0.4642336,
+      "y": 0.5072994
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/L/Exploder_Move_L_05.png",
+      "x": 0.472486,
+      "y": 0.5207694
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/L/Exploder_Move_L_06.png",
+      "x": 0.4586472,
+      "y": 0.4993889
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/L/Exploder_Move_L_07.png",
+      "x": 0.461544,
+      "y": 0.5036359
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/L/Exploder_Move_L_08.png",
+      "x": 0.4668696,
+      "y": 0.5025656
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/R/Exploder_Move_R_01.png",
+      "x": 0.5285488,
+      "y": 0.5032405
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/R/Exploder_Move_R_02.png",
+      "x": 0.5117789,
+      "y": 0.4943004
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/R/Exploder_Move_R_03.png",
+      "x": 0.5217397,
+      "y": 0.4967487
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/R/Exploder_Move_R_04.png",
+      "x": 0.5271485,
+      "y": 0.4985654
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/R/Exploder_Move_R_05.png",
+      "x": 0.5201295,
+      "y": 0.5084881
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/R/Exploder_Move_R_06.png",
+      "x": 0.5125478,
+      "y": 0.5121383
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/R/Exploder_Move_R_07.png",
+      "x": 0.5414121,
+      "y": 0.5203022
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/R/Exploder_Move_R_08.png",
+      "x": 0.5323095,
+      "y": 0.4973384
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/U/Exploder_Move_U_01.png",
+      "x": 0.4832097,
+      "y": 0.4847621
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/U/Exploder_Move_U_02.png",
+      "x": 0.4915083,
+      "y": 0.4886134
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/U/Exploder_Move_U_03.png",
+      "x": 0.4920556,
+      "y": 0.4734354
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/U/Exploder_Move_U_04.png",
+      "x": 0.5005274,
+      "y": 0.4924974
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/U/Exploder_Move_U_05.png",
+      "x": 0.504472,
+      "y": 0.4933417
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/U/Exploder_Move_U_06.png",
+      "x": 0.5084751,
+      "y": 0.4941342
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/U/Exploder_Move_U_07.png",
+      "x": 0.4765463,
+      "y": 0.4875207
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/U/Exploder_Move_U_08.png",
+      "x": 0.4802739,
+      "y": 0.4817159
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/UL/Exploder_Move_UL_01.png",
+      "x": 0.4936749,
+      "y": 0.5217168
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/UL/Exploder_Move_UL_02.png",
+      "x": 0.494448,
+      "y": 0.5285957
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/UL/Exploder_Move_UL_03.png",
+      "x": 0.5121675,
+      "y": 0.5300611
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/UL/Exploder_Move_UL_04.png",
+      "x": 0.4819943,
+      "y": 0.5109532
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/UL/Exploder_Move_UL_05.png",
+      "x": 0.488897,
+      "y": 0.523948
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/UL/Exploder_Move_UL_06.png",
+      "x": 0.4893853,
+      "y": 0.5338207
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/UL/Exploder_Move_UL_07.png",
+      "x": 0.4960567,
+      "y": 0.5212884
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/UL/Exploder_Move_UL_08.png",
+      "x": 0.4979103,
+      "y": 0.5256307
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/UR/Exploder_Move_UR_01.png",
+      "x": 0.5292591,
+      "y": 0.5120344
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/UR/Exploder_Move_UR_02.png",
+      "x": 0.5180039,
+      "y": 0.5191219
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/UR/Exploder_Move_UR_03.png",
+      "x": 0.5141997,
+      "y": 0.5328279
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/UR/Exploder_Move_UR_04.png",
+      "x": 0.5152395,
+      "y": 0.5173942
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/UR/Exploder_Move_UR_05.png",
+      "x": 0.5168206,
+      "y": 0.5164017
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/UR/Exploder_Move_UR_06.png",
+      "x": 0.5198216,
+      "y": 0.5009454
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/UR/Exploder_Move_UR_07.png",
+      "x": 0.5290247,
+      "y": 0.5255303
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Move/UR/Exploder_Move_UR_08.png",
+      "x": 0.5335964,
+      "y": 0.5117022
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/D/Exploder_Warning_D_01.png",
+      "x": 0.5111752,
+      "y": 0.4814936
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/D/Exploder_Warning_D_02.png",
+      "x": 0.5111752,
+      "y": 0.4814936
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/D/Exploder_Warning_D_03.png",
+      "x": 0.5111752,
+      "y": 0.4814936
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/D/Exploder_Warning_D_04.png",
+      "x": 0.5111752,
+      "y": 0.4814936
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/DL/Exploder_Warning_DL_01.png",
+      "x": 0.4769583,
+      "y": 0.505693
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/DL/Exploder_Warning_DL_02.png",
+      "x": 0.4769583,
+      "y": 0.505693
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/DL/Exploder_Warning_DL_03.png",
+      "x": 0.4769583,
+      "y": 0.505693
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/DL/Exploder_Warning_DL_04.png",
+      "x": 0.4769583,
+      "y": 0.505693
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/DR/Exploder_Warning_DR_01.png",
+      "x": 0.5134983,
+      "y": 0.4807266
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/DR/Exploder_Warning_DR_02.png",
+      "x": 0.5134983,
+      "y": 0.4807266
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/DR/Exploder_Warning_DR_03.png",
+      "x": 0.5134983,
+      "y": 0.4807266
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/DR/Exploder_Warning_DR_04.png",
+      "x": 0.5134983,
+      "y": 0.4807266
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/L/Exploder_Warning_L_01.png",
+      "x": 0.4598917,
+      "y": 0.4940099
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/L/Exploder_Warning_L_02.png",
+      "x": 0.4598917,
+      "y": 0.4940099
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/L/Exploder_Warning_L_03.png",
+      "x": 0.4598917,
+      "y": 0.4940099
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/L/Exploder_Warning_L_04.png",
+      "x": 0.4598917,
+      "y": 0.4940099
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/R/Exploder_Warning_R_01.png",
+      "x": 0.5213743,
+      "y": 0.4878172
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/R/Exploder_Warning_R_02.png",
+      "x": 0.5213743,
+      "y": 0.4878172
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/R/Exploder_Warning_R_03.png",
+      "x": 0.5213743,
+      "y": 0.4878172
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/R/Exploder_Warning_R_04.png",
+      "x": 0.5213743,
+      "y": 0.4878172
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/U/Exploder_Warning_U_01.png",
+      "x": 0.4903196,
+      "y": 0.4675721
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/U/Exploder_Warning_U_02.png",
+      "x": 0.4903196,
+      "y": 0.4675721
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/U/Exploder_Warning_U_03.png",
+      "x": 0.4903196,
+      "y": 0.4675721
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/U/Exploder_Warning_U_04.png",
+      "x": 0.4903196,
+      "y": 0.4675721
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/UL/Exploder_Warning_UL_01.png",
+      "x": 0.488118,
+      "y": 0.5148103
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/UL/Exploder_Warning_UL_02.png",
+      "x": 0.488118,
+      "y": 0.5148103
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/UL/Exploder_Warning_UL_03.png",
+      "x": 0.488118,
+      "y": 0.5148103
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/UL/Exploder_Warning_UL_04.png",
+      "x": 0.488118,
+      "y": 0.5148103
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/UR/Exploder_Warning_UR_01.png",
+      "x": 0.5353439,
+      "y": 0.5123444
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/UR/Exploder_Warning_UR_02.png",
+      "x": 0.5353439,
+      "y": 0.5123444
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/UR/Exploder_Warning_UR_03.png",
+      "x": 0.5353439,
+      "y": 0.5123444
+    },
+    {
+      "path": "Assets/_Project/Art/Enemies/Animated/Exploder/Warning/UR/Exploder_Warning_UR_04.png",
+      "x": 0.5353439,
+      "y": 0.5123444
+    }
+  ]
+}

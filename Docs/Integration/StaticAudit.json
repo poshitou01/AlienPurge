@@ -1,0 +1,38 @@
+{
+  "guidCount": 4473,
+  "duplicateGuids": {},
+  "unresolvedGuids": {
+    "57eb4c059e0b3467cac0a46a3b859a2d": [
+      "Assets/AstarPathfindingProject/ExampleScenes/Example12_Procedural/ProceduralPrefab4.prefab"
+    ],
+    "fa35a77503f6a45eea6c469775ee446e": [
+      "Assets/AstarPathfindingProject/ExampleScenes/Example15_2D/2D.unity"
+    ],
+    "49d72b427420946b5a2c04962006e724": [
+      "Assets/AstarPathfindingProject/ExampleScenes/Example5_PointGraph/PointGraphExample.unity"
+    ],
+    "feabfa330ba7e4d4b87813ea1b42a974": [
+      "Assets/AstarPathfindingProject/ExampleScenes/Prefabs/DynamicObstacle.prefab"
+    ],
+    "cf75cef0c04674bf88463d85196d8876": [
+      "Assets/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/Materials/mine_bot-minebot.mat"
+    ],
+    "0ff27a4aaa0ce4d1ba6a39ce3c868a76": [
+      "Assets/AstarPathfindingProject/Editor/EditorAssets/Materials/NavmeshOutline.mat"
+    ]
+  },
+  "integratedDependencyCount": 2398,
+  "integratedMissingGuids": {},
+  "bossProtectedCount": 1416,
+  "bossDifferences": [],
+  "acceptedArenaAndFullWorld": {
+    "Assets/_Project/Scenes/HiveTyrant_Arena.unity": {
+      "byteIdentical": true,
+      "normalizedIdentical": true
+    },
+    "Assets/_Project/Scenes/ArtTests/Level01_FullWorld.unity": {
+      "byteIdentical": false,
+      "normalizedIdentical": true
+    }
+  }
+}

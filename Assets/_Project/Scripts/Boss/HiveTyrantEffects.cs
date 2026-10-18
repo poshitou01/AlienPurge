@@ -10,14 +10,16 @@ public sealed class HiveTyrantEffects : MonoBehaviour
     private Material material;
     private HiveTyrantCombat boss;
     private readonly Surface[] bursts = new Surface[10];
-    private readonly Surface[] wave = new Surface[3];
+    private readonly Surface[] wave = new Surface[HiveTyrantWavePlan.MaximumSegments];
+    private readonly Surface[] crescents = new Surface[2];
+    private Surface spores, sweepGuide;
     private readonly HiveTyrantTelegraph[] warnings = new HiveTyrantTelegraph[12];
     private readonly float[] ages = new float[10];
     private readonly Vector2[] origins = new Vector2[10], directions = new Vector2[10];
     private readonly float[] radii = new float[10], angles = new float[10];
     private readonly int[] kinds = new int[10];
     public int ActiveCount { get; private set; }
-    public int OwnedMeshCount => 25;
+    public int OwnedMeshCount => bursts.Length + wave.Length + crescents.Length + warnings.Length + 2;
     public Material SharedMaterial => material;
     private void Awake()
     {
@@ -27,6 +29,9 @@ public sealed class HiveTyrantEffects : MonoBehaviour
         material.name = "HiveTyrant_VertexTint"; material.mainTexture = Texture2D.whiteTexture;
         for (int i = 0; i < bursts.Length; i++) { bursts[i] = new Surface(ownedRoot.transform, "Release_" + i, material, "Effects", 20); ages[i] = -1; }
         for (int i = 0; i < wave.Length; i++) wave[i] = new Surface(ownedRoot.transform, "GroundWave_" + i, material, "Enemies", -20);
+        for (int i = 0; i < crescents.Length; i++) crescents[i] = new Surface(ownedRoot.transform, "Crescent_" + i, material, "Enemies", -18);
+        spores = new Surface(ownedRoot.transform, "SporeBarrage", material, "Enemies", -22, 3072);
+        sweepGuide = new Surface(ownedRoot.transform, "CrescentRoute", material, "Enemies", -24);
         for (int i = 0; i < warnings.Length; i++)
         {
             var go = new GameObject("HiveTyrant_Warning_" + i); go.transform.SetParent(ownedRoot.transform);
@@ -48,16 +53,21 @@ public sealed class HiveTyrantEffects : MonoBehaviour
     private void Update()
     {
         ActiveCount = 0;
-        float lifetime = boss.Config != null ? boss.Config.effectLifetime : .45f;
         int fragments = boss.Config != null ? boss.Config.effectFragmentCount : 16;
         for (int i = 0; i < bursts.Length; i++)
         {
             if (ages[i] < 0) continue;
+            float lifetime = kinds[i] == 3 ? boss.Config.phaseTransitionTime : boss.Config.effectLifetime;
             ages[i] += Time.deltaTime;
             if (ages[i] >= lifetime) { ages[i] = -1; bursts[i].Hide(); continue; }
             ActiveCount++;
             float t = ages[i] / lifetime;
             Surface surface = bursts[i]; surface.Clear();
+            if (kinds[i] == 3)
+            {
+                DrawAscension(surface, origins[i], radii[i], t);
+                surface.Apply(); continue;
+            }
             float heading = Mathf.Atan2(directions[i].y, directions[i].x);
             Color tint = kinds[i] == 2 ? new Color(.72f, .58f, .85f, 1 - t) : new Color(1, .9f, .69f, 1 - t);
             if (kinds[i] == 0)
@@ -81,41 +91,77 @@ public sealed class HiveTyrantEffects : MonoBehaviour
             surface.Apply();
         }
     }
+    private static void DrawAscension(Surface surface, Vector2 origin, float radius, float t)
+    {
+        // Thin violet arcs and inward motes are presentation only, never a damage ring.
+        float reveal = Mathf.SmoothStep(0, 1, Mathf.InverseLerp(.36f, .68f, t));
+        float alpha = Mathf.SmoothStep(0, 1, t / .12f) * (1 - Mathf.SmoothStep(0, 1, Mathf.InverseLerp(.76f, 1, t)));
+        Color halo = new Color(.77f, .60f, 1, alpha * .55f);
+        float r = Mathf.Lerp(radius * .4f, radius, reveal);
+        for (int i = 0; i < 64; i++)
+        {
+            if (i % 8 == 7) continue;
+            float a = i * Mathf.PI * 2 / 64 + t * .5f, b = (i + 1) * Mathf.PI * 2 / 64 + t * .5f;
+            surface.Line(origin + Unit(a) * r, origin + Unit(b) * r, .025f + .025f * reveal, halo);
+        }
+        for (int i = 0; i < 18; i++)
+        {
+            float a = i * 2.39996f + t * .8f;
+            float inward = Mathf.Lerp(radius * .8f, .45f, Mathf.Clamp01(t / .42f));
+            float distance = t < .42f ? inward : Mathf.Lerp(.45f, radius * 1.15f, reveal);
+            Vector2 point = origin + Unit(a) * distance;
+            point.y += Mathf.Sin(t * Mathf.PI) * .7f;
+            surface.Diamond(point, .035f + .025f * (i % 3), new Color(1, .71f, .36f, alpha * .8f));
+        }
+    }
     public void DrawWave(HiveTyrantWavePlan plan, float distance, bool warning)
     {
-        for (int s = 0; s < 3; s++)
+        for (int s = 0; s < wave.Length; s++)
         {
             Surface surface = wave[s]; surface.Clear();
+            if (s >= plan.SegmentCount) { surface.Hide(); continue; }
             float length = plan.lengths[s];
-            if (length <= 0 || (!warning && distance > length + plan.thickness * .5f)) { surface.Hide(); continue; }
+            if (length <= 0) { surface.Hide(); continue; }
             float x = plan.SegmentCenter(s), half = plan.width * .5f;
             if (warning)
             {
-                Rect(surface, plan, x - half, x + half, 0, length, new Color(.8f, .48f, .21f, .13f));
-                Rect(surface, plan, x - half, x - half + .055f, 0, length, new Color(.98f, .82f, .51f, .7f));
-                Rect(surface, plan, x + half - .055f, x + half, 0, length, new Color(.98f, .82f, .51f, .7f));
+                Color edge = plan.enraged ? new Color(.94f, .58f, 1, .8f) : new Color(.98f, .82f, .51f, .7f);
+                Rect(surface, plan, x - half, x + half, 0, length, plan.enraged ? new Color(.6f, .22f, .8f, .14f) : new Color(.8f, .48f, .21f, .13f));
+                Rect(surface, plan, x - half, x - half + .055f, 0, length, edge);
+                Rect(surface, plan, x + half - .055f, x + half, 0, length, edge);
                 for (float z = .6f; z < length; z += 1.6f)
                 {
                     Vector2 a = plan.Point(x - .35f, z - .28f), b = plan.Point(x, z), c = plan.Point(x + .35f, z - .28f);
-                    surface.Line(a, b, .07f, new Color(1, .85f, .55f, .55f)); surface.Line(b, c, .07f, new Color(1, .85f, .55f, .55f));
+                    surface.Line(a, b, .07f, edge); surface.Line(b, c, .07f, edge);
+                    // Three notches advertise the cascade before any front is released.
+                    if (plan.enraged) for (int n = 1; n < plan.volleyCount; n++)
+                    {
+                        Vector2 offset = plan.forward * (-.18f * n);
+                        surface.Line(a + offset, b + offset, .035f, edge); surface.Line(b + offset, c + offset, .035f, edge);
+                    }
                 }
             }
             else
             {
-                float front = Mathf.Min(length, distance + plan.thickness * .5f), back = Mathf.Max(0, distance - plan.thickness * .5f);
-                if (front <= back) { surface.Hide(); continue; }
-                // Every rock and dust fragment remains strictly within its dangerous segment.
-                int fragments = boss.Config != null ? Mathf.Clamp(boss.Config.effectFragmentCount, 8, 24) : 16;
-                for (int j = 0; j < fragments; j++)
+                for (int volley = 0; volley < plan.volleyCount; volley++)
                 {
-                    float left = x - half + j * plan.width / fragments, right = left + plan.width / fragments;
-                    float crest = front - .09f * (j % 3);
-                    float heel = Mathf.Lerp(back, front, .16f + .14f * (j % 3));
-                    Vector2 a = plan.Point(left + .025f, heel), b = plan.Point(right - .025f, heel + .04f), c = plan.Point(right, crest), d = plan.Point(left, front);
-                    surface.Quad(a, b, c, d, new Color(.38f + .07f * (j % 2), .34f, .29f, .88f));
-                    surface.Line(d, c, .085f, new Color(1, .92f, .73f, .95f));
-                    surface.Diamond(plan.Point((left + right) * .5f, Mathf.Lerp(back, front, .3f + .12f * (j % 3))), .075f, new Color(.88f, .8f, .66f, .8f));
-                    if (j % 3 == 0) surface.Diamond(plan.Point((left + right) * .5f, back + .08f), .11f, new Color(.74f, .7f, .62f, .2f));
+                    float travelled = distance - volley * plan.volleyInterval * plan.speed;
+                    if (travelled < 0 || travelled > length + plan.thickness * .5f) continue;
+                    float front = Mathf.Min(length, travelled + plan.thickness * .5f), back = Mathf.Max(0, travelled - plan.thickness * .5f);
+                    if (front <= back) continue;
+                    // Every rock and dust fragment remains strictly within its dangerous segment.
+                    int fragments = boss.Config != null ? Mathf.Clamp(boss.Config.effectFragmentCount, 8, 24) : 16;
+                    for (int j = 0; j < fragments; j++)
+                    {
+                        float left = x - half + j * plan.width / fragments, right = left + plan.width / fragments;
+                        float crest = front - .09f * (j % 3);
+                        float heel = Mathf.Lerp(back, front, .16f + .14f * (j % 3));
+                        Vector2 a = plan.Point(left + .025f, heel), b = plan.Point(right - .025f, heel + .04f), c = plan.Point(right, crest), d = plan.Point(left, front);
+                        surface.Quad(a, b, c, d, new Color(.38f + .07f * (j % 2), .34f, .29f, .88f));
+                        surface.Line(d, c, .085f, plan.enraged ? new Color(.97f, .64f, 1, 1) : new Color(1, .92f, .73f, .95f));
+                        surface.Diamond(plan.Point((left + right) * .5f, Mathf.Lerp(back, front, .3f + .12f * (j % 3))), .075f, new Color(.88f, .8f, .66f, .8f));
+                        if (j % 3 == 0) surface.Diamond(plan.Point((left + right) * .5f, back + .08f), .11f, new Color(.74f, .7f, .62f, .2f));
+                    }
                 }
             }
             surface.Apply();
@@ -124,16 +170,78 @@ public sealed class HiveTyrantEffects : MonoBehaviour
     private static void Rect(Surface mesh, HiveTyrantWavePlan plan, float l, float r, float b, float f, Color color)
     { mesh.Quad(plan.Point(l, b), plan.Point(r, b), plan.Point(r, f), plan.Point(l, f), color); }
     public void HideWave() { foreach (var surface in wave) if (surface != null) surface.Hide(); }
+    public void DrawSweepGuide(Vector2 origin, Vector2 forward)
+    {
+        sweepGuide.Clear();
+        Vector2 right = new Vector2(-forward.y, forward.x);
+        for (float distance = boss.Config.sweepRadius + 1; distance < boss.Config.sweepRadius + boss.Config.sweepTravelDistance; distance += 2)
+        {
+            Vector2 p = origin + forward * distance;
+            if (!boss.InsideArena(p) || Physics2D.Linecast(origin, p, boss.Config.environmentLayers).collider != null) break;
+            Color c = new Color(1, .55f, .14f, .58f);
+            sweepGuide.Line(p - forward * .35f - right * .35f, p, .045f, c);
+            sweepGuide.Line(p - forward * .35f + right * .35f, p, .045f, c);
+        }
+        sweepGuide.Apply();
+    }
+    public void HideSweepGuide() { sweepGuide?.Hide(); }
+    public void DrawCrescents(HiveTyrantPressureAttacks attacks)
+    {
+        for (int i = 0; i < crescents.Length; i++)
+        {
+            var surface = crescents[i]; var arc = attacks.Crescents[i];
+            if (!arc.active) { surface.Hide(); continue; }
+            surface.Clear();
+            for (int s = 0; s < HiveTyrantPressureAttacks.ArcSegments; s++)
+            {
+                if (arc.stops[s] < arc.distance) continue;
+                Vector2 a = arc.a[s] + arc.forward * arc.distance, b = arc.b[s] + arc.forward * arc.distance;
+                surface.Line(a, b, boss.Config.sweepThickness, arc.enraged ? new Color(.82f, .24f, 1, .75f) : new Color(1, .38f, .055f, .7f));
+                surface.Line(a, b, .12f, new Color(1, .94f, .63f, 1));
+                if (s % 3 == 0) surface.Diamond((a + b) * .5f - arc.forward * .25f, .075f, new Color(1, .65f, .18f, .9f));
+            }
+            surface.Apply();
+        }
+    }
+    public void DrawSpores(HiveTyrantPressureAttacks attacks)
+    {
+        spores.Clear();
+        foreach (var spore in attacks.Spores)
+        {
+            if (!spore.active) continue;
+            float radius = boss.Config.sporeRadius;
+            float progress = Mathf.Clamp01(spore.age / spore.warning);
+            float fade = spore.impacted ? 1 - Mathf.Clamp01((spore.age - spore.warning) / spore.residue) : 1;
+            Color edge = spore.impacted ? new Color(.87f, .22f, 1, .85f * fade) : new Color(.95f, .66f, 1, .95f);
+            for (int i = 0; i < 40; i++)
+            {
+                Vector2 a = Unit(i * Mathf.PI * 2 / 40), b = Unit((i + 1) * Mathf.PI * 2 / 40);
+                spores.Quad(spore.position, spore.position + a * radius, spore.position + b * radius, spore.position,
+                    new Color(.49f, .12f, .63f, (spore.impacted ? .3f * fade : .12f)));
+                spores.Line(spore.position + a * radius, spore.position + b * radius, spore.impacted ? .06f : .035f, edge);
+                if (!spore.impacted && i / 40f <= progress)
+                    spores.Line(spore.position + a * radius * .83f, spore.position + b * radius * .83f, .07f, edge);
+            }
+            // A descending diamond and filling clock ring make the release time explicit.
+            float height = spore.impacted ? .08f : Mathf.Lerp(1.6f, .08f, progress);
+            spores.Diamond(spore.position + Vector2.up * height, spore.impacted ? .14f : .18f, edge);
+            if (!spore.impacted) spores.Line(spore.position + Vector2.left * .24f, spore.position + Vector2.right * .24f, .035f, edge);
+        }
+        spores.Apply();
+    }
+    public void HidePressure()
+    { foreach (var surface in crescents) surface?.Hide(); spores?.Hide(); sweepGuide?.Hide(); }
     public void ClearAll()
     {
         for (int i = 0; i < bursts.Length; i++) { ages[i] = -1; if (bursts[i] != null) bursts[i].Hide(); }
         foreach (var warning in warnings) if (warning != null) warning.Release();
-        HideWave(); ActiveCount = 0;
+        HideWave(); HidePressure(); ActiveCount = 0;
     }
     private void OnDisable() { ClearAll(); }
     private void OnDestroy()
     {
         foreach (var surface in bursts) surface?.Dispose(); foreach (var surface in wave) surface?.Dispose();
+        foreach (var surface in crescents) surface?.Dispose(); spores?.Dispose(); sweepGuide?.Dispose();
         if (ownedRoot != null) Destroy(ownedRoot); if (material != null) Destroy(material);
     }
     private static Vector2 Unit(float angle) => new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
@@ -141,11 +249,12 @@ public sealed class HiveTyrantEffects : MonoBehaviour
     {
         public readonly GameObject go;
         private readonly Mesh mesh;
-        private readonly List<Vector3> vertices = new List<Vector3>(1024);
-        private readonly List<int> triangles = new List<int>(1536);
-        private readonly List<Color> colors = new List<Color>(1024);
-        public Surface(Transform root, string name, Material material, string layer, int order)
+        private readonly List<Vector3> vertices;
+        private readonly List<int> triangles;
+        private readonly List<Color> colors;
+        public Surface(Transform root, string name, Material material, string layer, int order, int capacity = 1024)
         {
+            vertices = new List<Vector3>(capacity); triangles = new List<int>(capacity * 3 / 2); colors = new List<Color>(capacity);
             go = new GameObject(name); go.transform.SetParent(root, false);
             mesh = new Mesh { name = name }; mesh.MarkDynamic(); go.AddComponent<MeshFilter>().sharedMesh = mesh;
             var renderer = go.AddComponent<MeshRenderer>(); renderer.sharedMaterial = material; renderer.sortingLayerName = layer; renderer.sortingOrder = order;

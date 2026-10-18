@@ -25,6 +25,7 @@ namespace AlienPurge.Level01.Editor
         {
             var state=loop.Regions[index];Move(loop.Terminal(state.config.regionId).transform.position);
             yield return Until(()=>loop.CurrentRegion==state.config.regionId&&state.initialized,"Enter "+state.config.regionId);
+            if(IntegratedTest && (index==1||index==2))yield return IntegratedSpecialist(state);
             yield return Clear(state,RegionEnemyRole.Resident);
             Move(loop.Terminal(state.config.regionId).transform.position);
             loop.Terminal(state.config.regionId).Interact(loop.world.player.GetComponent<PlayerInteractor>());
@@ -37,7 +38,7 @@ namespace AlienPurge.Level01.Editor
         {
             yield return null;loop=Object.FindObjectOfType<RegionLoopController>();
             pair=new[]{UpgradeType.Piercing,UpgradeType.ChainLightning};
-            Check(Application.persistentDataPath.Contains("AlienPurge_RegionLoopV02_Regression"),"Isolated profile selected before initialization");
+            Check(Application.persistentDataPath.Contains(IntegratedTest?"AlienPurge_IntegratedV01_Regression":"AlienPurge_RegionLoopV02_Regression"),"Isolated profile selected before initialization");
             Check(loop.Regions.Count==6,"Five exploration regions and a playable extraction phase installed");
             yield return Until(()=>loop.Regions[0].initialized&&loop.State("CargoYard").enemies.Any(t=>t.lease!=null),"Adjacent garrison prepared before entry");
             var entry=loop.Regions[0];var cargo=loop.State("CargoYard");
@@ -113,6 +114,7 @@ namespace AlienPurge.Level01.Editor
             Check(!loop.CanAcceptOptional(high)&&loop.rewards.WasApplied("optional/"+high.TaskId),"Task reward applied once");
             yield return Collect();
             yield return CompleteMain(2);yield return VerifyShot(WeaponEvolutionType.ThunderPiercer);
+            if(IntegratedTest)yield return IntegratedStress();
             Move(loop.Terminal("QuarantineCommons").transform.position);
             yield return Until(()=>loop.CurrentRegion=="QuarantineCommons"&&loop.State("QuarantineCommons").enemies.Any(t=>t.lease!=null),"G3 leads into a populated follow-up region");
             accelerate=false;Time.timeScale=1;yield return Seconds(5);Capture("Feedback_Quarantine");yield return null;yield return null;accelerate=true;
@@ -121,7 +123,8 @@ namespace AlienPurge.Level01.Editor
             foreach(var text in hud.GetComponentsInChildren<TMP_Text>(true))
                 if(text.gameObject.activeInHierarchy)Check(!text.text.Contains("DISTANCE")&&!text.text.Contains("REGION ROUTE COMPLETE"),"Mission panel localization",false);
             yield return CompleteMain(3);yield return CompleteMain(4);
-            Check(loop.missionView.RegionObjective.Contains("撤离区"),"Research completion points forward to extraction");
+            if(IntegratedTest)yield return IntegratedBoss();
+            else Check(loop.missionView.RegionObjective.Contains("撤离区"),"Research completion points forward to extraction");
             yield return CompleteMain(5);
             Check(loop.extraction.IsDefending&&loop.extraction.CurrentZone!=null&&loop.extraction.HasActiveExtractionTarget,"Existing native extraction defense starts from terminal interaction");
             Move(loop.extraction.CurrentExtractionPosition+Vector2.right*8);yield return Seconds(.5f);float held=loop.extraction.DefenseProgress;
@@ -192,7 +195,7 @@ namespace AlienPurge.Level01.Editor
             if(SessionState.GetBool(Key+".polish",false))yield return CheckResultScreen(false);
             invulnerable=true;yield return Fresh();
             Check(!loop.extraction.RegionExtractionStarted&&loop.Regions.All(s=>!s.retired),"Restart resets extraction and reclaimed-region state");
-            RegionLoopV02Installer.ValidateProtected();Check(true,"Protected original assets remain byte-identical");
+            ValidateTestProtection();Check(true,"Protected original scenes remain byte-identical");
         }
     }
 }

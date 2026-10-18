@@ -35,6 +35,8 @@ namespace AlienPurge.Level01ConnectedV01
         void Update()
         {
             if(world==null||world.progression==null||world.player==null)return;
+            var loop=world.progression.regionLoop;
+            if(loop!=null&&loop.integratedWorld&&(GameManager.Instance==null||!GameManager.Instance.IsPlaying||world.player.GetComponent<PlayerHealth>().IsDead))return;
             if(!encounterStarted&&(world.progression.Has("Research")||world.progression.previewAllDoorsOpen))
             {
                 Vector2 foot=world.Local(world.PlayerFeet);

@@ -68,6 +68,7 @@ namespace AlienPurge.Level01.RegionLoop
         }
         void TickV02()
         {
+            if (TickIntegratedBoss()) return;
             if (Time.time >= nextObserve)
             {
                 nextObserve = Time.time + .25f;
@@ -139,6 +140,8 @@ namespace AlienPurge.Level01.RegionLoop
                 if (ticket.dead || ticket.lease != null || ticket.due > Time.time || ticket.failedSpawns >= state.config.spawnRetryLimit) continue;
                 if (pool.ActiveCount >= globalAliveLimit - state.config.v02.missionCapacityReserve || CountAlive(state) >= state.config.aliveLimit - state.config.v02.missionCapacityReserve) return;
                 var profile = state.config.Profile(ticket.type);
+                if (!HasTypeCapacity(state, profile)) continue;
+                if (profile.special && CountAlive(state, true) >= state.config.specialLimit) continue;
                 var position = home.transform.position;
                 // Placed garrisons are prepared before ingress, not governed by off-screen reinforcement distance.
                 // A direct scene entry/teleport must not leave an access guard permanently unspawned underfoot.
@@ -171,7 +174,7 @@ namespace AlienPurge.Level01.RegionLoop
             if (Time.time < state.environmentDue) return;
             var choices = settings.environmentSquads;
             if (choices.Length == 0) return;
-            var wave = choices[state.environmentWave % choices.Length];
+            var wave = SelectEnvironmentWave(state);
             int pending = state.enemies.Count(t => t.role == RegionEnemyRole.Patrol && !t.dead && t.lease == null);
             int target = search ? 4 : Mathf.Max(6, settings.ambientTarget + GrowthPopulationBonus(state) - (ActiveOptional != null ? 3 : 0) - (storm.CurrentPhase == StormPhase.Active ? 2 : 0));
             int capacity = Mathf.Min(target - CountAlive(state) - pending,
@@ -198,7 +201,7 @@ namespace AlienPurge.Level01.RegionLoop
         {
             if (ticket.role == RegionEnemyRole.Resident) return false; // Stable placed garrison, never an ingress wave.
             var profile = state.config.Profile(ticket.type);
-            if (profile.simultaneousLimit > 0 && state.enemies.Count(t => t.type == ticket.type && t.lease != null && !t.dead) >= profile.simultaneousLimit) return false;
+            if (!HasTypeCapacity(state, profile)) return false;
             if (ticket.role == RegionEnemyRole.Patrol && (
                 pool.ActiveCount >= globalAliveLimit - state.config.v02.missionCapacityReserve ||
                 CountAlive(state) >= state.config.aliveLimit - state.config.v02.missionCapacityReserve)) return false;

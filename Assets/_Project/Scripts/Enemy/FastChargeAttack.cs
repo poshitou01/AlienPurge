@@ -1,4 +1,4 @@
-﻿
+
 using UnityEngine;
 
 [DisallowMultipleComponent]
@@ -147,6 +147,29 @@ public class FastChargeAttack : MonoBehaviour
     private EnemyDefinition enemyDefinition;
 
     private Transform playerTarget;
+
+    // Presentation observes the native state; gameplay and serialized settings are unchanged.
+    // Uses the native collider cast and wall mask, matching the actual charge corridor.
+    public float VisualChargeWidth => GetComponent<CircleCollider2D>().radius * 2 * Mathf.Abs(transform.lossyScale.x);
+    public float VisualChargeDistance
+    {
+        get
+        {
+            float length = chargeSpeed * chargeDuration;
+            if (!preventChargeThroughWalls || rb == null || chargeObstacleLayers.value == 0) return length;
+            var filter = new ContactFilter2D { useTriggers = false }; filter.SetLayerMask(chargeObstacleLayers);
+            int count = rb.Cast(lockedDirection, filter, chargeWallHits, length + chargeWallSkin);
+            for (int i=0;i<count;i++) if (chargeWallHits[i].collider != null)
+                length = Mathf.Min(length, Mathf.Max(0,chargeWallHits[i].distance-chargeWallSkin));
+            return length;
+        }
+    }
+    public EnemyAttackVisualSample VisualSample =>
+        !isActiveAndEnabled ? default :
+        currentState == ChargeState.Preparing ? new EnemyAttackVisualSample(EnemyAttackVisualPhase.Windup, stateTimeRemaining, windupDuration, lockedDirection) :
+        currentState == ChargeState.Charging ? new EnemyAttackVisualSample(EnemyAttackVisualPhase.Active, stateTimeRemaining, chargeDuration, lockedDirection) :
+        currentState == ChargeState.Recovering ? new EnemyAttackVisualSample(EnemyAttackVisualPhase.Recover, stateTimeRemaining, recoveryDuration, lockedDirection) : default;
+
 
     // =====================================================
     // Unity Lifecycle

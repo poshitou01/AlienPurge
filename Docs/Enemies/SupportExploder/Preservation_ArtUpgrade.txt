@@ -1,0 +1,19 @@
+Comparison base: 23114de4866261ceb0e540fabaeb4b423e1a8135
+Workspace: D:\AlienPurge_SupportExploder
+Branch: feature/enemies-support-exploder
+PASS: No existing .meta changed; four Prefab/EnemyData identities preserved.
+PASS: All 3252 Assets metadata GUIDs unique.
+PASS: No EnemyData or ability configuration changed in this art upgrade.
+PASS: Existing Assets changes limited to two new enemy Prefabs, their dedicated scripts/tools, and SupportExploder_Test.
+PASS: Original four enemies, shared runtime scripts, Boss assets/whitelist/Arena and formal scenes unchanged.
+PASS: Packages and ProjectSettings unchanged.
+PASS: 424 unique 512x512 RGBA PNGs, alpha-free canvas borders, minimum final margin 9px.
+PASS: Support=224, Exploder body=192 + radial VFX=8. Stable meta for every sprite.
+Unity evidence: 296 PASS entries; RESULT: PASS (separate actual Play Mode report).
+Static checks do not claim human art acceptance, player builds, or region balance.
+
+Preserved identities:
+Assets/_Project/Prefabs/Enemies/Animated/Enemy_Support.prefab = f063a784dc396c940b9d1ec89e4b4ac9
+Assets/_Project/Prefabs/Enemies/Animated/Enemy_Exploder.prefab = 1fd5a341d9a84cb4c9943f9d7a38b05c
+Assets/_Project/Data/Enemies/Enemy_Support_Data.asset = 65a169995ee7bdb44bcf2ae6d9e9a1d9
+Assets/_Project/Data/Enemies/Enemy_Exploder_Data.asset = 2d89d9fe0c0a16b4fac0888f6d2e980e

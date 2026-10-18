@@ -1,4 +1,4 @@
-﻿
+
 using UnityEngine;
 
 [DisallowMultipleComponent]
@@ -166,6 +166,14 @@ public class RangedEnemyAttack : MonoBehaviour
     private EnemyDefinition enemyDefinition;
 
     private Transform playerTarget;
+
+    // Presentation observes the native state; gameplay and serialized settings are unchanged.
+    public float VisualAimLength => warningLength;
+    public EnemyAttackVisualSample VisualSample =>
+        !isActiveAndEnabled ? default :
+        currentState == RangedAttackState.Preparing ? new EnemyAttackVisualSample(EnemyAttackVisualPhase.Windup, stateTimeRemaining, windupDuration, lockedDirection) :
+        currentState == RangedAttackState.Recovering ? new EnemyAttackVisualSample(EnemyAttackVisualPhase.Recover, stateTimeRemaining, recoveryDuration, lockedDirection) : default;
+
 
     // =========================================================
     // Unity Lifecycle

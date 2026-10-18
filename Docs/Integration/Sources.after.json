@@ -1,0 +1,23 @@
+{
+  "boss": {
+    "headUnchanged": true,
+    "branchUnchanged": true,
+    "statusUnchanged": true,
+    "fileCount": 5062,
+    "changedFiles": []
+  },
+  "region": {
+    "headUnchanged": true,
+    "branchUnchanged": true,
+    "statusUnchanged": true,
+    "fileCount": 5241,
+    "changedFiles": []
+  },
+  "enemies": {
+    "headUnchanged": true,
+    "branchUnchanged": true,
+    "statusUnchanged": true,
+    "fileCount": 8731,
+    "changedFiles": []
+  }
+}

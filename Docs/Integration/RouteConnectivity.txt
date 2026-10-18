@@ -1,0 +1,10 @@
+FIXTURE: mirrored native L01ArenaBridge.Awake removal of 1 Approach_End_Stop collider(s), without saving the scene.
+PASS: Before Research, the authored G6 collision blocks Arena access
+PASS: Native navigation connects ColonyEntry -> CargoYard with completed gates
+PASS: Native navigation connects CargoYard -> PowerMaintenance with completed gates
+PASS: Native navigation connects PowerMaintenance -> QuarantineCommons with completed gates
+PASS: Native navigation connects QuarantineCommons -> InfectedResearch with completed gates
+PASS: Research-open G6 provides a traversable route into the preserved Arena
+PASS: G7 collision blocks the extraction branch before Boss defeat
+PASS: Boss-open G7 provides a traversable Arena -> extraction route
+LIMITS: actual A* grid and authored collider connectivity; gate completion is an unsaved fixture. Actual mission/Boss events were tested in PlayMode.txt. No keyboard traversal is claimed.

@@ -135,6 +135,14 @@ public class EnemyMovement : MonoBehaviour
 
     public Transform NavigationTarget => target;
 
+    // Specialist steering still uses the existing A* and Rigidbody movement pipeline.
+    public void SetNavigationTarget(Transform navigationTarget)
+    {
+        if (target == navigationTarget) return;
+        target = navigationTarget;
+        if (pathNavigator != null) pathNavigator.ResetNavigation();
+    }
+
     public bool IsMovementLocked =>
         isMovementLocked;
 

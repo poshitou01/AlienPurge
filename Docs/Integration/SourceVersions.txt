@@ -1,0 +1,72 @@
+AlienPurge integration provenance (2026-10-18, Asia/Shanghai)
+
+Integration checkout: D:\AlienPurge_IntegratedV01
+Integration branch: feature/level01-integrated-v01
+No push or main update is authorized/performed.
+
+Verified common Git directory: D:\AlienPurge\AlienPurge\.git
+The user's outer D:\AlienPurge contains the actual Unity/Git project D:\AlienPurge\AlienPurge.
+All three specified sources share this repository through Git worktrees, not separate clones.
+
+Boss source: D:\AlienPurge\AlienPurge
+Branch: codex/hivetyrant-combat
+Commit/tag: 609c7ff523b8f6a04db9e978bbd994eb6d155655 / hivetyrant-accepted-20261018
+Initial working state: clean. No uncommitted Boss assets were omitted.
+
+Region source: D:\AlienPurge_RegionLoopV01
+Branch: feature/level01-region-loop-v02
+Commit: 89cab820f95bea19f47aa1b28c548f2466236599
+Initial working state: clean. Folder name V01 is historical; actual delivered scene is V02.
+Scene: Assets/_Project/Scenes/ArtTests/Level01_FullWorld_GameplayV02.unity
+Includes five exploration regions, extraction, current HUD/movement/ability/impact revisions.
+
+Enemy source: D:\AlienPurge_CoreEnemies
+Branch: feature/enemies-core-art-animation
+Commit: 051073378dab7a723b94d50d5c82f85d05a8ca78
+Includes 727645f authored Support/Exploder and 0510733 final ability/animation polish.
+Initial working status: 830 entries, 738 meaningful Git content differences.
+Copied 829 relevant Assets and Docs/Enemies working files individually, including .meta.
+The remaining ProjectSettings entry has no actual content delta and was not used to replace integration settings.
+ImportedWorkingFiles.json lists every copied file; enemies.uncommitted.patch records the complete content delta.
+Latest Support settings remain radius 14 / maximum 8 targets / bonus damage 1.
+The enemy branch also contains its delivered ordinary-enemy art and optional native attack refinements.
+
+Ancestry: region and enemy work share 5c8e0cef9449aa722e6f32c35c3269aa7f0d1f67.
+The enemy branch already contains the full accepted Boss commit 609c7ff.
+Integration starts at region 89cab82, merges enemy 0510733 once, then applies its current working files.
+No second Boss merge or replacement with the older region-branch Boss was performed.
+
+Source preservation evidence: Sources.before.json captures branch, HEAD, status and SHA256 for
+5,062 Boss-source files, 5,241 region-source files, and 8,731 enemy-source files.
+The final Sources.after.json compares these same source files without writing any source directory.
+
+One textual merge conflict: EnemyContactDamage.
+Resolution combines V02 PlayerAbilityFeel ground-hit avoidance with EnemySupportBuff-aware Damage.
+Semantic checks additionally cover EnemyHealth impact/death integration, FastChargeAttack,
+region lease cleanup, specialist ability gates, Boss summon whitelist, and event-driven progression.
+
+New scene: Assets/_Project/Scenes/ArtTests/Level01_FullWorld_IntegratedV01.unity
+New menu: Assets/_Project/Scenes/MainMenu_IntegratedV01.unity
+Both were copied from the latest region source and have fresh independent GUIDs.
+Region tuning is isolated under Assets/_Project/Data/Level01/IntegratedV01.
+Installer compares transforms, collider shapes/enabled flags and renderer sorting before/after updates.
+It appends the two new Build Settings entries and preserves original scene files.
+
+Specialist population:
+- ColonyEntry: original introductory composition.
+- CargoYard: one non-guard resident Exploder; optional ambient Exploder squad weight 12.
+- PowerMaintenance: one non-guard resident Support; ambient Support 10, Exploder 12.
+- QuarantineCommons, InfectedResearch, Extraction: ambient Support 10, Exploder 12.
+- Existing ambient squads: weights 40 / 30 / 30. Each specialist squad contains one specialist + four Swarmers.
+- Per-region Support limit 1, Exploder limit 2; global pool hard limit 2 each, expansion disabled.
+- Existing total/elite caps, task capacity reserves, off-screen distance >=9, and reachability checks remain.
+- Existing task-guard groups remain unchanged; specialist residents/patrols are not access guards.
+- Boss summon choices remain explicitly Normal / Fast / Heavy / Ranged.
+
+Integration-only route seam: Research opens the Arena; actual Boss defeat records BossDefeated,
+opens G7 and enables the existing extraction defense. Native Boss death retains XP/kill ownership.
+During the actual Boss encounter, region-owned pressure is released and its environmental driving
+yields to the accepted Boss. Core managers remain enabled, and original scenes retain default behavior.
+
+Runtime validation results are recorded separately. Historical reports inherited from source branches
+are not evidence that this integration passed.

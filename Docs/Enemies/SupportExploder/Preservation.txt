@@ -1,0 +1,12 @@
+Baseline=609c7ff523b8f6a04db9e978bbd994eb6d155655
+PASS: only these existing files changed:
+Assets/_Project/Scripts/Enemy/EnemyContactDamage.cs
+Assets/_Project/Scripts/Enemy/EnemyMovement.cs
+Assets/_Project/Scripts/Enemy/EnemyType.cs
+PASS: old .meta changes=0
+Checked old .meta files=2525
+PASS: new GUIDs checked against existing GUIDs=43
+PASS: every new asset/source has its .meta.
+PASS: all existing scenes, Boss scripts/config/prefab, original enemy art/data/prefabs, package manifest and project settings unchanged.
+PASS: only four shared test meshes remain; obsolete generated meshes were removed.
+No reset, clean, merge, push, or writes to RegionLoop worktree.

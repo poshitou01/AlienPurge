@@ -1,0 +1,17 @@
+PASS | Unity 2022.3.62f3c1 | 2026-10-18 12:55:35Z
+PASS: Arena entry cannot start Boss without Research progression
+FIXTURE: prior Research milestones set in memory for focused encounter interruption checks.
+PASS: Player death at unlocked Arena entry cannot start a late encounter
+PASS: Restart resets milestones, modules and run identity
+FIXTURE: prior Research milestones set in memory for focused encounter interruption checks.
+PASS: Accepted Boss starts native summon windup for interruption test
+PASS: Restart resets milestones, modules and run identity
+PASS: Restart during Boss windup destroys the old encounter and resets bridge state
+PASS: Restart clears pending summons, phase, victory milestone and extraction access
+PASS: Restarted region enemies have only the new run ownership
+FIXTURE: prior Research milestones set in memory for focused encounter interruption checks.
+PASS: Fresh encounter can start native summon once
+PASS: Death during Boss windup clears regional ownership without awarding victory
+PASS: Restart resets milestones, modules and run identity
+PASS: Death Restart returns to the introductory population without specialist or encounter leaks
+LIMITS: native death/restart and actual Boss summon coroutine; focused progression fixtures, not a human playthrough.
