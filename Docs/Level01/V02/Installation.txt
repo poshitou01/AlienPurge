@@ -1,6 +1,6 @@
 PASS
 D:\AlienPurge_RegionLoopV01\Assets\_Project\Scenes\ArtTests\Level01_FullWorld_GameplayV02.unity
 Created=False
-Garrisons=24
-Optional sites=4
+Garrisons=94
+Optional sites=6
 Native MissionHUD/Storm/Fog restored. Reinstallation retains transforms and isolated tuning.

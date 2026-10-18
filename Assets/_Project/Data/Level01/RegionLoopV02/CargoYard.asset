@@ -14,38 +14,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   regionId: CargoYard
   missionId: Beacon
-  encounterId: CargoYard/garrison
+  encounterId: CargoYard-garrison
   exitGateId: G2
   prerequisite: Arrival
   enemies:
   - archetypeId: Swarmer
     type: 0
-    health: 4
+    health: 5
     damage: 1
     experience: 2
-    speed: 2.15
+    speed: 2.27
     clearance: 0.65
     special: 0
     simultaneousLimit: 0
   - archetypeId: Rusher
     type: 1
-    health: 5
+    health: 7
     damage: 1
-    experience: 2
-    speed: 3.3
+    experience: 3
+    speed: 3.4
     clearance: 0.65
     special: 1
-    simultaneousLimit: 2
+    simultaneousLimit: 3
   reservedEnemyIds:
   - Spitter
   - Exploder
   - Support
   residents:
   - type: 0
-    count: 2
+    count: 4
     keyGuard: 1
   - type: 0
-    count: 4
+    count: 10
     keyGuard: 0
   - type: 1
     count: 2
@@ -69,18 +69,18 @@ MonoBehaviour:
     - type: 1
       count: 2
       keyGuard: 0
-  aliveLimit: 16
-  specialLimit: 3
+  aliveLimit: 26
+  specialLimit: 4
   patrolBudget: 0
   patrolType: 0
   patrolInterval: 35
   recoverySeconds: 40
-  spawnInterval: 0.8
-  warningSeconds: 1.2
+  spawnInterval: 0.32
+  warningSeconds: 0.35
   spawnRetryLimit: 8
-  minimumPlayerDistance: 5
-  perceptionRadius: 12
-  leashRadius: 24
+  minimumPlayerDistance: 9
+  perceptionRadius: 16
+  leashRadius: 90
   deviceSeconds: 22
   deviceRadius: 6
   missionDeadline: 150
@@ -92,7 +92,7 @@ MonoBehaviour:
   moduleSlot: 1
   v02:
     environmentSquads:
-    - id: swarm
+    - id: advance
       delay: 0
       groups:
       - type: 0
@@ -111,55 +111,59 @@ MonoBehaviour:
       delay: 0
       groups:
       - type: 0
-        count: 2
+        count: 5
         keyGuard: 0
-      - type: 1
-        count: 2
-        keyGuard: 0
-    environmentInterval: 12
-    searchSeconds: 12
-    preloadDistance: 32
-    pressureLowWatermark: 2
-    missionCapacityReserve: 6
+    extractionRegion: 0
+    environmentInterval: 4
+    searchSeconds: 8
+    preloadDistance: 42
+    pressureLowWatermark: 3
+    missionCapacityReserve: 8
+    ambientTarget: 16
     mechanismSource: 0
     optionalTasks:
     - id: beacon-defense
       highRisk: 0
-      acceptSeconds: 90
-      defendSeconds: 21
-      deadlineSeconds: 55
+      triggersStorm: 0
+      acceptSeconds: 110
+      defendSeconds: 27
+      deadlineSeconds: 70
       radius: 5
       claimAndExitSeconds: 35
       maxAttempts: 1
-      experience: 14
+      experience: 16
       waves:
       - id: defense-1
         delay: 0
         groups:
         - type: 0
-          count: 3
+          count: 4
           keyGuard: 0
       - id: defense-2
         delay: 10
         groups:
+        - type: 0
+          count: 3
+          keyGuard: 0
         - type: 1
           count: 1
           keyGuard: 0
     - id: high-risk-defense
       highRisk: 1
-      acceptSeconds: 110
-      defendSeconds: 24
-      deadlineSeconds: 65
-      radius: 5
-      claimAndExitSeconds: 40
+      triggersStorm: 1
+      acceptSeconds: 125
+      defendSeconds: 32
+      deadlineSeconds: 75
+      radius: 7
+      claimAndExitSeconds: 35
       maxAttempts: 2
-      experience: 18
+      experience: 26
       waves:
       - id: risk-1
         delay: 0
         groups:
         - type: 0
-          count: 3
+          count: 4
           keyGuard: 0
         - type: 1
           count: 1
@@ -168,19 +172,19 @@ MonoBehaviour:
         delay: 12
         groups:
         - type: 0
-          count: 3
+          count: 4
           keyGuard: 0
         - type: 1
           count: 1
           keyGuard: 1
-    stormAfterEntry: 42
-    stormWarningMinimum: 10
-    stormActiveSeconds: 12
+    stormAfterEntry: 32
+    stormWarningMinimum: 12
+    stormActiveSeconds: 20
     stormRecoverySeconds: 3
-    safeRadius: 4
-    explorationSeconds: 150
-    fogWarningSeconds: 30
+    safeRadius: 4.5
+    explorationSeconds: 140
+    fogWarningSeconds: 25
     fogAdvanceSeconds: 80
-    oneTimeExitBuffer: 20
+    oneTimeExitBuffer: 15
     fogStartDistance: 58
     fogEndDistance: 235.34045

@@ -26,6 +26,26 @@ public partial class LootContainer
 }
 public partial class ExtractionController
 {
+    public bool RegionExtractionStarted { get; private set; }
+    public bool BeginRegionExtraction(Vector2 position, float seconds)
+    {
+        if (!regionDriven || RegionExtractionStarted || GameManager.Instance == null || !GameManager.Instance.IsPlaying) return false;
+        ResolveReferences();
+        currentExtractionPosition = position;
+        if (!SpawnRuntimeZone()) return false;
+        RegionExtractionStarted = true; currentSpawnPointName = "区域撤离信标";
+        extractionStartSurvivalTime = GameManager.Instance.SurvivalTime;
+        defenseProgress = 0; currentDefenseDuration = Mathf.Max(1, seconds);
+        currentState = ExtractionState.Defending;
+        return true;
+    }
+    void TickRegionExtraction()
+    {
+        if (!RegionExtractionStarted) return;
+        if (GameManager.Instance == null || !GameManager.Instance.IsPlaying)
+        { if (currentState == ExtractionState.Defending) currentState = ExtractionState.Failed; return; }
+        if (currentState == ExtractionState.Defending) UpdateDefense();
+    }
     public bool UnlockRegionHighRiskCache(LootContainer cache)
     {
         if (!regionDriven || hasHighRiskCacheSpawned || cache == null) return false;

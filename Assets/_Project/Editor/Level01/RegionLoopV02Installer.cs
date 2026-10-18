@@ -14,15 +14,16 @@ using Object = UnityEngine.Object;
 
 namespace AlienPurge.Level01.Editor
 {
-    public static class RegionLoopV02Installer
+    public static partial class RegionLoopV02Installer
     {
         public const string Source = RegionLoopInstaller.Target;
         public const string Target = "Assets/_Project/Scenes/ArtTests/Level01_FullWorld_GameplayV02.unity";
         public const string DataFolder = "Assets/_Project/Data/Level01/RegionLoopV02";
         public const string Reports = "Docs/Level01/V02";
         public const string Owner = "AlienPurge.Level01.RegionLoop.V02";
-        static readonly string[] Ids = { "ColonyEntry", "CargoYard", "PowerMaintenance" };
-        static readonly Vector2[] Exits = { new Vector2(-213.1875f,-18), new Vector2(-171,38.35938f), new Vector2(-100.75781f,-17) };
+        static readonly string[] Ids = { "ColonyEntry", "CargoYard", "PowerMaintenance", "QuarantineCommons", "InfectedResearch", "Extraction" };
+        static readonly string[] Missions = { "Arrival", "Beacon", "Power", "Isolation", "Research", "Evacuation" };
+        static readonly Vector2[] Exits = { new Vector2(-213.1875f,-18), new Vector2(-171,38.35938f), new Vector2(-100.75781f,-17), new Vector2(-77,44.8125f), new Vector2(30,67), new Vector2(47,-57) };
         static T[] All<T>(Scene scene) where T : Component => RegionLoopInstaller.All<T>(scene);
         static T One<T>(Scene scene) where T : Component
         {
@@ -75,22 +76,9 @@ namespace AlienPurge.Level01.Editor
             loop.v02InstallationId = Owner; loop.v02Enabled = true; loop.regionModeEnabled = true;
             loop.installedVersion = 2;
             loop.gameObject.name = "Level01_RegionLoop_V02";
-            if (firstInstall) loop.globalAliveLimit = 28;
+            if (loop.feedbackRevision < 1) loop.globalAliveLimit = 56;
             Directory.CreateDirectory(DataFolder); Directory.CreateDirectory(Reports); AssetDatabase.Refresh();
-            for (int i = 0; i < 3; i++)
-            {
-                string path = DataFolder + "/" + Ids[i] + ".asset";
-                var definition = AssetDatabase.LoadAssetAtPath<RegionDefinition>(path);
-                if (definition == null)
-                {
-                    if (!AssetDatabase.CopyAsset(AssetDatabase.GetAssetPath(loop.definitions[i]), path)) throw new IOException(path);
-                    definition = AssetDatabase.LoadAssetAtPath<RegionDefinition>(path);
-                    ConfigureDefinition(definition, i); EditorUtility.SetDirty(definition); AssetDatabase.SaveAssetIfDirty(definition);
-                }
-                // An already isolated, hand-assigned definition is authoritative.
-                if (AssetDatabase.GetAssetPath(loop.definitions[i]).StartsWith(DataFolder + "/")) definition = loop.definitions[i];
-                loop.definitions[i] = definition;
-            }
+            PrepareFeedbackDefinitions(loop);
             loop.storm = One<PlanetStormController>(scene); loop.fog = One<ToxicFogRouteController>(scene);
             loop.fogArea = One<ToxicFogAreaController>(scene); loop.extraction = One<ExtractionController>(scene);
             loop.storm.regionDriven = loop.fog.regionDriven = loop.extraction.regionDriven = true;
@@ -100,16 +88,19 @@ namespace AlienPurge.Level01.Editor
             foreach (var spawner in All<EnemySpawner>(scene)) { spawner.regionDriven = true; Set(spawner, "enableAutomaticSpawning", false); }
             RestoreNativePresentation(scene, loop);
             loop.world.navigation.ConfigureGrid(); Physics2D.SyncTransforms(); loop.world.navigation.astar.Scan();
+            PrepareFrontierTerminals(scene, loop);
+            ClearExtractionIngress(loop);
             var anchors = new List<RegionAnchor>(loop.anchors);
             var candidates = new List<Transform>(); var exits = new List<Transform>(); var sites = new List<RegionTaskSite>();
             var loot = CreateLoot();
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < Ids.Length; i++)
             {
                 var d = loop.definitions[i]; var region = loop.world.Region(d.regionId);
                 var terminal = loop.Terminal(d.regionId);
-                terminal.SetInteractionPrompt("OPEN " + d.exitGateId);
+                terminal.SetInteractionPrompt("启用终端");
                 var exit = loop.exitApproaches != null && loop.exitApproaches.Length > i && loop.exitApproaches[i] != null ? loop.exitApproaches[i] :
                     NamedPoint(loop.transform, "ExitApproach_" + d.regionId, loop.world.World(Exits[i])); exits.Add(exit);
+                if (i == 4 && loop.feedbackRevision < 2) exit.position = loop.world.World(new Vector2(16.53906f,47));
                 int count = d.residents.Sum(g => g.count);
                 for (int n = 0; n < count; n++)
                 {
@@ -156,11 +147,16 @@ namespace AlienPurge.Level01.Editor
                     }
                     sites.Add(site);
                 }
+                if (d.v02.extractionRegion) continue;
                 for (int n = 0; n < 2; n++)
                 {
                     string name = "StormCandidate_" + d.regionId + "_" + n;
                     var existing = loop.transform.Find(name);
-                    if (existing != null) candidates.Add(existing);
+                    if (existing != null)
+                    {
+                        if (loop.feedbackRevision < 1 && !DiskValid(loop, d, existing.position)) existing.position = FindSafeDisk(loop, d, existing.position);
+                        candidates.Add(existing);
+                    }
                     else candidates.Add(NamedPoint(loop.transform, name, FindSafeDisk(loop, d, n == 0 ? terminal.transform.position : loop.world.World(region.center.V) + Vector3.up * 12)));
                 }
             }
@@ -170,6 +166,8 @@ namespace AlienPurge.Level01.Editor
             ConfigureWorldSignals(scene, loop);
             IsolateExperience(scene);
             RegionLoopInstaller.CloneSceneFonts(scene, DataFolder + "/Fonts");
+            PrepareChineseFonts(scene);
+            loop.feedbackRevision = 3;
             EditorSceneManager.MarkSceneDirty(scene);
             ValidateScene(scene);
             EditorSceneManager.SaveScene(scene, Target);
@@ -202,7 +200,7 @@ namespace AlienPurge.Level01.Editor
             return string.Join("\n", rows);
         }
         static RegionWave W(string id, params RegionSpawnGroup[] groups) => new RegionWave { id = id, groups = groups };
-        static void ConfigureDefinition(RegionDefinition d, int i)
+        static void ConfigureDefinitionLegacy(RegionDefinition d, int i)
         {
             d.enemies = new[] {
                 new RegionEnemyProfile { archetypeId="Swarmer",type=EnemyType.Normal,health=i==0?3:4,experience=i==0?1:2,speed=2+.15f*i },
@@ -283,36 +281,19 @@ namespace AlienPurge.Level01.Editor
         static void ConfigureWorldSignals(Scene scene, RegionLoopController loop)
         {
             int vfx=SortingLayer.NameToID("VFX");
-            foreach(var beacon in loop.optionalSites.Select(s=>s.beacon))
-            {
-                var feedback=beacon.GetComponent<BeaconVisualFeedback>();Set(beacon,"visualFeedback",feedback);
-                var body=Reference<SpriteRenderer>(feedback,"bodyRenderer");
-                if(body.sprite==null)
-                {
-                    body.sprite=AssetDatabase.LoadAssetAtPath<Sprite>("Assets/_Project/Art/Environment/Props/Ground_Device.png");
-                    if(body.sprite==null)throw new InvalidOperationException("Existing ground device art missing");
-                    body.transform.localScale=Vector3.one*(1.8f/Mathf.Max(body.sprite.bounds.size.x,body.sprite.bounds.size.y));
-                    var depth=body.GetComponent<L01DepthSort>()??body.gameObject.AddComponent<L01DepthSort>();
-                    depth.target=body;depth.anchor=beacon.transform;depth.sortingLayer=SortingLayer.NameToID("World");depth.Apply();
-                }
-                var marker=Reference<GameObject>(beacon,"interactionMarker").GetComponent<SpriteRenderer>();
-                if(marker!=null&&marker.sprite==null)
-                {
-                    marker.sprite=Reference<RectTransform>(One<MissionDirectionArrow>(scene),"arrowRectTransform").GetComponent<Image>().sprite;
-                    marker.transform.localScale=Vector3.one*(.7f/Mathf.Max(marker.sprite.bounds.size.x,marker.sprite.bounds.size.y));
-                    marker.sortingLayerID=vfx;marker.sortingOrder=15;
-                }
-                var line=Reference<LineRenderer>(beacon,"activationRangeVisual");
-                if(line.sortingLayerID==0){line.sortingLayerID=vfx;line.sortingOrder=4;}
-            }
+            PrepareTerminalTasks(scene, loop);
             // Default sorts below this map's opaque Ground layer. Rebind scene instances only.
             foreach(var line in loop.anchors.Where(a=>a.warning!=null).Select(a=>a.warning)
                 .Concat(loop.terminals.Where(t=>t.deviceRange!=null).Select(t=>t.deviceRange))
                 .Concat(All<SafeZoneVisual>(scene).Select(s=>s.GetComponent<LineRenderer>())))
                 if(line.sortingLayerID==0){line.sortingLayerID=vfx;line.sortingOrder=5;}
             foreach(var terminal in loop.terminals)
-                if(terminal.status!=null&&terminal.status.GetComponent<Renderer>().sortingLayerID==0)
-                    terminal.status.GetComponent<Renderer>().sortingLayerID=vfx;
+            {
+                if (terminal.deviceRange != null) terminal.deviceRange.enabled = false;
+                if(terminal.status!=null) { terminal.status.gameObject.SetActive(true); terminal.status.GetComponent<Renderer>().sortingLayerID=vfx; }
+            }
+            foreach (var anchor in loop.anchors) anchor.ShowWarning(false);
+            PrepareStormMask(loop);
             foreach(var ground in All<ToxicFogGroundVisual>(scene))
             {
                 if(NeedsFogMaterial(Reference<Material>(ground,"fogMaterial"),"Ground"))Set(ground,"fogMaterial",FogMaterial("Ground",false));
@@ -424,6 +405,7 @@ namespace AlienPurge.Level01.Editor
                 Set(section, "leftBoundary", NamedPoint(point, "FogLeft", point.position + (Vector3)(target.LeftPosition - target.Center)));
                 Set(section, "rightBoundary", NamedPoint(point, "FogRight", point.position + (Vector3)(target.RightPosition - target.Center)));
             }
+            ExtendFrontierFog(root, loop);
             var sections=root.GetComponentsInChildren<ToxicFogCrossSection>(true).OrderBy(s=>s.name,StringComparer.Ordinal).ToArray();
             SetArray(loop.fog,"routePoints",sections.Select(s=>(Object)s.transform));SetArray(loop.fogArea,"crossSections",sections);Set(loop.fogArea,"routeController",loop.fog);
             foreach(var item in All<MonoBehaviour>(scene).Where(m=>m is ToxicFogGroundVisual||m is ToxicFogFrontVisual||m is ToxicFogMistEmitter||m is ToxicFogFeedbackHUD))
@@ -453,8 +435,12 @@ namespace AlienPurge.Level01.Editor
             if(!One<MissionHUD>(scene).enabled||!One<MissionDirectionArrow>(scene).enabled||c.hud.GetComponentInParent<Canvas>(true).gameObject.activeSelf)errors.Add("Native HUD not restored / duplicate HUD");
             if(!One<StormDamageController>(scene).isActiveAndEnabled||!One<ToxicFogDamageController>(scene).isActiveAndEnabled)errors.Add("Native damage disabled");
             foreach(var site in c.optionalSites)
-                if(Reference<SpriteRenderer>(site.beacon.GetComponent<BeaconVisualFeedback>(),"bodyRenderer").sprite==null||
-                    Reference<LineRenderer>(site.beacon,"activationRangeVisual").sortingLayerID==0)errors.Add("Invisible native Beacon / range: "+site.name);
+                if(site.GetComponentsInChildren<Renderer>(true).Any(r=>r.enabled)||site.GetComponentsInChildren<Collider2D>(true).Any(r=>r.enabled))errors.Add("Removed floor-pad visuals/colliders still enabled: "+site.name);
+            if(c.terminals.Any(t=>t.deviceRange!=null&&t.deviceRange.enabled)||c.anchors.Any(a=>a.warning!=null&&a.warning.enabled))errors.Add("Permanent device / spawn circle enabled");
+            if(c.GetComponentInChildren<RegionStormMask>(true)==null)errors.Add("Storm spatial mask missing");
+            if(!c.world.progression.gates.First(g=>g.gateId=="G7").locked &&
+                !RegionSpawnSpace.Valid(c.world,null,c.world.World(new Vector2(23,-56.48438f)),c.Terminal("Extraction").transform.position,.65f,true,out var ingressReason))
+                errors.Add("Extraction entrance has no navigable reinforcement path: "+ingressReason);
             if(One<SafeZoneVisual>(scene).GetComponent<LineRenderer>().sortingLayerID==0||
                 new SerializedObject(One<ToxicFogGroundVisual>(scene)).FindProperty("sortingLayerName").stringValue=="Default")errors.Add("Environment visuals sort below Ground");
             var mistMaterial=One<ToxicFogMistEmitter>(scene).GetComponent<ParticleSystemRenderer>().sharedMaterial;
@@ -464,11 +450,11 @@ namespace AlienPurge.Level01.Editor
             {
                 var d=c.definitions[i];if(d==null||d.v02==null){errors.Add("Missing definition");continue;}
                 if(!AssetDatabase.GetAssetPath(d).StartsWith(DataFolder+"/"))errors.Add("Shared definition "+d.name);
-                if(d.regionId!=Ids[i]||d.missionId!=new[]{"Arrival","Beacon","Power"}[i]||d.exitGateId!="G"+(i+1)||d.moduleSlot!=i)errors.Add("Gate/reward mapping "+d.name);
-                if(c.world.progression.gates.Count(g=>g.gateId==d.exitGateId&&g.requirement==d.missionId)!=1)errors.Add("Gate authority "+d.name);
+                if(d.regionId!=Ids[i]||d.missionId!=Missions[i]||d.moduleSlot!=(i==1||i==2?i:0))errors.Add("Gate/reward mapping "+d.name);
+                if(!d.v02.extractionRegion&&c.world.progression.gates.Count(g=>g.gateId==d.exitGateId&&g.requirement==d.missionId)!=1)errors.Add("Gate authority "+d.name);
                 if(d.aliveLimit-d.v02.missionCapacityReserve<d.residents.Sum(g=>g.count)||c.globalAliveLimit<=d.v02.missionCapacityReserve||d.v02.searchSeconds<8||d.v02.searchSeconds>15||d.v02.environmentSquads.Length<2)errors.Add("Invalid pressure/capacity "+d.name);
-                if(d.v02.fogEndDistance<=d.v02.fogStartDistance||i>0&&Mathf.Abs(d.v02.fogStartDistance-c.definitions[i-1].v02.fogEndDistance)>.1f)errors.Add("Fog stage discontinuity "+d.name);
-                if(!c.stormCandidates.Any(p=>p!=null&&c.world.ResolveRegion(c.world.Local(p.position))==d.regionId&&DiskValid(c,d,p.position)))errors.Add("No valid full storm disk "+d.name);
+                if(!d.v02.extractionRegion&&(d.v02.fogEndDistance<=d.v02.fogStartDistance||i>0&&Mathf.Abs(d.v02.fogStartDistance-c.definitions[i-1].v02.fogEndDistance)>.1f))errors.Add("Fog stage discontinuity "+d.name);
+                if(!d.v02.extractionRegion&&!c.stormCandidates.Any(p=>p!=null&&c.world.ResolveRegion(c.world.Local(p.position))==d.regionId&&DiskValid(c,d,p.position)))errors.Add("No valid full storm disk "+d.name);
                 foreach(var a in c.anchors.Where(a=>a.regionId==d.regionId))
                 {
                     if(!unique.Add(a.stableId))errors.Add("Duplicate anchor "+a.stableId);

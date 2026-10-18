@@ -17,10 +17,10 @@ namespace AlienPurge.Level01.Editor
     // Editor-only driver: real pooled deaths, physics pickups, native reward buttons, search and firing.
     // Travel and combat damage are deterministic test inputs, not a balance or aiming certification.
     [InitializeOnLoad]
-    public static class RegionLoopV02Regression
+    public static partial class RegionLoopV02Regression
     {
         const string Key="RegionV02.Regression";
-        static string Report=>RegionLoopV02Installer.Reports+(SessionState.GetBool(Key+".preview",false)?"/TaskPreview.txt":SessionState.GetBool(Key+".presentation",false)?"/Presentation.txt":"/PlayMode.txt");
+        static string Report=>RegionLoopV02Installer.Reports+(SessionState.GetBool(Key+".feedback",false)?"/FeedbackChecks.txt":SessionState.GetBool(Key+".preview",false)?"/TaskPreview.txt":SessionState.GetBool(Key+".presentation",false)?"/Presentation.txt":"/PlayMode.txt");
         static readonly Stack<IEnumerator> routines=new Stack<IEnumerator>();
         static readonly List<string> results=new List<string>(), errors=new List<string>();
         static RegionLoopController loop;
@@ -36,15 +36,16 @@ namespace AlienPurge.Level01.Editor
             Application.logMessageReceived+=(message,stack,type)=>{if(routines.Count>0&&(type==LogType.Error||type==LogType.Exception||type==LogType.Assert))errors.Add(message+"\n"+stack);};
         }
         [MenuItem("AlienPurge/Gameplay/Level01/Run Region Loop V02 Regression")]
-        public static void Run()=>Start(false);
+        public static void Run()=>RunFeedback();
         // Focused rerender after scene-only presentation repairs; retains the full behavior report.
         public static void RunPresentation()=>Start(true);
         public static void RunPreview()=>Start(true,true);
-        static void Start(bool presentation,bool preview=false)
+        static void Start(bool presentation,bool preview=false,bool feedback=false)
         {
             if(Application.isPlaying)throw new InvalidOperationException("Exit Play first.");
             SessionState.SetBool(Key+".presentation",presentation);
             SessionState.SetBool(Key+".preview",preview);
+            SessionState.SetBool(Key+".feedback",feedback);
             RegionLoopV02Installer.Install();
             string guid=AssetDatabase.AssetPathToGUID(RegionLoopV02Installer.Target);
             int objects=RegionLoopInstaller.All<Transform>(SceneManager.GetActiveScene()).Length;
@@ -68,7 +69,7 @@ namespace AlienPurge.Level01.Editor
                 deadline=EditorApplication.timeSinceStartup+1200;
                 Application.runInBackground=true;
                 var view=EditorWindow.GetWindow(Type.GetType("UnityEditor.GameView,UnityEditor"));view.Show();view.Focus();
-                routines.Push(SessionState.GetBool(Key+".preview",false)?Preview():SessionState.GetBool(Key+".presentation",false)?Presentation():Exercise());
+                routines.Push(SessionState.GetBool(Key+".feedback",false)?Feedback():SessionState.GetBool(Key+".preview",false)?Preview():SessionState.GetBool(Key+".presentation",false)?Presentation():Exercise());
             }
             if(mode==PlayModeStateChange.EnteredEditMode)
             {
@@ -89,6 +90,7 @@ namespace AlienPurge.Level01.Editor
                 if(lastFrame==Time.frameCount)return;lastFrame=Time.frameCount;
                 if(loop!=null&&!loop.ShuttingDown)
                 {
+                    if (SessionState.GetBool(Key+".feedback",false)) loop.world.player.GetComponent<PlayerShooting>().enabled=false;
                     if(invulnerable)loop.world.player.GetComponent<PlayerHealth>().BeginTemporaryInvulnerability(1000);
                     Check(!(UpgradeManager.IsChoosingUpgrade&&WeaponModuleSelectionManager.IsChoosingModule),"No overlapping choices",false);
                     Check(loop.pool.ActiveCount<=loop.globalAliveLimit,"Global active population bounded",false);
@@ -203,7 +205,7 @@ namespace AlienPurge.Level01.Editor
             GameManager.Instance.RestartGame();yield return null;yield return null;
             yield return Until(()=>Object.FindObjectOfType<RegionLoopController>()!=null,"Restart scene");
             loop=Object.FindObjectOfType<RegionLoopController>();
-            yield return Until(()=>loop.Regions.Count==3&&loop.Regions[0].initialized,"First entry initializes");
+            yield return Until(()=>loop.Regions.Count==loop.definitions.Length&&loop.Regions[0].initialized,"First entry initializes");
             Check(loop.RunId!=old&&!loop.HasMilestone("Arrival")&&loop.rewards.modules.UnlockedModuleCount==0,"Restart resets milestones, modules and run identity");
         }
         static IEnumerator MainRoute(bool sustained,bool simultaneous=false)
@@ -251,6 +253,7 @@ namespace AlienPurge.Level01.Editor
         }
         static IEnumerator VerifyShot(WeaponEvolutionType expected)
         {
+            bool wasAccelerated=accelerate;accelerate=false;Time.timeScale=1;
             var evolution=loop.world.player.GetComponent<WeaponEvolutionController>();
             if(evolution==null)evolution=Object.FindObjectOfType<WeaponEvolutionController>();
             Check(evolution.CurrentEvolution==expected,"Immediate actual evolution: "+expected);
@@ -270,17 +273,27 @@ namespace AlienPurge.Level01.Editor
             Physics2D.SyncTransforms();
             yield return Seconds(1);
             // Native input updates aim every frame; set this deterministic input immediately before firing.
+            foreach(var oldBullet in Object.FindObjectsOfType<Bullet>())oldBullet.ReturnToPool();
             weapon.AimAt(targets[0].GetComponentInChildren<Collider2D>().bounds.center);
             Check(weapon.TryFire(),"Native weapon fires after choice closes");
             var bullet=Object.FindObjectsOfType<Bullet>().FirstOrDefault(b=>Read<WeaponEvolutionData>(b,"currentEvolutionVisualData")!=null);
             Check(bullet!=null,"Fired bullet receives native evolution visual data");
             var snapshot=bullet.ModifierSnapshot;var modifiers=loop.world.player.GetComponent<PlayerWeaponModifiers>();
             Check(expected==WeaponEvolutionType.ThunderPiercer?snapshot.PierceCount>modifiers.PierceCount&&snapshot.ChainLightning:snapshot.Explosive&&snapshot.SplitShot&&snapshot.SplitCount>modifiers.SplitCount,"Fired projectile carries evolved damage-mechanism snapshot");
-            yield return Seconds(1.5f);
+            int chains=0,splits=0,explosions=0;
+            float sampleUntil=Time.time+1.5f;
+            while(Time.time<sampleUntil)
+            {
+                chains=Mathf.Max(chains,bullet.ChainTriggerCount);
+                splits=Mathf.Max(splits,Read<int>(bullet,"totalSplitSpawnCount"));
+                explosions=Mathf.Max(explosions,Read<int>(bullet,"lastExplosionTargetCount"));
+                yield return null;
+            }
             Check(targets.All(t=>t.GetComponent<EnemyHealth>().CurrentHealth<100),"Real projectile collision and secondary damage affect both targets; HP="+string.Join(",",targets.Select(t=>t.GetComponent<EnemyHealth>().CurrentHealth))+" direct="+bullet.DirectHitEnemyCount+" chain="+bullet.ChainTriggerCount);
-            Check(expected==WeaponEvolutionType.ThunderPiercer?bullet.ChainTriggerCount>0:Read<int>(bullet,"totalSplitSpawnCount")>0&&Read<int>(bullet,"lastExplosionTargetCount")>0,"Native evolved chain / explosion and split behavior actually fires");
+            Check(expected==WeaponEvolutionType.ThunderPiercer?chains>0:splits>0&&explosions>0,"Native evolved chain / explosion and split behavior actually fires");
             foreach(var target in targets)target.ReturnToPool();
             Capture("Evolution_"+expected);
+            accelerate=wasAccelerated;
         }
         static IEnumerator Exercise()
         {

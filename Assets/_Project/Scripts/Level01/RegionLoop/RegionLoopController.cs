@@ -241,8 +241,9 @@ namespace AlienPurge.Level01.RegionLoop
                     profile.special && CountAlive(state, true) >= state.config.specialLimit || !IsIngressClearV02(pendingPosition)))
                 { CancelWarning(); ticket.due = Time.time + 1; return; }
                 if (Vector2.Distance(pendingPosition, world.PlayerFeet) < state.config.minimumPlayerDistance ||
+                    (v02Enabled ? !ValidV02Ingress(state, profile, pendingPosition, out _) :
                     !RegionSpawnSpace.Valid(world, state.config.regionId, pendingPosition, Terminal(state.config.regionId).transform.position,
-                        profile.clearance, true, out _))
+                        profile.clearance, true, out _)))
                 { CancelWarning(); SpawnFailed(state, ticket, "warning position became occupied or unreachable"); nextSpawn = Time.time + 1; return; }
                 if (pool.ActiveCount >= globalAliveLimit) { CancelWarning(); ticket.due = Time.time + 1; return; }
                 var enemy = pool.GetEnemy(ticket.type, pendingPosition, Quaternion.identity);
@@ -267,8 +268,8 @@ namespace AlienPurge.Level01.RegionLoop
                     {
                         pendingTicket = ticket; pendingRegion = state; pendingAnchor = anchor; pendingPosition = position;
                         warningUntil = Time.time + state.config.warningSeconds;
-                        if (anchor.warning != null) anchor.warning.transform.position = position;
-                        anchor.ShowWarning(true);
+                        if (anchor != null && anchor.warning != null) anchor.warning.transform.position = position;
+                        if (anchor != null) anchor.ShowWarning(!v02Enabled);
                     }
                     else { SpawnFailed(state, ticket, reason); nextSpawn = Time.time + 1; }
                     return;
@@ -278,6 +279,7 @@ namespace AlienPurge.Level01.RegionLoop
         bool TryPosition(RegionRunState state, RegionEnemyProfile profile, out RegionAnchor chosen, out Vector3 position, out string reason)
         {
             chosen = null; position = default; reason = "no valid anchors";
+            if (v02Enabled && TryDynamicIngress(state, profile, out position)) return true;
             int start = UnityEngine.Random.Range(0, anchors.Length);
             for (int i = 0; i < anchors.Length; i++)
             {

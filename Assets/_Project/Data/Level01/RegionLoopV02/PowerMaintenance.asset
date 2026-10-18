@@ -14,34 +14,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   regionId: PowerMaintenance
   missionId: Power
-  encounterId: PowerMaintenance/garrison
+  encounterId: PowerMaintenance-garrison
   exitGateId: G3
   prerequisite: Beacon
   enemies:
   - archetypeId: Swarmer
     type: 0
-    health: 4
+    health: 6
     damage: 1
     experience: 2
-    speed: 2.3
+    speed: 2.39
     clearance: 0.65
     special: 0
     simultaneousLimit: 0
   - archetypeId: Rusher
     type: 1
-    health: 6
+    health: 8
     damage: 1
     experience: 3
-    speed: 3.3
+    speed: 3.4
     clearance: 0.65
     special: 1
-    simultaneousLimit: 2
+    simultaneousLimit: 3
   - archetypeId: Tank
     type: 2
-    health: 16
+    health: 20
     damage: 2
-    experience: 4
-    speed: 1.35
+    experience: 5
+    speed: 1.45
     clearance: 1.1
     special: 1
     simultaneousLimit: 1
@@ -51,10 +51,10 @@ MonoBehaviour:
   - Support
   residents:
   - type: 0
-    count: 2
+    count: 5
     keyGuard: 1
   - type: 0
-    count: 3
+    count: 10
     keyGuard: 0
   - type: 1
     count: 2
@@ -81,18 +81,18 @@ MonoBehaviour:
     - type: 2
       count: 1
       keyGuard: 1
-  aliveLimit: 16
-  specialLimit: 3
+  aliveLimit: 28
+  specialLimit: 4
   patrolBudget: 0
   patrolType: 0
   patrolInterval: 35
   recoverySeconds: 40
-  spawnInterval: 0.8
-  warningSeconds: 1.2
+  spawnInterval: 0.32
+  warningSeconds: 0.35
   spawnRetryLimit: 8
-  minimumPlayerDistance: 5
-  perceptionRadius: 12
-  leashRadius: 24
+  minimumPlayerDistance: 9
+  perceptionRadius: 16
+  leashRadius: 90
   deviceSeconds: 28
   deviceRadius: 6
   missionDeadline: 150
@@ -104,11 +104,11 @@ MonoBehaviour:
   moduleSlot: 2
   v02:
     environmentSquads:
-    - id: mixed
+    - id: advance
       delay: 0
       groups:
       - type: 0
-        count: 3
+        count: 4
         keyGuard: 0
       - type: 1
         count: 1
@@ -122,52 +122,55 @@ MonoBehaviour:
       - type: 2
         count: 1
         keyGuard: 0
-    - id: rush
+    - id: flank
       delay: 0
       groups:
       - type: 0
-        count: 2
+        count: 5
         keyGuard: 0
-      - type: 1
-        count: 2
-        keyGuard: 0
-    environmentInterval: 12
-    searchSeconds: 12
-    preloadDistance: 32
-    pressureLowWatermark: 2
-    missionCapacityReserve: 6
+    extractionRegion: 0
+    environmentInterval: 4
+    searchSeconds: 8
+    preloadDistance: 42
+    pressureLowWatermark: 3
+    missionCapacityReserve: 8
+    ambientTarget: 18
     mechanismSource: 0
     optionalTasks:
     - id: beacon-defense
       highRisk: 0
-      acceptSeconds: 90
-      defendSeconds: 24
-      deadlineSeconds: 60
+      triggersStorm: 0
+      acceptSeconds: 110
+      defendSeconds: 30
+      deadlineSeconds: 75
       radius: 5
       claimAndExitSeconds: 35
       maxAttempts: 1
-      experience: 18
+      experience: 20
       waves:
       - id: defense-1
         delay: 0
         groups:
         - type: 0
-          count: 3
+          count: 4
           keyGuard: 0
       - id: defense-2
         delay: 10
         groups:
+        - type: 0
+          count: 3
+          keyGuard: 0
         - type: 1
           count: 1
           keyGuard: 0
-    stormAfterEntry: 42
-    stormWarningMinimum: 10
-    stormActiveSeconds: 12
+    stormAfterEntry: 36
+    stormWarningMinimum: 12
+    stormActiveSeconds: 20
     stormRecoverySeconds: 3
-    safeRadius: 4
-    explorationSeconds: 180
-    fogWarningSeconds: 30
+    safeRadius: 4.5
+    explorationSeconds: 165
+    fogWarningSeconds: 25
     fogAdvanceSeconds: 90
-    oneTimeExitBuffer: 20
+    oneTimeExitBuffer: 15
     fogStartDistance: 235.34045
     fogEndDistance: 389.3305

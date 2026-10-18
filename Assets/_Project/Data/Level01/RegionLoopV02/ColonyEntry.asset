@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   regionId: ColonyEntry
   missionId: Arrival
-  encounterId: ColonyEntry/garrison
+  encounterId: ColonyEntry-garrison
   exitGateId: G1
   prerequisite: 
   enemies:
   - archetypeId: Swarmer
     type: 0
-    health: 3
+    health: 4
     damage: 1
     experience: 1
-    speed: 2
+    speed: 2.15
     clearance: 0.65
     special: 0
     simultaneousLimit: 0
@@ -33,24 +33,24 @@ MonoBehaviour:
   - Support
   residents:
   - type: 0
-    count: 2
+    count: 4
     keyGuard: 1
   - type: 0
-    count: 6
+    count: 8
     keyGuard: 0
   waves: []
-  aliveLimit: 16
-  specialLimit: 3
+  aliveLimit: 22
+  specialLimit: 4
   patrolBudget: 0
   patrolType: 0
   patrolInterval: 35
   recoverySeconds: 40
-  spawnInterval: 0.8
-  warningSeconds: 1.2
+  spawnInterval: 0.32
+  warningSeconds: 0.35
   spawnRetryLimit: 8
-  minimumPlayerDistance: 5
-  perceptionRadius: 12
-  leashRadius: 24
+  minimumPlayerDistance: 9
+  perceptionRadius: 16
+  leashRadius: 90
   deviceSeconds: 0
   deviceRadius: 6
   missionDeadline: 150
@@ -62,61 +62,61 @@ MonoBehaviour:
   moduleSlot: 0
   v02:
     environmentSquads:
-    - id: small
-      delay: 0
-      groups:
-      - type: 0
-        count: 3
-        keyGuard: 0
-    - id: wide
+    - id: advance
       delay: 0
       groups:
       - type: 0
         count: 4
         keyGuard: 0
-    - id: press
+    - id: flank
       delay: 0
       groups:
       - type: 0
-        count: 3
+        count: 5
         keyGuard: 0
-    environmentInterval: 12
-    searchSeconds: 12
-    preloadDistance: 32
-    pressureLowWatermark: 2
-    missionCapacityReserve: 6
+    extractionRegion: 0
+    environmentInterval: 5
+    searchSeconds: 8
+    preloadDistance: 42
+    pressureLowWatermark: 3
+    missionCapacityReserve: 8
+    ambientTarget: 12
     mechanismSource: 0
     optionalTasks:
     - id: beacon-defense
       highRisk: 0
-      acceptSeconds: 90
-      defendSeconds: 18
-      deadlineSeconds: 50
+      triggersStorm: 0
+      acceptSeconds: 110
+      defendSeconds: 24
+      deadlineSeconds: 65
       radius: 5
       claimAndExitSeconds: 35
       maxAttempts: 1
-      experience: 10
+      experience: 12
       waves:
       - id: defense-1
         delay: 0
         groups:
         - type: 0
-          count: 3
+          count: 4
           keyGuard: 0
       - id: defense-2
         delay: 10
         groups:
         - type: 0
-          count: 2
+          count: 3
           keyGuard: 0
-    stormAfterEntry: 42
-    stormWarningMinimum: 10
-    stormActiveSeconds: 12
+        - type: 0
+          count: 1
+          keyGuard: 0
+    stormAfterEntry: 28
+    stormWarningMinimum: 12
+    stormActiveSeconds: 20
     stormRecoverySeconds: 3
-    safeRadius: 4
-    explorationSeconds: 120
-    fogWarningSeconds: 30
+    safeRadius: 4.5
+    explorationSeconds: 115
+    fogWarningSeconds: 25
     fogAdvanceSeconds: 70
-    oneTimeExitBuffer: 20
+    oneTimeExitBuffer: 15
     fogStartDistance: 0
     fogEndDistance: 58

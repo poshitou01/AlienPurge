@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 namespace AlienPurge.Level01.RegionLoop
 {
@@ -23,6 +24,7 @@ namespace AlienPurge.Level01.RegionLoop
         int priorHealth, priorExp, priorDamage;
         float priorSpeed, nextSense;
         bool reported, engaged, bound, priorNavigatorEnabled, gateInitialized, lastChase;
+        TextMeshPro guardLabel;
 
         public void Bind(RegionLoopController controller, RegionRunState region, RegionEnemyTicket ticket)
         {
@@ -42,8 +44,20 @@ namespace AlienPurge.Level01.RegionLoop
             // Restore surviving enemies without re-awarding anything or healing on region return.
             if (ticket.savedHealth > 0 && ticket.savedHealth < profile.health)
                 Health.TakeDamage(profile.health - ticket.savedHealth);
-            reported = false; engaged = ticket.role == RegionEnemyRole.Mission;
+            reported = false; engaged = ticket.role == RegionEnemyRole.Mission || controller.v02Enabled && ticket.role == RegionEnemyRole.Patrol;
             enabled = true; ticket.lease = this; nextSense = 0; gateInitialized = false;
+            bool showGuard = controller.v02Enabled && ticket.role == RegionEnemyRole.Resident && ticket.keyGuard;
+            if (showGuard && guardLabel == null)
+            {
+                guardLabel = new GameObject("RegionGuardLabel").AddComponent<TextMeshPro>();
+                guardLabel.transform.SetParent(transform, false); guardLabel.transform.localPosition = Vector3.up * 1.35f;
+                guardLabel.font = controller.Terminal(region.config.regionId).status.font;
+                guardLabel.fontSize = 2.4f; guardLabel.alignment = TextAlignmentOptions.Center;
+                guardLabel.rectTransform.sizeDelta = new Vector2(3,1); guardLabel.text = "守卫";
+                guardLabel.color = new Color(1,.72f,.4f); guardLabel.GetComponent<MeshRenderer>().sortingLayerName = "VFX";
+                guardLabel.GetComponent<MeshRenderer>().sortingOrder = 3;
+            }
+            if (guardLabel != null) guardLabel.gameObject.SetActive(showGuard);
             Sense();
         }
 
@@ -57,9 +71,10 @@ namespace AlienPurge.Level01.RegionLoop
         {
             if (owner == null || Health.IsDead) return;
             float distance = Vector2.Distance(transform.position, owner.world.PlayerFeet);
+            if (owner.v02Enabled && owner.CurrentRegion == Region.config.regionId && Region.firstEntered >= 0) engaged = true;
             if (Health.CurrentHealth < Health.MaxHealth || distance <= Region.config.perceptionRadius && owner.CanSenseV02(Region, transform.position)) engaged = true;
-            bool chase = engaged && distance <= Region.config.leashRadius &&
-                (Vector2.Distance(origin, transform.position) <= Region.config.leashRadius) &&
+            bool chase = engaged && (owner.v02Enabled || distance <= Region.config.leashRadius &&
+                Vector2.Distance(origin, transform.position) <= Region.config.leashRadius) &&
                 (!owner.v02Enabled || owner.CurrentRegion == Region.config.regionId);
             if (gateInitialized && lastChase == chase) return;
             gateInitialized = true; lastChase = chase;
@@ -86,6 +101,7 @@ namespace AlienPurge.Level01.RegionLoop
         {
             if (!bound) return;
             bound = false;
+            if (guardLabel != null) guardLabel.gameObject.SetActive(false);
             bool recycle = owner != null && !owner.ShuttingDown && owner.gameObject.scene.isLoaded &&
                 PoolMember != null && !PoolMember.IsReturned;
             var lifecycleOwner = owner;

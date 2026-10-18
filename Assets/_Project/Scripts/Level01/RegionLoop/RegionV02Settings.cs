@@ -9,6 +9,7 @@ namespace AlienPurge.Level01.RegionLoop
     {
         public string id;
         public bool highRisk;
+        public bool triggersStorm;
         [Min(1)] public float acceptSeconds = 90, defendSeconds = 18, deadlineSeconds = 50;
         [Min(1)] public float radius = 5, claimAndExitSeconds = 35;
         [Min(1)] public int maxAttempts = 1;
@@ -19,8 +20,10 @@ namespace AlienPurge.Level01.RegionLoop
     public sealed class RegionV02Settings
     {
         public RegionWave[] environmentSquads = Array.Empty<RegionWave>();
+        public bool extractionRegion;
         [Min(1)] public float environmentInterval = 12, searchSeconds = 12, preloadDistance = 32;
         [Min(0)] public int pressureLowWatermark = 2, missionCapacityReserve = 6;
+        [Min(1)] public int ambientTarget = 12;
         public MechanismRewardSource mechanismSource;
         public RegionOptionalDefinition[] optionalTasks = Array.Empty<RegionOptionalDefinition>();
         [Header("Storm: relative to first entry, never global survival time")]

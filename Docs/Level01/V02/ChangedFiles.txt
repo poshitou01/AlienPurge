@@ -1,6 +1,55 @@
-Level01 Region Loop V02 - delivered files relative to D:\AlienPurge_RegionLoopV01
-Baseline: 35775fbfaa9a64671c4556811fe6ae37061508f1
-Files: 115
+Level01 Region Loop V02 - files relative to D:\AlienPurge_RegionLoopV01
+Protected baseline: 35775fbfaa9a64671c4556811fe6ae37061508f1
+Feedback revision based on: b575790
+Current feedback delta: 45 files
+
+Assets/_Project/Data/Level01/RegionLoopV02/CargoYard.asset
+Assets/_Project/Data/Level01/RegionLoopV02/ColonyEntry.asset
+Assets/_Project/Data/Level01/RegionLoopV02/Extraction.asset
+Assets/_Project/Data/Level01/RegionLoopV02/Extraction.asset.meta
+Assets/_Project/Data/Level01/RegionLoopV02/Fonts/18a1a422ccc0e29458a253eb75434618.asset
+Assets/_Project/Data/Level01/RegionLoopV02/Fonts/4f5aafd1a68bbe647b1590a00fb56992.asset
+Assets/_Project/Data/Level01/RegionLoopV02/Fonts/67c97596c32b38643b103a1c1fa410f3.asset
+Assets/_Project/Data/Level01/RegionLoopV02/InfectedResearch.asset
+Assets/_Project/Data/Level01/RegionLoopV02/InfectedResearch.asset.meta
+Assets/_Project/Data/Level01/RegionLoopV02/MAT_StormAreaMask.asset
+Assets/_Project/Data/Level01/RegionLoopV02/MAT_StormAreaMask.asset.meta
+Assets/_Project/Data/Level01/RegionLoopV02/PowerMaintenance.asset
+Assets/_Project/Data/Level01/RegionLoopV02/QuarantineCommons.asset
+Assets/_Project/Data/Level01/RegionLoopV02/QuarantineCommons.asset.meta
+Assets/_Project/Editor/Level01/RegionLoopV02Installer.cs
+Assets/_Project/Editor/Level01/RegionLoopV02Installer.Feedback.cs
+Assets/_Project/Editor/Level01/RegionLoopV02Installer.Feedback.cs.meta
+Assets/_Project/Editor/Level01/RegionLoopV02Regression.cs
+Assets/_Project/Editor/Level01/RegionLoopV02Regression.Feedback.cs
+Assets/_Project/Editor/Level01/RegionLoopV02Regression.Feedback.cs.meta
+Assets/_Project/Scenes/ArtTests/Level01_FullWorld_GameplayV02.unity
+Assets/_Project/Scripts/Extraction/ExtractionController.cs
+Assets/_Project/Scripts/Level01/RegionLoop/RegionEnemyLease.cs
+Assets/_Project/Scripts/Level01/RegionLoop/RegionEnvironmentIntegration.cs
+Assets/_Project/Scripts/Level01/RegionLoop/RegionLoopController.cs
+Assets/_Project/Scripts/Level01/RegionLoop/RegionLoopController.Feedback.cs
+Assets/_Project/Scripts/Level01/RegionLoop/RegionLoopController.Feedback.cs.meta
+Assets/_Project/Scripts/Level01/RegionLoop/RegionLoopController.V02.cs
+Assets/_Project/Scripts/Level01/RegionLoop/RegionLootIntegration.cs
+Assets/_Project/Scripts/Level01/RegionLoop/RegionMissionIntegration.cs
+Assets/_Project/Scripts/Level01/RegionLoop/RegionStormMask.cs
+Assets/_Project/Scripts/Level01/RegionLoop/RegionStormMask.cs.meta
+Assets/_Project/Scripts/Level01/RegionLoop/RegionStormMask.shader
+Assets/_Project/Scripts/Level01/RegionLoop/RegionStormMask.shader.meta
+Assets/_Project/Scripts/Level01/RegionLoop/RegionTaskSite.cs
+Assets/_Project/Scripts/Level01/RegionLoop/RegionTerminal.cs
+Assets/_Project/Scripts/Level01/RegionLoop/RegionV02Settings.cs
+Docs/Level01/V02/ChangedFiles.txt
+Docs/Level01/V02/Delivery.md
+Docs/Level01/V02/Evolution_ThunderPiercer.png
+Docs/Level01/V02/Feedback_Extraction.png
+Docs/Level01/V02/Feedback_Quarantine.png
+Docs/Level01/V02/Feedback_StormDefense.png
+Docs/Level01/V02/FeedbackChecks.txt
+Docs/Level01/V02/Installation.txt
+
+Cumulative V02 delta from protected baseline: 137 files
 
 Assets/_Project/Data/Level01/RegionLoopV02.meta
 Assets/_Project/Data/Level01/RegionLoopV02/CargoYard.asset
@@ -9,6 +58,8 @@ Assets/_Project/Data/Level01/RegionLoopV02/ColonyEntry.asset
 Assets/_Project/Data/Level01/RegionLoopV02/ColonyEntry.asset.meta
 Assets/_Project/Data/Level01/RegionLoopV02/ExperienceOrb_V02.prefab
 Assets/_Project/Data/Level01/RegionLoopV02/ExperienceOrb_V02.prefab.meta
+Assets/_Project/Data/Level01/RegionLoopV02/Extraction.asset
+Assets/_Project/Data/Level01/RegionLoopV02/Extraction.asset.meta
 Assets/_Project/Data/Level01/RegionLoopV02/Fonts.meta
 Assets/_Project/Data/Level01/RegionLoopV02/Fonts/18a1a422ccc0e29458a253eb75434618.asset
 Assets/_Project/Data/Level01/RegionLoopV02/Fonts/18a1a422ccc0e29458a253eb75434618.asset.meta
@@ -16,6 +67,8 @@ Assets/_Project/Data/Level01/RegionLoopV02/Fonts/4f5aafd1a68bbe647b1590a00fb5699
 Assets/_Project/Data/Level01/RegionLoopV02/Fonts/4f5aafd1a68bbe647b1590a00fb56992.asset.meta
 Assets/_Project/Data/Level01/RegionLoopV02/Fonts/67c97596c32b38643b103a1c1fa410f3.asset
 Assets/_Project/Data/Level01/RegionLoopV02/Fonts/67c97596c32b38643b103a1c1fa410f3.asset.meta
+Assets/_Project/Data/Level01/RegionLoopV02/InfectedResearch.asset
+Assets/_Project/Data/Level01/RegionLoopV02/InfectedResearch.asset.meta
 Assets/_Project/Data/Level01/RegionLoopV02/LegacyAuditFonts.meta
 Assets/_Project/Data/Level01/RegionLoopV02/LegacyAuditFonts/18a1a422ccc0e29458a253eb75434618.asset
 Assets/_Project/Data/Level01/RegionLoopV02/LegacyAuditFonts/18a1a422ccc0e29458a253eb75434618.asset.meta
@@ -31,6 +84,8 @@ Assets/_Project/Data/Level01/RegionLoopV02/LegacyAuditFonts/d9b44326682373448b58
 Assets/_Project/Data/Level01/RegionLoopV02/LegacyAuditFonts/d9b44326682373448b5829ad71fbddec.asset.meta
 Assets/_Project/Data/Level01/RegionLoopV02/LootTable_RegionHighRisk.asset
 Assets/_Project/Data/Level01/RegionLoopV02/LootTable_RegionHighRisk.asset.meta
+Assets/_Project/Data/Level01/RegionLoopV02/MAT_StormAreaMask.asset
+Assets/_Project/Data/Level01/RegionLoopV02/MAT_StormAreaMask.asset.meta
 Assets/_Project/Data/Level01/RegionLoopV02/MAT_ToxicFog_Front_V02.mat
 Assets/_Project/Data/Level01/RegionLoopV02/MAT_ToxicFog_Front_V02.mat.meta
 Assets/_Project/Data/Level01/RegionLoopV02/MAT_ToxicFog_Ground_V02.mat
@@ -39,15 +94,21 @@ Assets/_Project/Data/Level01/RegionLoopV02/MAT_ToxicFog_Mist_V02.mat
 Assets/_Project/Data/Level01/RegionLoopV02/MAT_ToxicFog_Mist_V02.mat.meta
 Assets/_Project/Data/Level01/RegionLoopV02/PowerMaintenance.asset
 Assets/_Project/Data/Level01/RegionLoopV02/PowerMaintenance.asset.meta
+Assets/_Project/Data/Level01/RegionLoopV02/QuarantineCommons.asset
+Assets/_Project/Data/Level01/RegionLoopV02/QuarantineCommons.asset.meta
 Assets/_Project/Editor/Level01/RegionLoopInstaller.cs
 Assets/_Project/Editor/Level01/RegionLoopV02Audit.cs
 Assets/_Project/Editor/Level01/RegionLoopV02Audit.cs.meta
 Assets/_Project/Editor/Level01/RegionLoopV02Installer.cs
 Assets/_Project/Editor/Level01/RegionLoopV02Installer.cs.meta
+Assets/_Project/Editor/Level01/RegionLoopV02Installer.Feedback.cs
+Assets/_Project/Editor/Level01/RegionLoopV02Installer.Feedback.cs.meta
 Assets/_Project/Editor/Level01/RegionLoopV02LegacyAudit.cs
 Assets/_Project/Editor/Level01/RegionLoopV02LegacyAudit.cs.meta
 Assets/_Project/Editor/Level01/RegionLoopV02Regression.cs
 Assets/_Project/Editor/Level01/RegionLoopV02Regression.cs.meta
+Assets/_Project/Editor/Level01/RegionLoopV02Regression.Feedback.cs
+Assets/_Project/Editor/Level01/RegionLoopV02Regression.Feedback.cs.meta
 Assets/_Project/Scenes/ArtTests/Level01_FullWorld_GameplayV02.unity
 Assets/_Project/Scenes/ArtTests/Level01_FullWorld_GameplayV02.unity.meta
 Assets/_Project/Scripts/Environment/PlanetStormController.cs
@@ -63,6 +124,8 @@ Assets/_Project/Scripts/Level01/RegionLoop/RegionEnvironmentIntegration.cs.meta
 Assets/_Project/Scripts/Level01/RegionLoop/RegionGrowthIntegration.cs
 Assets/_Project/Scripts/Level01/RegionLoop/RegionGrowthIntegration.cs.meta
 Assets/_Project/Scripts/Level01/RegionLoop/RegionLoopController.cs
+Assets/_Project/Scripts/Level01/RegionLoop/RegionLoopController.Feedback.cs
+Assets/_Project/Scripts/Level01/RegionLoop/RegionLoopController.Feedback.cs.meta
 Assets/_Project/Scripts/Level01/RegionLoop/RegionLoopController.V02.cs
 Assets/_Project/Scripts/Level01/RegionLoop/RegionLoopController.V02.cs.meta
 Assets/_Project/Scripts/Level01/RegionLoop/RegionLootIntegration.cs
@@ -71,6 +134,10 @@ Assets/_Project/Scripts/Level01/RegionLoop/RegionMissionIntegration.cs
 Assets/_Project/Scripts/Level01/RegionLoop/RegionMissionIntegration.cs.meta
 Assets/_Project/Scripts/Level01/RegionLoop/RegionRewardQueue.cs
 Assets/_Project/Scripts/Level01/RegionLoop/RegionRunState.cs
+Assets/_Project/Scripts/Level01/RegionLoop/RegionStormMask.cs
+Assets/_Project/Scripts/Level01/RegionLoop/RegionStormMask.cs.meta
+Assets/_Project/Scripts/Level01/RegionLoop/RegionStormMask.shader
+Assets/_Project/Scripts/Level01/RegionLoop/RegionStormMask.shader.meta
 Assets/_Project/Scripts/Level01/RegionLoop/RegionTaskSite.cs
 Assets/_Project/Scripts/Level01/RegionLoop/RegionTaskSite.cs.meta
 Assets/_Project/Scripts/Level01/RegionLoop/RegionTerminal.cs
@@ -91,6 +158,10 @@ Docs/Level01/V02/Delivery.md
 Docs/Level01/V02/Evolution_ClusterBurst.png
 Docs/Level01/V02/Evolution_ThunderPiercer.png
 Docs/Level01/V02/ExperienceBaseline.txt
+Docs/Level01/V02/Feedback_Extraction.png
+Docs/Level01/V02/Feedback_Quarantine.png
+Docs/Level01/V02/Feedback_StormDefense.png
+Docs/Level01/V02/FeedbackChecks.txt
 Docs/Level01/V02/Fog_Front.png
 Docs/Level01/V02/Fog_Inside.png
 Docs/Level01/V02/Fog_Power.png

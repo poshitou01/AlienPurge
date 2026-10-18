@@ -47,7 +47,7 @@ public sealed partial class ToxicFogFeedbackHUD
         if (GameManager.Instance == null || !GameManager.Instance.IsPlaying || Time.timeScale <= 0 || UpgradeManager.IsChoosingUpgrade || WeaponModuleSelectionManager.IsChoosingModule)
         { HideAll(); return true; }
         if (fogArea != null && playerRoot != null && fogArea.IsPositionInsideFog(playerRoot.position)) return false;
-        if (titleText != null) { titleText.text = "FOG // REAR SECTOR CLOSING"; titleText.color = approachingColor; }
+        if (titleText != null) { titleText.text = "毒雾正在收回后方区域"; titleText.color = approachingColor; }
         if (detailText != null) detailText.text = fogRoute.RegionNotice;
         SetPanelAlpha(.9f); SetTintAlpha(0); return true;
     }

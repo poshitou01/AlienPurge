@@ -98,7 +98,7 @@ public partial class BeaconMissionObjective
             !missionManager.IsRegionTaskActive(regionSite.TaskId) || !CanAdvanceActivation()) return;
         UpdatePlayerInsideState();
         if (visualFeedback != null) visualFeedback.SetPlayerInside(playerInsideActivationRadius);
-        if (playerInsideActivationRadius) activationElapsed = Mathf.Min(activationDuration, activationElapsed + Time.deltaTime);
+        if (playerInsideActivationRadius && !regionSite.Contested) activationElapsed = Mathf.Min(activationDuration, activationElapsed + Time.deltaTime);
         activationProgress01 = Mathf.Clamp01(activationElapsed / activationDuration);
         missionManager.ReportRegionTaskProgress(regionSite.TaskId, activationProgress01);
         if (activationProgress01 >= 1) missionManager.TryCompleteRegionTask(regionSite.TaskId);
@@ -114,8 +114,8 @@ public partial class MissionHUD
         ShowPanel();
         if (titleText != null) titleText.text = missionManager.RegionTitle;
         if (objectiveText != null) objectiveText.text = missionManager.RegionObjective;
-        if (timerText != null) timerText.text = string.IsNullOrEmpty(missionManager.RegionTimerLabel) ? "" : missionManager.RegionTimerLabel + " " + Mathf.CeilToInt(missionManager.MissionTimeRemaining) + "s";
-        RefreshDistance();
+        if (timerText != null) timerText.text = string.IsNullOrEmpty(missionManager.RegionTimerLabel) ? "" : missionManager.RegionTimerLabel + " " + Mathf.CeilToInt(missionManager.MissionTimeRemaining) + "秒";
+        if (distanceText != null) distanceText.text = player == null ? "距离 --" : "距离 " + Mathf.CeilToInt(Vector2.Distance(player.position, missionManager.CurrentObjectivePosition)) + "米";
         if (progressRoot != null) progressRoot.SetActive(true);
         if (progressSlider != null) progressSlider.value = missionManager.MissionProgress01;
         if (progressText != null) progressText.text = missionManager.RegionProgressText;

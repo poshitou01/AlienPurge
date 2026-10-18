@@ -329,7 +329,7 @@ public partial class ExtractionController :
 
 
     public bool HasActiveExtractionTarget =>
-        currentSpawnPoint != null
+        (currentSpawnPoint != null || regionDriven && RegionExtractionStarted)
         &&
         currentZone != null;
 
@@ -443,7 +443,7 @@ public partial class ExtractionController :
 
     private void Update()
     {
-        if (regionDriven) return;
+        if (regionDriven) { TickRegionExtraction(); return; }
 
         if (GameManager.Instance ==
             null)
