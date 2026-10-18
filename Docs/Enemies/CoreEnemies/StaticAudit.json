@@ -1,0 +1,27 @@
+{
+  "baseline": "727645fb7ce2acce8910ecf1d053522b394c7afc",
+  "branch": "feature/enemies-core-art-animation",
+  "authoredFrameCounts": {
+    "Swarmer": 128,
+    "Rusher": 224,
+    "Tank": 192,
+    "Spitter": 192
+  },
+  "uniquePixelHashes": 736,
+  "assetsGuidsChecked": 4338,
+  "existingFilesModified": [
+    "Assets/_Project/Editor/SupportExploderSetup.cs",
+    "Assets/_Project/Prefabs/Enemies/Animated/Enemy_Fast_Rusher.prefab",
+    "Assets/_Project/Prefabs/Enemies/Animated/Enemy_Heavy_Tank.prefab",
+    "Assets/_Project/Prefabs/Enemies/Animated/Enemy_Normal_Swarmer.prefab",
+    "Assets/_Project/Prefabs/Enemies/Animated/Enemy_Ranged_Spitter.prefab",
+    "Assets/_Project/Scripts/Enemy/Attacks/HeavyShockwaveAttack.cs",
+    "Assets/_Project/Scripts/Enemy/Attacks/RangedEnemyAttack.cs",
+    "Assets/_Project/Scripts/Enemy/EnemyContactDamage.cs",
+    "Assets/_Project/Scripts/Enemy/FastChargeAttack.cs"
+  ],
+  "existingMetaChanged": false,
+  "protectedDataBossScenesChanged": false,
+  "projectSettingsChanged": false,
+  "result": "PASS"
+}

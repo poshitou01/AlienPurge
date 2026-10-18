@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: 372097930180030315, guid: 0cf24eb3569dc414f9912d10fc4005cd, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 8991e674ed8e9924f80edfeba3b7dbac, type: 3}
+      objectReference: {fileID: 21300000, guid: 8f0362ab8f1611541bfa67500eb28147, type: 3}
     - target: {fileID: 580950409945898103, guid: 0cf24eb3569dc414f9912d10fc4005cd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -55,6 +55,18 @@ PrefabInstance:
     - target: {fileID: 2928049629495097226, guid: 0cf24eb3569dc414f9912d10fc4005cd, type: 3}
       propertyPath: enableSeparation
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5451668835315850098, guid: 0cf24eb3569dc414f9912d10fc4005cd, type: 3}
+      propertyPath: hitColor.b
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5451668835315850098, guid: 0cf24eb3569dc414f9912d10fc4005cd, type: 3}
+      propertyPath: hitColor.g
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5451668835315850098, guid: 0cf24eb3569dc414f9912d10fc4005cd, type: 3}
+      propertyPath: hitColor.r
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6736209422916061757, guid: 0cf24eb3569dc414f9912d10fc4005cd, type: 3}
       propertyPath: m_Name
@@ -101,6 +113,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6736209422916061757, guid: 0cf24eb3569dc414f9912d10fc4005cd, type: 3}
       insertIndex: -1
       addedObject: {fileID: -6822435126976684673}
+    - targetCorrespondingSourceObject: {fileID: 6736209422916061757, guid: 0cf24eb3569dc414f9912d10fc4005cd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1497215517953052979}
   m_SourcePrefab: {fileID: 100100000, guid: 0cf24eb3569dc414f9912d10fc4005cd, type: 3}
 --- !u!212 &1312647805740555451 stripped
 SpriteRenderer:
@@ -142,7 +157,7 @@ Animator:
   m_GameObject: {fileID: 5360780982688971245}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c711bc017b94f4f4db17680fe93109df, type: 2}
+  m_Controller: {fileID: 9100000, guid: c7b50b0fe45e3ea4295528de220e0f13, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -168,3 +183,16 @@ MonoBehaviour:
   movementRoot: {fileID: 2238694120256450471}
   defaultDirection: 1
   minimumMovementDelta: 0.002
+--- !u!114 &1497215517953052979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5360780982688971245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25dd36ecd0511b546a064047136598a5, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  impactMaterial: {fileID: 2100000, guid: 31213f86257d45c4291395e0c49b107f, type: 2}

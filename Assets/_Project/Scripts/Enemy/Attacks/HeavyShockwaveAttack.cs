@@ -92,6 +92,15 @@ public class HeavyShockwaveAttack : MonoBehaviour
 
     private Transform playerTarget;
 
+    // Presentation observes the native state; gameplay and serialized settings are unchanged.
+    public EnemyAttackVisualSample VisualSample =>
+        !isActiveAndEnabled ? default :
+        currentState == ShockwaveState.Preparing ? new EnemyAttackVisualSample(EnemyAttackVisualPhase.Windup, stateTimeRemaining, windupDuration, Vector2.zero) :
+        currentState == ShockwaveState.Attacking ? new EnemyAttackVisualSample(EnemyAttackVisualPhase.Active, 0, 0, Vector2.zero) :
+        currentState == ShockwaveState.Recovering ? new EnemyAttackVisualSample(EnemyAttackVisualPhase.Recover, stateTimeRemaining, recoveryDuration, Vector2.zero) : default;
+    public float VisualShockwaveRadius => shockwaveRadius;
+
+
     private void Awake()
     {
         CacheComponents();

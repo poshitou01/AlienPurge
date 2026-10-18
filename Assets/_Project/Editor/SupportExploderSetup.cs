@@ -131,6 +131,10 @@ public static class SupportExploderSetup
         {
             root = (GameObject)PrefabUtility.InstantiatePrefab(AssetDatabase.LoadAssetAtPath<GameObject>(NormalPrefab));
             PrefabUtility.UnpackPrefabInstance(root, PrefabUnpackMode.Completely, InteractionMode.AutomatedAction);
+            // A newly cloned Swarmer now has its own presentation. Specialists
+            // must keep their dedicated animation/death presenter instead.
+            var corePresentation = root.GetComponent<CoreEnemyAnimation>();
+            if (corePresentation != null) UnityEngine.Object.DestroyImmediate(corePresentation);
         }
         try
         {

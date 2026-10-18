@@ -1,0 +1,346 @@
+[
+  {
+    "enemy": "Swarmer",
+    "views": [
+      {
+        "direction": "D",
+        "sprite": "Assets/_Project/Art/Enemies/Animated/Swarmer/Move 1/D/Swarmer_Move_D_01.png",
+        "alphaBounds": [
+          96,
+          164,
+          416,
+          368
+        ]
+      },
+      {
+        "direction": "DR",
+        "sprite": "Assets/_Project/Art/Enemies/Animated/Swarmer/Move 1/DR/Swarmer_Move_DR_01.png",
+        "alphaBounds": [
+          74,
+          154,
+          458,
+          395
+        ]
+      },
+      {
+        "direction": "R",
+        "sprite": "Assets/_Project/Art/Enemies/Animated/Swarmer/Move 1/R/Swarmer_Move_R_01.png",
+        "alphaBounds": [
+          77,
+          168,
+          429,
+          369
+        ]
+      },
+      {
+        "direction": "UR",
+        "sprite": "Assets/_Project/Art/Enemies/Animated/Swarmer/Move 1/UR/Swarmer_Move_UR_01.png",
+        "alphaBounds": [
+          75,
+          162,
+          427,
+          391
+        ]
+      },
+      {
+        "direction": "U",
+        "sprite": "Assets/_Project/Art/Enemies/Animated/Swarmer/Move 1/U/Swarmer_Move_U_01.png",
+        "alphaBounds": [
+          118,
+          159,
+          395,
+          367
+        ]
+      },
+      {
+        "direction": "UL",
+        "sprite": "Assets/_Project/Art/Enemies/Animated/Swarmer/Move 1/UL/Swarmer_Move_UL_01.png",
+        "alphaBounds": [
+          92,
+          155,
+          444,
+          384
+        ]
+      },
+      {
+        "direction": "L",
+        "sprite": "Assets/_Project/Art/Enemies/Animated/Swarmer/Move 1/L/Swarmer_Move_L_01.png",
+        "alphaBounds": [
+          73,
+          168,
+          425,
+          369
+        ]
+      },
+      {
+        "direction": "DL",
+        "sprite": "Assets/_Project/Art/Enemies/Animated/Swarmer/Move 1/DL/Swarmer_Move_DL_01.png",
+        "alphaBounds": [
+          47,
+          147,
+          431,
+          388
+        ]
+      }
+    ],
+    "footBaseline": 376
+  },
+  {
+    "enemy": "Rusher",
+    "views": [
+      {
+        "direction": "D",
+        "sprite": "Assets/_Project/Art/Enemies/Animated/Rusher/Move 1/D/Rusher_Move_D_01.png",
+        "alphaBounds": [
+          96,
+          48,
+          416,
+          477
+        ]
+      },
+      {
+        "direction": "DR",
+        "sprite": "Assets/_Project/Art/Enemies/Animated/Rusher/Move 1/D/Rusher_Move_DR_01.png",
+        "alphaBounds": [
+          27,
+          73,
+          423,
+          460
+        ]
+      },
+      {
+        "direction": "R",
+        "sprite": "Assets/_Project/Art/Enemies/Animated/Rusher/Move 1/D/Rusher_Move_R_01.png",
+        "alphaBounds": [
+          96,
+          104,
+          431,
+          407
+        ]
+      },
+      {
+        "direction": "UR",
+        "sprite": "Assets/_Project/Art/Enemies/Animated/Rusher/Move 1/D/Rusher_Move_UR_01.png",
+        "alphaBounds": [
+          80,
+          84,
+          471,
+          405
+        ]
+      },
+      {
+        "direction": "U",
+        "sprite": "Assets/_Project/Art/Enemies/Animated/Rusher/Move 1/D/Rusher_Move_U_01.png",
+        "alphaBounds": [
+          92,
+          37,
+          420,
+          399
+        ]
+      },
+      {
+        "direction": "UL",
+        "sprite": "Assets/_Project/Art/Enemies/Animated/Rusher/Move 1/D/Rusher_Move_UL_01.png",
+        "alphaBounds": [
+          72,
+          84,
+          461,
+          400
+        ]
+      },
+      {
+        "direction": "L",
+        "sprite": "Assets/_Project/Art/Enemies/Animated/Rusher/Move 1/D/Rusher_Move_L_01.png",
+        "alphaBounds": [
+          64,
+          104,
+          437,
+          395
+        ]
+      },
+      {
+        "direction": "DL",
+        "sprite": "Assets/_Project/Art/Enemies/Animated/Rusher/Move 1/D/Rusher_Move_DL_01.png",
+        "alphaBounds": [
+          38,
+          73,
+          458,
+          395
+        ]
+      }
+    ],
+    "footBaseline": 402
+  },
+  {
+    "enemy": "Tank",
+    "views": [
+      {
+        "direction": "D",
+        "sprite": "Assets/_Project/Art/Enemies/Animated/Tank/Move/D/Tank_Move_D_01.png",
+        "alphaBounds": [
+          50,
+          108,
+          463,
+          409
+        ]
+      },
+      {
+        "direction": "DR",
+        "sprite": "Assets/_Project/Art/Enemies/Animated/Tank/Move/D/Tank_Move_DR_01.png",
+        "alphaBounds": [
+          18,
+          105,
+          464,
+          439
+        ]
+      },
+      {
+        "direction": "R",
+        "sprite": "Assets/_Project/Art/Enemies/Animated/Tank/Move/D/Tank_Move_R_01.png",
+        "alphaBounds": [
+          68,
+          91,
+          446,
+          395
+        ]
+      },
+      {
+        "direction": "UR",
+        "sprite": "Assets/_Project/Art/Enemies/Animated/Tank/Move/D/Tank_Move_UR_01.png",
+        "alphaBounds": [
+          21,
+          98,
+          467,
+          446
+        ]
+      },
+      {
+        "direction": "U",
+        "sprite": "Assets/_Project/Art/Enemies/Animated/Tank/Move/D/Tank_Move_U_01.png",
+        "alphaBounds": [
+          69,
+          91,
+          445,
+          388
+        ]
+      },
+      {
+        "direction": "UL",
+        "sprite": "Assets/_Project/Art/Enemies/Animated/Tank/Move/D/Tank_Move_UL_01.png",
+        "alphaBounds": [
+          57,
+          96,
+          502,
+          436
+        ]
+      },
+      {
+        "direction": "L",
+        "sprite": "Assets/_Project/Art/Enemies/Animated/Tank/Move/D/Tank_Move_L_01.png",
+        "alphaBounds": [
+          59,
+          89,
+          460,
+          395
+        ]
+      },
+      {
+        "direction": "DL",
+        "sprite": "Assets/_Project/Art/Enemies/Animated/Tank/Move/D/Tank_Move_DL_01.png",
+        "alphaBounds": [
+          45,
+          103,
+          484,
+          429
+        ]
+      }
+    ],
+    "footBaseline": 419
+  },
+  {
+    "enemy": "Spitter",
+    "views": [
+      {
+        "direction": "D",
+        "sprite": "Assets/_Project/Art/Enemies/Animated/Spitter/Move/D/Spitter_Move_D_01.png",
+        "alphaBounds": [
+          62,
+          92,
+          451,
+          448
+        ]
+      },
+      {
+        "direction": "DR",
+        "sprite": "Assets/_Project/Art/Enemies/Animated/Spitter/Move/D/Spitter_Move_DR_01.png",
+        "alphaBounds": [
+          45,
+          115,
+          441,
+          448
+        ]
+      },
+      {
+        "direction": "R",
+        "sprite": "Assets/_Project/Art/Enemies/Animated/Spitter/Move/D/Spitter_Move_R_01.png",
+        "alphaBounds": [
+          37,
+          109,
+          428,
+          470
+        ]
+      },
+      {
+        "direction": "UR",
+        "sprite": "Assets/_Project/Art/Enemies/Animated/Spitter/Move/D/Spitter_Move_UR_01.png",
+        "alphaBounds": [
+          54,
+          90,
+          443,
+          477
+        ]
+      },
+      {
+        "direction": "U",
+        "sprite": "Assets/_Project/Art/Enemies/Animated/Spitter/Move/D/Spitter_Move_U_01.png",
+        "alphaBounds": [
+          63,
+          60,
+          451,
+          461
+        ]
+      },
+      {
+        "direction": "UL",
+        "sprite": "Assets/_Project/Art/Enemies/Animated/Spitter/Move/D/Spitter_Move_UL_01.png",
+        "alphaBounds": [
+          68,
+          88,
+          466,
+          470
+        ]
+      },
+      {
+        "direction": "L",
+        "sprite": "Assets/_Project/Art/Enemies/Animated/Spitter/Move/D/Spitter_Move_L_01.png",
+        "alphaBounds": [
+          83,
+          108,
+          481,
+          470
+        ]
+      },
+      {
+        "direction": "DL",
+        "sprite": "Assets/_Project/Art/Enemies/Animated/Spitter/Move/D/Spitter_Move_DL_01.png",
+        "alphaBounds": [
+          78,
+          114,
+          463,
+          442
+        ]
+      }
+    ],
+    "footBaseline": 466
+  }
+]

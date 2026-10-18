@@ -99,7 +99,7 @@ public class EnemyContactDamage : MonoBehaviour
 
     private void TryDamagePlayer(GameObject target)
     {
-        if (!canDealContactDamage) return;
+        if (!isActiveAndEnabled || !canDealContactDamage) return;
         if (Time.time < nextDamageTime)
         {
             return;

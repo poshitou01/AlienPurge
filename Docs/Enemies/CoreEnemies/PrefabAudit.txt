@@ -1,0 +1,47 @@
+Swarmer
+Prefab=Assets/_Project/Prefabs/Enemies/Animated/Enemy_Normal_Swarmer.prefab
+GUID=b6980e554f11aaa479676f199f43f83e
+Data=Assets/_Project/Data/Enemies/Enemy_Normal_Data.asset
+Controller=Assets/_Project/Animations/Swarmer/Authored/Swarmer_Animator.controller
+RootScale=(1.00, 1.00, 1.00)
+ColliderRadius=0.36 Offset=(0.00, 0.00)
+Material=Packages/com.unity.render-pipelines.universal/Runtime/Materials/Sprite-Lit-Default.mat
+Sorting=Enemies / 0
+Clips=24
+Timings=Idle=1.000s, Move=0.667s, Death=0.550s
+
+Rusher
+Prefab=Assets/_Project/Prefabs/Enemies/Animated/Enemy_Fast_Rusher.prefab
+GUID=27b0a82bc5b42e64a8789fa4ea342970
+Data=Assets/_Project/Data/Enemies/Enemy_Fast_Data.asset
+Controller=Assets/_Project/Animations/Rusher/Authored/Rusher_Animator.controller
+RootScale=(1.00, 1.00, 1.00)
+ColliderRadius=0.31 Offset=(0.00, 0.00)
+Material=Packages/com.unity.render-pipelines.universal/Runtime/Materials/Sprite-Lit-Default.mat
+Sorting=Enemies / 0
+Clips=48
+Timings=Idle=1.000s, Move=0.667s, Death=0.550s, Windup=0.650s, Attack=0.600s, Recover=0.650s
+
+Tank
+Prefab=Assets/_Project/Prefabs/Enemies/Animated/Enemy_Heavy_Tank.prefab
+GUID=f3f3be1d341d74244acc6822b91083e2
+Data=Assets/_Project/Data/Enemies/Enemy_Heavy_Data.asset
+Controller=Assets/_Project/Animations/Tank/Authored/Tank_Animator.controller
+RootScale=(1.00, 1.00, 1.00)
+ColliderRadius=0.37 Offset=(0.00, 0.00)
+Material=Packages/com.unity.render-pipelines.universal/Runtime/Materials/Sprite-Lit-Default.mat
+Sorting=Enemies / 0
+Clips=48
+Timings=Idle=1.000s, Move=0.667s, Death=0.550s, Windup=1.100s, Attack=0.400s, Recover=0.400s
+
+Spitter
+Prefab=Assets/_Project/Prefabs/Enemies/Animated/Enemy_Ranged_Spitter.prefab
+GUID=838da7030e45d5d4b8e3848be77bc696
+Data=Assets/_Project/Data/Enemies/Enemy_Ranged_Data.asset
+Controller=Assets/_Project/Animations/Spitter/Authored/Spitter_Animator.controller
+RootScale=(1.00, 1.00, 1.00)
+ColliderRadius=0.5 Offset=(0.00, 0.00)
+Material=Packages/com.unity.render-pipelines.universal/Runtime/Materials/Sprite-Lit-Default.mat
+Sorting=Enemies / 0
+Clips=48
+Timings=Idle=1.000s, Move=0.667s, Death=0.550s, Windup=0.850s, Attack=0.200s, Recover=0.200s

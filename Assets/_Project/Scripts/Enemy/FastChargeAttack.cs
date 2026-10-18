@@ -148,6 +148,14 @@ public class FastChargeAttack : MonoBehaviour
 
     private Transform playerTarget;
 
+    // Presentation observes the native state; gameplay and serialized settings are unchanged.
+    public EnemyAttackVisualSample VisualSample =>
+        !isActiveAndEnabled ? default :
+        currentState == ChargeState.Preparing ? new EnemyAttackVisualSample(EnemyAttackVisualPhase.Windup, stateTimeRemaining, windupDuration, lockedDirection) :
+        currentState == ChargeState.Charging ? new EnemyAttackVisualSample(EnemyAttackVisualPhase.Active, stateTimeRemaining, chargeDuration, lockedDirection) :
+        currentState == ChargeState.Recovering ? new EnemyAttackVisualSample(EnemyAttackVisualPhase.Recover, stateTimeRemaining, recoveryDuration, lockedDirection) : default;
+
+
     // =====================================================
     // Unity Lifecycle
     // =====================================================
