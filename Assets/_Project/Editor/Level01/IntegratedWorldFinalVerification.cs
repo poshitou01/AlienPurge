@@ -15,6 +15,11 @@ namespace AlienPurge.Level01.Editor
     {
         public static void Run()
         {
+            Verify();
+            RegionLoopV02Regression.RunIntegratedLifecycle();
+        }
+        public static void Verify()
+        {
             var lines=new List<string>();
             IntegratedWorldInstaller.Install();
             var before=File.ReadAllBytes(IntegratedWorldInstaller.Target);
@@ -38,7 +43,6 @@ namespace AlienPurge.Level01.Editor
             Require(missing.Length==0&&extra.Length==0,"Accepted Arena relative layout, collision shapes and occlusion sorting match the integrated copy",lines);
             IntegratedWorldInstaller.CheckProtectedScenes();
             File.WriteAllLines(IntegratedWorldInstaller.Reports+"/InstallerAndArena.txt",lines);
-            RegionLoopV02Regression.RunIntegratedLifecycle();
         }
         static void Require(bool condition,string text,List<string> lines)
         {if(!condition)throw new InvalidOperationException(text);lines.Add("PASS: "+text);}

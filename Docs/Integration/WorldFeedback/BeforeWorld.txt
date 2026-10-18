@@ -1,0 +1,220 @@
+World (0.00, 0.00, 0.00) scale (1.00, 1.00, 1.00)
+ROAD: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G1_EntryToCargo[0] active=True descendants=22
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G1_EntryToCargo[0]/Wall_V[1]/Visual[0] | local=(-209.84, -6.75) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G1_EntryToCargo[0]/Wall_V[2]/Visual[0] | local=(-216.07, -6.75) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G1_EntryToCargo[0]/Wall_V[3]/Visual[0] | local=(-209.84, -3.05) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G1_EntryToCargo[0]/Wall_V[4]/Visual[0] | local=(-216.07, -3.05) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G1_EntryToCargo[0]/Wall_V[5]/Visual[0] | local=(-209.84, 0.65) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G1_EntryToCargo[0]/Wall_V[6]/Visual[0] | local=(-216.07, 0.65) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G1_EntryToCargo[0]/Wall_V[7]/Visual[0] | local=(-209.84, 4.35) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G1_EntryToCargo[0]/Wall_V[8]/Visual[0] | local=(-216.07, 4.35) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G1_EntryToCargo[0]/Wall_V[9]/Visual[0] | local=(-209.84, 8.05) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G1_EntryToCargo[0]/Wall_V[10]/Visual[0] | local=(-216.07, 8.05) | colliders=0 | foot overlaps=Collision_Footprints
+ROAD: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1] active=True descendants=70
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_H[1]/Visual[0] | local=(-158.75, 35.06) | colliders=0 | foot overlaps=
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_H[2]/Visual[0] | local=(-158.75, 41.66) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_H[3]/Visual[0] | local=(-155.43, -5.30) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_H[4]/Visual[0] | local=(-155.43, 1.30) | colliders=0 | foot overlaps=
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_H[5]/Visual[0] | local=(-152.29, -5.30) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_H[6]/Visual[0] | local=(-152.29, 1.30) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_H[7]/Visual[0] | local=(-149.15, -5.30) | colliders=0 | foot overlaps=
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_H[8]/Visual[0] | local=(-149.15, 1.30) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_V[9]/Visual[0] | local=(-160.48, 36.52) | colliders=0 | foot overlaps=
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_V[10]/Visual[0] | local=(-153.05, 36.52) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_V[11]/Visual[0] | local=(-160.48, 32.86) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_V[12]/Visual[0] | local=(-153.05, 32.86) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_V[13]/Visual[0] | local=(-160.48, 29.19) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_V[14]/Visual[0] | local=(-153.05, 29.19) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_V[15]/Visual[0] | local=(-160.48, 25.52) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_V[16]/Visual[0] | local=(-153.05, 25.52) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_V[17]/Visual[0] | local=(-160.48, 21.85) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_V[18]/Visual[0] | local=(-153.05, 21.85) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_V[19]/Visual[0] | local=(-160.48, 18.18) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_V[20]/Visual[0] | local=(-153.05, 18.18) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_V[21]/Visual[0] | local=(-160.48, 14.51) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_V[22]/Visual[0] | local=(-153.05, 14.51) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_V[23]/Visual[0] | local=(-160.48, 10.84) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_V[24]/Visual[0] | local=(-153.05, 10.84) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_V[25]/Visual[0] | local=(-160.48, 7.17) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_V[26]/Visual[0] | local=(-153.05, 7.17) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_V[27]/Visual[0] | local=(-160.48, 3.50) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_V[28]/Visual[0] | local=(-153.05, 3.50) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_V[29]/Visual[0] | local=(-160.48, -0.17) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_V[30]/Visual[0] | local=(-153.05, -0.17) | colliders=0 | foot overlaps=
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_V[31]/Visual[0] | local=(-151.06, -3.50) | colliders=0 | foot overlaps=
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_V[32]/Visual[0] | local=(-143.63, -3.50) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_V[33]/Visual[0] | local=(-151.06, -6.50) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_V[34]/Visual[0] | local=(-143.63, -6.50) | colliders=0 | foot overlaps=Collision_Footprints
+ROAD: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G3_MaintenanceToCommons[2] active=True descendants=30
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G3_MaintenanceToCommons[2]/Wall_H[1]/Visual[0] | local=(-100.79, 5.75) | colliders=0 | foot overlaps=
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G3_MaintenanceToCommons[2]/Wall_H[2]/Visual[0] | local=(-100.79, -1.75) | colliders=0 | foot overlaps=
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G3_MaintenanceToCommons[2]/Wall_V[3]/Visual[0] | local=(-96.36, -5.92) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G3_MaintenanceToCommons[2]/Wall_V[4]/Visual[0] | local=(-104.69, -5.92) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G3_MaintenanceToCommons[2]/Wall_V[5]/Visual[0] | local=(-96.36, -2.75) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G3_MaintenanceToCommons[2]/Wall_V[6]/Visual[0] | local=(-104.69, -2.75) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G3_MaintenanceToCommons[2]/Wall_V[7]/Visual[0] | local=(-96.36, 0.42) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G3_MaintenanceToCommons[2]/Wall_V[8]/Visual[0] | local=(-104.69, 0.42) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G3_MaintenanceToCommons[2]/Wall_V[9]/Visual[0] | local=(-96.43, 3.58) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G3_MaintenanceToCommons[2]/Wall_V[10]/Visual[0] | local=(-104.76, 3.58) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G3_MaintenanceToCommons[2]/Wall_V[11]/Visual[0] | local=(-96.43, 6.75) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G3_MaintenanceToCommons[2]/Wall_V[12]/Visual[0] | local=(-104.76, 6.75) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G3_MaintenanceToCommons[2]/Wall_V[13]/Visual[0] | local=(-96.43, 9.92) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G3_MaintenanceToCommons[2]/Wall_V[14]/Visual[0] | local=(-104.76, 9.92) | colliders=0 | foot overlaps=Collision_Footprints
+ROAD: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G4_CommonsToResearch[3] active=True descendants=50
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G4_CommonsToResearch[3]/Wall_H[1]/Visual[0] | local=(-65.33, 42.31) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G4_CommonsToResearch[3]/Wall_H[2]/Visual[0] | local=(-65.33, 47.31) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G4_CommonsToResearch[3]/Wall_H[3]/Visual[0] | local=(-62.00, 42.31) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G4_CommonsToResearch[3]/Wall_H[4]/Visual[0] | local=(-62.00, 47.31) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G4_CommonsToResearch[3]/Wall_H[5]/Visual[0] | local=(-58.67, 42.31) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G4_CommonsToResearch[3]/Wall_H[6]/Visual[0] | local=(-58.67, 47.31) | colliders=0 | foot overlaps=
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G4_CommonsToResearch[3]/Wall_H[7]/Visual[0] | local=(-55.17, 64.28) | colliders=0 | foot overlaps=
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G4_CommonsToResearch[3]/Wall_H[8]/Visual[0] | local=(-55.17, 69.28) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G4_CommonsToResearch[3]/Wall_H[9]/Visual[0] | local=(-51.50, 64.28) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G4_CommonsToResearch[3]/Wall_H[10]/Visual[0] | local=(-51.50, 69.28) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G4_CommonsToResearch[3]/Wall_H[11]/Visual[0] | local=(-47.83, 64.28) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G4_CommonsToResearch[3]/Wall_H[12]/Visual[0] | local=(-47.83, 69.28) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G4_CommonsToResearch[3]/Wall_V[13]/Visual[0] | local=(-53.85, 46.64) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G4_CommonsToResearch[3]/Wall_V[14]/Visual[0] | local=(-59.68, 46.64) | colliders=0 | foot overlaps=
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G4_CommonsToResearch[3]/Wall_V[15]/Visual[0] | local=(-53.85, 50.30) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G4_CommonsToResearch[3]/Wall_V[16]/Visual[0] | local=(-59.68, 50.30) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G4_CommonsToResearch[3]/Wall_V[17]/Visual[0] | local=(-53.85, 53.97) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G4_CommonsToResearch[3]/Wall_V[18]/Visual[0] | local=(-59.68, 53.97) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G4_CommonsToResearch[3]/Wall_V[19]/Visual[0] | local=(-53.85, 57.63) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G4_CommonsToResearch[3]/Wall_V[20]/Visual[0] | local=(-59.68, 57.63) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G4_CommonsToResearch[3]/Wall_V[21]/Visual[0] | local=(-53.85, 61.29) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G4_CommonsToResearch[3]/Wall_V[22]/Visual[0] | local=(-59.68, 61.29) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G4_CommonsToResearch[3]/Wall_V[23]/Visual[0] | local=(-53.85, 64.95) | colliders=0 | foot overlaps=
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G4_CommonsToResearch[3]/Wall_V[24]/Visual[0] | local=(-59.68, 64.95) | colliders=0 | foot overlaps=Collision_Footprints
+ROAD: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4] active=True descendants=170
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[1]/Visual[0] | local=(18.29, 29.50) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[2]/Visual[0] | local=(18.29, 36.50) | colliders=0 | foot overlaps=
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[3]/Visual[0] | local=(21.78, 29.50) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[4]/Visual[0] | local=(21.78, 36.50) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[5]/Visual[0] | local=(25.28, 29.50) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[6]/Visual[0] | local=(25.28, 36.50) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[7]/Visual[0] | local=(28.77, 29.50) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[8]/Visual[0] | local=(28.77, 36.50) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[9]/Visual[0] | local=(32.27, 29.50) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[10]/Visual[0] | local=(32.27, 36.50) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[11]/Visual[0] | local=(35.77, 29.50) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[12]/Visual[0] | local=(35.77, 36.50) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[13]/Visual[0] | local=(39.26, 29.50) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[14]/Visual[0] | local=(39.26, 36.50) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[15]/Visual[0] | local=(42.76, 29.50) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[16]/Visual[0] | local=(42.76, 36.50) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[17]/Visual[0] | local=(46.25, 29.50) | colliders=0 | foot overlaps=
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[18]/Visual[0] | local=(46.25, 36.50) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[19]/Visual[0] | local=(46.15, -28.50) | colliders=0 | foot overlaps=
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[20]/Visual[0] | local=(46.15, -35.50) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[21]/Visual[0] | local=(42.46, -28.50) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[22]/Visual[0] | local=(42.46, -35.50) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[23]/Visual[0] | local=(38.77, -28.50) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[24]/Visual[0] | local=(38.77, -35.50) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[25]/Visual[0] | local=(35.08, -28.50) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[26]/Visual[0] | local=(35.08, -35.50) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[27]/Visual[0] | local=(31.38, -28.50) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[28]/Visual[0] | local=(31.38, -35.50) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[29]/Visual[0] | local=(27.69, -28.50) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[30]/Visual[0] | local=(27.69, -35.50) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[31]/Visual[0] | local=(24.00, -28.50) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[32]/Visual[0] | local=(24.00, -35.50) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[33]/Visual[0] | local=(20.31, -28.50) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[34]/Visual[0] | local=(20.31, -35.50) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[35]/Visual[0] | local=(16.62, -28.50) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[36]/Visual[0] | local=(16.62, -35.50) | colliders=0 | foot overlaps=
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[37]/Visual[0] | local=(12.92, -28.50) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[38]/Visual[0] | local=(12.92, -35.50) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[39]/Visual[0] | local=(9.23, -28.50) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[40]/Visual[0] | local=(9.23, -35.50) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[41]/Visual[0] | local=(5.54, -28.50) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[42]/Visual[0] | local=(5.54, -35.50) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[43]/Visual[0] | local=(1.85, -28.50) | colliders=0 | foot overlaps=
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[44]/Visual[0] | local=(1.85, -35.50) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[45]/Visual[0] | local=(12.86, 38.25) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[46]/Visual[0] | local=(20.69, 38.25) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[47]/Visual[0] | local=(12.86, 34.75) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[48]/Visual[0] | local=(20.69, 34.75) | colliders=0 | foot overlaps=
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[49]/Visual[0] | local=(44.32, 31.19) | colliders=0 | foot overlaps=
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[50]/Visual[0] | local=(52.15, 31.19) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[51]/Visual[0] | local=(44.32, 27.58) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[52]/Visual[0] | local=(52.15, 27.58) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[53]/Visual[0] | local=(44.32, 23.97) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[54]/Visual[0] | local=(52.15, 23.97) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[55]/Visual[0] | local=(44.32, 20.36) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[56]/Visual[0] | local=(52.15, 20.36) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[57]/Visual[0] | local=(44.32, 16.75) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[58]/Visual[0] | local=(52.15, 16.75) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[59]/Visual[0] | local=(44.32, 13.14) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[60]/Visual[0] | local=(52.15, 13.14) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[61]/Visual[0] | local=(44.32, 9.53) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[62]/Visual[0] | local=(52.15, 9.53) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[63]/Visual[0] | local=(44.32, 5.92) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[64]/Visual[0] | local=(52.15, 5.92) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[65]/Visual[0] | local=(44.32, 2.31) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[66]/Visual[0] | local=(52.15, 2.31) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[67]/Visual[0] | local=(44.32, -1.31) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[68]/Visual[0] | local=(52.15, -1.31) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[69]/Visual[0] | local=(44.32, -4.92) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[70]/Visual[0] | local=(52.15, -4.92) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[71]/Visual[0] | local=(44.32, -8.53) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[72]/Visual[0] | local=(52.15, -8.53) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[73]/Visual[0] | local=(44.32, -12.14) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[74]/Visual[0] | local=(52.15, -12.14) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[75]/Visual[0] | local=(44.32, -15.75) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[76]/Visual[0] | local=(52.15, -15.75) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[77]/Visual[0] | local=(44.32, -19.36) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[78]/Visual[0] | local=(52.15, -19.36) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[79]/Visual[0] | local=(44.32, -22.97) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[80]/Visual[0] | local=(52.15, -22.97) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[81]/Visual[0] | local=(44.32, -26.58) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[82]/Visual[0] | local=(52.15, -26.58) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[83]/Visual[0] | local=(44.32, -30.19) | colliders=0 | foot overlaps=
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[84]/Visual[0] | local=(52.15, -30.19) | colliders=0 | foot overlaps=Collision_Footprints
+ROAD: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/Boss_SouthApproach[5] active=True descendants=18
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/Boss_SouthApproach[5]/Wall_V[1]/Visual[0] | local=(-5.18, -25.20) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/Boss_SouthApproach[5]/Wall_V[2]/Visual[0] | local=(5.65, -25.20) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/Boss_SouthApproach[5]/Wall_V[3]/Visual[0] | local=(-5.18, -28.00) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/Boss_SouthApproach[5]/Wall_V[4]/Visual[0] | local=(5.65, -28.00) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/Boss_SouthApproach[5]/Wall_V[5]/Visual[0] | local=(-5.18, -30.80) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/Boss_SouthApproach[5]/Wall_V[6]/Visual[0] | local=(5.65, -30.80) | colliders=0 | foot overlaps=
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/Boss_SouthApproach[5]/Wall_V[7]/Visual[0] | local=(-5.18, -33.60) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/Boss_SouthApproach[5]/Wall_V[8]/Visual[0] | local=(5.65, -33.60) | colliders=0 | foot overlaps=
+ROAD: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G7_ApproachToExtraction[6] active=True descendants=46
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G7_ApproachToExtraction[6]/Wall_H[1]/Visual[0] | local=(17.58, -57.88) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G7_ApproachToExtraction[6]/Wall_H[2]/Visual[0] | local=(17.58, -55.08) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G7_ApproachToExtraction[6]/Wall_H[3]/Visual[0] | local=(20.75, -57.88) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G7_ApproachToExtraction[6]/Wall_H[4]/Visual[0] | local=(20.75, -55.08) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G7_ApproachToExtraction[6]/Wall_H[5]/Visual[0] | local=(23.92, -57.88) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G7_ApproachToExtraction[6]/Wall_H[6]/Visual[0] | local=(23.92, -55.08) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G7_ApproachToExtraction[6]/Wall_H[7]/Visual[0] | local=(27.08, -57.88) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G7_ApproachToExtraction[6]/Wall_H[8]/Visual[0] | local=(27.08, -55.08) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G7_ApproachToExtraction[6]/Wall_V[9]/Visual[0] | local=(14.42, -33.75) | colliders=0 | foot overlaps=
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G7_ApproachToExtraction[6]/Wall_V[10]/Visual[0] | local=(18.05, -33.75) | colliders=0 | foot overlaps=
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G7_ApproachToExtraction[6]/Wall_V[11]/Visual[0] | local=(14.42, -37.25) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G7_ApproachToExtraction[6]/Wall_V[12]/Visual[0] | local=(18.05, -37.25) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G7_ApproachToExtraction[6]/Wall_V[13]/Visual[0] | local=(14.42, -40.74) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G7_ApproachToExtraction[6]/Wall_V[14]/Visual[0] | local=(18.05, -40.74) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G7_ApproachToExtraction[6]/Wall_V[15]/Visual[0] | local=(14.42, -44.24) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G7_ApproachToExtraction[6]/Wall_V[16]/Visual[0] | local=(18.05, -44.24) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G7_ApproachToExtraction[6]/Wall_V[17]/Visual[0] | local=(14.42, -47.74) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G7_ApproachToExtraction[6]/Wall_V[18]/Visual[0] | local=(18.05, -47.74) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G7_ApproachToExtraction[6]/Wall_V[19]/Visual[0] | local=(14.42, -51.24) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G7_ApproachToExtraction[6]/Wall_V[20]/Visual[0] | local=(18.05, -51.24) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G7_ApproachToExtraction[6]/Wall_V[21]/Visual[0] | local=(14.42, -54.74) | colliders=0 | foot overlaps=Collision_Footprints
+Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G7_ApproachToExtraction[6]/Wall_V[22]/Visual[0] | local=(18.05, -54.74) | colliders=0 | foot overlaps=Collision_Footprints
+ROAD: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/Metal_Expansion_Joint[7] active=True descendants=1
+ROAD: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/Metal_Expansion_Joint[8] active=True descendants=1
+ROAD: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/Metal_Expansion_Joint[9] active=True descendants=1
+ROAD: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/Metal_Expansion_Joint[10] active=True descendants=1
+ROAD: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/Metal_Expansion_Joint[11] active=True descendants=1
+ROAD: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/Metal_Expansion_Joint[12] active=True descendants=1
+ROAD: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/Metal_Expansion_Joint[13] active=True descendants=1
+ROAD: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/Metal_Expansion_Joint[14] active=True descendants=1
+ROAD: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/Metal_Expansion_Joint[15] active=True descendants=1
+ROAD: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/Metal_Expansion_Joint[16] active=True descendants=1
+ColonyEntry cap=22 special=4 ambient=12 profiles=Normal:0/0 residents=Normal:4 guard=True;Normal:8 guard=False
+CargoYard cap=26 special=4 ambient=16 profiles=Normal:0/0;Fast:3/0;Exploder:2/2 residents=Normal:4 guard=True;Normal:9 guard=False;Fast:2 guard=False;Exploder:1 guard=False
+PowerMaintenance cap=28 special=4 ambient=18 profiles=Normal:0/0;Fast:3/0;Heavy:1/0;Exploder:2/2;Support:1/2 residents=Normal:5 guard=True;Normal:9 guard=False;Fast:2 guard=False;Heavy:1 guard=False;Support:1 guard=False
+QuarantineCommons cap=32 special=5 ambient=18 profiles=Normal:0/0;Fast:3/0;Heavy:2/0;Exploder:2/2;Support:1/2 residents=Normal:5 guard=True;Normal:10 guard=False;Fast:2 guard=False;Heavy:1 guard=False
+InfectedResearch cap=34 special=5 ambient=20 profiles=Normal:0/0;Fast:3/0;Heavy:2/0;Exploder:2/2;Support:1/2 residents=Normal:6 guard=True;Normal:11 guard=False;Fast:2 guard=False;Heavy:1 guard=False
+Extraction cap=26 special=5 ambient=12 profiles=Normal:0/0;Fast:3/0;Exploder:2/2;Support:1/2 residents=Normal:4 guard=True;Normal:4 guard=False;Fast:2 guard=False

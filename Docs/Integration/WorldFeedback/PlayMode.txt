@@ -1,0 +1,74 @@
+PASS | Unity 2022.3.62f3c1 | 2026-10-18 14:37:38Z
+PASS: Entry keeps its introductory Swarmer mix
+PASS: All six profiles configured: CargoYard
+PASS: All six have actual resident slots: CargoYard
+PASS: Existing access-guard ownership preserved: CargoYard
+PASS: Specialist share increases while ordinary enemies remain the majority: CargoYard = 10.0%
+PASS: Every configured squad can be selected by the real weighted scheduler: CargoYard
+PASS: All six profiles configured: PowerMaintenance
+PASS: All six have actual resident slots: PowerMaintenance
+PASS: Existing access-guard ownership preserved: PowerMaintenance
+PASS: Specialist share increases while ordinary enemies remain the majority: PowerMaintenance = 12.0%
+PASS: Every configured squad can be selected by the real weighted scheduler: PowerMaintenance
+PASS: All six profiles configured: QuarantineCommons
+PASS: All six have actual resident slots: QuarantineCommons
+PASS: Existing access-guard ownership preserved: QuarantineCommons
+PASS: Specialist share increases while ordinary enemies remain the majority: QuarantineCommons = 20.0%
+PASS: Every configured squad can be selected by the real weighted scheduler: QuarantineCommons
+PASS: All six profiles configured: InfectedResearch
+PASS: All six have actual resident slots: InfectedResearch
+PASS: Existing access-guard ownership preserved: InfectedResearch
+PASS: Specialist share increases while ordinary enemies remain the majority: InfectedResearch = 22.0%
+PASS: Every configured squad can be selected by the real weighted scheduler: InfectedResearch
+PASS: All six profiles configured: Extraction
+PASS: All six have actual resident slots: Extraction
+PASS: Existing access-guard ownership preserved: Extraction
+PASS: Specialist share increases while ordinary enemies remain the majority: Extraction = 23.6%
+PASS: Every configured squad can be selected by the real weighted scheduler: Extraction
+PASS: Main opens G1 exactly once
+PASS: Repeated main activation cannot pay again: ColonyEntry
+PASS: Actual Cargo resident has authored animation and sprite: Normal
+PASS: Production presentation component: Normal
+PASS: Actual Cargo resident has authored animation and sprite: Fast
+PASS: Production presentation component: Fast
+PASS: Actual Cargo resident has authored animation and sprite: Heavy
+PASS: Production presentation component: Heavy
+PASS: Actual Cargo resident has authored animation and sprite: Ranged
+PASS: Production presentation component: Ranged
+PASS: Actual Cargo resident has authored animation and sprite: Support
+PASS: Production presentation component: Support
+PASS: Actual Cargo resident has authored animation and sprite: Exploder
+PASS: Production presentation component: Exploder
+PASS: Spitter shows its formal attack windup
+PASS: Spitter projectile is active and moving
+PASS: Spitter awards exactly one native death and XP pickup
+PASS: Ordinary Spitter does not count as an access guard
+PASS: Restart resets milestones, modules and run identity
+PASS: Actual player motor cannot pass through road wall at (-102.19, -1.75)
+PASS: Actual player motor cannot pass through road wall at (-102.19, 5.75)
+PASS: Actual player motor cannot pass through road wall at (-153.05, 14.51)
+PASS: Actual player motor cannot pass through road wall at (-53.85, 53.97)
+PASS: Deleted ordinary wall no longer blocks extraction side-path entrance
+PASS: G7 still blocks premature extraction entry
+PASS: Actual motor traverses open G7 and the repaired extraction corner
+PASS: Native main-menu Settings button opens the styled panel
+PASS: All four native volume controls retained
+PASS: Slider has an unobstructed pointer target: Master
+PASS: Real slider pointer input updates native mixer: Master
+PASS: Percentage label follows mixer: Master
+PASS: Slider has an unobstructed pointer target: Music
+PASS: Real slider pointer input updates native mixer: Music
+PASS: Percentage label follows mixer: Music
+PASS: Slider has an unobstructed pointer target: SFX
+PASS: Real slider pointer input updates native mixer: SFX
+PASS: Percentage label follows mixer: SFX
+PASS: Slider has an unobstructed pointer target: UI
+PASS: Real slider pointer input updates native mixer: UI
+PASS: Percentage label follows mixer: UI
+PASS: Settings frame fits 1920x1080
+PASS: Settings frame fits 1280x720
+PASS: Settings frame fits 1280x1024
+PASS: Back saves and restores the main menu
+PASS: Reopening Settings retains the selected volume
+PASS: Reset Defaults retains native 100/32/100/100 values
+LIMITS: native movement/physics, regional garrison and attacks, and UI pointer events ran in Play Mode. Deterministic movement input and invulnerable isolated profile; no human balance claim. Normal ambient scheduling and Boss route are covered by the separate full integration regression.

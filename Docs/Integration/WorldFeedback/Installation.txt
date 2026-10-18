@@ -1,0 +1,184 @@
+CargoYard: weights [Swarmer,Rusher,Brute,Spitter,Support,Exploder]=50/20/6/12/5/7; type caps=3/1/1/1/1; special cap=5; residents=16; access guards=4
+PowerMaintenance: weights [Swarmer,Rusher,Brute,Spitter,Support,Exploder]=40/20/8/14/8/10; type caps=3/2/2/1/2; special cap=6; residents=18; access guards=5
+QuarantineCommons: weights [Swarmer,Rusher,Brute,Spitter,Support,Exploder]=30/20/10/16/10/14; type caps=3/2/3/2/3; special cap=7; residents=18; access guards=5
+InfectedResearch: weights [Swarmer,Rusher,Brute,Spitter,Support,Exploder]=24/18/12/18/12/16; type caps=4/2/4/2/3; special cap=9; residents=20; access guards=6
+Extraction: weights [Swarmer,Rusher,Brute,Spitter,Support,Exploder]=20/18/12/20/12/18; type caps=4/2/4/2/3; special cap=9; residents=10; access guards=4
+ColonyEntry unchanged. Total regional/global population limits, tasks, ability data and Boss summons unchanged. Support pool=4, Exploder pool=6; expansion off.
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G1_EntryToCargo[0]/Wall_V[2] center=(0.00, 0.00) size=(0.46, 4.60)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G1_EntryToCargo[0]/Wall_V[4] center=(0.00, 0.00) size=(0.46, 4.60)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G1_EntryToCargo[0]/Wall_V[6] center=(0.00, 0.00) size=(0.46, 4.60)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G1_EntryToCargo[0]/Wall_V[8] center=(0.00, 0.00) size=(0.46, 4.60)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G1_EntryToCargo[0]/Wall_V[10] center=(0.00, 0.00) size=(0.46, 4.60)
+CROPPED visual and footprint to keep existing bend open: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_H[1] local interval=-2.25..0.3500061
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_H[1] center=(-0.95, 0.02) size=(2.60, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_H[2] center=(0.00, 0.02) size=(4.50, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_H[3] center=(0.00, 0.02) size=(4.50, 0.40)
+CROPPED visual and footprint to keep existing bend open: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_H[4] local interval=-0.1703033..2.25
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_H[4] center=(1.04, 0.02) size=(2.42, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_H[5] center=(0.00, 0.02) size=(4.50, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_H[6] center=(0.00, 0.02) size=(4.50, 0.40)
+CROPPED visual and footprint to keep existing bend open: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_H[7] local interval=-2.25..0.1703186
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_H[7] center=(-1.04, 0.02) size=(2.42, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_H[8] center=(0.00, 0.02) size=(4.50, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_V[9] center=(0.00, 0.00) size=(0.46, 4.60)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_V[11] center=(0.00, 0.00) size=(0.46, 4.60)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_V[13] center=(0.00, 0.00) size=(0.46, 4.60)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_V[15] center=(0.00, 0.00) size=(0.46, 4.60)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_V[17] center=(0.00, 0.00) size=(0.46, 4.60)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_V[19] center=(0.00, 0.00) size=(0.46, 4.60)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_V[21] center=(0.00, 0.00) size=(0.46, 4.60)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_V[23] center=(0.00, 0.00) size=(0.46, 4.60)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_V[25] center=(0.00, 0.00) size=(0.46, 4.60)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_V[27] center=(0.00, 0.00) size=(0.46, 4.60)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_V[29] center=(0.00, 0.00) size=(0.46, 4.60)
+CROPPED visual and footprint to keep existing bend open: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_V[30] local interval=-0.4345201..2.3
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_V[30] center=(0.00, 0.93) size=(0.46, 2.73)
+CROPPED visual and footprint to keep existing bend open: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_V[31] local interval=-2.3..0.0999999
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_V[31] center=(0.00, -1.10) size=(0.46, 2.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G2_CargoToMaintenance[1]/Wall_V[33] center=(0.00, 0.00) size=(0.46, 4.60)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G3_MaintenanceToCommons[2]/Wall_H[1] center=(0.00, 0.02) size=(4.50, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G3_MaintenanceToCommons[2]/Wall_H[2] center=(0.00, 0.02) size=(4.50, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G3_MaintenanceToCommons[2]/Wall_V[4] center=(0.00, 0.00) size=(0.46, 4.60)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G3_MaintenanceToCommons[2]/Wall_V[6] center=(0.00, 0.00) size=(0.46, 4.60)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G3_MaintenanceToCommons[2]/Wall_V[8] center=(0.00, 0.00) size=(0.46, 4.60)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G3_MaintenanceToCommons[2]/Wall_V[10] center=(0.00, 0.00) size=(0.46, 4.60)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G3_MaintenanceToCommons[2]/Wall_V[12] center=(0.00, 0.00) size=(0.46, 4.60)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G3_MaintenanceToCommons[2]/Wall_V[14] center=(0.00, 0.00) size=(0.46, 4.60)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G4_CommonsToResearch[3]/Wall_H[1] center=(0.00, 0.02) size=(4.50, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G4_CommonsToResearch[3]/Wall_H[2] center=(0.00, 0.02) size=(4.50, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G4_CommonsToResearch[3]/Wall_H[3] center=(0.00, 0.02) size=(4.50, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G4_CommonsToResearch[3]/Wall_H[4] center=(0.00, 0.02) size=(4.50, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G4_CommonsToResearch[3]/Wall_H[5] center=(0.00, 0.02) size=(4.50, 0.40)
+CROPPED visual and footprint to keep existing bend open: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G4_CommonsToResearch[3]/Wall_H[6] local interval=-2.25..0.2666702
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G4_CommonsToResearch[3]/Wall_H[6] center=(-0.99, 0.02) size=(2.52, 0.40)
+CROPPED visual and footprint to keep existing bend open: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G4_CommonsToResearch[3]/Wall_H[7] local interval=-0.4333305..2.25
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G4_CommonsToResearch[3]/Wall_H[7] center=(0.91, 0.02) size=(2.68, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G4_CommonsToResearch[3]/Wall_H[8] center=(0.00, 0.02) size=(4.50, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G4_CommonsToResearch[3]/Wall_H[9] center=(0.00, 0.02) size=(4.50, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G4_CommonsToResearch[3]/Wall_H[10] center=(0.00, 0.02) size=(4.50, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G4_CommonsToResearch[3]/Wall_H[11] center=(0.00, 0.02) size=(4.50, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G4_CommonsToResearch[3]/Wall_H[12] center=(0.00, 0.02) size=(4.50, 0.40)
+CROPPED visual and footprint to keep existing bend open: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G4_CommonsToResearch[3]/Wall_V[14] local interval=-0.4307327..2.299999
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G4_CommonsToResearch[3]/Wall_V[14] center=(0.00, 0.93) size=(0.46, 2.73)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G4_CommonsToResearch[3]/Wall_V[16] center=(0.00, 0.00) size=(0.46, 4.60)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G4_CommonsToResearch[3]/Wall_V[18] center=(0.00, 0.00) size=(0.46, 4.60)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G4_CommonsToResearch[3]/Wall_V[20] center=(0.00, 0.00) size=(0.46, 4.60)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G4_CommonsToResearch[3]/Wall_V[22] center=(0.00, 0.00) size=(0.46, 4.60)
+CROPPED visual and footprint to keep existing bend open: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G4_CommonsToResearch[3]/Wall_V[23] local interval=-2.299999..0.4307251
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G4_CommonsToResearch[3]/Wall_V[23] center=(0.00, -0.93) size=(0.46, 2.73)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G4_CommonsToResearch[3]/Wall_V[24] center=(0.00, 0.00) size=(0.46, 4.60)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[1] center=(0.00, 0.02) size=(4.50, 0.40)
+CROPPED visual and footprint to keep existing bend open: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[2] local interval=-0.3478298..2.25
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[2] center=(0.95, 0.02) size=(2.60, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[3] center=(0.00, 0.02) size=(4.50, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[4] center=(0.00, 0.02) size=(4.50, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[5] center=(0.00, 0.02) size=(4.50, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[6] center=(0.00, 0.02) size=(4.50, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[7] center=(0.00, 0.02) size=(4.50, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[8] center=(0.00, 0.02) size=(4.50, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[9] center=(0.00, 0.02) size=(4.50, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[10] center=(0.00, 0.02) size=(4.50, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[11] center=(0.00, 0.02) size=(4.50, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[12] center=(0.00, 0.02) size=(4.50, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[13] center=(0.00, 0.02) size=(4.50, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[14] center=(0.00, 0.02) size=(4.50, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[15] center=(0.00, 0.02) size=(4.50, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[16] center=(0.00, 0.02) size=(4.50, 0.40)
+CROPPED visual and footprint to keep existing bend open: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[17] local interval=-2.25..0.3478279
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[17] center=(-0.95, 0.02) size=(2.60, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[18] center=(0.00, 0.02) size=(4.50, 0.40)
+CROPPED visual and footprint to keep existing bend open: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[19] local interval=-2.25..0.4461479
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[19] center=(-0.90, 0.02) size=(2.70, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[20] center=(0.00, 0.02) size=(4.50, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[21] center=(0.00, 0.02) size=(4.50, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[22] center=(0.00, 0.02) size=(4.50, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[23] center=(0.00, 0.02) size=(4.50, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[24] center=(0.00, 0.02) size=(4.50, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[25] center=(0.00, 0.02) size=(4.50, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[26] center=(0.00, 0.02) size=(4.50, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[27] center=(0.00, 0.02) size=(4.50, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[28] center=(0.00, 0.02) size=(4.50, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[29] center=(0.00, 0.02) size=(4.50, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[30] center=(0.00, 0.02) size=(4.50, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[31] center=(0.00, 0.02) size=(4.50, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[32] center=(0.00, 0.02) size=(4.50, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[33] center=(0.00, 0.02) size=(4.50, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[34] center=(0.00, 0.02) size=(4.50, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[35] center=(0.00, 0.02) size=(4.50, 0.40)
+REMOVED extraction entrance wall: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[36] at (16.62, -35.50)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[36] center=(0.00, 0.02) size=(4.50, 0.40)
+CROPPED visual and footprint to keep existing bend open: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[37] local interval=-2.25..1.67692
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[37] center=(-0.29, 0.02) size=(3.93, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[38] center=(0.00, 0.02) size=(4.50, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[39] center=(0.00, 0.02) size=(4.50, 0.40)
+CROPPED visual and footprint to keep existing bend open: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[40] local interval=-1.43846..2.25
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[40] center=(0.41, 0.02) size=(3.69, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[41] center=(0.00, 0.02) size=(4.50, 0.40)
+REMOVED overlapping corner cap: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[42] at (1.85, -28.50)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_H[42] center=(0.00, 0.02) size=(4.50, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[43] center=(0.00, 0.00) size=(0.46, 4.60)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[44] center=(0.00, 0.00) size=(0.46, 4.60)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[45] center=(0.00, 0.00) size=(0.46, 4.60)
+CROPPED visual and footprint to keep existing bend open: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[46] local interval=-0.3499985..2.299999
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[46] center=(0.00, 0.98) size=(0.46, 2.65)
+CROPPED visual and footprint to keep existing bend open: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[47] local interval=-2.299999..0.4055595
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[47] center=(0.00, -0.95) size=(0.46, 2.71)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[49] center=(0.00, 0.00) size=(0.46, 4.60)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[51] center=(0.00, 0.00) size=(0.46, 4.60)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[53] center=(0.00, 0.00) size=(0.46, 4.60)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[55] center=(0.00, 0.00) size=(0.46, 4.60)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[57] center=(0.00, 0.00) size=(0.46, 4.60)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[59] center=(0.00, 0.00) size=(0.46, 4.60)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[61] center=(0.00, 0.00) size=(0.46, 4.60)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[63] center=(0.00, 0.00) size=(0.46, 4.60)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[65] center=(0.00, 0.00) size=(0.46, 4.60)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[67] center=(0.00, 0.00) size=(0.46, 4.60)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[69] center=(0.00, 0.00) size=(0.46, 4.60)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[71] center=(0.00, 0.00) size=(0.46, 4.60)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[73] center=(0.00, 0.00) size=(0.46, 4.60)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[75] center=(0.00, 0.00) size=(0.46, 4.60)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[77] center=(0.00, 0.00) size=(0.46, 4.60)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[79] center=(0.00, 0.00) size=(0.46, 4.60)
+CROPPED visual and footprint to keep existing bend open: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[81] local interval=-0.4055614..2.299999
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G5_ResearchToApproach[4]/Wall_V[81] center=(0.00, 0.95) size=(0.46, 2.71)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/Boss_SouthApproach[5]/Wall_V[1] center=(0.00, 0.00) size=(0.46, 4.60)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/Boss_SouthApproach[5]/Wall_V[2] center=(0.00, 0.00) size=(0.46, 4.60)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/Boss_SouthApproach[5]/Wall_V[3] center=(0.00, 0.00) size=(0.46, 4.60)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/Boss_SouthApproach[5]/Wall_V[4] center=(0.00, 0.00) size=(0.46, 4.60)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/Boss_SouthApproach[5]/Wall_V[5] center=(0.00, 0.00) size=(0.46, 4.60)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/Boss_SouthApproach[5]/Wall_V[6] center=(0.00, 0.00) size=(0.46, 4.60)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/Boss_SouthApproach[5]/Wall_V[7] center=(0.00, 0.00) size=(0.46, 4.60)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/Boss_SouthApproach[5]/Wall_V[8] center=(0.00, 0.00) size=(0.46, 4.60)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G7_ApproachToExtraction[6]/Wall_H[1] center=(0.00, 0.02) size=(4.50, 0.40)
+CROPPED visual and footprint to keep existing bend open: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G7_ApproachToExtraction[6]/Wall_H[2] local interval=-0.1833305..2.25
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G7_ApproachToExtraction[6]/Wall_H[2] center=(1.03, 0.02) size=(2.43, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G7_ApproachToExtraction[6]/Wall_H[3] center=(0.00, 0.02) size=(4.50, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G7_ApproachToExtraction[6]/Wall_H[4] center=(0.00, 0.02) size=(4.50, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G7_ApproachToExtraction[6]/Wall_H[5] center=(0.00, 0.02) size=(4.50, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G7_ApproachToExtraction[6]/Wall_H[6] center=(0.00, 0.02) size=(4.50, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G7_ApproachToExtraction[6]/Wall_H[7] center=(0.00, 0.02) size=(4.50, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G7_ApproachToExtraction[6]/Wall_H[8] center=(0.00, 0.02) size=(4.50, 0.40)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G7_ApproachToExtraction[6]/Wall_V[9] center=(0.00, 0.00) size=(0.46, 4.60)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G7_ApproachToExtraction[6]/Wall_V[10] center=(0.00, 0.00) size=(0.46, 4.60)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G7_ApproachToExtraction[6]/Wall_V[11] center=(0.00, 0.00) size=(0.46, 4.60)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G7_ApproachToExtraction[6]/Wall_V[13] center=(0.00, 0.00) size=(0.46, 4.60)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G7_ApproachToExtraction[6]/Wall_V[15] center=(0.00, 0.00) size=(0.46, 4.60)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G7_ApproachToExtraction[6]/Wall_V[17] center=(0.00, 0.00) size=(0.46, 4.60)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G7_ApproachToExtraction[6]/Wall_V[19] center=(0.00, 0.00) size=(0.46, 4.60)
+ADDED solid wall footprint: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G7_ApproachToExtraction[6]/Wall_V[21] center=(0.00, 0.00) size=(0.46, 4.60)
+CROPPED visual and footprint to keep existing bend open: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/G7_ApproachToExtraction[6]/Wall_V[22] local interval=-0.3488922..2.299999
+Road totals: added footprints=142, already covered=52, trimmed corner overhangs=19, removed caps=2. Accepted Arena collision and all seven progression gates preserved.
+Main menu Settings now uses existing backpack/trader art. Native controls and events retained.
+Updated existing footprint to the trimmed visual: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/Boss_SouthApproach[5]/Wall_V[1]
+Updated existing footprint to the trimmed visual: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/Boss_SouthApproach[5]/Wall_V[2]
+Updated existing footprint to the trimmed visual: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/Boss_SouthApproach[5]/Wall_V[3]
+Updated existing footprint to the trimmed visual: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/Boss_SouthApproach[5]/Wall_V[4]
+Updated existing footprint to the trimmed visual: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/Boss_SouthApproach[5]/Wall_V[5]
+CROPPED visual and footprint to keep existing bend open: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/Boss_SouthApproach[5]/Wall_V[6] local interval=0.1999969..2.299999
+Updated existing footprint to the trimmed visual: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/Boss_SouthApproach[5]/Wall_V[6]
+Updated existing footprint to the trimmed visual: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/Boss_SouthApproach[5]/Wall_V[7]
+CROPPED visual and footprint to keep existing bend open: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/Boss_SouthApproach[5]/Wall_V[8] local interval=-2.299999..0.1999969
+Updated existing footprint to the trimmed visual: Environment/Level01_Connected_V01[5]/Connected_Roads[2]/Boss_SouthApproach[5]/Wall_V[8]
+Road totals: added footprints=0, already covered=0, trimmed corner overhangs=2, removed caps=0. Accepted Arena collision and all seven progression gates preserved.
+World migration already applied; editable tuning and collision preserved.
+Settings migration already applied; authored UI preserved.

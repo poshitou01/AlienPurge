@@ -1,6 +1,10 @@
 AlienPurge 集成 V01：交付与实际验收
 日期：2026-10-18（Asia/Shanghai）
 
+最新试玩反馈修复：第二个区域起启用全部六类敌人并递增后续特殊敌人比例；
+统一集成主菜单 Settings；补齐小路墙脚碰撞并打通撤离入口和道路转角。
+当前数值与验收请看 WorldFeedback/交付与试玩.txt；下面保留首次集成及玩家动画修复记录。
+
 后续玩家修复：集成场景现已恢复 WASD 驱动的原八方向逐帧身体动画；鼠标独立瞄准武器。
 75 项针对性 Unity Play Mode 检查通过。详情见 PlayerLocomotionFix.txt、PlayerLocomotion.txt，
 实际运行预览为 Player_Locomotion_Unity.gif。下面的完整集成验收记录属于首次集成版本。

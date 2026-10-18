@@ -1,5 +1,7 @@
 fileFormatVersion: 2
 guid: 67ba6f85bd7c4c1284a55bfe5e31e5d8
+labels:
+- integrated-playtest-feedback-v1
 DefaultImporter:
   externalObjects: {}
   userData: 

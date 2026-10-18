@@ -48,16 +48,16 @@ MonoBehaviour:
     special: 1
     simultaneousLimit: 2
     globalSimultaneousLimit: 0
-  - archetypeId: Exploder
-    type: 5
-    health: 7
+  - archetypeId: Spitter
+    type: 3
+    health: 6
     damage: 1
-    experience: 2
-    speed: 3.2629998
+    experience: 1
+    speed: 2.2589998
     clearance: 0.8
     special: 1
-    simultaneousLimit: 2
-    globalSimultaneousLimit: 2
+    simultaneousLimit: 3
+    globalSimultaneousLimit: 0
   - archetypeId: Support
     type: 4
     health: 11
@@ -66,22 +66,40 @@ MonoBehaviour:
     speed: 2.0080001
     clearance: 0.8
     special: 1
-    simultaneousLimit: 1
-    globalSimultaneousLimit: 2
-  reservedEnemyIds:
-  - Spitter
+    simultaneousLimit: 2
+    globalSimultaneousLimit: 4
+  - archetypeId: Exploder
+    type: 5
+    health: 7
+    damage: 1
+    experience: 2
+    speed: 3.2629998
+    clearance: 0.8
+    special: 1
+    simultaneousLimit: 3
+    globalSimultaneousLimit: 6
+  reservedEnemyIds: []
   residents:
   - type: 0
     count: 5
     keyGuard: 1
   - type: 0
-    count: 10
+    count: 6
     keyGuard: 0
   - type: 1
-    count: 2
+    count: 1
     keyGuard: 0
   - type: 2
     count: 1
+    keyGuard: 0
+  - type: 3
+    count: 2
+    keyGuard: 0
+  - type: 4
+    count: 1
+    keyGuard: 0
+  - type: 5
+    count: 2
     keyGuard: 0
   waves:
   - id: wave-1
@@ -105,7 +123,7 @@ MonoBehaviour:
       count: 1
       keyGuard: 1
   aliveLimit: 32
-  specialLimit: 5
+  specialLimit: 7
   patrolBudget: 0
   patrolType: 0
   patrolInterval: 35
@@ -127,52 +145,42 @@ MonoBehaviour:
   moduleSlot: 0
   v02:
     environmentSquads:
-    - id: advance
-      weight: 40
-      delay: 0
-      groups:
-      - type: 0
-        count: 4
-        keyGuard: 0
-      - type: 1
-        count: 1
-        keyGuard: 0
-    - id: armor
-      weight: 30
-      delay: 0
-      groups:
-      - type: 0
-        count: 3
-        keyGuard: 0
-      - type: 2
-        count: 1
-        keyGuard: 0
-    - id: flank
+    - id: integrated-swarmer
       weight: 30
       delay: 0
       groups:
       - type: 0
         count: 5
         keyGuard: 0
-    - id: pursuit
-      weight: 30
+    - id: integrated-rusher
+      weight: 20
       delay: 0
       groups:
-      - type: 0
-        count: 3
-        keyGuard: 0
       - type: 1
-        count: 2
-        keyGuard: 0
-    - id: integrated-exploder
-      weight: 12
-      delay: 0
-      groups:
-      - type: 5
         count: 1
         keyGuard: 0
       - type: 0
         count: 4
+        keyGuard: 0
+    - id: integrated-brute
+      weight: 10
+      delay: 0
+      groups:
+      - type: 2
+        count: 1
+        keyGuard: 0
+      - type: 0
+        count: 4
+        keyGuard: 0
+    - id: integrated-spitter
+      weight: 16
+      delay: 0
+      groups:
+      - type: 3
+        count: 2
+        keyGuard: 0
+      - type: 0
+        count: 3
         keyGuard: 0
     - id: integrated-support
       weight: 10
@@ -183,6 +191,16 @@ MonoBehaviour:
         keyGuard: 0
       - type: 0
         count: 4
+        keyGuard: 0
+    - id: integrated-exploder
+      weight: 14
+      delay: 0
+      groups:
+      - type: 5
+        count: 2
+        keyGuard: 0
+      - type: 0
+        count: 3
         keyGuard: 0
     weightedEnvironmentSquads: 1
     extractionRegion: 0

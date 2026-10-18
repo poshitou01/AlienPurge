@@ -47,6 +47,7 @@ namespace AlienPurge.Level01.Editor
                 gates.Single(g=>g.gateId=="G7").SetLocked(false,true);
                 Physics2D.SyncTransforms();navigation.astar.Scan();
                 Require(Connected(navigation.astar,arena,extraction),"Boss-open G7 provides a traversable Arena -> extraction route",lines);
+                if(lines.Any(l=>l.StartsWith("FAIL:")))throw new InvalidOperationException("One or more authored routes are blocked; see the individual route results.");
                 lines.Add("LIMITS: actual A* grid and authored collider connectivity; gate completion is an unsaved fixture. Actual mission/Boss events were tested in PlayMode.txt. No keyboard traversal is claimed.");
             }
             catch(Exception e){lines.Add("FAIL: "+e);throw;}
@@ -66,6 +67,6 @@ namespace AlienPurge.Level01.Editor
             return PathUtilities.IsPathPossible(a.node,b.node);
         }
         static void Require(bool condition,string message,List<string> lines)
-        { if(!condition)throw new InvalidOperationException(message);lines.Add("PASS: "+message); }
+        { lines.Add((condition?"PASS: ":"FAIL: ")+message); }
     }
 }

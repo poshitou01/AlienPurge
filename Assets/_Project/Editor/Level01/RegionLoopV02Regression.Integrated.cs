@@ -24,7 +24,7 @@ namespace AlienPurge.Level01.Editor
         [MenuItem("AlienPurge/Gameplay/Level01/Run Integrated World V01 Regression")]
         public static void RunIntegrated()=>StartIntegrated(false);
         public static void RunIntegratedLifecycle()=>StartIntegrated(true);
-        static void StartIntegrated(bool lifecycle,bool locomotion=false)
+        static void StartIntegrated(bool lifecycle,bool locomotion=false,bool worldFeedback=false)
         {
             if(Application.isPlaying)throw new InvalidOperationException("Exit Play Mode first.");
             IntegratedWorldInstaller.Install();
@@ -37,6 +37,7 @@ namespace AlienPurge.Level01.Editor
             SessionState.SetBool(Key+".feedback",true);SessionState.SetBool(Key+".integrated",true);
             SessionState.SetBool(Key+".lifecycle",lifecycle);
             SessionState.SetBool(Key+".locomotion",locomotion);
+            SessionState.SetBool(Key+".worldFeedback",worldFeedback);
             SessionState.SetString(Key+".product",PlayerSettings.productName);
             PlayerSettings.productName="AlienPurge_IntegratedV01_Regression";
             SessionState.SetBool(Key,true);SessionState.SetBool(Key+".batch",Application.isBatchMode);SessionState.SetBool(Key+".failed",false);
@@ -95,7 +96,8 @@ namespace AlienPurge.Level01.Editor
         static PooledEnemy RentSame(PooledEnemy previous,RegionEnemyProfile profile,Vector2 position)
         {
             var held=new List<PooledEnemy>();PooledEnemy same=null;
-            for(int i=0;i<2;i++)
+            int available=loop.pool.GetAvailableCount(previous.Type);
+            for(int i=0;i<available;i++)
             {
                 var actor=loop.pool.GetEnemy(previous.Type,position,Quaternion.identity);if(actor==null)break;
                 if(actor==previous){same=actor;break;}held.Add(actor);
@@ -185,7 +187,7 @@ namespace AlienPurge.Level01.Editor
                 yield return null;
             }
             durations.Sort();
-            results.Add("MEASURE combined Storm/task/specialists: frames="+durations.Count+" P50="+durations[durations.Count/2].ToString("F2")+"ms P95="+durations[(int)(durations.Count*.95)].ToString("F2")+"ms managed+native allocated delta="+(Profiler.GetTotalAllocatedMemoryLong()-memory)+" bytes; Windows Editor batch/D3D11, other source Editors remain open.");
+            results.Add("MEASURE combined Storm/task/specialists: frames="+durations.Count+" P50="+durations[durations.Count/2].ToString("F2")+"ms P95="+durations[(int)(durations.Count*.95)].ToString("F2")+"ms managed+native allocated delta="+(Profiler.GetTotalAllocatedMemoryLong()-memory)+" bytes; Windows Editor batch/D3D11; short sample, not a standalone-build benchmark.");
             Check(state.enemies.Count<state.config.residents.Sum(g=>g.count)+40,"Storm/task overlap does not leak an unbounded ticket queue");
             Capture("Integrated_CombinedPressure");yield return null;yield return null;
             loop.missionView.CancelRegionTask("Pressure fixture complete");loop.storm.EndRegionStorm();accelerate=oldAcceleration;

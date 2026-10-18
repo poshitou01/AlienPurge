@@ -1,0 +1,114 @@
+AlienPurge 集成工程：敌人分布、Settings 与道路碰撞修复
+2026-10-18（Asia/Shanghai）
+
+工程：D:\AlienPurge_IntegratedV01
+分支：feature/level01-integrated-v01
+修改基线：f0c947b（包含上次 WASD 八方向动画修复）
+Unity：2022.3.62f3c1
+
+直接试玩
+
+游戏场景：D:\AlienPurge_IntegratedV01\Assets\_Project\Scenes\ArtTests\Level01_FullWorld_IntegratedV01.unity
+主菜单场景：D:\AlienPurge_IntegratedV01\Assets\_Project\Scenes\MainMenu_IntegratedV01.unity
+这两个场景已保存，无需重新安装。主菜单 Start 进入上述集成场景。
+测试 Settings 请打开 MainMenu_IntegratedV01；原 MainMenu_DeskV1 属于保留的旧场景。
+
+敌人接入与配比
+
+Spitter 的正式 Prefab、对象池和射击逻辑原本存在，但区域配置没有 Ranged 类型，
+并把 Spitter 放在 reservedEnemyIds，因此正常区域流程不会生成它。本轮移除预留标记，
+从 Cargo Yard 开始正式接入六类敌人的驻守和原生环境增援。
+敌人能力、动画、EnemyData、击杀经验规则未修改，也未恢复按生存秒数解锁的逻辑。
+
+下面为环境增援“小队”的权重（每行合计 100），不是直接的敌人数百分比：
+区域                  Swarmer Rusher Brute Spitter Support Exploder
+Cargo Yard               50     20     6     12       5       7
+Power Maintenance        40     20     8     14       8      10
+Quarantine Commons       30     20    10     16      10      14
+Infected Research        24     18    12     18      12      16
+Extraction               20     18    12     20      12      18
+
+Cargo / Power 的特殊小队为 1 只特殊敌人 + 4 只 Swarmer。
+Quarantine 起，Spitter / Exploder 小队为 2 只该敌人 + 3 只 Swarmer。
+其他特殊小队仍为 1 + 4，纯 Swarmer 小队为 5 只。
+不考虑并发限制替换时，环境增援预期特殊敌人占比依次约为 10%、12%、20%、22%、24%。
+任务增援、任务守卫和总敌人上限保持原有配置。
+
+各区域同时存活上限（Rusher / Brute / Spitter / Support / Exploder）：
+Cargo Yard           3 / 1 / 1 / 1 / 1，特殊敌人总上限 5
+Power Maintenance    3 / 2 / 2 / 1 / 2，特殊敌人总上限 6
+Quarantine Commons   3 / 2 / 3 / 2 / 3，特殊敌人总上限 7
+Infected Research    4 / 2 / 4 / 2 / 3，特殊敌人总上限 9
+Extraction           4 / 2 / 4 / 2 / 3，特殊敌人总上限 9
+Support 全局上限及有限对象池为 4；Exploder 为 6，均禁止扩容。
+全局区域敌人上限仍为 56，原任务容量预留 8 不变。
+
+Colony Entry 保留简单入门组合。
+Cargo 固定驻守为 11 Swarmer，以及 Rusher / Brute / Spitter / Support / Exploder 各 1。
+其中原有 4 只 Swarmer 仍是任务守卫，其余敌人不自动计入开门目标。
+各区域驻守总数仍为 12 / 16 / 18 / 18 / 20 / 10，原守卫归属与数量不变。
+数值可编辑：Assets/_Project/Data/Level01/IntegratedV01/*.asset。
+重复安装和重复应用反馈不会重置后续手工配比。
+
+Settings
+
+仅修改 MainMenu_IntegratedV01 的 SettingPanel。
+复用背包与商店已有的深绿色金属面板、金色按钮和字体；统一音量行、滑条、百分比和间距。
+保留原 AudioSettingsPanel、四路音量、自动保存、Back 与 Reset Defaults 事件。
+实际测试了鼠标指针事件、数值显示、返回、重新打开及恢复默认值 100/32/100/100。
+实际渲染预览：Settings_1920x1080.png、Settings_1280x720.png、Settings_1280x1024.png。
+
+道路碰撞
+
+只修改新集成场景的 Connected_Roads，不重建地图，也不改原整体边界多边形。
+原道路墙体是带贴图的网格外观，很多墙脚缺少有效实体碰撞。
+增加 142 个窄墙脚 BoxCollider2D；52 段原碰撞已充分覆盖的墙体保持原样。
+Collider 使用 Environment 层和原零摩擦材质。
+为避免补碰撞后封死转角，对 21 段转角伸入通路的墙面做局部裁切，
+并同步裁切对应碰撞。裁切后的网格独立保存于 IntegratedV01/WallMeshes，原共享网格不改。
+G3 通道中间的两段独立墙左移 1.4 单位，保留实体碰撞，右侧留出可寻路通道。
+删除撤离支路入口普通横墙（地图局部坐标 16.61538, -35.5），
+以及 Boss 南侧道路交叉口的一段重叠封口墙（1.84615, -28.5）。
+G7 正式进度门保留，Boss 战后的原有解锁条件保留。
+精确对象、裁切区间和新增碰撞清单：Installation.txt。
+
+实际验收
+
+本轮专项 Unity Play Mode：72 项通过，见本目录 PlayMode.txt。
+包括 Cargo 六类实际驻守、正式动画组件、Spitter 蓄力与真实弹体、一次经验和击杀结算、
+任务归属不变、各区域真实加权选择器的抽样分布、原生玩家移动撞墙、
+撤离入口通行、G7 锁门和开门后的转角通行、Settings 四路指针交互及三种分辨率。
+
+完整组合 Unity Play Mode：114 项通过，见 ../PlayMode.txt（2026-10-18 14:45:51 UTC）。
+本轮重新验证持续增援、任务与开门、Support 增益与回收、Exploder 预警/击杀/爆炸/重用、
+Storm、毒雾、奖励队列、两种 Signature、原武器击败两阶段 Boss、原生撤离成功、暂停、死亡和 Restart。
+Boss 测试共开火 800 次、召唤 64 次、召唤物同时峰值 10；Boss 召唤名单未增加新敌人。
+整体敌人同时峰值 39；Support 峰值 3，Exploder 峰值 4，均在配置上限内。
+Storm + 任务 + 特殊敌人组合压力样本：8 秒、763 帧，P50 10.31 ms，P95 12.32 ms。
+该数据来自 Windows Unity Editor D3D11，不能等同于独立构建的长期性能或内存泄漏结论。
+
+实际 A* 导航 8 项检查通过，见 ../RouteConnectivity.txt；18 个道路采样点属于同一可达连通区，见 RoadProbe.txt。
+重复反馈应用保持两个场景、配比资产和裁切网格字节不变，见 RepeatApply.txt。
+重复原集成安装保持场景字节不变；拒绝覆盖未保存场景；已验收 Arena 的 49 条相对几何、碰撞和遮挡记录完全匹配，见 ../InstallerAndArena.txt、../ArenaGeometryDifferences.txt。
+原场景 SHA256 保护检查通过。本轮未改运行时玩法脚本、Boss 资源、原敌人基础能力和玩家动画实现。
+最终来源哈希复核：Boss 5062、区域 5241、敌人 8731，共 19034 个来源文件无变化；
+三个来源目录的 HEAD、分支和未提交状态均与整合前一致，见 ../Sources.after.json。
+资源引用复核：4503 个 GUID 无重复；集成场景的 2419 项依赖无缺失；1416 个受保护 Boss 文件无内容差异，见 ../StaticAudit.json。
+项目自带 A* 示例/编辑器资源仍有原先的 6 个外部 GUID 缺口，均不在集成场景依赖链中，本轮未扩展处理。
+
+可用菜单
+
+AlienPurge/Gameplay/Level01/Apply Integrated Playtest Feedback V1
+AlienPurge/Gameplay/Level01/Run Integrated World Feedback Checks
+原 Install / Validate Integrated World V01 和 Run Integrated World V01 Regression 仍可用。
+
+最短人工复核
+
+1. 在第四个工程打开集成主菜单，进入 Settings 拖动四个滑条，点 Back 后重新打开。
+2. Start 游戏；完成 Colony Entry，进入 Cargo，检查六种敌人的实际战斗手感。
+3. 走区域连接小路，确认身体无法穿过墙脚，转角可绕行。
+4. 到达 Boss 南侧与撤离支路，检查入口横墙已清除；击败 Boss 后通过 G7 进入撤离。
+
+自动验证使用加速推进、部分传送和测试无敌；道路碰撞另用了实际移动电机行走验证。
+本轮没有人工完整游玩，也没有对全流程主观难度、长时间性能或不同硬件作保证。
+三个来源工程保持原样；最终内容只交付在第四个集成工程，无推送、无 main 合并。
