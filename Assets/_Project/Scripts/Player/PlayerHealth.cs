@@ -128,6 +128,9 @@ public class PlayerHealth : MonoBehaviour
             return;
         }
 
+        var abilityFeel = GetComponent<PlayerAbilityFeel>();
+        if (abilityFeel != null && abilityFeel.IsDashProtected) return;
+
         if (damage <= 0)
         {
             return;

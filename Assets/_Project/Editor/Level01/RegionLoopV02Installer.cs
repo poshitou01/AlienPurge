@@ -168,6 +168,7 @@ namespace AlienPurge.Level01.Editor
             IsolateExperience(scene);
             RegionLoopInstaller.CloneSceneFonts(scene, DataFolder + "/Fonts");
             ConfigurePolish(scene, loop);
+            ConfigureAbilities(scene);
             PrepareChineseFonts(scene);
             loop.feedbackRevision = 3;
             EditorSceneManager.MarkSceneDirty(scene);
@@ -175,6 +176,7 @@ namespace AlienPurge.Level01.Editor
             EditorSceneManager.SaveScene(scene, Target);
             if (!EditorBuildSettings.scenes.Any(s => s.path == Target))
                 EditorBuildSettings.scenes = EditorBuildSettings.scenes.Concat(new[] { new EditorBuildSettingsScene(Target, true) }).ToArray();
+            ConfigureDeskRoute();
             ValidateProtected();
             File.WriteAllText(Reports + "/Installation.txt", "PASS\n" + Path.GetFullPath(Target) + "\nCreated=" + created + "\nGarrisons=" + anchors.Count(a => a.residentSlot) + "\nOptional sites=" + sites.Count + "\nNative MissionHUD/Storm/Fog restored. Reinstallation retains transforms and isolated tuning.\n");
             Debug.Log("[RegionV02] Installed and validated " + Target);
@@ -422,7 +424,7 @@ namespace AlienPurge.Level01.Editor
         {
             var scene=SceneManager.GetSceneByPath(Target);if(!scene.IsValid()||!scene.isLoaded)scene=EditorSceneManager.OpenScene(Target);
             var loop=One<RegionLoopController>(scene);loop.world.navigation.ConfigureGrid();Physics2D.SyncTransforms();loop.world.navigation.astar.Scan();
-            ValidateScene(scene);ValidateProtected();
+            ValidateScene(scene);ValidateProtected();ValidateDeskRoute();
             File.WriteAllText(Reports+"/Validation.txt","PASS: unique services, V02 asset isolation, native HUD, scheduler flags, mission/gate IDs, reserved population capacity, reachable garrisons and storm disks, fog geometry, reward IDs, protected assets. Editor validation only.\n");
             Debug.Log("[RegionV02] Editor validation PASS");
         }
@@ -432,6 +434,7 @@ namespace AlienPurge.Level01.Editor
             var errors=new List<string>();
             if (c.polishRevision < 1 && File.ReadAllText(Reports + "/NativeHudStyle.txt") != HudStyle(scene)) errors.Add("Native MissionHUD appearance/layout differs from V01 source");
             ValidatePolish(scene,errors);
+            ValidateAbilities(scene,errors);
             foreach(var t in All<Transform>(scene))if(GameObjectUtility.GetMonoBehavioursWithMissingScriptCount(t.gameObject)>0)errors.Add("Missing script "+t.name);
             if(!c.v02Enabled||c.v02InstallationId!=Owner||c.world.progression.regionLoop!=c)errors.Add("V02 authority missing");
             if(!c.storm.regionDriven||!c.fog.regionDriven||!c.extraction.regionDriven||!c.missionView.regionDriven||!c.rewards.modules.eventDrivenEvolution||!c.rewards.modules.regionDriven||All<EnemySpawner>(scene).Any(s=>!s.regionDriven))errors.Add("Double/legacy scheduling");
@@ -497,7 +500,7 @@ namespace AlienPurge.Level01.Editor
         public static void ValidateProtected()
         {
             var data=JsonUtility.FromJson<Baseline>(File.ReadAllText(Reports+"/ProtectedBaseline.json"));
-            var errors=data.files.Where(f=>!File.Exists(f.path)||RegionLoopInstaller.HashGitBlob(f.path)!=f.blob).Select(f=>f.path).ToArray();
+            var errors=data.files.Where(f=>!ProtectedMatch(f)).Select(f=>f.path).ToArray();
             if(errors.Length>0)throw new InvalidOperationException("Protected V01/Boss/shared assets changed:\n"+string.Join("\n",errors));
         }
         public static void BatchInstallAndValidate(){Install();Validate();}

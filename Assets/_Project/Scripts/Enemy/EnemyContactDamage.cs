@@ -127,6 +127,8 @@ public class EnemyContactDamage : MonoBehaviour
             return;
         }
 
+        if (PlayerAbilityFeel.AvoidsGroundHit(playerHealth)) return;
+
         playerHealth.TakeDamage(damage);
 
         nextDamageTime =

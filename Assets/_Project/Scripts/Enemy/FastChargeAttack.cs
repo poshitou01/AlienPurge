@@ -845,6 +845,8 @@ public class FastChargeAttack : MonoBehaviour
             return;
         }
 
+        if (PlayerAbilityFeel.AvoidsGroundHit(playerHealth)) return;
+
         int chargeDamage = 1;
 
         if (enemyContactDamage != null)

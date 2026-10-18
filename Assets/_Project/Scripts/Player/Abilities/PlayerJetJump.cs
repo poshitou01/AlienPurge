@@ -3,7 +3,7 @@ using UnityEngine;
 [DisallowMultipleComponent]
 [RequireComponent(typeof(PlayerHealth))]
 [RequireComponent(typeof(PlayerAbilityState))]
-public class PlayerJetJump : MonoBehaviour
+public partial class PlayerJetJump : MonoBehaviour
 {
     [Header("Input")]
     [SerializeField]
@@ -94,6 +94,7 @@ public class PlayerJetJump : MonoBehaviour
 
     private void Awake()
     {
+        abilityFeel = GetComponent<PlayerAbilityFeel>();
         playerHealth =
             GetComponent<PlayerHealth>();
 
@@ -162,6 +163,8 @@ public class PlayerJetJump : MonoBehaviour
             return;
         }
 
+        if (abilityFeel != null && abilityFeel.isActiveAndEnabled) return;
+
         if (!Input.GetKeyDown(jumpKey))
         {
             return;
@@ -217,6 +220,12 @@ public class PlayerJetJump : MonoBehaviour
             jumpCooldown;
 
         RestoreVisualState();
+
+        if (abilityFeel != null && abilityFeel.isActiveAndEnabled)
+        {
+            ResponsiveLiftOff();
+            return;
+        }
 
         if (AudioManager.Instance != null)
         {
@@ -352,6 +361,9 @@ public class PlayerJetJump : MonoBehaviour
                 PlayerAbilityMode.Airborne
             );
         }
+
+        if (!interrupted && wasJumping && abilityFeel != null && abilityFeel.isActiveAndEnabled)
+            abilityFeel.PlayLanding();
 
         if (!interrupted
             && wasJumping

@@ -1,11 +1,11 @@
-PASS | Unity 2022.3.62f3c1 | 2026-10-18 07:24:29Z
+PASS | Unity 2022.3.62f3c1 | 2026-10-18 08:03:12Z
 PASS: Isolated profile selected before initialization
 PASS: Five exploration regions and a playable extraction phase installed
 PASS: Cargo already populated before player entry; no premature fog clock
 PASS: Blue pads, floating markers and permanent terminal circles removed
 PASS: Entering region actually activates native enemy movement
 PASS: Real pooled death awards one physical XP pickup and one kill
-PASS: A surviving patrol no longer blocks later reinforcements; new arrivals=12
+PASS: A surviving patrol no longer blocks later reinforcements; new arrivals=11
 PASS: Ambient ticket queue remains bounded
 PASS: Main opens G1 exactly once
 PASS: Repeated main activation cannot pay again: ColonyEntry
@@ -27,7 +27,7 @@ PASS: Signature evolution excludes the Overclock entitlement
 PASS: Native weapon fires after choice closes
 PASS: Fired bullet receives native evolution visual data
 PASS: Fired projectile carries evolved damage-mechanism snapshot
-PASS: Real projectile collision and secondary damage affect both targets; HP=92,96 direct=1 chain=1
+PASS: Real projectile collision and secondary damage affect both targets; HP=98,98 direct=1 chain=1
 PASS: Native evolved chain / explosion and split behavior actually fires
 PASS: After G3, Chinese HUD gives an active isolation objective
 PASS: Main opens G4 exactly once
@@ -38,7 +38,7 @@ PASS: Research completion points forward to extraction
 PASS: Repeated main activation cannot pay again: Extraction
 PASS: Existing native extraction defense starts from terminal interaction
 PASS: Leaving extraction pauses native progress
-MEASURE extraction t=98.21841 current=Extraction wave=3 due=100.7051 quiet=0 retired=False global=9 camera=(47.00, -56.43, -10.00) size=10 player=(47.00, -57.07, 0.00) tickets=Normal:0:True,Normal:0:True,Normal:0:True,Normal:0:True,Normal:0:True,Normal:0:True,Normal:0:True,Fast:0:True,Normal:0:True,Normal:0:False,Normal:0:False,Normal:0:False,Normal:0:False
+MEASURE extraction t=97.46458 current=Extraction wave=3 due=99.88077 quiet=0 retired=False global=8 camera=(47.00, -56.43, -10.00) size=10 player=(47.00, -57.07, 0.00) tickets=Normal:0:True,Normal:0:True,Normal:0:True,Normal:0:True,Normal:0:True,Normal:0:True,Normal:0:True,Normal:0:True,Normal:0:False,Normal:0:False,Normal:0:False,Normal:0:False
 MEASURE ingress (27.00, -56.48) region= valid=True clear=False reason=
 MEASURE ingress (23.00, -56.48) region= valid=True clear=True reason=
 MEASURE ingress (16.00, -50.00) region= valid=True clear=True reason=

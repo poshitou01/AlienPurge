@@ -1,0 +1,45 @@
+PASS | Unity 2022.3.62f3c1 | 2026-10-18 08:04:43Z
+PASS: Skill tests use isolated save profile
+MEASURE clear fixture origin=(-105.40, 31.00, 0.00)
+PASS: DeskV1 is the enabled build entry menu
+PASS: Result and pause actions target DeskV1
+PASS: Space request becomes airborne and visibly lifts in the same frame
+PASS: Immediate jump evades native contact, fast charge and heavy ground shockwave
+PASS: Airborne player still takes ranged projectile damage through native health/pool path
+PASS: Airborne is ground evasion, not global hazard invulnerability
+PASS: Landing restores sprite position and grounded state
+PASS: Landing restores enemy body collision pairs
+PASS: Ground contact can damage again after landing
+PASS: Dash protects from damage through the active action at step 0.02
+PASS: Dash emits reusable fading sprite afterimages
+MEASURE dash step=0.02 distance=3.360001
+PASS: Dash covers ~3.36 units independent of tested physics timestep
+PASS: Dash protection ends with the action
+PASS: Dash restores normal controls
+PASS: Dash protects from damage through the active action at step 0.03333334
+MEASURE dash step=0.03333334 distance=3.360001
+PASS: Dash covers ~3.36 units independent of tested physics timestep
+PASS: Fast dash sweep cannot cross a thin environment wall
+PASS: Space interrupts dash immediately with clean protection ownership
+PASS: Slightly early Space is buffered across the cooldown boundary
+PASS: Expired input does not create a delayed phantom jump
+PASS: Paused game rejects ability requests
+PASS: Resuming does not replay paused input
+PASS: Q applies on accepted request with short action lock
+PASS: Pulse deduplicates multiple enemy colliders and applies scaled native damage once
+PASS: Pulse respects range and solid cover
+PASS: Pulse clears only nearby visible enemy projectiles through their pool
+PASS: Level-15 pulse damage remains useful and bounded
+PASS: Extreme level cannot exceed the pulse damage cap
+PASS: Pulse physically pushes the enemy away
+PASS: Q releases its control lock promptly while feedback fades
+PASS: Space during Q is buffered during its brief commitment
+PASS: Q-to-jump transition leaves one active ability state
+PASS: Disabling ability controller cleans visuals, states and pending input
+PASS: No leaked invulnerability after interruption
+PASS: Dying while airborne clears action and queued input
+PASS: Defeat captures a native loss snapshot without a success settlement
+PASS: Native result return reaches the correct DeskV1 menu
+PASS: DeskV1 StartGame returns to the upgraded V02 scene
+PASS: Menu round-trip starts with clean controls and time scale
+LIMITS: automation uses the same input-request path as keyboard, native physics/damage/pools/menu callbacks and synthetic combat fixtures; subjective dash feel/audio mix still benefit from human playtesting.

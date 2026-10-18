@@ -360,13 +360,13 @@ public class AudioManager : MonoBehaviour
             sfxSource.Stop();
         }
 
-        if (scene.name == mainMenuSceneName)
+        if (scene.name == mainMenuSceneName || scene.name == "MainMenu_DeskV1")
         {
             PlayMusic(mainMenuMusic);
             return;
         }
 
-        if (scene.name == gameplaySceneName)
+        if (scene.name == gameplaySceneName || scene.name == "Level01_FullWorld_GameplayV02")
         {
             PlayMusic(gameplayMusic);
         }

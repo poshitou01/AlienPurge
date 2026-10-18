@@ -1,33 +1,39 @@
 Level01 Region Loop V02 - files relative to D:\AlienPurge_RegionLoopV01
 Protected baseline: 35775fbfaa9a64671c4556811fe6ae37061508f1
-Combat / UI refinement based on: 3a9f467
-Current refinement delta: 34 files
+Ability / menu refinement based on: d0a7689
+Current refinement delta: 39 files
+Authorized protected-asset exception: MainMenu_DeskV1.unity StartGame destination only.
 
-Assets/_Project/Data/Level01/RegionLoopV02/Extraction.asset
-Assets/_Project/Data/Level01/RegionLoopV02/Fonts/4f5aafd1a68bbe647b1590a00fb56992.asset
-Assets/_Project/Data/Level01/RegionLoopV02/InfectedResearch.asset
-Assets/_Project/Data/Level01/RegionLoopV02/QuarantineCommons.asset
+Current refinement:
+Assets/_Project/Data/Level01/RegionLoopV02/PlayerAbilityFeedback.mat
+Assets/_Project/Data/Level01/RegionLoopV02/PlayerAbilityFeedback.mat.meta
+Assets/_Project/Editor/Level01/RegionLoopV02Installer.Abilities.cs
+Assets/_Project/Editor/Level01/RegionLoopV02Installer.Abilities.cs.meta
 Assets/_Project/Editor/Level01/RegionLoopV02Installer.cs
-Assets/_Project/Editor/Level01/RegionLoopV02Installer.Feedback.cs
-Assets/_Project/Editor/Level01/RegionLoopV02Installer.Polish.cs
-Assets/_Project/Editor/Level01/RegionLoopV02Installer.Polish.cs.meta
+Assets/_Project/Editor/Level01/RegionLoopV02Regression.Abilities.cs
+Assets/_Project/Editor/Level01/RegionLoopV02Regression.Abilities.cs.meta
 Assets/_Project/Editor/Level01/RegionLoopV02Regression.cs
-Assets/_Project/Editor/Level01/RegionLoopV02Regression.Feedback.cs
-Assets/_Project/Editor/Level01/RegionLoopV02Regression.Polish.cs
-Assets/_Project/Editor/Level01/RegionLoopV02Regression.Polish.cs.meta
 Assets/_Project/Scenes/ArtTests/Level01_FullWorld_GameplayV02.unity
-Assets/_Project/Scripts/Level01/RegionLoop/RegionEnemyLease.cs
-Assets/_Project/Scripts/Level01/RegionLoop/RegionHudGlyph.cs
-Assets/_Project/Scripts/Level01/RegionLoop/RegionHudGlyph.cs.meta
-Assets/_Project/Scripts/Level01/RegionLoop/RegionLoopController.Combat.cs
-Assets/_Project/Scripts/Level01/RegionLoop/RegionLoopController.Combat.cs.meta
-Assets/_Project/Scripts/Level01/RegionLoop/RegionLoopController.V02.cs
-Assets/_Project/Scripts/Level01/RegionLoop/RegionMissionIntegration.cs
-Assets/_Project/Scripts/Level01/RegionLoop/RegionResultPresentation.cs
-Assets/_Project/Scripts/Level01/RegionLoop/RegionResultPresentation.cs.meta
-Assets/_Project/Scripts/Level01/RegionLoop/RegionRunState.cs
+Assets/_Project/Scenes/MainMenu_DeskV1.unity
+Assets/_Project/Scripts/Audio/AudioManager.cs
+Assets/_Project/Scripts/Enemy/EnemyContactDamage.cs
+Assets/_Project/Scripts/Enemy/FastChargeAttack.cs
+Assets/_Project/Scripts/Player/Abilities/PlayerAbilities.Responsive.cs
+Assets/_Project/Scripts/Player/Abilities/PlayerAbilities.Responsive.cs.meta
+Assets/_Project/Scripts/Player/Abilities/PlayerAbilityFeel.cs
+Assets/_Project/Scripts/Player/Abilities/PlayerAbilityFeel.cs.meta
+Assets/_Project/Scripts/Player/Abilities/PlayerAbilityFeel.Feedback.cs
+Assets/_Project/Scripts/Player/Abilities/PlayerAbilityFeel.Feedback.cs.meta
+Assets/_Project/Scripts/Player/Abilities/PlayerDash.cs
+Assets/_Project/Scripts/Player/Abilities/PlayerJetJump.cs
+Assets/_Project/Scripts/Player/Abilities/PlayerPulseSkill.cs
+Assets/_Project/Scripts/Player/PlayerHealth.cs
+Docs/Level01/V02/Abilities_Dash.png
+Docs/Level01/V02/Abilities_Jump.png
+Docs/Level01/V02/Abilities_Pulse.png
+Docs/Level01/V02/AbilityChecks.txt
+Docs/Level01/V02/AbilityFeel.md
 Docs/Level01/V02/ChangedFiles.txt
-Docs/Level01/V02/CombatUI.md
 Docs/Level01/V02/CombatUIChecks.txt
 Docs/Level01/V02/Delivery.md
 Docs/Level01/V02/Evolution_ThunderPiercer.png
@@ -37,8 +43,9 @@ Docs/Level01/V02/Feedback_StormDefense.png
 Docs/Level01/V02/Polish_CombatHUD.png
 Docs/Level01/V02/Polish_Defeat.png
 Docs/Level01/V02/Polish_Victory.png
+ProjectSettings/EditorBuildSettings.asset
 
-Cumulative V02 delta from protected baseline: 152 files
+Cumulative V02 delta from original protected baseline: 177 files
 
 Assets/_Project/Data/Level01/RegionLoopV02.meta
 Assets/_Project/Data/Level01/RegionLoopV02/CargoYard.asset
@@ -81,6 +88,8 @@ Assets/_Project/Data/Level01/RegionLoopV02/MAT_ToxicFog_Ground_V02.mat
 Assets/_Project/Data/Level01/RegionLoopV02/MAT_ToxicFog_Ground_V02.mat.meta
 Assets/_Project/Data/Level01/RegionLoopV02/MAT_ToxicFog_Mist_V02.mat
 Assets/_Project/Data/Level01/RegionLoopV02/MAT_ToxicFog_Mist_V02.mat.meta
+Assets/_Project/Data/Level01/RegionLoopV02/PlayerAbilityFeedback.mat
+Assets/_Project/Data/Level01/RegionLoopV02/PlayerAbilityFeedback.mat.meta
 Assets/_Project/Data/Level01/RegionLoopV02/PowerMaintenance.asset
 Assets/_Project/Data/Level01/RegionLoopV02/PowerMaintenance.asset.meta
 Assets/_Project/Data/Level01/RegionLoopV02/QuarantineCommons.asset
@@ -88,6 +97,8 @@ Assets/_Project/Data/Level01/RegionLoopV02/QuarantineCommons.asset.meta
 Assets/_Project/Editor/Level01/RegionLoopInstaller.cs
 Assets/_Project/Editor/Level01/RegionLoopV02Audit.cs
 Assets/_Project/Editor/Level01/RegionLoopV02Audit.cs.meta
+Assets/_Project/Editor/Level01/RegionLoopV02Installer.Abilities.cs
+Assets/_Project/Editor/Level01/RegionLoopV02Installer.Abilities.cs.meta
 Assets/_Project/Editor/Level01/RegionLoopV02Installer.cs
 Assets/_Project/Editor/Level01/RegionLoopV02Installer.cs.meta
 Assets/_Project/Editor/Level01/RegionLoopV02Installer.Feedback.cs
@@ -96,6 +107,8 @@ Assets/_Project/Editor/Level01/RegionLoopV02Installer.Polish.cs
 Assets/_Project/Editor/Level01/RegionLoopV02Installer.Polish.cs.meta
 Assets/_Project/Editor/Level01/RegionLoopV02LegacyAudit.cs
 Assets/_Project/Editor/Level01/RegionLoopV02LegacyAudit.cs.meta
+Assets/_Project/Editor/Level01/RegionLoopV02Regression.Abilities.cs
+Assets/_Project/Editor/Level01/RegionLoopV02Regression.Abilities.cs.meta
 Assets/_Project/Editor/Level01/RegionLoopV02Regression.cs
 Assets/_Project/Editor/Level01/RegionLoopV02Regression.cs.meta
 Assets/_Project/Editor/Level01/RegionLoopV02Regression.Feedback.cs
@@ -104,6 +117,10 @@ Assets/_Project/Editor/Level01/RegionLoopV02Regression.Polish.cs
 Assets/_Project/Editor/Level01/RegionLoopV02Regression.Polish.cs.meta
 Assets/_Project/Scenes/ArtTests/Level01_FullWorld_GameplayV02.unity
 Assets/_Project/Scenes/ArtTests/Level01_FullWorld_GameplayV02.unity.meta
+Assets/_Project/Scenes/MainMenu_DeskV1.unity
+Assets/_Project/Scripts/Audio/AudioManager.cs
+Assets/_Project/Scripts/Enemy/EnemyContactDamage.cs
+Assets/_Project/Scripts/Enemy/FastChargeAttack.cs
 Assets/_Project/Scripts/Environment/PlanetStormController.cs
 Assets/_Project/Scripts/Environment/SafeZoneController.cs
 Assets/_Project/Scripts/Environment/ToxicFogRouteController.cs
@@ -146,12 +163,27 @@ Assets/_Project/Scripts/Loot/Data/LootTableData.cs
 Assets/_Project/Scripts/Loot/LootContainer.cs
 Assets/_Project/Scripts/Missions/MissionManager.cs
 Assets/_Project/Scripts/Missions/Objectives/BeaconMissionObjective.cs
+Assets/_Project/Scripts/Player/Abilities/PlayerAbilities.Responsive.cs
+Assets/_Project/Scripts/Player/Abilities/PlayerAbilities.Responsive.cs.meta
+Assets/_Project/Scripts/Player/Abilities/PlayerAbilityFeel.cs
+Assets/_Project/Scripts/Player/Abilities/PlayerAbilityFeel.cs.meta
+Assets/_Project/Scripts/Player/Abilities/PlayerAbilityFeel.Feedback.cs
+Assets/_Project/Scripts/Player/Abilities/PlayerAbilityFeel.Feedback.cs.meta
+Assets/_Project/Scripts/Player/Abilities/PlayerDash.cs
+Assets/_Project/Scripts/Player/Abilities/PlayerJetJump.cs
+Assets/_Project/Scripts/Player/Abilities/PlayerPulseSkill.cs
+Assets/_Project/Scripts/Player/PlayerHealth.cs
 Assets/_Project/Scripts/Player/Weapons/PlayerWeaponModifiers.cs
 Assets/_Project/Scripts/UI/MissionHUD.cs
 Assets/_Project/Scripts/UI/ToxicFogFeedbackHUD.cs
 Assets/_Project/Scripts/UI/WeaponEvolutionRevealUI.cs
 Assets/_Project/Scripts/Upgrades/Modules/WeaponModuleSelectionManager.cs
 Assets/AlienPurge/Level01ConnectedV01/Runtime/L01SafeZoneBridge.cs
+Docs/Level01/V02/Abilities_Dash.png
+Docs/Level01/V02/Abilities_Jump.png
+Docs/Level01/V02/Abilities_Pulse.png
+Docs/Level01/V02/AbilityChecks.txt
+Docs/Level01/V02/AbilityFeel.md
 Docs/Level01/V02/ChangedFiles.txt
 Docs/Level01/V02/CombatUI.md
 Docs/Level01/V02/CombatUIChecks.txt

@@ -1913,7 +1913,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2f578cd804018e479953716f8605c7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameSceneName: Day01_TestGround
+  gameSceneName: Level01_FullWorld_GameplayV02
 --- !u!4 &322679338
 Transform:
   m_ObjectHideFlags: 0

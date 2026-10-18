@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerMovement))]
 [RequireComponent(typeof(PlayerHealth))]
 [RequireComponent(typeof(PlayerAbilityState))]
-public class PlayerDash : MonoBehaviour
+public partial class PlayerDash : MonoBehaviour
 {
     private const float DirectionTolerance =
         0.0001f;
@@ -98,6 +98,7 @@ public class PlayerDash : MonoBehaviour
 
     private void Awake()
     {
+        abilityFeel = GetComponent<PlayerAbilityFeel>();
         rb = GetComponent<Rigidbody2D>();
 
         playerMovement =
@@ -162,6 +163,8 @@ public class PlayerDash : MonoBehaviour
             return;
         }
 
+        if (abilityFeel != null && abilityFeel.isActiveAndEnabled) return;
+
         if (!Input.GetKeyDown(dashKey))
         {
             return;
@@ -181,6 +184,12 @@ public class PlayerDash : MonoBehaviour
             || !abilityState.IsDashing)
         {
             EndDash(true);
+            return;
+        }
+
+        if (abilityFeel != null && abilityFeel.isActiveAndEnabled)
+        {
+            ResponsiveDashStep();
             return;
         }
 
@@ -358,6 +367,12 @@ public class PlayerDash : MonoBehaviour
 
         ApplyDashStretch();
 
+        if (abilityFeel != null && abilityFeel.isActiveAndEnabled)
+        {
+            abilityFeel.PlayDash(dashDirection);
+            return;
+        }
+
         if (AudioManager.Instance != null)
         {
             AudioManager.Instance
@@ -457,7 +472,7 @@ public class PlayerDash : MonoBehaviour
             );
         }
 
-        if (playerHealth != null)
+        if (playerHealth != null && (abilityFeel == null || wasDashing && grantInvulnerability))
         {
             playerHealth
                 .CancelTemporaryInvulnerability();

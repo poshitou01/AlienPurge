@@ -4,7 +4,7 @@ using UnityEngine;
 [DisallowMultipleComponent]
 [RequireComponent(typeof(PlayerHealth))]
 [RequireComponent(typeof(PlayerAbilityState))]
-public class PlayerPulseSkill : MonoBehaviour
+public partial class PlayerPulseSkill : MonoBehaviour
 {
     [Header("Input")]
     [SerializeField]
@@ -118,6 +118,7 @@ public class PlayerPulseSkill : MonoBehaviour
 
     private void Awake()
     {
+        abilityFeel = GetComponent<PlayerAbilityFeel>();
         playerHealth =
             GetComponent<PlayerHealth>();
 
@@ -174,6 +175,8 @@ public class PlayerPulseSkill : MonoBehaviour
             UpdateCastingFeedback();
             return;
         }
+
+        if (abilityFeel != null && abilityFeel.isActiveAndEnabled) return;
 
         if (!Input.GetKeyDown(pulseKey))
         {
@@ -239,6 +242,12 @@ public class PlayerPulseSkill : MonoBehaviour
         ApplyPlayerVisualPunch();
         ApplyPulseEffect();
 
+        if (abilityFeel != null && abilityFeel.isActiveAndEnabled)
+        {
+            abilityFeel.PlayPulse(pulseRadius);
+            return;
+        }
+
         if (AudioManager.Instance != null)
         {
             AudioManager.Instance
@@ -254,6 +263,11 @@ public class PlayerPulseSkill : MonoBehaviour
 
     private void ApplyPulseEffect()
     {
+        if (abilityFeel != null && abilityFeel.isActiveAndEnabled)
+        {
+            abilityFeel.ApplyPulse(pulseRadius);
+            return;
+        }
         processedEnemies.Clear();
 
         Collider2D[] detectedColliders =
