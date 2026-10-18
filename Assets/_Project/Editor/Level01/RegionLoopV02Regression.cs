@@ -20,7 +20,7 @@ namespace AlienPurge.Level01.Editor
     public static partial class RegionLoopV02Regression
     {
         const string Key="RegionV02.Regression";
-        static string Report=>IntegratedTest?IntegratedWorldInstaller.Reports+(SessionState.GetBool(Key+".lifecycle",false)?"/Lifecycle.txt":"/PlayMode.txt"):RegionLoopV02Installer.Reports+(SessionState.GetBool(Key+".impact",false)?"/ImpactChecks.txt":SessionState.GetBool(Key+".player",false)?"/PlayerChecks.txt":SessionState.GetBool(Key+".abilities",false)?"/AbilityChecks.txt":SessionState.GetBool(Key+".polish",false)?"/CombatUIChecks.txt":SessionState.GetBool(Key+".feedback",false)?"/FeedbackChecks.txt":SessionState.GetBool(Key+".preview",false)?"/TaskPreview.txt":SessionState.GetBool(Key+".presentation",false)?"/Presentation.txt":"/PlayMode.txt");
+        static string Report=>IntegratedTest?IntegratedWorldInstaller.Reports+(SessionState.GetBool(Key+".locomotion",false)?"/PlayerLocomotion.txt":SessionState.GetBool(Key+".lifecycle",false)?"/Lifecycle.txt":"/PlayMode.txt"):RegionLoopV02Installer.Reports+(SessionState.GetBool(Key+".impact",false)?"/ImpactChecks.txt":SessionState.GetBool(Key+".player",false)?"/PlayerChecks.txt":SessionState.GetBool(Key+".abilities",false)?"/AbilityChecks.txt":SessionState.GetBool(Key+".polish",false)?"/CombatUIChecks.txt":SessionState.GetBool(Key+".feedback",false)?"/FeedbackChecks.txt":SessionState.GetBool(Key+".preview",false)?"/TaskPreview.txt":SessionState.GetBool(Key+".presentation",false)?"/Presentation.txt":"/PlayMode.txt");
         static readonly Stack<IEnumerator> routines=new Stack<IEnumerator>();
         static readonly List<string> results=new List<string>(), errors=new List<string>();
         static RegionLoopController loop;
@@ -80,7 +80,7 @@ namespace AlienPurge.Level01.Editor
                 deadline=EditorApplication.timeSinceStartup+1200;
                 Application.runInBackground=true;
                 var view=EditorWindow.GetWindow(Type.GetType("UnityEditor.GameView,UnityEditor"));view.Show();view.Focus();
-                routines.Push(IntegratedTest?(SessionState.GetBool(Key+".lifecycle",false)?IntegratedLifecycle():IntegratedSuite()):SessionState.GetBool(Key+".impact",false)?ImpactChecks():SessionState.GetBool(Key+".player",false)?PlayerPresentation():SessionState.GetBool(Key+".abilities",false)?Abilities():SessionState.GetBool(Key+".polish",false)?Polish():SessionState.GetBool(Key+".feedback",false)?Feedback():SessionState.GetBool(Key+".preview",false)?Preview():SessionState.GetBool(Key+".presentation",false)?Presentation():Exercise());
+                routines.Push(IntegratedTest?(SessionState.GetBool(Key+".locomotion",false)?IntegratedPlayerLocomotion():SessionState.GetBool(Key+".lifecycle",false)?IntegratedLifecycle():IntegratedSuite()):SessionState.GetBool(Key+".impact",false)?ImpactChecks():SessionState.GetBool(Key+".player",false)?PlayerPresentation():SessionState.GetBool(Key+".abilities",false)?Abilities():SessionState.GetBool(Key+".polish",false)?Polish():SessionState.GetBool(Key+".feedback",false)?Feedback():SessionState.GetBool(Key+".preview",false)?Preview():SessionState.GetBool(Key+".presentation",false)?Presentation():Exercise());
             }
             if(mode==PlayModeStateChange.EnteredEditMode)
             {

@@ -13,7 +13,7 @@ using Object = UnityEngine.Object;
 
 namespace AlienPurge.Level01.Editor
 {
-    public static class IntegratedWorldInstaller
+    public static partial class IntegratedWorldInstaller
     {
         public const string Source = RegionLoopV02Installer.Target;
         public const string Target = "Assets/_Project/Scenes/ArtTests/Level01_FullWorld_IntegratedV01.unity";
@@ -119,6 +119,7 @@ namespace AlienPurge.Level01.Editor
                 SetString(settings,"mainMenuSceneName","MainMenu_IntegratedV01");
                 if(component is AudioManager)SetString(settings,"gameplaySceneName","Level01_FullWorld_IntegratedV01");
             }
+            RestorePlayerLocomotion(scene);
             Require(Geometry(scene)==beforeGeometry,"Installer unexpectedly changed transforms, collision or sorting.");
             EditorSceneManager.MarkSceneDirty(scene);EditorSceneManager.SaveScene(scene,Target);
             if(!File.Exists(Menu))Require(AssetDatabase.CopyAsset("Assets/_Project/Scenes/MainMenu_DeskV1.unity",Menu),"Cannot create isolated menu.");
@@ -206,6 +207,7 @@ namespace AlienPurge.Level01.Editor
             var scene=EditorSceneManager.GetActiveScene();
             if(scene.path!=Target){RequireSavedScenes();scene=EditorSceneManager.OpenScene(Target);}
             var loop=One<RegionLoopController>(scene);var pool=One<EnemyPool>(scene);
+            ValidatePlayerLocomotion(scene);
             One<GameManager>(scene);One<MissionManager>(scene);One<PlanetStormController>(scene);One<ToxicFogRouteController>(scene);One<ExtractionController>(scene);
             Require(loop.integratedWorld&&loop.v02Enabled,"Integrated V02 mode missing.");
             Require(!loop.world.progression.previewAllDoorsOpen,"Door preview bypass must be disabled in the integrated scene.");

@@ -41,6 +41,8 @@ public class PlayerAnimationDriver : MonoBehaviour
         Animator.StringToHash("LastMoveY");
 
 
+    [SerializeField] private bool pauseWithGameplay;
+
     private Vector2 lastFacingDirection;
 
 
@@ -136,6 +138,7 @@ public class PlayerAnimationDriver : MonoBehaviour
 
     private void UpdateLocomotion()
     {
+        if (pauseWithGameplay && Time.timeScale <= 0f) return;
         if (playerMovement == null
             || bodyAnimator == null)
         {

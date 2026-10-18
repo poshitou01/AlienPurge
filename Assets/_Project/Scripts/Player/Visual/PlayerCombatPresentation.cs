@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-/// <summary>Scene-local eight-way aim/strafe presentation. Native weapons retain firing, evolution and pools.</summary>
+/// <summary>Scene-local weapon grip presentation with native locomotion or the legacy aim-facing stance.</summary>
 [DisallowMultipleComponent, DefaultExecutionOrder(-100)]
 public sealed partial class PlayerCombatPresentation : MonoBehaviour
 {
@@ -66,7 +66,8 @@ public sealed partial class PlayerCombatPresentation : MonoBehaviour
             || stanceRoot == null || weaponHolder == null || weaponSocket == null || weaponSorting == null || movement == null || weapons == null)
         { enabled=false; return; }
         holderScale=weaponHolder.localScale;
-        CreateHeldBodies();
+        if(!animatorLocomotion)CreateHeldBodies();
+        CacheAnimatedPoses();
         // Reuse the original textures. Hand sub-sprites are cached once and share their source pixels.
         foreach(var pose in poses)
         {
@@ -77,6 +78,7 @@ public sealed partial class PlayerCombatPresentation : MonoBehaviour
     void Update()
     {
         if (!Allowed) return;
+        if (animatorLocomotion) return; // Original Animator owns the complete authored gait.
         float speed = movement.isActiveAndEnabled ? movement.MeasuredVelocity.magnitude : 0;
         bool airborne=abilities!=null&&(abilities.IsAirborne||abilities.IsDashing);
         bool walking=speed>.12f&&!airborne;
@@ -104,10 +106,17 @@ public sealed partial class PlayerCombatPresentation : MonoBehaviour
         if (!isActiveAndEnabled || !Allowed || weapon==null || weaponHolder==null || weaponSocket==null)return;
         Vector2 direction=target-(Vector2)bodyRenderer.transform.position;
         // Cursor inside the body must not make the body and gun flicker between opposite directions.
-        if(direction.sqrMagnitude<.16f)return;
+        if(direction.sqrMagnitude<.16f)
+        {
+            if(!animatorLocomotion)return;
+            // Keep attaching each new walk frame even when the player crosses the cursor.
+            // Preserve the last gun direction instead of freezing its world-space socket.
+            direction=weapon.AimDirection.sqrMagnitude>.001f?weapon.AimDirection.normalized:Vector2.down;
+            target=(Vector2)bodyRenderer.transform.position+direction*10;
+        }
         aimTarget=target;hasAim=true;
         float angle=Mathf.Atan2(direction.y,direction.x)*Mathf.Rad2Deg;
-        if(Mathf.Abs(Mathf.DeltaAngle(sector*45,angle))>22.5f+directionHysteresis)
+        if(!animatorLocomotion && Mathf.Abs(Mathf.DeltaAngle(sector*45,angle))>22.5f+directionHysteresis)
             sector=(Mathf.RoundToInt(angle/45)+8)%8;
         ApplyBody();
         if(trackedWeapon!=weapon)
@@ -119,7 +128,7 @@ public sealed partial class PlayerCombatPresentation : MonoBehaviour
         if(gunRenderer==null||gunRenderer.sprite==null)return;
         float vertical=Mathf.Abs(direction.normalized.y);
         weaponHolder.localScale=new Vector3(holderScale.x*Mathf.Lerp(1,verticalWeaponLength,vertical*vertical),holderScale.y,holderScale.z);
-        var pose=poses[sector];
+        var pose=animatorLocomotion?animatedPose:poses[sector];
         HandAnchor=bodyRenderer.transform.TransformPoint(SpritePoint(bodyRenderer.sprite,pose.grip));
         Vector2 normalized=new Vector2(.366f,.61f);
         foreach(var profile in weaponGrips)if(profile.sprite==gunRenderer.sprite){normalized=profile.normalizedGrip;break;}
@@ -144,8 +153,8 @@ public sealed partial class PlayerCombatPresentation : MonoBehaviour
     }
     void ApplyBody()
     {
-        var pose=poses[sector];
-        ApplyHeldBody(pose);
+        var pose=animatorLocomotion?ResolveAnimatedPose():poses[sector];
+        if(!animatorLocomotion)ApplyHeldBody(pose);
         currentHands=handMeshes.TryGetValue(pose.idle,out var hands)?hands:null;
         handOcclusion.sprite=currentHands!=null?currentHands.near:null;
         supportHandOcclusion.sprite=currentHands!=null?currentHands.far:null;
@@ -155,6 +164,10 @@ public sealed partial class PlayerCombatPresentation : MonoBehaviour
     void LateUpdate()
     {
         if(bodyRenderer==null||handOcclusion==null)return;
+        // Animator evaluates after Update. Attach the weapon and hand masks to the actual
+        // displayed frame, without replacing that sprite or taking over WASD body facing.
+        if(animatorLocomotion && Allowed && weapons.CurrentWeapon!=null)
+            PrepareAim(weapons.CurrentWeapon,hasAim?aimTarget:(Vector2)bodyRenderer.transform.position+Vector2.down*10);
         if(currentHands!=null)
         {
             PlaceHand(handOcclusion,currentHands.nearOffset);

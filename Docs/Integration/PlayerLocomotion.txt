@@ -1,0 +1,78 @@
+PASS | Unity 2022.3.62f3c1 | 2026-10-18 13:22:39Z
+PASS: Integrated scene restores native locomotion Animator and WASD facing with one calibrated weapon socket driver
+PASS: Body uses original sprite rendering without static-leg deformation
+PASS: Existing movement acceleration, collision motor and speed remain enabled
+PASS: Original four distinct authored frames resolve for E
+PASS: Native motor visibly travels in keyboard direction E
+PASS: WASD sets body direction independently of mouse aim: E
+PASS: Actual renderer cycles all four original walk frames at native clip timing: E
+PASS: Weapon retains independent mouse aim while walking E
+PASS: Weapon grip follows the displayed walk frame's hand: E
+PASS: Releasing movement returns to the original idle pose and preserves last facing: E
+PASS: Original four distinct authored frames resolve for NE
+PASS: Native motor visibly travels in keyboard direction NE
+PASS: WASD sets body direction independently of mouse aim: NE
+PASS: Actual renderer cycles all four original walk frames at native clip timing: NE
+PASS: Weapon retains independent mouse aim while walking NE
+PASS: Weapon grip follows the displayed walk frame's hand: NE
+PASS: Releasing movement returns to the original idle pose and preserves last facing: NE
+PASS: Original four distinct authored frames resolve for N
+PASS: Native motor visibly travels in keyboard direction N
+PASS: WASD sets body direction independently of mouse aim: N
+PASS: Actual renderer cycles all four original walk frames at native clip timing: N
+PASS: Weapon retains independent mouse aim while walking N
+PASS: Weapon grip follows the displayed walk frame's hand: N
+PASS: Releasing movement returns to the original idle pose and preserves last facing: N
+PASS: Original four distinct authored frames resolve for NW
+PASS: Native motor visibly travels in keyboard direction NW
+PASS: WASD sets body direction independently of mouse aim: NW
+PASS: Actual renderer cycles all four original walk frames at native clip timing: NW
+PASS: Weapon retains independent mouse aim while walking NW
+PASS: Weapon grip follows the displayed walk frame's hand: NW
+PASS: Releasing movement returns to the original idle pose and preserves last facing: NW
+PASS: Original four distinct authored frames resolve for W
+PASS: Native motor visibly travels in keyboard direction W
+PASS: WASD sets body direction independently of mouse aim: W
+PASS: Actual renderer cycles all four original walk frames at native clip timing: W
+PASS: Weapon retains independent mouse aim while walking W
+PASS: Weapon grip follows the displayed walk frame's hand: W
+PASS: Releasing movement returns to the original idle pose and preserves last facing: W
+PASS: Original four distinct authored frames resolve for SW
+PASS: Native motor visibly travels in keyboard direction SW
+PASS: WASD sets body direction independently of mouse aim: SW
+PASS: Actual renderer cycles all four original walk frames at native clip timing: SW
+PASS: Weapon retains independent mouse aim while walking SW
+PASS: Weapon grip follows the displayed walk frame's hand: SW
+PASS: Releasing movement returns to the original idle pose and preserves last facing: SW
+PASS: Original four distinct authored frames resolve for S
+PASS: Native motor visibly travels in keyboard direction S
+PASS: WASD sets body direction independently of mouse aim: S
+PASS: Actual renderer cycles all four original walk frames at native clip timing: S
+PASS: Weapon retains independent mouse aim while walking S
+PASS: Weapon grip follows the displayed walk frame's hand: S
+PASS: Releasing movement returns to the original idle pose and preserves last facing: S
+PASS: Original four distinct authored frames resolve for SE
+PASS: Native motor visibly travels in keyboard direction SE
+PASS: WASD sets body direction independently of mouse aim: SE
+PASS: Actual renderer cycles all four original walk frames at native clip timing: SE
+PASS: Weapon retains independent mouse aim while walking SE
+PASS: Weapon grip follows the displayed walk frame's hand: SE
+PASS: Releasing movement returns to the original idle pose and preserves last facing: SE
+PASS: Cursor over the body neither freezes walking frames nor takes over WASD facing
+PASS: Diagonal travel does not increase movement speed
+PASS: Pause freezes both the authored animation and position
+PASS: Resume restores walking and animation
+PASS: Restored animation preserves thin-wall collision and wall sliding
+PASS: Restored socket fires through the native weapon and projectile pool
+PASS: Actual aimed projectile still hits and damages its target
+PASS: Walking and native firing remain available for ThunderPiercer
+PASS: Walking and native firing remain available for ClusterBurst
+PASS: Dash starts from restored walking presentation
+PASS: Walking animation resumes after Dash releases movement
+PASS: Jump remains available while moving
+PASS: Body and weapon remain attached during the existing jump lift
+PASS: Death stops the locomotion motor
+PASS: Restart resets milestones, modules and run identity
+PASS: Restart loads the fixed integrated scene rather than reinstating mouse-owned body animation
+ASSETS: eight directions, four distinct source sprites per direction, original clips at 8 fps; no generated or duplicated walk frames.
+LIMITS: deterministic vectors enter the same motor path as WASD; InputManager bindings inspected separately. No OS keyboard injection or subjective human feel claim. Close-up frames are real camera renders.

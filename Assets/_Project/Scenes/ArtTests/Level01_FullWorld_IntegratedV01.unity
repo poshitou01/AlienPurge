@@ -149354,7 +149354,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6169814425888151609, guid: ee4c9669def6d2149857876b48124061, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6169814425888151609, guid: ee4c9669def6d2149857876b48124061, type: 3}
+      propertyPath: pauseWithGameplay
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6223174689695342242, guid: ee4c9669def6d2149857876b48124061, type: 3}
       propertyPath: m_Sprite
@@ -149362,7 +149366,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: cd160c0848ec1e24e9643ec3f014ff55, type: 3}
     - target: {fileID: 6789299454924857177, guid: ee4c9669def6d2149857876b48124061, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8020351645158268819, guid: ee4c9669def6d2149857876b48124061, type: 3}
       propertyPath: bulletPool
@@ -149707,6 +149711,552 @@ MonoBehaviour:
   movementLean: 1.4
   stepBob: 0.012
   verticalWeaponLength: 0.78
+  animatorLocomotion: 1
+  walkPoses:
+  - direction: E
+    idle: {fileID: 21300000, guid: ba72a6d9d01223349b020ae863a060df, type: 3}
+    grip: {x: 0.565, y: 0.669}
+    nearHand:
+      serializedVersion: 2
+      x: 0.515
+      y: 0.624
+      width: 0.1
+      height: 0.09
+    farHand:
+      serializedVersion: 2
+      x: 0.65
+      y: 0.569
+      width: 0.08
+      height: 0.08
+    weaponBehindBody: 0
+    legJoin: 0.75
+  - direction: E
+    idle: {fileID: 21300000, guid: 3f44ff3e4fbe9824dbf0457454e90f9c, type: 3}
+    grip: {x: 0.552, y: 0.681}
+    nearHand:
+      serializedVersion: 2
+      x: 0.502
+      y: 0.636
+      width: 0.1
+      height: 0.09
+    farHand:
+      serializedVersion: 2
+      x: 0.65999997
+      y: 0.57
+      width: 0.08
+      height: 0.08
+    weaponBehindBody: 0
+    legJoin: 0.75
+  - direction: E
+    idle: {fileID: 21300000, guid: 5bb97a1aa9a76b44d8cbd37cf52bdc2a, type: 3}
+    grip: {x: 0.375, y: 0.706}
+    nearHand:
+      serializedVersion: 2
+      x: 0.325
+      y: 0.66099995
+      width: 0.1
+      height: 0.09
+    farHand:
+      serializedVersion: 2
+      x: 0.662
+      y: 0.57
+      width: 0.08
+      height: 0.08
+    weaponBehindBody: 0
+    legJoin: 0.75
+  - direction: E
+    idle: {fileID: 21300000, guid: 009547cd1e6d00a448195ea324f48f27, type: 3}
+    grip: {x: 0.56, y: 0.669}
+    nearHand:
+      serializedVersion: 2
+      x: 0.51
+      y: 0.624
+      width: 0.1
+      height: 0.09
+    farHand:
+      serializedVersion: 2
+      x: 0.654
+      y: 0.57
+      width: 0.08
+      height: 0.08
+    weaponBehindBody: 0
+    legJoin: 0.75
+  - direction: NE
+    idle: {fileID: 21300000, guid: e77df4bbf9a98974ebfd39fafc096bef, type: 3}
+    grip: {x: 0.677, y: 0.556}
+    nearHand:
+      serializedVersion: 2
+      x: 0.627
+      y: 0.511
+      width: 0.1
+      height: 0.09
+    farHand:
+      serializedVersion: 2
+      x: 0.63699996
+      y: 0.516
+      width: 0.08
+      height: 0.08
+    weaponBehindBody: 1
+    legJoin: 0.75
+  - direction: NE
+    idle: {fileID: 21300000, guid: d76054fee328aaf4e9daa05a06fef611, type: 3}
+    grip: {x: 0.706, y: 0.581}
+    nearHand:
+      serializedVersion: 2
+      x: 0.65599996
+      y: 0.53599995
+      width: 0.1
+      height: 0.09
+    farHand:
+      serializedVersion: 2
+      x: 0.66599995
+      y: 0.54099995
+      width: 0.08
+      height: 0.08
+    weaponBehindBody: 1
+    legJoin: 0.75
+  - direction: NE
+    idle: {fileID: 21300000, guid: aef2483ebd1460846b6bd25e2b597836, type: 3}
+    grip: {x: 0.706, y: 0.508}
+    nearHand:
+      serializedVersion: 2
+      x: 0.65599996
+      y: 0.463
+      width: 0.1
+      height: 0.09
+    farHand:
+      serializedVersion: 2
+      x: 0.66599995
+      y: 0.46800002
+      width: 0.08
+      height: 0.08
+    weaponBehindBody: 1
+    legJoin: 0.75
+  - direction: NE
+    idle: {fileID: 21300000, guid: 4226f1b8925325548a83718f5a664377, type: 3}
+    grip: {x: 0.702, y: 0.573}
+    nearHand:
+      serializedVersion: 2
+      x: 0.652
+      y: 0.528
+      width: 0.1
+      height: 0.09
+    farHand:
+      serializedVersion: 2
+      x: 0.662
+      y: 0.533
+      width: 0.08
+      height: 0.08
+    weaponBehindBody: 1
+    legJoin: 0.75
+  - direction: N
+    idle: {fileID: 21300000, guid: 050a375bbfe517645bcb223d454e72cb, type: 3}
+    grip: {x: 0.661, y: 0.52}
+    nearHand:
+      serializedVersion: 2
+      x: 0.611
+      y: 0.47499996
+      width: 0.1
+      height: 0.09
+    farHand:
+      serializedVersion: 2
+      x: 0.621
+      y: 0.48
+      width: 0.08
+      height: 0.08
+    weaponBehindBody: 1
+    legJoin: 0.75
+  - direction: N
+    idle: {fileID: 21300000, guid: 1c5623503c1149b4cbaccbca35c402f8, type: 3}
+    grip: {x: 0.661, y: 0.52}
+    nearHand:
+      serializedVersion: 2
+      x: 0.611
+      y: 0.47499996
+      width: 0.1
+      height: 0.09
+    farHand:
+      serializedVersion: 2
+      x: 0.621
+      y: 0.48
+      width: 0.08
+      height: 0.08
+    weaponBehindBody: 1
+    legJoin: 0.75
+  - direction: N
+    idle: {fileID: 21300000, guid: 88f5ed33d276e2e4698a9dc0ce79de36, type: 3}
+    grip: {x: 0.68, y: 0.52}
+    nearHand:
+      serializedVersion: 2
+      x: 0.63
+      y: 0.47499996
+      width: 0.1
+      height: 0.09
+    farHand:
+      serializedVersion: 2
+      x: 0.64
+      y: 0.48
+      width: 0.08
+      height: 0.08
+    weaponBehindBody: 1
+    legJoin: 0.75
+  - direction: N
+    idle: {fileID: 21300000, guid: 2e47486c99e52f74680a2f5faed0e219, type: 3}
+    grip: {x: 0.661, y: 0.52}
+    nearHand:
+      serializedVersion: 2
+      x: 0.611
+      y: 0.47499996
+      width: 0.1
+      height: 0.09
+    farHand:
+      serializedVersion: 2
+      x: 0.621
+      y: 0.48
+      width: 0.08
+      height: 0.08
+    weaponBehindBody: 1
+    legJoin: 0.75
+  - direction: NW
+    idle: {fileID: 21300000, guid: 8e54f13a52ac03347a39f72f39ac6f38, type: 3}
+    grip: {x: 0.327, y: 0.54}
+    nearHand:
+      serializedVersion: 2
+      x: 0.27699998
+      y: 0.495
+      width: 0.1
+      height: 0.09
+    farHand:
+      serializedVersion: 2
+      x: 0.287
+      y: 0.5
+      width: 0.08
+      height: 0.08
+    weaponBehindBody: 1
+    legJoin: 0.75
+  - direction: NW
+    idle: {fileID: 21300000, guid: c6c731e3798fc364eb5af53a5ab9b9fb, type: 3}
+    grip: {x: 0.343, y: 0.536}
+    nearHand:
+      serializedVersion: 2
+      x: 0.29299998
+      y: 0.491
+      width: 0.1
+      height: 0.09
+    farHand:
+      serializedVersion: 2
+      x: 0.303
+      y: 0.49600002
+      width: 0.08
+      height: 0.08
+    weaponBehindBody: 1
+    legJoin: 0.75
+  - direction: NW
+    idle: {fileID: 21300000, guid: 953188be9fb1e4f46bf88807e2281805, type: 3}
+    grip: {x: 0.339, y: 0.536}
+    nearHand:
+      serializedVersion: 2
+      x: 0.28899997
+      y: 0.491
+      width: 0.1
+      height: 0.09
+    farHand:
+      serializedVersion: 2
+      x: 0.299
+      y: 0.49600002
+      width: 0.08
+      height: 0.08
+    weaponBehindBody: 1
+    legJoin: 0.75
+  - direction: NW
+    idle: {fileID: 21300000, guid: 99713d2dd5936a84ca6e2f33d391518d, type: 3}
+    grip: {x: 0.343, y: 0.536}
+    nearHand:
+      serializedVersion: 2
+      x: 0.29299998
+      y: 0.491
+      width: 0.1
+      height: 0.09
+    farHand:
+      serializedVersion: 2
+      x: 0.303
+      y: 0.49600002
+      width: 0.08
+      height: 0.08
+    weaponBehindBody: 1
+    legJoin: 0.75
+  - direction: W
+    idle: {fileID: 21300000, guid: 52e96c741cb80c24fb8c79d360a8635b, type: 3}
+    grip: {x: 0.48, y: 0.665}
+    nearHand:
+      serializedVersion: 2
+      x: 0.42999998
+      y: 0.62
+      width: 0.1
+      height: 0.09
+    farHand:
+      serializedVersion: 2
+      x: 0.262
+      y: 0.54899997
+      width: 0.08
+      height: 0.08
+    weaponBehindBody: 0
+    legJoin: 0.75
+  - direction: W
+    idle: {fileID: 21300000, guid: b2e6afd3a3101484188631d913248a45, type: 3}
+    grip: {x: 0.44, y: 0.653}
+    nearHand:
+      serializedVersion: 2
+      x: 0.39
+      y: 0.608
+      width: 0.1
+      height: 0.09
+    farHand:
+      serializedVersion: 2
+      x: 0.28300002
+      y: 0.557
+      width: 0.08
+      height: 0.08
+    weaponBehindBody: 0
+    legJoin: 0.75
+  - direction: W
+    idle: {fileID: 21300000, guid: 2703f220c0ea9a14f926f2527d87fbe0, type: 3}
+    grip: {x: 0.427, y: 0.661}
+    nearHand:
+      serializedVersion: 2
+      x: 0.37699997
+      y: 0.616
+      width: 0.1
+      height: 0.09
+    farHand:
+      serializedVersion: 2
+      x: 0.275
+      y: 0.54899997
+      width: 0.08
+      height: 0.08
+    weaponBehindBody: 0
+    legJoin: 0.75
+  - direction: W
+    idle: {fileID: 21300000, guid: bd31125d7d8456949a45512e0f1c735e, type: 3}
+    grip: {x: 0.48, y: 0.665}
+    nearHand:
+      serializedVersion: 2
+      x: 0.42999998
+      y: 0.62
+      width: 0.1
+      height: 0.09
+    farHand:
+      serializedVersion: 2
+      x: 0.275
+      y: 0.54899997
+      width: 0.08
+      height: 0.08
+    weaponBehindBody: 0
+    legJoin: 0.75
+  - direction: SW
+    idle: {fileID: 21300000, guid: aac61cdbf8ca942428cf8ce7cface20f, type: 3}
+    grip: {x: 0.577, y: 0.698}
+    nearHand:
+      serializedVersion: 2
+      x: 0.527
+      y: 0.653
+      width: 0.1
+      height: 0.09
+    farHand:
+      serializedVersion: 2
+      x: 0.279
+      y: 0.589
+      width: 0.08
+      height: 0.08
+    weaponBehindBody: 0
+    legJoin: 0.75
+  - direction: SW
+    idle: {fileID: 21300000, guid: bfa25edd8fab13e45961a71a55ac0c85, type: 3}
+    grip: {x: 0.597, y: 0.718}
+    nearHand:
+      serializedVersion: 2
+      x: 0.547
+      y: 0.673
+      width: 0.1
+      height: 0.09
+    farHand:
+      serializedVersion: 2
+      x: 0.303
+      y: 0.585
+      width: 0.08
+      height: 0.08
+    weaponBehindBody: 0
+    legJoin: 0.75
+  - direction: SW
+    idle: {fileID: 21300000, guid: 8d1eca5d042c8f64cb9304b8a03cbfe9, type: 3}
+    grip: {x: 0.54, y: 0.661}
+    nearHand:
+      serializedVersion: 2
+      x: 0.49
+      y: 0.616
+      width: 0.1
+      height: 0.09
+    farHand:
+      serializedVersion: 2
+      x: 0.29500002
+      y: 0.593
+      width: 0.08
+      height: 0.08
+    weaponBehindBody: 0
+    legJoin: 0.75
+  - direction: SW
+    idle: {fileID: 21300000, guid: ed6abcc6e47f5924a93797298903c16a, type: 3}
+    grip: {x: 0.548, y: 0.669}
+    nearHand:
+      serializedVersion: 2
+      x: 0.49799997
+      y: 0.624
+      width: 0.1
+      height: 0.09
+    farHand:
+      serializedVersion: 2
+      x: 0.299
+      y: 0.60099995
+      width: 0.08
+      height: 0.08
+    weaponBehindBody: 0
+    legJoin: 0.75
+  - direction: S
+    idle: {fileID: 21300000, guid: d98d2bd2015190a4aa665a85bdb0987e, type: 3}
+    grip: {x: 0.669, y: 0.61}
+    nearHand:
+      serializedVersion: 2
+      x: 0.619
+      y: 0.565
+      width: 0.1
+      height: 0.09
+    farHand:
+      serializedVersion: 2
+      x: 0.323
+      y: 0.617
+      width: 0.08
+      height: 0.08
+    weaponBehindBody: 0
+    legJoin: 0.75
+  - direction: S
+    idle: {fileID: 21300000, guid: d364bfb05589dcc40a92476d9e84d255, type: 3}
+    grip: {x: 0.6, y: 0.633}
+    nearHand:
+      serializedVersion: 2
+      x: 0.55
+      y: 0.588
+      width: 0.1
+      height: 0.09
+    farHand:
+      serializedVersion: 2
+      x: 0.343
+      y: 0.621
+      width: 0.08
+      height: 0.08
+    weaponBehindBody: 0
+    legJoin: 0.75
+  - direction: S
+    idle: {fileID: 21300000, guid: c98e4e606dc5845418d66a68156a47ed, type: 3}
+    grip: {x: 0.617, y: 0.706}
+    nearHand:
+      serializedVersion: 2
+      x: 0.567
+      y: 0.66099995
+      width: 0.1
+      height: 0.09
+    farHand:
+      serializedVersion: 2
+      x: 0.266
+      y: 0.57699996
+      width: 0.08
+      height: 0.08
+    weaponBehindBody: 0
+    legJoin: 0.75
+  - direction: S
+    idle: {fileID: 21300000, guid: 8c005af45ee151b4690d2ed08ae85a96, type: 3}
+    grip: {x: 0.597, y: 0.645}
+    nearHand:
+      serializedVersion: 2
+      x: 0.547
+      y: 0.59999996
+      width: 0.1
+      height: 0.09
+    farHand:
+      serializedVersion: 2
+      x: 0.33900002
+      y: 0.617
+      width: 0.08
+      height: 0.08
+    weaponBehindBody: 0
+    legJoin: 0.75
+  - direction: SE
+    idle: {fileID: 21300000, guid: 04342026f08b7d04da3a5336b5798506, type: 3}
+    grip: {x: 0.476, y: 0.685}
+    nearHand:
+      serializedVersion: 2
+      x: 0.426
+      y: 0.64
+      width: 0.1
+      height: 0.09
+    farHand:
+      serializedVersion: 2
+      x: 0.658
+      y: 0.597
+      width: 0.08
+      height: 0.08
+    weaponBehindBody: 0
+    legJoin: 0.75
+  - direction: SE
+    idle: {fileID: 21300000, guid: 58a3ffba87888494983d1c3de04d4eb2, type: 3}
+    grip: {x: 0.472, y: 0.673}
+    nearHand:
+      serializedVersion: 2
+      x: 0.422
+      y: 0.62799996
+      width: 0.1
+      height: 0.09
+    farHand:
+      serializedVersion: 2
+      x: 0.66599995
+      y: 0.60899997
+      width: 0.08
+      height: 0.08
+    weaponBehindBody: 0
+    legJoin: 0.75
+  - direction: SE
+    idle: {fileID: 21300000, guid: 7cdb47e101a3a814db04c23ec392e61a, type: 3}
+    grip: {x: 0.294, y: 0.637}
+    nearHand:
+      serializedVersion: 2
+      x: 0.244
+      y: 0.592
+      width: 0.1
+      height: 0.09
+    farHand:
+      serializedVersion: 2
+      x: 0.69
+      y: 0.621
+      width: 0.08
+      height: 0.08
+    weaponBehindBody: 0
+    legJoin: 0.75
+  - direction: SE
+    idle: {fileID: 21300000, guid: 9a504570bfcda994e908d69863a31623, type: 3}
+    grip: {x: 0.444, y: 0.69}
+    nearHand:
+      serializedVersion: 2
+      x: 0.394
+      y: 0.645
+      width: 0.1
+      height: 0.09
+    farHand:
+      serializedVersion: 2
+      x: 0.66999996
+      y: 0.621
+      width: 0.08
+      height: 0.08
+    weaponBehindBody: 0
+    legJoin: 0.75
   heldStrideMaterial: {fileID: 2100000, guid: 2bf3d4607f7e19947a8cd928150afc66, type: 2}
 --- !u!1001 &3286447939126067152
 PrefabInstance:

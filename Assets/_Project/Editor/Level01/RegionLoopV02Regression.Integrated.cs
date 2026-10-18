@@ -24,7 +24,7 @@ namespace AlienPurge.Level01.Editor
         [MenuItem("AlienPurge/Gameplay/Level01/Run Integrated World V01 Regression")]
         public static void RunIntegrated()=>StartIntegrated(false);
         public static void RunIntegratedLifecycle()=>StartIntegrated(true);
-        static void StartIntegrated(bool lifecycle)
+        static void StartIntegrated(bool lifecycle,bool locomotion=false)
         {
             if(Application.isPlaying)throw new InvalidOperationException("Exit Play Mode first.");
             IntegratedWorldInstaller.Install();
@@ -36,6 +36,7 @@ namespace AlienPurge.Level01.Editor
             foreach(var flag in new[]{"presentation","preview","polish","abilities","player","impact"})SessionState.SetBool(Key+"."+flag,false);
             SessionState.SetBool(Key+".feedback",true);SessionState.SetBool(Key+".integrated",true);
             SessionState.SetBool(Key+".lifecycle",lifecycle);
+            SessionState.SetBool(Key+".locomotion",locomotion);
             SessionState.SetString(Key+".product",PlayerSettings.productName);
             PlayerSettings.productName="AlienPurge_IntegratedV01_Regression";
             SessionState.SetBool(Key,true);SessionState.SetBool(Key+".batch",Application.isBatchMode);SessionState.SetBool(Key+".failed",false);

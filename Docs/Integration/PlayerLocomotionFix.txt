@@ -1,0 +1,54 @@
+AlienPurge 集成场景：玩家朝向与行走动画修复
+日期：2026-10-18
+
+直接打开并 Play：
+D:\AlienPurge_IntegratedV01\Assets\_Project\Scenes\ArtTests\Level01_FullWorld_IntegratedV01.unity
+工程与分支仍为 D:\AlienPurge_IntegratedV01 / feature/level01-integrated-v01。
+场景已经更新并保存；若 Unity 正在 Play，请停止后重新打开场景再 Play。
+
+修复后的操作
+
+W/A/S/D 以及组合键决定身体的八方向朝向，移动时播放原有完整逐帧步态。
+松开移动键回到相应待机姿态，并保留最后的身体朝向。
+鼠标继续独立控制枪口与射击，不再强制覆盖身体的移动朝向。
+武器与手部遮挡跟随当前实际动画帧，避免恢复旧步态后枪口挂点漂移。
+鼠标落在身体内时保留枪口原方向，同时继续更新逐帧挂点。
+暂停时冻结当前动画帧；移动速度、碰撞、能力、武器能力和区域玩法数值没有修改。
+
+原因与实际资源
+
+区域 V02 的 PlayerCombatPresentation 原先关闭了 PlayerAnimationDriver 和 Body Animator，
+每帧按鼠标选择一张 Idle 图，再由 HeldStride shader 做轻微腿部变形。
+所以 WASD 的位置移动仍有效，但不能控制身体朝向，原来的走路帧也没有播放。
+
+本次重新启用原 Animator/PlayerAnimationDriver，并给集成实例启用 animatorLocomotion。
+PlayerCombatPresentation 在这个模式下只跟随实际显示帧处理枪口和握持，不改身体 Sprite。
+沿用现有 8 方向原资源：每方向 4 张不同 PNG，原 clip 以 8fps 播放，共 32 张；
+没有找到每方向 8 张独立图，也没有复制帧来冒充新帧。
+玩家原贴图、.meta、动画片段、Animator Controller 和 Player Prefab 均未改写。
+
+验证
+
+Unity 2022.3.62f3c1 编译成功；75 项定向 Play Mode 检查全部通过。
+报告：Docs/Integration/PlayerLocomotion.txt。
+内容包括八方向实际位移、每方向 4 张图全部循环显示、身体方向与枪口方向独立、
+逐帧握持、停步待机、鼠标穿过身体、斜向速度上限、Pause/Resume、薄墙与滑墙、
+实际子弹命中、ThunderPiercer / ClusterBurst 开火、Dash、跳跃、死亡和 Restart。
+安装器连续运行两次，重复安装保留新动画模式；原场景保护哈希检查仍通过。
+测试采用与 WASD 相同移动电机路径的确定性输入，另静态核对了 InputManager 中 WASD 的绑定；
+未注入操作系统键盘输入，不宣称已经替代用户的主观手感验收。
+
+运行预览：Docs/Integration/Player_Locomotion_Unity.gif。
+由 48 张真实 Unity Camera 画面组成，依次为 E/NE/N/NW/W/SW/S/SE，共约 6 秒。
+预览故意让枪口与行走方向不同，以检查身体朝向不被鼠标抢占。
+原始截图在 PlayerLocomotionFrames/；没有合成动作、补帧或更换人物美术。
+
+重复检查的真实菜单：
+AlienPurge/Gameplay/Level01/Run Integrated Player Locomotion Checks
+
+保护范围
+
+只改第四个集成工程。三个来源目录未执行写入、切分支或提交。
+共享脚本的新选项默认关闭；原场景仍保留原模式。
+Boss、敌人能力、地图、区域任务、Storm/毒雾、奖励和原场景资产未修改。
+本轮未重跑此前完整路线 114 项和敌人 296 项回归；此次 75 项报告单独保存，未冒用旧结果。

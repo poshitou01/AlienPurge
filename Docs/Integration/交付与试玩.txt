@@ -1,6 +1,10 @@
 AlienPurge 集成 V01：交付与实际验收
 日期：2026-10-18（Asia/Shanghai）
 
+后续玩家修复：集成场景现已恢复 WASD 驱动的原八方向逐帧身体动画；鼠标独立瞄准武器。
+75 项针对性 Unity Play Mode 检查通过。详情见 PlayerLocomotionFix.txt、PlayerLocomotion.txt，
+实际运行预览为 Player_Locomotion_Unity.gif。下面的完整集成验收记录属于首次集成版本。
+
 现在的试玩入口
 
 工程绝对路径：D:\AlienPurge_IntegratedV01
