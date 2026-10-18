@@ -46,10 +46,13 @@ namespace AlienPurge.Level01.Editor
             var origin = AbilityClearSpace(loop.Terminal("QuarantineCommons").transform.position); Move(origin, true);
             yield return Seconds(.6f);
             var impact = CombatImpactFeedback.Instance;
+            var audio = AudioManager.Instance;
             Check(impact != null && impact.CanPresent && impact.confirmation != null && !impact.confirmation.raycastTarget,
                 "Scene feedback is installed once and its confirmation cannot block aiming");
             foreach (var clip in new[] { impact.hitSound, impact.strongSound, impact.killSound, impact.heavyKillSound }) CheckImpactAudio(clip);
             Check(impact.GetComponentsInChildren<AudioSource>().Length == 6, "Audio has a fixed six-voice budget with dedicated kill voices");
+            Check(impact.hitMarker != null && !impact.hitMarker.raycastTarget && impact.installationRevision >= 3,
+                "Screen-space hit confirmation is installed without intercepting input");
 
             var normal = AbilityEnemy(EnemyType.Normal, origin + Vector3.right * 2.4f, 100);
             var health = normal.GetComponent<EnemyHealth>(); var root = normal.transform.position;
@@ -68,6 +71,8 @@ namespace AlienPurge.Level01.Editor
             Check(Object.FindObjectsOfType<HitEffect>().Length == oldEffects, "Enhanced projectile impact replaces the old duplicate hit sprite");
             Check(normal.transform.position == root && !normal.GetComponent<EnemyMovement>().IsKnockedBack,
                 "Visual flinch does not translate physics or interrupt enemy attacks");
+            Check(impact.hitMarker.IsVisible && impact.hitMarker.Tier == CombatImpactTier.Hit,
+                "A real ordinary bullet produces an immediate hit marker");
             yield return Seconds(.2f);
             Check(reaction.VisualOffset.sqrMagnitude < .000001f && !reaction.FlashVisible, "Body impulse and flash restore after the short hit window");
 
@@ -82,6 +87,17 @@ namespace AlienPurge.Level01.Editor
             Check(!CombatImpactFeedback.ApplyDamage(health, 0, root, Vector2.right, PlayerImpactSource.Projectile) && impact.PresentedHits == hits,
                 "Zero damage is not a hit");
 
+            CombatImpactFeedback.ApplyDamage(health, 1, reaction.ImpactCenter, Vector2.right, PlayerImpactSource.Projectile);
+            var follow = CameraFollow.Instance; bool wasFollowing = follow.enabled; follow.enabled = false;
+            Vector3 cameraPosition = impact.worldCamera.transform.position;
+            float markerX = impact.hitMarker.rectTransform.localPosition.x;
+            impact.worldCamera.transform.position += Vector3.right;
+            yield return null; yield return null;
+            Check(impact.hitMarker.rectTransform.localPosition.x < markerX - 10,
+                "Moving the camera keeps the confirmation anchored to the actual world hit");
+            impact.worldCamera.transform.position = cameraPosition; follow.enabled = wasFollowing;
+            yield return Seconds(.2f);
+
             // A same-frame multi-hit and a heavy kill resolve to one prioritized sound.
             var heavy = AbilityEnemy(EnemyType.Heavy, origin + new Vector3(2.2f, 1.5f), 10);
             int credits = GameManager.Instance.KillCount, kills = impact.PresentedKills, sounds = impact.PlayedSounds;
@@ -94,6 +110,11 @@ namespace AlienPurge.Level01.Editor
             Capture("Impact_HeavyKill"); yield return null; yield return null;
             Check(impact.LastPlayedTier == CombatImpactTier.HeavyKill && impact.PlayedSounds == sounds + 1,
                 "One heavy-kill sound wins over forty ordinary hits in the same frame");
+            Check(impact.hitMarker.IsVisible && impact.hitMarker.Tier == CombatImpactTier.HeavyKill && impact.ActiveDeathEchoCount == 1,
+                "Heavy kill keeps its marker priority and directional death snapshot through the hit burst");
+            Check(audio.CombatWeaponGain < .8f && audio.CombatMusicGain < 1 &&
+                Mathf.Approximately(Read<AudioSource>(audio,"sfxSource").volume,audio.MasterVolume*audio.SfxVolume),
+                "Kill emphasis ducks only weapon/music sources and preserves player-injury and danger SFX volume");
             Check(GameManager.Instance.KillCount == credits + 1 && impact.PresentedKills == kills + 1,
                 "A confirmed kill retains exactly one native kill credit");
             CombatImpactFeedback.ApplyDamage(heavy.GetComponent<EnemyHealth>(), 100, heavy.transform.position, Vector2.right, PlayerImpactSource.Projectile);
@@ -101,6 +122,8 @@ namespace AlienPurge.Level01.Editor
                 "Repeated damage on a corpse cannot repeat rewards or kill feedback");
             yield return Seconds(.5f);
             Check(impact.ActiveBurstCount == 0 && impact.ActiveVoiceCount <= 6, "Burst pool drains and audio polyphony remains bounded");
+            Check(impact.ActiveDeathEchoCount == 0 && !impact.hitMarker.IsVisible && audio.CombatWeaponGain == 1 && audio.CombatMusicGain == 1,
+                "Death snapshot, marker and temporary audio emphasis completely expire");
 
             var a = AbilityEnemy(EnemyType.Normal, origin + new Vector3(2, -1), 1);
             var b = AbilityEnemy(EnemyType.Fast, origin + new Vector3(2.8f, 1), 1);
@@ -111,6 +134,26 @@ namespace AlienPurge.Level01.Editor
             Capture("Impact_KillConfirmation"); yield return null; yield return null;
             yield return Seconds(impact.chainWindow + .1f);
             Check(impact.ConsecutiveKills == 0 && impact.confirmation.color.a == 0, "Kill confirmation expires without changing XP or damage multipliers");
+
+            // Continuous production fire verifies the common single-kill case, not only synthetic multi-kills.
+            foreach (var old in Object.FindObjectsOfType<Bullet>()) old.ReturnToPool();
+            var single = AbilityEnemy(EnemyType.Normal, origin + new Vector3(-2.5f, -.4f), 3);
+            var singleHealth = single.GetComponent<EnemyHealth>();
+            credits = GameManager.Instance.KillCount; kills = impact.PresentedKills;
+            float firingDeadline = Time.realtimeSinceStartup + 8;
+            while (!singleHealth.IsDead && Time.realtimeSinceStartup < firingDeadline)
+            {
+                weapons.AimAt(single.GetComponent<Collider2D>().bounds.center); weapons.TryFire(); yield return null;
+            }
+            Check(singleHealth.IsDead && impact.PresentedKills == kills + 1 && GameManager.Instance.KillCount == credits + 1,
+                "Continuous native weapon fire reaches exactly one real kill");
+            Check(impact.ConsecutiveKills == 1 && impact.confirmation.text.Contains("击杀确认") && impact.confirmationGroup.alpha == 1,
+                "Even a single normal kill has immediate readable confirmation");
+            Capture("Impact_SingleKill"); yield return null; yield return null;
+            Check(impact.LastPlayedTier == CombatImpactTier.Kill && audio.CombatWeaponGain < 1,
+                "Single-kill audio takes foreground during actual gunfire");
+            yield return Seconds(.5f);
+            foreach (var old in Object.FindObjectsOfType<Bullet>()) old.ReturnToPool();
 
             // Area damage and chain lightning still execute the production Bullet paths.
             var secondary = AbilityEnemy(EnemyType.Normal, normal.transform.position + Vector3.up * .9f, 100);
@@ -138,17 +181,23 @@ namespace AlienPurge.Level01.Editor
             Check(impact.PresentedHits == hits && impact.PresentedKills == kills && offscreen.GetComponent<EnemyHealth>().IsDead,
                 "Offscreen player damage still resolves natively without misleading local feedback");
 
-            var audio = AudioManager.Instance;
             Check(audio != null, "Native audio settings bus is present");
             float priorSfx = audio.SfxVolume;
             audio.SetSfxVolume(0);
             CombatImpactFeedback.ApplyDamage(health, 1, reaction.ImpactCenter, Vector2.right, PlayerImpactSource.Projectile);
             yield return null; yield return null;
-            Check(impact.GetComponentsInChildren<AudioSource>().All(v => v.volume == 0), "SFX mute reaches every new feedback voice");
+            Check(impact.GetComponentsInChildren<AudioSource>().All(v => v.volume == 0) && Read<AudioSource>(audio,"weaponSource").volume == 0,
+                "SFX mute reaches every impact voice and the independent weapon channel");
+            var muted = AbilityEnemy(EnemyType.Normal, origin + new Vector3(-2, 1), 1);
+            CombatImpactFeedback.ApplyDamage(muted.GetComponent<EnemyHealth>(), 1, muted.transform.position, Vector2.right, PlayerImpactSource.Projectile);
+            yield return null; yield return null;
+            Check(audio.CombatMusicGain == 1 && audio.CombatWeaponGain == 1 && impact.GetComponentsInChildren<AudioSource>().All(v => v.volume == 0),
+                "A muted kill keeps visual confirmation without silently ducking the music");
             audio.SetSfxVolume(priorSfx);
             CombatImpactFeedback.ApplyDamage(health, 1, reaction.ImpactCenter, Vector2.right, PlayerImpactSource.Projectile);
             var pause = Object.FindObjectOfType<PauseMenuController>(); pause.PauseGame(); yield return null; yield return null;
-            Check(impact.ActiveVoiceCount == 0 && impact.ActiveBurstCount == 0 && !reaction.FlashVisible && reaction.VisualOffset == Vector3.zero,
+            Check(impact.ActiveVoiceCount == 0 && impact.ActiveBurstCount == 0 && impact.ActiveDeathEchoCount == 0 && !impact.hitMarker.IsVisible &&
+                audio.CombatWeaponGain == 1 && audio.CombatMusicGain == 1 && !reaction.FlashVisible && reaction.VisualOffset == Vector3.zero,
                 "Pause clears audio, pending impacts and body offsets without touching time ownership");
             sounds = impact.PlayedSounds; pause.ResumeGame(); yield return Seconds(.25f);
             Check(impact.PlayedSounds == sounds && Time.timeScale == 1, "Resume does not replay queued hits or leave slow motion behind");

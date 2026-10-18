@@ -12,6 +12,7 @@ public sealed class EnemyImpactReaction : MonoBehaviour
     float began = -100, barUntil, amount, trail = 1;
     bool heavy;
     bool hiddenSource;
+    bool deathEcho;
     public bool FlashVisible => flash != null && flash.enabled;
     public float HealthFraction => health == null ? 0 : (float)health.CurrentHealth / Mathf.Max(1, health.MaxHealth);
     public Vector2 ImpactCenter => body != null ? (Vector2)body.bounds.center : (Vector2)transform.position;
@@ -38,7 +39,12 @@ public sealed class EnemyImpactReaction : MonoBehaviour
             trail = 1;
         }
         RemoveOffset(); direction = incoming; heavy = isHeavy;
-        amount = (tier == CombatImpactTier.Hit ? .045f : .075f) * (heavy ? .45f : 1);
+        amount = (tier == CombatImpactTier.Hit ? .09f : .15f) * (heavy ? .55f : 1);
+        if (tier >= CombatImpactTier.Kill && !deathEcho && GetComponent<IEnemyDeathPresentation>() == null)
+        {
+            host.EmitDeathEcho(body, incoming, heavy);
+            deathEcho = true;
+        }
         began = Time.time; barUntil = Time.time + 1.4f;
         // Immediate reaction also works when damage arrives after this component's LateUpdate.
         Render();
@@ -64,7 +70,9 @@ public sealed class EnemyImpactReaction : MonoBehaviour
         // The native animator keeps updating the original sprite and no transform is moved.
         if (alive && body.enabled && age >= 0 && age < .14f)
         {
-            float envelope = (1 - age / .14f) * (1 - age / .14f);
+            // A brief held displacement makes contact readable, without freezing gameplay or physics.
+            float release = Mathf.Clamp01((age - .035f) / .105f);
+            float envelope = (1 - release) * (1 - release);
             appliedOffset = direction * (amount * envelope);
             bodyEcho.sprite = body.sprite; bodyEcho.flipX = body.flipX; bodyEcho.flipY = body.flipY;
             bodyEcho.color = body.color; bodyEcho.sharedMaterial = body.sharedMaterial;
@@ -72,7 +80,8 @@ public sealed class EnemyImpactReaction : MonoBehaviour
             bodyEcho.transform.localPosition = body.transform.InverseTransformVector(appliedOffset);
             bodyEcho.enabled = true; body.enabled = false; hiddenSource = true;
         }
-        flash.enabled = (body.enabled || hiddenSource) && age >= 0 && age < .075f;
+        if (!alive && deathEcho && body.enabled) { body.enabled = false; hiddenSource = true; }
+        flash.enabled = !deathEcho && (body.enabled || hiddenSource) && age >= 0 && age < .075f;
         if (flash.enabled)
         {
             flash.sprite = body.sprite; flash.flipX = body.flipX; flash.flipY = body.flipY;
@@ -107,7 +116,7 @@ public sealed class EnemyImpactReaction : MonoBehaviour
     }
     public void Clear()
     {
-        RemoveOffset(); began = -100; barUntil = 0; trail = 1;
+        RemoveOffset(); began = -100; barUntil = 0; trail = 1; deathEcho = false;
         if (flash != null) flash.enabled = false;
         if (barBack != null) barBack.enabled = barTrail.enabled = barFill.enabled = false;
     }

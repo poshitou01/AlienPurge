@@ -1,4 +1,4 @@
-PASS | Unity 2022.3.62f3c1 | 2026-10-18 11:08:14Z
+PASS | Unity 2022.3.62f3c1 | 2026-10-18 11:43:36Z
 PASS: Skill tests use isolated save profile
 MEASURE clear fixture origin=(-105.40, 31.00, 0.00)
 PASS: DeskV1 is the enabled build entry menu
@@ -37,9 +37,13 @@ PASS: Space during Q is buffered during its brief commitment
 PASS: Q-to-jump transition leaves one active ability state
 PASS: Disabling ability controller cleans visuals, states and pending input
 PASS: No leaked invulnerability after interruption
+PASS: A real weapon channel is active before the defeat/menu cleanup fixture
+PASS: Defeat clears temporary mix and stops the independent weapon channel
 PASS: Dying while airborne clears action and queued input
 PASS: Defeat captures a native loss snapshot without a success settlement
 PASS: Native result return reaches the correct DeskV1 menu
+PASS: DeskV1 restores menu music on the persistent audio manager at the user's normal volume
 PASS: DeskV1 StartGame returns to the upgraded V02 scene
 PASS: Menu round-trip starts with clean controls and time scale
+PASS: Restarting V02 restores gameplay music with no leftover kill ducking
 LIMITS: automation uses the same input-request path as keyboard, native physics/damage/pools/menu callbacks and synthetic combat fixtures; subjective dash feel/audio mix still benefit from human playtesting.

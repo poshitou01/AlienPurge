@@ -65,11 +65,15 @@ namespace AlienPurge.Level01.Editor
             Check(rb.position.x<origin.x+1.25f&&rb.position.y>origin.y+.7f,"Walking respects thin Environment walls and slides along them");
             movement.SetMovementInput(Vector2.zero);yield return Seconds(.1f);Object.Destroy(wall);Move(origin,true);yield return Seconds(.2f);
             var hud=Object.FindObjectOfType<HUDManager>();
-            Check(Read<bool>(hud,"tacticalLabels"),"Status labels use scene-local Chinese formatting");
+            Check(Read<bool>(hud,"tacticalLabels")&&Read<TMP_Text>(hud,"hpText").text.StartsWith("HP")&&Read<TMP_Text>(hud,"expText").text.StartsWith("EXP"),
+                "Status retains English HP/EXP labels in the V02 icon layout");
             hp.TakeDamage(1);yield return null;
             Check(Read<Slider>(hud,"hpSlider").value==hp.CurrentHealth&&Read<TMP_Text>(hud,"hpText").text.Contains(hp.CurrentHealth+" / "+hp.MaxHealth),"The restyled health bar and text follow real damage");
             hud.UpdateLevelUI(99);hud.UpdateExperienceUI(999,1000);hud.UpdateTimeUI(6000,0,false);hud.UpdateKillCountUI(999999);
             var panel=Object.FindObjectOfType<PlayerStatusPanel>();
+            foreach(string icon in new[]{"HealthIcon","ExperienceIcon","TimeIcon","KillsIcon"})
+                Check(panel.transform.Find(icon).GetComponent<Image>().sprite!=null&&panel.transform.Find(icon).gameObject.activeInHierarchy,
+                    "Original status icon is visible: "+icon,false);
             foreach(var text in panel.GetComponentsInChildren<TMP_Text>())
             {text.ForceMeshUpdate();Check(!text.isTextOverflowing,"Status text accommodates high values: "+text.name,false);}
             Check(panel.GetComponentsInChildren<Graphic>().All(g=>!g.raycastTarget),"Status presentation cannot block aiming or clicking");
@@ -77,6 +81,11 @@ namespace AlienPurge.Level01.Editor
             hp.RestoreHealth(1);hud.UpdateLevelUI(1);hud.UpdateExperienceUI(0,5);hud.UpdateKillCountUI(0);
             weapons.AimAt(p.transform.position+Vector3.right*10);yield return Seconds(.15f);
             Capture("Player_StatusHUD");yield return null;yield return null;
+            hp.CancelTemporaryInvulnerability();hp.TakeDamage(4);yield return Seconds(.2f);
+            Check(panel.healthFill.color==panel.low&&Read<TMP_Text>(hud,"hpText").text.Contains("1 / 5"),
+                "Low-health color remains legible and follows actual HP in the icon layout");
+            Capture("Player_StatusHUD_Low");yield return null;yield return null;
+            hp.RestoreHealth(5);hp.CancelTemporaryInvulnerability();
 
             var camera=Camera.main;float oldZoom=camera.orthographicSize;camera.orthographicSize=1.8f;
             for(int i=0;i<8;i++)

@@ -53,8 +53,12 @@ namespace AlienPurge.Level01.Editor
             RegionLoopV02Installer.Install();
             string guid=AssetDatabase.AssetPathToGUID(RegionLoopV02Installer.Target);
             int objects=RegionLoopInstaller.All<Transform>(SceneManager.GetActiveScene()).Length;
+            var installedPaths=RegionLoopInstaller.All<Transform>(SceneManager.GetActiveScene()).Select(TransformPath).ToArray();
             RegionLoopV02Installer.Install();
-            if(objects!=RegionLoopInstaller.All<Transform>(SceneManager.GetActiveScene()).Length||guid!=AssetDatabase.AssetPathToGUID(RegionLoopV02Installer.Target))throw new InvalidOperationException("Non-idempotent installer.");
+            var reinstalledPaths=RegionLoopInstaller.All<Transform>(SceneManager.GetActiveScene()).Select(TransformPath).ToArray();
+            if(objects!=reinstalledPaths.Length||guid!=AssetDatabase.AssetPathToGUID(RegionLoopV02Installer.Target))
+                throw new InvalidOperationException("Non-idempotent installer: "+objects+" -> "+reinstalledPaths.Length+
+                    " added="+string.Join(",",reinstalledPaths.Except(installedPaths))+" removed="+string.Join(",",installedPaths.Except(reinstalledPaths)));
             RegionLoopV02Installer.Validate();
             // Set before entering Play / domain reload, before SaveManager/bootstrap Awake can run.
             SessionState.SetString(Key+".product",PlayerSettings.productName);
@@ -63,6 +67,8 @@ namespace AlienPurge.Level01.Editor
             File.WriteAllText(Report,"RUNNING: isolated profile selected before initialization.\n");
             EditorApplication.isPlaying=true;
         }
+        static string TransformPath(Transform item)
+        { string path=item.name; for(var parent=item.parent;parent!=null;parent=parent.parent)path=parent.name+"/"+path; return path; }
         static void Mode(PlayModeStateChange mode)
         {
             if(!SessionState.GetBool(Key,false))return;

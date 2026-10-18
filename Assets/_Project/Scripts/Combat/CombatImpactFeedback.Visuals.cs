@@ -55,7 +55,7 @@ public sealed partial class CombatImpactFeedback
         burst.point = point; burst.direction = direction; burst.start = Time.time;
         burst.kill = tier >= CombatImpactTier.Kill;
         burst.duration = burst.kill ? .26f : .14f;
-        burst.size = tier == CombatImpactTier.HeavyKill ? .65f : burst.kill ? .4f : tier == CombatImpactTier.Strong ? .27f : .18f;
+        burst.size = tier == CombatImpactTier.HeavyKill ? .95f : burst.kill ? .65f : tier == CombatImpactTier.Strong ? .38f : .23f;
         burst.color = burst.kill ? new Color(1, .78f, .4f) : source == PlayerImpactSource.Chain ? new Color(.58f, .87f, 1) : new Color(.91f, .98f, 1);
         DrawBurst(burst);
     }
@@ -73,7 +73,7 @@ public sealed partial class CombatImpactFeedback
             Vector2 origin = burst.point + burst.direction * t * burst.size * .3f;
             line.SetPosition(0, origin + ray * spread);
             line.SetPosition(1, origin + ray * (spread + burst.size * (1 - t) * .55f));
-            line.widthMultiplier = (burst.kill ? .045f : .028f) * (1 - t * .75f);
+            line.widthMultiplier = (burst.kill ? .065f : .035f) * (1 - t * .75f);
             Color color = burst.color; color.a = (1 - t) * .95f;
             line.startColor = color; line.endColor = color;
         }

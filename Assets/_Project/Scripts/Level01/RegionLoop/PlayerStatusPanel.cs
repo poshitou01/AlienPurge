@@ -10,6 +10,7 @@ namespace AlienPurge.Level01.RegionLoop
         public Slider health;
         public Image healthFill;
         public TMP_Text healthLabel;
+        public int installationRevision;
         public Color normal = new Color(.68f,.29f,.21f), low = new Color(1,.39f,.25f);
         float previous=-1,flashUntil;
         void LateUpdate()

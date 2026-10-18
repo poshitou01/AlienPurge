@@ -15,6 +15,9 @@ namespace AlienPurge.Level01.Editor
     {
         static void ConfigurePlayer(Scene scene)
         {
+            // HUD revisions are independent of the player's tuned movement/weapon rig.
+            var existingStatus=All<PlayerStatusPanel>(scene).FirstOrDefault();
+            if(existingStatus==null||existingStatus.installationRevision<3)PolishPlayerStatus(scene);
             var movement=One<PlayerMovement>(scene);
             var rig=movement.GetComponent<PlayerCombatPresentation>()??movement.gameObject.AddComponent<PlayerCombatPresentation>();
             if(rig.installationRevision>=5)return;
@@ -71,35 +74,47 @@ namespace AlienPurge.Level01.Editor
             }
             var weapon=One<WeaponController>(scene);Set(weapon,"recoilDistance",.055f);Set(weapon,"recoilRecoveryDuration",.095f);Set(weapon,"useScaledFeedbackTime",true);
             Set(One<PlayerHealth>(scene),"bodySpriteRenderer",rig.bodyRenderer);Set(One<PlayerHealth>(scene),"visualRoot",visual);
-            PolishPlayerStatus(scene);
             rig.installationRevision=5;EditorUtility.SetDirty(rig);
         }
         static void PolishPlayerStatus(Scene scene)
         {
             var hud=One<HUDManager>(scene);uiFont=Reference<TMP_Text>(One<MissionHUD>(scene),"titleText").font;
             var canvas=hud.GetComponentInParent<Canvas>().rootCanvas;
-            var frame=Plate(canvas.transform,"CombatStatus","Panel_Main_9Slice",Vector2.zero,new Vector2(396,204));
+            var frame=Plate(canvas.transform,"CombatStatus","Panel_Main_9Slice",Vector2.zero,new Vector2(400,180));
             var root=frame.rectTransform;root.anchorMin=root.anchorMax=root.pivot=new Vector2(0,1);root.anchoredPosition=new Vector2(28,-24);
             var hp=Reference<TMP_Text>(hud,"hpText");var xp=Reference<TMP_Text>(hud,"expText");var level=Reference<TMP_Text>(hud,"levelText");
             var timer=Reference<TMP_Text>(hud,"timeText");var kills=Reference<TMP_Text>(hud,"killCountText");
             var hpSlider=Reference<Slider>(hud,"hpSlider");var xpSlider=Reference<Slider>(hud,"expSlider");
             var oldHP=hp.transform.parent.gameObject;var oldTime=timer.transform.parent.gameObject;var oldKills=kills.transform.parent.gameObject;
-            Plate(root,"Header","Panel_Header_9Slice",new Vector2(0,74),new Vector2(380,44));
-            Label(root,"Title","战斗状态",new Vector2(-80,74),new Vector2(180,32),19,Gold);
-            Style(level,root,new Vector2(105,74),new Vector2(142,32),21,Gold,TextAlignmentOptions.MidlineRight);
-            Style(hp,root,new Vector2(0,33),new Vector2(342,28),21,Ink);
-            var fill=StatusBar(hpSlider,root,new Vector2(0,9),new Vector2(342,12),new Color(.68f,.29f,.21f));
-            Style(xp,root,new Vector2(0,-18),new Vector2(342,25),16,Muted);
-            StatusBar(xpSlider,root,new Vector2(0,-39),new Vector2(342,5),Gold);
-            Plate(root,"Footer","Panel_Detail_9Slice",new Vector2(0,-72),new Vector2(366,42));
-            Style(timer,root,new Vector2(-86,-72),new Vector2(160,28),17,Ink);
-            Style(kills,root,new Vector2(86,-72),new Vector2(160,28),17,Ink,TextAlignmentOptions.MidlineRight);
+            foreach(string name in new[]{"Header","Title"}){var old=root.Find(name);if(old!=null)old.gameObject.SetActive(false);}
+            StatusIcon(root,"HealthIcon","HP",new Vector2(-165,51),44);
+            StatusIcon(root,"ExperienceIcon","EXP",new Vector2(-165,-12),40);
+            var levelPlate=Plate(root,"LevelBadge","Panel_Detail_9Slice",new Vector2(134,57),new Vector2(98,36));
+            Style(level,levelPlate.transform,Vector2.zero,new Vector2(82,30),18,Gold,TextAlignmentOptions.Center);
+            Style(hp,root,new Vector2(-27,56),new Vector2(220,40),25,Ink);
+            var fill=StatusBar(hpSlider,root,new Vector2(22,30),new Vector2(318,13),new Color(.80f,.35f,.28f));
+            Style(xp,root,new Vector2(22,-6),new Vector2(318,28),19,Ink);
+            StatusBar(xpSlider,root,new Vector2(22,-29),new Vector2(318,7),new Color(.44f,.76f,.71f));
+            Plate(root,"Footer","Panel_Detail_9Slice",new Vector2(0,-64),new Vector2(374,34));
+            // The original clock has more transparent padding than the other three icons.
+            StatusIcon(root,"TimeIcon","Time",new Vector2(-162,-64),42);
+            StatusIcon(root,"KillsIcon","Kills",new Vector2(75,-64),26);
+            Style(timer,root,new Vector2(-63,-64),new Vector2(154,27),19,Ink);
+            Style(kills,root,new Vector2(130,-64),new Vector2(76,30),19,Ink,TextAlignmentOptions.MidlineRight);
             foreach(var old in new[]{oldHP,oldTime,oldKills})if(old!=frame.gameObject)old.SetActive(false);
             Set(hud,"tacticalLabels",true);
             hud.UpdateHealthUI(5,5);hud.UpdateExperienceUI(0,5);hud.UpdateLevelUI(1);hud.UpdateTimeUI(0,0,false);hud.UpdateKillCountUI(0);
-            var status=frame.GetComponent<PlayerStatusPanel>()??frame.gameObject.AddComponent<PlayerStatusPanel>();
+            var status=frame.GetComponent<PlayerStatusPanel>();if(status==null)status=frame.gameObject.AddComponent<PlayerStatusPanel>();
             status.health=hpSlider;status.healthFill=fill;status.healthLabel=hp;
+            status.normal=new Color(.80f,.35f,.28f);status.installationRevision=3;EditorUtility.SetDirty(status);
             foreach(var graphic in root.GetComponentsInChildren<Graphic>(true))graphic.raycastTarget=false;
+        }
+        static void StatusIcon(Transform parent,string name,string asset,Vector2 position,float size)
+        {
+            var icon=Plate(parent,name,"Panel_IconPreview_9Slice",position,new Vector2(size,size));
+            icon.sprite=AssetDatabase.LoadAssetAtPath<Sprite>("Assets/_Project/Art/UI/Icons/UI_Icon_"+asset+".png");
+            if(icon.sprite==null)throw new InvalidOperationException("Missing original status icon: "+asset);
+            icon.type=Image.Type.Simple;icon.preserveAspect=true;icon.color=new Color(.94f,.94f,.87f);
         }
         static Image StatusBar(Slider slider,Transform parent,Vector2 position,Vector2 size,Color color)
         {

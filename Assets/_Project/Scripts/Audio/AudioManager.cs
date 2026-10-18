@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 [DisallowMultipleComponent]
-public class AudioManager : MonoBehaviour
+public partial class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance { get; private set; }
 
@@ -378,6 +378,7 @@ public class AudioManager : MonoBehaviour
     /// </summary>
     private void ResetRuntimeAudioState()
     {
+        ClearCombatEmphasis();
         lastShootTime = float.NegativeInfinity;
         lastEnemyHitTime = float.NegativeInfinity;
 
@@ -426,7 +427,7 @@ public class AudioManager : MonoBehaviour
     public void PlayShoot()
     {
         TryPlayThrottled(
-            sfxSource,
+            WeaponSource,
             playerShootClip,
             playerShootVolume,
             minimumShootInterval,
@@ -461,7 +462,7 @@ public class AudioManager : MonoBehaviour
         AudioClip shootClip)
     {
         TryPlayThrottled(
-            sfxSource,
+            WeaponSource,
             shootClip,
             signatureShootVolume,
             minimumShootInterval,
@@ -842,10 +843,11 @@ public class AudioManager : MonoBehaviour
 
     private void ApplyVolumeSettings()
     {
+        ApplyCombatMix();
         if (musicSource != null)
         {
             musicSource.volume =
-                masterVolume * musicVolume;
+                masterVolume * musicVolume * CombatMusicGain;
         }
 
         if (sfxSource != null)

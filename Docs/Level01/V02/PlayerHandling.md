@@ -1,5 +1,7 @@
 # V02 玩家移动、持枪与左上状态栏
 
+最新 HUD 修订：恢复 HP、EXP、时间、击杀四枚原有图标，HP / EXP 使用英文，采用更紧凑的深色金边布局。当前截图为 Player_StatusHUD.png / Player_StatusHUD_Low.png；界面与战斗反馈的新说明见 [CombatImpact.md](CombatImpact.md)。下文保留移动与持枪实施记录。
+
 本次在 `D:\AlienPurge_RegionLoopV01` 的 `Level01_FullWorld_GameplayV02` 场景内安装，基于 `1e73b8c`。入口仍是 `MainMenu_DeskV1`。
 
 ## 操作与画面

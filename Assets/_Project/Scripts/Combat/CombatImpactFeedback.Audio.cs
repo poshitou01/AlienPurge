@@ -45,11 +45,14 @@ public sealed partial class CombatImpactFeedback
             pendingTier == CombatImpactTier.Kill ? killSound : pendingTier == CombatImpactTier.Strong ? strongSound : hitSound;
         int index = kill ? 2 + killVoice++ % 4 : hitVoice++ % 2;
         var voice = voices[index];
-        gains[index] = pendingTier == CombatImpactTier.HeavyKill ? .9f : kill ? .68f : pendingTier == CombatImpactTier.Strong ? .48f : .36f;
+        gains[index] = pendingTier == CombatImpactTier.HeavyKill ? .88f : kill ? .78f : pendingTier == CombatImpactTier.Strong ? .5f : .36f;
         if (kill)
         {
             nextKillSound = Time.time + minimumKillInterval;
             emphasisUntil = Time.time + .17f;
+            if (AudioManager.Instance != null) AudioManager.Instance.EmphasizeCombatKill(pendingTier == CombatImpactTier.HeavyKill);
+            // A new confirmation owns the foreground; let earlier kill tails remain quietly audible.
+            for (int i = 2; i < voices.Length; i++) if (i != index) gains[i] *= .52f;
             for (int i = 0; i < 2; i++) voices[i].volume = BusGain * gains[i] * .28f;
         }
         else nextHitSound = Time.time + minimumHitInterval;
@@ -68,5 +71,6 @@ public sealed partial class CombatImpactFeedback
     {
         soundPending = false; nextHitSound = nextKillSound = emphasisUntil = 0;
         foreach (var voice in voices) if (voice != null) voice.Stop();
+        if (AudioManager.Instance != null) AudioManager.Instance.ClearCombatEmphasis();
     }
 }

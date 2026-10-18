@@ -172,6 +172,11 @@ namespace AlienPurge.Level01.Editor
             ConfigurePlayer(scene);
             ConfigureImpact(scene);
             PrepareChineseFonts(scene);
+            // Materialize TMP fallback meshes before saving/counting the migrated HUD.
+            // Changing a label from Chinese to English can otherwise leave deferred submeshes
+            // that only disappear after the scene is reopened on the second installation.
+            foreach (var label in All<TMP_Text>(scene)) label.ForceMeshUpdate(true);
+            Canvas.ForceUpdateCanvases();
             loop.feedbackRevision = 3;
             EditorSceneManager.MarkSceneDirty(scene);
             ValidateScene(scene);

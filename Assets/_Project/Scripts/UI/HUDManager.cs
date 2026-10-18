@@ -40,7 +40,7 @@ public class HUDManager : MonoBehaviour
     {
         if (hpText != null)
         {
-            hpText.text = (tacticalLabels ? "\u751f\u547d  " : "HP: ") + currentHealth + " / " + maxHealth;
+            hpText.text = (tacticalLabels ? "HP  " : "HP: ") + currentHealth + " / " + maxHealth;
         }
 
         if (hpSlider != null)
@@ -54,7 +54,7 @@ public class HUDManager : MonoBehaviour
     {
         if (expText != null)
         {
-            expText.text = (tacticalLabels ? "\u7ecf\u9a8c  " : "EXP: ") + currentExperience + " / " + experienceToNextLevel;
+            expText.text = (tacticalLabels ? "EXP  " : "EXP: ") + currentExperience + " / " + experienceToNextLevel;
         }
 
         if (expSlider != null)
@@ -68,7 +68,7 @@ public class HUDManager : MonoBehaviour
     {
         if (levelText != null)
         {
-            levelText.text = (tacticalLabels ? "\u7b49\u7ea7  " : "Level: ") + currentLevel;
+            levelText.text = (tacticalLabels ? "LV. " : "Level: ") + currentLevel;
         }
     }
 
@@ -86,7 +86,7 @@ public class HUDManager : MonoBehaviour
         }
         else
         {
-            timeText.text = (tacticalLabels ? "\u7528\u65f6  " : "Time: ") + FormatTime(survivalTime);
+            timeText.text = (tacticalLabels ? "" : "Time: ") + FormatTime(survivalTime);
         }
     }
 
@@ -94,7 +94,7 @@ public class HUDManager : MonoBehaviour
     {
         if (killCountText != null)
         {
-            killCountText.text = (tacticalLabels ? "\u51fb\u6740  " : "Kills: ") + killCount;
+            killCountText.text = (tacticalLabels ? "" : "Kills: ") + killCount;
         }
     }
 

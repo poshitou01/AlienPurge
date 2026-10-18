@@ -1,6 +1,6 @@
 # Level01 Region Loop V02 — 试玩反馈修订
 
-最新升级：命中、强命中、击杀和重型击杀的声音与视觉反馈已安装，见 [CombatImpact.md](CombatImpact.md) 和 `ImpactChecks.txt`。左上状态栏、玩家移动与八方向持枪见 [PlayerHandling.md](PlayerHandling.md)；冲刺、跳跃、Q 脉冲及 `MainMenu_DeskV1` 往返见 [AbilityFeel.md](AbilityFeel.md)；后期敌人成长、技能栏、任务面板与结算界面见 [CombatUI.md](CombatUI.md)。下文保留早期交付记录；最新行为以这些修订为准。
+最新升级：重做击杀确认声与枪声混音，增加短暂命中标记、方向性倒下和单次击杀确认；左上角恢复原有四枚图标及 HP / EXP 英文。见 [CombatImpact.md](CombatImpact.md) 和最新检查报告。左上状态栏、玩家移动与八方向持枪见 [PlayerHandling.md](PlayerHandling.md)；冲刺、跳跃、Q 脉冲及 `MainMenu_DeskV1` 往返见 [AbilityFeel.md](AbilityFeel.md)；后期敌人成长、技能栏、任务面板与结算界面见 [CombatUI.md](CombatUI.md)。下文保留早期交付记录；最新行为以这些修订为准。
 
 工程：`D:\AlienPurge_RegionLoopV01`；分支：`feature/level01-region-loop-v02`；Unity 2022.3.62f3c1。本轮继续修改现有 V02，没有创建第二套玩法系统。
 

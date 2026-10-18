@@ -14,9 +14,10 @@ public sealed partial class CombatImpactFeedback : MonoBehaviour
     public Material effectMaterial, flashMaterial;
     public TMP_Text confirmation;
     public CanvasGroup confirmationGroup;
+    public CombatHitMarker hitMarker;
     public AudioClip hitSound, strongSound, killSound, heavyKillSound;
-    [Range(0, 1)] public float feedbackVolume = .7f;
-    [Range(0, 1)] public float cameraFeedback = .65f;
+    [Range(0, 1)] public float feedbackVolume = .82f;
+    [Range(0, 1)] public float cameraFeedback = .75f;
     [Range(.02f, .2f)] public float minimumHitInterval = .075f;
     [Range(.05f, .3f)] public float minimumKillInterval = .12f;
     [Min(.5f)] public float chainWindow = 2.2f;
@@ -64,7 +65,7 @@ public sealed partial class CombatImpactFeedback : MonoBehaviour
         if (Instance != null && Instance != this) { enabled = false; return; }
         Instance = this;
         if (worldCamera == null) worldCamera = Camera.main;
-        CreateVisuals(); CreateAudio();
+        CreateVisuals(); CreateDeathEchoes(); CreateAudio();
         if (confirmation != null) confirmation.text = "";
         if (confirmationGroup != null) confirmationGroup.alpha = 0;
     }
@@ -87,12 +88,13 @@ public sealed partial class CombatImpactFeedback : MonoBehaviour
             PresentedKills++;
             ConsecutiveKills = Time.time - lastKill <= chainWindow ? ConsecutiveKills + 1 : 1;
             lastKill = Time.time;
-            if (confirmation != null && (heavy || ConsecutiveKills >= 3))
+            if (confirmation != null)
             {
-                confirmation.text = heavy ? (boss ? "首领已击倒" : "重型已击倒") : "连续击杀  " + ConsecutiveKills;
+                confirmation.text = heavy ? (boss ? "首领击杀" : "重型击杀") : ConsecutiveKills >= 3 ? "连续击杀" : "击杀确认";
+                confirmation.text += "  × " + ConsecutiveKills;
                 confirmation.color = new Color(.95f, .82f, .53f, 1);
                 if (confirmationGroup != null) confirmationGroup.alpha = 1;
-                captionUntil = Time.time + 1.3f;
+                captionUntil = Time.time + 1.15f;
             }
         }
         if (!boss)
@@ -105,12 +107,13 @@ public sealed partial class CombatImpactFeedback : MonoBehaviour
             if (source != PlayerImpactSource.Projectile) point = reaction.ImpactCenter;
         }
         EmitBurst(point, direction, tier, source);
+        if (hitMarker != null) hitMarker.Show(worldCamera, point, tier);
         QueueSound(tier, Mathf.Clamp((viewport.x - .5f) * .65f, -.32f, .32f));
         if (tier >= CombatImpactTier.Kill && Time.time >= nextShake && CameraFollow.Instance != null)
         {
             nextShake = Time.time + .13f;
-            CameraFollow.Instance.Shake((tier == CombatImpactTier.HeavyKill ? .12f : .035f) * cameraFeedback,
-                tier == CombatImpactTier.HeavyKill ? .13f : .065f);
+            CameraFollow.Instance.Shake((tier == CombatImpactTier.HeavyKill ? .16f : .075f) * cameraFeedback,
+                tier == CombatImpactTier.HeavyKill ? .14f : .085f);
         }
     }
 
@@ -123,20 +126,25 @@ public sealed partial class CombatImpactFeedback : MonoBehaviour
             return;
         }
         wasSuspended = false;
-        UpdateVisuals(); UpdateAudio();
+        UpdateVisuals(); UpdateDeathEchoes(); UpdateAudio();
         if (Time.time - lastKill > chainWindow) ConsecutiveKills = 0;
         if (confirmation != null)
         {
             var color = confirmation.color;
             color.a = Mathf.Clamp01((captionUntil - Time.time) / .35f);
             confirmation.color = color;
-            if (confirmationGroup != null) confirmationGroup.alpha = color.a;
+            if (confirmationGroup != null)
+            {
+                confirmationGroup.alpha = color.a > 0 ? 1 : 0;
+                confirmationGroup.transform.localScale = Vector3.one * (1 + .09f * Mathf.Clamp01(1 - (Time.time - lastKill) / .13f));
+            }
         }
     }
 
     void ClearPresentation()
     {
-        ClearVisuals(); ClearAudio();
+        ClearVisuals(); ClearDeathEchoes(); ClearAudio();
+        if (hitMarker != null) hitMarker.Clear();
         foreach (var reaction in reactions) if (reaction != null) reaction.Clear();
         ConsecutiveKills = 0; lastKill = -100; captionUntil = 0;
         if (confirmation != null) confirmation.text = "";

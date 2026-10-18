@@ -1,4 +1,4 @@
-PASS | Unity 2022.3.62f3c1 | 2026-10-18 11:11:02Z
+PASS | Unity 2022.3.62f3c1 | 2026-10-18 11:39:42Z
 PASS: Player checks use an isolated profile
 PASS: V02 installs a single aim-facing presentation driver
 PASS: All eight held poses and the continuous stride material are assigned
@@ -12,10 +12,11 @@ PASS: Releasing movement stops within a short bounded distance
 PASS: Ability movement locks clear the motor without coasting
 PASS: Pause clears pending movement and motor state
 PASS: Walking respects thin Environment walls and slides along them
-PASS: Status labels use scene-local Chinese formatting
+PASS: Status retains English HP/EXP labels in the V02 icon layout
 PASS: The restyled health bar and text follow real damage
 PASS: Status presentation cannot block aiming or clicking
 PASS: Status uses the same inventory panel art as the mission and ability HUD
+PASS: Low-health color remains legible and follows actual HP in the icon layout
 PASS: Aim chooses the correct body direction E
 PASS: Neutral weapon grip stays at the palm E
 PASS: Aim chooses the correct body direction NE

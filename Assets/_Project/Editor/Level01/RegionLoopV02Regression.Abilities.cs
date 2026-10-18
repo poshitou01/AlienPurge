@@ -154,16 +154,24 @@ namespace AlienPurge.Level01.Editor
             before=hp.CurrentHealth;hp.TakeDamage(1);Check(hp.CurrentHealth==before-1,"No leaked invulnerability after interruption");
 
             yield return Until(()=>jump.IsReady,"Death cleanup fixture",3);feel.RequestAbility(PlayerAbilityMode.Airborne);
+            var mix=AudioManager.Instance;mix.PlayShoot();mix.EmphasizeCombatKill(true);
+            Check(mix.CombatWeaponGain<1,"A real weapon channel is active before the defeat/menu cleanup fixture");
             hp.TakeDamage(hp.CurrentHealth);yield return Until(()=>GameManager.Instance.IsGameOver,"Native defeat",3);yield return null;yield return null;
+            Check(mix.CombatWeaponGain==1&&mix.CombatMusicGain==1&&!Read<AudioSource>(mix,"weaponSource").isPlaying,
+                "Defeat clears temporary mix and stops the independent weapon channel");
             Check(!jump.IsActive&&!state.IsUsingAbility&&!feel.HasBufferedInput,"Dying while airborne clears action and queued input");
             Check(GameManager.Instance.CurrentRunResultSnapshot!=null&&!GameManager.Instance.IsVictory,"Defeat captures a native loss snapshot without a success settlement");
             GameManager.Instance.ReturnToBase();yield return Until(()=>SceneManager.GetActiveScene().name=="MainMenu_DeskV1","Actual result return loads DeskV1",15);
             Check(Object.FindObjectOfType<MainMenuManager>()!=null,"Native result return reaches the correct DeskV1 menu");
+            Check(mix==AudioManager.Instance&&mix.CombatMusicGain==1&&Read<AudioSource>(mix,"musicSource").clip==Read<AudioClip>(mix,"mainMenuMusic"),
+                "DeskV1 restores menu music on the persistent audio manager at the user's normal volume");
             Object.FindObjectOfType<MainMenuManager>().StartGame();
             yield return Until(()=>SceneManager.GetActiveScene().name=="Level01_FullWorld_GameplayV02","DeskV1 StartGame loads V02",20);yield return null;
             loop=Object.FindObjectOfType<RegionLoopController>();
             Check(loop!=null&&loop.world.player.GetComponent<PlayerAbilityFeel>()!=null,"DeskV1 StartGame returns to the upgraded V02 scene");
             Check(!loop.world.player.GetComponent<PlayerAbilityState>().IsUsingAbility&&Time.timeScale==1,"Menu round-trip starts with clean controls and time scale");
+            Check(mix.CombatWeaponGain==1&&mix.CombatMusicGain==1&&Read<AudioSource>(mix,"musicSource").clip==Read<AudioClip>(mix,"gameplayMusic"),
+                "Restarting V02 restores gameplay music with no leftover kill ducking");
             results.Add("LIMITS: automation uses the same input-request path as keyboard, native physics/damage/pools/menu callbacks and synthetic combat fixtures; subjective dash feel/audio mix still benefit from human playtesting.");
         }
     }

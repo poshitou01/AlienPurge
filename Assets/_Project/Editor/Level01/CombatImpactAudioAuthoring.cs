@@ -9,7 +9,7 @@ namespace AlienPurge.Level01.Editor
     // Keep the source recipe with the project so the four layers are reproducible.
     public static class CombatImpactAudioAuthoring
     {
-        public const string Folder = "Assets/_Project/Audio/SFX/Combat/ImpactV02";
+        public const string Folder = "Assets/_Project/Audio/SFX/Combat/ImpactV03";
         public static readonly string[] Names = { "Hit", "StrongHit", "Kill", "HeavyKill" };
         public static void EnsureClips()
         {
@@ -33,7 +33,7 @@ namespace AlienPurge.Level01.Editor
         static void WriteClip(string path, int kind)
         {
             const int rate = 48000;
-            double duration = new[] { .105, .17, .255, .43 }[kind];
+            double duration = new[] { .09, .155, .32, .46 }[kind];
             var samples = new double[(int)(duration * rate)];
             var random = new System.Random(7193 + kind * 257);
             double low = 0, smooth = 0, sum = 0, peak = 0;
@@ -41,28 +41,40 @@ namespace AlienPurge.Level01.Editor
             {
                 double t = (double)i / rate, noise = random.NextDouble() * 2 - 1;
                 low += (noise - low) * .13; smooth += (noise - smooth) * .4;
-                double crack = (smooth - low) * Math.Exp(-t / (kind < 2 ? .015 : .024));
-                double body = Sin(72 * t + (kind == 3 ? 2.5 : 1.3) * (1 - Math.Exp(-t * 75))) * Math.Exp(-t / (kind == 3 ? .095 : .029));
-                double snap = Sin(1350 * t - 2200 * t * t) * Math.Exp(-t / .009);
-                double value = crack * 2 + body * .4 + snap * .12;
-                if (kind >= 1)
-                    value += (Sin(610 * t) + .4 * Sin(977 * t)) * Math.Exp(-t / .027) * .12;
-                if (kind >= 2)
+                double value;
+                if (kind < 2)
                 {
-                    // Several short ceramic/metal fragments follow the initial contact. The
-                    // descending body gives weight; a quiet resolved overtone confirms the kill.
-                    for (int n = 0; n < (kind == 3 ? 7 : 4); n++)
-                    {
-                        double s = t - (.006 + n * .0125);
-                        if (s < 0) continue;
-                        value += (Sin((1700 + n * 271) * s - 3600 * s * s) + .28 * noise) * Math.Exp(-s / .018) * (.095 - n * .008);
-                    }
-                    double chime = Sin(784 * t) * .07 + Sin(1176 * t) * .032;
-                    value += chime * Math.Exp(-t / .095) * Math.Min(1, t / .018);
+                    // Dry contact: short noise snap and a low knock, with no confirmation tone.
+                    double contact = (smooth - low) * Math.Exp(-t / .012) * 2.8;
+                    double knock = Sin(126 * t + .65 * (1 - Math.Exp(-t * 110))) * Math.Exp(-t / .023);
+                    value = contact + knock * .43;
+                    if (kind == 1) value += (Sin(340 * t) + .37 * Sin(582 * t)) * Math.Exp(-t / .038) * .24;
                 }
-                if (kind == 3) value += low * Math.Exp(-t / .07) * .65;
-                double fade = Math.Min(1, t / .0015) * Math.Min(1, (duration - t) / .014);
-                samples[i] = value * fade; sum += samples[i];
+                else
+                {
+                    // A separate identity: double fracture, descending body, then a clearly
+                    // audible resolved fifth. Not an armor mechanic and not a sampled game sound.
+                    double body = Sin((kind == 3 ? 63 : 88) * t + 1.4 * (1 - Math.Exp(-t * 65))) * Math.Exp(-t / .065);
+                    value = body * .66 + (smooth - low) * Math.Exp(-t / .026) * 2.8;
+                    double split = t - .028;
+                    if (split > 0) value += (smooth - low) * Math.Exp(-split / .022) * 1.9;
+                    for (int n = 0; n < (kind == 3 ? 7 : 5); n++)
+                    {
+                        double s = t - (.014 + n * .014);
+                        if (s < 0) continue;
+                        value += (Sin((1430 + n * 317) * s - 1300 * s * s) + .35 * noise) * Math.Exp(-s / .024) * (.15 - n * .013);
+                    }
+                    double tail = t - .045;
+                    if (tail > 0)
+                    {
+                        double note = kind == 3 ? 523.25 : 783.99;
+                        double resolved = Sin(note * tail) * .28 + Sin(note * 1.5 * tail) * .14 + Sin(note * 2.013 * tail) * .045;
+                        value += resolved * Math.Min(1, tail / .009) * Math.Exp(-tail / (kind == 3 ? .12 : .085));
+                    }
+                    if (kind == 3) value += low * Math.Exp(-t / .10) * .7;
+                }
+                double fade = Math.Min(1, t / .0008) * Math.Min(1, (duration - t) / .018);
+                samples[i] = Math.Tanh(value * 1.35) * fade; sum += samples[i];
             }
             double mean = sum / samples.Length;
             for (int i = 0; i < samples.Length; i++)
