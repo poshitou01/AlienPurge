@@ -7,7 +7,7 @@ public sealed class SupportEnemyAbility : MonoBehaviour, IEnemyDeathPresentation
 {
     [SerializeField] private SupportEnemyConfig config;
     private struct Lease { public EnemySupportBuff target; public uint generation; }
-    private readonly List<Lease> leases = new List<Lease>(6);
+    private readonly List<Lease> leases = new List<Lease>(8);
     private readonly List<Collider2D> overlaps = new List<Collider2D>(64);
     private readonly List<PooledEnemy> candidates = new List<PooledEnemy>(64);
     private EnemyMovement movement;
@@ -73,7 +73,7 @@ public sealed class SupportEnemyAbility : MonoBehaviour, IEnemyDeathPresentation
         candidates.Sort((a, b) => ((a.transform.position - transform.position).sqrMagnitude).CompareTo((b.transform.position - transform.position).sqrMagnitude));
         foreach (var candidate in candidates)
         {
-            if (leases.Count >= Mathf.Clamp(config.maximumTargets, 1, 6)) break;
+            if (leases.Count >= Mathf.Clamp(config.maximumTargets, 1, 8)) break;
             if (Vector2.Distance(candidate.transform.position, transform.position) > config.supportRadius) continue;
             var buff = candidate.GetComponent<EnemySupportBuff>();
             if (buff == null) buff = candidate.gameObject.AddComponent<EnemySupportBuff>();

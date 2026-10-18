@@ -34,10 +34,11 @@ public static class CoreEnemyArtSetup
         Component ability=index==1 ? (Component)root.GetComponent<FastChargeAttack>() : index==2 ? (Component)root.GetComponent<HeavyShockwaveAttack>() : root.GetComponent<RangedEnemyAttack>();
         var so=new SerializedObject(ability);
         float windup=so.FindProperty("windupDuration").floatValue, recovery=so.FindProperty("recoveryDuration").floatValue;
-        float active=index==1 ? so.FindProperty("chargeDuration").floatValue : recovery*.5f;
+        bool wave=index==2 && so.FindProperty("expandingShockwave").boolValue;
+        float active=index==1 ? so.FindProperty("chargeDuration").floatValue : wave ? so.FindProperty("waveDuration").floatValue : recovery*.5f;
         return common.Concat(new[] { new Spec("Windup","Windup",four,windup,12),
             new Spec("Attack","Attack",index==1 ? eight : four,active,12),
-            index==1 ? new Spec("Recover","Windup",new[]{4,3,2,1},recovery,12) : new Spec("Recover","Attack",new[]{3,4},recovery*.5f,12) }).ToArray();
+            index==1 ? new Spec("Recover","Windup",new[]{4,3,2,1},recovery,12) : new Spec("Recover","Attack",new[]{3,4},wave ? recovery : recovery*.5f,12) }).ToArray();
     }
     public static Sprite Frame(string enemy,string state,string direction,int frame)
     {
@@ -107,12 +108,13 @@ public static class CoreEnemyArtSetup
     }
     static void BuildScene()
     {
-        // Open the already delivered native-manager lab in memory; save to a NEW
-        // scene path. Its file and production arenas are never changed.
-        var scene=EditorSceneManager.OpenScene(SupportExploderSetup.ScenePath);
+        // Keep the existing lab's object identities on repeated installation.
+        // A missing lab is seeded from the delivered native-manager test scene.
+        var scene=EditorSceneManager.OpenScene(File.Exists(ScenePath) ? ScenePath : SupportExploderSetup.ScenePath);
         var old=UnityEngine.Object.FindObjectOfType<EnemyAbilityTestLab>();
-        UnityEngine.Object.DestroyImmediate(old.gameObject);
-        new GameObject("CoreEnemies_ArtLab").AddComponent<CoreEnemyArtLab>();
+        if(old!=null) UnityEngine.Object.DestroyImmediate(old.gameObject);
+        if(UnityEngine.Object.FindObjectOfType<CoreEnemyArtLab>()==null)
+            new GameObject("CoreEnemies_ArtLab").AddComponent<CoreEnemyArtLab>();
         var pool=new SerializedObject(UnityEngine.Object.FindObjectOfType<EnemyPool>());
         var entries=pool.FindProperty("poolEntries");
         for(int i=0;i<entries.arraySize;i++)
@@ -164,7 +166,7 @@ public static class CoreEnemyArtSetup
                 {
                     var sprite=key.value as Sprite;
                     Require(sprite!=null && AssetDatabase.GetAssetPath(sprite).StartsWith(Art+Enemies[i]+"/Authored/",StringComparison.Ordinal),"Own authored sprite");
-                    Require(sprite.pixelsPerUnit==256 && sprite.rect.size==new Vector2(512,512) && sprite.pivot==new Vector2(256,256),"512 / PPU256 / center pivot");
+                    Require(sprite.pixelsPerUnit==256 && sprite.rect.size==new Vector2(512,512) && EnemyMotionArtRegistration.Valid(sprite),"512 / PPU256 / registered torso pivot");
                 }
             }
             frames+=Directory.GetFiles(Art+Enemies[i]+"/Authored","*.png",SearchOption.AllDirectories).Length;
@@ -178,7 +180,7 @@ public static class CoreEnemyArtSetup
         var boss=AssetDatabase.LoadAssetAtPath<HiveTyrantCombatConfig>(HiveTyrantCombatSetup.ConfigPath);
         Require(boss.summonChoices.Length==4 && boss.summonChoices.All(c=>(int)c.type>=0 && (int)c.type<=3),"Boss existing four-type whitelist");
         Directory.CreateDirectory(Report);
-        File.WriteAllText(Report+"/AssetValidation.txt","PASS: 736 authored PNGs / 168 clips / 8 directions / 512 RGBA / PPU256 / center Pivot.\nSprite-only curves, no Animation Events, native enemy identity and navigation, Boss original whitelist.\n");
+        File.WriteAllText(Report+"/AssetValidation.txt","PASS: 736 authored PNGs / 168 clips / 8 directions / 512 RGBA / PPU256 / registered torso Pivot.\nSprite-only curves, no Animation Events, native enemy identity and navigation, Boss original whitelist.\n");
         File.WriteAllLines(Report+"/PrefabAudit.txt",audit);
         Debug.Log("Core enemy authored art asset validation PASSED.");
     }

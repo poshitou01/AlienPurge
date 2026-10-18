@@ -65,7 +65,7 @@ public static class SupportExploderSetup
         Require(boss.summonChoices.Length == 4 && boss.summonChoices.All(c => (int)c.type >= 0 && (int)c.type <= 3), "Boss explicit original four-type whitelist");
         Directory.CreateDirectory("Docs/Enemies/SupportExploder");
         AuditExistingEnemies();
-        File.WriteAllText("Docs/Enemies/SupportExploder/AssetValidation.txt", "PASS: enum identities, data/prefab types, native A*, 96 authored directional state clips, own sprites / 512 canvas / PPU 256 / center pivot, no Animation Events, Boss original whitelist.\n424 authored PNG frames (416 body + 8 radial VFX); existing prefab/data identities retained.\n");
+        File.WriteAllText("Docs/Enemies/SupportExploder/AssetValidation.txt", "PASS: enum identities, data/prefab types, native A*, 96 authored directional state clips, own sprites / 512 canvas / PPU 256 / registered torso pivot, no Animation Events, Boss original whitelist.\n424 authored PNG frames (416 body + 8 radial VFX); existing prefab/data identities retained.\n");
         Debug.Log("Support + Exploder authored-art asset validation PASSED.");
     }
     [MenuItem("AlienPurge/Support + Exploder/5 Play Animation Preview")]

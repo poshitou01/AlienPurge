@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3a472e22df4b784b9ab1c45f0ac64c9, type: 3}
   m_Name: Support_Ability
   m_EditorClassIdentifier: 
-  supportRadius: 4.5
-  maximumTargets: 3
+  supportRadius: 14
+  maximumTargets: 8
   bonusDamage: 1
   refreshInterval: 0.2
-  allySearchRadius: 10
-  keepAwayFromPlayer: 5
-  behindAllyDistance: 2
+  allySearchRadius: 18
+  keepAwayFromPlayer: 6
+  behindAllyDistance: 2.5
   allyLayers:
     serializedVersion: 2
     m_Bits: 1

@@ -29,7 +29,7 @@ public static partial class CoreEnemyArtVerification
         int damage=enemy.GetComponent<EnemyContactDamage>().Damage;
         var poses=new HashSet<CoreEnemyAnimation.Pose>(); var projectiles=new HashSet<int>();
         var timing=new List<string>{"frame,scaled_time,pose,phase,progress,player_hp"};
-        bool ring=false,movedAfterHit=false; float finish=Time.time+2, next=Time.time; int capture=0;
+        bool ring=false,movedAfterHit=false; float finish=Time.time+2.8f, next=Time.time; int capture=0;
         string name=CoreEnemyArtSetup.Enemies[(int)type];
         Directory.CreateDirectory(Folder+"/"+name+"_Live");
         foreach(var oldCapture in Directory.GetFiles(Folder+"/"+name+"_Live","*.png")) File.Delete(oldCapture);
@@ -43,9 +43,9 @@ public static partial class CoreEnemyArtVerification
             poses.Add(visual.CurrentPose);
             if(!movedAfterHit && player.CurrentHealth<hp) { movedAfterHit=true; Place(player,new Vector2(14,-8)); }
             foreach(var projectile in Object.FindObjectsOfType<EnemyProjectile>()) projectiles.Add(projectile.GetInstanceID());
-            if(visual.ImpactVisible && !ring)
+            if(type==EnemyType.Heavy && visual.AttackSample.Phase==EnemyAttackVisualPhase.Active && enemy.GetComponent<EnemyGroundTelegraph>().Visible && !ring)
             {
-                ring=true; Check(Mathf.Approximately(visual.DisplayedImpactRadius,enemy.GetComponent<HeavyShockwaveAttack>().VisualShockwaveRadius),"Tank impact boundary matches native damage radius");
+                ring=true; Check(Mathf.Abs(enemy.GetComponent<EnemyGroundTelegraph>().DisplayedRadius-enemy.GetComponent<HeavyShockwaveAttack>().WaveRadius)<.2f,"Tank visible wave follows the native damage front");
             }
             if(Time.time>=next)
             {
@@ -61,7 +61,7 @@ public static partial class CoreEnemyArtVerification
         Check(player.CurrentHealth==hp-damage,type+" native ability damages player exactly once; no animation event damage");
         Check(GameManager.Instance.KillCount==kills,type+" ability presentation grants no spurious kill reward");
         Check(enemy.transform.localScale==scale && enemy.transform.rotation==Quaternion.identity && enemy.GetComponent<CircleCollider2D>().radius==radius,type+" skill art never changes collision root");
-        if(type==EnemyType.Heavy) Check(ring && !visual.ImpactVisible,"Tank shows true-radius impact briefly and clears it");
+        if(type==EnemyType.Heavy) Check(ring && !enemy.GetComponent<EnemyGroundTelegraph>().Visible,"Tank clears expanding-wave geometry after attack");
         if(type==EnemyType.Ranged) Check(projectiles.Count==1,"Spitter releases one native pooled projectile");
         // Recycle in a live action has no implicit attack or reward.
         int after=player.CurrentHealth; enemy.ReturnToPool(); yield return Wait(.3f);
@@ -142,7 +142,7 @@ public static partial class CoreEnemyArtVerification
         CoreEnemyArtLab.Restart(); yield return Wait(1);
         lab=Object.FindObjectOfType<CoreEnemyArtLab>(); player=Object.FindObjectOfType<PlayerHealth>();
         Check(player.CurrentHealth==player.MaxHealth && GameManager.Instance.KillCount==0,"Restart clears health/kill state");
-        Check(Object.FindObjectsOfType<EnemyPool>().Length==1 && Object.FindObjectsOfType<CoreEnemyArtLab>().Length==1 && Object.FindObjectsOfType<CoreEnemyAnimation>().Length==4,"Restart loads one lab / one pool / four native enemies");
+        Check(Object.FindObjectsOfType<EnemyPool>().Length==1 && Object.FindObjectsOfType<CoreEnemyArtLab>().Length==1 && Object.FindObjectsOfType<CoreEnemyAnimation>().Length==4 && Object.FindObjectsOfType<PooledEnemy>().Length==6,"Restart loads one lab / one pool / all six native enemies");
         Check(Object.FindObjectsOfType<CoreEnemyAnimation>().All(a=>!a.IsPreview && a.GetComponent<SpriteRenderer>().color.a==1),"Restart has no old preview / death fade");
         Capture("TestScene_Overview",Vector2.zero,10.5f);
     }

@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public sealed class CoreEnemyArtLab : MonoBehaviour
 {
     public bool spawnOnStart=true, previewOnStart;
-    static readonly string[] Names={"Swarmer","Rusher","Tank","Spitter"};
+    static readonly string[] Names={"Swarmer","Rusher","Tank","Spitter","Support","Exploder"};
     static readonly string[] Directions={"D","DR","R","UR","U","UL","L","DL"};
     readonly PooledEnemy[] actors=new PooledEnemy[4];
     Behaviour[] playerInputs;
@@ -36,7 +36,8 @@ public sealed class CoreEnemyArtLab : MonoBehaviour
         RecycleAll();
         Spawn(EnemyType.Normal,new Vector2(-7,4)); Spawn(EnemyType.Fast,new Vector2(1,6));
         Spawn(EnemyType.Heavy,new Vector2(9,4)); Spawn(EnemyType.Ranged,new Vector2(12,-3));
-        status="Native four-enemy encounter";
+        Spawn(EnemyType.Support,new Vector2(-8,5)); Spawn(EnemyType.Exploder,new Vector2(7,-4));
+        status="Six-enemy encounter / Support: 14u, 8 allies / Tank: expanding ground wave";
     }
     public void RecycleAll()
     {
@@ -101,7 +102,13 @@ public sealed class CoreEnemyArtLab : MonoBehaviour
     void Duel()
     {
         RecycleAll(); Place(player,new Vector2(0,-6));
-        Spawn((EnemyType)duelType,new Vector2(0,0)); status="Duel / "+Names[duelType]; duelType=(duelType+1)%4;
+        Spawn((EnemyType)duelType,new Vector2(0,0)); status="Duel / "+Names[duelType];
+        if(duelType==4)
+        {
+            Spawn(EnemyType.Normal,new Vector2(-2,1)); Spawn(EnemyType.Normal,new Vector2(2,1));
+            Spawn(EnemyType.Normal,new Vector2(0,3)); status+=" + three supported allies";
+        }
+        duelType=(duelType+1)%6;
     }
     void Update()
     {
@@ -141,7 +148,7 @@ public sealed class CoreEnemyArtLab : MonoBehaviour
     {
         if(title==null) { title=new GUIStyle(GUI.skin.label){fontSize=20,fontStyle=FontStyle.Bold}; text=new GUIStyle(GUI.skin.label){fontSize=14}; }
         GUI.Box(new Rect(12,12,790,170),GUIContent.none);
-        GUI.Label(new Rect(26,20,760,30),"ALIENPURGE / SWARMER + RUSHER + TANK + SPITTER",title);
+        GUI.Label(new Rect(26,20,760,30),"ALIENPURGE / SIX ENEMIES / MOTION + ABILITIES V2",title);
         GUI.Label(new Rect(26,52,760,24),"WASD move | LMB shoot | Shift Dash | Space Jet Jump",text);
         GUI.Label(new Rect(26,77,760,24),"F1 encounter | F2 next duel | F3 recycle | F4 kill | F9 Restart",text);
         GUI.Label(new Rect(26,102,760,24),"F5 preview/combat | F6 direction | F7 pose | F8 pause | F10 zoom | F11 half speed",text);

@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe24b48bd1b9fb240b755231001e1593, type: 3}
   m_Name: Exploder_Ability
   m_EditorClassIdentifier: 
-  triggerDistance: 2.4
-  explosionRadius: 3
-  warningDuration: 1.5
-  spawnGraceDuration: 1.5
-  safeArmingDistance: 4.5
+  triggerDistance: 2.2
+  explosionRadius: 3.6
+  warningDuration: 1.15
+  spawnGraceDuration: 1.2
+  safeArmingDistance: 4.8
   damageMultiplier: 2
   victims: 0
   victimLayers:

@@ -21,6 +21,26 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3116509259470848189, guid: 5da49d37e7931534cb71e50bbba34859, type: 3}
+      propertyPath: attackCooldown
+      value: 4.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3116509259470848189, guid: 5da49d37e7931534cb71e50bbba34859, type: 3}
+      propertyPath: windupDuration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3116509259470848189, guid: 5da49d37e7931534cb71e50bbba34859, type: 3}
+      propertyPath: shockwaveRadius
+      value: 3.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3116509259470848189, guid: 5da49d37e7931534cb71e50bbba34859, type: 3}
+      propertyPath: triggerDistance
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3116509259470848189, guid: 5da49d37e7931534cb71e50bbba34859, type: 3}
+      propertyPath: recoveryDuration
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3116509259470848189, guid: 5da49d37e7931534cb71e50bbba34859, type: 3}
       propertyPath: warningEndColor.a
       value: 0.4509804
       objectReference: {fileID: 0}
@@ -33,12 +53,24 @@ PrefabInstance:
       value: 0.15686275
       objectReference: {fileID: 0}
     - target: {fileID: 3116509259470848189, guid: 5da49d37e7931534cb71e50bbba34859, type: 3}
+      propertyPath: expandingShockwave
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3116509259470848189, guid: 5da49d37e7931534cb71e50bbba34859, type: 3}
       propertyPath: warningStartColor.a
       value: 0.16078432
       objectReference: {fileID: 0}
     - target: {fileID: 3319235536976819082, guid: 5da49d37e7931534cb71e50bbba34859, type: 3}
       propertyPath: m_Name
       value: Enemy_Heavy_Tank
+      objectReference: {fileID: 0}
+    - target: {fileID: 5697719365786335921, guid: 5da49d37e7931534cb71e50bbba34859, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8409971171983772170, guid: 5da49d37e7931534cb71e50bbba34859, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8521493281721276124, guid: 5da49d37e7931534cb71e50bbba34859, type: 3}
       propertyPath: m_Sprite
@@ -106,6 +138,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3319235536976819082, guid: 5da49d37e7931534cb71e50bbba34859, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7739089681099261042}
+    - targetCorrespondingSourceObject: {fileID: 3319235536976819082, guid: 5da49d37e7931534cb71e50bbba34859, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5921421283297740971}
+    - targetCorrespondingSourceObject: {fileID: 3319235536976819082, guid: 5da49d37e7931534cb71e50bbba34859, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7529760038639090285}
   m_SourcePrefab: {fileID: 100100000, guid: 5da49d37e7931534cb71e50bbba34859, type: 3}
 --- !u!1 &4440553926595022019 stripped
 GameObject:
@@ -199,7 +237,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4440553926595022019}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 674634e9e46a5e046a5bfc65d3efa7aa, type: 3}
   m_Name: 
@@ -217,9 +255,39 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 25dd36ecd0511b546a064047136598a5, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   impactMaterial: {fileID: 2100000, guid: 31213f86257d45c4291395e0c49b107f, type: 2}
+--- !u!114 &5921421283297740971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4440553926595022019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f9955b3365e94943802237d87eae507, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  strideDistance: 0.9
+  turnHysteresis: 10
+  minimumTurnInterval: 0.1
+  headingSmoothing: 0.065
+  stopGrace: 0.14
+--- !u!114 &7529760038639090285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4440553926595022019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaa1b95020735d143983186c48f4afce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materialTemplate: {fileID: 2100000, guid: 31213f86257d45c4291395e0c49b107f, type: 2}
 --- !u!212 &7345973094163245461 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 8521493281721276124, guid: 5da49d37e7931534cb71e50bbba34859, type: 3}

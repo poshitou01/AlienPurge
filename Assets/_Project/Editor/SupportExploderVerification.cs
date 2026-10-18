@@ -14,7 +14,7 @@ using Object = UnityEngine.Object;
 public static partial class SupportExploderVerification
 {
     const string Key = "SupportExploder.Verification";
-    const string Folder = "Docs/Enemies/SupportExploder/Validation";
+    const string Folder = "Docs/Enemies/CoreEnemies/PolishV2/SupportExploder";
     static readonly Stack<IEnumerator> jobs = new Stack<IEnumerator>();
     static readonly List<string> report = new List<string>(), errors = new List<string>();
     static double started;
@@ -49,6 +49,7 @@ public static partial class SupportExploderVerification
         {
             SessionState.SetBool(Key, false);
             EditorSceneManager.OpenScene(SupportExploderSetup.ScenePath);
+            CoreEnemyTestProfileIsolation.Restore();
             if (Application.isBatchMode) EditorApplication.Exit(SessionState.GetInt(Key + ".Exit", 1));
         }
     }
@@ -67,7 +68,7 @@ public static partial class SupportExploderVerification
     }
     static void Finish(bool pass)
     {
-        done = true; jobs.Clear(); if (errors.Count > 0) { pass = false; report.AddRange(errors); }
+        done = true; jobs.Clear(); Time.captureDeltaTime=0; Time.timeScale=1; if (errors.Count > 0) { pass = false; report.AddRange(errors); }
         report.Add(pass ? "RESULT: PASS" : "RESULT: FAIL");
         File.WriteAllLines(Folder + "/PlayMode_Result.txt", report);
         SessionState.SetInt(Key + ".Exit", pass ? 0 : 1); EditorApplication.isPlaying = false;
@@ -77,7 +78,12 @@ public static partial class SupportExploderVerification
         report.Add((condition ? "PASS: " : "FAIL: ") + label);
         if (!condition) throw new InvalidOperationException(label);
     }
-    static IEnumerator Wait(float duration) { float end = Time.realtimeSinceStartup + duration; while (Time.realtimeSinceStartup < end) yield return null; }
+    static IEnumerator Wait(float duration)
+    {
+        if(Time.captureDeltaTime>0 && Time.timeScale>0)
+        { float end=Time.time+duration*Time.timeScale; while(Time.time<end) yield return null; }
+        else { float end=Time.realtimeSinceStartup+duration; while(Time.realtimeSinceStartup<end) yield return null; }
+    }
     static void Place(Component target, Vector2 point)
     {
         target.transform.position = point; if (target.TryGetComponent<Rigidbody2D>(out var rb)) { rb.position = point; rb.velocity = Vector2.zero; }
@@ -119,9 +125,9 @@ public static partial class SupportExploderVerification
         var allies = new List<PooledEnemy>();
         for (int i = 0; i < 8; i++) allies.Add(Spawn(EnemyType.Normal, new Vector2(-10 + (i % 4), 3 + (i / 4))));
         yield return Wait(.3f);
-        Check(support.TargetCount == 3, "Support hard target cap is three");
+        Check(support.TargetCount == 8, "Support hard target cap is eight");
         var affected = allies.Where(a => a.GetComponent<EnemyContactDamage>().Damage == 2).ToArray();
-        Check(affected.Length == 3, "Exactly three base-damage-one allies receive +1");
+        Check(affected.Length == 8, "Eight base-damage-one allies receive +1");
         Capture("Support_Links_Authored_Art");
         var second = Spawn(EnemyType.Support, new Vector2(-9, 5)); yield return Wait(.3f);
         Check(allies.All(a => a.GetComponent<EnemyContactDamage>().Damage <= 2), "Two Supports never stack past strongest +1");

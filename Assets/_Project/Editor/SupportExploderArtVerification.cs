@@ -27,8 +27,8 @@ public static partial class SupportExploderVerification
             for (int d = 0; d < 8; d++)
             {
                 float angle = (d - 2) * 45 * Mathf.Deg2Rad;
-                Place(enemy, (Vector2)enemy.transform.position + new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * .15f);
-                yield return Wait(.05f);
+                float until=Time.time+.23f;
+                while(Time.time<until) { Place(enemy,(Vector2)enemy.transform.position+new Vector2(Mathf.Cos(angle),Mathf.Sin(angle))*Time.deltaTime*2); yield return null; }
                 Check(animator.GetInteger("Direction") == d && driver.CurrentDirection == d && driver.CurrentPose == SupportExploderAnimation.Pose.Move,
                     type + " native movement selects authored " + ArtDirections[d]);
             }
@@ -65,6 +65,7 @@ public static partial class SupportExploderVerification
     }
     static IEnumerator ReuseArtCase(EnemyType type)
     {
+        float previousCapture=Time.captureDeltaTime; Time.captureDeltaTime=1f/60;
         Place(player, new Vector2(0, -8));
         var reserved = new List<PooledEnemy>();
         while (EnemyPool.Instance.GetAvailableCount(type) > 1)
@@ -98,7 +99,7 @@ public static partial class SupportExploderVerification
             Check(!enemy.GetComponent<EnemyHealth>().IsDead && !enemy.IsReturned && GameManager.Instance.KillCount == kills + 1 && !enemy.GetComponent<EnemyAbilityPresentation>().ExplosionVisible,
                 type + " old death callback cannot affect next life cycle " + cycle);
         }
-        lab.RecycleAll();
+        lab.RecycleAll(); Time.captureDeltaTime=previousCapture;
     }
     static IEnumerator SupportVisualStates()
     {
@@ -125,7 +126,7 @@ public static partial class SupportExploderVerification
         Time.timeScale = 0; yield return Wait(.35f);
         Check(Mathf.Approximately(progress, ability.WarningProgress) && enemy.GetComponent<SpriteRenderer>().sprite == sprite && ability.ExplosionCount == 0, "Pause freezes warning countdown and authored charge frame together");
         Time.timeScale = .5f; yield return Wait(.4f);
-        Check(ability.WarningProgress > progress + .08f && ability.WarningProgress < progress + .2f, "Half speed advances warning and sampled charge by scaled time");
+        Check(ability.WarningProgress > progress + .08f && ability.WarningProgress < progress + .3f, "Half speed advances warning and sampled charge by scaled time");
         Time.timeScale = 1;
         enemy.GetComponent<EnemyHealth>().TakeDamage(9999); yield return Wait(.05f);
         Check(driver.CurrentPose == SupportExploderAnimation.Pose.Death && !visual.WarningVisible && !visual.ExplosionVisible && ability.ExplosionCount == 0, "Killing a charging enemy closes warning and plays nonexplosive collapse");

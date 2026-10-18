@@ -69,11 +69,11 @@ public sealed class EnemyAbilityPresentation : MonoBehaviour
         {
             Vector2 origin = transform.position; DisplayedRadius = support.Config.supportRadius;
             ground.Ring(origin, DisplayedRadius, .02f, new Color(.65f, .35f, .95f, .18f));
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < support.Config.maximumTargets; i++)
             {
                 var target = support.TargetAt(i); if (target == null || !support.HasValidLease(target)) continue;
                 Vector2 endpoint = target.transform.position;
-                ground.Line(origin, endpoint, .04f, new Color(.73f, .4f, 1, .7f));
+                ground.Line(origin, endpoint, .04f, new Color(.73f, .4f, 1, .38f));
                 float travel = Mathf.Repeat(Time.time * .7f + i * .23f, 1);
                 ground.Ellipse(Vector2.Lerp(origin, endpoint, travel), Vector2.one * .065f, new Color(.9f, .7f, 1, .85f));
                 ground.Ring(endpoint, .52f, .055f, new Color(.82f, .52f, 1, .95f));
@@ -86,14 +86,17 @@ public sealed class EnemyAbilityPresentation : MonoBehaviour
             Vector2 center = exploder.BlastCenter; DisplayedRadius = exploder.BlastRadius;
             bool warning = exploder.State == ExploderState.Warning;
             float elapsed = animationDriver != null ? animationDriver.DeathElapsed : 0;
-            Color edge = warning ? new Color(1, .32f + pulse * .22f, .09f) : new Color(1, .9f, .55f);
+            Color edge = warning ? Color.Lerp(new Color(1,.46f,.1f), new Color(1,.14f,.045f), exploder.WarningProgress) : new Color(1, .9f, .55f);
             if (!warning) edge.a = .75f * (1 - Mathf.Clamp01(elapsed / .55f));
             ground.Ellipse(center, Vector2.one * DisplayedRadius, new Color(1, .16f, .025f, warning ? .13f : .07f * (1 - Mathf.Clamp01(elapsed / .4f))));
             // Ring is inset: its outside edge is exactly the same world-space circle as OverlapCircle.
             ground.Ring(center, DisplayedRadius - .045f, .09f, edge);
             if (warning)
             {
-                ground.Ring(center, DisplayedRadius * .83f, .06f, Color.yellow, exploder.WarningProgress);
+                float progress = exploder.WarningProgress;
+                ground.Ellipse(center, Vector2.one * DisplayedRadius * progress, new Color(1,.3f,.04f,.06f+.09f*progress));
+                ground.Ring(center, DisplayedRadius * .88f, .08f, new Color(1,.86f,.3f), progress);
+                ground.Ring(center, Mathf.Max(.12f,DisplayedRadius*progress-.045f), .07f, new Color(1,.65f,.18f,.8f));
                 ground.Line(center + Vector2.up * .25f, center + Vector2.up * .8f, .11f, edge);
                 ground.Ellipse(center + Vector2.up * .08f, Vector2.one * .065f, edge);
             }
@@ -125,7 +128,7 @@ public sealed class EnemyAbilityPresentation : MonoBehaviour
     {
         organs?.Dispose(); ground?.Dispose(); if (ownedGround != null) Destroy(ownedGround); if (material != null) Destroy(material);
     }
-    private sealed class Surface
+    internal sealed class Surface
     {
         private readonly Mesh mesh;
         private readonly List<Vector3> vertices = new List<Vector3>(4096);

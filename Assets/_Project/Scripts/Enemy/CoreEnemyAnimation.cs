@@ -1,7 +1,7 @@
 using UnityEngine;
 
-// Sprite-only presentation layered on the project's Animator and native direction
-// controller. Every attack timer, hit, projectile and reward stays in its owner.
+// Sprite-only presentation layered on the project's Animator and stable motion
+// facing (legacy fallback retained). Attack timers, hits and rewards stay in their owners.
 [DefaultExecutionOrder(160), DisallowMultipleComponent]
 [RequireComponent(typeof(Animator), typeof(EnemyAnimationController), typeof(EnemyHealth))]
 public sealed class CoreEnemyAnimation : MonoBehaviour, IEnemyDeathPresentation
@@ -13,6 +13,7 @@ public sealed class CoreEnemyAnimation : MonoBehaviour, IEnemyDeathPresentation
     static readonly int[,] Hashes = BuildHashes();
     [SerializeField] Material impactMaterial;
     Animator animator;
+    EnemyMotionPresentation motion;
     SpriteRenderer body;
     EnemyHealth health;
     FastChargeAttack charge;
@@ -43,7 +44,7 @@ public sealed class CoreEnemyAnimation : MonoBehaviour, IEnemyDeathPresentation
     }
     void Awake()
     {
-        animator=GetComponent<Animator>(); body=GetComponent<SpriteRenderer>(); health=GetComponent<EnemyHealth>();
+        motion=GetComponent<EnemyMotionPresentation>(); animator=GetComponent<Animator>(); body=GetComponent<SpriteRenderer>(); health=GetComponent<EnemyHealth>();
         charge=GetComponent<FastChargeAttack>(); shock=GetComponent<HeavyShockwaveAttack>(); spit=GetComponent<RangedEnemyAttack>();
         attack = charge != null ? (Behaviour)charge : shock != null ? (Behaviour)shock : spit;
         if (shock != null && impactMaterial != null)
@@ -85,18 +86,20 @@ public sealed class CoreEnemyAnimation : MonoBehaviour, IEnemyDeathPresentation
         }
         var delta=transform.position-previousPosition; previousPosition=transform.position;
         movingGrace=delta.sqrMagnitude>.000004f ? .09f : Mathf.Max(0,movingGrace-Time.deltaTime);
-        int facing=movingGrace>0 ? Mathf.Clamp(animator.GetInteger(DirectionHash),0,7) : direction;
+        bool moving=motion!=null ? motion.IsMoving : movingGrace>0;
+        int facing=motion!=null ? motion.Direction : movingGrace>0 ? Mathf.Clamp(animator.GetInteger(DirectionHash),0,7) : direction;
         var sample=AttackSample;
         if (sample.Direction.sqrMagnitude>.0001f) facing=(Mathf.RoundToInt(Mathf.Atan2(sample.Direction.y,sample.Direction.x)*Mathf.Rad2Deg/45f)+10)%8;
         HideImpact();
         if (sample.Phase==EnemyAttackVisualPhase.None)
         {
-            animator.speed=1; Select(movingGrace>0 ? Pose.Move : Pose.Idle,facing); return;
+            animator.speed=moving && motion!=null ? 0 : 1;
+            Select(moving ? Pose.Move : Pose.Idle,facing,moving && motion!=null ? motion.Gait : -1); return;
         }
         animator.speed=0;
         if (sample.Phase==EnemyAttackVisualPhase.Windup) Select(Pose.Windup,facing,sample.Progress*.999f);
         else if (sample.Phase==EnemyAttackVisualPhase.Active) Select(Pose.Attack,facing,sample.Progress*.999f);
-        else if (charge!=null) Select(Pose.Recover,facing,sample.Progress*.999f);
+        else if (charge!=null || (shock!=null && shock.UsesExpandingWave)) Select(Pose.Recover,facing,sample.Progress*.999f);
         else
         {
             // Tank and Spitter apply their native attack once on entering recovery.
@@ -113,6 +116,8 @@ public sealed class CoreEnemyAnimation : MonoBehaviour, IEnemyDeathPresentation
     void Select(Pose next,int facing,float sample=-1)
     {
         if (next==pose && facing==direction && sample<0) return;
+        if (next==Pose.Move && next==pose && facing==direction && sample>=0 &&
+            Mathf.FloorToInt(sample*8)==Mathf.FloorToInt(Mathf.Repeat(animator.GetCurrentAnimatorStateInfo(0).normalizedTime,1)*8)) return;
         float phase=sample>=0 ? sample : next==pose && (next==Pose.Idle || next==Pose.Move) ? Mathf.Repeat(animator.GetCurrentAnimatorStateInfo(0).normalizedTime,1) : 0;
         pose=next; direction=facing; animator.Play(Hashes[(int)pose,direction],0,phase); animator.Update(0);
     }

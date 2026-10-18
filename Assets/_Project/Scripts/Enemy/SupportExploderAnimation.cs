@@ -1,7 +1,8 @@
 using UnityEngine;
 
 // Selects authored Sprite clips in the existing Animator. Gameplay never depends on
-// clip completion or Animation Events. EnemyAnimationController still owns Direction.
+// clip completion or Animation Events. The opt-in motion presentation supplies stable
+// Direction; prefabs without it retain the legacy direction-controller fallback.
 [DefaultExecutionOrder(150), DisallowMultipleComponent]
 [RequireComponent(typeof(Animator), typeof(EnemyHealth), typeof(EnemyAnimationController))]
 public sealed class SupportExploderAnimation : MonoBehaviour
@@ -12,6 +13,7 @@ public sealed class SupportExploderAnimation : MonoBehaviour
     static readonly int DirectionHash = Animator.StringToHash("Direction");
     static readonly int[,] Hashes = MakeHashes();
     Animator animator;
+    EnemyMotionPresentation motion;
     SpriteRenderer body;
     EnemyHealth health;
     SupportEnemyAbility support;
@@ -34,7 +36,7 @@ public sealed class SupportExploderAnimation : MonoBehaviour
     }
     void Awake()
     {
-        animator = GetComponent<Animator>(); body = GetComponent<SpriteRenderer>(); health = GetComponent<EnemyHealth>();
+        motion = GetComponent<EnemyMotionPresentation>(); animator = GetComponent<Animator>(); body = GetComponent<SpriteRenderer>(); health = GetComponent<EnemyHealth>();
         support = GetComponent<SupportEnemyAbility>(); exploder = GetComponent<ExploderEnemyAbility>();
     }
     void OnEnable()
@@ -64,10 +66,10 @@ public sealed class SupportExploderAnimation : MonoBehaviour
             var color = body.color; color.a = 1 - Mathf.SmoothStep(0, 1, Mathf.InverseLerp(end - .15f, end, deathElapsed)); body.color = color;
             return;
         }
-        int facing = Mathf.Clamp(animator.GetInteger(DirectionHash), 0, 7);
+        int facing = motion != null ? motion.Direction : Mathf.Clamp(animator.GetInteger(DirectionHash), 0, 7);
         var delta = transform.position - previousPosition; previousPosition = transform.position;
         movingGrace = delta.sqrMagnitude > .000004f ? .09f : Mathf.Max(0, movingGrace - Time.deltaTime);
-        bool moving = movingGrace > 0;
+        bool moving = motion != null ? motion.IsMoving : movingGrace > 0;
         if (exploder != null && exploder.State == ExploderState.Warning)
         {
             // Sample the warning directly from the ability's scaled-time countdown.
@@ -100,7 +102,11 @@ public sealed class SupportExploderAnimation : MonoBehaviour
     static bool Cyclic(Pose p) => p == Pose.Move || p == Pose.SupportMove || p == Pose.Idle || p == Pose.SupportLoop;
     void Select(Pose next, int facing, float sample = -1)
     {
+        bool walking = next == Pose.Move || next == Pose.SupportMove;
+        if (!preview && walking && motion != null) { sample = motion.Gait; animator.speed = 0; }
         if (next == pose && facing == direction && sample < 0) return;
+        if (walking && next == pose && facing == direction && sample >= 0 &&
+            Mathf.FloorToInt(sample*8) == Mathf.FloorToInt(Mathf.Repeat(animator.GetCurrentAnimatorStateInfo(0).normalizedTime,1)*8)) return;
         float phase = sample >= 0 ? sample : Cyclic(next) && (next == pose || ((next == Pose.Move || next == Pose.SupportMove) && (pose == Pose.Move || pose == Pose.SupportMove)))
             ? Mathf.Repeat(animator.GetCurrentAnimatorStateInfo(0).normalizedTime, 1) : 0;
         pose = next; direction = facing;

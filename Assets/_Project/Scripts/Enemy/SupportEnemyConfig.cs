@@ -4,7 +4,7 @@ using UnityEngine;
 public sealed class SupportEnemyConfig : ScriptableObject
 {
     [Min(.5f)] public float supportRadius = 4.5f;
-    [Range(1, 6)] public int maximumTargets = 3;
+    [Range(1, 8)] public int maximumTargets = 3;
     [Tooltip("Integer damage system: +1 is the smallest visible increase. Multiple sources use the strongest bonus only.")]
     [Range(1, 3)] public int bonusDamage = 1;
     [Min(.1f)] public float refreshInterval = .2f;

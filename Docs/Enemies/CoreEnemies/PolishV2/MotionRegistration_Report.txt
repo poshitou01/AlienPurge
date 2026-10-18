@@ -1,0 +1,6 @@
+Swarmer: move torso centroid step mean=11.30px max=40.23px; importer registration residual <0.001px (measured shell mask, not anatomy).
+Rusher: move torso centroid step mean=10.71px max=26.54px; importer registration residual <0.001px (measured shell mask, not anatomy).
+Tank: move torso centroid step mean=6.90px max=17.01px; importer registration residual <0.001px (measured shell mask, not anatomy).
+Spitter: move torso centroid step mean=8.08px max=21.46px; importer registration residual <0.001px (measured shell mask, not anatomy).
+Support: move torso centroid step mean=8.60px max=26.31px; importer registration residual <0.001px (measured shell mask, not anatomy).
+Exploder: move torso centroid step mean=7.17px max=18.29px; importer registration residual <0.001px (measured shell mask, not anatomy).

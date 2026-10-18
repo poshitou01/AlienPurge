@@ -12,7 +12,7 @@ using Object=UnityEngine.Object;
 [InitializeOnLoad]
 public static partial class CoreEnemyArtVerification
 {
-    const string Key="CoreEnemies.ArtVerification", Folder="Docs/Enemies/CoreEnemies/Validation";
+    const string Key="CoreEnemies.ArtVerification", Folder="Docs/Enemies/CoreEnemies/PolishV2/Core";
     static readonly Stack<IEnumerator> jobs=new Stack<IEnumerator>();
     static readonly List<string> report=new List<string>(), errors=new List<string>();
     static double started;
@@ -28,7 +28,11 @@ public static partial class CoreEnemyArtVerification
     public static void Run()
     {
         if(EditorApplication.isPlayingOrWillChangePlaymode) throw new InvalidOperationException("Exit Play Mode first.");
-        CoreEnemyArtSetup.Configure(); CoreEnemyArtSetup.Configure();
+        EnemyPolishSetup.Configure();
+        string installedScene=File.ReadAllText(CoreEnemyArtSetup.ScenePath);
+        EnemyPolishSetup.Configure();
+        if(File.ReadAllText(CoreEnemyArtSetup.ScenePath)!=installedScene)
+            throw new InvalidOperationException("Repeated setup changed the installed test-scene identities");
         Directory.CreateDirectory(Folder);
         Object.FindObjectOfType<CoreEnemyArtLab>().spawnOnStart=false;
         SessionState.SetBool(Key,true); SessionState.SetInt(Key+".Exit",1); EditorApplication.isPlaying=true;
@@ -72,7 +76,12 @@ public static partial class CoreEnemyArtVerification
     {
         report.Add((value?"PASS: ":"FAIL: ")+label); if(!value) throw new InvalidOperationException(label);
     }
-    static IEnumerator Wait(float seconds) { float until=Time.realtimeSinceStartup+seconds; while(Time.realtimeSinceStartup<until) yield return null; }
+    static IEnumerator Wait(float seconds)
+    {
+        if(Time.captureDeltaTime>0 && Time.timeScale>0)
+        { float until=Time.time+seconds*Time.timeScale; while(Time.time<until) yield return null; }
+        else { float until=Time.realtimeSinceStartup+seconds; while(Time.realtimeSinceStartup<until) yield return null; }
+    }
     static IEnumerator Until(Func<bool> condition,float seconds,string label)
     {
         float until=Time.realtimeSinceStartup+seconds;
@@ -122,6 +131,7 @@ public static partial class CoreEnemyArtVerification
             yield return NativeAttack(type);
             yield return KillDuringWindup(type);
         }
+        yield return PolishCases();
         yield return Compatibility();
         yield return PreviewAndRestart();
         Check(errors.Count==0,"No Unity errors, exceptions or assertions");
@@ -138,8 +148,8 @@ public static partial class CoreEnemyArtVerification
         for(int d=0;d<8;d++)
         {
             float angle=(d-2)*45*Mathf.Deg2Rad;
-            Place(enemy,(Vector2)enemy.transform.position+new Vector2(Mathf.Cos(angle),Mathf.Sin(angle))*.15f);
-            yield return Wait(.04f);
+            float until=Time.time+.23f;
+            while(Time.time<until) { Place(enemy,(Vector2)enemy.transform.position+new Vector2(Mathf.Cos(angle),Mathf.Sin(angle))*Time.deltaTime*2); yield return null; }
             Check(animator.GetInteger("Direction")==d && driver.CurrentDirection==d && driver.CurrentPose==CoreEnemyAnimation.Pose.Move,name+" native movement selects "+CoreEnemyArtSetup.Directions[d]);
         }
         yield return Wait(.2f); Check(driver.CurrentPose==CoreEnemyAnimation.Pose.Idle,name+" stopped movement returns to idle and retains facing");
@@ -159,6 +169,7 @@ public static partial class CoreEnemyArtVerification
     }
     static IEnumerator Reuse(EnemyType type)
     {
+        float previousCapture=Time.captureDeltaTime; Time.captureDeltaTime=1f/60;
         Recycle(); Place(player,new Vector2(14,-8));
         while(EnemyPool.Instance.GetAvailableCount(type)>1) Spawn(type,new Vector2(13,8));
         var enemy=Spawn(type,new Vector2(-8,3)); var driver=enemy.GetComponent<CoreEnemyAnimation>(); var body=enemy.GetComponent<SpriteRenderer>();
@@ -184,6 +195,7 @@ public static partial class CoreEnemyArtVerification
             yield return Wait(.65f);
             Check(!enemy.IsReturned && !enemy.GetComponent<EnemyHealth>().IsDead && GameManager.Instance.KillCount==kills+1 && !driver.ImpactVisible,type+" previous life cannot damage/recycle/reward next life, cycle "+cycle);
         }
+        Time.captureDeltaTime=previousCapture;
     }
     static IEnumerator NavigationAndWeapon(EnemyType type)
     {

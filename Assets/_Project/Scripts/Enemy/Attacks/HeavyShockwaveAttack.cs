@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+using System.Collections.Generic;
+using UnityEngine;
 
 [DisallowMultipleComponent]
 [RequireComponent(typeof(Rigidbody2D))]
@@ -27,6 +28,20 @@ public class HeavyShockwaveAttack : MonoBehaviour
     [Min(0f)]
     [SerializeField]
     private float shockwaveRadius = 2.6f;
+
+    [Header("Expanding wave (opt-in for authored Tank)")]
+    [SerializeField] private bool expandingShockwave;
+    [Min(.1f), SerializeField] private float waveDuration = .6f;
+    [Min(.05f), SerializeField] private float waveWidth = .3f;
+    private readonly List<Collider2D> waveHits = new List<Collider2D>(16);
+    private readonly HashSet<PlayerHealth> waveVictims = new HashSet<PlayerHealth>();
+    private Vector2 waveCenter, lockedFacing;
+    private bool restoreContact;
+    public bool UsesExpandingWave => expandingShockwave;
+    public Vector2 WaveCenter => waveCenter;
+    public float WaveWidth => waveWidth;
+    public float WaveRadius => Mathf.Lerp(0, Mathf.Max(0,shockwaveRadius-waveWidth*.5f),
+        Mathf.Clamp01(1-stateTimeRemaining/Mathf.Max(.1f,waveDuration)));
 
     [Header("Attack Timing")]
     [Min(0f)]
@@ -92,12 +107,12 @@ public class HeavyShockwaveAttack : MonoBehaviour
 
     private Transform playerTarget;
 
-    // Presentation observes the native state; gameplay and serialized settings are unchanged.
+    // Read-only native clock and facing for visual presentation.
     public EnemyAttackVisualSample VisualSample =>
         !isActiveAndEnabled ? default :
-        currentState == ShockwaveState.Preparing ? new EnemyAttackVisualSample(EnemyAttackVisualPhase.Windup, stateTimeRemaining, windupDuration, Vector2.zero) :
-        currentState == ShockwaveState.Attacking ? new EnemyAttackVisualSample(EnemyAttackVisualPhase.Active, 0, 0, Vector2.zero) :
-        currentState == ShockwaveState.Recovering ? new EnemyAttackVisualSample(EnemyAttackVisualPhase.Recover, stateTimeRemaining, recoveryDuration, Vector2.zero) : default;
+        currentState == ShockwaveState.Preparing ? new EnemyAttackVisualSample(EnemyAttackVisualPhase.Windup, stateTimeRemaining, windupDuration, lockedFacing) :
+        currentState == ShockwaveState.Attacking ? new EnemyAttackVisualSample(EnemyAttackVisualPhase.Active, stateTimeRemaining, waveDuration, lockedFacing) :
+        currentState == ShockwaveState.Recovering ? new EnemyAttackVisualSample(EnemyAttackVisualPhase.Recover, stateTimeRemaining, recoveryDuration, lockedFacing) : default;
     public float VisualShockwaveRadius => shockwaveRadius;
 
 
@@ -129,7 +144,7 @@ public class HeavyShockwaveAttack : MonoBehaviour
             return;
         }
 
-        if (enemyMovement.IsKnockedBack)
+        if (enemyMovement.IsKnockedBack && currentState != ShockwaveState.Attacking)
         {
             if (currentState
                 == ShockwaveState.Preparing)
@@ -151,7 +166,7 @@ public class HeavyShockwaveAttack : MonoBehaviour
                 break;
 
             case ShockwaveState.Attacking:
-                ReleaseShockwave();
+                if (expandingShockwave) UpdateExpandingWave(); else ReleaseShockwave();
                 break;
 
             case ShockwaveState.Recovering:
@@ -195,6 +210,12 @@ public class HeavyShockwaveAttack : MonoBehaviour
             windupDuration;
 
         hasReleasedCurrentShockwave = false;
+        if (expandingShockwave)
+        {
+            waveCenter=rb.position; lockedFacing=((Vector2)playerTarget.position-rb.position).normalized;
+            waveVictims.Clear(); waveHits.Clear();
+            restoreContact=enemyContactDamage.enabled; enemyContactDamage.enabled=false;
+        }
 
         enemyMovement.SetMovementLocked(true);
 
@@ -226,9 +247,8 @@ public class HeavyShockwaveAttack : MonoBehaviour
         currentState =
             ShockwaveState.Attacking;
 
-        stateTimeRemaining = 0f;
-
-        ReleaseShockwave();
+        stateTimeRemaining = expandingShockwave ? waveDuration : 0f;
+        if (!expandingShockwave) ReleaseShockwave();
     }
 
     private void ReleaseShockwave()
@@ -244,6 +264,40 @@ public class HeavyShockwaveAttack : MonoBehaviour
         ApplyShockwaveDamage();
 
         EnterRecovering();
+    }
+
+    private void UpdateExpandingWave()
+    {
+        float previousRadius=WaveRadius;
+        stateTimeRemaining=Mathf.Max(0,stateTimeRemaining-Time.deltaTime);
+        float outer=Mathf.Min(shockwaveRadius,WaveRadius+waveWidth*.5f);
+        float inner=Mathf.Max(0,previousRadius-waveWidth*.5f);
+        var filter=new ContactFilter2D { useTriggers=false };
+        Physics2D.OverlapCircle(waveCenter,outer,filter,waveHits);
+        foreach(var hit in waveHits)
+        {
+            var target=hit.GetComponentInParent<PlayerHealth>();
+            if(target==null || !target.CompareTag("Player") || target.IsDead || waveVictims.Contains(target)) continue;
+            // Swept annulus: a long frame cannot skip the front; a player behind it stays safe.
+            Vector2 far=hit.bounds.center;
+            far+=new Vector2(far.x>=waveCenter.x ? hit.bounds.extents.x : -hit.bounds.extents.x,
+                             far.y>=waveCenter.y ? hit.bounds.extents.y : -hit.bounds.extents.y);
+            float farDistance=Vector2.Distance(waveCenter,far);
+            if(hit is CircleCollider2D circle)
+                farDistance=Vector2.Distance(waveCenter,circle.transform.TransformPoint(circle.offset))+
+                    circle.radius*Mathf.Max(Mathf.Abs(circle.transform.lossyScale.x),Mathf.Abs(circle.transform.lossyScale.y));
+            if(farDistance<inner) continue;
+            waveVictims.Add(target);
+            var ability=target.GetComponent<PlayerAbilityState>();
+            if(ability!=null && ability.IsAirborne) continue;
+            target.TakeDamage(Mathf.Max(1,enemyContactDamage.Damage));
+        }
+        if(stateTimeRemaining<=0) EnterRecovering();
+    }
+    private void RestoreWaveContact()
+    {
+        if(restoreContact && enemyContactDamage!=null && enemyHealth!=null && !enemyHealth.IsDead) enemyContactDamage.enabled=true;
+        restoreContact=false;
     }
 
     private void ApplyShockwaveDamage()
@@ -338,6 +392,7 @@ public class HeavyShockwaveAttack : MonoBehaviour
 
     private void EnterCooldown()
     {
+        RestoreWaveContact();
         currentState =
             ShockwaveState.Cooldown;
 
@@ -375,6 +430,7 @@ public class HeavyShockwaveAttack : MonoBehaviour
 
     private void InterruptPreparing()
     {
+        RestoreWaveContact();
         HideWarning();
         StopRigidbodyMotion();
 
@@ -649,6 +705,7 @@ public class HeavyShockwaveAttack : MonoBehaviour
 
     private void CancelToIdle()
     {
+        RestoreWaveContact(); waveHits.Clear(); waveVictims.Clear(); lockedFacing=Vector2.zero;
         HideWarning();
         StopRigidbodyMotion();
 
@@ -669,6 +726,7 @@ public class HeavyShockwaveAttack : MonoBehaviour
 
     private void ResetRuntimeState()
     {
+        RestoreWaveContact(); waveHits.Clear(); waveVictims.Clear(); lockedFacing=Vector2.zero;
         HideWarning();
         StopRigidbodyMotion();
 
@@ -689,6 +747,7 @@ public class HeavyShockwaveAttack : MonoBehaviour
 
     private void ValidateSettings()
     {
+        waveDuration=Mathf.Max(.1f,waveDuration); waveWidth=Mathf.Clamp(waveWidth,.05f,Mathf.Max(.05f,shockwaveRadius));
         triggerDistance =
             Mathf.Max(0f, triggerDistance);
 

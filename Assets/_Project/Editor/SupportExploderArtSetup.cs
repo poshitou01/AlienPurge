@@ -33,7 +33,7 @@ public static class SupportExploderArtSetup
             new Spec("SupportMove", "SupportMove", eight, 8f/12, 12, true),
             new Spec("SupportEnd", "SupportStart", new[] { 4, 3, 2, 1 }, 1f/3, 12, false)
         } : new[] {
-            new Spec("Warning", "Warning", four, 1.5f, 12, false),
+            new Spec("Warning", "Warning", four, AssetDatabase.LoadAssetAtPath<ExploderEnemyConfig>("Assets/_Project/Data/Enemies/Exploder_Ability.asset").warningDuration, 12, false),
             new Spec("Burst", "Burst", four, SupportExploderAnimation.BurstSeconds, 8, false)
         }).ToArray();
     }
@@ -95,6 +95,7 @@ public static class SupportExploderArtSetup
         var settings = new TextureImporterSettings(); importer.ReadTextureSettings(settings);
         settings.spriteAlignment = (int)SpriteAlignment.Center; settings.spriteMeshType = SpriteMeshType.FullRect; settings.spriteExtrude = 1;
         importer.SetTextureSettings(settings);
+        EnemyMotionArtRegistration.Apply(importer);
     }
     public static void Validate(GameObject prefab)
     {
@@ -112,7 +113,7 @@ public static class SupportExploderArtSetup
             {
                 var sprite = key.value as Sprite;
                 Require(sprite != null && AssetDatabase.GetAssetPath(sprite).StartsWith(Art + enemy + "/", StringComparison.Ordinal), "Own enemy sprite, never borrowed Swarmer");
-                Require(sprite.pixelsPerUnit == 256 && sprite.rect.size == new Vector2(512, 512) && sprite.pivot == new Vector2(256, 256), "512 canvas / PPU 256 / center pivot");
+                Require(sprite.pixelsPerUnit == 256 && sprite.rect.size == new Vector2(512, 512) && EnemyMotionArtRegistration.Valid(sprite), "512 canvas / PPU 256 / registered torso pivot");
             }
         }
         Require(GameObjectUtility.GetMonoBehavioursWithMissingScriptCount(prefab) == 0, "No missing scripts");

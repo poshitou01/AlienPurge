@@ -15,7 +15,7 @@ MonoBehaviour:
   enemyType: 5
   displayName: Exploder
   healthMultiplier: 1
-  moveSpeedMultiplier: 1.1
+  moveSpeedMultiplier: 1.3
   damageMultiplier: 1
   experienceAmount: 2
   visualScale: 1.05

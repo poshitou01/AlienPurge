@@ -14,6 +14,8 @@ public sealed class ExploderEnemyAbility : MonoBehaviour, IEnemyDeathPresentatio
     private PooledEnemy pooled;
     private PlayerHealth player;
     private Animator animator;
+    private Rigidbody2D body;
+    private RigidbodyConstraints2D restingConstraints;
     private float age, warningElapsed;
     private bool sawSafeDistance;
     private float lockedRadius, lockedDuration;
@@ -30,10 +32,12 @@ public sealed class ExploderEnemyAbility : MonoBehaviour, IEnemyDeathPresentatio
     private void Awake()
     {
         movement = GetComponent<EnemyMovement>(); health = GetComponent<EnemyHealth>();
+        body = GetComponent<Rigidbody2D>(); restingConstraints = body.constraints;
         damage = GetComponent<EnemyContactDamage>(); pooled = GetComponent<PooledEnemy>(); animator = GetComponentInChildren<Animator>();
     }
     private void OnEnable()
     {
+        body.constraints = restingConstraints;
         age = warningElapsed = 0; sawSafeDistance = false; ExplosionCount = DamageApplications = 0;
         State = ExploderState.Safe; victims.Clear(); overlaps.Clear(); BlastCenter = transform.position;
         damage.enabled = false; if (animator != null) animator.speed = 1;
@@ -65,7 +69,7 @@ public sealed class ExploderEnemyAbility : MonoBehaviour, IEnemyDeathPresentatio
         BlastCenter = transform.position; lockedRadius = config.explosionRadius; lockedDuration = Mathf.Max(.8f, config.warningDuration);
         // Disable the native motor: its movement lock deliberately allows knockback. A locked ground blast must not drift.
         movement.enabled = false;
-        var rb = GetComponent<Rigidbody2D>(); rb.velocity = Vector2.zero; rb.angularVelocity = 0;
+        body.velocity = Vector2.zero; body.angularVelocity = 0; body.constraints = RigidbodyConstraints2D.FreezeAll;
         if (animator != null) animator.speed = 0;
     }
     private void Detonate()
@@ -101,6 +105,7 @@ public sealed class ExploderEnemyAbility : MonoBehaviour, IEnemyDeathPresentatio
     }
     private void OnDisable()
     {
+        if (body != null) body.constraints = restingConstraints;
         State = ExploderState.Cancelled; age = warningElapsed = 0; sawSafeDistance = false;
         victims.Clear(); overlaps.Clear(); if (animator != null) animator.speed = 1;
     }

@@ -28,6 +28,10 @@ PrefabInstance:
       propertyPath: enableSeparation
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8409971171983772170, guid: 95d05adb622f64347900c60cec3711b0, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8521493281721276124, guid: 95d05adb622f64347900c60cec3711b0, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -94,6 +98,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3319235536976819082, guid: 95d05adb622f64347900c60cec3711b0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1099658773354992626}
+    - targetCorrespondingSourceObject: {fileID: 3319235536976819082, guid: 95d05adb622f64347900c60cec3711b0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2273048069319126709}
   m_SourcePrefab: {fileID: 100100000, guid: 95d05adb622f64347900c60cec3711b0, type: 3}
 --- !u!1 &2964574585481788908 stripped
 GameObject:
@@ -128,7 +135,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2964574585481788908}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 674634e9e46a5e046a5bfc65d3efa7aa, type: 3}
   m_Name: 
@@ -205,9 +212,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 25dd36ecd0511b546a064047136598a5, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   impactMaterial: {fileID: 2100000, guid: 31213f86257d45c4291395e0c49b107f, type: 2}
+--- !u!114 &2273048069319126709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2964574585481788908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f9955b3365e94943802237d87eae507, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  strideDistance: 1.1
+  turnHysteresis: 10
+  minimumTurnInterval: 0.1
+  headingSmoothing: 0.065
+  stopGrace: 0.14
 --- !u!212 &8175844493305452730 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 8521493281721276124, guid: 95d05adb622f64347900c60cec3711b0, type: 3}
