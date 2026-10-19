@@ -1,0 +1,4 @@
+PASS
+Scene=Assets/_Project/Scenes/ArtTests/Level01_FullWorld_IntegratedV01.unity
+Explosion pool=24; lightning pool=64; expansion disabled.
+Shared legacy prefabs and source scenes preserved.

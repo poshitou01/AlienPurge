@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73e30482145199345a198058fc0e4b2e, type: 3}
+  m_Name: UpgradeVfx
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: c54824da825df2d46b960c132181ed3e, type: 2}
+  explosionFrames:
+  - {fileID: 21300000, guid: 23b67aa13719fcc4cb6bd310301c8c4a, type: 3}
+  - {fileID: 21300000, guid: 4158e6d7e6f33f74f94591f392def706, type: 3}
+  - {fileID: 21300000, guid: 10cf8bbd598f42740904c7bb30a1f735, type: 3}
+  - {fileID: 21300000, guid: 4552f3051b405ca4ca69fd6872486339, type: 3}
+  - {fileID: 21300000, guid: 6db31f89edf8b644883f221469e7c9c5, type: 3}
+  - {fileID: 21300000, guid: 25762b35990d42445942f2e5f651bc0c, type: 3}
+  - {fileID: 21300000, guid: 98cde70a9c9faec4e9b7561446d4a594, type: 3}
+  - {fileID: 21300000, guid: 2d3c651de41cd3b4aba9051236b46546, type: 3}
+  explosionDuration: 0.38
+  lightningDuration: 0.2
+  hopDelay: 0.018
+  explosionColor: {r: 1, g: 0.4, b: 0.075, a: 1}
+  lightningColor: {r: 0.2, g: 0.65, b: 1, a: 1}
+  explosionSound: {fileID: 8300000, guid: d77ffb83994e5bf449ab527881223d14, type: 3}
+  lightningSound: {fileID: 8300000, guid: 3b6ef5285d508a647a8a8e075f9a4cb0, type: 3}
+  explosionVolume: 0.32
+  lightningVolume: 0.24

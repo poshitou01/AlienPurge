@@ -14,6 +14,7 @@ public class ChainLightningEffect : MonoBehaviour
     private bool isPlaying;
 
     private LineRenderer lineRenderer;
+    private UpgradeEffectVisual upgradeVisual;
 
     private ChainLightningEffectPool ownerPool;
 
@@ -25,6 +26,7 @@ public class ChainLightningEffect : MonoBehaviour
         lineRenderer =
             GetComponent<LineRenderer>();
 
+        upgradeVisual = GetComponent<UpgradeEffectVisual>();
         if (lineRenderer != null)
         {
             lineRenderer.positionCount = 2;
@@ -42,6 +44,7 @@ public class ChainLightningEffect : MonoBehaviour
         }
 
         isPlaying = false;
+        if (upgradeVisual != null) upgradeVisual.Hide();
     }
 
 
@@ -57,7 +60,7 @@ public class ChainLightningEffect : MonoBehaviour
     /// </summary>
     public void Initialize(
         Vector3 startPosition,
-        Vector3 endPosition)
+        Vector3 endPosition, int hopIndex = 0)
     {
         if (lineRenderer == null)
         {
@@ -84,7 +87,8 @@ public class ChainLightningEffect : MonoBehaviour
             endPosition
         );
 
-        lineRenderer.enabled = true;
+        lineRenderer.enabled = upgradeVisual == null || !upgradeVisual.Ready;
+        if (upgradeVisual != null && upgradeVisual.Ready) upgradeVisual.BeginLightning(startPosition, endPosition, hopIndex);
 
         returnCoroutine =
             StartCoroutine(
@@ -95,6 +99,18 @@ public class ChainLightningEffect : MonoBehaviour
 
     private IEnumerator ReturnAfterDuration()
     {
+        if (upgradeVisual != null && upgradeVisual.Ready)
+        {
+            for (float elapsed = 0; elapsed < upgradeVisual.Duration; elapsed += Time.deltaTime)
+            {
+                if (UpgradeVfxAudio.RunEnded) break;
+                upgradeVisual.Draw(elapsed);
+                yield return null;
+            }
+            returnCoroutine = null;
+            ReturnToPool();
+            yield break;
+        }
         yield return new WaitForSeconds(
             effectDuration
         );

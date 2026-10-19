@@ -616,7 +616,7 @@ public class Bullet : MonoBehaviour
             Vector2 nextPosition = nextTarget.transform.position;
             chainVisitedEnemies.Add(nextTarget);
             CombatImpactFeedback.ApplyDamage(nextTarget, lastChainDamage, nextPosition, nextPosition - currentOrigin, PlayerImpactSource.Chain);
-            SpawnChainLightningEffect(currentOrigin, nextPosition);
+            SpawnChainLightningEffect(currentOrigin, nextPosition, jumpIndex);
             lastChainHitCount++;
             currentOrigin = nextPosition;
         }
@@ -830,14 +830,14 @@ public class Bullet : MonoBehaviour
     }
 
     private void SpawnChainLightningEffect(
-        Vector2 startPosition, Vector2 endPosition)
+        Vector2 startPosition, Vector2 endPosition, int hopIndex)
     {
         if (ChainLightningEffectPool.Instance == null)
         {
             return;
         }
 
-        ChainLightningEffectPool.Instance.GetEffect(startPosition, endPosition);
+        ChainLightningEffectPool.Instance.GetEffect(startPosition, endPosition, hopIndex);
     }
 
     private void SpawnExplosionEffect(Vector3 position, float radius)

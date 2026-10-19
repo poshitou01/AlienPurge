@@ -2777,9 +2777,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af5212779cfb6be4ca45c75838af8b72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectPrefab: {fileID: 7565669921941735124, guid: fdd3ba5aa87fdf64688eb4720bc9d9c3, type: 3}
-  initialPoolSize: 16
-  allowExpansion: 1
+  effectPrefab: {fileID: 448470109115625984, guid: 5d088459657d97a4fa1d214fd98f9790, type: 3}
+  initialPoolSize: 64
+  allowExpansion: 0
   expansionAmount: 8
   availableCount: 0
   activeCount: 0
@@ -4146,9 +4146,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e42294d8047073b42bb3b5d3e7e87658, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectPrefab: {fileID: 1284983792}
-  initialPoolSize: 20
-  allowExpansion: 1
+  effectPrefab: {fileID: 6894099665832908399, guid: d625dd148e6cbff408ac1521bc54564d, type: 3}
+  initialPoolSize: 24
+  allowExpansion: 0
   expansionAmount: 10
   totalCount: 0
   activeCount: 0
@@ -25274,6 +25274,7 @@ GameObject:
   - component: {fileID: 327718220}
   - component: {fileID: 327718219}
   - component: {fileID: 327718222}
+  - component: {fileID: 327718223}
   m_Layer: 0
   m_Name: Level01_RegionLoop_V02
   m_TagString: Untagged
@@ -25698,6 +25699,18 @@ MonoBehaviour:
   chainWindow: 2.2
   showHealthBars: 1
   installationRevision: 3
+--- !u!114 &327718223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 327718218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43da79f6ff80b104ea71c09906bdbf17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &328384224
 GameObject:
   m_ObjectHideFlags: 0
@@ -83089,7 +83102,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1284983792
 MonoBehaviour:
   m_ObjectHideFlags: 0

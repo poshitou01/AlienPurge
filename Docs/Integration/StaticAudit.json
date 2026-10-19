@@ -1,5 +1,5 @@
 {
-  "guidCount": 4503,
+  "guidCount": 4516,
   "duplicateGuids": {},
   "unresolvedGuids": {
     "57eb4c059e0b3467cac0a46a3b859a2d": [
@@ -21,7 +21,7 @@
       "Assets/AstarPathfindingProject/Editor/EditorAssets/Materials/NavmeshOutline.mat"
     ]
   },
-  "integratedDependencyCount": 2419,
+  "integratedDependencyCount": 2428,
   "integratedMissingGuids": {},
   "bossProtectedCount": 1416,
   "bossDifferences": [],

@@ -183,7 +183,7 @@ public class ChainLightningEffectPool : MonoBehaviour
 
     public ChainLightningEffect GetEffect(
         Vector3 startPosition,
-        Vector3 endPosition)
+        Vector3 endPosition, int hopIndex = 0)
     {
         if (availableEffects.Count == 0)
         {
@@ -222,7 +222,8 @@ public class ChainLightningEffectPool : MonoBehaviour
 
         effect.Initialize(
             startPosition,
-            endPosition
+            endPosition,
+            hopIndex
         );
 
         RefreshDebugCounts();

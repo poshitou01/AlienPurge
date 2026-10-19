@@ -1,0 +1,82 @@
+角色特殊升级：爆炸 / 连锁闪电表现优化
+
+工程：D:\AlienPurge_IntegratedV01
+分支：feature/level01-integrated-v01
+修改基线：39e5f337d7bde7cf5b6c050331e32b5f3f91181f
+场景：Assets/_Project/Scenes/ArtTests/Level01_FullWorld_IntegratedV01.unity
+
+本次方案与实现
+
+爆炸：正式八帧火焰动画、短促亮芯、细火花、渐隐冲击波和少量残烟，持续 0.38 秒。
+火焰复用项目中 Exploder/Explosion 的八张已完成资源；没有修改原 PNG、.meta、敌人 Prefab 或能力配置。
+玩家效果有独立 Prefab，火焰大小按真实爆炸半径缩放，外层冲击波不超过该半径。
+
+闪电：带变化的折线电弧、白色亮线与蓝色辉光、短分叉、目标命中光点。
+各跳使用子弹实际命中的两个端点；每跳画面错开 18 毫秒，伤害仍在原来的时刻结算。
+每段持续 0.20 秒，加上该跳的短延时；不会留下长时间遮挡战场的电线。
+
+声音：独立的短爆裂与电击音效，使用原生主音量 / SFX 音量。
+总共四个声部，两种声音分别限频；同一条闪电只在第一跳发声。
+
+范围、伤害和组合规则保持原实现：
+  爆炸 Lv1 / Lv2 / Lv3 半径 1.4 / 1.7 / 2.0，附加伤害比例 0.40 / 0.55 / 0.70。
+  闪电 Lv1 / Lv2 / Lv3 跳数 1 / 2 / 3，每跳范围 3.5，附加伤害比例 0.60。
+  雷电穿刺、集束爆裂的额外修正仍由已有 WeaponEvolutionData 和子弹快照决定。
+  未增加特效伤害、额外结算、按生存时间解锁或新的刷怪系统。
+
+对象池与隔离
+
+继续使用场景原有的 ExplosionEffectPool / ChainLightningEffectPool。
+集成场景预热 24 个爆炸和 64 段电弧，禁止自动扩容；满载时省略多余画面，伤害和经验不受影响。
+网格、火焰渲染器与声部预先创建，复用时重置尺寸、端点、闪烁相位和动画帧。
+暂停和升级选择时隐藏效果、停掉短音效；恢复时继续剩余画面。
+死亡 / 胜利时回收活动效果；Restart 销毁上一局实例并重新预热。
+旧场景未加入 UpgradeEffectVisual，仍使用原有圆圈 / 直线表现及持续时间。
+
+准确入口
+
+直接打开上述已保存的集成场景，按 Play 即可。无需重新安装地图。
+正常区域流程中选择爆炸或连锁闪电升级后，朝一群敌人开火观察。
+
+只想快速看效果时，可以在 Play Mode 中选中 Player，在 PlayerWeaponModifiers 组件的菜单中使用已有入口：
+  Debug/Add Explosive Level
+  Debug/Add Chain Level
+每次增加一级，最多三级；这些测试加点仅用于当前 Play 会话。
+需要看连锁时至少保留两个活着的敌人；爆炸会按已有顺序先于闪电结算。
+
+本次实际新增并已编译的 Unity 菜单：
+  AlienPurge/Gameplay/Level01/Install Integrated Upgrade Effects
+  AlienPurge/Gameplay/Level01/Validate Integrated Upgrade Effects
+  AlienPurge/Gameplay/Level01/Run Integrated Upgrade Effects Checks
+安装菜单只操作第四个工程的集成场景，重复安装已检查为字节一致；存在未保存场景时会明确报错。
+
+可编辑配置：Assets/_Project/Data/Level01/IntegratedV01/SpecialUpgrades/UpgradeVfx.asset
+可调整持续时间、颜色、逐跳画面延时与音量。这里没有基础伤害或升级规则。
+
+验证证据
+
+PlayMode.txt：49 项专用检查通过，运行于 Unity 2022.3.62f3c1。
+包括原生子弹物理命中、三级爆炸与连锁、重复 Collider 去重、范围外不受伤、
+满载状态下三次独立死亡及三次 XP 掉落、池复用、八帧动画推进、暂停、音量、死亡和 Restart。
+四秒重叠压力测试每 0.05 秒申请 5 次爆炸和 12 段闪电，层级数量未增长，停止申请后全部回收。
+该次编辑器测量：476 帧，P50 8.33 ms / P95 8.62 ms；这是固定测试环境的短时测量，不是发布版帧率保证。
+
+Explosion.png / Lightning.png：集成地图中原生 Unity Camera 渲染。
+Explosion_Unity_HalfSpeed.gif / Lightning_Unity_HalfSpeed.gif：各 32 张实际相机帧，以半速播放并留出循环停顿。
+预览使用固定敌人位置便于比较；没有生成或插补动画帧。真实伤害路径另由 Play Mode 检查验证。
+
+本次没有进行人的长时间操作、主观音色评测或发布包设备测试；最终观感请按上述最短步骤试玩。
+
+完整集成回归：../PlayMode.txt，2026-10-18 15:52:38 UTC，114 项检查通过。
+通过原生奖励按钮完成 ThunderPiercer / ClusterBurst 两组进化，实际子弹执行连锁、爆炸和分裂伤害。
+主路线完成任务、Storm、安全区、毒雾、Boss 双阶段及后续撤离，并检查暂停 / Restart / 菜单返回。
+Boss 使用实际武器射击击败，测试辅助开启无敌；区域行走使用确定性移动 / 部分清场夹具，因此不属于人工难度验收。
+Storm + 任务 + 特殊敌人的八秒编辑器采样：634 帧，P50 12.17 ms / P95 16.36 ms。
+旧场景兼容检查：2026-10-18 15:55:13 UTC 完成，../LegacyPlayMode.txt 通过。
+区域 V01 的有限巡逻、休眠 Storm / 毒雾及事件奖励保持原行为；Level01_FullWorld 和 Day01_TestGround 的旧 45 秒升级规则保持原行为。
+
+来源与资产保护复核：
+  Boss / 区域 / 新敌人来源分别检查 5,062 / 5,241 / 8,731 个文件，分支、HEAD、工作区状态及文件内容全部不变。
+  集成资源索引 4,516 个 GUID 无重复，场景实际依赖 2,428 项无缺失 GUID。
+  已验收 Boss 1,416 个脚本与资源文件保持一致，28 个受保护原场景通过哈希核对。
+  本次修改未涉及 WASD 八方向动画、区域敌人权重、Settings UI 或地图墙体。

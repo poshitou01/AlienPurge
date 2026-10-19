@@ -1,0 +1,51 @@
+PASS | Unity 2022.3.62f3c1 | 2026-10-18 15:40:29Z
+PASS: VFX tests use an isolated save profile
+PASS: Existing pools prewarm exactly 24 explosion / 64 lightning effects without a parallel spawner
+PASS: One audio host has a fixed four-voice budget
+PASS: Legacy lightning prefab remains opt-out
+PASS: Explosion Lv1 preserves the native radius and upgrade snapshot
+PASS: Explosion Lv1 applies one correct area hit per enemy, excludes outside targets, and deduplicates colliders
+PASS: Explosion Lv1 uses the enhanced mesh at its real damage radius, without the old ring doubling it
+PASS: Explosion Lv1 fully returns to its original pool
+PASS: Explosion Lv2 preserves the native radius and upgrade snapshot
+PASS: Explosion Lv2 applies one correct area hit per enemy, excludes outside targets, and deduplicates colliders
+PASS: Explosion Lv2 uses the enhanced mesh at its real damage radius, without the old ring doubling it
+PASS: Explosion Lv2 fully returns to its original pool
+PASS: Explosion Lv3 preserves the native radius and upgrade snapshot
+PASS: Explosion Lv3 applies one correct area hit per enemy, excludes outside targets, and deduplicates colliders
+PASS: Explosion Lv3 uses the enhanced mesh at its real damage radius, without the old ring doubling it
+PASS: Explosion Lv3 fully returns to its original pool
+PASS: Lightning Lv1 preserves hop count, range and damage
+PASS: Lightning Lv1 hits exactly the native unique targets with no visual damage or repeated hit
+PASS: Lightning Lv1 presents actual hit endpoints and ordered hops
+PASS: Lightning Lv1 fully returns to its original pool
+PASS: Lightning Lv2 preserves hop count, range and damage
+PASS: Lightning Lv2 hits exactly the native unique targets with no visual damage or repeated hit
+PASS: Lightning Lv2 presents actual hit endpoints and ordered hops
+PASS: Lightning Lv2 fully returns to its original pool
+PASS: Lightning Lv3 preserves hop count, range and damage
+PASS: Lightning Lv3 hits exactly the native unique targets with no visual damage or repeated hit
+PASS: Lightning Lv3 presents actual hit endpoints and ordered hops
+PASS: Lightning Lv3 fully returns to its original pool
+PASS: Full simultaneous VFX budget refuses expansion at 24 / 64
+PASS: A saturated visual pool still resolves direct / explosion / chain kills exactly once
+PASS: Saturated VFX preserves one native XP drop for each of the three kills
+PASS: Explicit return cancels all enhanced meshes and coroutines without further damage
+PASS: Recycled effects never resolve a second death
+PASS: Reusing a large explosion as a child explosion resets its scale
+PASS: The pooled explosion actually advances through the existing eight formal animation frames
+PASS: Pause hides the visual and stops special upgrade voices
+PASS: Effect lifetime does not advance during Pause
+PASS: Resume continues the remaining effect instead of spawning it again
+PASS: Special upgrade sound obeys the native SFX volume
+PASS: Explosion preview consists of 32 real Unity camera frames at 60fps in the integrated map
+PASS: Lightning preview consists of 32 real Unity camera frames at 60fps in the integrated map
+PASS: Repeated simultaneous effects never grow the warmed pool hierarchy
+PASS: All effects drain after the stress burst
+MEASURE Editor VFX stress frames=476 p50_ms=8.33 p95_ms=8.62
+PASS: Native player death returns active special effects even while game time is stopped
+PASS: Death stops all special upgrade voices
+PASS: Restart resets milestones, modules and run identity
+PASS: Native Restart clears active effects and installs exactly one fresh audio host
+PASS: Restart destroys the prior scene's visual owners
+PASS: Restart leaves no special upgrade level from the fixture

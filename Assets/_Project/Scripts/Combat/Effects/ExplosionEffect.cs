@@ -20,6 +20,7 @@ public class ExplosionEffect : MonoBehaviour
     [SerializeField] private bool isPlaying;
 
     private LineRenderer lineRenderer;
+    private UpgradeEffectVisual upgradeVisual;
 
     private ExplosionEffectPool ownerPool;
 
@@ -32,6 +33,7 @@ public class ExplosionEffect : MonoBehaviour
             GetComponent<LineRenderer>();
 
         ConfigureLineRenderer();
+        upgradeVisual = GetComponent<UpgradeEffectVisual>();
     }
 
 
@@ -44,6 +46,7 @@ public class ExplosionEffect : MonoBehaviour
         }
 
         isPlaying = false;
+        if (upgradeVisual != null) upgradeVisual.Hide();
     }
 
 
@@ -80,7 +83,8 @@ public class ExplosionEffect : MonoBehaviour
 
         isPlaying = true;
 
-        lineRenderer.enabled = true;
+        lineRenderer.enabled = upgradeVisual == null || !upgradeVisual.Ready;
+        if (upgradeVisual != null && upgradeVisual.Ready) upgradeVisual.BeginExplosion(centerPosition, targetRadius);
 
         effectCoroutine =
             StartCoroutine(
@@ -91,6 +95,18 @@ public class ExplosionEffect : MonoBehaviour
 
     private IEnumerator PlayEffect()
     {
+        if (upgradeVisual != null && upgradeVisual.Ready)
+        {
+            for (float elapsed = 0; elapsed < upgradeVisual.Duration; elapsed += Time.deltaTime)
+            {
+                if (UpgradeVfxAudio.RunEnded) break;
+                upgradeVisual.Draw(elapsed);
+                yield return null;
+            }
+            effectCoroutine = null;
+            ReturnToPool();
+            yield break;
+        }
         float elapsedTime = 0f;
 
         float startRadius =

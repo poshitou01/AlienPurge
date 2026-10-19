@@ -1,11 +1,11 @@
-PASS | Unity 2022.3.62f3c1 | 2026-10-18 14:45:51Z
+PASS | Unity 2022.3.62f3c1 | 2026-10-18 15:52:38Z
 PASS: Isolated profile selected before initialization
 PASS: Five exploration regions and a playable extraction phase installed
 PASS: Cargo already populated before player entry; no premature fog clock
 PASS: Blue pads, floating markers and permanent terminal circles removed
 PASS: Entering region actually activates native enemy movement
 PASS: Real pooled death awards one physical XP pickup and one kill
-PASS: A surviving patrol no longer blocks later reinforcements; new arrivals=10
+PASS: A surviving patrol no longer blocks later reinforcements; new arrivals=13
 PASS: Ambient ticket queue remains bounded
 PASS: Main opens G1 exactly once
 PASS: Repeated main activation cannot pay again: ColonyEntry
@@ -30,7 +30,7 @@ PASS: Enemy occupation interrupts defense progress
 PASS: Leaving pauses hold progress but not the deadline
 PASS: Storm spatial overlay active with native safety hole
 PASS: Combined storm defense completes and unlocks rare cache
-PASS: Ambient enemies keep spawning DURING active storm and optional defense; arrivals=15
+PASS: Ambient enemies keep spawning DURING active storm and optional defense; arrivals=11
 PASS: Task reward applied once
 PASS: First Support is ordinary garrison, not an access guard
 PASS: Natural Support uses its formal Animator
@@ -47,11 +47,11 @@ PASS: Signature evolution excludes the Overclock entitlement
 PASS: Native weapon fires after choice closes
 PASS: Fired bullet receives native evolution visual data
 PASS: Fired projectile carries evolved damage-mechanism snapshot
-PASS: Real projectile collision and secondary damage affect both targets; HP=94,96 direct=1 chain=1
+PASS: Real projectile collision and secondary damage affect both targets; HP=96,98 direct=1 chain=1
 PASS: Native evolved chain / explosion and split behavior actually fires
 PASS: Power optional task starts with integrated enemy configuration
 PASS: Combined-load fixture starts native reachable Storm
-MEASURE combined Storm/task/specialists: frames=763 P50=10.31ms P95=12.32ms managed+native allocated delta=67244582 bytes; Windows Editor batch/D3D11; short sample, not a standalone-build benchmark.
+MEASURE combined Storm/task/specialists: frames=634 P50=12.17ms P95=16.36ms managed+native allocated delta=55764643 bytes; Windows Editor batch/D3D11; short sample, not a standalone-build benchmark.
 PASS: Storm/task overlap does not leak an unbounded ticket queue
 PASS: After G3, Chinese HUD gives an active isolation objective
 PASS: Main opens G4 exactly once
@@ -65,11 +65,11 @@ PASS: Real weapon fire defeats both Boss phases with native summons
 PASS: Region fog does not advance during the Boss encounter
 PASS: Boss death records regional milestone and opens onward extraction gate
 PASS: Duplicate victory callback is idempotent
-MEASURE integrated Boss shots=800 summons=64 peak=10 phases=1
+MEASURE integrated Boss shots=1615 summons=64 peak=10 phases=1
 PASS: Repeated main activation cannot pay again: Extraction
 PASS: Existing native extraction defense starts from terminal interaction
 PASS: Leaving extraction pauses native progress
-MEASURE extraction t=254.3131 current=Extraction wave=3 due=254.8245 quiet=0 retired=False global=6 camera=(20.45, -11.88, -10.00) size=10 player=(47.20, -57.25, 0.00) tickets=Normal:0:True,Normal:0:True,Normal:0:True,Normal:0:True,Normal:1:False,Ranged:0:True,Normal:0:True,Normal:0:False,Normal:0:False,Normal:0:False
+MEASURE extraction t=254.2535 current=Extraction wave=4 due=258.2535 quiet=0 retired=False global=8 camera=(14.99, -15.77, -10.00) size=10 player=(47.09, -57.16, 0.00) tickets=Heavy:0:True,Normal:0:True,Normal:0:True,Normal:0:True,Normal:0:True,Exploder:0:True,Heavy:0:True,Normal:0:True,Normal:0:False,Normal:0:False,Normal:0:False,Normal:0:False,Normal:0:False
 MEASURE ingress (27.00, -56.48) region= valid=True clear=True reason=
 MEASURE ingress (23.00, -56.48) region= valid=True clear=True reason=
 MEASURE ingress (16.00, -50.00) region= valid=True clear=True reason=
@@ -113,7 +113,7 @@ PASS: Signature evolution excludes the Overclock entitlement
 PASS: Native weapon fires after choice closes
 PASS: Fired bullet receives native evolution visual data
 PASS: Fired projectile carries evolved damage-mechanism snapshot
-PASS: Real projectile collision and secondary damage affect both targets; HP=94,98 direct=1 chain=0
+PASS: Real projectile collision and secondary damage affect both targets; HP=96,99 direct=1 chain=0
 PASS: Native evolved chain / explosion and split behavior actually fires
 PASS: Both mechanism combinations applied through native module buttons across fresh runs
 PASS: Restart resets milestones, modules and run identity
