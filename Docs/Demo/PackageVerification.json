@@ -1,0 +1,46 @@
+{
+  "zip": "D:\\AlienPurge_IntegratedV01\\Builds\\Demo\\20261019_123458\\AlienPurge_Demo_v0.1_Win64.zip",
+  "sha256": "1874b025015e3e54b6018d3ec41ee257a86dbb3e68fef7aa8d2a10d0a1c72209",
+  "zipBytes": 721886044,
+  "fileCount": 169,
+  "uncompressedBytes": 2950393958,
+  "extractedDirectory": "D:\\AlienPurge_Demo_Verification\\20261019_124858\\AlienPurge_Demo_v0.1_Win64",
+  "allExtractedFileHashesMatch": true,
+  "containsSourceProject": false,
+  "runtimeTests": {
+    "finalZipLaunch": "PASS: existing main menu visible in final extracted Windows player",
+    "finalZipExit": "PASS: native Quit Game, exit code 0",
+    "finalPid": 43128,
+    "finalScreenshot": "Docs/Demo/Standalone/FinalZipMenu_720p.png",
+    "priorIdenticalRuntimeTests": [
+      "1280x720 main menu -> native final level -> backpack -> combat/pause -> death -> restart -> main menu -> settings -> quit",
+      "1920x1080 extracted package -> persisted master volume 50% -> reset defaults -> final level -> backpack -> pause -> main menu -> quit"
+    ],
+    "completeBossExtractionRoute": "NOT TESTED in this final build",
+    "longDurationPerformance": "NOT MEASURED"
+  },
+  "verifiedAt": "2026-10-19T12:51:42.122843+08:00",
+  "logs": [
+    {
+      "path": "Logs/DemoNative_OriginalMenu_720p.log",
+      "sha256": "dce2cff875f0a6c6b47fe577bd72c7a89de4f306a4c8b3a5a1b2da12bf2d4dc8",
+      "errorMatches": [],
+      "expectedDeathResultMarkers": 1,
+      "shutdownAllocatorFailedCounterLines": 32
+    },
+    {
+      "path": "Logs/DemoNative_ExtractedMenu_1080p.log",
+      "sha256": "5a4a62e9218bda250b4607aee0a8a9c4ddced0c5f356f8b8d46837cafba3e874",
+      "errorMatches": [],
+      "expectedDeathResultMarkers": 0,
+      "shutdownAllocatorFailedCounterLines": 32
+    },
+    {
+      "path": "Logs/DemoNative_FinalZipMenu_720p.log",
+      "sha256": "6201a85a3fb0492b51cfbc5a3e0f57c0b69fb065284a3811375129e2d058de7a",
+      "errorMatches": [],
+      "expectedDeathResultMarkers": 0,
+      "shutdownAllocatorFailedCounterLines": 0
+    }
+  ]
+}

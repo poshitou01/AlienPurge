@@ -1,0 +1,4 @@
+PASS: Assets/_Project/Scenes/MainMenu_IntegratedV01.unity scripts and native scene routing.
+Existing development components, preserved by request: PersistentStashDebugTester active=True, PendingRecoveryUITestSeeder active=True
+PASS: Assets/_Project/Scenes/ArtTests/Level01_FullWorld_IntegratedV01.unity scripts and native scene routing.
+Existing development components, preserved by request: WeaponDebugTester active=True, InventoryDebugTester active=True, RunInventoryDebugTester active=True

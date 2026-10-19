@@ -1,0 +1,26 @@
+Succeeded
+Unity=2022.3.62f3c1
+Target=StandaloneWindows64
+Backend=Mono2x
+Product=AlienPurge Demo
+Company=DefaultCompany
+Version=0.1
+Development=false Debugging=false Profiler=false DeepProfiling=false ImportOverrides=None
+Scenes=Assets/_Project/Scenes/MainMenu_IntegratedV01.unity;Assets/_Project/Scenes/ArtTests/Level01_FullWorld_IntegratedV01.unity
+Output=D:\AlienPurge_IntegratedV01\Builds\Demo\20261019_123458\AlienPurge_Demo_v0.1_Win64
+Errors=0 Warnings=2
+Bytes=2950375968 Duration=00:00:42.5777980
+Git=d98e8957019c14a8075042242e3f2120ed133be1
+Uncommitted=M Assets/Settings/UniversalRP.asset
+ M "Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset"
+ M Assets/_Project/Data/Level01/IntegratedV01/LegacyAuditFonts/2e498d1c8094910479dc3e1b768306a4.asset
+ M Assets/_Project/Data/Level01/IntegratedV01/LegacyAuditFonts/67c97596c32b38643b103a1c1fa410f3.asset
+ M Assets/_Project/Data/Level01/RegionLoop/Fonts/2e498d1c8094910479dc3e1b768306a4.asset
+ M Assets/_Project/Data/Level01/RegionLoopV02/Fonts/67c97596c32b38643b103a1c1fa410f3.asset
+ M Assets/_Project/Data/Level01/RegionLoopV02/LegacyAuditFonts/2e498d1c8094910479dc3e1b768306a4.asset
+ M Assets/_Project/Data/Level01/RegionLoopV02/LegacyAuditFonts/67c97596c32b38643b103a1c1fa410f3.asset
+ M ProjectSettings/ProjectSettings.asset
+?? Assets/_Project/Editor/WindowsDemoBuilder.cs
+?? Assets/_Project/Editor/WindowsDemoBuilder.cs.meta
+?? Docs/Demo/
+?? Tools/Demo/
