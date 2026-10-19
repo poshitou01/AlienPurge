@@ -17534,7 +17534,6 @@ RectTransform:
   - {fileID: 1016314306}
   - {fileID: 646717929}
   - {fileID: 19379499}
-  - {fileID: 1810201853}
   - {fileID: 2036248687}
   - {fileID: 286098233}
   - {fileID: 352494078}
@@ -17543,6 +17542,7 @@ RectTransform:
   - {fileID: 1777801835}
   - {fileID: 556106062}
   - {fileID: 356902040}
+  - {fileID: 1810201853}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

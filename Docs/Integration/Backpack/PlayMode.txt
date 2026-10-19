@@ -1,0 +1,20 @@
+PASS | Unity 2022.3.62f3c1 | 2026-10-19 02:42:33Z
+PASS: Native inventory accepts the item fixture
+PASS: Native backpack opens and pauses gameplay
+PASS: CombatStatus renders behind the opaque backpack at 1920x1080
+PASS: MissionPanel renders behind the opaque backpack at 1920x1080
+PASS: CombatStatus renders behind the opaque backpack at 1280x1024
+PASS: MissionPanel renders behind the opaque backpack at 1280x1024
+PASS: The visible inventory item wins the native UI raycast
+PASS: Native pointer click selects the item and updates backpack details
+PASS: Native drag moves the stack to an empty cell without losing items
+PASS: Drag restores item opacity and pointer interaction
+PASS: Closing backpack restores gameplay and both corner HUDs, cycle 1
+PASS: Backpack reopens, cycle 1
+PASS: Closing backpack restores gameplay and both corner HUDs, cycle 2
+PASS: Backpack reopens, cycle 2
+PASS: Closing backpack restores gameplay and both corner HUDs, cycle 3
+PASS: Backpack reopens, cycle 3
+PASS: Native Pause closes the backpack and retains pause ownership
+PASS: Resume restores normal gameplay
+LIMITS: native Play Mode UI, raycasting, pointer handlers, pause and rendered cameras; deterministic item fixture. Before image reconstructs only the previous HUD sibling order in memory. No scene layout or save data was changed by the fixture.
