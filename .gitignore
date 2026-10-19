@@ -16,3 +16,7 @@
 
 .DS_Store
 Thumbs.db
+
+# Large store exports and raw recordings stay local.
+/TapTap_ReleaseAssets/
+**/__pycache__/
